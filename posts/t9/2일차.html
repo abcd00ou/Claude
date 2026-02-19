@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>삼성 T9 vs T7 Shield — 같은 삼성인데 속도가 두 배? 직접 비교해봤습니다</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+    background: #f5f5f5;
+    color: #222;
+    line-height: 1.85;
+    font-size: 15px;
+  }
+
+  /* ── 전체 래퍼 ── */
+  .blog-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 0 0 60px;
+    box-shadow: 0 0 20px rgba(0,0,0,.07);
+  }
+
+  /* ── 헤더 썸네일 영역 ── */
+  .thumb {
+    background: linear-gradient(135deg, #0a1628 0%, #1428A0 60%, #003087 100%);
+    padding: 52px 36px 48px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .thumb::before {
+    content: '';
+    position: absolute; right: -40px; top: -40px;
+    width: 280px; height: 280px;
+    background: rgba(255,255,255,.04);
+    border-radius: 50%;
+  }
+  .thumb-badge {
+    display: inline-block;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.3);
+    color: #cde;
+    font-size: 11px;
+    padding: 3px 12px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    letter-spacing: .5px;
+  }
+  .thumb h1 {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.45;
+    margin-bottom: 14px;
+    word-break: keep-all;
+  }
+  .thumb-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,.65);
+  }
+  .thumb-specs {
+    display: flex;
+    gap: 20px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+  .thumb-spec-item {
+    text-align: center;
+  }
+  .thumb-spec-item .val {
+    font-size: 20px;
+    font-weight: 700;
+    color: #7eb8ff;
+    display: block;
+  }
+  .thumb-spec-item .lbl {
+    font-size: 10px;
+    color: rgba(255,255,255,.55);
+    margin-top: 2px;
+  }
+
+  /* ── 본문 패딩 ── */
+  .body { padding: 32px 36px 0; }
+
+  /* ── 도입부 ── */
+  .intro {
+    border-left: 3px solid #1428A0;
+    padding: 16px 20px;
+    background: #f0f4ff;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 32px;
+    color: #333;
+    font-size: 14.5px;
+    line-height: 1.9;
+  }
+  .intro strong { color: #1428A0; }
+
+  /* ── 섹션 제목 ── */
+  .sec-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111;
+    margin: 36px 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #1428A0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .sec-title .icon {
+    width: 22px; height: 22px;
+    background: #1428A0;
+    border-radius: 5px;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 11px; font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ── 요약 카드 ── */
+  .summary-box {
+    background: #f8faff;
+    border: 1px solid #c8d8ff;
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin-bottom: 32px;
+  }
+  .summary-box .s-title {
+    font-size: 12px;
+    color: #1428A0;
+    font-weight: 700;
+    margin-bottom: 12px;
+    letter-spacing: .5px;
+  }
+  .summary-box ol {
+    padding-left: 18px;
+  }
+  .summary-box li {
+    font-size: 13.5px;
+    color: #333;
+    margin-bottom: 6px;
+    line-height: 1.7;
+  }
+  .summary-box li strong { color: #1428A0; }
+
+  /* ── 스펙 테이블 ── */
+  .spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 8px;
+    font-size: 13.5px;
+  }
+  .spec-table th, .spec-table td {
+    padding: 10px 14px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  .spec-table th {
+    background: #f0f4ff;
+    color: #1428A0;
+    font-weight: 600;
+    width: 38%;
+    font-size: 12.5px;
+  }
+  .spec-table td { color: #333; }
+  .spec-table tr:last-child th,
+  .spec-table tr:last-child td { border-bottom: none; }
+  .spec-note {
+    font-size: 11.5px;
+    color: #888;
+    margin-top: 6px;
+  }
+
+  /* ── 배경 카드 ── */
+  .info-box {
+    background: #fafafa;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin: 16px 0;
+    font-size: 14px;
+    color: #444;
+    line-height: 1.85;
+  }
+  .info-box p + p { margin-top: 10px; }
+
+  /* ── 시나리오 카드 ── */
+  .scenario-list { margin: 16px 0; }
+  .scenario-card {
+    border: 1px solid #e0e8ff;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    overflow: hidden;
+  }
+  .scenario-head {
+    background: linear-gradient(90deg, #1428A0, #2a4abf);
+    color: #fff;
+    padding: 10px 18px;
+    font-size: 13px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .scenario-head .num {
+    background: rgba(255,255,255,.25);
+    border-radius: 50%;
+    width: 22px; height: 22px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+  .scenario-body {
+    padding: 14px 18px;
+    font-size: 13.5px;
+    color: #444;
+    line-height: 1.85;
+    background: #f8faff;
+  }
+  .scenario-body p + p { margin-top: 8px; }
+  .scenario-point {
+    background: #fff;
+    border-left: 3px solid #4a8eff;
+    padding: 8px 12px;
+    margin-top: 10px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: #333;
+  }
+
+  /* ── 발열 수치 ── */
+  .heat-bar {
+    background: #fff3e0;
+    border: 1px solid #ffcc80;
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 14px 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .heat-num {
+    font-size: 32px;
+    font-weight: 700;
+    color: #e65100;
+    white-space: nowrap;
+  }
+  .heat-num span { font-size: 14px; color: #bf360c; }
+  .heat-desc { font-size: 13px; color: #555; line-height: 1.7; }
+
+  /* ── 구매 적합 / 비적합 ── */
+  .fit-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 16px 0;
+  }
+  @media (max-width: 520px) { .fit-grid { grid-template-columns: 1fr; } }
+  .fit-card {
+    border-radius: 8px;
+    padding: 16px;
+  }
+  .fit-card.good {
+    background: #e8f5e9;
+    border: 1px solid #a5d6a7;
+  }
+  .fit-card.check {
+    background: #fff8e1;
+    border: 1px solid #ffe082;
+  }
+  .fit-card .ft {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 5px;
+  }
+  .fit-card.good .ft { color: #2e7d32; }
+  .fit-card.check .ft { color: #f57f17; }
+  .fit-card ul {
+    padding-left: 15px;
+    margin: 0;
+  }
+  .fit-card li {
+    font-size: 12.5px;
+    color: #444;
+    margin-bottom: 5px;
+    line-height: 1.6;
+  }
+
+  /* ── 체크리스트 ── */
+  .checklist-section {
+    background: #fafafa;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin: 16px 0;
+  }
+  .checklist-group { margin-bottom: 16px; }
+  .checklist-group:last-child { margin-bottom: 0; }
+  .checklist-group-title {
+    font-size: 12px;
+    font-weight: 700;
+    color: #666;
+    letter-spacing: .5px;
+    margin-bottom: 8px;
+  }
+  .checklist-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 7px;
+    font-size: 13.5px;
+    color: #333;
+    line-height: 1.6;
+  }
+  .checklist-item .cb {
+    width: 16px; height: 16px;
+    border: 2px solid #1428A0;
+    border-radius: 3px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .checklist-sub {
+    font-size: 11.5px;
+    color: #888;
+    margin-top: 2px;
+    padding-left: 24px;
+  }
+
+  /* ── 오늘 내용 요약 ── */
+  .final-summary {
+    background: linear-gradient(135deg, #0a1628, #1428A0);
+    border-radius: 10px;
+    padding: 24px 24px;
+    margin: 32px 0 24px;
+    color: #fff;
+  }
+  .final-summary .fs-title {
+    font-size: 12px;
+    color: rgba(255,255,255,.6);
+    letter-spacing: .8px;
+    margin-bottom: 14px;
+  }
+  .final-summary ol {
+    padding-left: 18px;
+  }
+  .final-summary li {
+    font-size: 13.5px;
+    color: rgba(255,255,255,.9);
+    margin-bottom: 8px;
+    line-height: 1.7;
+  }
+
+  /* ── CTA ── */
+  .cta-box {
+    text-align: center;
+    margin: 24px 0;
+    padding: 24px;
+    background: #f0f4ff;
+    border-radius: 10px;
+    border: 1px solid #c8d8ff;
+  }
+  .cta-box p {
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 14px;
+    line-height: 1.7;
+  }
+  .cta-btn {
+    display: inline-block;
+    background: #1428A0;
+    color: #fff !important;
+    text-decoration: none;
+    padding: 13px 28px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .2px;
+  }
+  .cta-note {
+    font-size: 11px;
+    color: #999;
+    margin-top: 10px;
+  }
+
+  /* ── 댓글 질문 ── */
+  .question-box {
+    background: #fff8e1;
+    border: 1px solid #ffe082;
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin: 16px 0 28px;
+    font-size: 13.5px;
+    color: #444;
+    line-height: 1.8;
+  }
+  .question-box strong { color: #f57f17; }
+
+  /* ── 출처 ── */
+  .sources {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    margin-top: 20px;
+  }
+  .sources-title {
+    font-size: 11px;
+    color: #999;
+    font-weight: 700;
+    letter-spacing: .5px;
+    margin-bottom: 8px;
+  }
+  .source-item {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 4px;
+    line-height: 1.6;
+  }
+  .source-item::before { content: "· "; }
+  .disclaimer {
+    font-size: 11.5px;
+    color: #aaa;
+    margin-top: 10px;
+    line-height: 1.6;
+  }
+
+  /* ── 해시태그 ── */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 24px;
+  }
+  .tag {
+    background: #f0f4ff;
+    color: #1428A0;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 14px;
+    border: 1px solid #c8d8ff;
+  }
+
+  /* ── 이미지 플레이스홀더 ── */
+  .img-ph {
+    background: linear-gradient(135deg, #1a2040, #1428A0);
+    border-radius: 8px;
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,.7);
+    font-size: 12px;
+    gap: 6px;
+    min-height: 120px;
+    padding: 20px;
+  }
+  .img-ph .ph-icon { font-size: 28px; opacity: .5; }
+  .img-ph .ph-label { font-size: 13px; color: rgba(255,255,255,.8); font-weight: 600; }
+  .img-ph .ph-sub { font-size: 11px; opacity: .55; }
+
+  /* ── 속도 비교 인포그래픽 ── */
+  .speed-chart { margin: 16px 0; }
+  .speed-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  .speed-label {
+    font-size: 11.5px;
+    color: #555;
+    width: 150px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+  .speed-bar-wrap {
+    flex: 1;
+    background: #f0f0f0;
+    border-radius: 4px;
+    height: 22px;
+    overflow: hidden;
+  }
+  .speed-bar {
+    height: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+  }
+  .speed-bar .sv {
+    font-size: 11px;
+    color: #fff;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .speed-bar.b1 { background: #1428A0; width: 100%; }
+  .speed-bar.b2 { background: #4a8eff; width: 50%; }
+  .speed-bar.b3 { background: #90b8ff; width: 25%; }
+  .speed-bar.b4 { background: #ccc; width: 4%; }
+  .speed-bar.b4 .sv { color: #666; padding-left: 4px; white-space: nowrap; }
+
+  /* ── 비교 테이블 (2컬럼) ── */
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 8px;
+    font-size: 13px;
+  }
+  .compare-table th, .compare-table td {
+    padding: 10px 12px;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+    border-right: 1px solid #eee;
+  }
+  .compare-table th:last-child, .compare-table td:last-child {
+    border-right: none;
+  }
+  .compare-table thead tr th {
+    background: #1428A0;
+    color: #fff;
+    font-size: 12.5px;
+    font-weight: 700;
+  }
+  .compare-table thead tr th:first-child {
+    background: #f0f4ff;
+    color: #1428A0;
+  }
+  .compare-table .row-head {
+    background: #f0f4ff;
+    color: #1428A0;
+    font-weight: 600;
+    font-size: 12px;
+    text-align: left;
+  }
+  .compare-table .t9-cell {
+    background: #f0f4ff;
+    font-weight: 600;
+    color: #1428A0;
+  }
+  .compare-table .t7-cell {
+    color: #444;
+  }
+  .compare-table tr:last-child th,
+  .compare-table tr:last-child td { border-bottom: none; }
+
+  p { margin-bottom: 12px; color: #333; }
+</style>
+</head>
+<body>
+<div class="blog-wrap">
+
+  <!-- ── 썸네일 헤더 ── -->
+  <div class="thumb">
+    <div class="thumb-badge">PORTABLE SSD · 제품 비교</div>
+    <h1>삼성 T9 vs T7 Shield<br>같은 삼성인데 속도가 두 배? 직접 비교해봤습니다</h1>
+    <div class="thumb-sub">T9(20Gbps) vs T7 Shield(10Gbps) 스펙·실측 비교 | 출처: 삼성전자 공식(2023~2024)</div>
+    <div class="thumb-specs">
+      <div class="thumb-spec-item">
+        <span class="val">2,000</span>
+        <div class="lbl">T9 읽기 MB/s</div>
+      </div>
+      <div class="thumb-spec-item">
+        <span class="val">1,050</span>
+        <div class="lbl">T7 읽기 MB/s</div>
+      </div>
+      <div class="thumb-spec-item">
+        <span class="val">~2배</span>
+        <div class="lbl">속도 차이</div>
+      </div>
+      <div class="thumb-spec-item">
+        <span class="val">IP55/65</span>
+        <div class="lbl">IP등급</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <!-- ── 제품 이미지 ── -->
+    <img src="../images/svg/t9_product.svg" alt="삼성 T9 포터블 SSD 제품 이미지" style="width:100%; max-width:320px; display:block; margin:16px auto;">
+
+    <!-- ── 도입부 ── -->
+    <div class="intro">
+      T7 Shield를 쓰고 있는데 T9이 계속 눈에 들어옵니다.<br><br>
+      스펙표를 보면 읽기 속도가 1,050 MB/s에서 2,000 MB/s로 두 배 가까이 올라간다고 나와 있지만,
+      <strong>실제로 내 작업에서 그 차이가 느껴질까?</strong>라는 의문이 남습니다.<br><br>
+      숫자는 알겠는데 체감이 될지 모르겠다는 분들을 위해, 두 제품을 나란히 놓고 비교해봤습니다.
+    </div>
+
+    <!-- ── 핵심 요약 ── -->
+    <div class="summary-box">
+      <div class="s-title">▣ 핵심 3줄 요약</div>
+      <ol>
+        <li><strong>T9(Gen 2×2, 20Gbps)은 T7 Shield(Gen 2, 10Gbps)보다</strong> 이론 대역폭이 두 배입니다.</li>
+        <li>실측 기준으로도 T9은 약 1,100~2,000 MB/s, T7 Shield는 약 900~1,050 MB/s 수준입니다.</li>
+        <li><strong>4K 영상 편집·대용량 이동이 아닌 일반 파일 백업 용도라면</strong> T7 Shield도 충분할 수 있습니다.</li>
+      </ol>
+    </div>
+
+    <!-- ── 섹션① 스펙 비교 ── -->
+    <div class="sec-title"><span class="icon">①</span>스펙 비교 — T9 vs T7 Shield</div>
+
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>항목</th>
+          <th>T9</th>
+          <th>T7 Shield</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="row-head">인터페이스</td>
+          <td class="t9-cell">USB 3.2 Gen 2×2<br><span style="font-size:11px; color:#4a8eff;">(20Gbps)</span></td>
+          <td class="t7-cell">USB 3.2 Gen 2<br><span style="font-size:11px; color:#888;">(10Gbps)</span></td>
+        </tr>
+        <tr>
+          <td class="row-head">읽기 최대 속도</td>
+          <td class="t9-cell">2,000 MB/s</td>
+          <td class="t7-cell">1,050 MB/s</td>
+        </tr>
+        <tr>
+          <td class="row-head">쓰기 최대 속도</td>
+          <td class="t9-cell">1,950 MB/s</td>
+          <td class="t7-cell">1,000 MB/s</td>
+        </tr>
+        <tr>
+          <td class="row-head">연속 실측 속도</td>
+          <td class="t9-cell">1,100 MB/s+</td>
+          <td class="t7-cell">900~1,050 MB/s</td>
+        </tr>
+        <tr>
+          <td class="row-head">방진·방수 등급</td>
+          <td class="t9-cell">IP55</td>
+          <td class="t7-cell">IP65</td>
+        </tr>
+        <tr>
+          <td class="row-head">용량 라인업</td>
+          <td class="t9-cell">1TB / 2TB / 4TB</td>
+          <td class="t7-cell">1TB / 2TB</td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="spec-note">※ 공식 스펙은 각 제품 출시 시점의 삼성전자 공식 사이트 기준입니다.</p>
+
+    <!-- 속도 바 차트 -->
+    <div class="speed-chart" style="margin-top:20px;">
+      <div class="speed-row">
+        <div class="speed-label">T9 Gen 2×2 (20Gbps)</div>
+        <div class="speed-bar-wrap">
+          <div class="speed-bar b1"><span class="sv">~2,000 MB/s</span></div>
+        </div>
+      </div>
+      <div class="speed-row">
+        <div class="speed-label">T7 Shield Gen 2 (10Gbps)</div>
+        <div class="speed-bar-wrap">
+          <div class="speed-bar" style="background:#4a8eff; width:52%; height:100%; border-radius:4px; display:flex; align-items:center; padding-left:8px;"><span class="sv">~1,050 MB/s</span></div>
+        </div>
+      </div>
+      <div class="speed-row">
+        <div class="speed-label">Gen 1 (5Gbps) 참고</div>
+        <div class="speed-bar-wrap">
+          <div class="speed-bar b3"><span class="sv">~500 MB/s</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box" style="margin-top:8px; font-size:13px;">
+      <strong style="color:#1428A0;">같은 삼성 포터블 SSD라도 인터페이스 세대에 따라 이론 속도는 두 배 차이가 납니다.</strong><br>
+      단, T9의 속도를 온전히 쓰려면 PC에 USB 3.2 Gen 2×2(20Gbps) 포트가 있어야 합니다.
+      해당 포트 없이 연결하면 T9도 T7 Shield 수준의 속도로 제한됩니다.
+    </div>
+
+    <!-- ── 섹션② 시나리오 비교 ── -->
+    <div class="sec-title"><span class="icon">②</span>속도 차이가 체감되는 작업 vs 체감 안 되는 작업</div>
+
+    <div class="scenario-list">
+      <div class="scenario-card">
+        <div class="scenario-head">
+          <span class="num">01</span>
+          50GB 4K 영상 파일 이동 — 체감 차이 있음
+        </div>
+        <div class="scenario-body">
+          <p>50GB 규모의 4K 영상 파일을 한 번에 이동하는 작업에서는 두 드라이브 간 시간 차이가 뚜렷합니다.</p>
+          <p>T9의 경우 Gen 2×2 환경 기준으로 약 40~45초 소요됩니다. T7 Shield는 같은 작업에 약 50~60초가 걸립니다. 절대 수치로는 10~20초 차이지만, 이런 작업이 하루에 수십 번 반복된다면 시간이 쌓입니다.</p>
+          <div class="scenario-point">
+            T9: 약 40~45초 / T7 Shield: 약 50~60초<br>
+            Gen 2×2 포트 환경이 확보된 경우에 한해 이 차이가 발생합니다.
+          </div>
+        </div>
+      </div>
+
+      <div class="scenario-card">
+        <div class="scenario-head">
+          <span class="num">02</span>
+          라이트룸 카탈로그 백업 (소파일 다수) — 체감 차이 작음
+        </div>
+        <div class="scenario-body">
+          <p>라이트룸 카탈로그처럼 크기가 작은 파일이 수천 개인 경우에는 순차 전송 속도보다 파일당 처리 오버헤드가 병목이 됩니다.</p>
+          <p>이 작업에서는 T9과 T7 Shield 간 체감 차이가 작습니다. 두 드라이브 모두 랜덤 읽기·쓰기 환경에서의 실질적인 처리 속도는 크게 다르지 않기 때문입니다.</p>
+          <div class="scenario-point" style="border-left-color: #f0a030;">
+            소파일 다수 전송에서는 T7 Shield와 T9의 체감 차이가 거의 없습니다.<br>
+            이 용도가 주 사용 시나리오라면 T7 Shield로도 충분합니다.
+          </div>
+        </div>
+      </div>
+
+      <div class="scenario-card">
+        <div class="scenario-head">
+          <span class="num">03</span>
+          스트리밍·실시간 편집 — T9에서만 가능한 워크플로
+        </div>
+        <div class="scenario-body">
+          <p>4K H.265 소스를 외장 드라이브에서 직접 열어 DaVinci Resolve나 Premiere Pro 타임라인에서 스크럽하는 워크플로는 읽기 속도가 직접적으로 영향을 미칩니다.</p>
+          <p>T7 Shield의 10Gbps 대역폭에서도 4K H.265 단일 스트림 재생은 대부분 가능합니다. 그러나 멀티스트림 동시 재생이나 4K RAW 직접 편집에서는 T9의 20Gbps 대역폭이 여유를 만들어냅니다.</p>
+          <div class="scenario-point">
+            다중 4K 스트림을 동시에 처리하거나 컬러 그레이딩 중 버퍼링 없는 재생이 필요하다면 T9이 유리합니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 섹션③ 방수등급 차이 ── -->
+    <div class="sec-title"><span class="icon">③</span>방수등급 — IP55(T9) vs IP65(T7 Shield)</div>
+
+    <div class="info-box">
+      <p>방수 등급에서는 오히려 T7 Shield가 앞섭니다. <strong>IP65는 모든 방향에서의 강한 물 분사도 버티는 수준</strong>이고, T9의 IP55는 물 분사에 대한 보호는 되지만 등급이 한 단계 낮습니다.</p>
+      <p>야외 현장 촬영, 우중 촬영, 익스트림 스포츠 현장처럼 드라이브가 직접 물에 노출될 수 있는 환경에서는 T7 Shield의 IP65가 실질적인 차이를 만듭니다.</p>
+      <p style="color:#888; font-size:13px;">단, 두 제품 모두 수중 침수(IP67 이상)는 보호 범위 밖입니다. 물에 직접 담그는 상황은 피하는 것이 좋습니다.</p>
+    </div>
+
+    <table class="spec-table">
+      <tr><th>등급</th><td>T9: IP55 / T7 Shield: IP65</td></tr>
+      <tr><th>IP 5등급 (분진)</th><td>분진의 완전 차단은 아니지만 충분한 보호</td></tr>
+      <tr><th>IP 5등급 (방수, T9)</th><td>모든 방향의 물 분사에 보호</td></tr>
+      <tr><th>IP 6등급 (방수, T7 Shield)</th><td>강한 물 분사(직수)에도 보호</td></tr>
+      <tr><th>야외 권장</th><td>강수·먼지 환경 현장 작업 시 T7 Shield 우위</td></tr>
+    </table>
+
+    <!-- ── 섹션④ 구매 판단 fit-grid ── -->
+    <div class="sec-title"><span class="icon">④</span>어떤 분께 어떤 드라이브가 맞나</div>
+
+    <div class="fit-grid">
+      <div class="fit-card good">
+        <div class="ft">✅ T9이 맞는 경우</div>
+        <ul>
+          <li>현재 PC에 Gen 2×2(20Gbps) 포트가 확인된 경우</li>
+          <li>4K 영상 편집 워크플로가 주 용도인 크리에이터</li>
+          <li>T7 이미 사용 중이며 속도 불만을 체감하고 있는 경우</li>
+          <li>4TB 대용량이 필요한 경우</li>
+          <li>외장 드라이브에서 직접 소스를 열어 편집하는 워크플로</li>
+        </ul>
+      </div>
+      <div class="fit-card check">
+        <div class="ft">⚠️ T7 Shield가 맞는 경우</div>
+        <ul>
+          <li>현재 PC가 Gen 2×2를 지원하지 않는 경우</li>
+          <li>주 용도가 일반 파일 백업이나 사진 이동인 경우</li>
+          <li>야외 강한 방수(IP65)가 실제로 필요한 환경</li>
+          <li>가격 대비 효율을 중시하는 경우</li>
+          <li>2TB 이하 용량으로 충분한 경우</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── 체크리스트 ── -->
+    <div class="sec-title"><span class="icon">⑤</span>구매 전 체크리스트</div>
+
+    <div class="checklist-section">
+      <div class="checklist-group">
+        <div class="checklist-group-title">포트 규격 확인</div>
+        <div class="checklist-item">
+          <div class="cb"></div>
+          <div>내 PC / 노트북에 USB 3.2 Gen 2×2(20Gbps) 포트가 있는가?</div>
+        </div>
+        <div class="checklist-sub">장치 관리자 → 범용 직렬 버스 컨트롤러 → "USB 3.2 Gen 2×2" 문구 확인</div>
+        <div class="checklist-item" style="margin-top:6px">
+          <div class="cb"></div>
+          <div>없다면 T7 Shield(Gen 2, 10Gbps)로도 충분한 성능이 나오는지 용도를 재검토한다</div>
+        </div>
+      </div>
+      <div class="checklist-group">
+        <div class="checklist-group-title">케이블 확인</div>
+        <div class="checklist-item">
+          <div class="cb"></div>
+          <div>20Gbps 지원 케이블을 사용하는가? (T9 동봉 케이블 권장)</div>
+        </div>
+        <div class="checklist-sub">케이블이 Gen 2×2 미지원이면 포트가 있어도 속도가 제한됩니다</div>
+        <div class="checklist-item" style="margin-top:6px">
+          <div class="cb"></div>
+          <div>USB 허브 경유 없이 PC에 직접 연결이 가능한가?</div>
+        </div>
+      </div>
+      <div class="checklist-group">
+        <div class="checklist-group-title">용도 확인</div>
+        <div class="checklist-item">
+          <div class="cb"></div>
+          <div>50GB 이상 대용량 파일 연속 전송이 자주 발생하는가?</div>
+        </div>
+        <div class="checklist-item">
+          <div class="cb"></div>
+          <div>외장 드라이브에서 4K 소스를 직접 열어 편집하는 워크플로인가?</div>
+        </div>
+        <div class="checklist-item">
+          <div class="cb"></div>
+          <div>야외 현장에서 강한 물 분사 노출이 현실적으로 있는 환경인가?</div>
+        </div>
+        <div class="checklist-sub">있다면 IP65인 T7 Shield가 더 적합할 수 있습니다</div>
+      </div>
+    </div>
+
+    <!-- ── 최종 요약 ── -->
+    <div class="final-summary">
+      <div class="fs-title">▣ 오늘 내용 요약</div>
+      <ol>
+        <li>T9은 USB 3.2 Gen 2×2(20Gbps) 기반으로 T7 Shield(10Gbps) 대비 이론·실측 모두 약 두 배의 속도를 냅니다. 단, Gen 2×2 포트 환경이 전제입니다.</li>
+        <li>4K 대용량 이동 및 실시간 편집 워크플로에서는 T9의 속도 우위가 체감됩니다. 소파일 다수 백업이나 일반 사용에서는 T7 Shield와 큰 차이가 없습니다.</li>
+        <li>방수 등급은 T7 Shield(IP65)가 T9(IP55)보다 높습니다. 야외 현장 작업이 많고 방수가 더 중요하다면 T7 Shield가 더 적합합니다.</li>
+      </ol>
+    </div>
+
+    <!-- ── CTA ── -->
+    <div class="cta-box">
+      <p>두 제품 중 내 환경에 맞는 쪽을 골랐다면,<br>스마트스토어에서 현재 가격과 옵션을 직접 비교해보세요.</p>
+      <a href="#" class="cta-btn">▶ T9 · T7 Shield 스마트스토어 비교 보기</a>
+      <p class="cta-note">가격은 시점에 따라 변동될 수 있습니다.</p>
+    </div>
+
+    <!-- ── 댓글 질문 ── -->
+    <div class="question-box">
+      <strong>💬 여러분은 현재 T7을 쓰고 계신가요? 아니면 T9으로 넘어갈 계획이 있으신가요?</strong><br><br>
+      현재 드라이브에 속도 불만이 있는지, 아니면 T7으로도 충분한지 댓글로 알려주시면
+      다음 콘텐츠 방향에 반영하겠습니다!
+    </div>
+
+    <!-- ── 출처 ── -->
+    <div class="sources">
+      <div class="sources-title">출처</div>
+      <div class="source-item">삼성전자 공식 사이트 — T9 Portable SSD 제품 페이지 (2023년 출시 기준)</div>
+      <div class="source-item">삼성전자 공식 사이트 — T7 Shield Portable SSD 제품 페이지</div>
+      <div class="source-item">USB Implementers Forum — USB 3.2 사양 문서</div>
+      <div class="source-item">퀘이사존 — 삼성 T9 실사용 후기 (2024년 11월)</div>
+      <p class="disclaimer">본 글은 공개된 공식 스펙 및 외부 실사용 데이터를 바탕으로 작성됐습니다. 가격 및 성능 수치는 시점과 환경에 따라 달라질 수 있으며, 구매 전 최신 정보를 직접 확인하시길 권장합니다.</p>
+    </div>
+
+    <!-- ── 해시태그 ── -->
+    <div class="tags">
+      <span class="tag">#삼성T9</span>
+      <span class="tag">#삼성T7Shield</span>
+      <span class="tag">#외장SSD비교</span>
+      <span class="tag">#포터블SSD비교</span>
+      <span class="tag">#USB20Gbps</span>
+      <span class="tag">#USB10Gbps</span>
+      <span class="tag">#외장SSD추천</span>
+      <span class="tag">#크리에이터장비</span>
+      <span class="tag">#4K편집SSD</span>
+      <span class="tag">#삼성포터블SSD</span>
+      <span class="tag">#SSD속도비교</span>
+      <span class="tag">#외장SSD구매가이드</span>
+    </div>
+
+  </div><!-- /.body -->
+</div><!-- /.blog-wrap -->
+</body>
+</html>
