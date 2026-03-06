@@ -1,0 +1,110 @@
+{
+  "brand": "samsung",
+  "skus": [
+    { "sku_id": "sam_t9_1tb",          "category": "portable_ssd",  "model": "T9",          "capacity": "1TB",   "notes": "USB 3.2 Gen 2x2 (20Gbps), 2000/1950 MB/s, IP55" },
+    { "sku_id": "sam_t9_2tb",          "category": "portable_ssd",  "model": "T9",          "capacity": "2TB",   "notes": "USB 3.2 Gen 2x2 (20Gbps), 2000/1950 MB/s, IP55" },
+    { "sku_id": "sam_t9_4tb",          "category": "portable_ssd",  "model": "T9",          "capacity": "4TB",   "notes": "USB 3.2 Gen 2x2 (20Gbps), 2000/1950 MB/s, IP55" },
+    { "sku_id": "sam_t7shield_1tb",    "category": "portable_ssd",  "model": "T7 Shield",   "capacity": "1TB",   "notes": "USB 3.2 Gen 2 (10Gbps), 1050/1000 MB/s, IP65" },
+    { "sku_id": "sam_t7shield_2tb",    "category": "portable_ssd",  "model": "T7 Shield",   "capacity": "2TB",   "notes": "USB 3.2 Gen 2 (10Gbps), 1050/1000 MB/s, IP65" },
+    { "sku_id": "sam_t7_500gb",        "category": "portable_ssd",  "model": "T7",          "capacity": "500GB", "notes": "USB 3.2 Gen 2 (10Gbps), 1050/1000 MB/s" },
+    { "sku_id": "sam_t7_1tb",          "category": "portable_ssd",  "model": "T7",          "capacity": "1TB",   "notes": "USB 3.2 Gen 2 (10Gbps), 1050/1000 MB/s" },
+    { "sku_id": "sam_t7_2tb",          "category": "portable_ssd",  "model": "T7",          "capacity": "2TB",   "notes": "USB 3.2 Gen 2 (10Gbps), 1050/1000 MB/s" },
+    { "sku_id": "sam_9100pro_1tb",     "category": "internal_ssd",  "model": "9100 Pro",    "capacity": "1TB",   "notes": "PCIe 5.0 x4, NVMe 2.0, 14800/13400 MB/s" },
+    { "sku_id": "sam_9100pro_2tb",     "category": "internal_ssd",  "model": "9100 Pro",    "capacity": "2TB",   "notes": "PCIe 5.0 x4, NVMe 2.0, 14800/13400 MB/s" },
+    { "sku_id": "sam_9100pro_4tb",     "category": "internal_ssd",  "model": "9100 Pro",    "capacity": "4TB",   "notes": "PCIe 5.0 x4, NVMe 2.0, 14800/13400 MB/s" },
+    { "sku_id": "sam_9100pro_8tb",     "category": "internal_ssd",  "model": "9100 Pro",    "capacity": "8TB",   "notes": "PCIe 5.0 x4, NVMe 2.0, 14800/13400 MB/s" },
+    { "sku_id": "sam_990pro_1tb",      "category": "internal_ssd",  "model": "990 Pro",     "capacity": "1TB",   "notes": "PCIe 4.0 x4, NVMe 2.0, 7450/6900 MB/s, PS5" },
+    { "sku_id": "sam_990pro_2tb",      "category": "internal_ssd",  "model": "990 Pro",     "capacity": "2TB",   "notes": "PCIe 4.0 x4, NVMe 2.0, 7450/6900 MB/s, PS5" },
+    { "sku_id": "sam_990pro_4tb",      "category": "internal_ssd",  "model": "990 Pro",     "capacity": "4TB",   "notes": "PCIe 4.0 x4, NVMe 2.0, 7450/6900 MB/s, PS5" },
+    { "sku_id": "sam_990evoplus_1tb",  "category": "internal_ssd",  "model": "990 Evo Plus","capacity": "1TB",   "notes": "PCIe 4.0/5.0 x2 hybrid, 7250/6300 MB/s" },
+    { "sku_id": "sam_990evoplus_2tb",  "category": "internal_ssd",  "model": "990 Evo Plus","capacity": "2TB",   "notes": "PCIe 4.0/5.0 x2 hybrid, 7250/6300 MB/s" },
+    { "sku_id": "sam_990evoplus_4tb",  "category": "internal_ssd",  "model": "990 Evo Plus","capacity": "4TB",   "notes": "PCIe 4.0/5.0 x2 hybrid, 7250/6300 MB/s" },
+    { "sku_id": "sam_evoselect_128gb", "category": "microsd",       "model": "EVO Select",  "capacity": "128GB", "notes": "UHS-I U3 A2, 130 MB/s read" },
+    { "sku_id": "sam_evoselect_256gb", "category": "microsd",       "model": "EVO Select",  "capacity": "256GB", "notes": "UHS-I U3 A2, 130 MB/s read" },
+    { "sku_id": "sam_evoselect_512gb", "category": "microsd",       "model": "EVO Select",  "capacity": "512GB", "notes": "UHS-I U3 A2, 130 MB/s read" },
+    { "sku_id": "sam_proplus_128gb",   "category": "microsd",       "model": "PRO Plus",    "capacity": "128GB", "notes": "UHS-I U3 A2, 180/130 MB/s" },
+    { "sku_id": "sam_proplus_256gb",   "category": "microsd",       "model": "PRO Plus",    "capacity": "256GB", "notes": "UHS-I U3 A2, 180/130 MB/s" },
+    { "sku_id": "sam_proplus_512gb",   "category": "microsd",       "model": "PRO Plus",    "capacity": "512GB", "notes": "UHS-I U3 A2, 180/130 MB/s" },
+    { "sku_id": "sam_proendurance_128gb","category": "microsd",     "model": "PRO Endurance","capacity": "128GB","notes": "UHS-I U3, 100/40 MB/s, surveillance" },
+    { "sku_id": "sam_proendurance_256gb","category": "microsd",     "model": "PRO Endurance","capacity": "256GB","notes": "UHS-I U3, 100/40 MB/s, surveillance" },
+    { "sku_id": "sam_p9express_256gb", "category": "microsd",       "model": "P9 Express",  "capacity": "256GB", "notes": "microSD Express PCIe 3.1, 800 MB/s" },
+    { "sku_id": "sam_p9express_512gb", "category": "microsd",       "model": "P9 Express",  "capacity": "512GB", "notes": "microSD Express PCIe 3.1, 800 MB/s" }
+  ],
+  "urls": {
+    "sam_t9_1tb": {
+      "US": {
+        "amazon":       "https://www.amazon.com/dp/B0CHFSWM2P",
+        "manufacturer": "https://www.samsung.com/us/computing/memory-storage/portable-solid-state-drives/portable-ssd-t9-usb-3-2-1tb-black-mu-pg1t0b-am/"
+      },
+      "JP": { "amazon": "https://www.amazon.co.jp/dp/B0CK89LJR7" },
+      "DE": { "amazon": "https://www.amazon.de/dp/B0CGQ466W8" }
+    },
+    "sam_t9_2tb": {
+      "US": { "amazon": "https://www.amazon.com/dp/B0CHFS9K14" }
+    },
+    "sam_t9_4tb": {
+      "US": { "amazon": "https://www.amazon.com/dp/B0C749CQPB" }
+    },
+    "sam_t7shield_1tb": {
+      "US": {
+        "amazon":       "https://www.amazon.com/dp/B09VLK9W3S",
+        "manufacturer": "https://www.samsung.com/us/computing/memory-storage/portable-solid-state-drives/portable-ssd-t7-shield-usb-3-2-1tb-black-mu-pe1t0s-am/"
+      }
+    },
+    "sam_t7shield_2tb": {
+      "US": { "amazon": "https://www.amazon.com/dp/B09VLHR4JC" }
+    },
+    "sam_t7_500gb": {
+      "US": { "amazon": "https://www.amazon.com/dp/B0874YS2N7" }
+    },
+    "sam_t7_1tb": {
+      "US": { "amazon": "https://www.amazon.com/dp/B0874XN4D8" }
+    },
+    "sam_t7_2tb": {
+      "US": { "amazon": "https://www.amazon.com/dp/B0874XWW23" }
+    },
+    "sam_9100pro_1tb": {
+      "US": { "amazon": "https://www.amazon.com/dp/B0CWGRFXRD" }
+    },
+    "sam_9100pro_2tb": {
+      "US": { "amazon": "https://www.amazon.com/dp/B0CWGS6JKR" },
+      "JP": { "amazon": "https://www.amazon.co.jp/dp/B0F11XFKL1" }
+    },
+    "sam_9100pro_4tb": {
+      "US": { "amazon": "https://www.amazon.com/dp/B0CWGS6JKS" }
+    },
+    "sam_9100pro_8tb": {
+      "US": { "amazon": "https://www.amazon.com/dp/B0CWGS8NM2" }
+    },
+    "sam_990pro_1tb": {
+      "US": { "amazon": "https://www.amazon.com/dp/B0BHJH6X89" }
+    },
+    "sam_990pro_2tb": {
+      "US": { "amazon": "https://www.amazon.com/dp/B0BHJJ9Y77" },
+      "JP": { "amazon": "https://www.amazon.co.jp/dp/B0BPXRY7N2" },
+      "DE": { "amazon": "https://www.amazon.de/dp/B0B9C4DKKG" }
+    },
+    "sam_990pro_4tb": {
+      "US": { "amazon": "https://www.amazon.com/dp/B0CL63WZML" }
+    },
+    "sam_990evoplus_1tb": {
+      "US": { "amazon": "https://www.amazon.com/dp/B0CW3DVKL3" }
+    },
+    "sam_990evoplus_2tb": {
+      "US": { "amazon": "https://www.amazon.com/dp/B0DHLCRF91" }
+    },
+    "sam_990evoplus_4tb": {
+      "US": { "amazon": "https://www.amazon.com/dp/B0CW3H2QFN" }
+    },
+    "sam_evoselect_128gb":   { "US": { "amazon": "https://www.amazon.com/dp/B09B1J8GFG" } },
+    "sam_evoselect_256gb":   { "US": { "amazon": "https://www.amazon.com/dp/B0CWPMKX5Y" } },
+    "sam_evoselect_512gb":   { "US": { "amazon": "https://www.amazon.com/dp/B09B1HTMKX" } },
+    "sam_proplus_128gb":     { "US": { "amazon": "https://www.amazon.com/dp/B09CKPJH2X" } },
+    "sam_proplus_256gb":     { "US": { "amazon": "https://www.amazon.com/dp/B0C1PPWTWT" } },
+    "sam_proplus_512gb":     { "US": { "amazon": "https://www.amazon.com/dp/B09CKMM5KP" } },
+    "sam_proendurance_128gb":{ "US": { "amazon": "https://www.amazon.com/dp/B09W4BHY4G" } },
+    "sam_proendurance_256gb":{ "US": { "amazon": "https://www.amazon.com/dp/B09W4BQ7DG" } },
+    "sam_p9express_256gb":   { "US": { "amazon": "https://www.amazon.com/dp/B0CRGS18VJ" } },
+    "sam_p9express_512gb":   { "US": { "amazon": "https://www.amazon.com/dp/B0CRGS19LK" } }
+  }
+}
