@@ -1,0 +1,61 @@
+{
+  "sim_month": 1,
+  "sim_year": 2025,
+  "sim_month_num": 2,
+  "start_year": 2025,
+  "start_month": 1,
+  "last_run_real": "2026-03-10T08:41:13.840094",
+  "history": [
+    {
+      "sim_date": "2025-02",
+      "sim_year": 2025,
+      "sim_month": 2,
+      "quarter": "2025Q1",
+      "real_time": "2026-03-10T08:41:13.840128",
+      "revenue_m": {
+        "external_ssd": 71.3,
+        "internal_ssd": 54.7,
+        "microsd": 103.5
+      },
+      "total_rev_m": 229.5,
+      "gross_margin_pct": {
+        "external_ssd": 45.5,
+        "internal_ssd": 38.1,
+        "microsd": 57.3
+      },
+      "blended_gm_pct": 49.1,
+      "market_share_pct": {
+        "external_ssd": 21.8,
+        "internal_ssd": 16.8,
+        "microsd": 32.1
+      },
+      "nand_cost_per_gb": {
+        "BiCS5": 0.055,
+        "BiCS6": 0.042,
+        "BiCS8": 0.038
+      },
+      "channel_mix_pct": {
+        "external_ssd": {
+          "ecommerce": 52.1,
+          "retail": 37.9,
+          "b2b": 10.0
+        },
+        "internal_ssd": {
+          "ecommerce": 58.1,
+          "retail": 26.9,
+          "b2b": 15.0
+        },
+        "microsd": {
+          "ecommerce": 42.1,
+          "retail": 47.9,
+          "b2b": 10.0
+        }
+      },
+      "event": {
+        "type": "none",
+        "description": ""
+      },
+      "promo": null
+    }
+  ]
+}
