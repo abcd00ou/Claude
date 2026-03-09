@@ -1,0 +1,108 @@
+{
+  "_note": "SanDisk B2C Internal Sales Data — Simulated based on WD/SanDisk public reports + market estimates",
+  "_source": "WD FY2024 10-K (Flash segment), TrendForce unit data, internal channel tracking estimates",
+  "_currency": "USD (millions unless noted)",
+
+  "annual_revenue_usd_m": {
+    "2022": {"external_ssd": 1120, "internal_ssd": 920, "microsd": 1650, "total_btoc": 3690},
+    "2023": {"external_ssd": 890,  "internal_ssd": 720, "microsd": 1380, "total_btoc": 2990},
+    "2024": {"external_ssd": 950,  "internal_ssd": 760, "microsd": 1520, "total_btoc": 3230},
+    "2025E":{"external_ssd": 1036, "internal_ssd": 882, "microsd": 1610, "total_btoc": 3528}
+  },
+
+  "quarterly_revenue_usd_m": {
+    "2024Q1": {"external_ssd": 208, "internal_ssd": 165, "microsd": 330, "total": 703},
+    "2024Q2": {"external_ssd": 220, "internal_ssd": 175, "microsd": 352, "total": 747},
+    "2024Q3": {"external_ssd": 248, "internal_ssd": 198, "microsd": 408, "total": 854},
+    "2024Q4": {"external_ssd": 274, "internal_ssd": 222, "microsd": 430, "total": 926},
+    "2025Q1": {"external_ssd": 228, "internal_ssd": 180, "microsd": 367, "total": 775},
+    "2025Q2": {"external_ssd": 240, "internal_ssd": 189, "microsd": 387, "total": 816},
+    "2025Q3": {"external_ssd": 264, "internal_ssd": 210, "microsd": 423, "total": 897},
+    "2025Q4": {"external_ssd": 304, "internal_ssd": 243, "microsd": 492, "total": 1039},
+    "2026Q1E":{"external_ssd": 252, "internal_ssd": 200, "microsd": 403, "total": 855}
+  },
+
+  "yoy_growth_pct": {
+    "2024_vs_2023": {"external_ssd": 6.7, "internal_ssd": 5.6, "microsd": 10.1, "total": 8.0},
+    "2025E_vs_2024":{"external_ssd": 9.1, "internal_ssd": 16.1,"microsd": 5.9,  "total": 9.2}
+  },
+
+  "channel_mix_pct": {
+    "2024": {
+      "external_ssd": {"ecommerce": 52, "retail": 38, "b2b": 10},
+      "internal_ssd":  {"ecommerce": 58, "retail": 27, "b2b": 15},
+      "microsd":       {"ecommerce": 42, "retail": 48, "b2b": 10}
+    },
+    "2025E": {
+      "external_ssd": {"ecommerce": 55, "retail": 36, "b2b": 9},
+      "internal_ssd":  {"ecommerce": 61, "retail": 24, "b2b": 15},
+      "microsd":       {"ecommerce": 44, "retail": 46, "b2b": 10}
+    }
+  },
+
+  "geo_mix_pct": {
+    "2024": {
+      "external_ssd": {"NA": 38, "EMEA": 26, "APAC": 22, "Japan": 8, "China": 6},
+      "internal_ssd":  {"NA": 42, "EMEA": 24, "APAC": 20, "Japan": 8, "China": 6},
+      "microsd":       {"NA": 24, "EMEA": 28, "APAC": 28, "Japan": 10,"China": 10}
+    }
+  },
+
+  "sku_revenue_usd_m_2024": {
+    "SD_EXTREME_1TB":    {"rev": 215, "units_k": 2500, "asp": 86.0, "gm_pct": 45.2},
+    "SD_EXTREME_2TB":    {"rev": 198, "units_k": 1280, "asp": 154.7,"gm_pct": 46.1},
+    "SD_EXTREME_4TB":    {"rev": 88,  "units_k": 290,  "asp": 303.4,"gm_pct": 49.8},
+    "SD_EXTREME_PRO_1TB":{"rev": 148, "units_k": 1240, "asp": 119.4,"gm_pct": 52.3},
+    "SD_EXTREME_PRO_2TB":{"rev": 137, "units_k": 680,  "asp": 201.5,"gm_pct": 54.7},
+    "WD_MY_PASSPORT_1TB":{"rev": 106, "units_k": 1480, "asp": 71.6, "gm_pct": 38.2},
+    "WD_MY_PASSPORT_2TB":{"rev": 58,  "units_k": 470,  "asp": 123.4,"gm_pct": 40.1},
+    "WD_BLACK_SN850X_1TB":{"rev": 162,"units_k": 2100, "asp": 77.1, "gm_pct": 42.8},
+    "WD_BLACK_SN850X_2TB":{"rev": 194,"units_k": 1380, "asp": 140.6,"gm_pct": 45.2},
+    "WD_BLACK_SN850X_4TB":{"rev": 98, "units_k": 368,  "asp": 266.3,"gm_pct": 47.1},
+    "WD_BLACK_SN770_1TB": {"rev": 138,"units_k": 2240, "asp": 61.6, "gm_pct": 34.5},
+    "WD_BLACK_SN770_2TB": {"rev": 110,"units_k": 1020, "asp": 107.8,"gm_pct": 36.2},
+    "SD_EXTREME_MICRO_256G":{"rev": 378,"units_k":14800,"asp": 25.5, "gm_pct": 58.4},
+    "SD_EXTREME_MICRO_512G":{"rev": 312,"units_k":7200, "asp": 43.3, "gm_pct": 62.1},
+    "SD_ULTRA_MICRO_256G":  {"rev": 248,"units_k":13200,"asp": 18.8, "gm_pct": 52.3},
+    "SD_ULTRA_MICRO_128G":  {"rev": 182,"units_k":15800,"asp": 11.5, "gm_pct": 48.7},
+    "SD_PRO_PLUS_MICRO_256G":{"rev": 195,"units_k":5800,"asp": 33.6, "gm_pct": 63.2},
+    "SD_PRO_PLUS_MICRO_512G":{"rev": 165,"units_k":2860,"asp": 57.7, "gm_pct": 64.8},
+    "SD_EXTREME_MICRO_1TB":  {"rev": 39, "units_k": 430, "asp": 90.7,"gm_pct": 65.2}
+  },
+
+  "gross_margin_pct": {
+    "2022": {"external_ssd": 38.5, "internal_ssd": 31.2, "microsd": 54.8, "blended": 43.0},
+    "2023": {"external_ssd": 32.1, "internal_ssd": 24.6, "microsd": 48.2, "blended": 37.2},
+    "2024": {"external_ssd": 44.8, "internal_ssd": 38.5, "microsd": 57.3, "blended": 47.6},
+    "2025E":{"external_ssd": 47.2, "internal_ssd": 41.8, "microsd": 58.9, "blended": 49.8}
+  },
+
+  "market_share_pct": {
+    "2023": {"external_ssd": 21, "internal_ssd_consumer": 16, "microsd": 31},
+    "2024": {"external_ssd": 22, "internal_ssd_consumer": 17, "microsd": 32},
+    "2025_target": {"external_ssd": 24, "internal_ssd_consumer": 19, "microsd": 34}
+  },
+
+  "nand_cost_per_gb_usd": {
+    "2023Q4": 0.038, "2024Q1": 0.048, "2024Q2": 0.058,
+    "2024Q3": 0.068, "2024Q4": 0.075, "2025Q1_est": 0.080
+  },
+
+  "promo_impact_usd_m": {
+    "2024Q4_holiday": {"invest": 45, "incremental_rev": 138, "roi": 3.07},
+    "2024Q3_bts": {"invest": 18, "incremental_rev": 52, "roi": 2.89},
+    "2025Q1_newyear": {"invest": 22, "incremental_rev": 61, "roi": 2.77}
+  },
+
+  "amazon_real_prices": {
+    "_note": "실측 Amazon 3P 가격 (2026-03-09, Crawling Agent 수집). MSRP 대비 premium 주목.",
+    "SD_EXTREME_1TB_USD":    {"crawled": 198.59, "msrp": 99.99, "premium_pct": 98.6},
+    "SD_EXTREME_2TB_USD":    {"crawled": 284.88, "msrp": 159.99,"premium_pct": 78.1},
+    "SD_SN850X_2TB_USD":     {"crawled": 442.99, "msrp": 149.99,"premium_pct": 195.3},
+    "SD_ULTRA_MICRO_128G_USD":{"crawled": 82.99, "msrp": 18.99, "premium_pct": 336.9},
+    "SD_EXTREME_MICRO_256G_USD":{"crawled": 35.23,"msrp": 28.99,"premium_pct": 21.5},
+    "SAM_T9_1TB_USD":        {"crawled": 224.99, "msrp": 129.99,"premium_pct": 73.1},
+    "SAM_T9_2TB_USD":        {"crawled": 376.77, "msrp": 229.99,"premium_pct": 63.8},
+    "SAM_990PRO_2TB_USD":    {"crawled": 384.97, "msrp": 149.99,"premium_pct": 156.7}
+  }
+}

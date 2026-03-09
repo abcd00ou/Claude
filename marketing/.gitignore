@@ -1,0 +1,14 @@
+# Generated outputs (binary)
+outputs/
+
+# Downloaded product images cache
+data/images/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# macOS
+.DS_Store

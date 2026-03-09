@@ -1,0 +1,80 @@
+{
+  "source": "Research synthesis — training data (cutoff Aug 2025) + TrendForce/IDC/GVR estimates",
+  "as_of": "2025-Q1",
+  "note": "SanDisk Corporation spun off from WD in early 2025",
+
+  "tam_usd_b": {
+    "external_ssd_2024": 4.0,
+    "external_ssd_2025": 5.0,
+    "internal_ssd_consumer_2024": 11.0,
+    "internal_ssd_consumer_2025": 13.5,
+    "microsd_2024": 6.8,
+    "microsd_2025": 8.0,
+    "cagr_external_ssd": 0.20,
+    "cagr_internal_ssd_consumer": 0.18,
+    "cagr_microsd": 0.10
+  },
+
+  "market_share_pct": {
+    "external_ssd": {
+      "Samsung": 33, "WD_SanDisk": 22, "Seagate": 13, "Crucial": 7,
+      "ADATA": 6, "Lexar": 4, "Others": 15
+    },
+    "internal_ssd_consumer": {
+      "Samsung": 28, "WD_SanDisk": 17, "SK_Hynix": 12, "Kingston": 11,
+      "Crucial": 11, "Seagate": 6, "ADATA": 5, "Others": 10
+    },
+    "microsd": {
+      "SanDisk": 32, "Samsung": 23, "Lexar": 11, "Kingston": 9,
+      "Transcend": 6, "ADATA": 4, "PNY": 3, "Others": 12
+    }
+  },
+
+  "asp_usd": {
+    "external_ssd_1tb_mainstream": 88,
+    "external_ssd_2tb_mainstream": 145,
+    "external_ssd_1tb_premium": 115,
+    "external_ssd_2tb_premium": 185,
+    "internal_nvme_1tb_mainstream": 75,
+    "internal_nvme_2tb_mainstream": 125,
+    "internal_nvme_1tb_gaming": 105,
+    "internal_nvme_2tb_gaming": 160,
+    "microsd_128gb_mainstream": 15,
+    "microsd_256gb_mainstream": 24,
+    "microsd_512gb_mainstream": 44,
+    "microsd_1tb_premium": 98
+  },
+
+  "nand_price_usd_per_gb": {
+    "2023H1": 0.050,
+    "2023H2": 0.038,
+    "2024Q1": 0.048,
+    "2024Q2": 0.058,
+    "2024Q3": 0.068,
+    "2024Q4": 0.075,
+    "2025Q1_est": 0.080,
+    "2025Q2_est": 0.082
+  },
+
+  "wd_sandisk_b2c_revenue_est_usd_m": {
+    "external_ssd_2024": 950,
+    "internal_ssd_2024": 750,
+    "microsd_2024": 1500,
+    "usb_flash_2024": 500
+  },
+
+  "growth_drivers": {
+    "external_ssd": ["Content creation boom", "HDD replacement acceleration",
+                     "USB4/TB4 adoption", "4K/8K video workflow"],
+    "internal_ssd": ["Gaming PC upgrades", "PS5/Xbox aftermarket",
+                     "Laptop NVMe migration", "AI PC launch (PCIe5)"],
+    "microsd": ["Surveillance/dashcam IoT", "Nintendo Switch/Steam Deck",
+                "Action cameras/drones", "Budget Android smartphones (APAC)"]
+  },
+
+  "key_risks": {
+    "external_ssd": ["Samsung premium price pressure", "Seagate ecosystem lock-in"],
+    "internal_ssd": ["PCIe 5.0 premiumization", "OEM channel bypass"],
+    "microsd": ["Smartphone eSIM no-slot trend", "China OEM aggressive pricing"]
+  }
+}
