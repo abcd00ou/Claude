@@ -1,15 +1,9 @@
 """
-Email Reporter — SanDisk B2C Marketing Daily Simulation Report
-Gmail SMTP로 HTML 리포트 + PPT 첨부 전송
+Email Reporter — Dynamic HTML Report + VP PPT 첨부
+상황(이벤트 타입, NAND 시장, 계절)에 따라 리포트 구성과 강조점이 자동 변경됨
 
-필요 환경변수:
-  GMAIL_APP_PASSWORD  — Gmail 앱 비밀번호 (16자리)
-  GMAIL_SENDER        — 발신 계정 (기본: abcd00ou@gmail.com)
-
-Gmail 앱 비밀번호 설정:
-  1. myaccount.google.com → 보안 → 2단계 인증 활성화
-  2. 앱 비밀번호 생성 (앱: 메일, 기기: Mac)
-  3. export GMAIL_APP_PASSWORD="xxxx xxxx xxxx xxxx"
+첨부: *_vp.pptx 파일만 (VP급 4종)
+수신: abcd00ou@gmail.com
 """
 import os
 import smtplib
@@ -25,271 +19,498 @@ SENDER = os.getenv("GMAIL_SENDER", "abcd00ou@gmail.com")
 BASE_DIR = Path(__file__).parent
 PPTX_DIR = BASE_DIR / "outputs" / "pptx"
 
+# ── 이벤트별 리포트 설정 ──────────────────────────────────────
+EVENT_CONFIG = {
+    "competitor_price_cut": {
+        "badge_color": "#c62828",
+        "badge_text": "⚠️ 경쟁사 가격 인하 감지",
+        "priority": "긴급",
+        "focus_title": "경쟁 대응 전략",
+        "focus_icon": "⚔️",
+        "action_items": [
+            "Amazon 3P 가격 모니터링 강화 (일 2회 → 4회)",
+            "Extreme Pro 시리즈 프리미엄 정당화 캠페인 즉시 검토",
+            "주요 SKU 가격 방어선 설정 및 VP 승인 요청",
+            "채널 파트너 가격 보호 정책 발동 여부 검토",
+        ],
+        "analysis_focus": "competitive_response",
+    },
+    "nand_cost_spike": {
+        "badge_color": "#e65100",
+        "badge_text": "🔴 NAND 원가 급등",
+        "priority": "긴급",
+        "focus_title": "원가 관리 및 가격 전략 조정",
+        "focus_icon": "💰",
+        "action_items": [
+            "BiCS8 전환 가속화로 원가 하락분 선점",
+            "원가 급등 SKU 판가 인상 시나리오 준비 (VP 보고)",
+            "공급 계약 재검토 — 고정가 비중 확대",
+            "제품 믹스를 고마진(BiCS8) 쪽으로 즉시 전환",
+        ],
+        "analysis_focus": "cost_management",
+    },
+    "market_share_gain": {
+        "badge_color": "#2e7d32",
+        "badge_text": "✅ 시장점유율 상승",
+        "priority": "기회",
+        "focus_title": "모멘텀 가속화 전략",
+        "focus_icon": "📈",
+        "action_items": [
+            "점유율 상승 주도 SKU 생산량 증대 요청",
+            "성공 채널 마케팅 예산 추가 배정 제안",
+            "경쟁사 이탈 고객 타겟 리텐션 캠페인 기획",
+            "다음 분기 점유율 목표 상향 조정 검토",
+        ],
+        "analysis_focus": "momentum",
+    },
+    "promo_opportunity": {
+        "badge_color": "#1565c0",
+        "badge_text": "🎯 프로모션 기회",
+        "priority": "액션 필요",
+        "focus_title": "프로모션 실행 계획",
+        "focus_icon": "🛒",
+        "action_items": [
+            "캠페인 크리에이티브 제작 즉시 착수 (리드타임 3주)",
+            "Amazon 딜 페이지 사전 예약 및 배너 슬롯 확보",
+            "소셜 인플루언서 브리핑 완료",
+            "물류/재고 사전 배치 — 물류팀 협업",
+        ],
+        "analysis_focus": "promo_execution",
+    },
+    "supply_constraint": {
+        "badge_color": "#6a1b9a",
+        "badge_text": "⚠️ 공급 제약",
+        "priority": "리스크 관리",
+        "focus_title": "재고 및 공급망 관리",
+        "focus_icon": "📦",
+        "action_items": [
+            "고마진 SKU 우선 배정 (낮은 마진 SKU 할당 축소)",
+            "납기 지연 가능성 채널 파트너에 사전 통보",
+            "대체 소싱 옵션 긴급 검토",
+            "재고 가시성 강화 — SCM 시스템 일일 업데이트",
+        ],
+        "analysis_focus": "supply_risk",
+    },
+    "none": {
+        "badge_color": "#37474f",
+        "badge_text": "📊 정기 월간 리포트",
+        "priority": "정기",
+        "focus_title": "주요 KPI 현황",
+        "focus_icon": "📋",
+        "action_items": [
+            "월간 실적 vs 목표 갭 분석 완료",
+            "다음 달 수요 예측 리뷰 및 생산 계획 동기화",
+            "채널별 재고 현황 점검",
+            "마케팅 캠페인 ROI 트래킹",
+        ],
+        "analysis_focus": "standard",
+    },
+}
 
-def _build_html(sim_data: dict, agent_results: dict) -> str:
-    """시뮬레이션 결과를 HTML 이메일로 변환."""
-    sim_date = sim_data.get("sim_date", "N/A")
-    total_rev = sim_data.get("total_rev_m", 0)
-    blended_gm = sim_data.get("blended_gm_pct", 0)
-    rev = sim_data.get("revenue_m", {})
-    gm = sim_data.get("gross_margin_pct", {})
-    mshare = sim_data.get("market_share_pct", {})
-    nand = sim_data.get("nand_cost_per_gb", {})
-    event = sim_data.get("event", {})
-    promo = sim_data.get("promo")
+# ── NAND 시장 상황별 분석 섹션 ────────────────────────────────
+NAND_SIGNAL_ANALYSIS = {
+    "loose": {
+        "title": "NAND 시장: 공급 과잉 → 원가 절감 기회",
+        "color": "#1b5e20",
+        "bg": "#e8f5e9",
+        "body": (
+            "현재 NAND 시장은 공급 과잉 국면으로, 스팟 가격이 하락세를 유지하고 있습니다. "
+            "이는 WD/SanDisk에게 두 가지 기회를 의미합니다: "
+            "(1) 원가 하락분을 GM 개선에 활용하거나 "
+            "(2) 전략적 가격 인하로 경쟁사 대비 가격 포지션 개선. "
+            "BiCS8 전환 속도를 높여 원가 이점을 극대화할 것을 권장합니다."
+        ),
+        "recommendation": "BiCS8 생산 비중 확대 + 고마진 SKU 중심 믹스 최적화",
+    },
+    "tight": {
+        "title": "NAND 시장: 공급 부족 → 가격 상승 압력",
+        "color": "#b71c1c",
+        "bg": "#ffebee",
+        "body": (
+            "NAND 공급 부족 신호가 감지되고 있습니다. 스팟 가격 상승이 예상되며, "
+            "이는 원가 압박으로 이어질 수 있습니다. "
+            "현 재고 수준을 점검하고, 고정가 구매 계약 비중을 높여 리스크를 헤지해야 합니다. "
+            "또한 가격 인상 가능성에 대해 채널 파트너와 사전 협의를 시작해야 합니다."
+        ),
+        "recommendation": "재고 선매입 검토 + 고정가 계약 비중 확대 + 판가 인상 시나리오 준비",
+    },
+    "neutral": {
+        "title": "NAND 시장: 균형 상태",
+        "color": "#1565c0",
+        "bg": "#e3f2fd",
+        "body": (
+            "NAND 시장은 현재 공급·수요 균형 상태입니다. "
+            "분기 CAGR 기반 원가 하락 트렌드는 유지되며, "
+            "급격한 가격 변동 가능성은 낮습니다. "
+            "계획된 제품 로드맵과 프로모션 일정을 예정대로 진행하되, "
+            "TrendForce 월간 보고서를 통해 시장 변화를 모니터링하세요."
+        ),
+        "recommendation": "현 전략 유지 + 분기별 가격 정책 검토",
+    },
+}
 
-    # 에이전트 실행 결과
-    success_count = sum(1 for v in agent_results.values() if v)
-    total_count = len(agent_results)
+# ── 계절별 강조 메시지 ─────────────────────────────────────────
+SEASON_CONTEXT = {
+    range(1, 4):   ("Q1 비수기", "회계연도 시작 — 연간 계획 검토 및 파이프라인 점검"),
+    range(4, 7):   ("Q2 준비기", "BTS 시즌 준비 시작 — 7~8월 캠페인 크리에이티브 착수"),
+    range(7, 10):  ("Q3 BTS 시즌", "Back-to-School 캠페인 최고조 — 재고 충분 여부 확인"),
+    range(10, 13): ("Q4 홀리데이", "최대 매출 시즌 — 재고, 물류, 광고 풀 가동"),
+}
 
-    # 이벤트 색상
-    EVENT_COLORS = {
-        "competitor_price_cut": "#d32f2f",
-        "nand_cost_spike":      "#f57c00",
-        "market_share_gain":    "#388e3c",
-        "promo_opportunity":    "#1976d2",
-        "supply_constraint":    "#7b1fa2",
-        "none":                 "#757575",
-    }
-    event_color = EVENT_COLORS.get(event.get("type", "none"), "#757575")
-    event_desc = event.get("description", "이벤트 없음")
 
-    # 카테고리 테이블 행
+def _get_season_context(month: int) -> tuple[str, str]:
+    for r, ctx in SEASON_CONTEXT.items():
+        if month in r:
+            return ctx
+    return ("", "")
+
+
+def _prev_month_delta(sim_data: dict, history: list) -> dict:
+    """이전 달 대비 변화율 계산."""
+    if not history or len(history) < 2:
+        return {}
+    prev = history[-2] if len(history) >= 2 else {}
+    curr_rev = sim_data.get("total_rev_m", 0)
+    prev_rev = prev.get("total_rev_m", curr_rev)
+    curr_gm  = sim_data.get("blended_gm_pct", 0)
+    prev_gm  = prev.get("blended_gm_pct", curr_gm)
+    rev_chg  = (curr_rev - prev_rev) / prev_rev * 100 if prev_rev else 0
+    gm_chg   = curr_gm - prev_gm
+    return {"rev_chg": round(rev_chg, 1), "gm_chg": round(gm_chg, 2)}
+
+
+def _delta_arrow(val: float, unit: str = "%") -> str:
+    if val > 0.1:
+        return f"<span style='color:#2e7d32'>▲ {val:+.1f}{unit}</span>"
+    elif val < -0.1:
+        return f"<span style='color:#c62828'>▼ {val:+.1f}{unit}</span>"
+    return f"<span style='color:#666'>→ {val:+.1f}{unit}</span>"
+
+
+def _build_html(sim_data: dict, agent_results: dict,
+                market_intel: dict | None, history: list) -> str:
+    """상황 기반 동적 HTML 리포트 생성."""
+
+    sim_date    = sim_data.get("sim_date", "N/A")
+    total_rev   = sim_data.get("total_rev_m", 0)
+    blended_gm  = sim_data.get("blended_gm_pct", 0)
+    rev         = sim_data.get("revenue_m", {})
+    gm          = sim_data.get("gross_margin_pct", {})
+    mshare      = sim_data.get("market_share_pct", {})
+    nand        = sim_data.get("nand_cost_per_gb", {})
+    event_data  = sim_data.get("event", {})
+    promo       = sim_data.get("promo")
+    mi          = sim_data.get("market_intel", {})
+    sim_month   = sim_data.get("sim_month", 1)
+
+    event_type  = event_data.get("type", "none")
+    event_desc  = event_data.get("description", "")
+    cfg         = EVENT_CONFIG.get(event_type, EVENT_CONFIG["none"])
+
+    nand_signal = mi.get("nand_signal", "neutral")
+    price_trend = mi.get("price_trend", "flat")
+    nand_analysis = NAND_SIGNAL_ANALYSIS.get(nand_signal, NAND_SIGNAL_ANALYSIS["neutral"])
+
+    season_label, season_msg = _get_season_context(sim_month)
+    deltas = _prev_month_delta(sim_data, history)
+    rev_arrow = _delta_arrow(deltas.get("rev_chg", 0), "%")
+    gm_arrow  = _delta_arrow(deltas.get("gm_chg", 0), "%p")
+
+    success_cnt = sum(1 for v in agent_results.values() if v)
+    total_cnt   = len(agent_results)
+    now_str     = datetime.now().strftime("%Y-%m-%d %H:%M KST")
+
+    # ── 뉴스 헤드라인 (시장 인텔 있을 때만) ──────────────────────
+    headlines_html = ""
+    if market_intel and market_intel.get("headlines"):
+        hl_items = "".join(
+            f'<li style="margin-bottom:4px;font-size:12px;color:#444">'
+            f'<a href="{h.get("url","#")}" style="color:#1565c0;text-decoration:none">'
+            f'{h["title"][:100]}</a>'
+            f'<span style="color:#999;margin-left:6px">{h.get("date","")[:10]}</span></li>'
+            for h in market_intel["headlines"][:5]
+        )
+        headlines_html = f"""
+        <div class="section-title">📰 NAND 시장 뉴스 (실시간)</div>
+        <ul style="margin:0 0 16px;padding-left:18px">{hl_items}</ul>"""
+
+    # ── 카테고리 테이블 ──────────────────────────────────────────
+    cat_labels = {"external_ssd": "External SSD", "internal_ssd": "Internal SSD", "microsd": "microSD"}
     cat_rows = ""
-    cat_labels = {
-        "external_ssd": "External SSD",
-        "internal_ssd": "Internal SSD",
-        "microsd":      "microSD",
-    }
     for cat, label in cat_labels.items():
-        r = rev.get(cat, 0)
-        g = gm.get(cat, 0)
+        r  = rev.get(cat, 0)
+        g  = gm.get(cat, 0)
         ms = mshare.get(cat, 0)
-        cat_rows += f"""
-        <tr>
+        cat_rows += f"""<tr>
           <td style="padding:8px 12px;border-bottom:1px solid #eee;font-weight:600">{label}</td>
           <td style="padding:8px 12px;border-bottom:1px solid #eee;text-align:right">${r:.1f}M</td>
           <td style="padding:8px 12px;border-bottom:1px solid #eee;text-align:right">{g:.1f}%</td>
           <td style="padding:8px 12px;border-bottom:1px solid #eee;text-align:right">{ms:.1f}%</td>
         </tr>"""
 
-    # NAND 원가 행
-    nand_rows = ""
-    for gen, cost in nand.items():
-        nand_rows += f"""
-        <tr>
-          <td style="padding:6px 12px;border-bottom:1px solid #eee">{gen}</td>
-          <td style="padding:6px 12px;border-bottom:1px solid #eee;text-align:right">${cost:.4f}/GB</td>
-        </tr>"""
+    # ── NAND 원가 ─────────────────────────────────────────────
+    nand_rows = "".join(
+        f'<tr><td style="padding:6px 12px;border-bottom:1px solid #eee">{gen}</td>'
+        f'<td style="padding:6px 12px;border-bottom:1px solid #eee;text-align:right">${cost:.4f}/GB</td></tr>'
+        for gen, cost in nand.items()
+    )
 
-    # 에이전트 결과 행
-    agent_rows = ""
-    agent_labels = {
-        "production": "생산 에이전트",
-        "supply":     "공급 에이전트",
-        "demand_excel": "수요예측 (Excel)",
-        "demand_pptx_vp": "수요예측 (PPT)",
-        "strategy_excel": "마케팅 전략 (Excel)",
-        "strategy_pptx_vp": "마케팅 전략 (PPT)",
-        "marcom_pptx_vp": "MarCom (PPT)",
-        "product_mix_pptx_vp": "Product Mix (PPT)",
-    }
-    for key, label in agent_labels.items():
-        status = agent_results.get(key)
-        badge = "✅" if status else "❌"
-        agent_rows += f"""
-        <tr>
-          <td style="padding:6px 12px;border-bottom:1px solid #eee">{label}</td>
-          <td style="padding:6px 12px;border-bottom:1px solid #eee;text-align:center">{badge}</td>
-        </tr>"""
+    # ── Action Items (이벤트별 동적) ─────────────────────────────
+    action_items_html = "".join(
+        f'<li style="margin-bottom:6px;font-size:13px">{item}</li>'
+        for item in cfg["action_items"]
+    )
 
-    # 프로모 섹션
-    promo_section = ""
+    # ── 프로모 섹션 ──────────────────────────────────────────────
+    promo_html = ""
     if promo:
-        promo_type = "Holiday" if promo["type"] == "holiday" else "BTS"
-        promo_section = f"""
-        <div style="background:#e8f5e9;border-left:4px solid #4caf50;padding:12px 16px;margin:16px 0;border-radius:4px">
-          <strong>🎯 프로모션 기회: {promo_type}</strong><br>
-          투자: ${promo['invest_m']:.1f}M &nbsp;|&nbsp;
+        ptype = "Holiday" if promo["type"] == "holiday" else "BTS"
+        promo_html = f"""
+        <div style="background:#e8f5e9;border-left:4px solid #4caf50;padding:12px 16px;margin:12px 0;border-radius:4px">
+          <strong>🎯 프로모션 기회: {ptype} 캠페인</strong><br>
+          추천 투자: ${promo['invest_m']:.1f}M &nbsp;→&nbsp;
           예상 추가 매출: ${promo['incremental_rev_m']:.1f}M &nbsp;|&nbsp;
-          ROI: {promo['roi']:.2f}×
+          ROI: <strong>{promo['roi']:.2f}×</strong>
         </div>"""
 
-    now_str = datetime.now().strftime("%Y-%m-%d %H:%M KST")
+    # ── 에이전트 상태 ────────────────────────────────────────────
+    agent_labels = {
+        "production": "생산 에이전트",
+        "supply": "공급 에이전트",
+        "demand_excel": "수요예측 Excel",
+        "demand_pptx_vp": "수요예측 VP PPT",
+        "strategy_excel": "마케팅 전략 Excel",
+        "strategy_pptx_vp": "마케팅 전략 VP PPT",
+        "marcom_pptx_vp": "MarCom VP PPT",
+        "product_mix_pptx_vp": "Product Mix VP PPT",
+    }
+    agent_rows = "".join(
+        f'<tr><td style="padding:5px 12px;border-bottom:1px solid #f0f0f0;font-size:12px">{agent_labels.get(k, k)}</td>'
+        f'<td style="padding:5px 12px;border-bottom:1px solid #f0f0f0;text-align:center">{"✅" if v else "❌"}</td></tr>'
+        for k, v in agent_results.items()
+    )
+
+    price_trend_ko = {"up": "상승↑", "down": "하락↓", "flat": "보합→"}
 
     html = f"""<!DOCTYPE html>
 <html>
-<head><meta charset="UTF-8">
+<head>
+<meta charset="UTF-8">
 <style>
-  body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin:0; background:#f5f7fa; }}
-  .container {{ max-width:680px; margin:20px auto; background:#fff; border-radius:8px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.1); }}
-  .header {{ background:linear-gradient(135deg,#1428A0,#0a1670); color:#fff; padding:28px 32px; }}
-  .header h1 {{ margin:0 0 6px; font-size:22px; font-weight:700; }}
-  .header p {{ margin:0; opacity:.8; font-size:13px; }}
-  .body {{ padding:28px 32px; }}
+  body {{ font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', sans-serif;
+         margin:0; background:#f0f2f5; color:#222; }}
+  .wrap {{ max-width:700px; margin:20px auto; }}
+  .header {{ background:linear-gradient(135deg,#0d1b6e 0%,#1428A0 60%,#1565c0 100%);
+             color:#fff; padding:28px 32px; border-radius:12px 12px 0 0; }}
+  .header h1 {{ margin:0 0 6px; font-size:20px; font-weight:700; letter-spacing:-.3px; }}
+  .header .meta {{ opacity:.8; font-size:12px; margin-top:4px; }}
+  .event-banner {{ background:{cfg['badge_color']}; color:#fff;
+                   padding:10px 32px; font-weight:700; font-size:13px;
+                   display:flex; align-items:center; gap:10px; }}
+  .priority-tag {{ background:rgba(255,255,255,.25); border-radius:4px;
+                   padding:2px 8px; font-size:11px; }}
+  .body {{ background:#fff; padding:28px 32px; }}
   .kpi-grid {{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-bottom:24px; }}
-  .kpi {{ background:#f8f9ff; border:1px solid #e0e4ff; border-radius:6px; padding:14px 16px; text-align:center; }}
-  .kpi-value {{ font-size:24px; font-weight:700; color:#1428A0; }}
-  .kpi-label {{ font-size:11px; color:#666; margin-top:4px; }}
-  table {{ width:100%; border-collapse:collapse; margin-bottom:16px; }}
-  th {{ background:#f0f2ff; padding:8px 12px; text-align:left; font-size:12px; color:#444; font-weight:600; }}
+  .kpi {{ background:#f7f9ff; border:1px solid #dde3ff; border-radius:8px;
+          padding:14px 16px; text-align:center; }}
+  .kpi-value {{ font-size:22px; font-weight:700; color:#1428A0; }}
+  .kpi-sub {{ font-size:11px; color:#888; margin-top:2px; }}
+  .kpi-label {{ font-size:11px; color:#555; margin-top:6px; }}
+  table {{ width:100%; border-collapse:collapse; margin-bottom:16px; font-size:13px; }}
+  th {{ background:#f0f2ff; padding:8px 12px; text-align:left; font-size:11px;
+        color:#444; font-weight:700; text-transform:uppercase; letter-spacing:.4px; }}
   th:not(:first-child) {{ text-align:right; }}
-  .section-title {{ font-size:14px; font-weight:700; color:#1428A0; margin:20px 0 8px; text-transform:uppercase; letter-spacing:.5px; }}
-  .event-badge {{ display:inline-block; background:{event_color}; color:#fff; border-radius:4px; padding:4px 10px; font-size:12px; font-weight:600; }}
-  .footer {{ background:#f0f2ff; padding:16px 32px; font-size:11px; color:#888; }}
+  .section-title {{ font-size:12px; font-weight:700; color:#1428A0; margin:20px 0 8px;
+                    text-transform:uppercase; letter-spacing:.6px; border-bottom:2px solid #e0e4ff;
+                    padding-bottom:4px; }}
+  .nand-box {{ background:{nand_analysis['bg']}; border-left:4px solid {nand_analysis['color']};
+               padding:12px 16px; margin:12px 0; border-radius:0 6px 6px 0; }}
+  .nand-box strong {{ color:{nand_analysis['color']}; }}
+  .action-box {{ background:#fff8e1; border:1px solid #ffe082; border-radius:8px;
+                 padding:14px 18px; margin:12px 0; }}
+  .season-banner {{ background:#e8eaf6; border-radius:6px; padding:8px 14px;
+                    font-size:12px; color:#3949ab; margin-bottom:16px; }}
+  .footer {{ background:#f0f2ff; padding:14px 32px; border-radius:0 0 12px 12px;
+             font-size:10px; color:#999; }}
+  a {{ color:#1428A0; }}
 </style>
 </head>
 <body>
-<div class="container">
-  <div class="header">
-    <h1>SanDisk B2C Marketing Intelligence</h1>
-    <p>시뮬레이션 월: <strong>{sim_date}</strong> &nbsp;|&nbsp; 실행 시각: {now_str}</p>
-    <p style="margin-top:6px">에이전트 실행: {success_count}/{total_count} 성공</p>
+<div class="wrap">
+
+<div class="header">
+  <h1>SanDisk B2C Marketing Intelligence</h1>
+  <div class="meta">
+    시뮬레이션 월: <strong>{sim_date}</strong> &nbsp;|&nbsp;
+    {season_label} &nbsp;|&nbsp;
+    에이전트: {success_cnt}/{total_cnt} &nbsp;|&nbsp;
+    {now_str}
+  </div>
+</div>
+
+<div class="event-banner">
+  {cfg['badge_text']}
+  <span class="priority-tag">{cfg['priority']}</span>
+  {'&nbsp;&nbsp;' + event_desc if event_desc else ''}
+</div>
+
+<div class="body">
+
+  <!-- 계절 컨텍스트 -->
+  <div class="season-banner">📅 {season_label}: {season_msg}</div>
+
+  <!-- KPI -->
+  <div class="kpi-grid">
+    <div class="kpi">
+      <div class="kpi-value">${total_rev:.1f}M</div>
+      <div class="kpi-sub">{rev_arrow}</div>
+      <div class="kpi-label">월 총 매출</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-value">{blended_gm:.1f}%</div>
+      <div class="kpi-sub">{gm_arrow}</div>
+      <div class="kpi-label">블렌딩 GM%</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-value">{mshare.get('external_ssd',0):.1f}%</div>
+      <div class="kpi-sub">SSD 시장</div>
+      <div class="kpi-label">External SSD 점유율</div>
+    </div>
   </div>
 
-  <div class="body">
-
-    <!-- KPI -->
-    <div class="kpi-grid">
-      <div class="kpi">
-        <div class="kpi-value">${total_rev:.1f}M</div>
-        <div class="kpi-label">월 총 매출</div>
-      </div>
-      <div class="kpi">
-        <div class="kpi-value">{blended_gm:.1f}%</div>
-        <div class="kpi-label">블렌딩 GM%</div>
-      </div>
-      <div class="kpi">
-        <div class="kpi-value">{mshare.get('external_ssd', 0):.1f}%</div>
-        <div class="kpi-label">External SSD 점유율</div>
-      </div>
+  <!-- NAND 시장 분석 -->
+  <div class="section-title">🔬 NAND 시장 분석 (실시간)</div>
+  <div class="nand-box">
+    <strong>{nand_analysis['title']}</strong><br>
+    <span style="font-size:12px;color:#333;margin-top:6px;display:block">
+      가격 트렌드: <strong>{price_trend_ko.get(price_trend,'—')}</strong>
+      &nbsp;|&nbsp;
+      원가 보정: <strong>{mi.get('nand_cost_delta_pct', -2.0):+.1f}%</strong>/월
+      &nbsp;|&nbsp;
+      공급 리스크: <strong>{mi.get('supply_risk', 0.10)*100:.0f}%</strong>
+    </span>
+    <p style="margin:8px 0 4px;font-size:12px;color:#444">{nand_analysis['body']}</p>
+    <div style="font-size:11px;font-weight:700;color:{nand_analysis['color']}">
+      → {nand_analysis['recommendation']}
     </div>
-
-    <!-- 이벤트 -->
-    <div class="section-title">이번 달 주요 이벤트</div>
-    <div style="margin-bottom:16px">
-      <span class="event-badge">{event.get('type','none').replace('_',' ').upper()}</span>
-      <span style="margin-left:10px;color:#333;font-size:14px">{event_desc if event_desc else '특이사항 없음'}</span>
-    </div>
-
-    {promo_section}
-
-    <!-- 카테고리 실적 -->
-    <div class="section-title">카테고리별 실적</div>
-    <table>
-      <tr>
-        <th>카테고리</th>
-        <th>월 매출</th>
-        <th>GM%</th>
-        <th>시장점유율</th>
-      </tr>
-      {cat_rows}
-    </table>
-
-    <!-- NAND 원가 -->
-    <div class="section-title">NAND 원가 현황</div>
-    <table>
-      <tr><th>NAND 세대</th><th>$/GB</th></tr>
-      {nand_rows}
-    </table>
-
-    <!-- 에이전트 실행 결과 -->
-    <div class="section-title">에이전트 실행 결과</div>
-    <table>
-      <tr><th>에이전트</th><th style="text-align:center">상태</th></tr>
-      {agent_rows}
-    </table>
-
-    <!-- 첨부 안내 -->
-    <div style="background:#fff8e1;border:1px solid #ffe082;border-radius:6px;padding:12px 16px;margin-top:16px;font-size:13px">
-      📎 <strong>VP-급 PPT 4종 첨부</strong>: 수요예측 · 마케팅전략 · MarCom · Product Mix<br>
-      각 파일을 열어 슬라이드별 전략 세부 내용을 확인하세요.
-    </div>
-
   </div>
 
-  <div class="footer">
-    이 리포트는 SanDisk B2C Marketing AI Agent System이 자동 생성한 시뮬레이션 자료입니다.<br>
-    1시간 = 1개월 시뮬레이션 | 실제 데이터와 다를 수 있음 | {now_str}
+  {headlines_html}
+
+  <!-- 이번 달 Focus -->
+  <div class="section-title">{cfg['focus_icon']} {cfg['focus_title']} — 이번 달 우선순위</div>
+  <div class="action-box">
+    <strong style="font-size:13px">✅ Action Items</strong>
+    <ol style="margin:8px 0 0;padding-left:18px">{action_items_html}</ol>
   </div>
+
+  {promo_html}
+
+  <!-- 카테고리별 실적 -->
+  <div class="section-title">📊 카테고리별 월간 실적</div>
+  <table>
+    <tr><th>카테고리</th><th>매출</th><th>GM%</th><th>점유율</th></tr>
+    {cat_rows}
+    <tr style="background:#f7f9ff;font-weight:700">
+      <td style="padding:8px 12px">합계</td>
+      <td style="padding:8px 12px;text-align:right">${total_rev:.1f}M</td>
+      <td style="padding:8px 12px;text-align:right">{blended_gm:.1f}%</td>
+      <td style="padding:8px 12px;text-align:right">—</td>
+    </tr>
+  </table>
+
+  <!-- NAND 원가 -->
+  <div class="section-title">⚙️ NAND 원가 현황</div>
+  <table>
+    <tr><th>NAND 세대</th><th>$/GB</th></tr>
+    {nand_rows}
+  </table>
+
+  <!-- 에이전트 -->
+  <div class="section-title">🤖 에이전트 실행 결과</div>
+  <table>
+    <tr><th>에이전트</th><th style="text-align:center">상태</th></tr>
+    {agent_rows}
+  </table>
+
+  <div style="background:#e3f2fd;border-radius:6px;padding:10px 14px;font-size:12px;color:#1565c0;margin-top:16px">
+    📎 <strong>VP급 PPT {_count_vp_pptx()}종 첨부</strong>:
+    수요예측 · 마케팅전략 · MarCom · Product Mix
+  </div>
+
+</div>
+
+<div class="footer">
+  SanDisk B2C Marketing AI Agent System — 시뮬레이션 자료 (1h=1month)<br>
+  실시간 NAND 시장 데이터 연동 | {now_str}
+</div>
+
 </div>
 </body>
 </html>"""
     return html
 
 
-def send_report(sim_data: dict, agent_results: dict) -> bool:
-    """
-    시뮬레이션 리포트 이메일 전송.
+def _count_vp_pptx() -> int:
+    if not PPTX_DIR.exists():
+        return 0
+    return len(list(PPTX_DIR.glob("*_vp.pptx")))
 
-    필요:
-      GMAIL_APP_PASSWORD 환경변수 설정
-      (export GMAIL_APP_PASSWORD="abcd efgh ijkl mnop")
+
+def send_report(sim_data: dict, agent_results: dict,
+                market_intel: dict | None = None,
+                history: list | None = None) -> bool:
+    """
+    동적 HTML 리포트 + VP PPT만 첨부하여 이메일 전송.
     """
     app_password = os.getenv("GMAIL_APP_PASSWORD", "")
     if not app_password:
-        print("  [Email] ⚠️  GMAIL_APP_PASSWORD 환경변수 미설정 — 이메일 전송 건너뜀")
-        print("  [Email]    설정 방법: export GMAIL_APP_PASSWORD='xxxx xxxx xxxx xxxx'")
+        print("  [Email] ⚠️  GMAIL_APP_PASSWORD 미설정 — 건너뜀")
         return False
 
-    sim_date = sim_data.get("sim_date", "N/A")
-    subject = f"[SanDisk Marketing AI] {sim_date} 월간 리포트 — Rev ${sim_data.get('total_rev_m', 0):.1f}M"
+    sim_date   = sim_data.get("sim_date", "N/A")
+    total_rev  = sim_data.get("total_rev_m", 0)
+    event_type = sim_data.get("event", {}).get("type", "none")
+    cfg        = EVENT_CONFIG.get(event_type, EVENT_CONFIG["none"])
+
+    subject = (f"[SanDisk MktgAI] {sim_date} | {cfg['badge_text']} | "
+               f"Rev ${total_rev:.1f}M | GM {sim_data.get('blended_gm_pct',0):.1f}%")
 
     msg = MIMEMultipart("mixed")
     msg["From"]    = SENDER
     msg["To"]      = RECIPIENT
     msg["Subject"] = subject
 
-    # HTML 본문
-    html_content = _build_html(sim_data, agent_results)
+    html_content = _build_html(sim_data, agent_results,
+                                market_intel, history or [])
     msg.attach(MIMEText(html_content, "html", "utf-8"))
 
-    # PPT 첨부
-    attached_count = 0
-    pptx_files = list(PPTX_DIR.glob("*.pptx")) if PPTX_DIR.exists() else []
-    for pptx in sorted(pptx_files):
-        try:
-            with open(pptx, "rb") as f:
-                part = MIMEBase("application", "vnd.openxmlformats-officedocument.presentationml.presentation")
-                part.set_payload(f.read())
-            encoders.encode_base64(part)
-            part.add_header("Content-Disposition", "attachment",
-                            filename=f"{sim_date}_{pptx.name}")
-            msg.attach(part)
-            attached_count += 1
-        except Exception as e:
-            print(f"  [Email] PPT 첨부 실패 {pptx.name}: {e}")
+    # VP PPT만 첨부 (*_vp.pptx)
+    attached = 0
+    if PPTX_DIR.exists():
+        for pptx in sorted(PPTX_DIR.glob("*_vp.pptx")):
+            try:
+                with open(pptx, "rb") as f:
+                    part = MIMEBase("application",
+                                    "vnd.openxmlformats-officedocument.presentationml.presentation")
+                    part.set_payload(f.read())
+                encoders.encode_base64(part)
+                part.add_header("Content-Disposition", "attachment",
+                                filename=f"{sim_date}_{pptx.name}")
+                msg.attach(part)
+                attached += 1
+            except Exception as e:
+                print(f"  [Email] PPT 첨부 실패 {pptx.name}: {e}")
 
-    # 전송
     try:
         with smtplib.SMTP_SSL("smtp.gmail.com", 465) as server:
             server.login(SENDER, app_password.replace(" ", ""))
             server.sendmail(SENDER, RECIPIENT, msg.as_string())
-        print(f"  [Email] ✅ 전송 완료 → {RECIPIENT} | PPT {attached_count}개 첨부")
+        print(f"  [Email] ✅ 전송 완료 → {RECIPIENT} | VP PPT {attached}종 첨부")
         return True
     except smtplib.SMTPAuthenticationError:
-        print("  [Email] ❌ 인증 실패 — Gmail 앱 비밀번호를 확인하세요")
-        print("  [Email]    https://myaccount.google.com/apppasswords")
+        print("  [Email] ❌ Gmail 앱 비밀번호 오류")
         return False
     except Exception as e:
         print(f"  [Email] ❌ 전송 실패: {e}")
         return False
-
-
-if __name__ == "__main__":
-    # 테스트용
-    dummy_sim = {
-        "sim_date": "2025-03",
-        "total_rev_m": 285.4,
-        "blended_gm_pct": 48.2,
-        "revenue_m": {"external_ssd": 82, "internal_ssd": 65, "microsd": 138},
-        "gross_margin_pct": {"external_ssd": 45.1, "internal_ssd": 39.2, "microsd": 57.8},
-        "market_share_pct": {"external_ssd": 22.3, "internal_ssd": 17.5, "microsd": 32.1},
-        "nand_cost_per_gb": {"BiCS5": 0.053, "BiCS6": 0.040, "BiCS8": 0.037},
-        "event": {"type": "promo_opportunity", "description": "프로모션 기회 (예상 ROI 2.8×)"},
-        "promo": None,
-    }
-    dummy_agents = {k: True for k in ["production", "supply", "demand_excel", "demand_pptx_vp",
-                                       "strategy_excel", "strategy_pptx_vp", "marcom_pptx_vp",
-                                       "product_mix_pptx_vp"]}
-    send_report(dummy_sim, dummy_agents)

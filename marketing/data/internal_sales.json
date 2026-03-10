@@ -22,10 +22,10 @@
       "total_btoc": 3230
     },
     "2025E": {
-      "external_ssd": 856.0,
-      "internal_ssd": 656.0,
-      "microsd": 1242.0,
-      "total_btoc": 2754.0
+      "external_ssd": 902.0,
+      "internal_ssd": 684.0,
+      "microsd": 1334.0,
+      "total_btoc": 2920.0
     }
   },
   "quarterly_revenue_usd_m": {
@@ -54,10 +54,10 @@
       "total": 926
     },
     "2025Q1": {
-      "external_ssd": 223.8,
-      "internal_ssd": 175.2,
-      "microsd": 350.0,
-      "total": 749.0
+      "external_ssd": 227.8,
+      "internal_ssd": 176.0,
+      "microsd": 352.0,
+      "total": 755.8
     },
     "2025Q2": {
       "external_ssd": 240,
@@ -118,19 +118,19 @@
     },
     "2025E": {
       "external_ssd": {
-        "ecommerce": 52.1,
-        "retail": 37.9,
-        "b2b": 10.0
+        "ecommerce": 52.3,
+        "retail": 37.8,
+        "b2b": 9.9
       },
       "internal_ssd": {
-        "ecommerce": 58.1,
-        "retail": 26.9,
-        "b2b": 15.0
+        "ecommerce": 58.3,
+        "retail": 26.8,
+        "b2b": 14.9
       },
       "microsd": {
-        "ecommerce": 42.1,
-        "retail": 47.9,
-        "b2b": 10.0
+        "ecommerce": 42.3,
+        "retail": 47.8,
+        "b2b": 9.9
       }
     }
   },
@@ -295,10 +295,10 @@
       "blended": 47.6
     },
     "2025E": {
-      "external_ssd": 45.5,
-      "internal_ssd": 38.1,
-      "microsd": 57.3,
-      "blended": 49.1
+      "external_ssd": 42.7,
+      "internal_ssd": 36.8,
+      "microsd": 54.8,
+      "blended": 46.9
     }
   },
   "market_share_pct": {
@@ -318,9 +318,9 @@
       "microsd": 34
     },
     "2025_latest": {
-      "external_ssd": 21.8,
-      "internal_ssd": 16.8,
-      "microsd": 32.1
+      "external_ssd": 22.0,
+      "internal_ssd": 17.0,
+      "microsd": 31.9
     }
   },
   "nand_cost_per_gb_usd": {
@@ -330,7 +330,7 @@
     "2024Q3": 0.068,
     "2024Q4": 0.075,
     "2025Q1_est": 0.08,
-    "2025Q1_sim": 0.0451
+    "2025Q1_sim": 0.0478
   },
   "promo_impact_usd_m": {
     "2024Q4_holiday": {
@@ -392,6 +392,6 @@
       "premium_pct": 156.7
     }
   },
-  "_sim_last_updated": "2026-03-10T08:41:13.840128",
-  "_sim_date": "2025-02"
+  "_sim_last_updated": "2026-03-10T09:02:28.810285",
+  "_sim_date": "2025-03"
 }

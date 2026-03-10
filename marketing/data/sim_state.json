@@ -1,10 +1,10 @@
 {
-  "sim_month": 1,
+  "sim_month": 2,
   "sim_year": 2025,
-  "sim_month_num": 2,
+  "sim_month_num": 3,
   "start_year": 2025,
   "start_month": 1,
-  "last_run_real": "2026-03-10T08:41:13.840094",
+  "last_run_real": "2026-03-10T09:02:28.810241",
   "history": [
     {
       "sim_date": "2025-02",
@@ -56,6 +56,65 @@
         "description": ""
       },
       "promo": null
+    },
+    {
+      "sim_date": "2025-03",
+      "sim_year": 2025,
+      "sim_month": 3,
+      "quarter": "2025Q1",
+      "real_time": "2026-03-10T09:02:28.810285",
+      "revenue_m": {
+        "external_ssd": 79.0,
+        "internal_ssd": 59.3,
+        "microsd": 118.9
+      },
+      "total_rev_m": 257.2,
+      "gross_margin_pct": {
+        "external_ssd": 42.7,
+        "internal_ssd": 36.8,
+        "microsd": 54.8
+      },
+      "blended_gm_pct": 46.9,
+      "market_share_pct": {
+        "external_ssd": 22.0,
+        "internal_ssd": 17.0,
+        "microsd": 31.9
+      },
+      "nand_cost_per_gb": {
+        "BiCS5": 0.0583,
+        "BiCS6": 0.0445,
+        "BiCS8": 0.0402
+      },
+      "channel_mix_pct": {
+        "external_ssd": {
+          "ecommerce": 52.3,
+          "retail": 37.8,
+          "b2b": 9.9
+        },
+        "internal_ssd": {
+          "ecommerce": 58.3,
+          "retail": 26.8,
+          "b2b": 14.9
+        },
+        "microsd": {
+          "ecommerce": 42.3,
+          "retail": 47.8,
+          "b2b": 9.9
+        }
+      },
+      "event": {
+        "type": "promo_opportunity",
+        "description": "프로모션 기회 (예상 ROI 2.8×)"
+      },
+      "promo": null,
+      "market_intel": {
+        "nand_signal": "tight",
+        "price_trend": "up",
+        "supply_risk": 0.25,
+        "market_context": "NAND 시장: 공급 부족 | 가격 트렌드: 상승 (추정 +7.4%/월) | 공급 리스크: 25%",
+        "nand_cost_delta_pct": 5.92,
+        "demand_delta_pct": -2.22
+      }
     }
   ]
 }

@@ -4,7 +4,8 @@ Marketing Simulation Engine
 
 - sim_state.json에 현재 시뮬레이션 상태 저장
 - 매 실행마다 1개월 전진
-- 현실적인 계절성 + 성장 트렌드 + 노이즈로 더미 데이터 생성
+- 실시간 NAND 시장 데이터(market_intel.py)로 파라미터 보정
+- 계절성 + 성장 트렌드 + 시장 조건 + 노이즈로 더미 데이터 생성
 - internal_sales.json 업데이트 (에이전트들이 참조)
 """
 import json
@@ -100,8 +101,9 @@ def _months_since_start(state: dict) -> int:
     return state["sim_month"]
 
 
-def _generate_monthly_data(state: dict, noise_seed: int = None) -> dict:
-    """현재 시뮬 월의 더미 데이터 생성."""
+def _generate_monthly_data(state: dict, noise_seed: int = None,
+                            market_intel: dict = None) -> dict:
+    """현재 시뮬 월의 더미 데이터 생성 (실시간 NAND 시장 데이터 반영)."""
     if noise_seed is not None:
         random.seed(noise_seed)
 
@@ -112,28 +114,50 @@ def _generate_monthly_data(state: dict, noise_seed: int = None) -> dict:
     seasonal = SEASONAL_INDEX[month]
     quarter = QUARTER_MAP[month]
 
+    # 시장 인텔 보정값 추출 (기본값 먼저 설정 후 실시간 데이터로 덮어씀)
+    adj: dict = {}
+    market_context: str = "시장 데이터 미적용"
+    nand_signal: str = "neutral"
+    price_trend: str = "flat"
+    supply_risk: float = 0.10
+
+    if market_intel:
+        adj = market_intel.get("sim_adjustments", {})
+        market_context = market_intel.get("market_context", market_context)
+        nand_signal = market_intel.get("nand_signal", nand_signal)
+        price_trend  = market_intel.get("price_trend", price_trend)
+        supply_risk  = adj.get("supply_risk", supply_risk)
+
+    nand_cost_delta_pct = adj.get("nand_cost_delta_pct", -2.0) / 100
+    demand_delta_pct    = adj.get("demand_delta_pct", 0.0) / 100
+
     rev = {}
     gm = {}
-    units_k = {}
-    asp = {}
 
     for cat, base in BASE_MONTHLY_REV.items():
         # 성장률 (월 환산 CAGR)
         monthly_growth = (1 + ANNUAL_GROWTH[cat]) ** (months_elapsed / 12)
-        # 계절 + 노이즈 (±4%)
+        # 계절 + 시장 수요 보정 + 노이즈 (±4%)
         noise = 1 + random.gauss(0, 0.04)
-        monthly_rev = base * monthly_growth * seasonal * noise
+        market_demand_adj = 1 + demand_delta_pct
+        monthly_rev = base * monthly_growth * seasonal * market_demand_adj * noise
         rev[cat] = round(monthly_rev, 1)
 
-        # GM: 기본값에서 NAND 원가 하락으로 분기당 0.3%p 개선 + 노이즈
-        gm_delta = (months_elapsed // 3) * 0.3
+        # GM: NAND 원가 하락으로 분기당 0.3%p 기본 개선
+        # + 실시간 시장 반영 (공급 과잉 → 추가 원가 하락 기회)
+        gm_base_delta = (months_elapsed // 3) * 0.3
+        market_gm_delta = abs(nand_cost_delta_pct) * 100 * 0.6  # 원가 절감의 60% GM 반영
+        if price_trend == "up":
+            market_gm_delta = -market_gm_delta * 0.5  # 가격 상승 시 GM 일부 압박
         gm_noise = random.gauss(0, 0.5)
-        gm[cat] = round(BASE_GM[cat] + gm_delta + gm_noise, 1)
+        gm[cat] = round(BASE_GM[cat] + gm_base_delta + market_gm_delta + gm_noise, 1)
 
-    # NAND 원가 (분기당 4% 하락)
+    # NAND 원가: 기본 분기당 4% 하락 + 시장 실정 반영
     quarters_elapsed = months_elapsed // 3
+    base_decay = 0.96 ** quarters_elapsed
+    market_nand_adj = 1 + nand_cost_delta_pct  # 실시간 시장 반영
     nand_costs = {
-        gen: round(cost * (0.96 ** quarters_elapsed), 4)
+        gen: round(cost * base_decay * market_nand_adj, 4)
         for gen, cost in BASE_NAND_COST.items()
     }
 
@@ -203,6 +227,15 @@ def _generate_monthly_data(state: dict, noise_seed: int = None) -> dict:
         "channel_mix_pct": channel_mix,
         "event": {"type": event[0], "description": event[2]},
         "promo": promo,
+        # 시장 인텔 메타데이터
+        "market_intel": {
+            "nand_signal": nand_signal,
+            "price_trend": price_trend,
+            "supply_risk": supply_risk,
+            "market_context": market_context,
+            "nand_cost_delta_pct": round(nand_cost_delta_pct * 100, 2),
+            "demand_delta_pct": round(demand_delta_pct * 100, 2),
+        },
     }
 
 
@@ -289,9 +322,10 @@ def _update_sales_json(state: dict, latest: dict):
         json.dump(sales, f, indent=2, ensure_ascii=False)
 
 
-def advance_month() -> dict:
+def advance_month(market_intel: dict = None) -> dict:
     """
     시뮬레이션 1개월 전진.
+    market_intel: market_intel.py fetch_market_intel() 반환값 (실시간 NAND 시장 데이터)
     반환: 이번 달 시뮬 데이터 dict
     """
     state = _load_state()
@@ -307,8 +341,9 @@ def advance_month() -> dict:
     state["sim_year"] = year
     state["last_run_real"] = datetime.now().isoformat()
 
-    # 데이터 생성
-    latest = _generate_monthly_data(state, noise_seed=state["sim_month"])
+    # 데이터 생성 (실시간 시장 데이터 반영)
+    latest = _generate_monthly_data(state, noise_seed=state["sim_month"],
+                                    market_intel=market_intel)
 
     # 히스토리 추가 (최근 24개월만 보관)
     state["history"].append(latest)
