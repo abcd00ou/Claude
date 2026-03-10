@@ -22,10 +22,10 @@
       "total_btoc": 3230
     },
     "2025E": {
-      "external_ssd": 902.0,
-      "internal_ssd": 684.0,
-      "microsd": 1334.0,
-      "total_btoc": 2920.0
+      "external_ssd": 921.0,
+      "internal_ssd": 732.0,
+      "microsd": 1452.0,
+      "total_btoc": 3105.0
     }
   },
   "quarterly_revenue_usd_m": {
@@ -60,16 +60,16 @@
       "total": 755.8
     },
     "2025Q2": {
-      "external_ssd": 240,
-      "internal_ssd": 189,
-      "microsd": 387,
-      "total": 816
+      "external_ssd": 231.9,
+      "internal_ssd": 189.4,
+      "microsd": 376.0,
+      "total": 797.3
     },
     "2025Q3": {
-      "external_ssd": 264,
-      "internal_ssd": 210,
-      "microsd": 423,
-      "total": 897
+      "external_ssd": 259.0,
+      "internal_ssd": 205.2,
+      "microsd": 417.6,
+      "total": 881.8
     },
     "2025Q4": {
       "external_ssd": 304,
@@ -118,19 +118,19 @@
     },
     "2025E": {
       "external_ssd": {
-        "ecommerce": 52.3,
-        "retail": 37.8,
-        "b2b": 9.9
+        "ecommerce": 52.9,
+        "retail": 37.4,
+        "b2b": 9.7
       },
       "internal_ssd": {
-        "ecommerce": 58.3,
-        "retail": 26.8,
-        "b2b": 14.9
+        "ecommerce": 58.9,
+        "retail": 26.4,
+        "b2b": 14.7
       },
       "microsd": {
-        "ecommerce": 42.3,
-        "retail": 47.8,
-        "b2b": 9.9
+        "ecommerce": 42.9,
+        "retail": 47.4,
+        "b2b": 9.7
       }
     }
   },
@@ -273,6 +273,54 @@
       "units_k": 430,
       "asp": 90.7,
       "gm_pct": 65.2
+    },
+    "WD_BLACK_SN8100_1TB": {
+      "rev": 120,
+      "units_k": 1413,
+      "asp": 84.9,
+      "gm_pct": 55.2
+    },
+    "WD_BLACK_SN8100_2TB": {
+      "rev": 140,
+      "units_k": 934,
+      "asp": 149.9,
+      "gm_pct": 53.1
+    },
+    "WD_BLACK_SN8100_4TB": {
+      "rev": 75,
+      "units_k": 268,
+      "asp": 279.9,
+      "gm_pct": 51.8
+    },
+    "WD_BLACK_SN7100_1TB": {
+      "rev": 95,
+      "units_k": 1730,
+      "asp": 54.9,
+      "gm_pct": 38.5
+    },
+    "WD_BLACK_SN7100_2TB": {
+      "rev": 72,
+      "units_k": 759,
+      "asp": 94.9,
+      "gm_pct": 37.2
+    },
+    "SD_EXTREME_PRO_4TB": {
+      "rev": 62,
+      "units_k": 188,
+      "asp": 329.9,
+      "gm_pct": 57.2
+    },
+    "SD_EXTREME_MICRO_128G": {
+      "rev": 142,
+      "units_k": 6311,
+      "asp": 22.5,
+      "gm_pct": 56.3
+    },
+    "SD_ULTRA_MICRO_512G": {
+      "rev": 180,
+      "units_k": 5538,
+      "asp": 32.5,
+      "gm_pct": 55.1
     }
   },
   "gross_margin_pct": {
@@ -296,9 +344,9 @@
     },
     "2025E": {
       "external_ssd": 42.7,
-      "internal_ssd": 36.8,
-      "microsd": 54.8,
-      "blended": 46.9
+      "internal_ssd": 37.4,
+      "microsd": 56.1,
+      "blended": 47.9
     }
   },
   "market_share_pct": {
@@ -319,8 +367,8 @@
     },
     "2025_latest": {
       "external_ssd": 22.0,
-      "internal_ssd": 17.0,
-      "microsd": 31.9
+      "internal_ssd": 17.4,
+      "microsd": 32.0
     }
   },
   "nand_cost_per_gb_usd": {
@@ -330,7 +378,9 @@
     "2024Q3": 0.068,
     "2024Q4": 0.075,
     "2025Q1_est": 0.08,
-    "2025Q1_sim": 0.0478
+    "2025Q1_sim": 0.0478,
+    "2025Q2_sim": 0.0458,
+    "2025Q3_sim": 0.044
   },
   "promo_impact_usd_m": {
     "2024Q4_holiday": {
@@ -347,6 +397,11 @@
       "invest": 22,
       "incremental_rev": 61,
       "roi": 2.77
+    },
+    "2025-07_bts": {
+      "invest": 20.4,
+      "incremental_rev": 60.0,
+      "roi": 2.94
     }
   },
   "amazon_real_prices": {
@@ -392,6 +447,6 @@
       "premium_pct": 156.7
     }
   },
-  "_sim_last_updated": "2026-03-10T09:02:28.810285",
-  "_sim_date": "2025-03"
+  "_sim_last_updated": "2026-03-10T12:31:23.875020",
+  "_sim_date": "2025-07"
 }

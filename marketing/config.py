@@ -18,34 +18,66 @@ for d in [DATA_DIR, EXCEL_DIR, PPTX_DIR, REPORTS_DIR]:
 PRODUCT_CATEGORIES = ["internal_ssd", "external_ssd", "microsd"]
 
 PRODUCTS = {
-    # Internal SSD
-    "WD_BLACK_SN850X_1TB":  {"cat": "internal_ssd", "brand": "WD_BLACK",  "nand": "BiCS6", "capacity_gb": 1000},
-    "WD_BLACK_SN850X_2TB":  {"cat": "internal_ssd", "brand": "WD_BLACK",  "nand": "BiCS6", "capacity_gb": 2000},
-    "WD_BLACK_SN850X_4TB":  {"cat": "internal_ssd", "brand": "WD_BLACK",  "nand": "BiCS6", "capacity_gb": 4000},
-    "WD_BLACK_SN770_1TB":   {"cat": "internal_ssd", "brand": "WD_BLACK",  "nand": "BiCS5", "capacity_gb": 1000},
-    "WD_BLACK_SN770_2TB":   {"cat": "internal_ssd", "brand": "WD_BLACK",  "nand": "BiCS5", "capacity_gb": 2000},
-    "SD_E30_1TB":           {"cat": "internal_ssd", "brand": "SanDisk",   "nand": "BiCS5", "capacity_gb": 1000},
-    "SD_E30_2TB":           {"cat": "internal_ssd", "brand": "SanDisk",   "nand": "BiCS5", "capacity_gb": 2000},
+    # ── Internal SSD ────────────────────────────────────────────
+    # SN8100 — BiCS8 최신 플래그십 (신규)
+    "WD_BLACK_SN8100_1TB":  {"cat": "internal_ssd", "brand": "WD_BLACK", "line": "SN8100", "nand": "BiCS8", "capacity_gb": 1000, "tier": "flagship"},
+    "WD_BLACK_SN8100_2TB":  {"cat": "internal_ssd", "brand": "WD_BLACK", "line": "SN8100", "nand": "BiCS8", "capacity_gb": 2000, "tier": "flagship"},
+    "WD_BLACK_SN8100_4TB":  {"cat": "internal_ssd", "brand": "WD_BLACK", "line": "SN8100", "nand": "BiCS8", "capacity_gb": 4000, "tier": "flagship"},
+    # SN850X — BiCS6 현행 플래그십
+    "WD_BLACK_SN850X_1TB":  {"cat": "internal_ssd", "brand": "WD_BLACK", "line": "SN850X", "nand": "BiCS6", "capacity_gb": 1000, "tier": "flagship"},
+    "WD_BLACK_SN850X_2TB":  {"cat": "internal_ssd", "brand": "WD_BLACK", "line": "SN850X", "nand": "BiCS6", "capacity_gb": 2000, "tier": "flagship"},
+    "WD_BLACK_SN850X_4TB":  {"cat": "internal_ssd", "brand": "WD_BLACK", "line": "SN850X", "nand": "BiCS6", "capacity_gb": 4000, "tier": "flagship"},
+    # SN7100 — BiCS8 미드레인지 (신규)
+    "WD_BLACK_SN7100_1TB":  {"cat": "internal_ssd", "brand": "WD_BLACK", "line": "SN7100", "nand": "BiCS8", "capacity_gb": 1000, "tier": "midrange"},
+    "WD_BLACK_SN7100_2TB":  {"cat": "internal_ssd", "brand": "WD_BLACK", "line": "SN7100", "nand": "BiCS8", "capacity_gb": 2000, "tier": "midrange"},
+    # SN770 — BiCS5 미드레인지 (현행)
+    "WD_BLACK_SN770_1TB":   {"cat": "internal_ssd", "brand": "WD_BLACK", "line": "SN770",  "nand": "BiCS5", "capacity_gb": 1000, "tier": "midrange"},
+    "WD_BLACK_SN770_2TB":   {"cat": "internal_ssd", "brand": "WD_BLACK", "line": "SN770",  "nand": "BiCS5", "capacity_gb": 2000, "tier": "midrange"},
 
-    # External SSD
-    "SD_EXTREME_1TB":       {"cat": "external_ssd", "brand": "SanDisk",   "nand": "BiCS6", "capacity_gb": 1000},
-    "SD_EXTREME_2TB":       {"cat": "external_ssd", "brand": "SanDisk",   "nand": "BiCS6", "capacity_gb": 2000},
-    "SD_EXTREME_4TB":       {"cat": "external_ssd", "brand": "SanDisk",   "nand": "BiCS6", "capacity_gb": 4000},
-    "SD_EXTREME_PRO_1TB":   {"cat": "external_ssd", "brand": "SanDisk",   "nand": "BiCS8", "capacity_gb": 1000},
-    "SD_EXTREME_PRO_2TB":   {"cat": "external_ssd", "brand": "SanDisk",   "nand": "BiCS8", "capacity_gb": 2000},
-    "WD_MY_PASSPORT_1TB":   {"cat": "external_ssd", "brand": "WD",        "nand": "BiCS5", "capacity_gb": 1000},
-    "WD_MY_PASSPORT_2TB":   {"cat": "external_ssd", "brand": "WD",        "nand": "BiCS5", "capacity_gb": 2000},
+    # ── External SSD ────────────────────────────────────────────
+    # Extreme Pro — BiCS8 프리미엄
+    "SD_EXTREME_PRO_1TB":   {"cat": "external_ssd", "brand": "SanDisk", "line": "Extreme Pro", "nand": "BiCS8", "capacity_gb": 1000, "tier": "premium"},
+    "SD_EXTREME_PRO_2TB":   {"cat": "external_ssd", "brand": "SanDisk", "line": "Extreme Pro", "nand": "BiCS8", "capacity_gb": 2000, "tier": "premium"},
+    "SD_EXTREME_PRO_4TB":   {"cat": "external_ssd", "brand": "SanDisk", "line": "Extreme Pro", "nand": "BiCS8", "capacity_gb": 4000, "tier": "premium"},
+    # Extreme — BiCS6 메인스트림
+    "SD_EXTREME_1TB":       {"cat": "external_ssd", "brand": "SanDisk", "line": "Extreme",     "nand": "BiCS6", "capacity_gb": 1000, "tier": "mainstream"},
+    "SD_EXTREME_2TB":       {"cat": "external_ssd", "brand": "SanDisk", "line": "Extreme",     "nand": "BiCS6", "capacity_gb": 2000, "tier": "mainstream"},
+    "SD_EXTREME_4TB":       {"cat": "external_ssd", "brand": "SanDisk", "line": "Extreme",     "nand": "BiCS6", "capacity_gb": 4000, "tier": "mainstream"},
+    # My Passport — WD 보급형
+    "WD_MY_PASSPORT_1TB":   {"cat": "external_ssd", "brand": "WD",      "line": "My Passport",  "nand": "BiCS5", "capacity_gb": 1000, "tier": "value"},
+    "WD_MY_PASSPORT_2TB":   {"cat": "external_ssd", "brand": "WD",      "line": "My Passport",  "nand": "BiCS5", "capacity_gb": 2000, "tier": "value"},
 
-    # MicroSD
-    "SD_EXTREME_MICRO_128G":  {"cat": "microsd", "brand": "SanDisk", "nand": "BiCS5", "capacity_gb": 128},
-    "SD_EXTREME_MICRO_256G":  {"cat": "microsd", "brand": "SanDisk", "nand": "BiCS5", "capacity_gb": 256},
-    "SD_EXTREME_MICRO_512G":  {"cat": "microsd", "brand": "SanDisk", "nand": "BiCS5", "capacity_gb": 512},
-    "SD_EXTREME_MICRO_1TB":   {"cat": "microsd", "brand": "SanDisk", "nand": "BiCS6", "capacity_gb": 1000},
-    "SD_ULTRA_MICRO_128G":    {"cat": "microsd", "brand": "SanDisk", "nand": "BiCS5", "capacity_gb": 128},
-    "SD_ULTRA_MICRO_256G":    {"cat": "microsd", "brand": "SanDisk", "nand": "BiCS5", "capacity_gb": 256},
-    "SD_ULTRA_MICRO_512G":    {"cat": "microsd", "brand": "SanDisk", "nand": "BiCS5", "capacity_gb": 512},
-    "SD_PRO_PLUS_MICRO_256G": {"cat": "microsd", "brand": "SanDisk", "nand": "BiCS6", "capacity_gb": 256},
-    "SD_PRO_PLUS_MICRO_512G": {"cat": "microsd", "brand": "SanDisk", "nand": "BiCS6", "capacity_gb": 512},
+    # ── microSD ─────────────────────────────────────────────────
+    # Extreme Pro — 최고급
+    "SD_PRO_PLUS_MICRO_256G": {"cat": "microsd", "brand": "SanDisk", "line": "Extreme Pro", "nand": "BiCS6", "capacity_gb": 256, "tier": "premium"},
+    "SD_PRO_PLUS_MICRO_512G": {"cat": "microsd", "brand": "SanDisk", "line": "Extreme Pro", "nand": "BiCS6", "capacity_gb": 512, "tier": "premium"},
+    # Extreme — 고급 (저용량 강세)
+    "SD_EXTREME_MICRO_128G":  {"cat": "microsd", "brand": "SanDisk", "line": "Extreme",     "nand": "BiCS5", "capacity_gb": 128, "tier": "mainstream"},
+    "SD_EXTREME_MICRO_256G":  {"cat": "microsd", "brand": "SanDisk", "line": "Extreme",     "nand": "BiCS5", "capacity_gb": 256, "tier": "mainstream"},
+    "SD_EXTREME_MICRO_512G":  {"cat": "microsd", "brand": "SanDisk", "line": "Extreme",     "nand": "BiCS5", "capacity_gb": 512, "tier": "mainstream"},
+    "SD_EXTREME_MICRO_1TB":   {"cat": "microsd", "brand": "SanDisk", "line": "Extreme",     "nand": "BiCS6", "capacity_gb": 1000, "tier": "mainstream"},
+    # Ultra — 보급형 (저용량 최강세)
+    "SD_ULTRA_MICRO_128G":    {"cat": "microsd", "brand": "SanDisk", "line": "Ultra",       "nand": "BiCS5", "capacity_gb": 128, "tier": "value"},
+    "SD_ULTRA_MICRO_256G":    {"cat": "microsd", "brand": "SanDisk", "line": "Ultra",       "nand": "BiCS5", "capacity_gb": 256, "tier": "value"},
+    "SD_ULTRA_MICRO_512G":    {"cat": "microsd", "brand": "SanDisk", "line": "Ultra",       "nand": "BiCS5", "capacity_gb": 512, "tier": "value"},
+}
+
+# ── 제품 라인별 그룹 (리포트/PPT용) ────────────────────────────────
+PRODUCT_LINES = {
+    "internal_ssd": ["SN8100", "SN850X", "SN7100", "SN770"],
+    "external_ssd": ["Extreme Pro", "Extreme", "My Passport"],
+    "microsd":      ["Extreme Pro", "Extreme", "Ultra"],
+}
+
+# ── 저용량 선호 시장 시그널 (용량별 수요 가중치) ───────────────────
+# 값이 클수록 현재 시장에서 잘 팔림 (NAND 가격 상승 시 저용량 선호)
+CAPACITY_DEMAND_WEIGHT = {
+    128:  1.35,   # 저용량 강세
+    256:  1.20,
+    512:  1.00,   # 기준
+    1000: 0.85,
+    2000: 0.65,
+    4000: 0.40,
 }
 
 # ── NAND 원가 (BiCS 세대별 $/GB — 2025 추정) ──────────────────

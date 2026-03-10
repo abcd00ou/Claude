@@ -234,7 +234,76 @@ def _build_html(sim_data: dict, agent_results: dict,
         <div class="section-title">📰 NAND 시장 뉴스 (실시간)</div>
         <ul style="margin:0 0 16px;padding-left:18px">{hl_items}</ul>"""
 
-    # ── 카테고리 테이블 ──────────────────────────────────────────
+    # ── SKU 세분화 테이블 ────────────────────────────────────────
+    sku_data = sim_data.get("sku_revenue", {})
+    _cat_order  = ["internal_ssd", "external_ssd", "microsd"]
+    _cat_header = {
+        "internal_ssd": "▸ Internal SSD — WD_BLACK",
+        "external_ssd": "▸ External SSD — SanDisk",
+        "microsd":      "▸ microSD — SanDisk",
+    }
+    _line_order = {
+        "internal_ssd": ["SN8100", "SN850X", "SN7100", "SN770"],
+        "external_ssd": ["Extreme Pro", "Extreme", "My Passport"],
+        "microsd":      ["Extreme Pro", "Extreme", "Ultra"],
+    }
+
+    def _cap_label(gb: int) -> str:
+        return f"{gb}GB" if gb < 1000 else f"{gb // 1000}TB"
+
+    sku_rows = ""
+    for cat in _cat_order:
+        skus_in_cat = [(s, d) for s, d in sku_data.items() if d.get("cat") == cat]
+        if not skus_in_cat:
+            continue
+        sku_rows += (f'<tr style="background:#e8eaf6">'
+                     f'<td colspan="6" style="padding:7px 12px;font-weight:700;font-size:12px;'
+                     f'color:#283593">{_cat_header[cat]}</td></tr>')
+        for line_name in _line_order.get(cat, []):
+            line_skus = sorted(
+                [(s, d) for s, d in skus_in_cat if d.get("line") == line_name],
+                key=lambda x: x[1]["cap_gb"]
+            )
+            if not line_skus:
+                continue
+            line_rev_total   = sum(d["rev_m"] for _, d in line_skus)
+            line_units_total = sum(d["units_k"] for _, d in line_skus)
+            for i, (sku, d) in enumerate(line_skus):
+                line_cell = f'<strong>{line_name}</strong>' if i == 0 else ""
+                cap       = _cap_label(d["cap_gb"])
+                # NAND tight 시 저용량 강조
+                row_bg = ""
+                if nand_signal == "tight" and d["cap_gb"] <= 256:
+                    row_bg = "background:#fff8e1;"
+                elif nand_signal == "tight" and d["cap_gb"] <= 512:
+                    row_bg = "background:#fffde7;"
+                sku_rows += (
+                    f'<tr style="{row_bg}">'
+                    f'<td style="padding:5px 12px;border-bottom:1px solid #f0f0f0;font-size:12px">{line_cell}</td>'
+                    f'<td style="padding:5px 12px;border-bottom:1px solid #f0f0f0;font-size:12px">{cap}</td>'
+                    f'<td style="padding:5px 12px;border-bottom:1px solid #f0f0f0;text-align:right;font-size:12px">${d["rev_m"]:.1f}M</td>'
+                    f'<td style="padding:5px 12px;border-bottom:1px solid #f0f0f0;text-align:right;font-size:12px">{d["units_k"]:.1f}K</td>'
+                    f'<td style="padding:5px 12px;border-bottom:1px solid #f0f0f0;text-align:right;font-size:12px">${d["asp"]:.0f}</td>'
+                    f'<td style="padding:5px 12px;border-bottom:1px solid #f0f0f0;text-align:right;font-size:12px">{d["gm_pct"]:.1f}%</td>'
+                    f'</tr>'
+                )
+            # 라인 소계
+            sku_rows += (
+                f'<tr style="background:#f5f5f5">'
+                f'<td colspan="2" style="padding:4px 12px;font-size:11px;color:#777;border-bottom:1px solid #e0e0e0">'
+                f'  {line_name} 소계</td>'
+                f'<td style="padding:4px 12px;text-align:right;font-size:11px;color:#555;border-bottom:1px solid #e0e0e0">${line_rev_total:.1f}M</td>'
+                f'<td style="padding:4px 12px;text-align:right;font-size:11px;color:#555;border-bottom:1px solid #e0e0e0">{line_units_total:.1f}K</td>'
+                f'<td colspan="2" style="border-bottom:1px solid #e0e0e0"></td></tr>'
+            )
+
+    # NAND tight 저용량 강조 안내
+    tight_notice = ""
+    if nand_signal == "tight":
+        tight_notice = ('<div style="font-size:11px;color:#c62828;padding:4px 0 8px">'
+                        '⚠️ NAND Tight — 저용량(≤512GB) 노란색 강조: 현재 시장 강세 SKU</div>')
+
+    # ── 카테고리 합계 (하단 소계) ───────────────────────────────
     cat_labels = {"external_ssd": "External SSD", "internal_ssd": "Internal SSD", "microsd": "microSD"}
     cat_rows = ""
     for cat, label in cat_labels.items():
@@ -406,8 +475,26 @@ def _build_html(sim_data: dict, agent_results: dict,
 
   {promo_html}
 
-  <!-- 카테고리별 실적 -->
-  <div class="section-title">📊 카테고리별 월간 실적</div>
+  <!-- SKU 세분화 실적 -->
+  <div class="section-title">📦 제품 라인 × 용량별 월간 실적 (SKU 세분화)</div>
+  {tight_notice}
+  <table>
+    <tr>
+      <th>제품 라인</th><th>용량</th><th>월 매출</th>
+      <th>판매량(K)</th><th>ASP</th><th>GM%</th>
+    </tr>
+    {sku_rows}
+    <tr style="background:#eef;font-weight:700">
+      <td style="padding:8px 12px" colspan="2">전체 합계</td>
+      <td style="padding:8px 12px;text-align:right">${total_rev:.1f}M</td>
+      <td style="padding:8px 12px;text-align:right">—</td>
+      <td style="padding:8px 12px;text-align:right">—</td>
+      <td style="padding:8px 12px;text-align:right">{blended_gm:.1f}%</td>
+    </tr>
+  </table>
+
+  <!-- 카테고리 요약 -->
+  <div class="section-title">📊 카테고리 요약</div>
   <table>
     <tr><th>카테고리</th><th>매출</th><th>GM%</th><th>점유율</th></tr>
     {cat_rows}

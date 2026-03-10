@@ -60,6 +60,113 @@ BASE_NAND_COST = {
     "BiCS8": 0.038,
 }
 
+# ── SKU 기준 데이터 (2024 연간 $M, ASP $, GM%, 용량 GB) ──────────────────
+_CAP_WEIGHT = {128: 1.35, 256: 1.20, 512: 1.00, 1000: 0.85, 2000: 0.65, 4000: 0.40}
+
+SKU_META = {
+    # Internal SSD — WD_BLACK
+    "WD_BLACK_SN8100_1TB":    ("internal_ssd", 120,  84.9, 55.2, 1000, "SN8100"),
+    "WD_BLACK_SN8100_2TB":    ("internal_ssd", 140, 149.9, 53.1, 2000, "SN8100"),
+    "WD_BLACK_SN8100_4TB":    ("internal_ssd",  75, 279.9, 51.8, 4000, "SN8100"),
+    "WD_BLACK_SN850X_1TB":    ("internal_ssd", 162,  77.1, 42.8, 1000, "SN850X"),
+    "WD_BLACK_SN850X_2TB":    ("internal_ssd", 194, 140.6, 45.2, 2000, "SN850X"),
+    "WD_BLACK_SN850X_4TB":    ("internal_ssd",  98, 266.3, 47.1, 4000, "SN850X"),
+    "WD_BLACK_SN7100_1TB":    ("internal_ssd",  95,  54.9, 38.5, 1000, "SN7100"),
+    "WD_BLACK_SN7100_2TB":    ("internal_ssd",  72,  94.9, 37.2, 2000, "SN7100"),
+    "WD_BLACK_SN770_1TB":     ("internal_ssd", 138,  61.6, 34.5, 1000, "SN770"),
+    "WD_BLACK_SN770_2TB":     ("internal_ssd", 110, 107.8, 36.2, 2000, "SN770"),
+    # External SSD — SanDisk
+    "SD_EXTREME_PRO_1TB":     ("external_ssd", 148, 119.4, 52.3, 1000, "Extreme Pro"),
+    "SD_EXTREME_PRO_2TB":     ("external_ssd", 137, 201.5, 54.7, 2000, "Extreme Pro"),
+    "SD_EXTREME_PRO_4TB":     ("external_ssd",  62, 329.9, 57.2, 4000, "Extreme Pro"),
+    "SD_EXTREME_1TB":         ("external_ssd", 215,  86.0, 45.2, 1000, "Extreme"),
+    "SD_EXTREME_2TB":         ("external_ssd", 198, 154.7, 46.1, 2000, "Extreme"),
+    "SD_EXTREME_4TB":         ("external_ssd",  88, 303.4, 49.8, 4000, "Extreme"),
+    "WD_MY_PASSPORT_1TB":     ("external_ssd", 106,  71.6, 38.2, 1000, "My Passport"),
+    "WD_MY_PASSPORT_2TB":     ("external_ssd",  58, 123.4, 40.1, 2000, "My Passport"),
+    # microSD — SanDisk
+    "SD_PRO_PLUS_MICRO_256G": ("microsd", 195,  33.6, 63.2,  256, "Extreme Pro"),
+    "SD_PRO_PLUS_MICRO_512G": ("microsd", 165,  57.7, 64.8,  512, "Extreme Pro"),
+    "SD_EXTREME_MICRO_128G":  ("microsd", 142,  22.5, 56.3,  128, "Extreme"),
+    "SD_EXTREME_MICRO_256G":  ("microsd", 378,  25.5, 58.4,  256, "Extreme"),
+    "SD_EXTREME_MICRO_512G":  ("microsd", 312,  43.3, 62.1,  512, "Extreme"),
+    "SD_EXTREME_MICRO_1TB":   ("microsd",  39,  90.7, 65.2, 1000, "Extreme"),
+    "SD_ULTRA_MICRO_128G":    ("microsd", 182,  11.5, 48.7,  128, "Ultra"),
+    "SD_ULTRA_MICRO_256G":    ("microsd", 248,  18.8, 52.3,  256, "Ultra"),
+    "SD_ULTRA_MICRO_512G":    ("microsd", 180,  32.5, 55.1,  512, "Ultra"),
+}
+
+# 카테고리별 라인 순서 (이메일 표 정렬용)
+SKU_LINE_ORDER = {
+    "internal_ssd": ["SN8100", "SN850X", "SN7100", "SN770"],
+    "external_ssd": ["Extreme Pro", "Extreme", "My Passport"],
+    "microsd":      ["Extreme Pro", "Extreme", "Ultra"],
+}
+
+# 카테고리 베이스 GM (SKU GM 조정 기준)
+_CAT_BASE_GM = {"internal_ssd": 38.5, "external_ssd": 44.8, "microsd": 57.3}
+
+
+def _generate_sku_breakdown(cat_rev: dict, cat_gm: dict,
+                             months_elapsed: int, nand_signal: str) -> dict:
+    """카테고리 총 매출을 SKU별로 배분. NAND 시그널 반영."""
+    def cap_weight(cap_gb: int) -> float:
+        base = _CAP_WEIGHT.get(cap_gb, 1.0)
+        if nand_signal == "tight":
+            if cap_gb <= 256:    return base * 1.20
+            elif cap_gb >= 2000: return base * 0.85
+        elif nand_signal == "loose":
+            if cap_gb <= 256:    return base * 0.93
+            elif cap_gb >= 2000: return base * 1.12
+        return base
+
+    # 카테고리별 SKU 그룹화
+    cat_skus: dict = {}
+    for sku, meta in SKU_META.items():
+        cat_skus.setdefault(meta[0], []).append(sku)
+
+    result = {}
+    for cat, skus in cat_skus.items():
+        total_monthly = cat_rev.get(cat, 0)
+        cat_gm_val    = cat_gm.get(cat, _CAT_BASE_GM.get(cat, 44.0))
+
+        # 가중치: 기준 연매출 × 용량 수요 가중치 × 제품 성숙도
+        weights = {}
+        for sku in skus:
+            meta = SKU_META[sku]
+            base_rev, cap, line = meta[1], meta[4], meta[5]
+            # 신제품(SN8100/SN7100) 성장, 기존(SN850X/SN770) 점진 하락
+            if line in ("SN8100", "SN7100"):
+                maturity = 1 + months_elapsed * 0.015
+            elif line in ("SN850X", "SN770"):
+                maturity = max(0.70, 1 - months_elapsed * 0.010)
+            else:
+                maturity = 1.0
+            weights[sku] = base_rev * cap_weight(cap) * maturity
+
+        total_w = sum(weights.values()) or 1.0
+
+        for sku in skus:
+            meta = SKU_META[sku]
+            _, base_rev, asp, base_gm, cap, line = meta
+            share      = weights[sku] / total_w
+            rev_m      = round(total_monthly * share, 2)
+            units_k    = round(rev_m * 1000 / asp, 1) if asp > 0 else 0
+            gm_delta   = cat_gm_val - _CAT_BASE_GM.get(cat, 44.0)
+            sku_gm     = round(base_gm + gm_delta * 0.8, 1)
+            result[sku] = {
+                "rev_m":   rev_m,
+                "units_k": units_k,
+                "asp":     asp,
+                "gm_pct":  sku_gm,
+                "cap_gb":  cap,
+                "line":    line,
+                "cat":     cat,
+            }
+
+    return result
+
+
 # 경쟁 이벤트 확률
 EVENTS = [
     ("competitor_price_cut",  0.15, "SanDisk 경쟁사 가격 인하 — 대응 필요"),
@@ -210,6 +317,9 @@ def _generate_monthly_data(state: dict, noise_seed: int = None,
         roi = round(random.uniform(2.5, 3.1), 2)
         promo = {"invest_m": invest, "incremental_rev_m": round(invest * roi, 1), "roi": roi, "type": "bts"}
 
+    # SKU 세분화 (제품 라인 × 용량별 배분)
+    sku_rev = _generate_sku_breakdown(rev, gm, months_elapsed, nand_signal)
+
     return {
         "sim_date": f"{year}-{month:02d}",
         "sim_year": year,
@@ -227,6 +337,7 @@ def _generate_monthly_data(state: dict, noise_seed: int = None,
         "channel_mix_pct": channel_mix,
         "event": {"type": event[0], "description": event[2]},
         "promo": promo,
+        "sku_revenue": sku_rev,
         # 시장 인텔 메타데이터
         "market_intel": {
             "nand_signal": nand_signal,

@@ -1,10 +1,10 @@
 {
-  "sim_month": 2,
+  "sim_month": 6,
   "sim_year": 2025,
-  "sim_month_num": 3,
+  "sim_month_num": 7,
   "start_year": 2025,
   "start_month": 1,
-  "last_run_real": "2026-03-10T09:02:28.810241",
+  "last_run_real": "2026-03-10T12:31:23.874928",
   "history": [
     {
       "sim_date": "2025-02",
@@ -107,6 +107,1227 @@
         "description": "프로모션 기회 (예상 ROI 2.8×)"
       },
       "promo": null,
+      "market_intel": {
+        "nand_signal": "tight",
+        "price_trend": "up",
+        "supply_risk": 0.25,
+        "market_context": "NAND 시장: 공급 부족 | 가격 트렌드: 상승 (추정 +7.4%/월) | 공급 리스크: 25%",
+        "nand_cost_delta_pct": 5.92,
+        "demand_delta_pct": -2.22
+      }
+    },
+    {
+      "sim_date": "2025-04",
+      "sim_year": 2025,
+      "sim_month": 4,
+      "quarter": "2025Q2",
+      "real_time": "2026-03-10T09:50:52.747043",
+      "revenue_m": {
+        "external_ssd": 75.4,
+        "internal_ssd": 58.8,
+        "microsd": 118.1
+      },
+      "total_rev_m": 252.3,
+      "gross_margin_pct": {
+        "external_ssd": 43.9,
+        "internal_ssd": 37.5,
+        "microsd": 55.7
+      },
+      "blended_gm_pct": 47.9,
+      "market_share_pct": {
+        "external_ssd": 22.5,
+        "internal_ssd": 17.2,
+        "microsd": 32.1
+      },
+      "nand_cost_per_gb": {
+        "BiCS5": 0.0559,
+        "BiCS6": 0.0427,
+        "BiCS8": 0.0386
+      },
+      "channel_mix_pct": {
+        "external_ssd": {
+          "ecommerce": 52.5,
+          "retail": 37.7,
+          "b2b": 9.9
+        },
+        "internal_ssd": {
+          "ecommerce": 58.5,
+          "retail": 26.7,
+          "b2b": 14.9
+        },
+        "microsd": {
+          "ecommerce": 42.5,
+          "retail": 47.7,
+          "b2b": 9.9
+        }
+      },
+      "event": {
+        "type": "none",
+        "description": ""
+      },
+      "promo": null,
+      "sku_revenue": {
+        "WD_BLACK_SN8100_1TB": {
+          "rev_m": 8.01,
+          "units_k": 94.3,
+          "asp": 84.9,
+          "gm_pct": 54.4,
+          "cap_gb": 1000,
+          "line": "SN8100",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN8100_2TB": {
+          "rev_m": 6.07,
+          "units_k": 40.5,
+          "asp": 149.9,
+          "gm_pct": 52.3,
+          "cap_gb": 2000,
+          "line": "SN8100",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN8100_4TB": {
+          "rev_m": 2.0,
+          "units_k": 7.1,
+          "asp": 279.9,
+          "gm_pct": 51.0,
+          "cap_gb": 4000,
+          "line": "SN8100",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN850X_1TB": {
+          "rev_m": 10.04,
+          "units_k": 130.2,
+          "asp": 77.1,
+          "gm_pct": 42.0,
+          "cap_gb": 1000,
+          "line": "SN850X",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN850X_2TB": {
+          "rev_m": 7.81,
+          "units_k": 55.5,
+          "asp": 140.6,
+          "gm_pct": 44.4,
+          "cap_gb": 2000,
+          "line": "SN850X",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN850X_4TB": {
+          "rev_m": 2.43,
+          "units_k": 9.1,
+          "asp": 266.3,
+          "gm_pct": 46.3,
+          "cap_gb": 4000,
+          "line": "SN850X",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN7100_1TB": {
+          "rev_m": 6.34,
+          "units_k": 115.5,
+          "asp": 54.9,
+          "gm_pct": 37.7,
+          "cap_gb": 1000,
+          "line": "SN7100",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN7100_2TB": {
+          "rev_m": 3.12,
+          "units_k": 32.9,
+          "asp": 94.9,
+          "gm_pct": 36.4,
+          "cap_gb": 2000,
+          "line": "SN7100",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN770_1TB": {
+          "rev_m": 8.55,
+          "units_k": 138.8,
+          "asp": 61.6,
+          "gm_pct": 33.7,
+          "cap_gb": 1000,
+          "line": "SN770",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN770_2TB": {
+          "rev_m": 4.43,
+          "units_k": 41.1,
+          "asp": 107.8,
+          "gm_pct": 35.4,
+          "cap_gb": 2000,
+          "line": "SN770",
+          "cat": "internal_ssd"
+        },
+        "SD_EXTREME_PRO_1TB": {
+          "rev_m": 14.23,
+          "units_k": 119.2,
+          "asp": 119.4,
+          "gm_pct": 51.6,
+          "cap_gb": 1000,
+          "line": "Extreme Pro",
+          "cat": "external_ssd"
+        },
+        "SD_EXTREME_PRO_2TB": {
+          "rev_m": 8.56,
+          "units_k": 42.5,
+          "asp": 201.5,
+          "gm_pct": 54.0,
+          "cap_gb": 2000,
+          "line": "Extreme Pro",
+          "cat": "external_ssd"
+        },
+        "SD_EXTREME_PRO_4TB": {
+          "rev_m": 2.38,
+          "units_k": 7.2,
+          "asp": 329.9,
+          "gm_pct": 56.5,
+          "cap_gb": 4000,
+          "line": "Extreme Pro",
+          "cat": "external_ssd"
+        },
+        "SD_EXTREME_1TB": {
+          "rev_m": 20.67,
+          "units_k": 240.3,
+          "asp": 86.0,
+          "gm_pct": 44.5,
+          "cap_gb": 1000,
+          "line": "Extreme",
+          "cat": "external_ssd"
+        },
+        "SD_EXTREME_2TB": {
+          "rev_m": 12.37,
+          "units_k": 80.0,
+          "asp": 154.7,
+          "gm_pct": 45.4,
+          "cap_gb": 2000,
+          "line": "Extreme",
+          "cat": "external_ssd"
+        },
+        "SD_EXTREME_4TB": {
+          "rev_m": 3.38,
+          "units_k": 11.1,
+          "asp": 303.4,
+          "gm_pct": 49.1,
+          "cap_gb": 4000,
+          "line": "Extreme",
+          "cat": "external_ssd"
+        },
+        "WD_MY_PASSPORT_1TB": {
+          "rev_m": 10.19,
+          "units_k": 142.3,
+          "asp": 71.6,
+          "gm_pct": 37.5,
+          "cap_gb": 1000,
+          "line": "My Passport",
+          "cat": "external_ssd"
+        },
+        "WD_MY_PASSPORT_2TB": {
+          "rev_m": 3.62,
+          "units_k": 29.3,
+          "asp": 123.4,
+          "gm_pct": 39.4,
+          "cap_gb": 2000,
+          "line": "My Passport",
+          "cat": "external_ssd"
+        },
+        "SD_PRO_PLUS_MICRO_256G": {
+          "rev_m": 13.83,
+          "units_k": 411.6,
+          "asp": 33.6,
+          "gm_pct": 61.9,
+          "cap_gb": 256,
+          "line": "Extreme Pro",
+          "cat": "microsd"
+        },
+        "SD_PRO_PLUS_MICRO_512G": {
+          "rev_m": 8.13,
+          "units_k": 140.9,
+          "asp": 57.7,
+          "gm_pct": 63.5,
+          "cap_gb": 512,
+          "line": "Extreme Pro",
+          "cat": "microsd"
+        },
+        "SD_EXTREME_MICRO_128G": {
+          "rev_m": 11.33,
+          "units_k": 503.6,
+          "asp": 22.5,
+          "gm_pct": 55.0,
+          "cap_gb": 128,
+          "line": "Extreme",
+          "cat": "microsd"
+        },
+        "SD_EXTREME_MICRO_256G": {
+          "rev_m": 26.82,
+          "units_k": 1051.8,
+          "asp": 25.5,
+          "gm_pct": 57.1,
+          "cap_gb": 256,
+          "line": "Extreme",
+          "cat": "microsd"
+        },
+        "SD_EXTREME_MICRO_512G": {
+          "rev_m": 15.37,
+          "units_k": 355.0,
+          "asp": 43.3,
+          "gm_pct": 60.8,
+          "cap_gb": 512,
+          "line": "Extreme",
+          "cat": "microsd"
+        },
+        "SD_EXTREME_MICRO_1TB": {
+          "rev_m": 1.63,
+          "units_k": 18.0,
+          "asp": 90.7,
+          "gm_pct": 63.9,
+          "cap_gb": 1000,
+          "line": "Extreme",
+          "cat": "microsd"
+        },
+        "SD_ULTRA_MICRO_128G": {
+          "rev_m": 14.53,
+          "units_k": 1263.5,
+          "asp": 11.5,
+          "gm_pct": 47.4,
+          "cap_gb": 128,
+          "line": "Ultra",
+          "cat": "microsd"
+        },
+        "SD_ULTRA_MICRO_256G": {
+          "rev_m": 17.59,
+          "units_k": 935.6,
+          "asp": 18.8,
+          "gm_pct": 51.0,
+          "cap_gb": 256,
+          "line": "Ultra",
+          "cat": "microsd"
+        },
+        "SD_ULTRA_MICRO_512G": {
+          "rev_m": 8.87,
+          "units_k": 272.9,
+          "asp": 32.5,
+          "gm_pct": 53.8,
+          "cap_gb": 512,
+          "line": "Ultra",
+          "cat": "microsd"
+        }
+      },
+      "market_intel": {
+        "nand_signal": "tight",
+        "price_trend": "up",
+        "supply_risk": 0.25,
+        "market_context": "NAND 시장: 공급 부족 | 가격 트렌드: 상승 (추정 +7.4%/월) | 공급 리스크: 25%",
+        "nand_cost_delta_pct": 5.92,
+        "demand_delta_pct": -2.22
+      }
+    },
+    {
+      "sim_date": "2025-05",
+      "sim_year": 2025,
+      "sim_month": 5,
+      "quarter": "2025Q2",
+      "real_time": "2026-03-10T10:51:05.288541",
+      "revenue_m": {
+        "external_ssd": 77.4,
+        "internal_ssd": 62.0,
+        "microsd": 127.0
+      },
+      "total_rev_m": 266.4,
+      "gross_margin_pct": {
+        "external_ssd": 43.6,
+        "internal_ssd": 37.2,
+        "microsd": 56.0
+      },
+      "blended_gm_pct": 48.0,
+      "market_share_pct": {
+        "external_ssd": 22.5,
+        "internal_ssd": 17.1,
+        "microsd": 32.2
+      },
+      "nand_cost_per_gb": {
+        "BiCS5": 0.0559,
+        "BiCS6": 0.0427,
+        "BiCS8": 0.0386
+      },
+      "channel_mix_pct": {
+        "external_ssd": {
+          "ecommerce": 52.6,
+          "retail": 37.6,
+          "b2b": 9.8
+        },
+        "internal_ssd": {
+          "ecommerce": 58.6,
+          "retail": 26.6,
+          "b2b": 14.8
+        },
+        "microsd": {
+          "ecommerce": 42.6,
+          "retail": 47.6,
+          "b2b": 9.8
+        }
+      },
+      "event": {
+        "type": "promo_opportunity",
+        "description": "프로모션 기회 (예상 ROI 2.8×)"
+      },
+      "promo": null,
+      "sku_revenue": {
+        "WD_BLACK_SN8100_1TB": {
+          "rev_m": 8.56,
+          "units_k": 100.8,
+          "asp": 84.9,
+          "gm_pct": 54.2,
+          "cap_gb": 1000,
+          "line": "SN8100",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN8100_2TB": {
+          "rev_m": 6.49,
+          "units_k": 43.3,
+          "asp": 149.9,
+          "gm_pct": 52.1,
+          "cap_gb": 2000,
+          "line": "SN8100",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN8100_4TB": {
+          "rev_m": 2.14,
+          "units_k": 7.6,
+          "asp": 279.9,
+          "gm_pct": 50.8,
+          "cap_gb": 4000,
+          "line": "SN8100",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN850X_1TB": {
+          "rev_m": 10.47,
+          "units_k": 135.8,
+          "asp": 77.1,
+          "gm_pct": 41.8,
+          "cap_gb": 1000,
+          "line": "SN850X",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN850X_2TB": {
+          "rev_m": 8.15,
+          "units_k": 58.0,
+          "asp": 140.6,
+          "gm_pct": 44.2,
+          "cap_gb": 2000,
+          "line": "SN850X",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN850X_4TB": {
+          "rev_m": 2.53,
+          "units_k": 9.5,
+          "asp": 266.3,
+          "gm_pct": 46.1,
+          "cap_gb": 4000,
+          "line": "SN850X",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN7100_1TB": {
+          "rev_m": 6.78,
+          "units_k": 123.5,
+          "asp": 54.9,
+          "gm_pct": 37.5,
+          "cap_gb": 1000,
+          "line": "SN7100",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN7100_2TB": {
+          "rev_m": 3.34,
+          "units_k": 35.2,
+          "asp": 94.9,
+          "gm_pct": 36.2,
+          "cap_gb": 2000,
+          "line": "SN7100",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN770_1TB": {
+          "rev_m": 8.92,
+          "units_k": 144.8,
+          "asp": 61.6,
+          "gm_pct": 33.5,
+          "cap_gb": 1000,
+          "line": "SN770",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN770_2TB": {
+          "rev_m": 4.62,
+          "units_k": 42.9,
+          "asp": 107.8,
+          "gm_pct": 35.2,
+          "cap_gb": 2000,
+          "line": "SN770",
+          "cat": "internal_ssd"
+        },
+        "SD_EXTREME_PRO_1TB": {
+          "rev_m": 14.6,
+          "units_k": 122.3,
+          "asp": 119.4,
+          "gm_pct": 51.3,
+          "cap_gb": 1000,
+          "line": "Extreme Pro",
+          "cat": "external_ssd"
+        },
+        "SD_EXTREME_PRO_2TB": {
+          "rev_m": 8.79,
+          "units_k": 43.6,
+          "asp": 201.5,
+          "gm_pct": 53.7,
+          "cap_gb": 2000,
+          "line": "Extreme Pro",
+          "cat": "external_ssd"
+        },
+        "SD_EXTREME_PRO_4TB": {
+          "rev_m": 2.45,
+          "units_k": 7.4,
+          "asp": 329.9,
+          "gm_pct": 56.2,
+          "cap_gb": 4000,
+          "line": "Extreme Pro",
+          "cat": "external_ssd"
+        },
+        "SD_EXTREME_1TB": {
+          "rev_m": 21.21,
+          "units_k": 246.6,
+          "asp": 86.0,
+          "gm_pct": 44.2,
+          "cap_gb": 1000,
+          "line": "Extreme",
+          "cat": "external_ssd"
+        },
+        "SD_EXTREME_2TB": {
+          "rev_m": 12.7,
+          "units_k": 82.1,
+          "asp": 154.7,
+          "gm_pct": 45.1,
+          "cap_gb": 2000,
+          "line": "Extreme",
+          "cat": "external_ssd"
+        },
+        "SD_EXTREME_4TB": {
+          "rev_m": 3.47,
+          "units_k": 11.4,
+          "asp": 303.4,
+          "gm_pct": 48.8,
+          "cap_gb": 4000,
+          "line": "Extreme",
+          "cat": "external_ssd"
+        },
+        "WD_MY_PASSPORT_1TB": {
+          "rev_m": 10.46,
+          "units_k": 146.1,
+          "asp": 71.6,
+          "gm_pct": 37.2,
+          "cap_gb": 1000,
+          "line": "My Passport",
+          "cat": "external_ssd"
+        },
+        "WD_MY_PASSPORT_2TB": {
+          "rev_m": 3.72,
+          "units_k": 30.1,
+          "asp": 123.4,
+          "gm_pct": 39.1,
+          "cap_gb": 2000,
+          "line": "My Passport",
+          "cat": "external_ssd"
+        },
+        "SD_PRO_PLUS_MICRO_256G": {
+          "rev_m": 14.88,
+          "units_k": 442.9,
+          "asp": 33.6,
+          "gm_pct": 62.2,
+          "cap_gb": 256,
+          "line": "Extreme Pro",
+          "cat": "microsd"
+        },
+        "SD_PRO_PLUS_MICRO_512G": {
+          "rev_m": 8.74,
+          "units_k": 151.5,
+          "asp": 57.7,
+          "gm_pct": 63.8,
+          "cap_gb": 512,
+          "line": "Extreme Pro",
+          "cat": "microsd"
+        },
+        "SD_EXTREME_MICRO_128G": {
+          "rev_m": 12.19,
+          "units_k": 541.8,
+          "asp": 22.5,
+          "gm_pct": 55.3,
+          "cap_gb": 128,
+          "line": "Extreme",
+          "cat": "microsd"
+        },
+        "SD_EXTREME_MICRO_256G": {
+          "rev_m": 28.84,
+          "units_k": 1131.0,
+          "asp": 25.5,
+          "gm_pct": 57.4,
+          "cap_gb": 256,
+          "line": "Extreme",
+          "cat": "microsd"
+        },
+        "SD_EXTREME_MICRO_512G": {
+          "rev_m": 16.53,
+          "units_k": 381.8,
+          "asp": 43.3,
+          "gm_pct": 61.1,
+          "cap_gb": 512,
+          "line": "Extreme",
+          "cat": "microsd"
+        },
+        "SD_EXTREME_MICRO_1TB": {
+          "rev_m": 1.76,
+          "units_k": 19.4,
+          "asp": 90.7,
+          "gm_pct": 64.2,
+          "cap_gb": 1000,
+          "line": "Extreme",
+          "cat": "microsd"
+        },
+        "SD_ULTRA_MICRO_128G": {
+          "rev_m": 15.62,
+          "units_k": 1358.3,
+          "asp": 11.5,
+          "gm_pct": 47.7,
+          "cap_gb": 128,
+          "line": "Ultra",
+          "cat": "microsd"
+        },
+        "SD_ULTRA_MICRO_256G": {
+          "rev_m": 18.92,
+          "units_k": 1006.4,
+          "asp": 18.8,
+          "gm_pct": 51.3,
+          "cap_gb": 256,
+          "line": "Ultra",
+          "cat": "microsd"
+        },
+        "SD_ULTRA_MICRO_512G": {
+          "rev_m": 9.54,
+          "units_k": 293.5,
+          "asp": 32.5,
+          "gm_pct": 54.1,
+          "cap_gb": 512,
+          "line": "Ultra",
+          "cat": "microsd"
+        }
+      },
+      "market_intel": {
+        "nand_signal": "tight",
+        "price_trend": "up",
+        "supply_risk": 0.25,
+        "market_context": "NAND 시장: 공급 부족 | 가격 트렌드: 상승 (추정 +7.4%/월) | 공급 리스크: 25%",
+        "nand_cost_delta_pct": 5.92,
+        "demand_delta_pct": -2.22
+      }
+    },
+    {
+      "sim_date": "2025-06",
+      "sim_year": 2025,
+      "sim_month": 6,
+      "quarter": "2025Q2",
+      "real_time": "2026-03-10T11:51:17.681307",
+      "revenue_m": {
+        "external_ssd": 75.0,
+        "internal_ssd": 66.3,
+        "microsd": 123.6
+      },
+      "total_rev_m": 264.9,
+      "gross_margin_pct": {
+        "external_ssd": 42.7,
+        "internal_ssd": 35.9,
+        "microsd": 54.7
+      },
+      "blended_gm_pct": 46.6,
+      "market_share_pct": {
+        "external_ssd": 22.5,
+        "internal_ssd": 17.3,
+        "microsd": 32.5
+      },
+      "nand_cost_per_gb": {
+        "BiCS5": 0.0559,
+        "BiCS6": 0.0427,
+        "BiCS8": 0.0386
+      },
+      "channel_mix_pct": {
+        "external_ssd": {
+          "ecommerce": 52.8,
+          "retail": 37.5,
+          "b2b": 9.8
+        },
+        "internal_ssd": {
+          "ecommerce": 58.8,
+          "retail": 26.5,
+          "b2b": 14.8
+        },
+        "microsd": {
+          "ecommerce": 42.8,
+          "retail": 47.5,
+          "b2b": 9.8
+        }
+      },
+      "event": {
+        "type": "none",
+        "description": ""
+      },
+      "promo": null,
+      "sku_revenue": {
+        "WD_BLACK_SN8100_1TB": {
+          "rev_m": 9.28,
+          "units_k": 109.3,
+          "asp": 84.9,
+          "gm_pct": 53.1,
+          "cap_gb": 1000,
+          "line": "SN8100",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN8100_2TB": {
+          "rev_m": 7.04,
+          "units_k": 47.0,
+          "asp": 149.9,
+          "gm_pct": 51.0,
+          "cap_gb": 2000,
+          "line": "SN8100",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN8100_4TB": {
+          "rev_m": 2.32,
+          "units_k": 8.3,
+          "asp": 279.9,
+          "gm_pct": 49.7,
+          "cap_gb": 4000,
+          "line": "SN8100",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN850X_1TB": {
+          "rev_m": 11.07,
+          "units_k": 143.6,
+          "asp": 77.1,
+          "gm_pct": 40.7,
+          "cap_gb": 1000,
+          "line": "SN850X",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN850X_2TB": {
+          "rev_m": 8.62,
+          "units_k": 61.3,
+          "asp": 140.6,
+          "gm_pct": 43.1,
+          "cap_gb": 2000,
+          "line": "SN850X",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN850X_4TB": {
+          "rev_m": 2.68,
+          "units_k": 10.1,
+          "asp": 266.3,
+          "gm_pct": 45.0,
+          "cap_gb": 4000,
+          "line": "SN850X",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN7100_1TB": {
+          "rev_m": 7.35,
+          "units_k": 133.9,
+          "asp": 54.9,
+          "gm_pct": 36.4,
+          "cap_gb": 1000,
+          "line": "SN7100",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN7100_2TB": {
+          "rev_m": 3.62,
+          "units_k": 38.1,
+          "asp": 94.9,
+          "gm_pct": 35.1,
+          "cap_gb": 2000,
+          "line": "SN7100",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN770_1TB": {
+          "rev_m": 9.43,
+          "units_k": 153.1,
+          "asp": 61.6,
+          "gm_pct": 32.4,
+          "cap_gb": 1000,
+          "line": "SN770",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN770_2TB": {
+          "rev_m": 4.89,
+          "units_k": 45.4,
+          "asp": 107.8,
+          "gm_pct": 34.1,
+          "cap_gb": 2000,
+          "line": "SN770",
+          "cat": "internal_ssd"
+        },
+        "SD_EXTREME_PRO_1TB": {
+          "rev_m": 14.15,
+          "units_k": 118.5,
+          "asp": 119.4,
+          "gm_pct": 50.6,
+          "cap_gb": 1000,
+          "line": "Extreme Pro",
+          "cat": "external_ssd"
+        },
+        "SD_EXTREME_PRO_2TB": {
+          "rev_m": 8.51,
+          "units_k": 42.2,
+          "asp": 201.5,
+          "gm_pct": 53.0,
+          "cap_gb": 2000,
+          "line": "Extreme Pro",
+          "cat": "external_ssd"
+        },
+        "SD_EXTREME_PRO_4TB": {
+          "rev_m": 2.37,
+          "units_k": 7.2,
+          "asp": 329.9,
+          "gm_pct": 55.5,
+          "cap_gb": 4000,
+          "line": "Extreme Pro",
+          "cat": "external_ssd"
+        },
+        "SD_EXTREME_1TB": {
+          "rev_m": 20.56,
+          "units_k": 239.1,
+          "asp": 86.0,
+          "gm_pct": 43.5,
+          "cap_gb": 1000,
+          "line": "Extreme",
+          "cat": "external_ssd"
+        },
+        "SD_EXTREME_2TB": {
+          "rev_m": 12.3,
+          "units_k": 79.5,
+          "asp": 154.7,
+          "gm_pct": 44.4,
+          "cap_gb": 2000,
+          "line": "Extreme",
+          "cat": "external_ssd"
+        },
+        "SD_EXTREME_4TB": {
+          "rev_m": 3.37,
+          "units_k": 11.1,
+          "asp": 303.4,
+          "gm_pct": 48.1,
+          "cap_gb": 4000,
+          "line": "Extreme",
+          "cat": "external_ssd"
+        },
+        "WD_MY_PASSPORT_1TB": {
+          "rev_m": 10.13,
+          "units_k": 141.5,
+          "asp": 71.6,
+          "gm_pct": 36.5,
+          "cap_gb": 1000,
+          "line": "My Passport",
+          "cat": "external_ssd"
+        },
+        "WD_MY_PASSPORT_2TB": {
+          "rev_m": 3.6,
+          "units_k": 29.2,
+          "asp": 123.4,
+          "gm_pct": 38.4,
+          "cap_gb": 2000,
+          "line": "My Passport",
+          "cat": "external_ssd"
+        },
+        "SD_PRO_PLUS_MICRO_256G": {
+          "rev_m": 14.48,
+          "units_k": 431.0,
+          "asp": 33.6,
+          "gm_pct": 61.1,
+          "cap_gb": 256,
+          "line": "Extreme Pro",
+          "cat": "microsd"
+        },
+        "SD_PRO_PLUS_MICRO_512G": {
+          "rev_m": 8.51,
+          "units_k": 147.5,
+          "asp": 57.7,
+          "gm_pct": 62.7,
+          "cap_gb": 512,
+          "line": "Extreme Pro",
+          "cat": "microsd"
+        },
+        "SD_EXTREME_MICRO_128G": {
+          "rev_m": 11.86,
+          "units_k": 527.1,
+          "asp": 22.5,
+          "gm_pct": 54.2,
+          "cap_gb": 128,
+          "line": "Extreme",
+          "cat": "microsd"
+        },
+        "SD_EXTREME_MICRO_256G": {
+          "rev_m": 28.06,
+          "units_k": 1100.4,
+          "asp": 25.5,
+          "gm_pct": 56.3,
+          "cap_gb": 256,
+          "line": "Extreme",
+          "cat": "microsd"
+        },
+        "SD_EXTREME_MICRO_512G": {
+          "rev_m": 16.09,
+          "units_k": 371.6,
+          "asp": 43.3,
+          "gm_pct": 60.0,
+          "cap_gb": 512,
+          "line": "Extreme",
+          "cat": "microsd"
+        },
+        "SD_EXTREME_MICRO_1TB": {
+          "rev_m": 1.71,
+          "units_k": 18.9,
+          "asp": 90.7,
+          "gm_pct": 63.1,
+          "cap_gb": 1000,
+          "line": "Extreme",
+          "cat": "microsd"
+        },
+        "SD_ULTRA_MICRO_128G": {
+          "rev_m": 15.2,
+          "units_k": 1321.7,
+          "asp": 11.5,
+          "gm_pct": 46.6,
+          "cap_gb": 128,
+          "line": "Ultra",
+          "cat": "microsd"
+        },
+        "SD_ULTRA_MICRO_256G": {
+          "rev_m": 18.41,
+          "units_k": 979.3,
+          "asp": 18.8,
+          "gm_pct": 50.2,
+          "cap_gb": 256,
+          "line": "Ultra",
+          "cat": "microsd"
+        },
+        "SD_ULTRA_MICRO_512G": {
+          "rev_m": 9.28,
+          "units_k": 285.5,
+          "asp": 32.5,
+          "gm_pct": 53.0,
+          "cap_gb": 512,
+          "line": "Ultra",
+          "cat": "microsd"
+        }
+      },
+      "market_intel": {
+        "nand_signal": "tight",
+        "price_trend": "up",
+        "supply_risk": 0.25,
+        "market_context": "NAND 시장: 공급 부족 | 가격 트렌드: 상승 (추정 +7.4%/월) | 공급 리스크: 25%",
+        "nand_cost_delta_pct": 5.92,
+        "demand_delta_pct": -2.22
+      }
+    },
+    {
+      "sim_date": "2025-07",
+      "sim_year": 2025,
+      "sim_month": 7,
+      "quarter": "2025Q3",
+      "real_time": "2026-03-10T12:31:23.875020",
+      "revenue_m": {
+        "external_ssd": 82.5,
+        "internal_ssd": 64.7,
+        "microsd": 135.0
+      },
+      "total_rev_m": 282.2,
+      "gross_margin_pct": {
+        "external_ssd": 42.7,
+        "internal_ssd": 37.4,
+        "microsd": 56.1
+      },
+      "blended_gm_pct": 47.9,
+      "market_share_pct": {
+        "external_ssd": 22.0,
+        "internal_ssd": 17.4,
+        "microsd": 32.0
+      },
+      "nand_cost_per_gb": {
+        "BiCS5": 0.0537,
+        "BiCS6": 0.041,
+        "BiCS8": 0.0371
+      },
+      "channel_mix_pct": {
+        "external_ssd": {
+          "ecommerce": 52.9,
+          "retail": 37.4,
+          "b2b": 9.7
+        },
+        "internal_ssd": {
+          "ecommerce": 58.9,
+          "retail": 26.4,
+          "b2b": 14.7
+        },
+        "microsd": {
+          "ecommerce": 42.9,
+          "retail": 47.4,
+          "b2b": 9.7
+        }
+      },
+      "event": {
+        "type": "market_share_gain",
+        "description": "시장 점유율 +0.5%p 상승"
+      },
+      "promo": {
+        "invest_m": 20.4,
+        "incremental_rev_m": 60.0,
+        "roi": 2.94,
+        "type": "bts"
+      },
+      "sku_revenue": {
+        "WD_BLACK_SN8100_1TB": {
+          "rev_m": 9.18,
+          "units_k": 108.1,
+          "asp": 84.9,
+          "gm_pct": 54.3,
+          "cap_gb": 1000,
+          "line": "SN8100",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN8100_2TB": {
+          "rev_m": 6.96,
+          "units_k": 46.4,
+          "asp": 149.9,
+          "gm_pct": 52.2,
+          "cap_gb": 2000,
+          "line": "SN8100",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN8100_4TB": {
+          "rev_m": 2.3,
+          "units_k": 8.2,
+          "asp": 279.9,
+          "gm_pct": 50.9,
+          "cap_gb": 4000,
+          "line": "SN8100",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN850X_1TB": {
+          "rev_m": 10.69,
+          "units_k": 138.7,
+          "asp": 77.1,
+          "gm_pct": 41.9,
+          "cap_gb": 1000,
+          "line": "SN850X",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN850X_2TB": {
+          "rev_m": 8.32,
+          "units_k": 59.2,
+          "asp": 140.6,
+          "gm_pct": 44.3,
+          "cap_gb": 2000,
+          "line": "SN850X",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN850X_4TB": {
+          "rev_m": 2.59,
+          "units_k": 9.7,
+          "asp": 266.3,
+          "gm_pct": 46.2,
+          "cap_gb": 4000,
+          "line": "SN850X",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN7100_1TB": {
+          "rev_m": 7.27,
+          "units_k": 132.4,
+          "asp": 54.9,
+          "gm_pct": 37.6,
+          "cap_gb": 1000,
+          "line": "SN7100",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN7100_2TB": {
+          "rev_m": 3.58,
+          "units_k": 37.7,
+          "asp": 94.9,
+          "gm_pct": 36.3,
+          "cap_gb": 2000,
+          "line": "SN7100",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN770_1TB": {
+          "rev_m": 9.1,
+          "units_k": 147.7,
+          "asp": 61.6,
+          "gm_pct": 33.6,
+          "cap_gb": 1000,
+          "line": "SN770",
+          "cat": "internal_ssd"
+        },
+        "WD_BLACK_SN770_2TB": {
+          "rev_m": 4.72,
+          "units_k": 43.8,
+          "asp": 107.8,
+          "gm_pct": 35.3,
+          "cap_gb": 2000,
+          "line": "SN770",
+          "cat": "internal_ssd"
+        },
+        "SD_EXTREME_PRO_1TB": {
+          "rev_m": 15.57,
+          "units_k": 130.4,
+          "asp": 119.4,
+          "gm_pct": 50.6,
+          "cap_gb": 1000,
+          "line": "Extreme Pro",
+          "cat": "external_ssd"
+        },
+        "SD_EXTREME_PRO_2TB": {
+          "rev_m": 9.37,
+          "units_k": 46.5,
+          "asp": 201.5,
+          "gm_pct": 53.0,
+          "cap_gb": 2000,
+          "line": "Extreme Pro",
+          "cat": "external_ssd"
+        },
+        "SD_EXTREME_PRO_4TB": {
+          "rev_m": 2.61,
+          "units_k": 7.9,
+          "asp": 329.9,
+          "gm_pct": 55.5,
+          "cap_gb": 4000,
+          "line": "Extreme Pro",
+          "cat": "external_ssd"
+        },
+        "SD_EXTREME_1TB": {
+          "rev_m": 22.61,
+          "units_k": 262.9,
+          "asp": 86.0,
+          "gm_pct": 43.5,
+          "cap_gb": 1000,
+          "line": "Extreme",
+          "cat": "external_ssd"
+        },
+        "SD_EXTREME_2TB": {
+          "rev_m": 13.54,
+          "units_k": 87.5,
+          "asp": 154.7,
+          "gm_pct": 44.4,
+          "cap_gb": 2000,
+          "line": "Extreme",
+          "cat": "external_ssd"
+        },
+        "SD_EXTREME_4TB": {
+          "rev_m": 3.7,
+          "units_k": 12.2,
+          "asp": 303.4,
+          "gm_pct": 48.1,
+          "cap_gb": 4000,
+          "line": "Extreme",
+          "cat": "external_ssd"
+        },
+        "WD_MY_PASSPORT_1TB": {
+          "rev_m": 11.15,
+          "units_k": 155.7,
+          "asp": 71.6,
+          "gm_pct": 36.5,
+          "cap_gb": 1000,
+          "line": "My Passport",
+          "cat": "external_ssd"
+        },
+        "WD_MY_PASSPORT_2TB": {
+          "rev_m": 3.96,
+          "units_k": 32.1,
+          "asp": 123.4,
+          "gm_pct": 38.4,
+          "cap_gb": 2000,
+          "line": "My Passport",
+          "cat": "external_ssd"
+        },
+        "SD_PRO_PLUS_MICRO_256G": {
+          "rev_m": 15.81,
+          "units_k": 470.5,
+          "asp": 33.6,
+          "gm_pct": 62.2,
+          "cap_gb": 256,
+          "line": "Extreme Pro",
+          "cat": "microsd"
+        },
+        "SD_PRO_PLUS_MICRO_512G": {
+          "rev_m": 9.29,
+          "units_k": 161.0,
+          "asp": 57.7,
+          "gm_pct": 63.8,
+          "cap_gb": 512,
+          "line": "Extreme Pro",
+          "cat": "microsd"
+        },
+        "SD_EXTREME_MICRO_128G": {
+          "rev_m": 12.95,
+          "units_k": 575.6,
+          "asp": 22.5,
+          "gm_pct": 55.3,
+          "cap_gb": 128,
+          "line": "Extreme",
+          "cat": "microsd"
+        },
+        "SD_EXTREME_MICRO_256G": {
+          "rev_m": 30.65,
+          "units_k": 1202.0,
+          "asp": 25.5,
+          "gm_pct": 57.4,
+          "cap_gb": 256,
+          "line": "Extreme",
+          "cat": "microsd"
+        },
+        "SD_EXTREME_MICRO_512G": {
+          "rev_m": 17.57,
+          "units_k": 405.8,
+          "asp": 43.3,
+          "gm_pct": 61.1,
+          "cap_gb": 512,
+          "line": "Extreme",
+          "cat": "microsd"
+        },
+        "SD_EXTREME_MICRO_1TB": {
+          "rev_m": 1.87,
+          "units_k": 20.6,
+          "asp": 90.7,
+          "gm_pct": 64.2,
+          "cap_gb": 1000,
+          "line": "Extreme",
+          "cat": "microsd"
+        },
+        "SD_ULTRA_MICRO_128G": {
+          "rev_m": 16.6,
+          "units_k": 1443.5,
+          "asp": 11.5,
+          "gm_pct": 47.7,
+          "cap_gb": 128,
+          "line": "Ultra",
+          "cat": "microsd"
+        },
+        "SD_ULTRA_MICRO_256G": {
+          "rev_m": 20.11,
+          "units_k": 1069.7,
+          "asp": 18.8,
+          "gm_pct": 51.3,
+          "cap_gb": 256,
+          "line": "Ultra",
+          "cat": "microsd"
+        },
+        "SD_ULTRA_MICRO_512G": {
+          "rev_m": 10.14,
+          "units_k": 312.0,
+          "asp": 32.5,
+          "gm_pct": 54.1,
+          "cap_gb": 512,
+          "line": "Ultra",
+          "cat": "microsd"
+        }
+      },
       "market_intel": {
         "nand_signal": "tight",
         "price_trend": "up",
