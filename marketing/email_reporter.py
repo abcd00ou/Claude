@@ -6,6 +6,7 @@ Email Reporter — Dynamic HTML Report + VP PPT 첨부
 수신: abcd00ou@gmail.com
 """
 import os
+import random as _rnd
 import smtplib
 from datetime import datetime
 from email import encoders
@@ -156,6 +157,256 @@ SEASON_CONTEXT = {
     range(7, 10):  ("Q3 BTS 시즌", "Back-to-School 캠페인 최고조 — 재고 충분 여부 확인"),
     range(10, 13): ("Q4 홀리데이", "최대 매출 시즌 — 재고, 물류, 광고 풀 가동"),
 }
+
+
+# ── 이벤트별 액션 아이템 풀 (8개 → 시뮬 월 기반 4개 랜덤 선택) ──────────
+EVENT_ACTION_POOL = {
+    "competitor_price_cut": [
+        "Amazon 3P 가격 모니터링 강화 (일 2회 → 4회 체크)",
+        "Extreme Pro 시리즈 프리미엄 정당화 콘텐츠 즉시 업데이트",
+        "주요 SKU 가격 방어선 설정 및 VP 승인 요청",
+        "채널 파트너 가격 보호 정책 발동 여부 검토",
+        "경쟁사 핵심 셀링포인트 분석 — 대응 메시지 개발",
+        "번들 구성으로 직접적 가격 비교 회피 전략 수립",
+        "고ASP·고마진 SKU 집중 홍보로 포트폴리오 믹스 방어",
+        "리테일 파트너 MDF 활용 공동 캠페인 기획",
+    ],
+    "nand_cost_spike": [
+        "BiCS8 전환 가속화로 원가 이점 선점",
+        "원가 급등 SKU 판가 인상 시나리오 VP 보고 준비",
+        "공급 계약 재검토 — 고정가(fixed-price) 비중 확대",
+        "BiCS8 고마진 SKU 중심으로 즉시 믹스 전환",
+        "단기 재고 선매입 여부 CFO와 긴급 협의",
+        "SKU별 원가 민감도 분석 — 손익분기 판가 재계산",
+        "BiCS5 잔여 재고 소진 가속 — 저마진 SKU 프로모 검토",
+        "생산팀과 Q/Q 원가 변화율 공유 후 생산계획 재조정",
+    ],
+    "market_share_gain": [
+        "점유율 상승 주도 SKU 생산량 즉시 증대 요청",
+        "성공 채널 마케팅 예산 추가 배정 제안서 작성",
+        "경쟁사 이탈 고객 타겟 리텐션 캠페인 기획",
+        "다음 분기 점유율 목표 상향 조정 검토",
+        "점유율 상승 채널·SKU별 기여도 분해 분석",
+        "핵심 리테일 파트너 추가 선반 공간 협상 착수",
+        "모멘텀 가시화 VP 보고서 — 성공 사례 문서화",
+        "경쟁사 대응 프로모션 타이밍 사전 파악",
+    ],
+    "promo_opportunity": [
+        "캠페인 크리에이티브 제작 착수 (리드타임 3주 확보)",
+        "Amazon 딜 페이지 예약 및 프라임 배너 슬롯 확보",
+        "소셜 인플루언서 브리핑 완료 및 서포트 요청",
+        "프로모 기간 재고 사전 배치 — 물류팀 즉시 협업",
+        "한정 번들 SKU 구성 및 가격 구조 확정",
+        "성과 KPI 사전 정의 (노출·CTR·전환율·ROI 목표)",
+        "경쟁사 프로모 캘린더 확인 — 겹치지 않도록 조정",
+        "프로모 예산 CFO 사전 승인 (리드타임 1주 필요)",
+    ],
+    "supply_constraint": [
+        "고마진 SKU 우선 배정, 저마진 SKU 할당 축소",
+        "채널 파트너에 납기 지연 가능성 사전 통보",
+        "대체 소싱 옵션 긴급 검토 — SCM팀 협업",
+        "재고 가시성 강화 — SCM 시스템 일일 업데이트",
+        "고객 주문 우선순위 매트릭스 재설정 (GM 기준)",
+        "공급 제약 해소 타임라인 생산팀과 공유",
+        "채널별 allocation cap 설정으로 쏠림 방지",
+        "3PL 창고 입출고 우선순위 긴급 조정 요청",
+    ],
+    "none": [
+        "월간 실적 vs 분기 목표 갭 분석 리뷰 완료",
+        "수요 예측 → 생산 계획 동기화 (다음 달 준비)",
+        "채널별 재고 현황 점검 — 과다/부족 SKU 식별",
+        "진행 중 마케팅 캠페인 ROI 중간 집계",
+        "분기 P&L 중간 점검 — VP 에스컬레이션 필요 여부 판단",
+        "SKU별 sell-through rate 업데이트 및 이상치 확인",
+        "경쟁사 신제품 출시 모니터링 — 영향도 분석",
+        "Amazon 리뷰 평점 추이 확인 — 품질 이슈 조기 포착",
+    ],
+}
+
+
+def _pick_actions(event_type: str, sim_month: int) -> list[str]:
+    """시뮬 월을 시드로 액션 아이템 풀에서 4개 랜덤 선택 (매월 다른 조합)."""
+    pool = EVENT_ACTION_POOL.get(event_type, EVENT_ACTION_POOL["none"])
+    rng = _rnd.Random(sim_month * 13 + abs(hash(event_type)) % 97)
+    return rng.sample(pool, min(4, len(pool)))
+
+
+def _sku_label(sku: str) -> str:
+    """SKU ID → 읽기 쉬운 짧은 이름."""
+    return (sku
+            .replace("WD_BLACK_", "")
+            .replace("SD_PRO_PLUS_MICRO_", "Extreme Pro microSD ")
+            .replace("SD_EXTREME_MICRO_", "Extreme microSD ")
+            .replace("SD_ULTRA_MICRO_", "Ultra microSD ")
+            .replace("SD_EXTREME_PRO_", "Extreme Pro ")
+            .replace("SD_EXTREME_", "Extreme ")
+            .replace("WD_MY_PASSPORT_", "My Passport ")
+            .replace("_", " "))
+
+
+def _cap_str(gb: int) -> str:
+    return f"{gb}GB" if gb < 1000 else f"{gb // 1000}TB"
+
+
+def _nand_body_dynamic(nand_signal: str, price_change_pct: float,
+                        supply_risk: float, nand_cost_delta_pct: float) -> str:
+    """NAND 시장 분석 본문 — 실제 수치를 삽입해 매번 다르게 생성."""
+    if nand_signal == "loose":
+        return (
+            f"현재 NAND 시장은 공급 과잉 국면으로, 스팟 가격이 월 약 "
+            f"{abs(price_change_pct):.1f}% 하락세를 유지하고 있습니다. "
+            f"원가 절감 효과는 약 {abs(nand_cost_delta_pct):.1f}%/월로 추정되며, "
+            "공급 리스크는 낮습니다. "
+            "이는 WD/SanDisk에게 두 가지 기회를 제공합니다: "
+            "(1) 원가 하락분을 GM 개선에 활용하거나, "
+            "(2) 전략적 가격 인하로 경쟁사 대비 가격 포지션을 개선할 수 있습니다. "
+            "BiCS8 전환 속도를 높여 원가 이점을 극대화할 것을 권장합니다."
+        )
+    elif nand_signal == "tight":
+        risk_level = "높음 🔴" if supply_risk > 0.20 else "보통 🟡"
+        return (
+            f"NAND 공급 부족 신호가 감지되고 있습니다. "
+            f"스팟 가격 월 약 +{abs(price_change_pct):.1f}% 상승이 예상되며, "
+            f"공급 리스크 지수 {supply_risk * 100:.0f}%({risk_level})입니다. "
+            "원가 압박이 예상되므로 현 재고 수준 점검과 "
+            "고정가(fixed-price) 구매 계약 비중 확대가 필요합니다. "
+            f"저용량(≤512GB) SKU 수요 강세가 예상되므로, "
+            "생산 우선순위를 1TB 이하 SKU 중심으로 조정할 것을 권장합니다."
+        )
+    else:
+        direction = "완만한 하락" if price_change_pct < 0 else "소폭 상승"
+        return (
+            f"NAND 시장은 현재 공급·수요 균형 상태입니다. "
+            f"가격 변화율은 약 {price_change_pct:+.1f}%/월({direction}) 추세로, "
+            "급격한 변동 가능성은 낮습니다. "
+            "계획된 제품 로드맵과 프로모션 일정을 예정대로 진행하되, "
+            "TrendForce 월간 보고서를 통해 시장 변화를 지속 모니터링하세요."
+        )
+
+
+def _build_spotlight(sim_data: dict, history: list, nand_signal: str) -> str:
+    """
+    SKU 데이터 + 시뮬 히스토리 기반으로 매월 다른 '이달의 하이라이트' HTML 생성.
+    - 매출 1위 SKU, 최고 수익성 SKU, 저조 SKU, MoM 변화, NAND 신호별 인사이트,
+      microSD 판매량 1위 등 7가지 후보 중 시뮬 월 기반으로 4개 선택.
+    """
+    sku_rev   = sim_data.get("sku_revenue", {})
+    sim_month = sim_data.get("sim_month", 1)
+    mi        = sim_data.get("market_intel", {})
+    price_chg = mi.get("nand_cost_delta_pct", -2.0)
+
+    bullets: list[str] = []
+
+    # ① MoM 매출 변화 (항상 포함)
+    if len(history) >= 2:
+        curr     = sim_data.get("total_rev_m", 0)
+        prev_r   = history[-2].get("total_rev_m", curr)
+        prev_gm  = history[-2].get("blended_gm_pct", sim_data.get("blended_gm_pct", 0))
+        curr_gm  = sim_data.get("blended_gm_pct", 0)
+        if prev_r > 0:
+            chg = (curr - prev_r) / prev_r * 100
+            col = "#2e7d32" if chg > 0 else "#c62828"
+            sym = "▲" if chg > 0 else "▼"
+            gm_chg = curr_gm - prev_gm
+            gm_col = "#2e7d32" if gm_chg > 0 else "#c62828"
+            bullets.append(
+                f"📊 <strong>전월 대비:</strong> 총 매출 "
+                f"<span style='color:{col};font-weight:700'>{sym}{abs(chg):.1f}%</span> "
+                f"(${prev_r:.1f}M→${curr:.1f}M) | GM "
+                f"<span style='color:{gm_col}'>{gm_chg:+.1f}%p</span>"
+            )
+
+    if sku_rev:
+        all_rev = sum(d["rev_m"] for d in sku_rev.values()) or 1
+
+        # ② 매출 1위 SKU
+        top_s, top_d = max(sku_rev.items(), key=lambda x: x[1]["rev_m"])
+        bullets.append(
+            f"🥇 <strong>월 매출 1위:</strong> {_sku_label(top_s)} {_cap_str(top_d['cap_gb'])} — "
+            f"${top_d['rev_m']:.1f}M / {top_d['units_k']:.0f}K units / ASP ${top_d['asp']:.0f}"
+        )
+
+        # ③ 최고 수익성 SKU
+        gm_s, gm_d = max(sku_rev.items(), key=lambda x: x[1]["gm_pct"])
+        bullets.append(
+            f"💎 <strong>최고 수익성:</strong> {_sku_label(gm_s)} {_cap_str(gm_d['cap_gb'])} — "
+            f"GM {gm_d['gm_pct']:.1f}% (매출 ${gm_d['rev_m']:.1f}M)"
+        )
+
+        # ④ NAND 신호별 용량 인사이트
+        if nand_signal == "tight":
+            low_rev = sum(d["rev_m"] for d in sku_rev.values() if d["cap_gb"] <= 512)
+            pct = low_rev / all_rev * 100
+            bullets.append(
+                f"⚠️ <strong>NAND Tight 영향:</strong> ≤512GB SKU 비중 {pct:.1f}% — "
+                f"저용량 집중 현상 관찰 중, 생산 배분 조정 권장"
+            )
+        elif nand_signal == "loose":
+            high_rev = sum(d["rev_m"] for d in sku_rev.values() if d["cap_gb"] >= 2000)
+            pct = high_rev / all_rev * 100
+            bullets.append(
+                f"🟢 <strong>NAND Loose 효과:</strong> 2TB+ 고용량 비중 {pct:.1f}% — "
+                f"가격 하락으로 고용량 수요 회복 중"
+            )
+        else:
+            # neutral: SN8100 vs SN850X 비교
+            sn8100_rev = sum(d["rev_m"] for s, d in sku_rev.items() if "SN8100" in s)
+            sn850x_rev = sum(d["rev_m"] for s, d in sku_rev.items() if "SN850X" in s)
+            if sn8100_rev and sn850x_rev:
+                ratio = sn8100_rev / sn850x_rev * 100
+                bullets.append(
+                    f"🔄 <strong>신구 플래그십 전환:</strong> SN8100 매출이 SN850X의 {ratio:.0f}% 수준 — "
+                    f"BiCS8 신제품 전환 속도 {'가속' if ratio > 80 else '진행 중'}"
+                )
+
+        # ⑤ microSD 판매량 1위
+        msd = {s: d for s, d in sku_rev.items() if d["cat"] == "microsd"}
+        if msd:
+            vol_s, vol_d = max(msd.items(), key=lambda x: x[1]["units_k"])
+            bullets.append(
+                f"📦 <strong>microSD 판매량 1위:</strong> {_sku_label(vol_s)} {_cap_str(vol_d['cap_gb'])} — "
+                f"{vol_d['units_k']:.0f}K units / ASP ${vol_d['asp']:.0f} / GM {vol_d['gm_pct']:.1f}%"
+            )
+
+        # ⑥ 주의 필요 SKU (매출 최하위, 단 microSD 1TB 등 원래 작은 SKU 제외)
+        big_skus = {s: d for s, d in sku_rev.items() if d["cat"] != "microsd" or d["cap_gb"] >= 1000}
+        if big_skus:
+            low_s, low_d = min(big_skus.items(), key=lambda x: x[1]["rev_m"])
+            bullets.append(
+                f"🔻 <strong>저조 SKU 주의:</strong> {_sku_label(low_s)} {_cap_str(low_d['cap_gb'])} — "
+                f"${low_d['rev_m']:.1f}M / {low_d['units_k']:.0f}K units (재고·프로모 검토 권장)"
+            )
+
+        # ⑦ BiCS8 원가 동향
+        nand_costs = sim_data.get("nand_cost_per_gb", {})
+        if "BiCS8" in nand_costs and "BiCS6" in nand_costs:
+            gap_pct = (nand_costs["BiCS6"] - nand_costs["BiCS8"]) / nand_costs["BiCS6"] * 100
+            bullets.append(
+                f"⚙️ <strong>BiCS8 원가 우위:</strong> ${nand_costs['BiCS8']:.4f}/GB — "
+                f"BiCS6 대비 {gap_pct:.1f}% 저렴 (원가 {price_chg:+.1f}%/월 조정 반영)"
+            )
+
+    if not bullets:
+        return ""
+
+    # 시뮬 월 기반으로 셔플 후 4개 선택 (①MoM은 항상 포함)
+    rng = _rnd.Random(sim_month * 19 + 5)
+    fixed   = bullets[:1]          # MoM 항상 첫 번째
+    rotated = bullets[1:]
+    rng.shuffle(rotated)
+    selected = fixed + rotated[:3]
+
+    items = "".join(
+        f'<li style="margin-bottom:8px;font-size:12px;color:#333;line-height:1.6">{b}</li>'
+        for b in selected
+    )
+    return (
+        '<div class="section-title">🔎 이달의 하이라이트</div>'
+        '<div style="background:#f8f9ff;border:1px solid #dde4ff;border-radius:8px;'
+        'padding:14px 18px;margin:12px 0">'
+        f'<ul style="margin:0;padding-left:20px">{items}</ul>'
+        '</div>'
+    )
 
 
 def _get_season_context(month: int) -> tuple[str, str]:
@@ -324,10 +575,21 @@ def _build_html(sim_data: dict, agent_results: dict,
         for gen, cost in nand.items()
     )
 
-    # ── Action Items (이벤트별 동적) ─────────────────────────────
+    # ── Action Items (시뮬 월 기반 풀에서 4개 랜덤 선택) ────────────
     action_items_html = "".join(
         f'<li style="margin-bottom:6px;font-size:13px">{item}</li>'
-        for item in cfg["action_items"]
+        for item in _pick_actions(event_type, sim_month)
+    )
+
+    # ── 이달의 하이라이트 (SKU 데이터 기반 동적 생성) ──────────────
+    spotlight_html = _build_spotlight(sim_data, history, nand_signal)
+
+    # ── NAND 분석 본문 (실제 수치 삽입) ─────────────────────────────
+    nand_body_text = _nand_body_dynamic(
+        nand_signal,
+        market_intel.get("price_change_pct", mi.get("nand_cost_delta_pct", -2.0)) if market_intel else mi.get("nand_cost_delta_pct", -2.0),
+        mi.get("supply_risk", 0.10),
+        mi.get("nand_cost_delta_pct", -2.0),
     )
 
     # ── 프로모 섹션 ──────────────────────────────────────────────
@@ -458,7 +720,7 @@ def _build_html(sim_data: dict, agent_results: dict,
       &nbsp;|&nbsp;
       공급 리스크: <strong>{mi.get('supply_risk', 0.10)*100:.0f}%</strong>
     </span>
-    <p style="margin:8px 0 4px;font-size:12px;color:#444">{nand_analysis['body']}</p>
+    <p style="margin:8px 0 4px;font-size:12px;color:#444">{nand_body_text}</p>
     <div style="font-size:11px;font-weight:700;color:{nand_analysis['color']}">
       → {nand_analysis['recommendation']}
     </div>
@@ -474,6 +736,8 @@ def _build_html(sim_data: dict, agent_results: dict,
   </div>
 
   {promo_html}
+
+  {spotlight_html}
 
   <!-- SKU 세분화 실적 -->
   <div class="section-title">📦 제품 라인 × 용량별 월간 실적 (SKU 세분화)</div>
