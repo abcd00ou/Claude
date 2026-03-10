@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>데모 1 — AI가 30초 만에 만든 제품 랜딩 페이지</title>
+<style>
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Pretendard', 'Apple SD Gothic Neo', -apple-system, sans-serif; }
+.tag { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
+.btn {
+  display: inline-block; padding: 14px 32px; border-radius: 8px;
+  font-size: 16px; font-weight: 700; text-decoration: none; cursor: pointer;
+  border: none; transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
+
+:root {
+  --primary: #1565C0;
+  --accent: #FF6F00;
+  --dark: #0D1B2A;
+}
+body { background: #f8f9fa; color: #212121; }
+
+/* 배너 */
+.demo-banner {
+  background: linear-gradient(135deg, #FF6F00, #FF8F00);
+  color: #fff; text-align: center; padding: 12px;
+  font-size: 14px; font-weight: 600;
+}
+
+/* 히어로 */
+.hero {
+  background: linear-gradient(135deg, var(--dark) 0%, #1565C0 100%);
+  color: #fff; padding: 100px 40px;
+  text-align: center; position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: radial-gradient(circle, rgba(255,111,0,0.1) 0%, transparent 60%);
+}
+.hero h1 { font-size: 52px; font-weight: 900; margin-bottom: 20px; line-height: 1.2; }
+.hero h1 span { color: #FF8F00; }
+.hero p { font-size: 20px; opacity: 0.85; max-width: 600px; margin: 0 auto 40px; }
+.hero-badge {
+  background: rgba(255,255,255,0.1); backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.2); border-radius: 50px;
+  padding: 8px 20px; font-size: 13px; margin-bottom: 30px; display: inline-block;
+}
+.btn-primary { background: #FF6F00; color: #fff; }
+.btn-outline { background: transparent; color: #fff; border: 2px solid #fff; margin-left: 12px; }
+
+/* 특징 섹션 */
+.features { max-width: 1100px; margin: 80px auto; padding: 0 40px; }
+.features h2 { text-align: center; font-size: 36px; color: var(--dark); margin-bottom: 16px; }
+.features-sub { text-align: center; color: #757575; margin-bottom: 60px; font-size: 18px; }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.feature-card {
+  background: #fff; border-radius: 16px; padding: 36px 28px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06); transition: transform 0.2s;
+}
+.feature-card:hover { transform: translateY(-4px); }
+.feature-icon { font-size: 40px; margin-bottom: 16px; }
+.feature-card h3 { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
+.feature-card p { color: #616161; font-size: 14px; line-height: 1.7; }
+
+/* 비교 섹션 */
+.comparison { background: var(--dark); padding: 80px 40px; }
+.comparison h2 { text-align: center; color: #fff; font-size: 36px; margin-bottom: 12px; }
+.comparison-sub { text-align: center; color: #90A4AE; margin-bottom: 60px; }
+.compare-grid { max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.compare-card { background: #1A2744; border-radius: 16px; padding: 32px; }
+.compare-card.before { border-top: 4px solid #EF5350; }
+.compare-card.after { border-top: 4px solid #66BB6A; }
+.compare-card h3 { font-size: 22px; font-weight: 700; margin-bottom: 24px; }
+.compare-card.before h3 { color: #EF9A9A; }
+.compare-card.after h3 { color: #A5D6A7; }
+.compare-item { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+.compare-item:last-child { border-bottom: none; }
+.compare-item .label { font-size: 12px; color: #78909C; margin-bottom: 4px; }
+.compare-item .value { color: #ECEFF1; font-size: 14px; }
+
+/* 프롬프트 섹션 */
+.prompt-section { max-width: 900px; margin: 80px auto; padding: 0 40px; }
+.prompt-section h2 { font-size: 32px; color: var(--dark); margin-bottom: 12px; }
+.prompt-section p { color: #757575; margin-bottom: 32px; }
+.prompt-box {
+  background: #0D1B2A; border-radius: 12px; padding: 28px 32px;
+  border-left: 4px solid #FF6F00;
+}
+.prompt-label { color: #FF8F00; font-size: 12px; font-weight: 700; margin-bottom: 12px; }
+.prompt-text { color: #ECEFF1; font-size: 14px; line-height: 1.8; font-family: monospace; }
+
+/* CTA */
+.cta { background: linear-gradient(135deg, #FF6F00, #E65100); padding: 80px 40px; text-align: center; }
+.cta h2 { color: #fff; font-size: 36px; font-weight: 900; margin-bottom: 16px; }
+.cta p { color: rgba(255,255,255,0.85); font-size: 18px; margin-bottom: 40px; }
+.btn-white { background: #fff; color: #E65100; }
+
+/* 푸터 */
+footer {
+  background: var(--dark); color: #546E7A; text-align: center;
+  padding: 24px; font-size: 13px;
+}
+</style>
+</head>
+<body>
+
+<div class="demo-banner">
+  🤖 이 페이지는 AI(Claude)가 약 30초 만에 생성한 데모입니다 — AI 워크플로우 변화 강의용 예시
+</div>
+
+<section class="hero">
+  <div class="hero-badge">⚡ NEW — AI 시대의 스토리지 솔루션</div>
+  <h1>데이터를 <span>더 빠르게</span><br>더 안전하게</h1>
+  <p>차세대 NVMe SSD로 업무 생산성을 2배 높이세요.<br>AI 워크플로우에 최적화된 성능.</p>
+  <a href="#" class="btn btn-primary">지금 시작하기</a>
+  <a href="#" class="btn btn-outline">사양 보기</a>
+</section>
+
+<section class="features">
+  <h2>왜 선택해야 할까요?</h2>
+  <p class="features-sub">3가지 핵심 이유</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>초고속 전송</h3>
+      <p>최대 7,450MB/s 읽기 속도로 대용량 파일도 눈 깜짝할 새에. AI 모델 로딩 시간 80% 단축.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🛡️</div>
+      <h3>데이터 보안</h3>
+      <p>AES 256비트 암호화 및 충격 방지 설계로 소중한 데이터를 완벽하게 보호합니다.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔋</div>
+      <h3>저전력 설계</h3>
+      <p>업계 최저 전력 소비로 노트북 배터리 수명을 15% 연장. 이동 중에도 효율적으로.</p>
+    </div>
+  </div>
+</section>
+
+<section class="comparison">
+  <h2>Before / After</h2>
+  <p class="comparison-sub">기존 SSD vs AI 시대 SSD</p>
+  <div class="compare-grid">
+    <div class="compare-card before">
+      <h3>😓 기존 방식</h3>
+      <div class="compare-item">
+        <div class="label">읽기 속도</div>
+        <div class="value">3,500 MB/s</div>
+      </div>
+      <div class="compare-item">
+        <div class="label">AI 모델 로딩</div>
+        <div class="value">약 45초</div>
+      </div>
+      <div class="compare-item">
+        <div class="label">대용량 파일 전송</div>
+        <div class="value">100GB = 약 29초</div>
+      </div>
+      <div class="compare-item">
+        <div class="label">배터리 소비</div>
+        <div class="value">높음 (4.5W)</div>
+      </div>
+    </div>
+    <div class="compare-card after">
+      <h3>🚀 신제품 적용</h3>
+      <div class="compare-item">
+        <div class="label">읽기 속도</div>
+        <div class="value">7,450 MB/s ↑ 2.1배</div>
+      </div>
+      <div class="compare-item">
+        <div class="label">AI 모델 로딩</div>
+        <div class="value">약 9초 ↓ 80%</div>
+      </div>
+      <div class="compare-item">
+        <div class="label">대용량 파일 전송</div>
+        <div class="value">100GB = 약 14초 ↑</div>
+      </div>
+      <div class="compare-item">
+        <div class="label">배터리 소비</div>
+        <div class="value">낮음 (2.8W) ↓ 38%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="prompt-section">
+  <h2>이 페이지를 만든 프롬프트</h2>
+  <p>아래 프롬프트 하나로 이 랜딩 페이지가 생성되었습니다.</p>
+  <div class="prompt-box">
+    <div class="prompt-label">USER PROMPT →</div>
+    <div class="prompt-text">
+"NVMe SSD 제품 소개 랜딩 페이지를 HTML로 만들어줘.<br>
+히어로 섹션에 제품 핵심 가치 3가지, Before/After 성능 비교,<br>
+구매 유도 CTA 포함. 다크 배경에 오렌지 액센트 컬러 사용.<br>
+B2C 소비자 대상, 감성적이면서도 데이터 기반 설득력 있게."
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>지금 AI로 시작하세요</h2>
+  <p>이런 페이지, 이제는 30초면 만들 수 있습니다.</p>
+  <a href="#" class="btn btn-white">무료로 시작하기</a>
+</section>
+
+<footer>
+  <p>🤖 AI Workflow Lecture Demo — Generated by Claude in ~30 seconds | 2026-03-11</p>
+</footer>
+
+</body>
+</html>
