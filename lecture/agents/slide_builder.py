@@ -30,6 +30,9 @@ from config import (
     INDUSTRY_STATS, JOB_STATS, TRIE_FORMULA,
     TOOL_MATRIX, THIRTY_DAY_PLAN, CAUTION_ITEMS,
     TOKEN_MEMORY, CONTEXT_EVOLUTION,
+    GPU_DATA, TRANSFORMER_DATA, TRAINING_INFERENCE_DATA,
+    SCALING_LAWS_DATA, VRAM_KVCACHE_DATA, MULTIMODAL_DATA,
+    AI_FRONTIER_2026,
 )
 
 # ─────────────────────────────────────────────────────────────────
@@ -1590,24 +1593,633 @@ CH5_AGENTS = [
 
 
 # ─────────────────────────────────────────────────────────────────
+# PIL CHART — GPU Hardware Timeline
+# ─────────────────────────────────────────────────────────────────
+
+def pil_hardware_bar(data: list, w: int = 2400, h: int = 800) -> "io.BytesIO | None":
+    """GPU tflops 진화 수평 로그 막대 차트."""
+    if not PIL_AVAILABLE:
+        return None
+    from PIL import Image, ImageDraw
+    img = Image.new("RGB", (w, h), (10, 22, 48))
+    draw = ImageDraw.Draw(img)
+    font_sm, font_md, font_lg = _kfont(12), _kfont(15), _kfont(18)
+
+    max_val = max(d["tflops"] for d in data)
+    import math
+    log_max = math.log10(max_val + 1)
+    bar_area_w = int(w * 0.55)
+    bar_area_x = int(w * 0.22)
+    bar_h = int((h - 80) / len(data)) - 14
+    pad_top = 50
+
+    # Title
+    _draw_center(draw, "GPU Computing Power 진화 (TFLOPS)", w // 2, 25, font_lg, (150, 200, 255))
+
+    colors = ["#94A3B8", "#64748B", "#1D4ED8", "#1D4ED8", "#0D9488", "#6D28D9"]
+    for i, d in enumerate(data):
+        y = pad_top + i * (bar_h + 14)
+        log_val = math.log10(d["tflops"] + 1)
+        bar_w = int(bar_area_w * log_val / log_max)
+
+        color = colors[i % len(colors)]
+        r2, g2, b2 = int(color[1:3], 16), int(color[3:5], 16), int(color[5:7], 16)
+
+        # Year + Model label
+        label = f"{d['year']}  {d['model']}"
+        try:
+            draw.text((10, y + bar_h // 2 - 8), label, font=font_md, fill=(200, 220, 255))
+        except Exception:
+            draw.text((10, y + bar_h // 2 - 8), label, fill=(200, 220, 255))
+
+        # Bar
+        draw.rectangle([bar_area_x, y, bar_area_x + bar_w, y + bar_h], fill=(r2, g2, b2))
+
+        # TFLOPS value
+        val_str = f"{d['tflops']:,.0f} TFLOPS"
+        try:
+            draw.text((bar_area_x + bar_w + 10, y + bar_h // 2 - 8), val_str, font=font_sm, fill=(200, 200, 200))
+        except Exception:
+            draw.text((bar_area_x + bar_w + 10, y + bar_h // 2 - 8), val_str, fill=(200, 200, 200))
+
+        # Event text (right side)
+        ev_x = int(w * 0.78)
+        try:
+            draw.text((ev_x, y + bar_h // 2 - 8), d["event"], font=font_sm, fill=(150, 200, 150))
+        except Exception:
+            draw.text((ev_x, y + bar_h // 2 - 8), d["event"], fill=(150, 200, 150))
+
+    buf = io.BytesIO()
+    img.save(buf, format="PNG")
+    buf.seek(0)
+    return buf
+
+
+def pil_cpu_gpu_compare(w: int = 1600, h: int = 600) -> "io.BytesIO | None":
+    """CPU vs GPU 핵심 비교 다이어그램."""
+    if not PIL_AVAILABLE:
+        return None
+    from PIL import Image, ImageDraw
+    img = Image.new("RGB", (w, h), (248, 250, 252))
+    draw = ImageDraw.Draw(img)
+    font_sm, font_md, font_lg = _kfont(12), _kfont(16), _kfont(22)
+
+    half = w // 2
+    # CPU panel
+    draw.rectangle([20, 20, half - 20, h - 20], fill=(15, 43, 76))
+    _draw_center(draw, "CPU", half // 2, 55, font_lg, (255, 255, 255))
+    _draw_center(draw, "직렬(순차) 처리", half // 2, 95, font_md, (150, 180, 255))
+
+    # Draw 4 big cores
+    core_colors = [(29, 78, 216)] * 4
+    for i in range(4):
+        cx = int(half * 0.2 + i * half * 0.18)
+        cy = 160
+        draw.rectangle([cx - 35, cy, cx + 35, cy + 80], fill=(29, 78, 216))
+        _draw_center(draw, "CORE", cx, cy + 35, font_sm, (255, 255, 255))
+
+    _draw_center(draw, "천재 수학자 4명", half // 2, 280, font_md, (200, 220, 255))
+    _draw_center(draw, "복잡한 계산을", half // 2, 310, font_sm, (150, 170, 200))
+    _draw_center(draw, "순서대로 처리", half // 2, 335, font_sm, (150, 170, 200))
+
+    # Small CPU core count
+    _draw_center(draw, "8~32개 코어", half // 2, h - 70, font_md, (100, 200, 100))
+    _draw_center(draw, "복잡한 로직, 조건 분기에 강함", half // 2, h - 40, font_sm, (150, 170, 200))
+
+    # GPU panel
+    draw.rectangle([half + 20, 20, w - 20, h - 20], fill=(10, 43, 10))
+    _draw_center(draw, "GPU", half + (w - half) // 2, 55, font_lg, (255, 255, 255))
+    _draw_center(draw, "병렬(동시) 처리", half + (w - half) // 2, 95, font_md, (100, 255, 150))
+
+    # Draw many small cores
+    core_w, core_h_px = 28, 18
+    cols_g, rows_g = 12, 6
+    start_x = half + 30
+    start_y = 130
+    for row in range(rows_g):
+        for col in range(cols_g):
+            cx = start_x + col * (core_w + 4)
+            cy = start_y + row * (core_h_px + 4)
+            draw.rectangle([cx, cy, cx + core_w, cy + core_h_px], fill=(13, 107, 79))
+
+    _draw_center(draw, "단순 계산원 수만 명", half + (w - half) // 2, 280, font_md, (150, 255, 180))
+    _draw_center(draw, "행렬 곱셈을", half + (w - half) // 2, 310, font_sm, (150, 200, 150))
+    _draw_center(draw, "동시에 처리", half + (w - half) // 2, 335, font_sm, (150, 200, 150))
+
+    _draw_center(draw, "수천~수만 개 코어", half + (w - half) // 2, h - 70, font_md, (100, 255, 100))
+    _draw_center(draw, "AI 학습·추론 — 행렬 연산에 압도적", half + (w - half) // 2, h - 40, font_sm, (150, 200, 150))
+
+    buf = io.BytesIO()
+    img.save(buf, format="PNG")
+    buf.seek(0)
+    return buf
+
+
+def pil_training_vs_inference(w: int = 1800, h: int = 560) -> "io.BytesIO | None":
+    """학습 vs 추론 비교 다이어그램."""
+    if not PIL_AVAILABLE:
+        return None
+    from PIL import Image, ImageDraw
+    img = Image.new("RGB", (w, h), (248, 250, 252))
+    draw = ImageDraw.Draw(img)
+    font_sm, font_md, font_lg = _kfont(13), _kfont(17), _kfont(22)
+
+    panels = [
+        {"title": "사전학습", "subtitle": "Pre-training", "color": (10, 22, 48),
+         "text_color": (200, 220, 255), "items": ["수조 개 문서", "수천 GPU", "수개월", "수억~수십억 달러"],
+         "icon": "📚", "analogy": "대학 4년 공부"},
+        {"title": "파인튜닝", "subtitle": "Fine-tuning", "color": (13, 43, 10),
+         "text_color": (180, 255, 200), "items": ["전문 데이터", "수~수십 GPU", "수일~수주", "$1K~$100K"],
+         "icon": "🎓", "analogy": "사내 교육 3개월"},
+        {"title": "추론", "subtitle": "Inference", "color": (60, 10, 10),
+         "text_color": (255, 200, 200), "items": ["가중치 파일 로드", "GPU 1~8개", "즉시 응답", "토큰당 $0.0001"],
+         "icon": "⚡", "analogy": "실제 업무 수행"},
+    ]
+
+    panel_w = (w - 80) // 3
+    for i, p in enumerate(panels):
+        x = 20 + i * (panel_w + 20)
+        draw.rectangle([x, 20, x + panel_w, h - 20], fill=p["color"])
+        # Header
+        _draw_center(draw, p["icon"] + "  " + p["title"], x + panel_w // 2, 55, font_lg, (255, 255, 255))
+        _draw_center(draw, p["subtitle"], x + panel_w // 2, 90, font_md, p["text_color"])
+        # Divider
+        draw.rectangle([x + 20, 115, x + panel_w - 20, 117], fill=p["text_color"])
+        # Items
+        for j, item in enumerate(p["items"]):
+            try:
+                draw.text((x + 25, 135 + j * 38), "▸  " + item, font=font_md, fill=(220, 220, 220))
+            except Exception:
+                draw.text((x + 25, 135 + j * 38), "    " + item, fill=(220, 220, 220))
+        # Analogy
+        _draw_center(draw, p["analogy"], x + panel_w // 2, h - 55, font_sm, p["text_color"])
+
+        # Arrow between panels
+        if i < len(panels) - 1:
+            ax = x + panel_w + 10
+            ay = h // 2
+            draw.polygon([(ax, ay - 15), (ax, ay + 15), (ax + 18, ay)], fill=(200, 200, 200))
+
+    buf = io.BytesIO()
+    img.save(buf, format="PNG")
+    buf.seek(0)
+    return buf
+
+
+def pil_scaling_levels(data: list, w: int = 1800, h: int = 520) -> "io.BytesIO | None":
+    """파라미터 규모별 능력 계단 차트."""
+    if not PIL_AVAILABLE:
+        return None
+    from PIL import Image, ImageDraw
+    img = Image.new("RGB", (w, h), (10, 22, 48))
+    draw = ImageDraw.Draw(img)
+    font_sm, font_md, font_lg = _kfont(13), _kfont(16), _kfont(20)
+
+    n = len(data)
+    bar_w = (w - 80) // n
+    max_h = h - 100
+
+    for i, d in enumerate(data):
+        x = 40 + i * bar_w
+        bar_height = int(max_h * (i + 1) / n)
+        y = h - 50 - bar_height
+        color = d.get("color", "#1D4ED8")
+        r2, g2, b2 = int(color[1:3], 16), int(color[3:5], 16), int(color[5:7], 16)
+
+        draw.rectangle([x + 10, y, x + bar_w - 10, h - 50], fill=(r2, g2, b2, 200))
+
+        # Level badge
+        _draw_center(draw, d["level"], x + bar_w // 2, y + 15, font_lg, (255, 255, 255))
+        _draw_center(draw, d["params"], x + bar_w // 2, y + 45, font_md, (255, 255, 200))
+
+        # Capability desc — wrap
+        words = d["desc"].split(" ")
+        lines = []
+        cur = ""
+        for word in words:
+            if len(cur) + len(word) < 12:
+                cur += word + " "
+            else:
+                if cur:
+                    lines.append(cur.strip())
+                cur = word + " "
+        if cur:
+            lines.append(cur.strip())
+
+        for j, line in enumerate(lines[:4]):
+            _draw_center(draw, line, x + bar_w // 2, y + 75 + j * 22, font_sm, (200, 220, 255))
+
+        # X-axis label
+        _draw_center(draw, d["params"], x + bar_w // 2, h - 35, font_sm, (180, 180, 180))
+
+    buf = io.BytesIO()
+    img.save(buf, format="PNG")
+    buf.seek(0)
+    return buf
+
+
+def pil_multimodal_tokens(data: list, w: int = 1600, h: int = 500) -> "io.BytesIO | None":
+    """멀티모달 토큰화 방식 4열 카드."""
+    if not PIL_AVAILABLE:
+        return None
+    from PIL import Image, ImageDraw
+    img = Image.new("RGB", (w, h), (248, 250, 252))
+    draw = ImageDraw.Draw(img)
+    font_sm, font_md, font_lg = _kfont(13), _kfont(17), _kfont(28)
+
+    card_w = (w - 80) // len(data)
+    for i, d in enumerate(data):
+        x = 20 + i * (card_w + 10)
+        color = d.get("color", "#1D4ED8")
+        r2, g2, b2 = int(color[1:3], 16), int(color[3:5], 16), int(color[5:7], 16)
+        draw.rectangle([x, 20, x + card_w - 10, h - 20], fill=(r2, g2, b2))
+        _draw_center(draw, d["icon"], x + card_w // 2, 60, font_lg, (255, 255, 255))
+        _draw_center(draw, d["name"], x + card_w // 2, 105, font_md, (255, 255, 255))
+        draw.rectangle([x + 15, 130, x + card_w - 25, 132], fill=(255, 255, 255, 128))
+        for j, (key, field) in enumerate([("방식:", "token_method"), ("토큰수:", "token_count"), ("모델:", "examples")]):
+            try:
+                draw.text((x + 15, 145 + j * 60), key, font=font_sm, fill=(200, 240, 200))
+                draw.text((x + 15, 165 + j * 60), d[field], font=font_sm, fill=(240, 240, 240))
+            except Exception:
+                draw.text((x + 15, 145 + j * 60), key, fill=(200, 240, 200))
+                draw.text((x + 15, 165 + j * 60), d[field], fill=(240, 240, 240))
+
+    buf = io.BytesIO()
+    img.save(buf, format="PNG")
+    buf.seek(0)
+    return buf
+
+
+# ─────────────────────────────────────────────────────────────────
 # TOKEN / MEMORY CHAPTER SLIDES
 # ─────────────────────────────────────────────────────────────────
 
 _TOKEN_COLOR = "#0F2B4C"   # chapter accent — deep navy-blue
 
 def build_token_chapter_divider(prs: Presentation) -> None:
-    """Appendix 챕터 구분 슬라이드 — 토큰·컨텍스트·메모리."""
+    """Appendix 챕터 구분 슬라이드 — AI 기술 심화."""
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     _rect(slide, 0, 0, W, H, D["bg_dark"])
-    _rect(slide, int(W * 0.07), int(H * 0.38), int(W * 0.035), 6, _TOKEN_COLOR)
-    _txt(slide, int(W * 0.07), int(H * 0.22), int(W * 0.60), int(H * 0.12),
-         "APPENDIX", 13, color=D["text_muted"], bold=True)
-    _txt(slide, int(W * 0.07), int(H * 0.30), int(W * 0.70), int(H * 0.18),
-         "AI의 두뇌", 52, color=D["text_white"], bold=True)
-    _txt(slide, int(W * 0.07), int(H * 0.48), int(W * 0.75), int(H * 0.14),
-         "토큰·컨텍스트·메모리", 28, color="#60A5FA")
-    _txt(slide, int(W * 0.07), int(H * 0.63), int(W * 0.70), int(H * 0.10),
-         "AI가 구동되는 원리 — 비용·속도·한계를 결정하는 핵심 개념", 16, color=D["text_muted"])
+    # Decorative accent blocks
+    _rect(slide, int(W * 0.07), int(H * 0.42), int(W * 0.06), 6, "#60A5FA")
+    _rect(slide, int(W * 0.14), int(H * 0.42), int(W * 0.04), 6, "#34D399")
+    _rect(slide, int(W * 0.19), int(H * 0.42), int(W * 0.02), 6, "#F87171")
+
+    _txt(slide, int(W * 0.07), int(H * 0.18), int(W * 0.60), int(H * 0.10),
+         "APPENDIX — AI 기술 심화", 13, color=D["text_muted"], bold=True)
+    _txt(slide, int(W * 0.07), int(H * 0.27), int(W * 0.75), int(H * 0.16),
+         "AI는 어떻게 작동하는가", 50, color=D["text_white"], bold=True)
+    _txt(slide, int(W * 0.07), int(H * 0.46), int(W * 0.80), int(H * 0.09),
+         "GPU · Transformer · 토큰 · 메모리 · 스케일링 · 멀티모달", 22, color="#60A5FA")
+    _txt(slide, int(W * 0.07), int(H * 0.58), int(W * 0.78), int(H * 0.09),
+         "비전문가도 이해하는 AI 구동 원리 — 비용·속도·한계를 결정하는 핵심 개념", 15,
+         color=D["text_muted"])
+
+    # Slide count indicator
+    topics = ["GPU·하드웨어", "Transformer", "학습 vs 추론", "스케일링 법칙",
+              "토큰·컨텍스트", "메모리", "멀티모달", "2026 최전선"]
+    for i, t in enumerate(topics):
+        x = int(W * (0.07 + i * 0.117))
+        _rect(slide, x, int(H * 0.72), int(W * 0.10), int(H * 0.08), "#152032")
+        _txt(slide, x + 8, int(H * 0.745), int(W * 0.09), int(H * 0.05),
+             t, 11, color="#60A5FA")
+
+
+def build_gpu_intro_slide(prs: Presentation, chapter_color: str = _TOKEN_COLOR) -> None:
+    """GPU 기초 — CPU vs GPU 비교, AI에 왜 GPU가 필요한가."""
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    _rect(slide, 0, 0, W, H, D["bg_dark"])
+    _accent_bar(slide, "#60A5FA")
+
+    _txt(slide, int(W * 0.06), int(H * 0.07), int(W * 0.60), int(H * 0.07),
+         "APPENDIX — GPU 기초", 11, color="#60A5FA", bold=True)
+    _txt(slide, int(W * 0.06), int(H * 0.13), int(W * 0.85), int(H * 0.10),
+         "왜 AI는 GPU가 필요한가?", 28, color=D["text_white"], bold=True)
+
+    cg = GPU_DATA["cpu_vs_gpu"]
+
+    # PIL comparison diagram
+    if PIL_AVAILABLE:
+        stream = pil_cpu_gpu_compare(w=1600, h=520)
+        _pil_img(slide, stream, int(W * 0.05), int(H * 0.25), int(W * 0.58), int(H * 0.47))
+
+    # Right side — key insight cards
+    _rect(slide, int(W * 0.66), int(H * 0.25), int(W * 0.30), int(H * 0.20), "#0A1628")
+    _txt(slide, int(W * 0.68), int(H * 0.27), int(W * 0.10), int(H * 0.07),
+         "⚡", 24, color="#60A5FA")
+    _txt(slide, int(W * 0.69), int(H * 0.27), int(W * 0.25), int(H * 0.06),
+         "속도 차이", 13, color="#60A5FA", bold=True)
+    _txt(slide, int(W * 0.68), int(H * 0.34), int(W * 0.27), int(H * 0.08),
+         "GPU가 CPU 대비\n100~1,000배 빠름", 14, color=D["text_white"])
+
+    _rect(slide, int(W * 0.66), int(H * 0.48), int(W * 0.30), int(H * 0.20), "#0A1628")
+    _txt(slide, int(W * 0.68), int(H * 0.50), int(W * 0.10), int(H * 0.07),
+         "🎯", 24, color="#34D399")
+    _txt(slide, int(W * 0.69), int(H * 0.50), int(W * 0.25), int(H * 0.06),
+         "핵심 이유", 13, color="#34D399", bold=True)
+    _txt(slide, int(W * 0.68), int(H * 0.57), int(W * 0.27), int(H * 0.08),
+         "행렬 곱셈을 수천 개 코어가\n동시에 처리", 14, color=D["text_white"])
+
+    _rect(slide, int(W * 0.66), int(H * 0.71), int(W * 0.30), int(H * 0.17), "#0A1628")
+    _txt(slide, int(W * 0.68), int(H * 0.73), int(W * 0.10), int(H * 0.07),
+         "💬", 24, color="#F87171")
+    _txt(slide, int(W * 0.69), int(H * 0.73), int(W * 0.25), int(H * 0.06),
+         "비유로 이해", 13, color="#F87171", bold=True)
+    _txt(slide, int(W * 0.68), int(H * 0.79), int(W * 0.27), int(H * 0.07),
+         "ChatGPT 답변 1번\n≈ A4 수만 장 행렬 곱셈", 13, color=D["text_white"])
+
+
+def build_ai_hardware_timeline_slide(prs: Presentation, chapter_color: str = _TOKEN_COLOR) -> None:
+    """AI 하드웨어 진화 — GPU tflops 로그 스케일 타임라인."""
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    _rect(slide, 0, 0, W, H, D["bg_dark"])
+    _accent_bar(slide, "#60A5FA")
+
+    _txt(slide, int(W * 0.06), int(H * 0.07), int(W * 0.60), int(H * 0.07),
+         "APPENDIX — AI 하드웨어 진화", 11, color="#60A5FA", bold=True)
+    _txt(slide, int(W * 0.06), int(H * 0.13), int(W * 0.85), int(H * 0.10),
+         "GPU 성능: 2012~2025, 5,600배 향상", 26, color=D["text_white"], bold=True)
+    _txt(slide, int(W * 0.06), int(H * 0.22), int(W * 0.85), int(H * 0.06),
+         "GTX 580 (1.6 TFLOPS) → NVIDIA B200 (9,000 TFLOPS) — 로그 스케일", 15,
+         color=D["text_muted"])
+
+    if PIL_AVAILABLE:
+        stream = pil_hardware_bar(GPU_DATA["gpu_evolution"], w=2160, h=680)
+        _pil_img(slide, stream, int(W * 0.04), int(H * 0.30), int(W * 0.92), int(H * 0.58))
+
+    # NVIDIA market info bar
+    nm = GPU_DATA["nvidia_market"]
+    _rect(slide, int(W * 0.04), int(H * 0.89), int(W * 0.92), int(H * 0.08), "#0A1628")
+    _txt(slide, int(W * 0.06), int(H * 0.905), int(W * 0.88), int(H * 0.055),
+         f"NVIDIA 시장 점유율 {nm['share']}  |  H100 개당 ${GPU_DATA['training_compute']['gpt4']['cost']} — {nm['moat']}",
+         13, color="#60A5FA")
+
+
+def build_transformer_architecture_slide(prs: Presentation, chapter_color: str = _TOKEN_COLOR) -> None:
+    """Transformer 구조 — Self-Attention, FFN, 레이어 스택."""
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    _rect(slide, 0, 0, W, H, D["bg_white"])
+    _accent_bar(slide, chapter_color)
+
+    _txt(slide, int(W * 0.06), int(H * 0.07), int(W * 0.60), int(H * 0.07),
+         "APPENDIX — Transformer 구조", 11, color=chapter_color, bold=True)
+    _txt(slide, int(W * 0.06), int(H * 0.13), int(W * 0.85), int(H * 0.10),
+         "Transformer: 모든 현대 AI의 기반 구조", 26, color=D["text_h1"], bold=True)
+
+    td = TRANSFORMER_DATA
+    _rect(slide, int(W * 0.06), int(H * 0.23), int(W * 0.88), int(H * 0.08), D["bg_subtle"])
+    _txt(slide, int(W * 0.08), int(H * 0.245), int(W * 0.84), int(H * 0.055),
+         f"📌  {td['overview']}   |   핵심: {td['key_idea']}", 14, color=D["text_h2"])
+
+    # 4 component cards
+    comps = td["components"]
+    cw = int(W * 0.20)
+    gap = int(W * 0.02)
+    total_w = 4 * cw + 3 * gap
+    start_x = (W - total_w) // 2
+
+    for i, comp in enumerate(comps):
+        x = start_x + i * (cw + gap)
+        y = int(H * 0.35)
+        ch = int(H * 0.38)
+        color = comp["color"]
+        r2, g2, b2 = int(color[1:3], 16), int(color[3:5], 16), int(color[5:7], 16)
+        _rect(slide, x, y, cw, ch, f"#{r2:02X}{g2:02X}{b2:02X}")
+        _rect(slide, x, y, cw, 5, "#FFFFFF")
+        _txt(slide, x, y + int(H * 0.03), cw, int(H * 0.10),
+             comp["icon"], 30, color="#FFFFFF", align=PP_ALIGN.CENTER)
+        _txt(slide, x + 8, y + int(H * 0.13), cw - 16, int(H * 0.07),
+             comp["name"], 13, color="#FFFFFF", bold=True, align=PP_ALIGN.CENTER)
+        _txt(slide, x + 10, y + int(H * 0.21), cw - 20, int(H * 0.14),
+             comp["desc"], 11, color="#E2E8F0")
+
+        # Arrow between
+        if i < len(comps) - 1:
+            ax = x + cw + gap // 2
+            ay = y + ch // 2
+            _rect(slide, ax - 2, ay - 6, 12, 12, "#94A3B8")
+
+    # Token generation note
+    _rect(slide, int(W * 0.06), int(H * 0.77), int(W * 0.88), int(H * 0.10), "#E0F2FE")
+    _txt(slide, int(W * 0.08), int(H * 0.79), int(W * 0.84), int(H * 0.07),
+         f"🔄  {td['token_generation']}", 14, color="#0369A1")
+
+    # Scale table
+    _txt(slide, int(W * 0.06), int(H * 0.88), int(W * 0.88), int(H * 0.06),
+         "규모 비교:  " + "   |   ".join(
+             f"{r['model']} {r['params']} ({r['year']})" for r in td["scale_table"]
+         ), 12, color=D["text_muted"])
+
+
+def build_training_vs_inference_slide(prs: Presentation, chapter_color: str = _TOKEN_COLOR) -> None:
+    """학습(Training) vs 추론(Inference) vs 파인튜닝."""
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    _rect(slide, 0, 0, W, H, D["bg_dark"])
+    _accent_bar(slide, "#60A5FA")
+
+    _txt(slide, int(W * 0.06), int(H * 0.07), int(W * 0.60), int(H * 0.07),
+         "APPENDIX — 학습 vs 추론", 11, color="#60A5FA", bold=True)
+    _txt(slide, int(W * 0.06), int(H * 0.13), int(W * 0.85), int(H * 0.10),
+         "AI 만들기 vs AI 쓰기 — 비용이 1,000배 다르다", 26, color=D["text_white"], bold=True)
+
+    if PIL_AVAILABLE:
+        stream = pil_training_vs_inference(w=2160, h=560)
+        _pil_img(slide, stream, int(W * 0.04), int(H * 0.25), int(W * 0.92), int(H * 0.46))
+
+    # RAG vs Fine-tune comparison
+    rvf = TRAINING_INFERENCE_DATA["rag_vs_fine"]
+    _rect(slide, int(W * 0.06), int(H * 0.73), int(W * 0.43), int(H * 0.18), "#0A1628")
+    _txt(slide, int(W * 0.08), int(H * 0.75), int(W * 0.40), int(H * 0.06),
+         "🔍  RAG (검색 증강 생성)", 14, color="#60A5FA", bold=True)
+    _txt(slide, int(W * 0.08), int(H * 0.81), int(W * 0.39), int(H * 0.07),
+         f"{rvf['rag']['desc']}  |  적합: {rvf['when_rag']}", 12, color=D["text_muted"])
+
+    _rect(slide, int(W * 0.52), int(H * 0.73), int(W * 0.43), int(H * 0.18), "#0A1628")
+    _txt(slide, int(W * 0.54), int(H * 0.75), int(W * 0.40), int(H * 0.06),
+         "🧠  파인튜닝 (Fine-tuning)", 14, color="#34D399", bold=True)
+    _txt(slide, int(W * 0.54), int(H * 0.81), int(W * 0.39), int(H * 0.07),
+         f"{rvf['fine']['desc']}  |  적합: {rvf['when_fine']}", 12, color=D["text_muted"])
+
+
+def build_scaling_laws_slide(prs: Presentation, chapter_color: str = _TOKEN_COLOR) -> None:
+    """스케일링 법칙 — Chinchilla, 파라미터 규모별 능력, 효율 혁명."""
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    _rect(slide, 0, 0, W, H, D["bg_white"])
+    _accent_bar(slide, chapter_color)
+
+    _txt(slide, int(W * 0.06), int(H * 0.07), int(W * 0.60), int(H * 0.07),
+         "APPENDIX — 스케일링 법칙", 11, color=chapter_color, bold=True)
+    _txt(slide, int(W * 0.06), int(H * 0.13), int(W * 0.85), int(H * 0.10),
+         "크면 좋은가? — 스케일링 법칙의 진실", 26, color=D["text_h1"], bold=True)
+
+    sl = SCALING_LAWS_DATA
+
+    # Chinchilla law highlight
+    _rect(slide, int(W * 0.06), int(H * 0.24), int(W * 0.88), int(H * 0.12), D["bg_subtle"])
+    _rect(slide, int(W * 0.06), int(H * 0.24), int(W * 0.008), int(H * 0.12), chapter_color)
+    _txt(slide, int(W * 0.08), int(H * 0.25), int(W * 0.84), int(H * 0.05),
+         f"📏  Chinchilla 법칙 ({sl['chinchilla']['source']})", 13, color=chapter_color, bold=True)
+    _txt(slide, int(W * 0.08), int(H * 0.30), int(W * 0.84), int(H * 0.05),
+         f"{sl['chinchilla']['law']}   →   예: {sl['chinchilla']['example']}", 14, color=D["text_h2"])
+
+    # Capability levels PIL chart
+    if PIL_AVAILABLE:
+        stream = pil_scaling_levels(sl["capability_levels"], w=1400, h=440)
+        _pil_img(slide, stream, int(W * 0.06), int(H * 0.38), int(W * 0.55), int(H * 0.38))
+
+    # Efficiency revolution (right side)
+    _txt(slide, int(W * 0.64), int(H * 0.38), int(W * 0.32), int(H * 0.07),
+         "효율 혁명 — 같은 성능, 더 작은 모델", 13, color=chapter_color, bold=True)
+    for i, ev in enumerate(sl["efficiency_revolution"]):
+        y = int(H * 0.46 + i * 0.12)
+        _shadow_card(slide, int(W * 0.63), y, int(W * 0.32), int(H * 0.10))
+        _txt(slide, int(W * 0.65), y + int(H * 0.015), int(W * 0.10), int(H * 0.04),
+             ev["year"], 12, color=chapter_color, bold=True)
+        _txt(slide, int(W * 0.65), y + int(H * 0.045), int(W * 0.29), int(H * 0.04),
+             f"{ev['model']}  {ev['params']} — {ev['note']}", 12, color=D["text_body"])
+
+    # Trend note
+    _rect(slide, int(W * 0.06), int(H * 0.78), int(W * 0.88), int(H * 0.09), "#E0F2FE")
+    _txt(slide, int(W * 0.08), int(H * 0.80), int(W * 0.84), int(H * 0.06),
+         f"📈  {sl['trend']}   |   {sl['emergent']}", 13, color="#0369A1")
+
+
+def build_vram_kvcache_slide(prs: Presentation, chapter_color: str = _TOKEN_COLOR) -> None:
+    """VRAM과 KV 캐시 — GPU 메모리의 핵심 개념."""
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    _rect(slide, 0, 0, W, H, D["bg_dark"])
+    _accent_bar(slide, "#60A5FA")
+
+    _txt(slide, int(W * 0.06), int(H * 0.07), int(W * 0.60), int(H * 0.07),
+         "APPENDIX — VRAM & KV 캐시", 11, color="#60A5FA", bold=True)
+    _txt(slide, int(W * 0.06), int(H * 0.13), int(W * 0.85), int(H * 0.10),
+         "GPU 메모리 — AI 성능의 병목", 26, color=D["text_white"], bold=True)
+
+    vk = VRAM_KVCACHE_DATA
+
+    # VRAM overview
+    _rect(slide, int(W * 0.06), int(H * 0.25), int(W * 0.41), int(H * 0.52), "#0A1628")
+    _txt(slide, int(W * 0.08), int(H * 0.27), int(W * 0.38), int(H * 0.07),
+         "💾  VRAM이란?", 16, color="#60A5FA", bold=True)
+    _txt(slide, int(W * 0.08), int(H * 0.34), int(W * 0.38), int(H * 0.10),
+         vk["vram_overview"]["what"], 13, color=D["text_white"])
+    _txt(slide, int(W * 0.08), int(H * 0.42), int(W * 0.38), int(H * 0.06),
+         "비유: " + vk["vram_overview"]["analogy"], 13, color=D["text_muted"])
+
+    # VRAM requirements table
+    _txt(slide, int(W * 0.08), int(H * 0.50), int(W * 0.38), int(H * 0.06),
+         "모델별 VRAM 필요량", 12, color="#60A5FA", bold=True)
+    for i, req in enumerate(vk["vram_requirements"]):
+        y = int(H * 0.56 + i * 0.065)
+        _rect(slide, int(W * 0.08), y, int(W * 0.38), int(H * 0.055), "#152032")
+        _txt(slide, int(W * 0.09), y + int(H * 0.01), int(W * 0.22), int(H * 0.04),
+             req["model"], 12, color=D["text_white"])
+        _txt(slide, int(W * 0.26), y + int(H * 0.01), int(W * 0.09), int(H * 0.04),
+             req["vram"], 12, color="#34D399", bold=True)
+        _txt(slide, int(W * 0.32), y + int(H * 0.01), int(W * 0.13), int(H * 0.04),
+             req["device"], 11, color=D["text_muted"])
+
+    # KV Cache explanation
+    kvc = vk["kv_cache"]
+    _rect(slide, int(W * 0.51), int(H * 0.25), int(W * 0.44), int(H * 0.52), "#0A1628")
+    _txt(slide, int(W * 0.53), int(H * 0.27), int(W * 0.41), int(H * 0.07),
+         "⚡  KV 캐시 (Key-Value Cache)", 16, color="#34D399", bold=True)
+    _txt(slide, int(W * 0.53), int(H * 0.34), int(W * 0.41), int(H * 0.08),
+         kvc["what"], 13, color=D["text_white"])
+    _txt(slide, int(W * 0.53), int(H * 0.42), int(W * 0.41), int(H * 0.07),
+         "문제: " + kvc["problem"], 12, color="#F87171")
+    _txt(slide, int(W * 0.53), int(H * 0.49), int(W * 0.41), int(H * 0.07),
+         "해결: " + kvc["solution"], 12, color="#34D399")
+    _txt(slide, int(W * 0.53), int(H * 0.56), int(W * 0.41), int(H * 0.06),
+         "효과: " + kvc["benefit"], 13, color="#60A5FA", bold=True)
+    _txt(slide, int(W * 0.53), int(H * 0.63), int(W * 0.41), int(H * 0.06),
+         "비유: " + kvc["analogy"], 12, color=D["text_muted"])
+    _txt(slide, int(W * 0.53), int(H * 0.70), int(W * 0.41), int(H * 0.06),
+         "주의: " + kvc["tradeoff"], 11, color="#FBBF24")
+
+    # Memory bandwidth note
+    mb = vk["memory_bandwidth"]
+    _rect(slide, int(W * 0.06), int(H * 0.80), int(W * 0.88), int(H * 0.10), "#152032")
+    _txt(slide, int(W * 0.08), int(H * 0.82), int(W * 0.84), int(H * 0.07),
+         f"🚀  메모리 대역폭: {mb['h100']}  |  병목: {mb['bottleneck']}  |  최적화: {mb['solution']}",
+         13, color="#60A5FA")
+
+
+def build_multimodal_slide(prs: Presentation, chapter_color: str = _TOKEN_COLOR) -> None:
+    """멀티모달 AI — 텍스트·이미지·음성·동영상 토큰화."""
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    _rect(slide, 0, 0, W, H, D["bg_white"])
+    _accent_bar(slide, chapter_color)
+
+    _txt(slide, int(W * 0.06), int(H * 0.07), int(W * 0.60), int(H * 0.07),
+         "APPENDIX — 멀티모달 AI", 11, color=chapter_color, bold=True)
+    _txt(slide, int(W * 0.06), int(H * 0.13), int(W * 0.85), int(H * 0.10),
+         "AI는 이미지·음성·영상을 어떻게 이해하는가", 26, color=D["text_h1"], bold=True)
+
+    md = MULTIMODAL_DATA
+
+    # Unified space concept
+    _rect(slide, int(W * 0.06), int(H * 0.24), int(W * 0.88), int(H * 0.08), D["bg_subtle"])
+    _txt(slide, int(W * 0.08), int(H * 0.255), int(W * 0.84), int(H * 0.055),
+         f"🌐  {md['unified_space']}", 14, color=D["text_h2"])
+
+    # PIL modality cards
+    if PIL_AVAILABLE:
+        stream = pil_multimodal_tokens(md["modalities"], w=1800, h=460)
+        _pil_img(slide, stream, int(W * 0.05), int(H * 0.34), int(W * 0.90), int(H * 0.38))
+
+    # Vision pipeline (simplified)
+    _txt(slide, int(W * 0.06), int(H * 0.74), int(W * 0.88), int(H * 0.06),
+         "이미지 처리 흐름:  " + "  →  ".join(md["vision_pipeline"]), 13, color=D["text_muted"])
+
+    # Business value
+    _txt(slide, int(W * 0.06), int(H * 0.80), int(W * 0.60), int(H * 0.06),
+         "실무 활용 사례", 13, color=chapter_color, bold=True)
+    for i, bv in enumerate(md["business_value"]):
+        col = i % 2
+        row = i // 2
+        x = int(W * (0.06 + col * 0.45))
+        y = int(H * (0.86 + row * 0.07))
+        _txt(slide, x, y, int(W * 0.43), int(H * 0.06),
+             "✅  " + bv, 13, color=D["text_body"])
+
+
+def build_ai_frontier_2026_slide(prs: Presentation, chapter_color: str = _TOKEN_COLOR) -> None:
+    """AI 2026 최전선 — 지금 가장 빠르게 바뀌는 것들."""
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    _rect(slide, 0, 0, W, H, D["bg_dark"])
+    _accent_bar(slide, "#60A5FA")
+
+    af = AI_FRONTIER_2026
+    _txt(slide, int(W * 0.06), int(H * 0.07), int(W * 0.60), int(H * 0.07),
+         "APPENDIX — AI 2026 최전선", 11, color="#60A5FA", bold=True)
+    _txt(slide, int(W * 0.06), int(H * 0.13), int(W * 0.85), int(H * 0.10),
+         af["headline"], 26, color=D["text_white"], bold=True)
+
+    trends = af["trends"]
+    cw = int(W * 0.29)
+    ch = int(H * 0.28)
+    positions = [
+        (int(W * 0.05), int(H * 0.26)), (int(W * 0.36), int(H * 0.26)), (int(W * 0.67), int(H * 0.26)),
+        (int(W * 0.05), int(H * 0.57)), (int(W * 0.36), int(H * 0.57)), (int(W * 0.67), int(H * 0.57)),
+    ]
+    for (x, y), tr in zip(positions, trends):
+        color = tr["color"]
+        r2, g2, b2 = int(color[1:3], 16), int(color[3:5], 16), int(color[5:7], 16)
+        _rect(slide, x, y, cw, ch, "#0A1628")
+        _rect(slide, x, y, cw, 4, color)
+        _txt(slide, x + 14, y + int(H * 0.02), cw - 20, int(H * 0.08),
+             tr["icon"] + "  " + tr["title"], 15, color="#FFFFFF", bold=True)
+        _txt(slide, x + 14, y + int(H * 0.10), cw - 28, int(H * 0.09),
+             tr["desc"], 11, color=D["text_muted"])
+        _rect(slide, x + 14, y + int(H * 0.19), cw - 28, int(H * 0.005), color)
+        _txt(slide, x + 14, y + int(H * 0.21), cw - 28, int(H * 0.06),
+             "→ " + tr["impact"], 12, color=f"#{r2:02X}{g2:02X}{b2:02X}", bold=True)
+
+    # Key message
+    _rect(slide, int(W * 0.05), int(H * 0.88), int(W * 0.90), int(H * 0.09), "#152032")
+    _txt(slide, int(W * 0.07), int(H * 0.90), int(W * 0.86), int(H * 0.06),
+         f"💡  {af['key_message']}", 15, color="#60A5FA")
 
 
 def build_what_is_token_slide(prs: Presentation, chapter_color: str = _TOKEN_COLOR) -> None:
@@ -1925,15 +2537,28 @@ def build_presentation(research_data: dict | None = None) -> str:
 
     build_closing_slide(prs);                                         _s("마무리 Q&A")
 
-    # APPENDIX: 토큰·컨텍스트·메모리
-    build_token_chapter_divider(prs);                                 _s("APPENDIX 구분 — 토큰/메모리")
+    # APPENDIX: AI 기술 심화 (16슬라이드)
+    build_token_chapter_divider(prs);                                 _s("APPENDIX 구분 — AI 기술 심화")
+    # Part 1: GPU·하드웨어
+    build_gpu_intro_slide(prs);                                       _s("GPU 기초 — CPU vs GPU")
+    build_ai_hardware_timeline_slide(prs);                            _s("AI 하드웨어 진화")
+    # Part 2: AI 모델 구조
+    build_transformer_architecture_slide(prs);                        _s("Transformer 구조")
+    build_training_vs_inference_slide(prs);                           _s("학습 vs 추론")
+    build_scaling_laws_slide(prs);                                    _s("스케일링 법칙")
+    # Part 3: 토큰·컨텍스트·메모리
     build_what_is_token_slide(prs);                                   _s("토큰이란?")
     build_context_evolution_slide(prs);                               _s("컨텍스트 윈도우 진화")
+    build_vram_kvcache_slide(prs);                                    _s("VRAM & KV 캐시")
     build_memory_types_slide(prs);                                    _s("메모리 4가지 유형")
+    # Part 4: 비용·기술 트렌드
     build_token_cost_trend_slide(prs);                                _s("토큰 비용 98% 감소")
     build_context_engineering_slide(prs);                             _s("컨텍스트 엔지니어링")
     build_new_architectures_slide(prs);                               _s("새로운 아키텍처")
-    build_token_summary_slide(prs);                                   _s("토큰/메모리 핵심 요약")
+    build_multimodal_slide(prs);                                      _s("멀티모달 AI")
+    build_ai_frontier_2026_slide(prs);                                _s("AI 2026 최전선")
+    # Summary
+    build_token_summary_slide(prs);                                   _s("AI 기술 핵심 요약")
 
     ts = datetime.now().strftime("%Y%m%d_%H%M")
     out = OUTPUT_DIR / f"AI_Workflow_Lecture_{ts}.pptx"

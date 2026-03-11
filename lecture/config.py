@@ -695,6 +695,292 @@ TOKEN_MEMORY = {
 }
 
 # ──────────────────────────────────────────────
+# GPU / 하드웨어 데이터
+# ──────────────────────────────────────────────
+GPU_DATA = {
+    "cpu_vs_gpu": {
+        "cpu": {
+            "cores": "8~32개",
+            "type": "직렬(순차) 처리",
+            "analogy": "천재 수학자 1명",
+            "strength": "복잡한 로직, 조건 분기",
+            "role": "OS, 앱, DB — 순서가 중요한 모든 것",
+        },
+        "gpu": {
+            "cores": "수천~수만 개",
+            "type": "병렬(동시) 처리",
+            "analogy": "단순 계산 직원 수만 명",
+            "strength": "행렬 곱셈, 벡터 연산 동시 처리",
+            "role": "AI 학습·추론 — 수십억 번의 곱셈을 동시에",
+        },
+        "why_ai": "AI 학습 = 수십억 번의 행렬 곱셈 반복 → GPU가 CPU 대비 100~1,000배 빠름",
+        "analogy_full": "ChatGPT 답변 1번 = A4 수만 장 분량의 행렬 곱셈. GPU 없이는 수년 걸릴 계산을 수초 만에.",
+    },
+    "gpu_evolution": [
+        {"year": 2012, "model": "GTX 580", "tflops": 1.6,   "vram_gb": 1.5,  "event": "AlexNet — AI GPU 시대 개막"},
+        {"year": 2016, "model": "P100",    "tflops": 21.2,  "vram_gb": 16,   "event": "딥러닝 전성시대"},
+        {"year": 2020, "model": "A100",    "tflops": 312,   "vram_gb": 80,   "event": "GPT-3 학습"},
+        {"year": 2022, "model": "H100",    "tflops": 1979,  "vram_gb": 80,   "event": "ChatGPT·GPT-4 학습"},
+        {"year": 2024, "model": "H200",    "tflops": 4916,  "vram_gb": 141,  "event": "Claude 3.5·GPT-4o 추론"},
+        {"year": 2025, "model": "B200",    "tflops": 9000,  "vram_gb": 192,  "event": "차세대 AGI 연구"},
+    ],
+    "nvidia_market": {
+        "share": "70~80%",
+        "moat": "CUDA 에코시스템 — 10년 이상 AI 연구자가 쌓아온 코드·라이브러리",
+        "h100_price": "$25,000~40,000/개",
+        "cloud_cost": "H100 클라우드 임대 $2~3/시간",
+        "competitors": ["AMD MI300X", "Google TPU v5", "AWS Trainium 2", "Intel Gaudi 3"],
+    },
+    "training_compute": {
+        "gpt3":       {"cost": "$4.6M",  "note": "A100 355 GPU-year 추정"},
+        "gpt4":       {"cost": "$~100M", "note": "수만 H100, 수개월"},
+        "llama3_70b": {"cost": "$2~5M",  "note": "Meta 공개 기준"},
+        "key_insight": "학습 비용은 천문학적 — 그러나 추론(사용) 비용은 토큰당 $0.0001 수준",
+    },
+}
+
+# ──────────────────────────────────────────────
+# Transformer 아키텍처 데이터
+# ──────────────────────────────────────────────
+TRANSFORMER_DATA = {
+    "overview": "2017년 Google 'Attention Is All You Need' 논문. 현재 GPT·Claude·Gemini 모두의 기반.",
+    "key_idea": "단어(토큰) 간 '관계의 중요도'를 계산하는 Self-Attention 메커니즘",
+    "analogy": "독서 토론처럼: 문장의 각 단어가 다른 단어와 얼마나 관련 있는지 서로 '투표'",
+    "components": [
+        {
+            "name": "임베딩 (Embedding)",
+            "desc": "'고양이'→[0.23, -0.71, ...] 3,000차원 숫자 배열로 변환. 의미가 비슷한 단어는 가까운 벡터.",
+            "icon": "🔢",
+            "color": "#1D4ED8",
+        },
+        {
+            "name": "Self-Attention",
+            "desc": "각 토큰이 다른 모든 토큰과의 '관련도 점수' 계산. '그것'이 '고양이'를 가리키는지 파악하는 핵심.",
+            "icon": "🎯",
+            "color": "#0D6B4F",
+        },
+        {
+            "name": "피드포워드 (FFN)",
+            "desc": "Attention 결과를 변환·압축. 모델의 '지식'이 주로 여기 저장됨. 레이어당 두 개의 선형 변환.",
+            "icon": "⚙️",
+            "color": "#B91C1C",
+        },
+        {
+            "name": "레이어 스택",
+            "desc": "Attention+FFN 과정을 32~128번 반복. 깊이가 깊을수록 추상적 개념 이해 → '의도' 파악 가능.",
+            "icon": "📚",
+            "color": "#6D28D9",
+        },
+    ],
+    "scale_table": [
+        {"model": "GPT-2",    "params": "1.5B",         "layers": 48,       "year": 2019},
+        {"model": "GPT-3",    "params": "175B",         "layers": 96,       "year": 2020},
+        {"model": "GPT-4",    "params": "~1.76T (MoE)", "layers": "비공개", "year": 2023},
+        {"model": "Claude 3", "params": "비공개",       "layers": "비공개", "year": 2024},
+        {"model": "Llama 3",  "params": "8B/70B/405B",  "layers": "다양",   "year": 2024},
+    ],
+    "token_generation": "출력 = 한 번에 한 토큰. 이전 토큰 전체를 참고해 다음 토큰을 확률적으로 선택 (Autoregressive Decoding)",
+}
+
+# ──────────────────────────────────────────────
+# 학습(Training) vs 추론(Inference)
+# ──────────────────────────────────────────────
+TRAINING_INFERENCE_DATA = {
+    "training": {
+        "what": "수조 개의 문서로 수십억 개의 가중치(파라미터)를 반복 조정",
+        "cost": "수억~수십억 달러, 수개월",
+        "hardware": "수천 개 H100 GPU 클러스터 + 고속 네트워크 (InfiniBand)",
+        "output": "수백 GB의 모델 가중치 파일",
+        "energy": "GPT-3 학습 ≈ 500가구 연간 전력 소비",
+        "analogy": "대학 4년 공부 → 뇌의 신경망(시냅스) 형성",
+        "phases": ["사전학습 Pre-training", "지시 튜닝 SFT", "강화학습 RLHF", "안전 정렬 Constitutional AI"],
+    },
+    "inference": {
+        "what": "학습된 모델 가중치를 로드해 사용자 입력에 응답 생성",
+        "cost": "토큰당 $0.0001~0.003 (API 기준)",
+        "hardware": "GPU 1~8개 (클라우드 임대 가능)",
+        "speed": "초당 50~200 토큰 생성 (Claude Sonnet 기준)",
+        "analogy": "졸업 후 실제 업무 수행 — 공부는 끝, 실력만 발휘",
+        "latency": "첫 토큰 도달 0.3~2초, 이후 스트리밍 출력",
+    },
+    "fine_tuning": {
+        "what": "사전학습 모델에 특정 도메인 데이터로 추가 학습",
+        "cost": "$1K~100K (사전학습 대비 1/1,000)",
+        "use_case": "사내 규정 특화, 특정 말투·스타일, 의료·법률 전문화",
+        "analogy": "입사 후 사내 교육 3개월 — 기본기는 이미 있음",
+    },
+    "rag_vs_fine": {
+        "rag": {"desc": "매번 외부 DB 검색 → 항상 최신 정보", "cost": "API 비용↑", "update": "실시간 가능"},
+        "fine": {"desc": "모델에 지식 내재화 → 빠른 응답", "cost": "초기 학습 비용", "update": "재학습 필요"},
+        "when_rag": "자주 바뀌는 정보, 사내 문서, 제품 카탈로그",
+        "when_fine": "스타일 고정, 응답 형식 통일, 비공개 학습 데이터",
+    },
+}
+
+# ──────────────────────────────────────────────
+# 스케일링 법칙 (Scaling Laws)
+# ──────────────────────────────────────────────
+SCALING_LAWS_DATA = {
+    "chinchilla": {
+        "law": "최적 학습을 위해 파라미터 수 × 20배의 토큰이 필요",
+        "example": "70B 파라미터 모델 → 1.4조 토큰으로 학습해야 최적",
+        "insight": "크기만 키운다고 좋은 게 아님 — 데이터·컴퓨트 균형이 핵심",
+        "source": "DeepMind Chinchilla 논문 (2022)",
+    },
+    "capability_levels": [
+        {"params": "1B 이하",  "level": "기초", "desc": "기본 문장 완성, 번역, 간단한 Q&A",         "color": "#94A3B8"},
+        {"params": "7B~13B",   "level": "실용", "desc": "추론, 코딩, 요약 가능 — 노트북에서 실행",  "color": "#1D4ED8"},
+        {"params": "70B",      "level": "전문", "desc": "전문가 수준 분석, 복잡한 지시 이해",        "color": "#0D6B4F"},
+        {"params": "200B+",    "level": "최고", "desc": "창의성, 멀티스텝 계획, 전문 분야 통달",     "color": "#B91C1C"},
+    ],
+    "efficiency_revolution": [
+        {"year": "2020", "model": "GPT-3",   "params": "175B",  "note": "서버 클러스터 필요"},
+        {"year": "2023", "model": "Llama 2", "params": "13B",   "note": "GPT-3급 성능, M1 Mac 실행"},
+        {"year": "2024", "model": "Phi-3",   "params": "3.8B",  "note": "GPT-3.5급 성능, 스마트폰"},
+        {"year": "2025", "model": "Phi-4",   "params": "14B",   "note": "GPT-4급 성능, 비용 1/10"},
+    ],
+    "trend": "같은 성능을 내는 데 필요한 파라미터 수가 매년 절반으로 — 효율 혁명 진행 중",
+    "emergent": "특정 규모를 넘으면 갑자기 새 능력 등장 (Emergent Ability) — 예: GPT-3.5에서 갑작스런 코딩 능력",
+}
+
+# ──────────────────────────────────────────────
+# VRAM 및 KV 캐시
+# ──────────────────────────────────────────────
+VRAM_KVCACHE_DATA = {
+    "vram_overview": {
+        "what": "GPU의 고속 메모리 — AI 모델 가중치 + 계산 버퍼 저장",
+        "analogy": "요리사의 작업대 — 넓을수록 더 많은 재료(토큰)를 동시에 처리",
+        "bottleneck": "VRAM 부족 = 느린 추론, 짧은 컨텍스트 제한",
+    },
+    "vram_requirements": [
+        {"model": "Llama 3 8B",   "vram": "16GB",  "device": "RTX 4090 1개"},
+        {"model": "Llama 3 70B",  "vram": "140GB", "device": "H100 2개"},
+        {"model": "GPT-4 (추정)","vram": "~800GB","device": "H100 10개+"},
+        {"model": "Claude 3.5",   "vram": "비공개","device": "클라우드 전용"},
+    ],
+    "kv_cache": {
+        "what": "이미 계산한 Key-Value 어텐션 결과를 메모리에 저장·재사용",
+        "problem": "Transformer는 매 토큰 생성 시 전체 이전 컨텍스트 재계산 필요",
+        "solution": "이전 계산 결과를 VRAM에 캐시 → 새 토큰만 계산",
+        "benefit": "반복 요청 속도 5~10x 향상, API 비용 절감",
+        "analogy": "책을 처음부터 다시 읽지 않고 북마크에서 이어 읽기",
+        "tradeoff": "컨텍스트가 길수록 KV 캐시 VRAM 증가 (컨텍스트 × 레이어 수 × 헤드 수)",
+    },
+    "memory_bandwidth": {
+        "what": "GPU VRAM ↔ 연산 코어 간 데이터 전송 속도",
+        "h100": "3.35 TB/s (H100 SXM5)",
+        "bottleneck": "추론 시 가장 큰 병목 — 계산 속도보다 메모리 전송이 느림",
+        "solution": "Flash Attention, Grouped Query Attention, 양자화(Quantization)",
+    },
+}
+
+# ──────────────────────────────────────────────
+# 멀티모달 AI
+# ──────────────────────────────────────────────
+MULTIMODAL_DATA = {
+    "vision_pipeline": [
+        "이미지 입력",
+        "패치 분할 (16×16 픽셀 조각)",
+        "각 패치를 토큰 임베딩으로 변환",
+        "텍스트 토큰과 동일한 Transformer에 입력",
+        "이미지+텍스트 통합 이해",
+    ],
+    "modalities": [
+        {
+            "name": "텍스트",
+            "token_method": "BPE / SentencePiece",
+            "token_count": "수십K 어휘",
+            "examples": "GPT-4, Claude, Gemini",
+            "icon": "📝",
+            "color": "#1D4ED8",
+        },
+        {
+            "name": "이미지",
+            "token_method": "ViT 패치 (16×16px)",
+            "token_count": "196~1,024 토큰/이미지",
+            "examples": "GPT-4V, Claude 3, Gemini",
+            "icon": "🖼️",
+            "color": "#0D6B4F",
+        },
+        {
+            "name": "음성",
+            "token_method": "Mel-스펙트로그램 패치",
+            "token_count": "~1,500 토큰/분",
+            "examples": "Whisper, GPT-4o Audio",
+            "icon": "🎙️",
+            "color": "#B91C1C",
+        },
+        {
+            "name": "동영상",
+            "token_method": "프레임 샘플링 + 이미지 패치",
+            "token_count": "수천~수만 토큰",
+            "examples": "Gemini 1.5/2.0, GPT-4o",
+            "icon": "🎬",
+            "color": "#6D28D9",
+        },
+    ],
+    "unified_space": "텍스트·이미지·음성을 같은 벡터 공간에 표현 → 서로 다른 모달이 '이해'",
+    "business_value": [
+        "계약서 이미지 → OCR 없이 직접 분석·요약",
+        "제품 사진 → 설명문·마케팅 카피 즉시 생성",
+        "회의 녹음 → 실시간 요약 + 액션 아이템 추출",
+        "광고 영상 → 자동 자막 + 다국어 번역 + 하이라이트 편집",
+    ],
+}
+
+# ──────────────────────────────────────────────
+# AI 2026 최전선
+# ──────────────────────────────────────────────
+AI_FRONTIER_2026 = {
+    "headline": "지금 가장 빠르게 바뀌고 있는 것들",
+    "trends": [
+        {
+            "title": "추론 모델 (Reasoning)",
+            "desc": "o1·o3·Claude 3.7 Extended Thinking — 답 전에 수십 초 '생각'. 수학·코딩·과학에서 인간 전문가 초월.",
+            "icon": "🧠",
+            "color": "#1D4ED8",
+            "impact": "전략 보고서·투자 분석·R&D에 즉시 활용 가능",
+        },
+        {
+            "title": "멀티에이전트 시스템",
+            "desc": "여러 AI가 역할 분담하고 서로 검증. Claude가 코드 작성 → 다른 Claude가 테스트 → 또 다른 Claude가 배포.",
+            "icon": "🤖",
+            "color": "#0D6B4F",
+            "impact": "24시간 자율 운영 가능한 AI 팀",
+        },
+        {
+            "title": "컴퓨터 사용 (Computer Use)",
+            "desc": "Claude·GPT-4o가 화면을 보고 마우스·키보드 직접 조작. RPA를 자연어로 대체.",
+            "icon": "🖥️",
+            "color": "#B91C1C",
+            "impact": "ERP·CRM 수동 입력 자동화, 레거시 시스템 연동",
+        },
+        {
+            "title": "실시간 멀티모달",
+            "desc": "GPT-4o·Gemini Live — 영상·음성·화면을 동시에 보고 실시간 대화. 화상 회의 AI 코치.",
+            "icon": "⚡",
+            "color": "#6D28D9",
+            "impact": "영업 실시간 코칭, 고객 응대 AI 어시스턴트",
+        },
+        {
+            "title": "온디바이스 AI",
+            "desc": "Phi-4·Gemma·Llama 3.2 — 서버 없이 스마트폰·노트북에서 실행. 데이터 외부 유출 없음.",
+            "icon": "📱",
+            "color": "#0E7490",
+            "impact": "보안 데이터 로컬 처리, 인터넷 없는 환경 활용",
+        },
+        {
+            "title": "비용 1/100 시대",
+            "desc": "2023년 대비 API 비용 98% 감소. 2026년 Haiku급 성능을 하루 수천 번 써도 월 3천원.",
+            "icon": "💰",
+            "color": "#92400E",
+            "impact": "AI 사용 '예산' 고민 끝 → 전략·프로세스 설계가 핵심",
+        },
+    ],
+    "key_message": "기술보다 '어떻게 쓸 것인가'가 경쟁력 — 도구를 아는 사람이 아닌 프로세스를 설계하는 사람이 앞선다",
+}
+
+# ──────────────────────────────────────────────
 # 경로 설정
 # ────────────────────────────────────────��─────
 import pathlib
