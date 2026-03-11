@@ -1,23 +1,18 @@
 {
-  "fetched_at": "2026-03-10T09:02:28.807799",
+  "fetched_at": "2026-03-11T09:56:38.418527",
   "nand_signal": "tight",
   "price_trend": "up",
-  "price_change_pct": 7.4,
+  "price_change_pct": 3.5,
   "headlines": [
     {
-      "title": "SanDisk (SNDK) Stock Soars 11.6% Today: Micron Technology (MU) and Western Digital (WDC) Also See Strong Gains",
-      "date": "2026-03-09T21:45:00+00:00",
-      "url": "https://www.aol.com/articles/sandisk-sndk-stock-soars-11-205110573.html"
+      "title": "PC, smartphone market to see a 'challenging' 2026 amid memory shortage, rising prices",
+      "date": "2026-02-27T13:21:00+00:00",
+      "url": "https://seekingalpha.com/news/4558694-pc-smartphone-market-to-see-a-challenging-2026-amid-memory-shortage-rising-prices"
     },
     {
-      "title": "Spiralling memory spot prices could trigger 'industry cycle collapse,' report warns",
-      "date": "2026-03-06T04:01:00+00:00",
-      "url": "https://www.msn.com/en-gb/money/other/spiralling-memory-spot-prices-could-trigger-industry-cycle-collapse-report-warns/ar-AA1XB9gR"
-    },
-    {
-      "title": "Citi Raises Micron Price Target Ahead of Earnings",
-      "date": "2026-03-09T19:38:00+00:00",
-      "url": "https://finance.yahoo.com/news/citi-raises-micron-price-target-191803649.html"
+      "title": "What IT Leaders Need To Know About The Impact Of Memory On Storage",
+      "date": "2026-02-28T19:50:00+00:00",
+      "url": "https://www.forbes.com/sites/stevemcdowell/2026/02/28/the-memory-crisis-is-reshaping-enterprise-storage-what-it-leaders-need-to-know/"
     },
     {
       "title": "Adata chairman expects NAND price surge in 2H26",
@@ -25,37 +20,42 @@
       "url": "https://www.digitimes.com/news/a20260306PD213/adata-price-memory-chairman-nand.html"
     },
     {
-      "title": "Micron Technology, Inc. (MU) Price Target Raised to on DRAM Strength and Memory Market Recovery",
-      "date": "2026-03-03T22:27:27+00:00",
-      "url": "https://www.msn.com/en-us/money/markets/micron-technology-inc-mu-price-target-raised-to-on-dram-strength-and-memory-market-recovery/ar-AA1XsZ74"
+      "title": "Sandisk's Rewriting Laws Of Gravity With Surging NAND Prices",
+      "date": "2026-02-24T20:25:00+00:00",
+      "url": "https://seekingalpha.com/article/4874114-sandisk-rewriting-laws-of-gravity-with-surging-nand-prices"
     },
     {
-      "title": "From AI Data Centres to Your Next Smartphone: The Memory Bottleneck Is Everyone's Problem",
-      "date": "2026-03-09T17:37:00+00:00",
-      "url": "https://www.cigionline.org/articles/opinion-from-ai-data-centres-to-your-next-smartphone-the-memory-bottleneck-is-everyones-problem/"
+      "title": "8 Gadgets That Could Jump In Price Due To The RAM Shortage",
+      "date": "2026-03-10T19:01:00+00:00",
+      "url": "https://www.msn.com/en-us/news/technology/8-gadgets-that-could-jump-in-price-due-to-the-ram-shortage/ar-AA1XU5qG"
     },
     {
-      "title": "Why the AI Boom Will Make Phones, Cars and Electronics More Expensive",
-      "date": "2026-03-08T20:15:00+00:00",
-      "url": "https://www.bloomberg.com/graphics/2026-ai-boom-memory-chip-shortage/"
+      "title": "Phison says NAND prices jumped 50% overnight as supply crunch continues",
+      "date": "2026-03-10T00:56:31+00:00",
+      "url": "https://www.digitimes.com/news/a20260309PD212/phison-nand-flash-inventory-price-2026.html"
     },
     {
-      "title": "The global RAM and SSD shortage crisis, explained",
-      "date": "2026-02-27T12:31:00+00:00",
-      "url": "https://appleinsider.com/articles/26/02/27/the-global-ram-and-ssd-shortage-crisis-explained"
+      "title": "Silicon Motion expands enterprise storage amid NAND supply shift",
+      "date": "2026-02-08T15:00:00+00:00",
+      "url": "https://www.digitimes.com/news/a20260206PD228/silicon-motion-nand-nand-flash-revenue-2026.html"
+    },
+    {
+      "title": "Kioxia sells out 2026 NAND capacity as AI demand tightens global memory supply",
+      "date": "2026-02-22T15:00:00+00:00",
+      "url": "https://www.digitimes.com/news/a20260223VL214/kioxia-nand-demand-2026.html"
     }
   ],
   "key_insights": [
-    "4% month-over-month, while 1Tb TLC flash wafers jumped 25% to $25",
-    "Adata chairman expects NAND price surge in 2H26 Memory module giant Adata reported record-high operations in 2025, with chairman Simon Chen forecasting a strong memory market throughout 2026"
+    "Adata chairman expects NAND price surge in 2H26 Memory module giant Adata reported record-high operations in 2025, with chairman Simon Chen forecasting a strong memory market throughout 2026",
+    "Sandisk's Rewriting Laws Of Gravity With Surging NAND Prices Sandisk is positioned to benefit from surging NAND wafer prices, driven by AI data center demand and industry-wide capacity constraints"
   ],
   "sim_adjustments": {
-    "nand_cost_delta_pct": 5.92,
-    "demand_delta_pct": -2.22,
+    "nand_cost_delta_pct": 2.8,
+    "demand_delta_pct": -1.05,
     "supply_risk": 0.25
   },
-  "market_context": "NAND 시장: 공급 부족 | 가격 트렌드: 상승 (추정 +7.4%/월) | 공급 리스크: 25%",
-  "supply_score": -2,
-  "price_score": -2,
+  "market_context": "NAND 시장: 공급 부족 | 가격 트렌드: 상승 (추정 +3.5%/월) | 공급 리스크: 25%",
+  "supply_score": -5,
+  "price_score": -4,
   "source": "web"
 }
