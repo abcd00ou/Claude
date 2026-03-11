@@ -32,7 +32,7 @@ from config import (
     TOKEN_MEMORY, CONTEXT_EVOLUTION,
     GPU_DATA, TRANSFORMER_DATA, TRAINING_INFERENCE_DATA,
     SCALING_LAWS_DATA, VRAM_KVCACHE_DATA, MULTIMODAL_DATA,
-    AI_FRONTIER_2026,
+    AI_FRONTIER_2026, AI_PREPARATION_2026, PHASE_DATA,
 )
 
 # ─────────────────────────────────────────────────────────────────
@@ -1851,6 +1851,252 @@ def pil_multimodal_tokens(data: list, w: int = 1600, h: int = 500) -> "io.BytesI
 
 
 # ─────────────────────────────────────────────────────────────────
+# PHASE VISUAL SLIDES (CH1 강화 버전)
+# ─────────────────────────────────────────────────────────────────
+
+def pil_phase_impact_bar(impacts: list, color_hex: str, w: int = 1400, h: int = 380) -> "io.BytesIO | None":
+    """Phase impact before/after 수평 비교 차트."""
+    if not PIL_AVAILABLE:
+        return None
+    from PIL import Image, ImageDraw
+    img = Image.new("RGB", (w, h), (10, 22, 48))
+    draw = ImageDraw.Draw(img)
+    font_sm = _kfont(13)
+    font_md = _kfont(17)
+
+    r2, g2, b2 = int(color_hex[1:3], 16), int(color_hex[3:5], 16), int(color_hex[5:7], 16)
+    row_h = (h - 40) // len(impacts)
+
+    for i, imp in enumerate(impacts):
+        y = 20 + i * row_h
+        cx = w // 2
+
+        # Task label
+        try:
+            draw.text((10, y + row_h // 2 - 10), imp["task"], font=font_md, fill=(200, 220, 255))
+        except Exception:
+            draw.text((10, y + row_h // 2 - 10), imp["task"], fill=(200, 220, 255))
+
+        # Before box
+        bx = cx - 10
+        draw.rectangle([cx - 180, y + 8, bx, y + row_h - 8], fill=(80, 10, 10))
+        _draw_center(draw, "전: " + imp["before"], cx - 90, y + row_h // 2, font_md, (255, 120, 120))
+
+        # After box
+        ax = cx + 10
+        draw.rectangle([ax, y + 8, ax + 200, y + row_h - 8], fill=(10, 60, 10))
+        _draw_center(draw, "후: " + imp["after"], ax + 100, y + row_h // 2, font_md, (100, 255, 150))
+
+        # Arrow
+        _draw_center(draw, "→", cx, y + row_h // 2, font_md, (r2, g2, b2))
+
+    buf = io.BytesIO()
+    img.save(buf, format="PNG")
+    buf.seek(0)
+    return buf
+
+
+def build_phase_visual_slide(prs: Presentation, phase_idx: int, phases: list) -> None:
+    """Phase 진화 단계 — 시각적 카드 레이아웃 (build_content_slide 대체)."""
+    if phase_idx >= len(phases):
+        return
+    pd = phases[phase_idx]
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    color = pd["color"]
+    bg = pd.get("bg_color", "#0A1628")
+    _rect(slide, 0, 0, W, H, bg)
+    _accent_bar(slide, color)
+
+    # Phase badge (left big)
+    _rect(slide, int(W * 0.04), int(H * 0.06), int(W * 0.22), int(H * 0.88), "#0A1628")
+    _rect(slide, int(W * 0.04), int(H * 0.06), int(W * 0.22), int(H * 0.007), color)
+    _txt(slide, int(W * 0.04), int(H * 0.10), int(W * 0.22), int(H * 0.14),
+         pd["icon"], 48, color=color, align=PP_ALIGN.CENTER)
+    _txt(slide, int(W * 0.04), int(H * 0.24), int(W * 0.22), int(H * 0.10),
+         pd["phase"], 20, color="#FFFFFF", bold=True, align=PP_ALIGN.CENTER)
+    _txt(slide, int(W * 0.04), int(H * 0.33), int(W * 0.22), int(H * 0.08),
+         pd["title"], 16, color=color, bold=True, align=PP_ALIGN.CENTER)
+    _txt(slide, int(W * 0.04), int(H * 0.43), int(W * 0.22), int(H * 0.06),
+         pd["period"], 13, color="#64748B", align=PP_ALIGN.CENTER)
+    _rect(slide, int(W * 0.06), int(H * 0.51), int(W * 0.18), int(H * 0.001), "#1E3A5F")
+    _txt(slide, int(W * 0.04), int(H * 0.53), int(W * 0.22), int(H * 0.18),
+         pd["models"], 11, color="#94A3B8", align=PP_ALIGN.CENTER)
+
+    # Headline stat (center top)
+    _rect(slide, int(W * 0.28), int(H * 0.06), int(W * 0.34), int(H * 0.22), "#111827")
+    _txt(slide, int(W * 0.28), int(H * 0.08), int(W * 0.34), int(H * 0.12),
+         pd["headline_stat"], 44, color=color, bold=True, align=PP_ALIGN.CENTER)
+    _txt(slide, int(W * 0.29), int(H * 0.19), int(W * 0.32), int(H * 0.07),
+         pd["headline_label"], 12, color="#94A3B8", align=PP_ALIGN.CENTER)
+
+    # Impact table
+    _txt(slide, int(W * 0.28), int(H * 0.30), int(W * 0.34), int(H * 0.06),
+         "업무별 변화", 13, color=color, bold=True)
+    for i, imp in enumerate(pd.get("impacts", [])[:3]):
+        y = int(H * (0.37 + i * 0.17))
+        _rect(slide, int(W * 0.28), y, int(W * 0.34), int(H * 0.15), "#0A1628")
+        _txt(slide, int(W * 0.29), y + int(H * 0.02), int(W * 0.32), int(H * 0.05),
+             imp["task"], 12, color="#CBD5E1")
+        _rect(slide, int(W * 0.29), y + int(H * 0.07), int(W * 0.07), int(H * 0.06), "#2D1010")
+        _txt(slide, int(W * 0.30), y + int(H * 0.075), int(W * 0.06), int(H * 0.05),
+             "전: " + imp["before"], 11, color="#F87171")
+        _rect(slide, int(W * 0.37), y + int(H * 0.07), int(W * 0.07), int(H * 0.06), "#102D10")
+        _txt(slide, int(W * 0.38), y + int(H * 0.075), int(W * 0.06), int(H * 0.05),
+             "후: " + imp["after"], 11, color="#34D399")
+        _txt(slide, int(W * 0.45), y + int(H * 0.075), int(W * 0.05), int(H * 0.06),
+             "→", 14, color=color, bold=True)
+
+    # B2C Examples (right panel)
+    _rect(slide, int(W * 0.65), int(H * 0.06), int(W * 0.31), int(H * 0.88), "#0A1628")
+    _rect(slide, int(W * 0.65), int(H * 0.06), int(W * 0.31), int(H * 0.004), color)
+    _txt(slide, int(W * 0.66), int(H * 0.09), int(W * 0.29), int(H * 0.06),
+         "B2C 실무 적용 사례", 14, color=color, bold=True)
+    for i, ex in enumerate(pd.get("b2c_examples", [])[:2]):
+        y = int(H * (0.17 + i * 0.37))
+        _rect(slide, int(W * 0.66), y, int(W * 0.28), int(H * 0.33), "#111827")
+        _rect(slide, int(W * 0.66), y, int(W * 0.006), int(H * 0.33), color)
+        _txt(slide, int(W * 0.67), y + int(H * 0.03), int(W * 0.26), int(H * 0.06),
+             ["영업 사례", "마케팅·기획 사례"][i], 11, color=color, bold=True)
+        _txt(slide, int(W * 0.67), y + int(H * 0.10), int(W * 0.26), int(H * 0.20),
+             ex, 12, color="#CBD5E1")
+
+    # Who disrupted
+    _rect(slide, int(W * 0.28), int(H * 0.88), int(W * 0.34), int(H * 0.08), "#1E1010")
+    _txt(slide, int(W * 0.30), int(H * 0.895), int(W * 0.30), int(H * 0.055),
+         "⚠️  영향받는 직무: " + pd.get("who_disrupted", ""), 12, color="#F87171")
+
+
+# ─────────────────────────────────────────────────────────────────
+# AI 2026 최전선 + 준비 전략 슬라이드
+# ─────────────────────────────────────────────────────────────────
+
+def build_ai_frontier_2026_slide(prs: Presentation, chapter_color: str = "#0F2B4C") -> None:
+    """AI 2026 최전선 — MCP 포함 6대 트렌드, 2컬럼 카드 레이아웃."""
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    _rect(slide, 0, 0, W, H, D["bg_dark"])
+    _accent_bar(slide, "#60A5FA")
+
+    af = AI_FRONTIER_2026
+    _txt(slide, int(W * 0.06), int(H * 0.04), int(W * 0.60), int(H * 0.06),
+         "APPENDIX — AI 2026 최전선", 11, color="#60A5FA", bold=True)
+    _txt(slide, int(W * 0.06), int(H * 0.09), int(W * 0.75), int(H * 0.09),
+         af["headline"], 24, color=D["text_white"], bold=True)
+    _txt(slide, int(W * 0.06), int(H * 0.17), int(W * 0.65), int(H * 0.06),
+         af["subheading"], 14, color="#F87171")
+
+    trends = af["trends"]
+    # 2-column × 3-row grid
+    cw = int(W * 0.44)
+    ch = int(H * 0.21)
+    positions = [
+        (int(W * 0.03), int(H * 0.24)), (int(W * 0.52), int(H * 0.24)),
+        (int(W * 0.03), int(H * 0.48)), (int(W * 0.52), int(H * 0.48)),
+        (int(W * 0.03), int(H * 0.72)), (int(W * 0.52), int(H * 0.72)),
+    ]
+    for (x, y), tr in zip(positions, trends):
+        c = tr["color"]
+        r2, g2, b2 = int(c[1:3], 16), int(c[3:5], 16), int(c[5:7], 16)
+        _rect(slide, x, y, cw, ch, "#0A1628")
+        _rect(slide, x, y, cw, 4, c)
+
+        # Left: icon + title + stat
+        _txt(slide, x + 12, y + int(H * 0.02), int(W * 0.05), int(H * 0.08),
+             tr["icon"], 22, color="#FFFFFF")
+        _txt(slide, x + 12 + int(W * 0.05), y + int(H * 0.02), cw - int(W * 0.06) - 130, int(H * 0.06),
+             tr["title"], 14, color="#FFFFFF", bold=True)
+        _txt(slide, x + 12 + int(W * 0.05), y + int(H * 0.07), cw - int(W * 0.06) - 130, int(H * 0.05),
+             tr["subtitle"], 10, color="#94A3B8")
+
+        # Stat badge (right)
+        _rect(slide, x + cw - 115, y + int(H * 0.02), 110, int(H * 0.09), c)
+        _txt(slide, x + cw - 115, y + int(H * 0.02), 110, int(H * 0.055),
+             tr["stat"], 16, color="#FFFFFF", bold=True, align=PP_ALIGN.CENTER)
+        _txt(slide, x + cw - 115, y + int(H * 0.065), 110, int(H * 0.04),
+             tr["stat_label"][:12], 9, color="#FFFFFF", align=PP_ALIGN.CENTER)
+
+        # Desc + impact
+        _rect(slide, x, y + int(H * 0.12), cw, int(H * 0.001), "#1E3A5F")
+        _txt(slide, x + 12, y + int(H * 0.13), cw - 24, int(H * 0.055),
+             tr["impact"], 12, color=f"#{r2:02X}{g2:02X}{b2:02X}", bold=True)
+
+    # Key message bar
+    _rect(slide, int(W * 0.03), int(H * 0.94), int(W * 0.94), int(H * 0.05), "#152032")
+    _txt(slide, int(W * 0.05), int(H * 0.952), int(W * 0.90), int(H * 0.035),
+         f"💡  {af['urgency_note']}", 13, color="#FBBF24")
+
+
+def build_ai_preparation_slide(prs: Presentation, chapter_color: str = "#0F2B4C") -> None:
+    """우리가 준비해야 할 것 — 6개 영역 실행 가이드."""
+    slide = prs.slides.add_slide(prs.slide_layouts[6])
+    _rect(slide, 0, 0, W, H, D["bg_white"])
+    _accent_bar(slide, chapter_color)
+
+    ap = AI_PREPARATION_2026
+    _txt(slide, int(W * 0.06), int(H * 0.04), int(W * 0.60), int(H * 0.06),
+         "APPENDIX — 실전 준비 전략", 11, color=chapter_color, bold=True)
+    _txt(slide, int(W * 0.06), int(H * 0.09), int(W * 0.80), int(H * 0.09),
+         ap["headline"], 26, color=D["text_h1"], bold=True)
+
+    # Subheading highlight
+    _rect(slide, int(W * 0.06), int(H * 0.18), int(W * 0.88), int(H * 0.07), "#FEF3C7")
+    _rect(slide, int(W * 0.06), int(H * 0.18), int(W * 0.008), int(H * 0.07), "#F59E0B")
+    _txt(slide, int(W * 0.08), int(H * 0.195), int(W * 0.84), int(H * 0.05),
+         ap["subheading"], 14, color="#92400E", bold=True)
+
+    # 6 areas in 3-col × 2-row
+    areas = ap["areas"]
+    cw = int(W * 0.30)
+    ch = int(H * 0.31)
+    positions = [
+        (int(W * 0.03), int(H * 0.27)), (int(W * 0.35), int(H * 0.27)), (int(W * 0.67), int(H * 0.27)),
+        (int(W * 0.03), int(H * 0.60)), (int(W * 0.35), int(H * 0.60)), (int(W * 0.67), int(H * 0.60)),
+    ]
+    for (x, y), area in zip(positions, areas):
+        c = area["color"]
+        r2, g2, b2 = int(c[1:3], 16), int(c[3:5], 16), int(c[5:7], 16)
+        _shadow_card(slide, x, y, cw, ch)
+        _rect(slide, x, y, cw, 5, c)
+
+        # Header row
+        _rect(slide, x, y, cw, int(H * 0.06), f"#{r2:02X}{g2:02X}{b2:02X}")
+        _txt(slide, x + 10, y + int(H * 0.01), int(W * 0.05), int(H * 0.045),
+             area["icon"], 18, color="#FFFFFF")
+        _txt(slide, x + int(W * 0.045), y + int(H * 0.01), cw - int(W * 0.05) - 60, int(H * 0.04),
+             area["category"], 14, color="#FFFFFF", bold=True)
+
+        # Urgency badge
+        urgency_colors = {"즉시": "#DC2626", "1개월 내": "#D97706", "3개월 내": "#059669", "지금": "#DC2626"}
+        uc = urgency_colors.get(area["urgency"], "#64748B")
+        _rect(slide, x + cw - 65, y + int(H * 0.01), 60, int(H * 0.04), uc)
+        _txt(slide, x + cw - 65, y + int(H * 0.01), 60, int(H * 0.04),
+             area["urgency"], 11, color="#FFFFFF", bold=True, align=PP_ALIGN.CENTER)
+
+        # Actions (first 3)
+        for j, action in enumerate(area["actions"][:3]):
+            ay = y + int(H * 0.07) + j * int(H * 0.074)
+            _rect(slide, x + 8, ay + int(H * 0.01), 4, int(H * 0.05), c)
+            _txt(slide, x + 18, ay, cw - 28, int(H * 0.07),
+                 action, 11, color=D["text_body"])
+
+        # KPI badge
+        _rect(slide, x + 8, y + ch - int(H * 0.055), cw - 16, int(H * 0.045), "#F8FAFC")
+        _txt(slide, x + 10, y + ch - int(H * 0.055), cw - 20, int(H * 0.04),
+             "📊  " + area["kpi"], 11, color=c, bold=True)
+
+    # Action matrix (bottom bar)
+    _rect(slide, int(W * 0.03), int(H * 0.93), int(W * 0.94), int(H * 0.065), "#EFF6FF")
+    matrix = ap["action_matrix"]
+    items = list(matrix.items())
+    seg_w = int(W * 0.94) // len(items)
+    for i, (period, actions) in enumerate(items):
+        x = int(W * 0.03) + i * seg_w
+        _txt(slide, x + 6, int(H * 0.934), seg_w - 12, int(H * 0.02),
+             period, 10, color=chapter_color, bold=True)
+        _txt(slide, x + 6, int(H * 0.955), seg_w - 12, int(H * 0.03),
+             " · ".join(actions[:2]), 10, color=D["text_body"])
+
+
+# ─────────────────────────────────────────────────────────────────
 # TOKEN / MEMORY CHAPTER SLIDES
 # ─────────────────────────────────────────────────────────────────
 
@@ -2184,44 +2430,6 @@ def build_multimodal_slide(prs: Presentation, chapter_color: str = _TOKEN_COLOR)
              "✅  " + bv, 13, color=D["text_body"])
 
 
-def build_ai_frontier_2026_slide(prs: Presentation, chapter_color: str = _TOKEN_COLOR) -> None:
-    """AI 2026 최전선 — 지금 가장 빠르게 바뀌는 것들."""
-    slide = prs.slides.add_slide(prs.slide_layouts[6])
-    _rect(slide, 0, 0, W, H, D["bg_dark"])
-    _accent_bar(slide, "#60A5FA")
-
-    af = AI_FRONTIER_2026
-    _txt(slide, int(W * 0.06), int(H * 0.07), int(W * 0.60), int(H * 0.07),
-         "APPENDIX — AI 2026 최전선", 11, color="#60A5FA", bold=True)
-    _txt(slide, int(W * 0.06), int(H * 0.13), int(W * 0.85), int(H * 0.10),
-         af["headline"], 26, color=D["text_white"], bold=True)
-
-    trends = af["trends"]
-    cw = int(W * 0.29)
-    ch = int(H * 0.28)
-    positions = [
-        (int(W * 0.05), int(H * 0.26)), (int(W * 0.36), int(H * 0.26)), (int(W * 0.67), int(H * 0.26)),
-        (int(W * 0.05), int(H * 0.57)), (int(W * 0.36), int(H * 0.57)), (int(W * 0.67), int(H * 0.57)),
-    ]
-    for (x, y), tr in zip(positions, trends):
-        color = tr["color"]
-        r2, g2, b2 = int(color[1:3], 16), int(color[3:5], 16), int(color[5:7], 16)
-        _rect(slide, x, y, cw, ch, "#0A1628")
-        _rect(slide, x, y, cw, 4, color)
-        _txt(slide, x + 14, y + int(H * 0.02), cw - 20, int(H * 0.08),
-             tr["icon"] + "  " + tr["title"], 15, color="#FFFFFF", bold=True)
-        _txt(slide, x + 14, y + int(H * 0.10), cw - 28, int(H * 0.09),
-             tr["desc"], 11, color=D["text_muted"])
-        _rect(slide, x + 14, y + int(H * 0.19), cw - 28, int(H * 0.005), color)
-        _txt(slide, x + 14, y + int(H * 0.21), cw - 28, int(H * 0.06),
-             "→ " + tr["impact"], 12, color=f"#{r2:02X}{g2:02X}{b2:02X}", bold=True)
-
-    # Key message
-    _rect(slide, int(W * 0.05), int(H * 0.88), int(W * 0.90), int(H * 0.09), "#152032")
-    _txt(slide, int(W * 0.07), int(H * 0.90), int(W * 0.86), int(H * 0.06),
-         f"💡  {af['key_message']}", 15, color="#60A5FA")
-
-
 def build_what_is_token_slide(prs: Presentation, chapter_color: str = _TOKEN_COLOR) -> None:
     """토큰이란 무엇인가 — 정의·비유·단위 변환."""
     slide = prs.slides.add_slide(prs.slide_layouts[6])
@@ -2472,18 +2680,10 @@ def build_presentation(research_data: dict | None = None) -> str:
     build_ai_definition_slide(prs, CHAPTERS[0]["color"]);             _s("AI 정의 — 비유 3가지")
     build_stats_slide(prs, "chatgpt_adoption", CHAPTERS[0]["color"]); _s("ChatGPT 1억 명 통계")
     build_timeline_slide(prs);                                        _s("AI 타임라인")
-    build_content_slide(prs, "AI 진화 Phase 1~2 — 텍스트·이미지 시대", [
-        "💬 Phase 1 (2022~) 텍스트 Q&A: ChatGPT 등장 → '검색'에서 '대화'로 패러다임 전환. 2개월 만에 1억 명 달성.",
-        "🖼️ Phase 2 (2023~) 멀티모달: GPT-4 이미지 이해 → 텍스트와 이미지를 동시에 분석·생성 가능",
-        "🎨 이미지 생성 (2023~): Midjourney·DALL-E 3 → 프롬프트 하나로 전문 수준 비주얼 즉시 제작",
-        "📊 임팩트: 스톡 이미지 시장 40% 감소, 콘텐츠 제작 비용 60~80% 절감 (Shutterstock 2023)",
-    ], CHAPTERS[0]["color"]);                                         _s("Phase 1~2")
-    build_content_slide(prs, "AI 진화 Phase 3~4 — 에이전트·CLI 시대", [
-        "🔌 Phase 3 (2023~) 에이전트 v1: GPT Plugins → AI가 외부 도구에 연결해 자율 검색·실행 가능",
-        "🎬 영상 생성 (2024~): Sora → 텍스트로 고품질 영상 생성. 광고·데모 영상 90% 비용 절감 가능",
-        "🖱️ Phase 3.5 (2024~) Computer Use: Claude가 화면을 보고 PC를 직접 조작. RPA 시장 패러다임 전환",
-        "⚡ Phase 4 (2025~) CLI 에이전트: Claude Code → 터미널에서 자연어로 전체 파이프라인 자동화",
-    ], CHAPTERS[0]["color"]);                                         _s("Phase 3~4")
+    build_phase_visual_slide(prs, 0, PHASE_DATA);                     _s("Phase 1 — 텍스트 Q&A")
+    build_phase_visual_slide(prs, 1, PHASE_DATA);                     _s("Phase 2 — 멀티모달")
+    build_phase_visual_slide(prs, 2, PHASE_DATA);                     _s("Phase 3 — AI 에이전트")
+    build_phase_visual_slide(prs, 3, PHASE_DATA);                     _s("Phase 4 — CLI 에이전트")
     build_economic_impact_slide(prs, CHAPTERS[0]["color"]);           _s("McKinsey 경제 임팩트")
     build_agent_example_slide(prs, CH1_AGENTS, "CH1 — AI 진화 단계별 에이전트 사례"); _s("CH1 에이전트")
 
@@ -2556,7 +2756,8 @@ def build_presentation(research_data: dict | None = None) -> str:
     build_context_engineering_slide(prs);                             _s("컨텍스트 엔지니어링")
     build_new_architectures_slide(prs);                               _s("새로운 아키텍처")
     build_multimodal_slide(prs);                                      _s("멀티모달 AI")
-    build_ai_frontier_2026_slide(prs);                                _s("AI 2026 최전선")
+    build_ai_frontier_2026_slide(prs);                                _s("AI 2026 최전선 — 6대 트렌드")
+    build_ai_preparation_slide(prs);                                  _s("우리가 준비해야 할 것")
     # Summary
     build_token_summary_slide(prs);                                   _s("AI 기술 핵심 요약")
 

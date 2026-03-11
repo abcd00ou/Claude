@@ -932,53 +932,291 @@ MULTIMODAL_DATA = {
 # AI 2026 최전선
 # ──────────────────────────────────────────────
 AI_FRONTIER_2026 = {
-    "headline": "지금 가장 빠르게 바뀌고 있는 것들",
+    "headline": "지금 가장 빠르게 바뀌고 있는 것들 — 2026 AI 최전선",
+    "subheading": "이 6가지를 모르면 경쟁에서 뒤처진다",
     "trends": [
         {
-            "title": "추론 모델 (Reasoning)",
-            "desc": "o1·o3·Claude 3.7 Extended Thinking — 답 전에 수십 초 '생각'. 수학·코딩·과학에서 인간 전문가 초월.",
+            "title": "추론 모델 (Reasoning AI)",
+            "subtitle": "o3 · Claude 3.7 Extended Thinking",
+            "desc": (
+                "답변 전에 수십 초~수 분 '생각'하는 AI. OpenAI o3는 수학 올림피아드(IMO) 88% 달성, "
+                "박사급 과학 문제(GPQA) 87% 정답률로 인간 전문가 초월. "
+                "Claude 3.7 Extended Thinking은 복잡한 전략 분석을 순서대로 추론해 결론 도출."
+            ),
             "icon": "🧠",
             "color": "#1D4ED8",
-            "impact": "전략 보고서·투자 분석·R&D에 즉시 활용 가능",
+            "stat": "IMO 88%",
+            "stat_label": "o3 수학 올림피아드 정답률",
+            "impact": "복잡한 투자 분석·전략 기획·법적 검토를 AI가 컨설턴트 수준으로 처리",
+            "how_to_use": "긴 보고서 분석, ROI 모델링, 복잡한 의사결정에 Extended Thinking 모드 활용",
         },
         {
-            "title": "멀티에이전트 시스템",
-            "desc": "여러 AI가 역할 분담하고 서로 검증. Claude가 코드 작성 → 다른 Claude가 테스트 → 또 다른 Claude가 배포.",
-            "icon": "🤖",
+            "title": "MCP — AI와 기업 시스템 연결",
+            "subtitle": "Model Context Protocol (Anthropic, 2024.11)",
+            "desc": (
+                "Anthropic이 공개한 오픈 표준으로, AI가 Slack·Notion·SAP·CRM을 '플러그인처럼' 직접 연결. "
+                "한 번 설정하면 Claude가 사내 데이터를 자동 조회·업데이트. "
+                "OpenAI·Google·Microsoft 모두 MCP 지원 선언, 사실상 AI 연결 표준으로 자리매김."
+            ),
+            "icon": "🔌",
             "color": "#0D6B4F",
-            "impact": "24시간 자율 운영 가능한 AI 팀",
+            "stat": "1,000+",
+            "stat_label": "MCP 호환 도구 수 (2025.01 기준)",
+            "impact": "사내 ERP·CRM 데이터를 AI가 직접 읽어 분석·자동 업데이트 — RPA 없이도 시스템 연동",
+            "how_to_use": "Slack MCP 연결 → '이번 주 계약 현황 요약해줘' 즉시 처리",
+        },
+        {
+            "title": "멀티에이전트 오케스트레이션",
+            "subtitle": "자율 AI 팀 · Claude Orchestration · AutoGen",
+            "desc": (
+                "여러 AI가 역할 분담하고 서로 검증하는 자율 팀 구조. "
+                "기획 에이전트가 전략 수립 → 리서치 에이전트가 데이터 수집 → 검증 에이전트가 교차검토 → 실행 에이전트가 문서화. "
+                "Microsoft AutoGen, LangGraph, Claude Orchestration으로 구현 가능."
+            ),
+            "icon": "🤖",
+            "color": "#6D28D9",
+            "stat": "24시간",
+            "stat_label": "자율 운영 가능한 AI 팀",
+            "impact": "담당자 1명이 AI 팀 10명을 지휘 — 보고서 기획부터 완성까지 자동화",
+            "how_to_use": "주간 경쟁사 인텔리전스 → 수집·분석·정리·발송까지 완전 자동화",
         },
         {
             "title": "컴퓨터 사용 (Computer Use)",
-            "desc": "Claude·GPT-4o가 화면을 보고 마우스·키보드 직접 조작. RPA를 자연어로 대체.",
+            "subtitle": "Claude Computer Use · OpenAI Operator · browser-use",
+            "desc": (
+                "AI가 화면을 보고 마우스·키보드를 직접 조작. "
+                "OpenAI Operator는 항공권 예약, 쇼핑몰 주문을 사람 대신 처리. "
+                "Claude Computer Use는 레거시 시스템에도 적용 — SAP, 엑셀, 웹 양식 자동 입력."
+            ),
             "icon": "🖥️",
             "color": "#B91C1C",
-            "impact": "ERP·CRM 수동 입력 자동화, 레거시 시스템 연동",
+            "stat": "90%",
+            "stat_label": "반복 클릭 업무 자동화율",
+            "impact": "ERP 수동 입력·보고서 복붙·레거시 시스템 작업이 완전 자동화",
+            "how_to_use": "월말 데이터 취합 업무, 경쟁사 가격 모니터링, CRM 대량 업데이트",
         },
         {
-            "title": "실시간 멀티모달",
-            "desc": "GPT-4o·Gemini Live — 영상·음성·화면을 동시에 보고 실시간 대화. 화상 회의 AI 코치.",
-            "icon": "⚡",
-            "color": "#6D28D9",
-            "impact": "영업 실시간 코칭, 고객 응대 AI 어시스턴트",
-        },
-        {
-            "title": "온디바이스 AI",
-            "desc": "Phi-4·Gemma·Llama 3.2 — 서버 없이 스마트폰·노트북에서 실행. 데이터 외부 유출 없음.",
+            "title": "온디바이스 AI / 로컬 AI",
+            "subtitle": "Apple Intelligence · Phi-4 · Gemma 3 · Llama 3.3",
+            "desc": (
+                "외부 서버 없이 기기 내에서 직접 AI 처리. Apple Intelligence는 iPhone 16에서 오프라인 동작. "
+                "Microsoft Phi-4(14B)는 노트북에서 GPT-4급 성능. "
+                "데이터가 외부로 나가지 않아 보안 이슈 해결."
+            ),
             "icon": "📱",
             "color": "#0E7490",
-            "impact": "보안 데이터 로컬 처리, 인터넷 없는 환경 활용",
+            "stat": "0원",
+            "stat_label": "클라우드 API 비용 (온디바이스 실행 시)",
+            "impact": "영업 현장에서 인터넷 없이도 AI 활용, 기밀 데이터 사외 유출 없이 분석",
+            "how_to_use": "고객 미팅 현장에서 계약서 즉시 분석, 공장·매장 등 오프라인 현장 활용",
         },
         {
-            "title": "비용 1/100 시대",
-            "desc": "2023년 대비 API 비용 98% 감소. 2026년 Haiku급 성능을 하루 수천 번 써도 월 3천원.",
-            "icon": "💰",
+            "title": "AI 거버넌스 & 규제 대응",
+            "subtitle": "EU AI Act (2025 시행) · 한국 AI 기본법",
+            "desc": (
+                "EU AI Act가 2025년 8월부터 단계적 시행. 고위험 AI 시스템(채용·신용평가)은 투명성·설명책임 의무화. "
+                "한국도 AI 기본법 제정 논의 중. "
+                "기업은 사용 AI 솔루션의 컴플라이언스 체크리스트 작성 의무 예상."
+            ),
+            "icon": "⚖️",
             "color": "#92400E",
-            "impact": "AI 사용 '예산' 고민 끝 → 전략·프로세스 설계가 핵심",
+            "stat": "2025.08",
+            "stat_label": "EU AI Act 시행일",
+            "impact": "지금 도입하는 AI 솔루션이 규제 대상인지 사전 체크 필수",
+            "how_to_use": "사용 AI 도구 목록화 → 개인정보 처리 여부 확인 → 가이드라인 수립",
         },
     ],
-    "key_message": "기술보다 '어떻게 쓸 것인가'가 경쟁력 — 도구를 아는 사람이 아닌 프로세스를 설계하는 사람이 앞선다",
+    "key_message": "기술을 '아는 사람'이 아닌 기술로 '프로세스를 재설계하는 사람'이 앞선다",
+    "urgency_note": "이 중 3개 이상을 올해 안에 업무에 적용하지 못하면 경쟁력 격차가 벌어진다",
 }
+
+# ──────────────────────────────────────────────
+# 우리가 준비해야 할 것 (2026 대응 전략)
+# ──────────────────────────────────────────────
+AI_PREPARATION_2026 = {
+    "headline": "우리가 지금 준비해야 할 것",
+    "subheading": "AI가 대체하는 것은 '직무'가 아니라 'AI를 모르는 사람'이다",
+    "areas": [
+        {
+            "category": "개인 역량",
+            "icon": "👤",
+            "color": "#1D4ED8",
+            "urgency": "즉시",
+            "actions": [
+                "TRIE 프롬프트 공식 체득 — 매일 3개 이상 업무에 AI 적용",
+                "컨텍스트 엔지니어링 학습 — 좋은 프롬프트가 결과 품질 10배 차이",
+                "AI 출력물 검증 능력 — 환각·오류 식별, 사실 확인 습관화",
+                "직무 특화 프롬프트 라이브러리 개인 구축 (50개 이상)",
+            ],
+            "kpi": "목표: 업무 시간 20% 단축",
+        },
+        {
+            "category": "팀·조직 체계",
+            "icon": "👥",
+            "color": "#0D6B4F",
+            "urgency": "1개월 내",
+            "actions": [
+                "AI 챔피언 지정 — 팀당 1명, 사례 공유·교육 담당",
+                "주간 AI 활용 사례 공유 세션 (15분) 운영",
+                "성공 사례 DB 구축 — 실패 사례도 포함, 학습 자산화",
+                "AI 활용 KPI 도입 — 업무당 AI 적용 횟수, 시간 절감률 측정",
+            ],
+            "kpi": "목표: 팀 AI 활용률 80% 이상",
+        },
+        {
+            "category": "사내 데이터 준비",
+            "icon": "💾",
+            "color": "#B91C1C",
+            "urgency": "3개월 내",
+            "actions": [
+                "사내 문서 구조화 — RAG 시스템 구축을 위한 데이터 정리",
+                "고객 데이터 품질 관리 — 비정형 데이터 → 구조화 데이터로 전환",
+                "지식 베이스(KB) 구축 — FAQ, 제품 정보, 정책 문서 체계화",
+                "데이터 레이블링 — AI 학습·파인튜닝을 위한 예시 데이터 축적",
+            ],
+            "kpi": "목표: 핵심 문서 100% 디지털화·구조화",
+        },
+        {
+            "category": "도구 체계 구축",
+            "icon": "🔧",
+            "color": "#6D28D9",
+            "urgency": "1개월 내",
+            "actions": [
+                "직무별 AI 도구 표준화 — 영업/마케팅/기획별 승인 도구 목록 수립",
+                "MCP 연동 우선순위 선정 — Slack, Notion, CRM 중 연결 효과 높은 순",
+                "API 비용 관리 계획 — 팀별 예산 책정, 사용량 모니터링",
+                "도구 평가 기준 수립 — 보안 인증, 한국어 지원, 가격 대비 성능",
+            ],
+            "kpi": "목표: 도구 표준화 완료, 월 비용 예측 가능",
+        },
+        {
+            "category": "보안·거버넌스",
+            "icon": "🔒",
+            "color": "#0E7490",
+            "urgency": "즉시",
+            "actions": [
+                "AI 사용 정책 수립 — 입력 금지 정보 목록(개인정보·영업비밀·금융정보)",
+                "EU AI Act·한국 AI 기본법 영향 체크리스트 작성",
+                "AI 생성물 저작권 정책 — 외부 발행물에 AI 사용 공시 기준",
+                "직원 AI 보안 교육 — 피싱·딥페이크·데이터 유출 대응 훈련",
+            ],
+            "kpi": "목표: AI 사용 정책 문서화, 전 직원 교육 완료",
+        },
+        {
+            "category": "마인드셋 전환",
+            "icon": "🧠",
+            "color": "#92400E",
+            "urgency": "지금",
+            "actions": [
+                "\"AI가 내 일을 빼앗는다\" → \"AI로 10배 더 잘한다\"로 관점 전환",
+                "업무 프로세스 재설계 — 기존 방식에 AI를 덧붙이지 말고, 처음부터 AI 포함 설계",
+                "실패를 학습으로 — 나쁜 AI 결과도 데이터. 프롬프트 개선 사이클 운영",
+                "속도의 법칙 수용 — AI 도구는 6개월마다 바뀐다. 빠른 실험·채택 문화 구축",
+            ],
+            "kpi": "목표: 부서 내 'AI 퍼스트' 문화 정착",
+        },
+    ],
+    "action_matrix": {
+        "즉시 (이번 주)": ["TRIE 공식 1개 업무 적용", "AI 사용 금지 정보 목록 작성", "마인드셋 전환 선언"],
+        "단기 (1개월)": ["AI 챔피언 지정", "도구 표준화 검토", "주간 공유 세션 시작"],
+        "중기 (3개월)": ["사내 RAG 시스템 구축", "MCP 연동 파일럿", "팀 KPI 수립"],
+        "장기 (6개월+)": ["멀티에이전트 도입 검토", "AI CoE 공식화", "역량 평가 체계 구축"],
+    },
+}
+
+# ──────────────────────────────────────────────
+# AI 진화 Phase 데이터 (슬라이드용 강화 버전)
+# ──────────────────────────────────────────────
+PHASE_DATA = [
+    {
+        "phase": "Phase 1",
+        "title": "텍스트 Q&A",
+        "subtitle": "대화의 시작 — 검색에서 협업으로",
+        "period": "2022.11 ~",
+        "models": "ChatGPT 3.5 · GPT-4 · Claude 1",
+        "icon": "💬",
+        "color": "#1565C0",
+        "bg_color": "#0A1628",
+        "headline_stat": "1억 명",
+        "headline_label": "2개월 만에 (역대 최단 기록, UBS 2023)",
+        "impacts": [
+            {"task": "이메일 초안 작성", "before": "30분", "after": "2분"},
+            {"task": "회의록 요약", "before": "1시간", "after": "30초"},
+            {"task": "번역", "before": "외주 $100", "after": "$0.001"},
+        ],
+        "b2c_examples": [
+            "영업: 고객사 맞춤 제안서 초안 — 10분 → 1분. 영업사원 1명이 하루 20건 발송",
+            "마케팅: 월간 SNS 카피 100개 → 1시간 완성. 기존 4명이 하던 일을 1명이 처리",
+        ],
+        "who_disrupted": "문서 작성·번역·요약 업무 종사자",
+    },
+    {
+        "phase": "Phase 2",
+        "title": "멀티모달",
+        "subtitle": "보는 AI — 이미지·영상까지 이해",
+        "period": "2023.03 ~",
+        "models": "GPT-4V · Midjourney · DALL-E 3 · Sora",
+        "icon": "🖼️",
+        "color": "#2E7D32",
+        "bg_color": "#0A2010",
+        "headline_stat": "80%",
+        "headline_label": "디자인 초안 비용 절감 (Adobe 조사)",
+        "impacts": [
+            {"task": "제품 이미지 생성", "before": "스튜디오 $500", "after": "AI $0"},
+            {"task": "SNS 비주얼 제작", "before": "3일", "after": "30분"},
+            {"task": "경쟁사 분석", "before": "직접 스크린샷·메모", "after": "이미지 업로드 → 자동 분석"},
+        ],
+        "b2c_examples": [
+            "마케팅: 제품 카탈로그 이미지 100장 → AI로 하루 만에 생성. 포토그래퍼·외주 비용 제거",
+            "상품기획: 경쟁사 앱 스크린샷 업로드 → UI 비교·개선 포인트 자동 추출",
+        ],
+        "who_disrupted": "그래픽 디자이너·사진 작가·영상 편집자",
+    },
+    {
+        "phase": "Phase 3",
+        "title": "AI 에이전트",
+        "subtitle": "스스로 하는 AI — 도구·웹·시스템 직접 조작",
+        "period": "2024.03 ~",
+        "models": "Claude Tools · GPT Plugins · Computer Use · Zapier AI",
+        "icon": "🤖",
+        "color": "#7B1FA2",
+        "bg_color": "#1A0A28",
+        "headline_stat": "70%",
+        "headline_label": "반복 업무 자동화 가능 (McKinsey 2024)",
+        "impacts": [
+            {"task": "경쟁사 가격 모니터링", "before": "2주 수작업", "after": "매일 자동 리포트"},
+            {"task": "고객 이메일 분류", "before": "하루 2시간", "after": "자동 분류·응답"},
+            {"task": "데이터 리포트 생성", "before": "매주 8시간", "after": "0시간 (자동)"},
+        ],
+        "b2c_examples": [
+            "영업: CRM 자동 업데이트 에이전트 → 미팅 후 노트 입력 → 자동 기회·액션 생성",
+            "상품기획: 소비자 리뷰 2만 건 → 자동 수집·분류·트렌드 분석 → 주간 인사이트 리포트",
+        ],
+        "who_disrupted": "데이터 수집·입력·분류 업무 종사자",
+    },
+    {
+        "phase": "Phase 4",
+        "title": "CLI·코드 에이전트",
+        "subtitle": "코딩의 민주화 — 비개발자도 자동화",
+        "period": "2025.02 ~",
+        "models": "Claude Code · Cursor · Devin · GitHub Copilot",
+        "icon": "⚡",
+        "color": "#E65100",
+        "bg_color": "#280A00",
+        "headline_stat": "10배",
+        "headline_label": "개발 속도 향상 (GitHub Developer Report 2025)",
+        "impacts": [
+            {"task": "랜딩 페이지 제작", "before": "개발자 3일", "after": "프롬프트 30초"},
+            {"task": "데이터 분석 스크립트", "before": "SQL 전문가", "after": "자연어 질문"},
+            {"task": "업무 자동화", "before": "외주 개발 비용", "after": "직접 생성 $0"},
+        ],
+        "b2c_examples": [
+            "마케팅: A/B 테스트 랜딩 페이지 5개 버전 → 30초 만에 생성·배포. 전환율 비교 자동화",
+            "영업: '지난 분기 이탈 고객 패턴 분석해줘' → 자연어만으로 완전한 분석 리포트 자동 생성",
+        ],
+        "who_disrupted": "단순 개발·테스트·배포 업무, 데이터 분석가 일부",
+    },
+]
 
 # ──────────────────────────────────────────────
 # 경로 설정
