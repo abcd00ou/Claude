@@ -82,6 +82,43 @@ def build_demos() -> list[str]:
         return []
 
 
+def run_daily(force_refresh: bool = False) -> dict:
+    """일일 뉴스 수집 + Word 브리핑 생성."""
+    print("\n" + "=" * 60)
+    print("📡 DAILY — AI 뉴스 수집 + 브리핑 생성")
+    print("=" * 60)
+    try:
+        from agents.news_agent import run_news_agent, print_news_summary
+        result = run_news_agent(force_refresh=force_refresh)
+        print_news_summary(result)
+        return result
+    except ImportError as e:
+        print(f"  [오류] feedparser/anthropic 패키지 필요: {e}")
+        return {}
+    except Exception as e:
+        print(f"  [오류] 뉴스 수집 실패: {e}")
+        import traceback; traceback.print_exc()
+        return {}
+
+
+def build_briefing_doc(news_data: dict) -> str:
+    """뉴스 데이터로 Word 브리핑 문서 생성."""
+    print("\n" + "=" * 60)
+    print("📝 DAILY — Word 브리핑 문서 생성")
+    print("=" * 60)
+    try:
+        from agents.word_builder import build_daily_briefing_doc
+        return build_daily_briefing_doc(news_data)
+    except ImportError as e:
+        print(f"  [오류] python-docx 패키지 필요: {e}")
+        print("   실행: pip3 install python-docx")
+        return ""
+    except Exception as e:
+        print(f"  [오류] Word 생성 실패: {e}")
+        import traceback; traceback.print_exc()
+        return ""
+
+
 def open_file(path: str) -> None:
     """macOS에서 파일 열기."""
     try:
@@ -129,6 +166,7 @@ def main():
     parser.add_argument("--demo-only", action="store_true", help="데모 HTML만 생성")
     parser.add_argument("--no-ai", action="store_true", help="Claude API 없이 기본 데이터로 실행")
     parser.add_argument("--open", action="store_true", help="완료 후 파일 자동 열기")
+    parser.add_argument("--daily", action="store_true", help="일일 뉴스 수집 + Word 브리핑 생성 (+ 업데이트 많으면 PPT 재생성)")
     args = parser.parse_args()
 
     start_time = datetime.now()
@@ -150,6 +188,31 @@ def main():
     ppt_path = None
     demo_paths = []
     research_data = None
+    doc_path = None
+
+    # 일일 뉴스 브리핑 모드
+    if args.daily:
+        news_data = run_daily(force_refresh=args.refresh)
+        doc_path = build_briefing_doc(news_data) if news_data else ""
+        # 유의미한 업데이트가 있으면 PPT도 재생성
+        if news_data.get("has_significant_updates"):
+            print("\n  ℹ️  유의미한 뉴스 업데이트 감지 — PPT 재생성")
+            ppt_path = build_ppt(None)
+        elapsed = (datetime.now() - start_time).total_seconds()
+        print("\n" + "=" * 60)
+        print("🎉 일일 브리핑 완료!")
+        print("=" * 60)
+        print(f"⏱️  소요 시간: {elapsed:.1f}초")
+        if doc_path:
+            print(f"📝 Word 브리핑: {doc_path}")
+        if ppt_path:
+            print(f"📊 PPT (재생성): {ppt_path}")
+        print("\n💡 cron 자동화:\n   0 9 * * * cd {path} && python3 run_lecture.py --daily".format(
+            path=BASE_DIR))
+        if args.open:
+            if doc_path: open_file(doc_path)
+            if ppt_path: open_file(ppt_path)
+        return
 
     # 데모만 생성
     if args.demo_only:

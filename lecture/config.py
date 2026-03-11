@@ -560,8 +560,143 @@ CAUTION_ITEMS = [
 ]
 
 # ──────────────────────────────────────────────
-# 경로 설정
+# 컨텍스트 윈도우 진화 타임라인
 # ──────────────────────────────────────────────
+CONTEXT_EVOLUTION = [
+    {"model": "GPT-2",      "year": 2019, "tokens": 1_024,      "color": "#94A3B8"},
+    {"model": "GPT-3",      "year": 2020, "tokens": 2_048,      "color": "#64748B"},
+    {"model": "GPT-3.5",    "year": 2022, "tokens": 4_096,      "color": "#1D4ED8"},
+    {"model": "GPT-4",      "year": 2023, "tokens": 32_768,     "color": "#2563EB"},
+    {"model": "Claude 2",   "year": 2023, "tokens": 100_000,    "color": "#0D6B4F"},
+    {"model": "Gemini 1.5", "year": 2024, "tokens": 1_000_000,  "color": "#B91C1C"},
+    {"model": "Claude 3.7", "year": 2025, "tokens": 200_000,    "color": "#0E7490"},
+    {"model": "Gemini 2.0", "year": 2025, "tokens": 2_000_000,  "color": "#6D28D9"},
+]
+
+# ──────────────────────────────────────────────
+# 토큰 · 컨텍스트 · 메모리 기술 데이터
+# ──────────────────────────────────────────────
+TOKEN_MEMORY = {
+    "what_is_token": {
+        "definition": "AI가 텍스트를 이해하는 최소 단위 — 단어 혹은 단어 조각",
+        "analogy": "레고 블록처럼 언어를 작은 조각으로 분해한 것",
+        "conversion": "1,000 토큰 ≈ 750 단어 ≈ A4 용지 1.5장",
+        "examples": [
+            "영어: 'Hello' = 1 토큰",
+            "한국어: '안녕하세요' = 3~5 토큰",
+            "GPT-4o 기준: 이미지 1장 = 약 170~300 토큰",
+        ],
+        "why_matters": "컨텍스트 윈도우 크기(처리 가능 정보량)와 API 비용을 결정",
+    },
+    "memory_types": [
+        {
+            "name": "컨텍스트 메모리",
+            "icon": "💬",
+            "color": "#1D4ED8",
+            "description": "현재 대화창에 올라와 있는 텍스트 전체",
+            "limit": "수천~수백만 토큰 (모델마다 다름)",
+            "analogy": "책상 위에 펼쳐진 문서들",
+            "use_case": "긴 계약서 요약, 멀티턴 대화, 코드 분석",
+        },
+        {
+            "name": "외부 메모리 (RAG)",
+            "icon": "🗄️",
+            "color": "#0D6B4F",
+            "description": "Vector DB에 저장, 필요할 때 검색·주입",
+            "limit": "이론상 무한 (외부 저장소 크기에 의존)",
+            "analogy": "도서관 — 필요한 책을 꺼내 책상에 올려놓음",
+            "use_case": "사내 문서 QA, 제품 카탈로그 검색, 고객 히스토리",
+        },
+        {
+            "name": "파인튜닝 메모리",
+            "icon": "🧠",
+            "color": "#6D28D9",
+            "description": "모델 가중치 자체에 학습된 지식",
+            "limit": "학습 시점 고정, 업데이트 비용 높음",
+            "analogy": "오랜 경험으로 쌓인 전문 지식",
+            "use_case": "특정 도메인 전문화, 말투·스타일 고정",
+        },
+        {
+            "name": "에이전트 메모리",
+            "icon": "📋",
+            "color": "#B91C1C",
+            "description": "작업 간 저장·전달되는 상태 정보",
+            "limit": "설계에 따라 다름 (파일, DB, 변수)",
+            "analogy": "To-Do 리스트 + 작업 일지",
+            "use_case": "멀티스텝 자동화, 장기 프로젝트 관리",
+        },
+    ],
+    "cost_trend": [
+        {"period": "GPT-4\n(2023.03)", "model": "GPT-4",        "cost_per_1m_input": 30.0,  "relative": 100},
+        {"period": "GPT-4o\n(2024.05)", "model": "GPT-4o",       "cost_per_1m_input": 5.0,   "relative": 17},
+        {"period": "Claude 3.5\n(2024.10)", "model": "Claude 3.5 H", "cost_per_1m_input": 3.0, "relative": 10},
+        {"period": "Claude 3.7\n(2025.02)", "model": "Claude 3.7 S", "cost_per_1m_input": 0.6, "relative": 2},
+    ],
+    "context_engineering": {
+        "definition": "컨텍스트 윈도우를 전략적으로 채워 AI 성능을 극대화하는 기술",
+        "why_matters": "모델 크기보다 무엇을 컨텍스트에 넣느냐가 결과 품질을 결정",
+        "techniques": [
+            {
+                "name": "RAG (검색 증강 생성)",
+                "desc": "외부 DB에서 관련 정보를 검색해 컨텍스트에 주입",
+                "icon": "🔍",
+            },
+            {
+                "name": "프롬프트 압축",
+                "desc": "긴 컨텍스트를 LLMLingua 등으로 4x 압축해 비용 절감",
+                "icon": "📦",
+            },
+            {
+                "name": "대화 요약",
+                "desc": "과거 대화를 요약본으로 교체해 윈도우 효율 유지",
+                "icon": "📝",
+            },
+            {
+                "name": "청킹 전략",
+                "desc": "문서를 의미 단위로 분할해 검색 정확도 향상",
+                "icon": "✂️",
+            },
+        ],
+    },
+    "new_architectures": [
+        {
+            "name": "KV 캐시 (Key-Value Cache)",
+            "icon": "⚡",
+            "color": "#1D4ED8",
+            "desc": "이미 계산한 어텐션 결과를 재사용 → 반복 요청 속도 10x",
+            "impact": "API 응답 속도 대폭 향상, 비용 절감",
+            "status": "현재 모든 LLM 서비스에 적용",
+        },
+        {
+            "name": "Mamba / SSM",
+            "icon": "🌊",
+            "color": "#0D6B4F",
+            "desc": "Transformer 대신 선형 확장 State Space Model — 긴 시퀀스를 O(n)으로 처리",
+            "impact": "100만 토큰 이상 초장문 처리 가능",
+            "status": "연구 단계, Jamba(AI21) 등 상용화 중",
+        },
+        {
+            "name": "Flash Attention",
+            "icon": "🔥",
+            "color": "#B91C1C",
+            "desc": "GPU 메모리 I/O 최적화 — 어텐션 계산을 타일 단위로 처리",
+            "impact": "학습 3x 빠름, VRAM 사용량 4x 절감",
+            "status": "GPT-4, Claude, Gemini 모두 적용",
+        },
+        {
+            "name": "Sparse MoE (Mixture of Experts)",
+            "icon": "🎯",
+            "color": "#6D28D9",
+            "desc": "입력에 따라 필요한 전문가(expert) 모듈만 활성화",
+            "impact": "파라미터 8x 확장해도 계산량은 동일",
+            "status": "GPT-4, Gemini 1.5에 적용 (추정)",
+        },
+    ],
+}
+
+# ──────────────────────────────────────────────
+# 경로 설정
+# ────────────────────────────────────────��─────
 import pathlib
 
 BASE_DIR = pathlib.Path(__file__).parent
