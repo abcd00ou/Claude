@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>삼성 990 Pro PS5 확장 완벽 가이드 — 설치부터 포맷까지 한 번에</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; background: #f5f5f5; color: #222; line-height: 1.85; font-size: 15px; }
+  .blog-wrap { max-width: 720px; margin: 0 auto; background: #fff; padding: 0 0 60px; box-shadow: 0 0 20px rgba(0,0,0,.07); }
+  .thumb { background: linear-gradient(135deg, #0a1628 0%, #1428A0 60%, #003087 100%); padding: 52px 36px 48px; color: #fff; position: relative; overflow: hidden; }
+  .thumb::before { content: ''; position: absolute; right: -40px; top: -40px; width: 280px; height: 280px; background: rgba(255,255,255,.04); border-radius: 50%; }
+  .thumb-badge { display: inline-block; background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); color: #cde; font-size: 11px; padding: 3px 12px; border-radius: 20px; margin-bottom: 16px; letter-spacing: .5px; }
+  .thumb h1 { font-size: 22px; font-weight: 700; line-height: 1.45; margin-bottom: 14px; word-break: keep-all; }
+  .thumb-sub { font-size: 13px; color: rgba(255,255,255,.65); }
+  .thumb-specs { display: flex; gap: 20px; margin-top: 24px; flex-wrap: wrap; }
+  .thumb-spec-item { text-align: center; }
+  .thumb-spec-item .val { font-size: 20px; font-weight: 700; color: #7eb8ff; display: block; }
+  .thumb-spec-item .lbl { font-size: 10px; color: rgba(255,255,255,.55); margin-top: 2px; }
+  .body { padding: 32px 36px 0; }
+  .intro { border-left: 3px solid #1428A0; padding: 16px 20px; background: #f0f4ff; border-radius: 0 8px 8px 0; margin-bottom: 32px; color: #333; font-size: 14.5px; line-height: 1.9; }
+  .intro strong { color: #1428A0; }
+  .sec-title { font-size: 16px; font-weight: 700; color: #111; margin: 36px 0 16px; padding-bottom: 10px; border-bottom: 2px solid #1428A0; display: flex; align-items: center; gap: 8px; }
+  .sec-title .icon { width: 22px; height: 22px; background: #1428A0; border-radius: 5px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+  .summary-box { background: #f8faff; border: 1px solid #c8d8ff; border-radius: 10px; padding: 20px 22px; margin-bottom: 32px; }
+  .summary-box .s-title { font-size: 12px; color: #1428A0; font-weight: 700; margin-bottom: 12px; letter-spacing: .5px; }
+  .summary-box ol { padding-left: 18px; }
+  .summary-box li { font-size: 13.5px; color: #333; margin-bottom: 6px; line-height: 1.7; }
+  .summary-box li strong { color: #1428A0; }
+  .spec-table { width: 100%; border-collapse: collapse; margin: 16px 0 8px; font-size: 13.5px; }
+  .spec-table th, .spec-table td { padding: 10px 14px; text-align: left; border-bottom: 1px solid #eee; }
+  .spec-table th { background: #f0f4ff; color: #1428A0; font-weight: 600; width: 38%; font-size: 12.5px; }
+  .spec-table td { color: #333; }
+  .spec-table tr:last-child th, .spec-table tr:last-child td { border-bottom: none; }
+  .info-box { background: #fafafa; border: 1px solid #e8e8e8; border-radius: 8px; padding: 18px 20px; margin: 16px 0; font-size: 14px; color: #444; line-height: 1.85; }
+  .info-box p + p { margin-top: 10px; }
+  .scenario-list { margin: 16px 0; }
+  .scenario-card { border: 1px solid #e0e8ff; border-radius: 10px; margin-bottom: 14px; overflow: hidden; }
+  .scenario-head { background: linear-gradient(90deg, #1428A0, #2a4abf); color: #fff; padding: 10px 18px; font-size: 13px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  .scenario-head .num { background: rgba(255,255,255,.25); border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0; }
+  .scenario-body { padding: 14px 18px; font-size: 13.5px; color: #444; line-height: 1.85; background: #f8faff; }
+  .scenario-body p + p { margin-top: 8px; }
+  .scenario-point { background: #fff; border-left: 3px solid #4a8eff; padding: 8px 12px; margin-top: 10px; border-radius: 0 6px 6px 0; font-size: 13px; color: #333; }
+  .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+  @media (max-width: 520px) { .fit-grid { grid-template-columns: 1fr; } }
+  .fit-card { border-radius: 8px; padding: 16px; }
+  .fit-card.good { background: #e8f5e9; border: 1px solid #a5d6a7; }
+  .fit-card.check { background: #ffebee; border: 1px solid #ef9a9a; }
+  .fit-card .ft { font-size: 12px; font-weight: 700; margin-bottom: 10px; display: flex; align-items: center; gap: 5px; }
+  .fit-card.good .ft { color: #2e7d32; }
+  .fit-card.check .ft { color: #c62828; }
+  .fit-card ul { padding-left: 15px; margin: 0; }
+  .fit-card li { font-size: 12.5px; color: #444; margin-bottom: 5px; line-height: 1.6; }
+  .checklist-section { background: #fafafa; border: 1px solid #ddd; border-radius: 10px; padding: 20px 22px; margin: 16px 0; }
+  .checklist-group { margin-bottom: 16px; }
+  .checklist-group:last-child { margin-bottom: 0; }
+  .checklist-group-title { font-size: 12px; font-weight: 700; color: #666; letter-spacing: .5px; margin-bottom: 8px; }
+  .checklist-item { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 7px; font-size: 13.5px; color: #333; line-height: 1.6; }
+  .checklist-item .cb { width: 16px; height: 16px; border: 2px solid #1428A0; border-radius: 3px; flex-shrink: 0; margin-top: 2px; }
+  .checklist-sub { font-size: 11.5px; color: #888; margin-top: 2px; padding-left: 24px; }
+  .final-summary { background: linear-gradient(135deg, #0a1628, #1428A0); border-radius: 10px; padding: 24px; margin: 32px 0 24px; color: #fff; }
+  .final-summary .fs-title { font-size: 12px; color: rgba(255,255,255,.6); letter-spacing: .8px; margin-bottom: 14px; }
+  .final-summary ol { padding-left: 18px; }
+  .final-summary li { font-size: 13.5px; color: rgba(255,255,255,.9); margin-bottom: 8px; line-height: 1.7; }
+  .cta-box { text-align: center; margin: 24px 0; padding: 24px; background: #f0f4ff; border-radius: 10px; border: 1px solid #c8d8ff; }
+  .cta-box p { font-size: 14px; color: #444; margin-bottom: 14px; line-height: 1.7; }
+  .cta-btn { display: inline-block; background: #1428A0; color: #fff !important; text-decoration: none; padding: 13px 28px; border-radius: 8px; font-size: 14px; font-weight: 700; }
+  .cta-note { font-size: 11px; color: #999; margin-top: 10px; }
+  .question-box { background: #fff8e1; border: 1px solid #ffe082; border-radius: 8px; padding: 16px 18px; margin: 16px 0 28px; font-size: 13.5px; color: #444; line-height: 1.8; }
+  .question-box strong { color: #f57f17; }
+  .sources { border-top: 1px solid #eee; padding-top: 20px; margin-top: 20px; }
+  .sources-title { font-size: 11px; color: #999; font-weight: 700; letter-spacing: .5px; margin-bottom: 8px; }
+  .source-item { font-size: 12px; color: #888; margin-bottom: 4px; line-height: 1.6; }
+  .source-item::before { content: "· "; }
+  .disclaimer { font-size: 11.5px; color: #aaa; margin-top: 10px; line-height: 1.6; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 24px; }
+  .tag { background: #f0f4ff; color: #1428A0; font-size: 12px; padding: 4px 10px; border-radius: 14px; border: 1px solid #c8d8ff; }
+  p { margin-bottom: 12px; color: #333; }
+  /* 단계 표시 */
+  .step-badge { display: inline-block; background: #1428A0; color: #fff; font-size: 11px; font-weight: 700; padding: 2px 10px; border-radius: 12px; margin-right: 6px; }
+</style>
+</head>
+<body>
+<div class="blog-wrap">
+
+  <div class="thumb">
+    <div class="thumb-badge">INTERNAL SSD · PS5 확장 가이드</div>
+    <h1>삼성 990 Pro PS5 확장 완벽 가이드<br>설치부터 포맷까지 한 번에</h1>
+    <div class="thumb-sub">PS5 M.2 확장 슬롯 설치 가이드 | PS5 최소 요구 5,500 MB/s · 990 Pro 7,450 MB/s | 2025년 기준</div>
+    <div class="thumb-specs">
+      <div class="thumb-spec-item"><span class="val">5,500+</span><div class="lbl">PS5 최소 요구 MB/s</div></div>
+      <div class="thumb-spec-item"><span class="val">7,450</span><div class="lbl">990 Pro 읽기 MB/s</div></div>
+      <div class="thumb-spec-item"><span class="val">히트싱크</span><div class="lbl">설치 필수 조건</div></div>
+      <div class="thumb-spec-item"><span class="val">자동포맷</span><div class="lbl">PS5가 자동 처리</div></div>
+    </div>
+  </div>
+
+  <div class="body">
+
+    <div class="intro">
+      PS5 내장 825GB로는 요즘 게임 3~4개 깔면 꽉 찹니다.<br><br>
+      M.2 확장 슬롯에 990 Pro를 설치하면 추가 저장 용량을 확보할 수 있습니다.
+      <strong>소니 공식 지원 기능이며, 포맷은 PS5가 자동으로 처리합니다.</strong><br><br>
+      히트싱크만 준비하면 어렵지 않습니다.
+    </div>
+
+    <div class="summary-box">
+      <div class="s-title">▣ 핵심 3줄 요약</div>
+      <ol>
+        <li>PS5 M.2 확장은 소니 공식 지원 기능입니다. <strong>최소 5,500 MB/s 이상이 필요</strong>하고, 990 Pro(7,450 MB/s)는 이를 여유있게 충족합니다.</li>
+        <li><strong>히트싱크가 필수입니다.</strong> 990 Pro 히트싱크 버전 구매 또는 얇은 M.2 히트싱크를 별도 준비하세요 (PS5 내부 공간 제약: 약 8mm 이하).</li>
+        <li>포맷은 PS5가 자동으로 처리합니다. 설치 후 PS5 전원을 켜면 포맷 안내 팝업이 나타납니다.</li>
+      </ol>
+    </div>
+
+    <img src="../images/svg/nvme_990pro.svg" alt="삼성 990 Pro NVMe SSD" style="width:100%; max-width:320px; display:block; margin:16px auto;">
+
+    <div class="sec-title"><span class="icon">①</span>PS5 M.2 확장 요구사항</div>
+
+    <table class="spec-table">
+      <tr><th>지원 규격</th><td>M.2 Type 2230, 2242, 2260, 2280, 22110</td></tr>
+      <tr><th>최소 읽기 속도</th><td>5,500 MB/s 이상 (순차 읽기)</td></tr>
+      <tr><th>990 Pro 속도</th><td>7,450 MB/s ✅ (요구사항 35% 이상 상회)</td></tr>
+      <tr><th>최대 용량</th><td>4TB 이하 권장 (8TB 이론적 지원)</td></tr>
+      <tr><th>히트싱크</th><td>필수 (PS5 덮개 내 공간 제약 — 총 두께 약 8mm 이하)</td></tr>
+      <tr><th>포맷</th><td>PS5가 자동 처리 (별도 작업 불필요)</td></tr>
+    </table>
+
+    <div class="sec-title"><span class="icon">②</span>설치 단계별 안내</div>
+
+    <div class="scenario-list">
+      <div class="scenario-card">
+        <div class="scenario-head"><span class="num">01</span>사전 준비</div>
+        <div class="scenario-body">
+          <p>준비물: 990 Pro + 히트싱크, 작은 십자 드라이버(#1), 항정전기 장갑(권장)</p>
+          <p>PS5 펌웨어를 최신 버전으로 업데이트하세요. 구버전 펌웨어에서는 M.2 인식 문제가 발생할 수 있습니다.</p>
+          <div class="scenario-point">
+            PS5 전원을 완전히 끄세요. 절전 모드(대기 모드)가 아닌 완전 종료 상태여야 합니다.
+          </div>
+        </div>
+      </div>
+      <div class="scenario-card">
+        <div class="scenario-head"><span class="num">02</span>990 Pro 장착</div>
+        <div class="scenario-body">
+          <p><span class="step-badge">1</span> PS5 우측 덮개 분리 (아래로 당기며 위로 들기)</p>
+          <p><span class="step-badge">2</span> M.2 확장 슬롯 커버 나사 분리</p>
+          <p><span class="step-badge">3</span> 990 Pro를 M.2 슬롯에 비스듬히 삽입 후 눌러 고정</p>
+          <div class="scenario-point">
+            <span class="step-badge">4</span> 히트싱크 써멀패드를 990 Pro에 부착 후 히트싱크 고정<br>
+            <span class="step-badge">5</span> 덮개 재조립 → PS5 전원 켜기
+          </div>
+        </div>
+      </div>
+      <div class="scenario-card">
+        <div class="scenario-head"><span class="num">03</span>포맷 및 게임 이동</div>
+        <div class="scenario-body">
+          <p>PS5 전원을 켜면 "확장 스토리지를 포맷하시겠습니까?" 팝업이 나타납니다.<br>
+          "포맷" 선택 → 약 1~2분 후 완료됩니다.</p>
+          <div class="scenario-point">
+            게임 이동: 설정 → 저장 장치 → 게임 및 앱 → 이동할 게임 선택 → 확장 스토리지로 이동<br>
+            새 게임 설치 위치를 확장 스토리지로 기본 설정할 수 있습니다.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-title"><span class="icon">③</span>히트싱크 선택 — PS5 내부 공간 제약</div>
+
+    <div class="info-box">
+      <p><strong style="color:#1428A0;">PS5 M.2 슬롯 위 여유 공간은 약 8mm 이하입니다.</strong><br>
+      두꺼운 히트싱크는 PS5 덮개가 닫히지 않을 수 있습니다.</p>
+      <p>추천: 삼성 990 Pro 히트싱크 버전 (삼성이 PS5 환경을 고려해 설계).<br>
+      또는 총 두께 7~8mm 이하의 저프로파일 M.2 히트싱크를 별도 구매.</p>
+      <p style="color:#888; font-size:13px;">히트싱크 없이 설치하면 써멀 스로틀링으로 성능이 저하될 수 있습니다. 반드시 히트싱크를 사용하세요.</p>
+    </div>
+
+    <div class="sec-title"><span class="icon">④</span>설치 시 주의사항</div>
+
+    <div class="fit-grid">
+      <div class="fit-card good">
+        <div class="ft">✅ 설치 팁</div>
+        <ul>
+          <li>PS5 완전 종료 후 10분 대기 (잔류 전압 방지)</li>
+          <li>2280 폼팩터 확인 (990 Pro는 M.2 2280)</li>
+          <li>M.2 고정 나사 위치를 미리 확인</li>
+          <li>포맷 후 게임 설치 위치 기본 설정 변경</li>
+        </ul>
+      </div>
+      <div class="fit-card check">
+        <div class="ft">❌ 이것만은 피하세요</div>
+        <ul>
+          <li>전원 켜진 상태에서 장착 절대 금지</li>
+          <li>히트싱크 없이 사용</li>
+          <li>두꺼운 히트싱크로 덮개 강제 닫기</li>
+          <li>구버전 PS5 펌웨어에서 설치</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sec-title"><span class="icon">⑤</span>설치 전 체크리스트</div>
+
+    <div class="checklist-section">
+      <div class="checklist-group">
+        <div class="checklist-group-title">사전 준비</div>
+        <div class="checklist-item"><div class="cb"></div><div>PS5 펌웨어를 최신 버전으로 업데이트했는가?</div></div>
+        <div class="checklist-item"><div class="cb"></div><div>히트싱크를 준비했는가? (총 두께 8mm 이하)</div></div>
+        <div class="checklist-item"><div class="cb"></div><div>작은 십자 드라이버를 준비했는가?</div></div>
+      </div>
+      <div class="checklist-group">
+        <div class="checklist-group-title">설치 후 확인</div>
+        <div class="checklist-item"><div class="cb"></div><div>포맷 팝업에서 정상적으로 포맷됐는가?</div></div>
+        <div class="checklist-item"><div class="cb"></div><div>설정 → 저장 장치에서 확장 스토리지 용량이 표시되는가?</div></div>
+        <div class="checklist-sub">표시 안 된다면 M.2 슬롯 재삽입 또는 PS5 재부팅 시도</div>
+      </div>
+    </div>
+
+    <div class="final-summary">
+      <div class="fs-title">▣ 오늘 내용 요약</div>
+      <ol>
+        <li>990 Pro(7,450 MB/s)는 PS5 M.2 확장 요구사항(5,500 MB/s)을 충족합니다. 히트싱크만 준비하면 설치가 어렵지 않습니다.</li>
+        <li>히트싱크 두께는 PS5 내부 공간 제약(약 8mm 이하)을 고려해 선택하세요. 990 Pro 히트싱크 버전이 가장 간편합니다.</li>
+        <li>포맷은 PS5가 자동 처리합니다. 게임 이동 및 기본 설치 위치 변경도 설정 메뉴에서 쉽게 가능합니다.</li>
+      </ol>
+    </div>
+
+    <div class="cta-box">
+      <p>삼성 990 Pro 히트싱크 버전은 공식 스마트스토어에서 확인하세요.</p>
+      <a href="#" class="cta-btn">▶ 삼성 990 Pro 스마트스토어에서 보기</a>
+      <p class="cta-note">가격은 시점에 따라 변동될 수 있습니다.</p>
+    </div>
+
+    <div class="question-box">
+      <strong>💬 PS5에 M.2 확장을 이미 하신 분, 용량이 얼마나 여유있게 됐나요?</strong><br><br>
+      어떤 SSD를 선택하셨는지 댓글로 알려주세요!
+    </div>
+
+    <div class="sources">
+      <div class="sources-title">출처</div>
+      <div class="source-item">소니 플레이스테이션 공식 — PS5 M.2 SSD 설치 가이드 — 2022년</div>
+      <div class="source-item">삼성전자 공식 사이트 (990 Pro 제품 페이지) — 2022~2023년</div>
+      <div class="source-item">퀘이사존 — PS5 M.2 SSD 설치 후기 — 2023~2024년</div>
+      <p class="disclaimer">본 글은 공개된 공식 가이드 및 실사용 후기를 바탕으로 작성됐습니다. PS5 펌웨어 업데이트에 따라 설치 과정이 변경될 수 있습니다.</p>
+    </div>
+
+    <div class="tags">
+      <span class="tag">#삼성990Pro</span>
+      <span class="tag">#PS5SSD확장</span>
+      <span class="tag">#PS5M2설치</span>
+      <span class="tag">#PS5저장용량</span>
+      <span class="tag">#990ProPS5</span>
+      <span class="tag">#PS5확장스토리지</span>
+      <span class="tag">#삼성SSD</span>
+      <span class="tag">#NVMePS5</span>
+      <span class="tag">#게이밍SSD</span>
+      <span class="tag">#PS5M2SSD</span>
+      <span class="tag">#내장SSD추천</span>
+      <span class="tag">#SSD설치가이드</span>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
