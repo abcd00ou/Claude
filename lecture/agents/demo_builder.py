@@ -480,68 +480,252 @@ aesthetic, wide banner 16:9, corporate photography"
 
 
 # ──────────────────────────────────────────────
-# 데모 3: 에이전트 워크플로우 다이어그램
+# 데모 3: 에이전트 워크플로우 + 카카오페이 결제
 # ──────────────────────────────────────────────
+KAKAOPAY_LINK = "https://qr.kakaopay.com/Ej9G1Lnfk85365"
+
 def build_demo3_agent_workflow() -> str:
+    qr_url = f"https://api.qrserver.com/v1/create-qr-code/?size=200x200&color=000000&bgcolor=FFE812&data={KAKAOPAY_LINK}"
+    today  = datetime.now().strftime('%Y-%m-%d')
+
     html = f"""<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>데모 3 — AI 에이전트 워크플로우</title>
+<title>데모 3 — AI 에이전트 워크플로우 & 사업화</title>
 <style>
 {BASE_CSS}
+
+/* ── 기본 ── */
 body {{ background: #0D1B2A; color: #E0E0E0; }}
-.header {{ padding: 60px 40px; text-align: center; }}
+
+/* ── 상단 배너 ── */
+.demo-banner {{
+  background: linear-gradient(90deg, #FF6F00, #FF8F00);
+  color: #fff; text-align: center; padding: 12px;
+  font-size: 14px; font-weight: 600; letter-spacing: 0.3px;
+}}
+
+/* ── 헤더 ── */
+.header {{ padding: 56px 40px 40px; text-align: center; }}
 .header h1 {{ font-size: 40px; font-weight: 900; color: #fff; margin-bottom: 12px; }}
 .header h1 span {{ color: #FF8F00; }}
 .header p {{ color: #90A4AE; font-size: 18px; }}
 
-.container {{ max-width: 1100px; margin: 0 auto; padding: 0 40px 80px; }}
+/* ── 컨테이너 ── */
+.container {{ max-width: 1100px; margin: 0 auto; padding: 0 40px 40px; }}
 
-/* 워크플로우 다이어그램 */
-.workflow {{ position: relative; }}
-.workflow-row {{ display: flex; align-items: center; margin-bottom: 12px; }}
+/* ── 워크플로우 ── */
+.workflow-row {{ display: flex; align-items: stretch; margin-bottom: 12px; gap: 0; }}
 .step {{
-  background: #1A2744; border-radius: 12px; padding: 20px 24px;
-  flex: 1; position: relative;
+  background: #1A2744; border-radius: 12px; padding: 20px 22px;
+  flex: 1;
 }}
-.step-num {{
-  font-size: 11px; font-weight: 700; color: #FF8F00;
-  margin-bottom: 6px;
-}}
-.step-title {{ font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 6px; }}
+.step-num {{ font-size: 11px; font-weight: 700; color: #FF8F00; margin-bottom: 6px; }}
+.step-title {{ font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 6px; }}
 .step-desc {{ font-size: 12px; color: #90A4AE; line-height: 1.6; }}
 .step-tool {{
   display: inline-block; margin-top: 10px;
   background: rgba(255,111,0,0.15); color: #FF8F00;
   padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700;
 }}
-.arrow {{
-  font-size: 28px; color: #FF8F00; padding: 0 16px; flex-shrink: 0;
-}}
+.arrow {{ font-size: 26px; color: #FF8F00; padding: 0 12px; display: flex; align-items: center; flex-shrink: 0; }}
 .output-box {{
   background: linear-gradient(135deg, #1B5E20, #2E7D32);
-  border-radius: 12px; padding: 24px 28px; margin-top: 24px;
+  border-radius: 12px; padding: 24px 28px; margin-top: 16px;
   border: 1px solid rgba(102,187,106,0.3);
 }}
 .output-box h3 {{ color: #A5D6A7; font-size: 16px; margin-bottom: 12px; }}
 .output-item {{ color: #C8E6C9; font-size: 13px; margin-bottom: 8px; }}
 
-/* 예시 카드 */
-.example-grid {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 60px; }}
+/* ── 에이전트 예시 카드 ── */
+.example-grid {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }}
 .example-card {{ background: #1A2744; border-radius: 12px; padding: 28px; }}
 .example-card .icon {{ font-size: 32px; margin-bottom: 12px; }}
 .example-card h3 {{ color: #fff; font-size: 15px; font-weight: 700; margin-bottom: 8px; }}
 .example-card p {{ color: #90A4AE; font-size: 12px; line-height: 1.7; }}
-.example-card .metrics {{ margin-top: 16px; }}
 .metric {{ display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }}
 .metric-label {{ color: #78909C; font-size: 11px; }}
 .metric-value {{ color: #81C784; font-size: 11px; font-weight: 700; }}
+
+/* ── 사업화 섹션 ── */
+.biz-section {{
+  background: linear-gradient(135deg, #0A1628, #0F2040);
+  border: 1px solid rgba(255,143,0,0.25);
+  border-radius: 20px; padding: 56px 48px; margin: 60px 0;
+  text-align: center;
+}}
+.biz-badge {{
+  display: inline-block;
+  background: rgba(255,143,0,0.15); color: #FF8F00;
+  border: 1px solid rgba(255,143,0,0.4);
+  border-radius: 50px; padding: 6px 20px;
+  font-size: 13px; font-weight: 700; margin-bottom: 20px;
+  letter-spacing: 1px;
+}}
+.biz-section h2 {{ font-size: 34px; font-weight: 900; color: #fff; margin-bottom: 12px; line-height: 1.25; }}
+.biz-section h2 em {{ color: #FF8F00; font-style: normal; }}
+.biz-section > p {{ color: #90A4AE; font-size: 16px; margin-bottom: 48px; }}
+
+/* ── 가격 카드 ── */
+.pricing-grid {{ display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: left; }}
+.price-card {{
+  background: #1A2744; border-radius: 16px; padding: 32px 28px;
+  border: 1px solid rgba(255,255,255,0.07);
+  display: flex; flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}}
+.price-card:hover {{ transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.4); }}
+.price-card.featured {{
+  border: 2px solid #FF8F00;
+  background: linear-gradient(180deg, #1E2E50, #1A2744);
+  position: relative;
+}}
+.featured-badge {{
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: #FF8F00; color: #fff;
+  padding: 4px 16px; border-radius: 50px;
+  font-size: 12px; font-weight: 700; white-space: nowrap;
+}}
+.price-card .tier {{ font-size: 12px; font-weight: 700; color: #607D8B; letter-spacing: 1px; margin-bottom: 10px; }}
+.price-card h3 {{ font-size: 18px; font-weight: 800; color: #fff; margin-bottom: 8px; }}
+.price-card .price-amount {{ font-size: 30px; font-weight: 900; color: #FF8F00; margin: 16px 0; }}
+.price-card .price-amount span {{ font-size: 14px; color: #78909C; font-weight: 400; }}
+.price-card ul {{ list-style: none; margin-bottom: 28px; flex: 1; }}
+.price-card ul li {{ font-size: 13px; color: #B0BEC5; padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }}
+.price-card ul li::before {{ content: "✓ "; color: #66BB6A; font-weight: 700; }}
+
+.btn-pay {{
+  display: block; width: 100%;
+  background: #FFE812; color: #1A1A1A;
+  border: none; border-radius: 12px;
+  padding: 14px; font-size: 15px; font-weight: 800;
+  cursor: pointer; text-align: center;
+  transition: transform 0.15s, box-shadow 0.15s;
+  letter-spacing: 0.3px;
+}}
+.btn-pay:hover {{ transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,232,18,0.35); }}
+.btn-pay.consult {{
+  background: transparent; color: #90A4AE;
+  border: 1px solid rgba(255,255,255,0.15);
+}}
+.btn-pay.consult:hover {{ background: rgba(255,255,255,0.05); box-shadow: none; }}
+
+.biz-note {{ color: #546E7A; font-size: 13px; margin-top: 24px; text-align: center; }}
+
+/* ── 모달 오버레이 ── */
+.modal-overlay {{
+  display: none; position: fixed; inset: 0;
+  background: rgba(0,0,0,0.75); backdrop-filter: blur(6px);
+  z-index: 1000; align-items: center; justify-content: center;
+}}
+.modal-overlay.open {{ display: flex; }}
+.modal {{
+  background: #fff; border-radius: 24px;
+  width: 100%; max-width: 480px; margin: 20px;
+  overflow: hidden; box-shadow: 0 32px 80px rgba(0,0,0,0.5);
+  animation: modalIn 0.25s cubic-bezier(0.34,1.56,0.64,1);
+}}
+@keyframes modalIn {{
+  from {{ opacity: 0; transform: scale(0.88) translateY(20px); }}
+  to   {{ opacity: 1; transform: scale(1) translateY(0); }}
+}}
+.modal-header {{
+  background: #FFE812; padding: 28px 32px 24px;
+  text-align: center; position: relative;
+}}
+.modal-close {{
+  position: absolute; top: 16px; right: 20px;
+  background: rgba(0,0,0,0.12); border: none; border-radius: 50%;
+  width: 32px; height: 32px; font-size: 18px; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  color: #1A1A1A; font-weight: 700;
+}}
+.modal-close:hover {{ background: rgba(0,0,0,0.22); }}
+.kakao-logo {{
+  font-size: 28px; margin-bottom: 8px;
+}}
+.modal-header h3 {{ font-size: 20px; font-weight: 900; color: #1A1A1A; margin-bottom: 4px; }}
+.modal-header p {{ font-size: 13px; color: #5a5a5a; }}
+
+.modal-body {{ padding: 28px 32px; }}
+
+/* 선택 서비스 요약 */
+.order-summary {{
+  background: #F8F9FA; border-radius: 12px;
+  padding: 16px 20px; margin-bottom: 24px;
+}}
+.order-row {{ display: flex; justify-content: space-between; align-items: center; }}
+.order-name {{ font-size: 14px; font-weight: 700; color: #212121; }}
+.order-price {{ font-size: 20px; font-weight: 900; color: #E65100; }}
+
+/* 단계 안내 */
+.steps-guide {{ margin-bottom: 24px; }}
+.step-guide-item {{
+  display: flex; align-items: flex-start; gap: 14px;
+  margin-bottom: 16px;
+}}
+.step-guide-num {{
+  background: #FFE812; color: #1A1A1A;
+  width: 26px; height: 26px; border-radius: 50%;
+  font-size: 13px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-top: 1px;
+}}
+.step-guide-text {{ font-size: 13px; color: #424242; line-height: 1.5; }}
+.step-guide-text strong {{ color: #1A1A1A; }}
+
+/* QR + 버튼 */
+.payment-area {{ display: flex; gap: 20px; align-items: center; margin-bottom: 20px; }}
+.qr-box {{
+  background: #FFE812; border-radius: 12px;
+  padding: 12px; flex-shrink: 0;
+}}
+.qr-box img {{ display: block; width: 110px; height: 110px; border-radius: 4px; }}
+.qr-label {{ font-size: 11px; color: #5a5a5a; text-align: center; margin-top: 6px; font-weight: 600; }}
+.payment-actions {{ flex: 1; }}
+.btn-kakaopay {{
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: #FFE812; color: #1A1A1A;
+  border: none; border-radius: 14px;
+  padding: 16px 20px; font-size: 16px; font-weight: 800;
+  cursor: pointer; width: 100%; margin-bottom: 10px;
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s;
+}}
+.btn-kakaopay:hover {{ transform: translateY(-2px); box-shadow: 0 8px 24px rgba(255,232,18,0.4); }}
+.kakao-k {{
+  width: 26px; height: 26px; background: #1A1A1A;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 900; color: #FFE812; flex-shrink: 0;
+}}
+.btn-kakao-sub {{
+  background: #F8F9FA; color: #616161;
+  border: 1px solid #E0E0E0; border-radius: 10px;
+  padding: 10px; font-size: 12px; cursor: pointer;
+  width: 100%; text-align: center;
+}}
+.modal-notice {{
+  background: #FFF8E1; border-radius: 10px; border-left: 3px solid #FFE812;
+  padding: 12px 16px; font-size: 12px; color: #5D4037;
+  line-height: 1.6;
+}}
+.modal-meta {{
+  text-align: center; font-size: 11px; color: #9E9E9E;
+  margin-top: 16px; padding-top: 16px; border-top: 1px solid #EEEEEE;
+}}
 </style>
 </head>
 <body>
 
+<!-- 상단 배너 -->
+<div class="demo-banner">
+  🤖 이 페이지는 AI(Claude)가 생성한 데모입니다 — "AI로 만든 서비스를 바로 팔 수 있다"는 것을 보여주는 예시
+</div>
+
+<!-- 헤더 -->
 <div class="header">
   <h1>AI <span>에이전트</span> 워크플로우</h1>
   <p>실무 자동화 파이프라인 — 설정 한 번, 매일 자동 실행</p>
@@ -549,136 +733,278 @@ body {{ background: #0D1B2A; color: #E0E0E0; }}
 
 <div class="container">
 
-  <h2 style="font-size: 24px; color: #fff; margin-bottom: 8px;">📊 주간 경쟁사 가격 모니터링 에이전트</h2>
-  <p style="color: #607D8B; margin-bottom: 40px;">매주 월요일 오전 9시 자동 실행 → 보고서 이메일 발송</p>
+  <!-- 워크플로우 다이어그램 -->
+  <h2 style="font-size: 22px; color: #fff; margin-bottom: 8px;">📊 주간 경쟁사 가격 모니터링 에이전트</h2>
+  <p style="color: #607D8B; margin-bottom: 32px;">매주 월요일 오전 9시 자동 실행 → 보고서 이메일 발송</p>
 
-  <div class="workflow">
-    <div class="workflow-row">
-      <div class="step">
-        <div class="step-num">STEP 01</div>
-        <div class="step-title">트리거 & 초기화</div>
-        <div class="step-desc">매주 월요일 9:00 cron 실행<br>대상 SKU 목록 및 경쟁사 URL 로드</div>
-        <span class="step-tool">⏰ Cron + Config</span>
-      </div>
-      <div class="arrow">→</div>
-      <div class="step">
-        <div class="step-num">STEP 02</div>
-        <div class="step-title">웹 크롤링</div>
-        <div class="step-desc">Amazon / 공식몰 가격 자동 수집<br>스크린샷 증거 보존, 비정상 감지</div>
-        <span class="step-tool">🕷️ Playwright</span>
-      </div>
-      <div class="arrow">→</div>
-      <div class="step">
-        <div class="step-num">STEP 03</div>
-        <div class="step-title">데이터 파싱 & 정규화</div>
-        <div class="step-desc">가격 추출, 통화 변환, 이상값 필터링<br>DB 저장 (품질 게이트 통과 후)</div>
-        <span class="step-tool">🔍 Claude API + DB</span>
-      </div>
+  <div class="workflow-row">
+    <div class="step">
+      <div class="step-num">STEP 01</div>
+      <div class="step-title">트리거 & 초기화</div>
+      <div class="step-desc">매주 월요일 9:00 cron 실행<br>SKU 목록 및 경쟁사 URL 로드</div>
+      <span class="step-tool">⏰ Cron + Config</span>
     </div>
-
-    <div class="workflow-row">
-      <div class="step">
-        <div class="step-num">STEP 04</div>
-        <div class="step-title">AI 분석 & 인사이트</div>
-        <div class="step-desc">전주 대비 가격 변동 분석<br>이상 징후, 판촉 패턴 AI 해석</div>
-        <span class="step-tool">🤖 Claude Sonnet</span>
-      </div>
-      <div class="arrow">→</div>
-      <div class="step">
-        <div class="step-num">STEP 05</div>
-        <div class="step-title">리포트 생성</div>
-        <div class="step-desc">HTML/PDF 보고서 자동 작성<br>차트, 요약 테이블, 액션 아이템 포함</div>
-        <span class="step-tool">📊 Jinja2 + Charts</span>
-      </div>
-      <div class="arrow">→</div>
-      <div class="step">
-        <div class="step-num">STEP 06</div>
-        <div class="step-title">이메일 발송</div>
-        <div class="step-desc">담당자에게 자동 발송<br>긴급 사항은 Slack 알림 추가</div>
-        <span class="step-tool">📧 Gmail SMTP + Slack</span>
-      </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="step-num">STEP 02</div>
+      <div class="step-title">웹 크롤링</div>
+      <div class="step-desc">Amazon / 공식몰 가격 자동 수집<br>스크린샷 보존, 비정상 감지</div>
+      <span class="step-tool">🕷️ Playwright</span>
     </div>
-
-    <div class="output-box">
-      <h3>📤 자동 생성 산출물</h3>
-      <div class="output-item">✅ 주간 경쟁사 가격 변동 요약 리포트 (PDF)</div>
-      <div class="output-item">✅ 이상 징후 알림 (±10% 이상 변동 시 즉시 Slack)</div>
-      <div class="output-item">✅ 대시보드 업데이트 (Streamlit 자동 반영)</div>
-      <div class="output-item">✅ 이번 주 액션 아이템 3개 자동 도출</div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="step-num">STEP 03</div>
+      <div class="step-title">파싱 & 정규화</div>
+      <div class="step-desc">가격 추출, 통화 변환, 이상값 필터링<br>DB 저장 (품질 게이트 통과 후)</div>
+      <span class="step-tool">🔍 Claude API + DB</span>
     </div>
   </div>
 
-  <!-- 3가지 에이전트 예시 -->
-  <h2 style="font-size: 24px; color: #fff; margin: 60px 0 12px;">직무별 에이전트 예시</h2>
-  <p style="color: #607D8B; margin-bottom: 32px;">지금 당장 구축 가능한 실용 에이전트</p>
+  <div class="workflow-row" style="margin-top:12px;">
+    <div class="step">
+      <div class="step-num">STEP 04</div>
+      <div class="step-title">AI 분석 & 인사이트</div>
+      <div class="step-desc">전주 대비 가격 변동 분석<br>이상 징후, 판촉 패턴 AI 해석</div>
+      <span class="step-tool">🤖 Claude Sonnet</span>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="step-num">STEP 05</div>
+      <div class="step-title">리포트 생성</div>
+      <div class="step-desc">HTML/PDF 보고서 자동 작성<br>차트, 요약 테이블, 액션 아이템</div>
+      <span class="step-tool">📊 Jinja2 + Charts</span>
+    </div>
+    <div class="arrow">→</div>
+    <div class="step">
+      <div class="step-num">STEP 06</div>
+      <div class="step-title">이메일 & 알림 발송</div>
+      <div class="step-desc">담당자에게 자동 발송<br>긴급 사항은 Slack 즉시 알림</div>
+      <span class="step-tool">📧 Gmail SMTP + Slack</span>
+    </div>
+  </div>
+
+  <div class="output-box">
+    <h3>📤 자동 생성 산출물</h3>
+    <div class="output-item">✅ 주간 경쟁사 가격 변동 요약 리포트 (PDF)</div>
+    <div class="output-item">✅ 이상 징후 알림 (±10% 이상 변동 시 즉시 Slack)</div>
+    <div class="output-item">✅ 대시보드 자동 업데이트 (Streamlit)</div>
+    <div class="output-item">✅ 이번 주 액션 아이템 3개 자동 도출</div>
+  </div>
+
+  <!-- 직무별 에이전트 예시 -->
+  <h2 style="font-size: 22px; color: #fff; margin: 52px 0 10px;">직무별 에이전트 예시</h2>
+  <p style="color: #607D8B; margin-bottom: 28px;">지금 당장 구축 가능한 실용 에이전트</p>
 
   <div class="example-grid">
     <div class="example-card">
       <div class="icon">💼</div>
       <h3>영업 제안서 자동화 에이전트</h3>
-      <p>고객사명 + 미팅 목적 입력 → 맞춤형 제안서 PPT + 반론 시나리오 5개 자동 생성</p>
-      <div class="metrics">
-        <div class="metric">
-          <span class="metric-label">기존 소요 시간</span>
-          <span class="metric-value">2~3일</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label">AI 적용 후</span>
-          <span class="metric-value">2~3시간 ↓ 90%</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label">난이도</span>
-          <span class="metric-value">초급</span>
-        </div>
+      <p>고객사명 + 미팅 목적 → 맞춤형 PPT + 반론 시나리오 5개 자동 생성</p>
+      <div style="margin-top:16px;">
+        <div class="metric"><span class="metric-label">기존 소요 시간</span><span class="metric-value">2~3일</span></div>
+        <div class="metric"><span class="metric-label">AI 적용 후</span><span class="metric-value">2~3시간 ↓ 90%</span></div>
+        <div class="metric"><span class="metric-label">난이도</span><span class="metric-value">초급</span></div>
       </div>
     </div>
-
     <div class="example-card">
       <div class="icon">📱</div>
       <h3>SNS 콘텐츠 파이프라인</h3>
-      <p>제품 URL 입력 → 7일치 인스타/페이스북/X 카피 + 이미지 프롬프트 일괄 생성</p>
-      <div class="metrics">
-        <div class="metric">
-          <span class="metric-label">기존 소요 시간</span>
-          <span class="metric-value">7~14시간/주</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label">AI 적용 후</span>
-          <span class="metric-value">30분/주 ↓ 96%</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label">난이도</span>
-          <span class="metric-value">초급</span>
-        </div>
+      <p>제품 URL → 7일치 인스타/페이스북/X 카피 + 이미지 프롬프트 일괄 생성</p>
+      <div style="margin-top:16px;">
+        <div class="metric"><span class="metric-label">기존 소요 시간</span><span class="metric-value">7~14시간/주</span></div>
+        <div class="metric"><span class="metric-label">AI 적용 후</span><span class="metric-value">30분/주 ↓ 96%</span></div>
+        <div class="metric"><span class="metric-label">난이도</span><span class="metric-value">초급</span></div>
       </div>
     </div>
-
     <div class="example-card">
       <div class="icon">📦</div>
       <h3>신제품 트렌드 분석 에이전트</h3>
-      <p>키워드 설정 → 매일 SNS·리뷰·뉴스 스캔 → 트렌드 인사이트 + 기획 힌트 메일</p>
-      <div class="metrics">
-        <div class="metric">
-          <span class="metric-label">기존 소요 시간</span>
-          <span class="metric-value">주 8~10시간</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label">AI 적용 후</span>
-          <span class="metric-value">일일 15분 리뷰</span>
-        </div>
-        <div class="metric">
-          <span class="metric-label">난이도</span>
-          <span class="metric-value">중급</span>
-        </div>
+      <p>키워드 설정 → 매일 SNS·리뷰·뉴스 스캔 → 트렌드 인사이트 + 기획 힌트</p>
+      <div style="margin-top:16px;">
+        <div class="metric"><span class="metric-label">기존 소요 시간</span><span class="metric-value">주 8~10시간</span></div>
+        <div class="metric"><span class="metric-label">AI 적용 후</span><span class="metric-value">일일 15분 리뷰</span></div>
+        <div class="metric"><span class="metric-label">난이도</span><span class="metric-value">중급</span></div>
       </div>
     </div>
   </div>
 
+</div><!-- /container -->
+
+
+<!-- ════════════════════════════════════════════════
+     사업화 섹션 — 카카오페이 결제 연동
+════════════════════════════════════════════════ -->
+<div style="max-width:1100px; margin: 0 auto; padding: 0 40px;">
+<div class="biz-section">
+  <div class="biz-badge">💡 AI → 사업화 데모</div>
+  <h2>이 에이전트,<br><em>제가 직접 만들어드립니다</em></h2>
+  <p>강의에서 배운 걸 그대로 서비스로 — 지금 바로 결제하고 시작하세요</p>
+
+  <div class="pricing-grid">
+
+    <!-- TIER 1 -->
+    <div class="price-card" onclick="openModal('1회 AI 컨설팅', '150,000원', '1time')">
+      <div class="tier">STARTER</div>
+      <h3>1회 AI 셋업 컨설팅</h3>
+      <div class="price-amount">150,000<span>원</span></div>
+      <ul>
+        <li>1시간 화상 미팅</li>
+        <li>업무 자동화 진단</li>
+        <li>맞춤 도구 추천 리포트</li>
+        <li>ChatGPT / Claude 활용법</li>
+      </ul>
+      <button class="btn-pay">카카오페이로 신청 →</button>
+    </div>
+
+    <!-- TIER 2 (추천) -->
+    <div class="price-card featured" onclick="openModal('에이전트 구축 패키지', '500,000원', 'build')">
+      <div class="featured-badge">🔥 가장 인기</div>
+      <div class="tier">PROFESSIONAL</div>
+      <h3>에이전트 구축 패키지</h3>
+      <div class="price-amount">500,000<span>원~</span></div>
+      <ul>
+        <li>맞춤 AI 에이전트 1개 구축</li>
+        <li>업무 자동화 파이프라인 설계</li>
+        <li>2주 피드백 & 수정 지원</li>
+        <li>운영 가이드 문서 제공</li>
+      </ul>
+      <button class="btn-pay">카카오페이로 신청 →</button>
+    </div>
+
+    <!-- TIER 3 -->
+    <div class="price-card" onclick="openModal('기업 AI 도입 컨설팅', '협의', 'enterprise')">
+      <div class="tier">ENTERPRISE</div>
+      <h3>기업 AI 워크플로우 도입</h3>
+      <div class="price-amount" style="font-size:24px;">협의</div>
+      <ul>
+        <li>팀/부서 전체 AI 전환 설계</li>
+        <li>임직원 교육 (2~4회)</li>
+        <li>에이전트 다수 구축</li>
+        <li>3개월 유지보수 포함</li>
+      </ul>
+      <button class="btn-pay consult">문의하기 →</button>
+    </div>
+
+  </div>
+  <p class="biz-note">💳 카카오페이 송금 후 카카오톡으로 연락주시면 24시간 내 회신드립니다</p>
+</div>
 </div>
 
-<footer style="background: #0A111E; color: #546E7A; text-align: center; padding: 24px; font-size: 13px;">
-  🤖 AI Workflow Lecture Demo 3 — Agent Workflow | {datetime.now().strftime('%Y-%m-%d')}
+
+<!-- ════════════════════════════════════════════════
+     카카오페이 결제 모달
+════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="payModal" onclick="handleOverlayClick(event)">
+  <div class="modal">
+
+    <div class="modal-header">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+      <div class="kakao-logo">💛</div>
+      <h3>카카오페이로 결제하기</h3>
+      <p id="modalServiceName">서비스 신청</p>
+    </div>
+
+    <div class="modal-body">
+
+      <!-- 주문 요약 -->
+      <div class="order-summary">
+        <div class="order-row">
+          <span class="order-name" id="orderName">—</span>
+          <span class="order-price" id="orderPrice">—</span>
+        </div>
+      </div>
+
+      <!-- 단계 안내 -->
+      <div class="steps-guide">
+        <div class="step-guide-item">
+          <div class="step-guide-num">1</div>
+          <div class="step-guide-text">
+            아래 <strong>카카오페이 송금하기</strong> 버튼을 누르거나<br>
+            QR코드를 카카오페이 앱으로 스캔하세요
+          </div>
+        </div>
+        <div class="step-guide-item">
+          <div class="step-guide-num">2</div>
+          <div class="step-guide-text">
+            금액 입력란에 <strong id="guidePrice">금액</strong>을 입력하고<br>
+            메모에 <strong>"서비스명 + 연락처"</strong>를 남겨주세요
+          </div>
+        </div>
+        <div class="step-guide-item">
+          <div class="step-guide-num">3</div>
+          <div class="step-guide-text">
+            송금 완료 후 <strong>카카오톡으로 연락</strong>주시면<br>
+            24시간 내 일정을 잡아드립니다 😊
+          </div>
+        </div>
+      </div>
+
+      <!-- QR + 버튼 -->
+      <div class="payment-area">
+        <div class="qr-box">
+          <img src="{qr_url}" alt="카카오페이 QR" />
+          <div class="qr-label">카카오페이 QR</div>
+        </div>
+        <div class="payment-actions">
+          <a href="{KAKAOPAY_LINK}" target="_blank" class="btn-kakaopay" id="payBtn">
+            <span class="kakao-k">K</span>
+            카카오페이로 송금하기
+          </a>
+          <button class="btn-kakao-sub" onclick="copyLink()">🔗 링크 복사하기</button>
+        </div>
+      </div>
+
+      <!-- 안내 -->
+      <div class="modal-notice">
+        📌 기업 컨설팅은 규모에 따라 금액이 달라집니다. 먼저 카카오톡으로 문의해주세요.
+      </div>
+
+      <div class="modal-meta">
+        🤖 이 결제 페이지도 AI(Claude)가 생성했습니다 — AI 워크플로우 강의 데모 | {today}
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<footer style="background: #0A111E; color: #546E7A; text-align: center; padding: 24px; font-size: 13px; margin-top: 0;">
+  🤖 AI Workflow Lecture Demo 3 — Agent Workflow & Monetization Demo | {today}
 </footer>
+
+<script>
+const KAKAOPAY_LINK = "{KAKAOPAY_LINK}";
+
+function openModal(name, price, type) {{
+  document.getElementById('modalServiceName').textContent = name + ' 신청';
+  document.getElementById('orderName').textContent = name;
+  document.getElementById('orderPrice').textContent = price;
+  document.getElementById('guidePrice').textContent = price === '협의' ? '협의 금액' : price;
+  document.getElementById('payModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}}
+
+function closeModal() {{
+  document.getElementById('payModal').classList.remove('open');
+  document.body.style.overflow = '';
+}}
+
+function handleOverlayClick(e) {{
+  if (e.target === document.getElementById('payModal')) closeModal();
+}}
+
+function copyLink() {{
+  navigator.clipboard.writeText(KAKAOPAY_LINK).then(() => {{
+    const btn = document.querySelector('.btn-kakao-sub');
+    btn.textContent = '✅ 복사 완료!';
+    setTimeout(() => {{ btn.textContent = '🔗 링크 복사하기'; }}, 2000);
+  }});
+}}
+
+document.addEventListener('keydown', e => {{
+  if (e.key === 'Escape') closeModal();
+}});
+</script>
 
 </body>
 </html>"""
