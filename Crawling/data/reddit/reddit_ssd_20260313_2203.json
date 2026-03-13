@@ -1,0 +1,613 @@
+{
+  "fetched_at": "2026-03-13T22:03:09.710830",
+  "time_filter": "month",
+  "total_posts": 218,
+  "subreddits_searched": [
+    "LocalLLaMA",
+    "SSD",
+    "buildapc",
+    "hardware",
+    "DataHoarder"
+  ],
+  "summary": {
+    "samsung_post_count": 30,
+    "sandisk_wd_post_count": 15,
+    "llm_storage_posts": 32,
+    "avg_sentiment_overall": 0.097
+  },
+  "product_mentions": {
+    "capacity_2tb": 33,
+    "capacity_1tb": 30,
+    "capacity_large": 21,
+    "capacity_4tb": 17,
+    "corsair": 13,
+    "samsung_990pro": 12,
+    "seagate": 10,
+    "wd_black": 9,
+    "samsung_9100pro": 7,
+    "kingston": 7,
+    "samsung_general": 7,
+    "crucial": 6,
+    "sandisk_extreme": 3,
+    "samsung_t9": 3,
+    "samsung_t7": 3,
+    "wd_my_passport": 3,
+    "sk_hynix": 1
+  },
+  "product_sentiment": {
+    "capacity_4tb": 0.118,
+    "corsair": 0.115,
+    "capacity_2tb": 0.232,
+    "capacity_large": 0.04,
+    "samsung_9100pro": 0.143,
+    "samsung_990pro": 0.222,
+    "wd_black": 0.333,
+    "kingston": -0.429,
+    "capacity_1tb": 0.178,
+    "seagate": -0.267,
+    "crucial": 0.111,
+    "samsung_general": -0.429,
+    "sandisk_extreme": -0.333,
+    "sk_hynix": 0.0,
+    "samsung_t9": -0.333,
+    "samsung_t7": -0.333,
+    "wd_my_passport": 0.0
+  },
+  "subreddit_summary": {
+    "LocalLLaMA": {
+      "total_posts": 42,
+      "samsung_mentions": 2,
+      "samsung_rate_pct": 4.8
+    },
+    "buildapc": {
+      "total_posts": 96,
+      "samsung_mentions": 19,
+      "samsung_rate_pct": 19.8
+    },
+    "hardware": {
+      "total_posts": 6,
+      "samsung_mentions": 0,
+      "samsung_rate_pct": 0.0
+    },
+    "DataHoarder": {
+      "total_posts": 74,
+      "samsung_mentions": 9,
+      "samsung_rate_pct": 12.2
+    }
+  },
+  "insights": [
+    "r/LocalLLaMA에서 42개 포스트 중 28개(67%)가 LLM 모델 스토리지 맥락 — AI 워크로드용 고용량 NVMe 수요 확인",
+    "Samsung 990Pro 평균 감성: 긍정 (+0.22)",
+    "Samsung 9100Pro 평균 감성: 긍정 (+0.14)",
+    "Samsung T9 평균 감성: 부정 (-0.33)",
+    "Samsung T7 평균 감성: 부정 (-0.33)",
+    "4TB 용량 언급 17회 — LLM 모델 저장 수요로 대용량 선호 증가",
+    "Samsung 30회 vs SanDisk/WD 15회 언급 (Samsung 언급 비율: 2.0x)"
+  ],
+  "top_posts": [
+    {
+      "subreddit": "DataHoarder",
+      "title": "I was at OfficeDepot today and wtf?!?! That’s INSANE",
+      "score": 4648,
+      "comments": 756,
+      "products": [],
+      "sentiment": 0.0,
+      "is_llm": false,
+      "url": "https://reddit.com/r/DataHoarder/comments/1rjgu5b/i_was_at_officedepot_today_and_wtf_thats_insane/"
+    },
+    {
+      "subreddit": "DataHoarder",
+      "title": "These HDD prices are getting crazy. An increase of 96.4% in 1 month for the same 26TB drive. $279.99 a month ago to $549.99 today. Where are we buying hard drives now?",
+      "score": 4330,
+      "comments": 808,
+      "products": [
+        "capacity_large"
+      ],
+      "sentiment": 0.0,
+      "is_llm": false,
+      "url": "https://reddit.com/r/DataHoarder/comments/1r9d2jx/these_hdd_prices_are_getting_crazy_an_increase_of/"
+    },
+    {
+      "subreddit": "DataHoarder",
+      "title": "3.58 Petabytes written to a 256GB Samsung NVMe – It’s at 170% usage and has more errors than there are stars in the universe.",
+      "score": 2911,
+      "comments": 247,
+      "products": [
+        "samsung_general"
+      ],
+      "sentiment": -1.0,
+      "is_llm": false,
+      "url": "https://reddit.com/r/DataHoarder/comments/1rdir2j/358_petabytes_written_to_a_256gb_samsung_nvme_its/"
+    },
+    {
+      "subreddit": "LocalLLaMA",
+      "title": "M5 Max just arrived - benchmarks incoming",
+      "score": 2051,
+      "comments": 326,
+      "products": [],
+      "sentiment": 0.0,
+      "is_llm": false,
+      "url": "https://reddit.com/r/LocalLLaMA/comments/1rqnpvj/m5_max_just_arrived_benchmarks_incoming/"
+    },
+    {
+      "subreddit": "DataHoarder",
+      "title": "Myrient is shutting down",
+      "score": 1935,
+      "comments": 447,
+      "products": [],
+      "sentiment": 0.0,
+      "is_llm": false,
+      "url": "https://reddit.com/r/DataHoarder/comments/1rfn5pd/myrient_is_shutting_down/"
+    },
+    {
+      "subreddit": "buildapc",
+      "title": "Do gaming PCs actually get slower over time due to hardware degradation of some kind, or is it just perception due to other factors such as software bloat, being clogged with dust, corrupt OS files, etc?",
+      "score": 918,
+      "comments": 279,
+      "products": [],
+      "sentiment": -1.0,
+      "is_llm": false,
+      "url": "https://reddit.com/r/buildapc/comments/1rh2iaj/do_gaming_pcs_actually_get_slower_over_time_due/"
+    },
+    {
+      "subreddit": "DataHoarder",
+      "title": "If you have storage problems I feel bad for you son, I got 99 problems but storage ain't one (Hit me!)",
+      "score": 906,
+      "comments": 188,
+      "products": [
+        "seagate",
+        "capacity_4tb",
+        "capacity_large"
+      ],
+      "sentiment": -1.0,
+      "is_llm": false,
+      "url": "https://reddit.com/r/DataHoarder/comments/1riqqda/if_you_have_storage_problems_i_feel_bad_for_you/"
+    },
+    {
+      "subreddit": "buildapc",
+      "title": "Will RAM, GPU and SSD prices ever return to what they were in early 2025?",
+      "score": 874,
+      "comments": 508,
+      "products": [],
+      "sentiment": 1.0,
+      "is_llm": false,
+      "url": "https://reddit.com/r/buildapc/comments/1ro8j0w/will_ram_gpu_and_ssd_prices_ever_return_to_what/"
+    },
+    {
+      "subreddit": "DataHoarder",
+      "title": "What's up with the difference in price between this at my local Walmart and Best Buy? Seems like a significant change in price between the two for the same product",
+      "score": 717,
+      "comments": 179,
+      "products": [],
+      "sentiment": 1.0,
+      "is_llm": false,
+      "url": "https://reddit.com/r/DataHoarder/comments/1r4xjv6/whats_up_with_the_difference_in_price_between/"
+    },
+    {
+      "subreddit": "DataHoarder",
+      "title": "I filled a 8 TB external drive full of ROMs. If I put it in storage, will it be okay in say 5 or 10 years?",
+      "score": 586,
+      "comments": 285,
+      "products": [
+        "capacity_large"
+      ],
+      "sentiment": 0.0,
+      "is_llm": false,
+      "url": "https://reddit.com/r/DataHoarder/comments/1rgqh8t/i_filled_a_8_tb_external_drive_full_of_roms_if_i/"
+    },
+    {
+      "subreddit": "LocalLLaMA",
+      "title": "Follow-up: Qwen3.5-35B-A3B — 7 community-requested experiments on RTX 5080 16GB",
+      "score": 550,
+      "comments": 189,
+      "products": [],
+      "sentiment": 1.0,
+      "is_llm": false,
+      "url": "https://reddit.com/r/LocalLLaMA/comments/1rg4zqv/followup_qwen3535ba3b_7_communityrequested/"
+    },
+    {
+      "subreddit": "buildapc",
+      "title": "The market is truly getting ridiculous",
+      "score": 542,
+      "comments": 258,
+      "products": [
+        "capacity_1tb"
+      ],
+      "sentiment": 0.0,
+      "is_llm": false,
+      "url": "https://reddit.com/r/buildapc/comments/1r8e84a/the_market_is_truly_getting_ridiculous/"
+    },
+    {
+      "subreddit": "DataHoarder",
+      "title": "14-year-old Samsung 850 Pro still okay to use? SMART says it has 98% of life left.",
+      "score": 456,
+      "comments": 79,
+      "products": [],
+      "sentiment": 1.0,
+      "is_llm": false,
+      "url": "https://reddit.com/r/DataHoarder/comments/1r7l1l2/14yearold_samsung_850_pro_still_okay_to_use_smart/"
+    },
+    {
+      "subreddit": "LocalLLaMA",
+      "title": "The guy that won the NVIDIA Hackathon and an NVIDIA DGX Spark GB10 has won another hackathon with it!",
+      "score": 339,
+      "comments": 53,
+      "products": [],
+      "sentiment": 0.0,
+      "is_llm": false,
+      "url": "https://reddit.com/r/LocalLLaMA/comments/1r7j7kb/the_guy_that_won_the_nvidia_hackathon_and_an/"
+    },
+    {
+      "subreddit": "buildapc",
+      "title": "Does not using an SSD for a long time cause it's data to lose?",
+      "score": 321,
+      "comments": 106,
+      "products": [],
+      "sentiment": 0.0,
+      "is_llm": false,
+      "url": "https://reddit.com/r/buildapc/comments/1r429ol/does_not_using_an_ssd_for_a_long_time_cause_its/"
+    }
+  ],
+  "samsung_posts": [
+    {
+      "subreddit": "DataHoarder",
+      "title": "3.58 Petabytes written to a 256GB Samsung NVMe – It’s at 170% usage and has more errors than there are stars in the universe.",
+      "score": 2911,
+      "products": [
+        "samsung_general"
+      ],
+      "sentiment": -1.0,
+      "top_comments": [],
+      "url": "https://reddit.com/r/DataHoarder/comments/1rdir2j/358_petabytes_written_to_a_256gb_samsung_nvme_its/"
+    },
+    {
+      "subreddit": "buildapc",
+      "title": "I have a powerful build extremely underperforming",
+      "score": 108,
+      "products": [
+        "samsung_9100pro",
+        "samsung_general",
+        "capacity_1tb"
+      ],
+      "sentiment": -1.0,
+      "top_comments": [],
+      "url": "https://reddit.com/r/buildapc/comments/1rhv8mr/i_have_a_powerful_build_extremely_underperforming/"
+    },
+    {
+      "subreddit": "DataHoarder",
+      "title": "Bit rot investigation",
+      "score": 67,
+      "products": [
+        "samsung_general",
+        "wd_black",
+        "capacity_4tb"
+      ],
+      "sentiment": 0.0,
+      "top_comments": [],
+      "url": "https://reddit.com/r/DataHoarder/comments/1rbzkfj/bit_rot_investigation/"
+    },
+    {
+      "subreddit": "buildapc",
+      "title": "Are 4.0 and 5.0 NVMe SSDs worth it, or should I just buy a 3.0 SSD?",
+      "score": 45,
+      "products": [
+        "samsung_general"
+      ],
+      "sentiment": 0.0,
+      "top_comments": [],
+      "url": "https://reddit.com/r/buildapc/comments/1rg6kal/are_40_and_50_nvme_ssds_worth_it_or_should_i_just/"
+    },
+    {
+      "subreddit": "buildapc",
+      "title": "2k gaming pc",
+      "score": 29,
+      "products": [
+        "samsung_990pro",
+        "kingston",
+        "corsair",
+        "capacity_2tb"
+      ],
+      "sentiment": 0.0,
+      "top_comments": [],
+      "url": "https://reddit.com/r/buildapc/comments/1r3v0ky/2k_gaming_pc/"
+    },
+    {
+      "subreddit": "DataHoarder",
+      "title": "Samsung T7 500GB SSD 3-1/2 year / 42-month archival test complete.",
+      "score": 22,
+      "products": [
+        "samsung_t7"
+      ],
+      "sentiment": 0.0,
+      "top_comments": [],
+      "url": "https://reddit.com/r/DataHoarder/comments/1rhyld5/samsung_t7_500gb_ssd_312_year_42month_archival/"
+    },
+    {
+      "subreddit": "buildapc",
+      "title": "Did my new 990 Pro die in under 12 hours?",
+      "score": 16,
+      "products": [
+        "samsung_990pro",
+        "capacity_4tb",
+        "capacity_1tb"
+      ],
+      "sentiment": 1.0,
+      "top_comments": [],
+      "url": "https://reddit.com/r/buildapc/comments/1rltjob/did_my_new_990_pro_die_in_under_12_hours/"
+    },
+    {
+      "subreddit": "buildapc",
+      "title": "Computer won't get past bios after bios update. Tried several things, out of ideas",
+      "score": 14,
+      "products": [
+        "samsung_general",
+        "capacity_1tb"
+      ],
+      "sentiment": -1.0,
+      "top_comments": [],
+      "url": "https://reddit.com/r/buildapc/comments/1rj3s3s/computer_wont_get_past_bios_after_bios_update/"
+    },
+    {
+      "subreddit": "DataHoarder",
+      "title": "Samsung T9 SSD max at 1.3 GB/s while transferring files",
+      "score": 12,
+      "products": [
+        "samsung_t9"
+      ],
+      "sentiment": -1.0,
+      "top_comments": [],
+      "url": "https://reddit.com/r/DataHoarder/comments/1rf65gn/samsung_t9_ssd_max_at_13_gbs_while_transferring/"
+    },
+    {
+      "subreddit": "DataHoarder",
+      "title": "What should i get ssd or hdd",
+      "score": 8,
+      "products": [
+        "samsung_t9",
+        "wd_black",
+        "capacity_4tb",
+        "capacity_2tb"
+      ],
+      "sentiment": 0.0,
+      "top_comments": [],
+      "url": "https://reddit.com/r/DataHoarder/comments/1r0wk3a/what_should_i_get_ssd_or_hdd/"
+    },
+    {
+      "subreddit": "DataHoarder",
+      "title": "SanDisk Extreme SSD (1TB) vs Samsung T7 (1TB)",
+      "score": 4,
+      "products": [
+        "samsung_t7",
+        "sandisk_extreme",
+        "seagate",
+        "capacity_1tb"
+      ],
+      "sentiment": -1.0,
+      "top_comments": [],
+      "url": "https://reddit.com/r/DataHoarder/comments/1r54i0c/sandisk_extreme_ssd_1tb_vs_samsung_t7_1tb/"
+    },
+    {
+      "subreddit": "LocalLLaMA",
+      "title": "How viable are eGPUs and NVMe?",
+      "score": 2,
+      "products": [
+        "samsung_9100pro",
+        "capacity_large"
+      ],
+      "sentiment": 0.0,
+      "top_comments": [],
+      "url": "https://reddit.com/r/LocalLLaMA/comments/1r65y85/how_viable_are_egpus_and_nvme/"
+    },
+    {
+      "subreddit": "LocalLLaMA",
+      "title": "Hardware Usage Advice",
+      "score": 2,
+      "products": [
+        "samsung_990pro",
+        "wd_black",
+        "kingston",
+        "capacity_4tb",
+        "capacity_1tb"
+      ],
+      "sentiment": 0.0,
+      "top_comments": [],
+      "url": "https://reddit.com/r/LocalLLaMA/comments/1riqlhl/hardware_usage_advice/"
+    },
+    {
+      "subreddit": "buildapc",
+      "title": "Should i get a new Nvme SSD right now or wait to see if prices will drop?",
+      "score": 2,
+      "products": [
+        "samsung_990pro",
+        "crucial",
+        "capacity_2tb"
+      ],
+      "sentiment": 0.0,
+      "top_comments": [],
+      "url": "https://reddit.com/r/buildapc/comments/1r7h9hc/should_i_get_a_new_nvme_ssd_right_now_or_wait_to/"
+    },
+    {
+      "subreddit": "buildapc",
+      "title": "Kioxia exceria or 990 pro?",
+      "score": 2,
+      "products": [
+        "samsung_990pro",
+        "capacity_2tb"
+      ],
+      "sentiment": 1.0,
+      "top_comments": [],
+      "url": "https://reddit.com/r/buildapc/comments/1rhzjo3/kioxia_exceria_or_990_pro/"
+    },
+    {
+      "subreddit": "buildapc",
+      "title": "SSD M.2 2280 PCIe 3.0 Samsung 970 EVO Plus replacement?",
+      "score": 1,
+      "products": [
+        "samsung_general",
+        "capacity_1tb"
+      ],
+      "sentiment": 1.0,
+      "top_comments": [],
+      "url": "https://reddit.com/r/buildapc/comments/1rg22tt/ssd_m2_2280_pcie_30_samsung_970_evo_plus/"
+    },
+    {
+      "subreddit": "buildapc",
+      "title": "help me with picking components",
+      "score": 1,
+      "products": [
+        "samsung_990pro",
+        "capacity_2tb"
+      ],
+      "sentiment": 0.0,
+      "top_comments": [],
+      "url": "https://reddit.com/r/buildapc/comments/1rismse/help_me_with_picking_components/"
+    },
+    {
+      "subreddit": "buildapc",
+      "title": "Built my own PC, graphics card doesn't appear to be working",
+      "score": 1,
+      "products": [
+        "samsung_990pro",
+        "corsair",
+        "capacity_4tb"
+      ],
+      "sentiment": 1.0,
+      "top_comments": [],
+      "url": "https://reddit.com/r/buildapc/comments/1r32dn5/built_my_own_pc_graphics_card_doesnt_appear_to_be/"
+    },
+    {
+      "subreddit": "buildapc",
+      "title": "PC build - PCLIE lanes and compatibility",
+      "score": 1,
+      "products": [
+        "samsung_9100pro",
+        "kingston",
+        "corsair",
+        "capacity_4tb"
+      ],
+      "sentiment": -1.0,
+      "top_comments": [],
+      "url": "https://reddit.com/r/buildapc/comments/1rg1431/pc_build_pclie_lanes_and_compatibility/"
+    },
+    {
+      "subreddit": "buildapc",
+      "title": "BIOS Not Recognizing New SSD as Bootable",
+      "score": 0,
+      "products": [
+        "samsung_990pro"
+      ],
+      "sentiment": 0.0,
+      "top_comments": [],
+      "url": "https://reddit.com/r/buildapc/comments/1re39j7/bios_not_recognizing_new_ssd_as_bootable/"
+    }
+  ],
+  "llm_storage_posts": [
+    {
+      "subreddit": "LocalLLaMA",
+      "title": "6-GPU local LLM workstation (≈200GB+ VRAM) – looking for scaling / orchestration advice",
+      "score": 152,
+      "products": [],
+      "url": "https://reddit.com/r/LocalLLaMA/comments/1r4mks7/6gpu_local_llm_workstation_200gb_vram_looking_for/"
+    },
+    {
+      "subreddit": "buildapc",
+      "title": "Last time I (thought) I knew PC's, Battlefield 3 was the benchmark.",
+      "score": 145,
+      "products": [],
+      "url": "https://reddit.com/r/buildapc/comments/1rp7eej/last_time_i_thought_i_knew_pcs_battlefield_3_was/"
+    },
+    {
+      "subreddit": "LocalLLaMA",
+      "title": "Qwen3.5 2b, 4b and 9b tested on Raspberry Pi5",
+      "score": 131,
+      "products": [],
+      "url": "https://reddit.com/r/LocalLLaMA/comments/1rj0m27/qwen35_2b_4b_and_9b_tested_on_raspberry_pi5/"
+    },
+    {
+      "subreddit": "LocalLLaMA",
+      "title": "Portable Workstation for Inference",
+      "score": 131,
+      "products": [],
+      "url": "https://reddit.com/r/LocalLLaMA/comments/1rclyvf/portable_workstation_for_inference/"
+    },
+    {
+      "subreddit": "LocalLLaMA",
+      "title": "My NAS runs an 80B LLM at 18 tok/s on its iGPU. No discrete GPU. Still optimizing.",
+      "score": 128,
+      "products": [],
+      "url": "https://reddit.com/r/LocalLLaMA/comments/1r1lkfw/my_nas_runs_an_80b_llm_at_18_toks_on_its_igpu_no/"
+    },
+    {
+      "subreddit": "LocalLLaMA",
+      "title": "How to run Qwen3-Coder-Next 80b parameters model on 8Gb VRAM",
+      "score": 122,
+      "products": [],
+      "url": "https://reddit.com/r/LocalLLaMA/comments/1r5m4vl/how_to_run_qwen3codernext_80b_parameters_model_on/"
+    },
+    {
+      "subreddit": "LocalLLaMA",
+      "title": "oMLX - open-source MLX inference server with paged SSD caching for Apple Silicon",
+      "score": 77,
+      "products": [],
+      "url": "https://reddit.com/r/LocalLLaMA/comments/1r3qwyi/omlx_opensource_mlx_inference_server_with_paged/"
+    },
+    {
+      "subreddit": "LocalLLaMA",
+      "title": "Qwen3.5 vs GLM-4.7 vs Qwen3-235B-Thinking",
+      "score": 44,
+      "products": [],
+      "url": "https://reddit.com/r/LocalLLaMA/comments/1r76d34/qwen35_vs_glm47_vs_qwen3235bthinking/"
+    },
+    {
+      "subreddit": "DataHoarder",
+      "title": "Samsung T9 SSD max at 1.3 GB/s while transferring files",
+      "score": 12,
+      "products": [
+        "samsung_t9"
+      ],
+      "url": "https://reddit.com/r/DataHoarder/comments/1rf65gn/samsung_t9_ssd_max_at_13_gbs_while_transferring/"
+    },
+    {
+      "subreddit": "LocalLLaMA",
+      "title": "Everything I learned building on-device AI into a React Native app -- tex, Image Gen, Speech to Text, Multi Modal AI, Intent classification, Prompt Enhancements and more",
+      "score": 10,
+      "products": [],
+      "url": "https://reddit.com/r/LocalLLaMA/comments/1renuky/everything_i_learned_building_ondevice_ai_into_a/"
+    },
+    {
+      "subreddit": "LocalLLaMA",
+      "title": "Question about SSD offload in llama.cpp",
+      "score": 7,
+      "products": [],
+      "url": "https://reddit.com/r/LocalLLaMA/comments/1r10l2m/question_about_ssd_offload_in_llamacpp/"
+    },
+    {
+      "subreddit": "LocalLLaMA",
+      "title": "4× RTX 3090 Inference Server Build — Gotchas, Fixes &amp; Lessons Learned (TRX50 WS + Threadripper 7960X)",
+      "score": 6,
+      "products": [],
+      "url": "https://reddit.com/r/LocalLLaMA/comments/1rn4gx7/4_rtx_3090_inference_server_build_gotchas_fixes/"
+    },
+    {
+      "subreddit": "DataHoarder",
+      "title": "External ssd - build my own or buy prebuilt?",
+      "score": 6,
+      "products": [],
+      "url": "https://reddit.com/r/DataHoarder/comments/1rpjoz0/external_ssd_build_my_own_or_buy_prebuilt/"
+    },
+    {
+      "subreddit": "LocalLLaMA",
+      "title": "Running/Evaluating Models Larger Than RAM + VRAM Capacity (with SSD)",
+      "score": 5,
+      "products": [],
+      "url": "https://reddit.com/r/LocalLLaMA/comments/1r7bh8k/runningevaluating_models_larger_than_ram_vram/"
+    },
+    {
+      "subreddit": "LocalLLaMA",
+      "title": "Questions for improving DeepSeek-V3.2-UD-TQ1_0 performance",
+      "score": 5,
+      "products": [],
+      "url": "https://reddit.com/r/LocalLLaMA/comments/1r6eg2v/questions_for_improving_deepseekv32udtq1_0/"
+    }
+  ]
+}
