@@ -59,7 +59,7 @@ def main():
     # ── 1. NAND 시장 실시간 데이터 수집 ─────────────────────────
     header("STEP 1 · NAND 시장 인텔리전스 수집")
     from market_intel import fetch_market_intel
-    market_intel = run_agent("시장 데이터 수집", fetch_market_intel)
+    market_intel = run_agent("시장 데이터 수집", lambda: fetch_market_intel(force_refresh=True))
     if market_intel:
         mi = market_intel
         print(f"\n  📡 NAND 시그널  : {mi.get('nand_signal','?')}")
