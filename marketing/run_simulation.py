@@ -1,10 +1,12 @@
 """
-Marketing Simulation Runner — 매 시간 실행 (launchd)
+Marketing Simulation Runner — 6시간마다 실행 (launchd)
 1회 실행 시:
+  0. 6시간 게이트 확인 (미경과 시 조기 종료)
   1. NAND 시장 실시간 데이터 수집 (web search)
   2. 시뮬레이션 1개월 전진 (시장 데이터 반영)
-  3. 모든 에이전트 실행 (Excel + VP PPT 4종)
-  4. 동적 이메일 리포트 전송 (abcd00ou@gmail.com)
+  3. Crawling DB 실시간 가격 데이터 수집
+  4. 모든 에이전트 실행 (Excel + VP PPT 4종)
+  5. 동적 이메일 리포트 전송 (abcd00ou@gmail.com)
 """
 import sys
 import time
@@ -39,6 +41,21 @@ def main():
     now = datetime.datetime.now()
     header(f"SanDisk Marketing Simulation — {now.strftime('%Y-%m-%d %H:%M')}")
 
+    # ── 0. 6시간 게이트 확인 ─────────────────────────────────────
+    from simulation_engine import _load_state, HOURS_PER_SIM_MONTH
+    _state = _load_state()
+    _last = _state.get("last_run_real")
+    if _last:
+        _elapsed = datetime.datetime.now() - datetime.datetime.fromisoformat(_last)
+        _remaining = datetime.timedelta(hours=HOURS_PER_SIM_MONTH) - _elapsed
+        if _remaining.total_seconds() > 0:
+            _h = int(_remaining.total_seconds() // 3600)
+            _m = int((_remaining.total_seconds() % 3600) // 60)
+            print(f"\n  ⏭  6시간 게이트 미통과 — 다음 실행까지 {_h}h {_m}m 남음")
+            print(f"  마지막 실행: {_last[:16]}")
+            print(f"  종료합니다.\n")
+            sys.exit(0)
+
     # ── 1. NAND 시장 실시간 데이터 수집 ─────────────────────────
     header("STEP 1 · NAND 시장 인텔리전스 수집")
     from market_intel import fetch_market_intel
@@ -72,10 +89,24 @@ def main():
     if event.get("description"):
         print(f"  🎯 이벤트    : {event['description']}")
 
+    # ── 3. Crawling DB 실시간 가격 데이터 수집 ───────────────────
+    header("STEP 3 · Crawling 실시간 가격 데이터")
+    from crawling_prices import fetch_price_history
+    crawling_data = run_agent("실시간 가격 수집", lambda: fetch_price_history(days=30))
+    if crawling_data and crawling_data.get("source") == "db":
+        print(f"\n  📊 가격 페어 수집: {len(crawling_data.get('pairs', []))}종")
+        for p in crawling_data.get("pairs", []):
+            sign = "+" if p["latest_gap_usd"] > 0 else ""
+            print(f"    {p['label'][:40]:<40} Gap {sign}${p['latest_gap_usd']:.2f} ({sign}{p['latest_gap_pct']:.1f}%)")
+    else:
+        print("  ⚠️ Crawling DB 연결 불가 — 가격 차트 없이 계속")
+        if crawling_data is None:
+            crawling_data = {"pairs": [], "source": "unavailable", "fetched_at": now.isoformat()}
+
     results = {}
 
-    # ── 3. 에이전트 실행 ─────────────────────────────────────────
-    header("STEP 3 · 에이전트 실행")
+    # ── 4. 에이전트 실행 ─────────────────────────────────────────
+    header("STEP 4 · 에이전트 실행")
 
     from agents.production_agent import build_excel as prod_excel
     results["production"] = run_agent("생산 에이전트", prod_excel)
@@ -101,8 +132,8 @@ def main():
     import ppt_product_mix
     results["product_mix_pptx_vp"] = run_agent("Product Mix VP PPT", ppt_product_mix.build)
 
-    # ── 4. 이메일 전송 ────────────────────────────────────────────
-    header("STEP 4 · 이메일 리포트 전송")
+    # ── 5. 이메일 전송 ────────────────────────────────────────────
+    header("STEP 5 · 이메일 리포트 전송")
     from email_reporter import send_report
     from simulation_engine import get_current_state
     state = get_current_state()
@@ -113,6 +144,7 @@ def main():
         agent_results=results,
         market_intel=market_intel,
         history=history,
+        crawling_data=crawling_data,
     )
 
     # ── 결과 요약 ─────────────────────────────────────────────────

@@ -439,7 +439,8 @@ def _delta_arrow(val: float, unit: str = "%") -> str:
 
 
 def _build_html(sim_data: dict, agent_results: dict,
-                market_intel: dict | None, history: list) -> str:
+                market_intel: dict | None, history: list,
+                crawling_data: dict | None = None) -> str:
     """상황 기반 동적 HTML 리포트 생성."""
 
     sim_date    = sim_data.get("sim_date", "N/A")
@@ -470,6 +471,12 @@ def _build_html(sim_data: dict, agent_results: dict,
     success_cnt = sum(1 for v in agent_results.values() if v)
     total_cnt   = len(agent_results)
     now_str     = datetime.now().strftime("%Y-%m-%d %H:%M KST")
+
+    # ── 실시간 경쟁 가격 차트 (Crawling DB) ──────────────────────
+    price_chart_html = ""
+    if crawling_data:
+        from crawling_prices import build_price_chart_html
+        price_chart_html = build_price_chart_html(crawling_data)
 
     # ── 뉴스 헤드라인 (시장 인텔 있을 때만) ──────────────────────
     headlines_html = ""
@@ -770,6 +777,9 @@ def _build_html(sim_data: dict, agent_results: dict,
     </tr>
   </table>
 
+  <!-- 실시간 경쟁 가격 추세 -->
+  {price_chart_html}
+
   <!-- NAND 원가 -->
   <div class="section-title">⚙️ NAND 원가 현황</div>
   <table>
@@ -792,8 +802,8 @@ def _build_html(sim_data: dict, agent_results: dict,
 </div>
 
 <div class="footer">
-  SanDisk B2C Marketing AI Agent System — 시뮬레이션 자료 (1h=1month)<br>
-  실시간 NAND 시장 데이터 연동 | {now_str}
+  SanDisk B2C Marketing AI Agent System — 시뮬레이션 자료 (6h=1month)<br>
+  실시간 NAND 시장 데이터 + Crawling 가격 연동 | {now_str}
 </div>
 
 </div>
@@ -810,7 +820,8 @@ def _count_vp_pptx() -> int:
 
 def send_report(sim_data: dict, agent_results: dict,
                 market_intel: dict | None = None,
-                history: list | None = None) -> bool:
+                history: list | None = None,
+                crawling_data: dict | None = None) -> bool:
     """
     동적 HTML 리포트 + VP PPT만 첨부하여 이메일 전송.
     """
@@ -833,7 +844,8 @@ def send_report(sim_data: dict, agent_results: dict,
     msg["Subject"] = subject
 
     html_content = _build_html(sim_data, agent_results,
-                                market_intel, history or [])
+                                market_intel, history or [],
+                                crawling_data=crawling_data)
     msg.attach(MIMEText(html_content, "html", "utf-8"))
 
     # VP PPT만 첨부 (*_vp.pptx)

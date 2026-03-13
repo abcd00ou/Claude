@@ -1,17 +1,20 @@
 """
 Marketing Simulation Engine
-1시간 = 1개월 시뮬레이션
+6시간 = 1개월 시뮬레이션
 
 - sim_state.json에 현재 시뮬레이션 상태 저장
-- 매 실행마다 1개월 전진
+- 6시간마다 1개월 전진 (이전 실행 후 6시간 미만이면 스킵)
 - 실시간 NAND 시장 데이터(market_intel.py)로 파라미터 보정
 - 계절성 + 성장 트렌드 + 시장 조건 + 노이즈로 더미 데이터 생성
 - internal_sales.json 업데이트 (에이전트들이 참조)
 """
 import json
 import random
-from datetime import datetime
+from datetime import datetime, timedelta
 from pathlib import Path
+
+# ── 시뮬 시간 설정 ───────────────────────────────────────────────
+HOURS_PER_SIM_MONTH = 6  # 실제 6시간 = 시뮬 1개월
 
 BASE_DIR = Path(__file__).parent
 DATA_DIR = BASE_DIR / "data"
@@ -437,9 +440,22 @@ def advance_month(market_intel: dict = None) -> dict:
     """
     시뮬레이션 1개월 전진.
     market_intel: market_intel.py fetch_market_intel() 반환값 (실시간 NAND 시장 데이터)
-    반환: 이번 달 시뮬 데이터 dict
+    반환: 이번 달 시뮬 데이터 dict (스킵 시 최신 히스토리 반환)
     """
     state = _load_state()
+
+    # ── 6시간 게이트: 마지막 실행 후 HOURS_PER_SIM_MONTH시간 미만이면 스킵 ──
+    last_run = state.get("last_run_real")
+    if last_run:
+        elapsed = datetime.now() - datetime.fromisoformat(last_run)
+        if elapsed < timedelta(hours=HOURS_PER_SIM_MONTH):
+            remaining = timedelta(hours=HOURS_PER_SIM_MONTH) - elapsed
+            hours_left = int(remaining.total_seconds() // 3600)
+            mins_left = int((remaining.total_seconds() % 3600) // 60)
+            print(f"  [Sim] ⏭  스킵 — 다음 실행까지 {hours_left}h {mins_left}m 남음 "
+                  f"(마지막: {last_run[:16]})")
+            # 최신 히스토리 반환 (없으면 None)
+            return state["history"][-1] if state.get("history") else None
 
     # 다음 달로 이동
     state["sim_month"] += 1
@@ -456,7 +472,8 @@ def advance_month(market_intel: dict = None) -> dict:
     latest = _generate_monthly_data(state, noise_seed=state["sim_month"],
                                     market_intel=market_intel)
 
-    # 히스토리 추가 (최근 24개월만 보관)
+    # 히스토리 추가 (중복 sim_date 제거 후 최근 24개월만 보관)
+    state["history"] = [h for h in state["history"] if h.get("sim_date") != latest["sim_date"]]
     state["history"].append(latest)
     if len(state["history"]) > 24:
         state["history"] = state["history"][-24:]
