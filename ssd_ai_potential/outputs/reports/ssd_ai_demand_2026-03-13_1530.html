@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSD × Local AI 수요 분석 리포트</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          background: #0f172a; color: #e2e8f0; line-height: 1.6; }
+  .header { background: linear-gradient(135deg, #1e3a5f, #0f172a);
+             padding: 2rem; border-bottom: 1px solid #1e40af; }
+  .header h1 { font-size: 1.8rem; color: #60a5fa; margin-bottom: 0.3rem; }
+  .header .meta { color: #94a3b8; font-size: 0.85rem; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-bottom: 1.5rem; }
+  .card { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 1.2rem; }
+  .card h2 { font-size: 1rem; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1rem; }
+  .stat-num { font-size: 2.5rem; font-weight: 700; color: #60a5fa; }
+  .stat-label { font-size: 0.8rem; color: #64748b; margin-top: 0.2rem; }
+  .qa-block { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 1.2rem; margin-bottom: 1rem; }
+  .qa-block h3 { color: #60a5fa; font-size: 1rem; margin-bottom: 0.5rem; }
+  .qa-block pre { white-space: pre-wrap; font-family: inherit; color: #cbd5e1; font-size: 0.9rem; }
+  .chart-wrap { position: relative; height: 260px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th { background: #0f172a; color: #94a3b8; padding: 0.5rem 0.7rem; text-align: left; }
+  td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #1e293b; vertical-align: top; }
+  tr:hover td { background: #162032; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  code { background: #0f172a; padding: 0.1em 0.3em; border-radius: 3px; font-size: 0.8rem; color: #7dd3fc; }
+  a { color: #60a5fa; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .badge { padding: 0.15em 0.5em; border-radius: 4px; font-size: 0.7rem; font-weight: 600; white-space: nowrap; }
+  .badge-buy     { background: #7f1d1d; color: #fca5a5; }
+  .badge-upgrade { background: #7c2d12; color: #fdba74; }
+  .badge-tech    { background: #1e3a8a; color: #93c5fd; }
+  .bar-bg { display: inline-block; width: 80px; height: 6px; background: #334155; border-radius: 3px; vertical-align: middle; margin-right: 4px; }
+  .bar-fill { height: 100%; background: #3b82f6; border-radius: 3px; }
+  .quote { color: #64748b; font-style: italic; }
+  .highlight { background: #1e3a5f; border: 1px solid #1e40af; border-radius: 8px; padding: 1rem; margin-bottom: 1rem; }
+  .highlight p { color: #93c5fd; font-size: 0.9rem; }
+  .section-title { color: #64748b; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin: 1.5rem 0 0.7rem; }
+  .portable-card { background: linear-gradient(135deg, #0c4a6e, #1e293b); border: 1px solid #0369a1; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>SSD × Local AI 수요 분석 리포트</h1>
+  <div class="meta">생성: 2026-03-13 15:30 UTC &nbsp;|&nbsp; 분석 포스트: 3,522개 &nbsp;|&nbsp; 커뮤니티: Reddit LocalLLaMA, LocalAI 외 15개 + HackerNews</div>
+</div>
+
+<div class="container">
+
+  <!-- KPI 카드 -->
+  <p class="section-title">핵심 지표</p>
+  <div class="grid-3">
+    <div class="card">
+      <h2>수집 포스트</h2>
+      <div class="stat-num">3,522</div>
+      <div class="stat-label">누적 분석 포스트 수</div>
+    </div>
+    <div class="card">
+      <h2>수요 신호 포스트</h2>
+      <div class="stat-num" style="color:#ef4444">328</div>
+      <div class="stat-label">전체의 9.3%</div>
+    </div>
+    <div class="card portable-card">
+      <h2>포터블 SSD 언급</h2>
+      <div class="stat-num" style="color:#38bdf8">116</div>
+      <div class="stat-label">전체의 3.3%</div>
+    </div>
+  </div>
+
+  <!-- 3대 질문 답변 -->
+  <p class="section-title">3대 핵심 질문 답변</p>
+  <div class="qa-block">
+    <h3>Q1. SSD 교체·확장·구매 수요가 존재하는가?</h3>
+    <pre>✅ 존재함 (수요 신호 포스트 328개 / 전체 3522개, 9.3%)
+구매 의향: 163건 | 교체/확장 의향: 83건 | 기술적 필요: 82건
+신호 강도: <strong>중간</strong></pre>
+  </div>
+  <div class="qa-block">
+    <h3>Q2. Local LLM과 SSD가 직접 연관되어 언급되는가?</h3>
+    <pre>✅ 직접 연관 확인됨
+기술적 필요 명시 포스트: 82개 (2.3%)
+SSD+LLM 동시 언급: 300개 추가
+→ Local LLM 실행이 SSD 필요성을 유발한다는 직접적 언급 다수 존재</pre>
+  </div>
+  <div class="qa-block">
+    <h3>Q3. 어떤 기술적 근거로 SSD가 필요하다고 인식하는가?</h3>
+    <pre>상위 기술 근거:
+  1. 포터블 사용 (여러 PC): 110건
+  2. 모델 파일 용량: 107건
+  3. I/O 병목 (로딩 속도): 57건
+  4. VRAM 오프로드: 24건
+  5. 단순 용량 부족: 17건</pre>
+  </div>
+
+  <!-- 차트 -->
+  <p class="section-title">수요 신호 분포</p>
+  <div class="grid-2">
+    <div class="card">
+      <h2>수요 신호 분류</h2>
+      <div class="chart-wrap">
+        <canvas id="signalChart"></canvas>
+      </div>
+    </div>
+    <div class="card">
+      <h2>기술 근거 TOP 요인</h2>
+      <div class="chart-wrap">
+        <canvas id="factorChart"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- 소스별 분석 -->
+  <p class="section-title">커뮤니티별 수요 신호</p>
+  <div class="card">
+    <table>
+      <thead><tr><th>커뮤니티</th><th class="num">수집</th><th class="num">수요신호</th><th>수요율</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><code>reddit/r/homelab</code></td>
+          <td class="num">554</td>
+          <td class="num">114</td>
+          <td>
+            <div class="bar-bg"><div class="bar-fill" style="width:100%"></div></div>
+            <span class="num">20.6%</span>
+          </td>
+        </tr>
+        <tr>
+          <td><code>reddit/r/buildapc</code></td>
+          <td class="num">559</td>
+          <td class="num">87</td>
+          <td>
+            <div class="bar-bg"><div class="bar-fill" style="width:78.0%"></div></div>
+            <span class="num">15.6%</span>
+          </td>
+        </tr>
+        <tr>
+          <td><code>reddit/r/SelfHosted</code></td>
+          <td class="num">494</td>
+          <td class="num">68</td>
+          <td>
+            <div class="bar-bg"><div class="bar-fill" style="width:69.0%"></div></div>
+            <span class="num">13.8%</span>
+          </td>
+        </tr>
+        <tr>
+          <td><code>reddit/r/LocalLLaMA</code></td>
+          <td class="num">528</td>
+          <td class="num">27</td>
+          <td>
+            <div class="bar-bg"><div class="bar-fill" style="width:25.5%"></div></div>
+            <span class="num">5.1%</span>
+          </td>
+        </tr>
+        <tr>
+          <td><code>reddit/r/StableDiffusion</code></td>
+          <td class="num">505</td>
+          <td class="num">15</td>
+          <td>
+            <div class="bar-bg"><div class="bar-fill" style="width:15.0%"></div></div>
+            <span class="num">3.0%</span>
+          </td>
+        </tr>
+        <tr>
+          <td><code>reddit/r/nvidia</code></td>
+          <td class="num">198</td>
+          <td class="num">8</td>
+          <td>
+            <div class="bar-bg"><div class="bar-fill" style="width:20.0%"></div></div>
+            <span class="num">4.0%</span>
+          </td>
+        </tr>
+        <tr>
+          <td><code>reddit/r/linux</code></td>
+          <td class="num">114</td>
+          <td class="num">5</td>
+          <td>
+            <div class="bar-bg"><div class="bar-fill" style="width:22.0%"></div></div>
+            <span class="num">4.4%</span>
+          </td>
+        </tr>
+        <tr>
+          <td><code>reddit/r/MachineLearning</code></td>
+          <td class="num">221</td>
+          <td class="num">2</td>
+          <td>
+            <div class="bar-bg"><div class="bar-fill" style="width:4.5%"></div></div>
+            <span class="num">0.9%</span>
+          </td>
+        </tr>
+        <tr>
+          <td><code>reddit/r/hardware</code></td>
+          <td class="num">19</td>
+          <td class="num">1</td>
+          <td>
+            <div class="bar-bg"><div class="bar-fill" style="width:26.5%"></div></div>
+            <span class="num">5.3%</span>
+          </td>
+        </tr>
+        <tr>
+          <td><code>reddit/r/Oobabooga</code></td>
+          <td class="num">32</td>
+          <td class="num">1</td>
+          <td>
+            <div class="bar-bg"><div class="bar-fill" style="width:15.5%"></div></div>
+            <span class="num">3.1%</span>
+          </td>
+        </tr>
+        <tr>
+          <td><code>reddit/r/singularity</code></td>
+          <td class="num">256</td>
+          <td class="num">0</td>
+          <td>
+            <div class="bar-bg"><div class="bar-fill" style="width:0.0%"></div></div>
+            <span class="num">0.0%</span>
+          </td>
+        </tr>
+        <tr>
+          <td><code>reddit/r/OllamaAI</code></td>
+          <td class="num">1</td>
+          <td class="num">0</td>
+          <td>
+            <div class="bar-bg"><div class="bar-fill" style="width:0.0%"></div></div>
+            <span class="num">0.0%</span>
+          </td>
+        </tr>
+        <tr>
+          <td><code>reddit/r/KoboldAI</code></td>
+          <td class="num">38</td>
+          <td class="num">0</td>
+          <td>
+            <div class="bar-bg"><div class="bar-fill" style="width:0.0%"></div></div>
+            <span class="num">0.0%</span>
+          </td>
+        </tr>
+        <tr>
+          <td><code>hackernews</code></td>
+          <td class="num">3</td>
+          <td class="num">0</td>
+          <td>
+            <div class="bar-bg"><div class="bar-fill" style="width:0.0%"></div></div>
+            <span class="num">0.0%</span>
+          </td>
+        </tr></tbody>
+    </table>
+  </div>
+
+  <!-- 상위 포스트 -->
+  <p class="section-title">수요 신호 상위 포스트 (score 순)</p>
+  <div class="card">
+    <table>
+      <thead><tr><th>분류</th><th>제목 / 인용</th><th>출처</th><th class="num">Score</th><th>기술근거</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><span class="badge badge-buy">구매의향</span></td>
+          <td><a href="https://www.reddit.com/r/selfhosted/comments/1rirc31/this_will_be_interesting_to_selfhost/" target="_blank">This will be interesting to self-host.</a>
+              </td>
+          <td><small>reddit/r/SelfHosted</small></td>
+          <td class="num">2214</td>
+          <td><small></small></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-upgrade">교체의향</span></td>
+          <td><a href="https://www.reddit.com/r/homelab/comments/1pkg5cn/made_a_9slot_ssd_backplane/" target="_blank">Made A 9-Slot SSD Backplane</a>
+              </td>
+          <td><small>reddit/r/homelab</small></td>
+          <td class="num">2069</td>
+          <td><small></small></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-upgrade">교체의향</span></td>
+          <td><a href="https://www.reddit.com/r/linux/comments/1nle38v/flathub_popularity_by_country/" target="_blank">Flathub popularity by country</a>
+              </td>
+          <td><small>reddit/r/linux</small></td>
+          <td class="num">1157</td>
+          <td><small></small></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-tech">기술필요</span></td>
+          <td><a href="https://www.reddit.com/r/homelab/comments/1qv5epo/i_sold_all_my_homelab_equipment_and_rented_a/" target="_blank">I sold all my homelab equipment and rented a server instead</a>
+              </td>
+          <td><small>reddit/r/homelab</small></td>
+          <td class="num">1118</td>
+          <td><small></small></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-upgrade">교체의향</span></td>
+          <td><a href="https://www.reddit.com/r/homelab/comments/1rqyfwe/48_core_128_gb_25g_homelab/" target="_blank">48 Core | 128 GB | 2.5G Homelab</a>
+              </td>
+          <td><small>reddit/r/homelab</small></td>
+          <td class="num">815</td>
+          <td><small></small></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-tech">기술필요</span></td>
+          <td><a href="https://www.reddit.com/r/linux/comments/1no3uzr/you_should_use_zram_probably/" target="_blank">You should use zram probably</a>
+              </td>
+          <td><small>reddit/r/linux</small></td>
+          <td class="num">791</td>
+          <td><small></small></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-buy">구매의향</span></td>
+          <td><a href="https://www.reddit.com/r/homelab/comments/1qktgsf/my_first_proper_homelab/" target="_blank">My first proper homelab</a>
+              </td>
+          <td><small>reddit/r/homelab</small></td>
+          <td class="num">702</td>
+          <td><small></small></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-upgrade">교체의향</span></td>
+          <td><a href="https://www.reddit.com/r/homelab/comments/1r3b0fh/my_home_lab/" target="_blank">My home lab</a>
+              </td>
+          <td><small>reddit/r/homelab</small></td>
+          <td class="num">560</td>
+          <td><small></small></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-buy">구매의향</span></td>
+          <td><a href="https://www.reddit.com/r/linux/comments/1qhf32l/introducing_pciem/" target="_blank">Introducing PCIem</a>
+              </td>
+          <td><small>reddit/r/linux</small></td>
+          <td class="num">496</td>
+          <td><small></small></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-tech">기술필요</span></td>
+          <td><a href="https://www.reddit.com/r/homelab/comments/1q178rn/i_have_just_created_an_only_fans_what_do_you_guys/" target="_blank">I have just created an "Only Fans", what do you guys think?</a>
+              </td>
+          <td><small>reddit/r/homelab</small></td>
+          <td class="num">494</td>
+          <td><small></small></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-tech">기술필요</span></td>
+          <td><a href="https://www.reddit.com/r/homelab/comments/1qh2k2z/showcaseproject_5bay_nas/" target="_blank">Showcase/Project 5-Bay NAS</a>
+              </td>
+          <td><small>reddit/r/homelab</small></td>
+          <td class="num">447</td>
+          <td><small>스왑/가상메모리 속도</small></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-upgrade">교체의향</span></td>
+          <td><a href="https://www.reddit.com/r/homelab/comments/1qzda68/replaced_my_powerhungry_tower_server_mini_pcs/" target="_blank">Replaced my power-hungry tower server Mini PCs</a>
+              </td>
+          <td><small>reddit/r/homelab</small></td>
+          <td class="num">412</td>
+          <td><small></small></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-buy">구매의향</span></td>
+          <td><a href="https://www.reddit.com/r/homelab/comments/1ritk2p/any_chance_at_getting_this_into_an_m2_slot_lol/" target="_blank">Any chance at getting this into an m.2 slot? Lol</a>
+              </td>
+          <td><small>reddit/r/homelab</small></td>
+          <td class="num">298</td>
+          <td><small>포터블 사용 (여러 PC)</small></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-buy">구매의향</span></td>
+          <td><a href="https://www.reddit.com/r/homelab/comments/1rhslps/begun_my_homelabbing_journey_and_i_am_excited/" target="_blank">Begun my homelabbing journey and I am excited</a>
+              </td>
+          <td><small>reddit/r/homelab</small></td>
+          <td class="num">277</td>
+          <td><small></small></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-upgrade">교체의향</span></td>
+          <td><a href="https://www.reddit.com/r/homelab/comments/1o668r2/just_scored_12_dell_optiplex_9020_sff_i5s_for_my/" target="_blank">Just scored 12 Dell Optiplex 9020 SFF i5s for my homelab</a>
+              </td>
+          <td><small>reddit/r/homelab</small></td>
+          <td class="num">243</td>
+          <td><small></small></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-tech">기술필요</span></td>
+          <td><a href="https://www.reddit.com/r/StableDiffusion/comments/1ph5t8r/do_not_use_ai_generation_on_ssd_virtual_memory/" target="_blank">🤯 Do not use Ai generation on SSD virtual memory ! 🪦</a>
+              </td>
+          <td><small>reddit/r/StableDiffusion</small></td>
+          <td class="num">206</td>
+          <td><small>모델 파일 용량, 스왑/가상메모리 속도</small></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-tech">기술필요</span></td>
+          <td><a href="https://www.reddit.com/r/hardware/comments/1pym29z/the_hidden_write_latency_penalty_of_linux_page/" target="_blank">The hidden write latency penalty of Linux Page Cache on ARM64 (Jetson Orin)</a>
+              </td>
+          <td><small>reddit/r/hardware</small></td>
+          <td class="num">188</td>
+          <td><small></small></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-tech">기술필요</span></td>
+          <td><a href="https://www.reddit.com/r/LocalLLaMA/comments/1rgfm00/i_built_a_hybrid_moe_runtime_that_does_3324_toks/" target="_blank">I built a hybrid MoE runtime that does 3,324 tok/s prefill on a single 5080.  He</a>
+              </td>
+          <td><small>reddit/r/LocalLLaMA</small></td>
+          <td class="num">185</td>
+          <td><small>모델 파일 용량</small></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-buy">구매의향</span></td>
+          <td><a href="https://www.reddit.com/r/buildapc/comments/1rcrxcc/i_bought_a_slower_nvme_by_mistake_for_my_first/" target="_blank">I bought a slower nvme by mistake for my first build</a>
+              </td>
+          <td><small>reddit/r/buildapc</small></td>
+          <td class="num">178</td>
+          <td><small></small></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-tech">기술필요</span></td>
+          <td><a href="https://www.reddit.com/r/LocalLLaMA/comments/1rei65v/qwen3535ba3b_quantization_quality_speed/" target="_blank">Qwen3.5-35B-A3B quantization quality + speed benchmarks on RTX 5080 16GB (Q8_0 v</a>
+              </td>
+          <td><small>reddit/r/LocalLLaMA</small></td>
+          <td class="num">150</td>
+          <td><small>모델 파일 용량, VRAM 오프로드</small></td>
+        </tr></tbody>
+    </table>
+  </div>
+
+  <!-- 마케팅 시사점 -->
+  <p class="section-title">마케팅 시사점 (WD/SanDisk)</p>
+  <div class="highlight">
+    <p>• <strong>내장 SSD (WD_BLACK SN850X/SN8100)</strong>: VRAM 오프로드·스왑 속도 민감 유저 → NVMe 고속 I/O 메시지</p>
+    <p>• <strong>포터블 SSD (SanDisk Extreme)</strong>: 모델 파일을 여러 기기에서 이동 실행하는 유저 → "AI 모델 포터블 스토리지" 포지셔닝</p>
+    <p>• <strong>용량 전략</strong>: 7B~70B 모델 복수 보유 트렌드 → 2TB/4TB 대용량 SKU 강조</p>
+    <p>• <strong>타깃 채널</strong>: r/LocalLLaMA, r/OllamaAI, r/SelfHosted — 직접 커뮤니티 engagement 가능</p>
+  </div>
+
+</div>
+
+<script>
+// 수요 신호 도넛 차트
+new Chart(document.getElementById('signalChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ["\uad6c\ub9e4 \uc758\ud5a5", "\uad50\uccb4/\ud655\uc7a5 \uc758\ud5a5", "\uae30\uc220\uc801 \ud544\uc694", "\ub3d9\uc2dc \uc5b8\uae09", "\ubb34\uad00"],
+    datasets: [{ data: [163, 83, 82, 300, 2894], backgroundColor: ["#ef4444", "#f97316", "#3b82f6", "#a855f7", "#d1d5db"], borderWidth: 0 }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: { legend: { position: 'right', labels: { color: '#94a3b8', font: { size: 11 } } } }
+  }
+});
+
+// 기술 근거 바 차트
+new Chart(document.getElementById('factorChart'), {
+  type: 'bar',
+  data: {
+    labels: ["\ud3ec\ud130\ube14 \uc0ac\uc6a9 (\uc5ec\ub7ec PC)", "\ubaa8\ub378 \ud30c\uc77c \uc6a9\ub7c9", "I/O \ubcd1\ubaa9 (\ub85c\ub529 \uc18d\ub3c4)", "VRAM \uc624\ud504\ub85c\ub4dc", "\ub2e8\uc21c \uc6a9\ub7c9 \ubd80\uc871", "\uc2a4\uc651/\uac00\uc0c1\uba54\ubaa8\ub9ac \uc18d\ub3c4", "NVMe \uc18d\ub3c4 \uc911\uc694\uc131"],
+    datasets: [{ data: [110, 107, 57, 24, 17, 12, 4], backgroundColor: '#3b82f6', borderRadius: 4 }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false, indexAxis: 'y',
+    plugins: { legend: { display: false } },
+    scales: {
+      x: { ticks: { color: '#94a3b8' }, grid: { color: '#1e293b' } },
+      y: { ticks: { color: '#94a3b8', font: { size: 10 } }, grid: { display: false } }
+    }
+  }
+});
+</script>
+</body>
+</html>

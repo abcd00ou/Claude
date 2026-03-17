@@ -34,10 +34,46 @@
       "total_btoc": 3755.0
     },
     "2027E": {
-      "external_ssd": 1087.0,
-      "internal_ssd": 1027.0,
-      "microsd": 1662.0,
-      "total_btoc": 3776.0
+      "external_ssd": 1192.0,
+      "internal_ssd": 1159.0,
+      "microsd": 1826.0,
+      "total_btoc": 4177.0
+    },
+    "2028E": {
+      "external_ssd": 1331.0,
+      "internal_ssd": 1345.0,
+      "microsd": 1925.0,
+      "total_btoc": 4601.0
+    },
+    "2029E": {
+      "external_ssd": 1488.0,
+      "internal_ssd": 1547.0,
+      "microsd": 2096.0,
+      "total_btoc": 5131.0
+    },
+    "2030E": {
+      "external_ssd": 1597.0,
+      "internal_ssd": 1843.0,
+      "microsd": 2205.0,
+      "total_btoc": 5645.0
+    },
+    "2031E": {
+      "external_ssd": 1730.0,
+      "internal_ssd": 2097.0,
+      "microsd": 2302.0,
+      "total_btoc": 6129.0
+    },
+    "2032E": {
+      "external_ssd": 1923.0,
+      "internal_ssd": 2463.0,
+      "microsd": 2493.0,
+      "total_btoc": 6879.0
+    },
+    "2033E": {
+      "external_ssd": 1204.0,
+      "internal_ssd": 1529.0,
+      "microsd": 1552.0,
+      "total_btoc": 4285.0
     }
   },
   "quarterly_revenue_usd_m": {
@@ -136,6 +172,138 @@
       "internal_ssd": 292.5,
       "microsd": 452.2,
       "total": 1053.4
+    },
+    "2027Q4": {
+      "external_ssd": 368.8,
+      "internal_ssd": 378.4,
+      "microsd": 561.0,
+      "total": 1308.2
+    },
+    "2028Q1": {
+      "external_ssd": 253.6,
+      "internal_ssd": 261.7,
+      "microsd": 387.9,
+      "total": 903.2
+    },
+    "2028Q2": {
+      "external_ssd": 296.5,
+      "internal_ssd": 305.2,
+      "microsd": 424.8,
+      "total": 1026.5
+    },
+    "2028Q3": {
+      "external_ssd": 336.5,
+      "internal_ssd": 340.4,
+      "microsd": 481.4,
+      "total": 1158.3
+    },
+    "2028Q4": {
+      "external_ssd": 423.9,
+      "internal_ssd": 426.9,
+      "microsd": 602.2,
+      "total": 1453.0
+    },
+    "2029Q1": {
+      "external_ssd": 283.5,
+      "internal_ssd": 295.8,
+      "microsd": 396.3,
+      "total": 975.6
+    },
+    "2029Q2": {
+      "external_ssd": 324.7,
+      "internal_ssd": 344.5,
+      "microsd": 475.3,
+      "total": 1144.5
+    },
+    "2029Q3": {
+      "external_ssd": 384.1,
+      "internal_ssd": 381.0,
+      "microsd": 529.8,
+      "total": 1294.9
+    },
+    "2029Q4": {
+      "external_ssd": 475.5,
+      "internal_ssd": 507.4,
+      "microsd": 667.4,
+      "total": 1650.3
+    },
+    "2030Q1": {
+      "external_ssd": 309.1,
+      "internal_ssd": 346.2,
+      "microsd": 409.5,
+      "total": 1064.8
+    },
+    "2030Q2": {
+      "external_ssd": 347.0,
+      "internal_ssd": 404.8,
+      "microsd": 509.4,
+      "total": 1261.2
+    },
+    "2030Q3": {
+      "external_ssd": 413.6,
+      "internal_ssd": 458.7,
+      "microsd": 555.8,
+      "total": 1428.1
+    },
+    "2030Q4": {
+      "external_ssd": 504.3,
+      "internal_ssd": 610.3,
+      "microsd": 688.2,
+      "total": 1802.8
+    },
+    "2031Q1": {
+      "external_ssd": 351.8,
+      "internal_ssd": 404.0,
+      "microsd": 440.0,
+      "total": 1195.8
+    },
+    "2031Q2": {
+      "external_ssd": 380.4,
+      "internal_ssd": 481.4,
+      "microsd": 516.0,
+      "total": 1377.8
+    },
+    "2031Q3": {
+      "external_ssd": 441.1,
+      "internal_ssd": 539.2,
+      "microsd": 569.2,
+      "total": 1549.5
+    },
+    "2031Q4": {
+      "external_ssd": 530.9,
+      "internal_ssd": 658.3,
+      "microsd": 744.2,
+      "total": 1933.4
+    },
+    "2032Q1": {
+      "external_ssd": 372.4,
+      "internal_ssd": 472.7,
+      "microsd": 494.8,
+      "total": 1339.9
+    },
+    "2032Q2": {
+      "external_ssd": 435.7,
+      "internal_ssd": 555.8,
+      "microsd": 544.3,
+      "total": 1535.8
+    },
+    "2032Q3": {
+      "external_ssd": 474.8,
+      "internal_ssd": 593.7,
+      "microsd": 620.1,
+      "total": 1688.6
+    },
+    "2032Q4": {
+      "external_ssd": 619.1,
+      "internal_ssd": 794.3,
+      "microsd": 796.1,
+      "total": 2209.5
+    },
+    "2033Q1": {
+      "external_ssd": 257.9,
+      "internal_ssd": 335.2,
+      "microsd": 339.3,
+      "total": 932.4
     }
   },
   "yoy_growth_pct": {
@@ -206,19 +374,121 @@
     },
     "2027E": {
       "external_ssd": {
-        "ecommerce": 56.8,
-        "retail": 34.6,
-        "b2b": 8.6
+        "ecommerce": 57.2,
+        "retail": 34.3,
+        "b2b": 8.4
       },
       "internal_ssd": {
-        "ecommerce": 62.8,
-        "retail": 23.6,
-        "b2b": 13.6
+        "ecommerce": 63.2,
+        "retail": 23.3,
+        "b2b": 13.4
       },
       "microsd": {
-        "ecommerce": 46.8,
-        "retail": 44.6,
-        "b2b": 8.6
+        "ecommerce": 47.2,
+        "retail": 44.3,
+        "b2b": 8.4
+      }
+    },
+    "2028E": {
+      "external_ssd": {
+        "ecommerce": 59.0,
+        "retail": 33.1,
+        "b2b": 7.9
+      },
+      "internal_ssd": {
+        "ecommerce": 65.0,
+        "retail": 22.1,
+        "b2b": 12.9
+      },
+      "microsd": {
+        "ecommerce": 49.0,
+        "retail": 43.1,
+        "b2b": 7.9
+      }
+    },
+    "2029E": {
+      "external_ssd": {
+        "ecommerce": 60.9,
+        "retail": 31.8,
+        "b2b": 7.3
+      },
+      "internal_ssd": {
+        "ecommerce": 66.8,
+        "retail": 20.8,
+        "b2b": 12.3
+      },
+      "microsd": {
+        "ecommerce": 50.9,
+        "retail": 41.8,
+        "b2b": 7.3
+      }
+    },
+    "2030E": {
+      "external_ssd": {
+        "ecommerce": 62.6,
+        "retail": 30.5,
+        "b2b": 6.8
+      },
+      "internal_ssd": {
+        "ecommerce": 68.7,
+        "retail": 19.5,
+        "b2b": 11.8
+      },
+      "microsd": {
+        "ecommerce": 52.6,
+        "retail": 40.5,
+        "b2b": 6.8
+      }
+    },
+    "2031E": {
+      "external_ssd": {
+        "ecommerce": 64.5,
+        "retail": 29.3,
+        "b2b": 6.3
+      },
+      "internal_ssd": {
+        "ecommerce": 70.5,
+        "retail": 18.3,
+        "b2b": 11.3
+      },
+      "microsd": {
+        "ecommerce": 54.5,
+        "retail": 39.3,
+        "b2b": 6.3
+      }
+    },
+    "2032E": {
+      "external_ssd": {
+        "ecommerce": 66.2,
+        "retail": 28.0,
+        "b2b": 5.7
+      },
+      "internal_ssd": {
+        "ecommerce": 72.2,
+        "retail": 17.0,
+        "b2b": 10.7
+      },
+      "microsd": {
+        "ecommerce": 56.2,
+        "retail": 38.0,
+        "b2b": 5.7
+      }
+    },
+    "2033E": {
+      "external_ssd": {
+        "ecommerce": 66.5,
+        "retail": 27.8,
+        "b2b": 5.6
+      },
+      "internal_ssd": {
+        "ecommerce": 72.5,
+        "retail": 16.8,
+        "b2b": 10.6
+      },
+      "microsd": {
+        "ecommerce": 56.5,
+        "retail": 37.8,
+        "b2b": 5.6
       }
     }
   },
@@ -443,10 +713,46 @@
       "blended": 47.4
     },
     "2027E": {
-      "external_ssd": 47.1,
-      "internal_ssd": 41.7,
-      "microsd": 59.5,
-      "blended": 50.8
+      "external_ssd": 47.0,
+      "internal_ssd": 40.0,
+      "microsd": 61.0,
+      "blended": 51.0
+    },
+    "2028E": {
+      "external_ssd": 48.9,
+      "internal_ssd": 42.3,
+      "microsd": 60.9,
+      "blended": 51.9
+    },
+    "2029E": {
+      "external_ssd": 50.8,
+      "internal_ssd": 43.3,
+      "microsd": 61.5,
+      "blended": 52.8
+    },
+    "2030E": {
+      "external_ssd": 51.5,
+      "internal_ssd": 44.6,
+      "microsd": 61.7,
+      "blended": 53.0
+    },
+    "2031E": {
+      "external_ssd": 52.1,
+      "internal_ssd": 46.0,
+      "microsd": 64.8,
+      "blended": 54.8
+    },
+    "2032E": {
+      "external_ssd": 52.7,
+      "internal_ssd": 46.9,
+      "microsd": 65.7,
+      "blended": 55.1
+    },
+    "2033E": {
+      "external_ssd": 58.8,
+      "internal_ssd": 52.3,
+      "microsd": 69.8,
+      "blended": 60.5
     }
   },
   "market_share_pct": {
@@ -476,9 +782,39 @@
       "microsd": 33.0
     },
     "2027_latest": {
-      "external_ssd": 23.8,
-      "internal_ssd": 19.1,
+      "external_ssd": 23.4,
+      "internal_ssd": 19.0,
       "microsd": 33.4
+    },
+    "2028_latest": {
+      "external_ssd": 24.6,
+      "internal_ssd": 19.9,
+      "microsd": 34.0
+    },
+    "2029_latest": {
+      "external_ssd": 24.9,
+      "internal_ssd": 20.5,
+      "microsd": 34.5
+    },
+    "2030_latest": {
+      "external_ssd": 25.5,
+      "internal_ssd": 21.4,
+      "microsd": 35.0
+    },
+    "2031_latest": {
+      "external_ssd": 26.2,
+      "internal_ssd": 22.1,
+      "microsd": 35.3
+    },
+    "2032_latest": {
+      "external_ssd": 26.6,
+      "internal_ssd": 22.7,
+      "microsd": 35.9
+    },
+    "2033_latest": {
+      "external_ssd": 26.8,
+      "internal_ssd": 22.8,
+      "microsd": 36.2
     }
   },
   "nand_cost_per_gb_usd": {
@@ -498,7 +834,29 @@
     "2026Q4_sim": 0.037,
     "2027Q1_sim": 0.0356,
     "2027Q2_sim": 0.0321,
-    "2027Q3_sim": 0.0308
+    "2027Q3_sim": 0.0308,
+    "2027Q4_sim": 0.0296,
+    "2028Q1_sim": 0.0284,
+    "2028Q2_sim": 0.0273,
+    "2028Q3_sim": 0.0262,
+    "2028Q4_sim": 0.0251,
+    "2029Q1_sim": 0.0241,
+    "2029Q2_sim": 0.0232,
+    "2029Q3_sim": 0.0222,
+    "2029Q4_sim": 0.0214,
+    "2030Q1_sim": 0.0205,
+    "2030Q2_sim": 0.0197,
+    "2030Q3_sim": 0.0189,
+    "2030Q4_sim": 0.0181,
+    "2031Q1_sim": 0.0174,
+    "2031Q2_sim": 0.0167,
+    "2031Q3_sim": 0.016,
+    "2031Q4_sim": 0.0154,
+    "2032Q1_sim": 0.0148,
+    "2032Q2_sim": 0.0142,
+    "2032Q3_sim": 0.0136,
+    "2032Q4_sim": 0.0131,
+    "2033Q1_sim": 0.0129
   },
   "promo_impact_usd_m": {
     "2024Q4_holiday": {
@@ -565,6 +923,116 @@
       "invest": 15.1,
       "incremental_rev": 42.6,
       "roi": 2.82
+    },
+    "2027-11_holiday": {
+      "invest": 40.6,
+      "incremental_rev": 120.2,
+      "roi": 2.96
+    },
+    "2027-12_holiday": {
+      "invest": 44.2,
+      "incremental_rev": 142.8,
+      "roi": 3.23
+    },
+    "2028-07_bts": {
+      "invest": 18.0,
+      "incremental_rev": 45.4,
+      "roi": 2.52
+    },
+    "2028-08_bts": {
+      "invest": 20.8,
+      "incremental_rev": 58.9,
+      "roi": 2.83
+    },
+    "2028-11_holiday": {
+      "invest": 52.0,
+      "incremental_rev": 172.1,
+      "roi": 3.31
+    },
+    "2028-12_holiday": {
+      "invest": 54.4,
+      "incremental_rev": 168.1,
+      "roi": 3.09
+    },
+    "2029-07_bts": {
+      "invest": 19.8,
+      "incremental_rev": 50.1,
+      "roi": 2.53
+    },
+    "2029-08_bts": {
+      "invest": 18.3,
+      "incremental_rev": 50.0,
+      "roi": 2.73
+    },
+    "2029-11_holiday": {
+      "invest": 45.1,
+      "incremental_rev": 149.7,
+      "roi": 3.32
+    },
+    "2029-12_holiday": {
+      "invest": 47.1,
+      "incremental_rev": 153.5,
+      "roi": 3.26
+    },
+    "2030-07_bts": {
+      "invest": 15.0,
+      "incremental_rev": 44.6,
+      "roi": 2.97
+    },
+    "2030-08_bts": {
+      "invest": 14.3,
+      "incremental_rev": 39.5,
+      "roi": 2.76
+    },
+    "2030-11_holiday": {
+      "invest": 44.8,
+      "incremental_rev": 127.2,
+      "roi": 2.84
+    },
+    "2030-12_holiday": {
+      "invest": 49.8,
+      "incremental_rev": 150.4,
+      "roi": 3.02
+    },
+    "2031-07_bts": {
+      "invest": 19.6,
+      "incremental_rev": 53.5,
+      "roi": 2.73
+    },
+    "2031-08_bts": {
+      "invest": 17.3,
+      "incremental_rev": 51.9,
+      "roi": 3.0
+    },
+    "2031-11_holiday": {
+      "invest": 39.7,
+      "incremental_rev": 118.3,
+      "roi": 2.98
+    },
+    "2031-12_holiday": {
+      "invest": 43.1,
+      "incremental_rev": 141.8,
+      "roi": 3.29
+    },
+    "2032-07_bts": {
+      "invest": 14.6,
+      "incremental_rev": 42.9,
+      "roi": 2.94
+    },
+    "2032-08_bts": {
+      "invest": 17.0,
+      "incremental_rev": 47.4,
+      "roi": 2.79
+    },
+    "2032-11_holiday": {
+      "invest": 38.2,
+      "incremental_rev": 116.9,
+      "roi": 3.06
+    },
+    "2032-12_holiday": {
+      "invest": 41.3,
+      "incremental_rev": 129.7,
+      "roi": 3.14
     }
   },
   "amazon_real_prices": {
@@ -610,6 +1078,6 @@
       "premium_pct": 156.7
     }
   },
-  "_sim_last_updated": "2026-03-11T12:57:17.934139",
-  "_sim_date": "2027-09"
+  "_sim_last_updated": "2026-03-17T10:59:13.212683",
+  "_sim_date": "2033-02"
 }

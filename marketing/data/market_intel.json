@@ -1,28 +1,28 @@
 {
-  "fetched_at": "2026-03-11T09:56:38.418527",
+  "fetched_at": "2026-03-17T10:59:13.210390",
   "nand_signal": "tight",
-  "price_trend": "up",
-  "price_change_pct": 3.5,
+  "price_trend": "flat",
+  "price_change_pct": 7.4,
   "headlines": [
     {
-      "title": "PC, smartphone market to see a 'challenging' 2026 amid memory shortage, rising prices",
-      "date": "2026-02-27T13:21:00+00:00",
-      "url": "https://seekingalpha.com/news/4558694-pc-smartphone-market-to-see-a-challenging-2026-amid-memory-shortage-rising-prices"
+      "title": "Spiralling memory spot prices could trigger 'industry cycle collapse,' report warns",
+      "date": "2026-03-06T04:01:00+00:00",
+      "url": "https://www.msn.com/en-gb/money/other/spiralling-memory-spot-prices-could-trigger-industry-cycle-collapse-report-warns/ar-AA1XB9gR"
     },
     {
-      "title": "What IT Leaders Need To Know About The Impact Of Memory On Storage",
-      "date": "2026-02-28T19:50:00+00:00",
-      "url": "https://www.forbes.com/sites/stevemcdowell/2026/02/28/the-memory-crisis-is-reshaping-enterprise-storage-what-it-leaders-need-to-know/"
+      "title": "Micron: Memory Downcycle Sooner Than Expected",
+      "date": "2026-03-16T15:32:00+00:00",
+      "url": "https://seekingalpha.com/article/4882771-micron-memory-downcycle-sooner-than-expected"
     },
     {
-      "title": "Adata chairman expects NAND price surge in 2H26",
-      "date": "2026-03-07T22:59:00+00:00",
-      "url": "https://www.digitimes.com/news/a20260306PD213/adata-price-memory-chairman-nand.html"
+      "title": "Samsung Could Double NAND Prices in 2026 Amid Exploding AI Demand",
+      "date": "2026-03-06T13:40:00+00:00",
+      "url": "https://windowsreport.com/samsung-could-double-nand-prices-in-2026-amid-exploding-ai-demand/"
     },
     {
-      "title": "Sandisk's Rewriting Laws Of Gravity With Surging NAND Prices",
-      "date": "2026-02-24T20:25:00+00:00",
-      "url": "https://seekingalpha.com/article/4874114-sandisk-rewriting-laws-of-gravity-with-surging-nand-prices"
+      "title": "China's NDRC warns memory price surge spreading across electronics supply chain",
+      "date": "2026-03-13T04:16:00+00:00",
+      "url": "https://www.digitimes.com/news/a20260310PD237/price-electronics-supply-chain-dram-2025.html"
     },
     {
       "title": "8 Gadgets That Could Jump In Price Due To The RAM Shortage",
@@ -31,13 +31,13 @@
     },
     {
       "title": "Phison says NAND prices jumped 50% overnight as supply crunch continues",
-      "date": "2026-03-10T00:56:31+00:00",
+      "date": "2026-03-10T01:59:07+00:00",
       "url": "https://www.digitimes.com/news/a20260309PD212/phison-nand-flash-inventory-price-2026.html"
     },
     {
-      "title": "Silicon Motion expands enterprise storage amid NAND supply shift",
-      "date": "2026-02-08T15:00:00+00:00",
-      "url": "https://www.digitimes.com/news/a20260206PD228/silicon-motion-nand-nand-flash-revenue-2026.html"
+      "title": "China's NDRC warns memory price surge spreading across electronics supply chain",
+      "date": "2026-03-14T01:59:07+00:00",
+      "url": "https://www.digitimes.com/news/a20260310PD237/price-electronics-supply-chain-dram-2025.html"
     },
     {
       "title": "Kioxia sells out 2026 NAND capacity as AI demand tightens global memory supply",
@@ -46,16 +46,16 @@
     }
   ],
   "key_insights": [
-    "Adata chairman expects NAND price surge in 2H26 Memory module giant Adata reported record-high operations in 2025, with chairman Simon Chen forecasting a strong memory market throughout 2026",
-    "Sandisk's Rewriting Laws Of Gravity With Surging NAND Prices Sandisk is positioned to benefit from surging NAND wafer prices, driven by AI data center demand and industry-wide capacity constraints"
+    "4% month-over-month, while 1Tb TLC flash wafers jumped 25% to $25",
+    "Samsung Could Double NAND Prices in 2026 Amid Exploding AI Demand Samsung may double NAND prices in 2026 as AI demand drives storage shortages, potentially raising SSD prices for consumers"
   ],
   "sim_adjustments": {
-    "nand_cost_delta_pct": 2.8,
-    "demand_delta_pct": -1.05,
+    "nand_cost_delta_pct": 5.92,
+    "demand_delta_pct": -2.22,
     "supply_risk": 0.25
   },
-  "market_context": "NAND 시장: 공급 부족 | 가격 트렌드: 상승 (추정 +3.5%/월) | 공급 리스크: 25%",
+  "market_context": "NAND 시장: 공급 부족 | 가격 트렌드: 보합 (추정 +7.4%/월) | 공급 리스크: 25%",
   "supply_score": -5,
-  "price_score": -4,
+  "price_score": 0,
   "source": "web"
 }

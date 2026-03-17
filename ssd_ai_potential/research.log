@@ -1,0 +1,745 @@
+2026-03-13 23:52:37,326 [RUN] === SSD × AI 수요 조사 시작 | 모드: full | 2026-03-13T14:52:37.325916+00:00 ===
+2026-03-13 23:52:37,326 [RUN] ─── [1/3] 크롤링 시작 ───
+2026-03-13 23:52:37,401 [RUN] Full 모드: 2025-09-14T14:52:37.401175+00:00 이후 수집
+2026-03-13 23:52:37,401 [RUN] [1/15] r/LocalLLaMA 크롤링 중...
+2026-03-13 23:53:33,189 [RUN]   r/LocalLLaMA: +528개
+2026-03-13 23:53:33,191 [RUN] [2/15] r/LocalAI 크롤링 중...
+2026-03-13 23:53:33,507 [RUN] HTTP 403 for r/LocalAI q=SSD storage NVMe
+2026-03-13 23:53:36,120 [RUN] HTTP 403 for r/LocalAI q=model weights storage disk
+2026-03-13 23:53:38,378 [RUN] HTTP 403 for r/LocalAI q=offload VRAM swap SSD
+2026-03-13 23:53:40,629 [RUN] HTTP 403 for r/LocalAI q=storage upgrade local llm
+2026-03-13 23:53:42,884 [RUN] HTTP 403 for r/LocalAI q=portable SSD local AI
+2026-03-13 23:53:45,180 [RUN] HTTP 403 for r/LocalAI q=external drive model files
+2026-03-13 23:53:47,499 [RUN] HTTP 403 for r/LocalAI q=NVMe speed model loading
+2026-03-13 23:53:49,789 [RUN] HTTP 403 for r/LocalAI q=disk space model weights
+2026-03-13 23:53:51,795 [RUN]   r/LocalAI: +0개
+2026-03-13 23:53:51,796 [RUN] [3/15] r/SelfHosted 크롤링 중...
+2026-03-13 23:54:50,067 [RUN]   r/SelfHosted: +494개
+2026-03-13 23:54:50,069 [RUN] [4/15] r/homelab 크롤링 중...
+2026-03-13 23:55:45,795 [RUN]   r/homelab: +554개
+2026-03-13 23:55:45,796 [RUN] [5/15] r/hardware 크롤링 중...
+2026-03-13 23:56:36,278 [RUN]   r/hardware: +19개
+2026-03-13 23:56:36,279 [RUN] [6/15] r/buildapc 크롤링 중...
+2026-03-13 23:57:24,095 [RUN]   r/buildapc: +559개
+2026-03-13 23:57:24,095 [RUN] [7/15] r/singularity 크롤링 중...
+2026-03-13 23:57:31,281 [RUN] Rate limited. Sleeping 60s...
+2026-03-13 23:58:31,597 [RUN] Rate limited. Sleeping 60s...
+2026-03-13 23:59:31,822 [RUN] Rate limited. Sleeping 60s...
+2026-03-14 00:01:23,291 [RUN]   r/singularity: +256개
+2026-03-14 00:01:23,293 [RUN] [8/15] r/MachineLearning 크롤링 중...
+2026-03-14 00:02:12,930 [RUN]   r/MachineLearning: +221개
+2026-03-14 00:02:12,931 [RUN] [9/15] r/nvidia 크롤링 중...
+2026-03-14 00:03:12,254 [RUN]   r/nvidia: +198개
+2026-03-14 00:03:12,256 [RUN] [10/15] r/linux 크롤링 중...
+2026-03-14 00:04:05,764 [RUN]   r/linux: +114개
+2026-03-14 00:04:05,764 [RUN] [11/15] r/AIAssistants 크롤링 중...
+2026-03-14 00:04:06,128 [RUN] HTTP 404 for r/AIAssistants q=SSD storage NVMe
+2026-03-14 00:04:08,483 [RUN] HTTP 404 for r/AIAssistants q=model weights storage disk
+2026-03-14 00:04:10,760 [RUN] HTTP 404 for r/AIAssistants q=offload VRAM swap SSD
+2026-03-14 00:04:13,091 [RUN] HTTP 404 for r/AIAssistants q=storage upgrade local llm
+2026-03-14 00:04:15,343 [RUN] HTTP 404 for r/AIAssistants q=portable SSD local AI
+2026-03-14 00:04:17,700 [RUN] HTTP 404 for r/AIAssistants q=external drive model files
+2026-03-14 00:04:20,327 [RUN] HTTP 404 for r/AIAssistants q=NVMe speed model loading
+2026-03-14 00:04:22,617 [RUN] HTTP 404 for r/AIAssistants q=disk space model weights
+2026-03-14 00:04:24,626 [RUN]   r/AIAssistants: +0개
+2026-03-14 00:04:24,626 [RUN] [12/15] r/OllamaAI 크롤링 중...
+2026-03-14 00:04:47,500 [RUN]   r/OllamaAI: +1개
+2026-03-14 00:04:47,501 [RUN] [13/15] r/StableDiffusion 크롤링 중...
+2026-03-14 00:05:05,419 [RUN] Rate limited. Sleeping 60s...
+2026-03-14 00:06:05,732 [RUN] Rate limited. Sleeping 60s...
+2026-03-14 00:07:06,046 [RUN] Rate limited. Sleeping 60s...
+2026-03-14 00:08:06,268 [RUN] Rate limited. Sleeping 60s...
+2026-03-14 00:09:06,843 [RUN] Rate limited. Sleeping 60s...
+2026-03-14 00:10:43,434 [RUN]   r/StableDiffusion: +505개
+2026-03-14 00:10:43,435 [RUN] [14/15] r/Oobabooga 크롤링 중...
+2026-03-14 00:11:24,913 [RUN]   r/Oobabooga: +32개
+2026-03-14 00:11:24,913 [RUN] [15/15] r/KoboldAI 크롤링 중...
+2026-03-14 00:12:10,051 [RUN]   r/KoboldAI: +38개
+2026-03-14 00:12:10,053 [RUN] HackerNews 크롤링 중...
+2026-03-14 00:12:15,996 [RUN]   HackerNews: +3개
+2026-03-14 00:12:16,067 [RUN] 총 3522개 포스트 저장
+2026-03-14 00:12:16,067 [RUN] 크롤링 완료 — 신규 3522개 / 누적 3522개
+2026-03-14 00:12:16,067 [RUN] 크롤링 완료: 신규 3522개
+2026-03-14 00:12:16,067 [RUN] ─── [2/3] 분석 시작 ───
+2026-03-14 00:12:16,095 [RUN] 3522개 포스트 분석 시작
+2026-03-14 00:12:16,095 [RUN] 미분류: 3522개
+2026-03-14 00:12:17,388 [RUN] ANTHROPIC_API_KEY 없음 → 키워드 분류만 사용
+2026-03-14 00:12:17,426 [RUN] 분석 완료 — 수요 신호: 328개 (9.3%)
+2026-03-14 00:12:17,427 [RUN] 분석 완료: 수요신호 328개 (9.3%)
+2026-03-14 00:12:17,427 [RUN] ─── [3/3] 리포트 생성 ───
+2026-03-14 00:13:20,351 [RUN] === SSD × AI 수요 조사 시작 | 모드: report-only | 2026-03-13T15:13:20.351534+00:00 ===
+2026-03-14 00:13:20,351 [RUN] report-only 모드 — 크롤링 생략
+2026-03-14 00:13:20,351 [RUN] ─── [2/3] 분석 시작 ───
+2026-03-14 00:13:20,390 [RUN] 3522개 포스트 분석 시작
+2026-03-14 00:13:20,391 [RUN] 미분류: 0개
+2026-03-14 00:13:20,391 [RUN] ANTHROPIC_API_KEY 없음 → 키워드 분류만 사용
+2026-03-14 00:13:20,431 [RUN] 분석 완료 — 수요 신호: 328개 (9.3%)
+2026-03-14 00:13:20,432 [RUN] 분석 완료: 수요신호 328개 (9.3%)
+2026-03-14 00:13:20,432 [RUN] ─── [3/3] 리포트 생성 ───
+2026-03-14 00:13:20,435 [RUN] 리포트 생성: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-13_1513.html
+2026-03-14 00:13:20,435 [RUN] 리포트 생성 완료: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-13_1513.html
+2026-03-14 00:13:20,438 [RUN] === 완료 | 소요시간: 0초 ===
+2026-03-14 00:28:02,660 [RUN] === SSD × AI 수요 조사 시작 | 모드: report-only | 2026-03-13T15:28:02.660371+00:00 ===
+2026-03-14 00:28:02,660 [RUN] report-only 모드 — 크롤링 생략
+2026-03-14 00:28:02,660 [RUN] ─── [2/3] 분석 시작 ───
+2026-03-14 00:28:02,696 [RUN] 3522개 포스트 분석 시작
+2026-03-14 00:28:02,697 [RUN] 미분류: 0개
+2026-03-14 00:28:02,697 [RUN] Claude API 정밀 분류 대상: 0개
+2026-03-14 00:28:03,174 [RUN] 분석 완료 — 수요 신호: 328개 (9.3%)
+2026-03-14 00:28:03,175 [RUN] 분석 완료: 수요신호 328개 (9.3%)
+2026-03-14 00:28:03,175 [RUN] ─── [3/3] 리포트 생성 ───
+2026-03-14 00:28:03,176 [RUN] 리포트 생성: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-13_1528.html
+2026-03-14 00:28:03,176 [RUN] 리포트 생성 완료: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-13_1528.html
+2026-03-14 00:28:03,180 [RUN] === 완료 | 소요시간: 1초 ===
+2026-03-14 00:30:06,919 [RUN] === SSD × AI 수요 조사 시작 | 모드: report-only | 2026-03-13T15:30:06.919612+00:00 ===
+2026-03-14 00:30:06,920 [RUN] report-only 모드 — 크롤링 생략
+2026-03-14 00:30:06,920 [RUN] ─── [2/3] 분석 시작 ───
+2026-03-14 00:30:06,953 [RUN] 3522개 포스트 분석 시작
+2026-03-14 00:30:06,953 [RUN] 키워드 미분류: 0개
+2026-03-14 00:30:06,953 [RUN] Claude API 정밀 분류 대상: 628개
+2026-03-14 00:30:07,952 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:07,954 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KQyuq4m9Zi7VuDC1aH'}
+2026-03-14 00:30:08,276 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:08,276 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KR1c2nwW7Nbgcvz6sc'}
+2026-03-14 00:30:08,624 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:08,625 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KR317mBaREi71g7w4k'}
+2026-03-14 00:30:08,957 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:08,958 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KR4WACo2KCXTgEL1Z3'}
+2026-03-14 00:30:09,407 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:09,408 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KR5vyaB22n6LaPwk9i'}
+2026-03-14 00:30:09,785 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:09,786 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KR7sZQHw9gryERZrYv'}
+2026-03-14 00:30:10,110 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:10,112 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KR9U41NCc4LcXjVbDs'}
+2026-03-14 00:30:10,466 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:10,468 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRAy6JA4BF5fNJakve'}
+2026-03-14 00:30:10,830 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:10,831 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRCVdBytR4p6HLoSGd'}
+2026-03-14 00:30:11,151 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:11,152 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRDuTSYt9aA6icLqBK'}
+2026-03-14 00:30:11,628 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:11,630 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRFK39QqykG6AiEySo'}
+2026-03-14 00:30:11,986 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:11,987 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRHTmP3bsKNPLmjwPq'}
+2026-03-14 00:30:12,459 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:12,460 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRKVoc245iJMp2SR22'}
+2026-03-14 00:30:12,780 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:12,782 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRLrubBJhkDzMgvY3x'}
+2026-03-14 00:30:13,143 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:13,144 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRNGjy2ek5QSsJBTR4'}
+2026-03-14 00:30:13,480 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:13,481 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRPpkbP3m76yBxLs1Q'}
+2026-03-14 00:30:13,881 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:13,882 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRRF5YpBA11RHqd2vE'}
+2026-03-14 00:30:14,291 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:14,292 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRSzWHD9qH975cw4mg'}
+2026-03-14 00:30:14,683 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:14,684 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRUw5pSQM9i5eRtwEx'}
+2026-03-14 00:30:15,003 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:15,004 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRWNuDFDaDbX9cKPM7'}
+2026-03-14 00:30:15,374 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:15,375 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRXvRH7HWfvXh4Fyrk'}
+2026-03-14 00:30:15,724 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:15,725 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRZMzF1zKFMaNseWhi'}
+2026-03-14 00:30:16,087 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:16,088 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRb1Tf5pppZ6w7TksQ'}
+2026-03-14 00:30:16,427 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:16,429 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRcRnKpQcPjeGcm5Er'}
+2026-03-14 00:30:16,852 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:16,854 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRdrrXKhWeKsLt9BXp'}
+2026-03-14 00:30:17,230 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:17,231 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRfrfUoexMpmDuF7pJ'}
+2026-03-14 00:30:17,565 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:17,567 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRhHyyoRMEJzxVu8Pf'}
+2026-03-14 00:30:17,899 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:17,900 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRij3mVcw3oBhpVb8n'}
+2026-03-14 00:30:18,243 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:18,245 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRkCMWoCYEou9Zic1p'}
+2026-03-14 00:30:18,636 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:18,637 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRmr5GU53mwEKhbC8n'}
+2026-03-14 00:30:18,996 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:18,997 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRoHPjGCvMw9zY54z7'}
+2026-03-14 00:30:19,820 [RUN] HTTP Request: POST https://api.anthropic.com/v1/messages "HTTP/1.1 400 Bad Request"
+2026-03-14 00:30:19,822 [RUN] Claude API 배치 오류: Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.'}, 'request_id': 'req_011CZ1KRppAbBP59zXyNRoMU'}
+2026-03-14 00:30:19,898 [RUN] 분석 완료 — 수요 신호: 328개 (9.3%)
+2026-03-14 00:30:19,900 [RUN] 분석 완료: 수요신호 328개 (9.3%)
+2026-03-14 00:30:19,900 [RUN] ─── [3/3] 리포트 생성 ───
+2026-03-14 00:30:19,901 [RUN] 리포트 생성: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-13_1530.html
+2026-03-14 00:30:19,901 [RUN] 리포트 생성 완료: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-13_1530.html
+2026-03-14 00:30:19,903 [RUN] === 완료 | 소요시간: 13초 ===
+2026-03-15 22:19:43,822 [RUN] === SSD × AI 수요 조사 시작 | 모드: incremental | 2026-03-15T13:19:43.821814+00:00 ===
+2026-03-15 22:19:43,822 [RUN] ─── [1/3] 크롤링 시작 ───
+2026-03-15 22:20:05,575 [RUN] === SSD × AI 수요 조사 시작 | 모드: incremental | 2026-03-15T13:20:05.575503+00:00 ===
+2026-03-15 22:20:05,575 [RUN] ─── [1/3] 크롤링 시작 ───
+2026-03-15 22:20:05,682 [RUN] 기존 포스트 3522개 로드
+2026-03-15 22:20:05,682 [RUN] 증분 모드: 2026-03-13T15:12:16.067186+00:00 이후 수집
+2026-03-15 22:20:05,682 [RUN] [1/15] r/LocalLLaMA 크롤링 중...
+2026-03-15 22:21:03,213 [RUN]   r/LocalLLaMA: +86개
+2026-03-15 22:21:03,214 [RUN] [2/15] r/LocalAI 크롤링 중...
+2026-03-15 22:21:03,481 [RUN] HTTP 403 for r/LocalAI q=SSD storage NVMe
+2026-03-15 22:21:06,197 [RUN] HTTP 403 for r/LocalAI q=model weights storage disk
+2026-03-15 22:21:08,559 [RUN] HTTP 403 for r/LocalAI q=offload VRAM swap SSD
+2026-03-15 22:21:10,911 [RUN] HTTP 403 for r/LocalAI q=storage upgrade local llm
+2026-03-15 22:21:13,267 [RUN] HTTP 403 for r/LocalAI q=portable SSD local AI
+2026-03-15 22:21:15,623 [RUN] HTTP 403 for r/LocalAI q=external drive model files
+2026-03-15 22:21:17,976 [RUN] HTTP 403 for r/LocalAI q=NVMe speed model loading
+2026-03-15 22:21:20,633 [RUN] HTTP 403 for r/LocalAI q=disk space model weights
+2026-03-15 22:21:22,641 [RUN]   r/LocalAI: +0개
+2026-03-15 22:21:22,642 [RUN] [3/15] r/SelfHosted 크롤링 중...
+2026-03-15 22:22:15,105 [RUN]   r/SelfHosted: +29개
+2026-03-15 22:22:15,105 [RUN] [4/15] r/homelab 크롤링 중...
+2026-03-15 22:23:07,322 [RUN]   r/homelab: +35개
+2026-03-15 22:23:07,322 [RUN] [5/15] r/hardware 크롤링 중...
+2026-03-15 22:23:55,863 [RUN]   r/hardware: +1개
+2026-03-15 22:23:55,864 [RUN] [6/15] r/buildapc 크롤링 중...
+2026-03-15 22:24:40,260 [RUN]   r/buildapc: +81개
+2026-03-15 22:24:40,261 [RUN] [7/15] r/singularity 크롤링 중...
+2026-03-15 22:24:47,193 [RUN] Rate limited. Sleeping 60s...
+2026-03-15 22:25:47,407 [RUN] Rate limited. Sleeping 60s...
+2026-03-15 22:26:48,013 [RUN] Rate limited. Sleeping 60s...
+2026-03-15 22:27:48,327 [RUN] Rate limited. Sleeping 60s...
+2026-03-15 22:28:48,550 [RUN] Rate limited. Sleeping 60s...
+2026-03-15 22:29:49,129 [RUN] Rate limited. Sleeping 60s...
+2026-03-15 22:31:34,308 [RUN]   r/singularity: +0개
+2026-03-15 22:31:34,308 [RUN] [8/15] r/MachineLearning 크롤링 중...
+2026-03-15 22:32:26,331 [RUN]   r/MachineLearning: +5개
+2026-03-15 22:32:26,331 [RUN] [9/15] r/nvidia 크롤링 중...
+2026-03-15 22:33:21,164 [RUN]   r/nvidia: +3개
+2026-03-15 22:33:21,165 [RUN] [10/15] r/linux 크롤링 중...
+2026-03-15 22:34:11,890 [RUN]   r/linux: +1개
+2026-03-15 22:34:11,895 [RUN] [11/15] r/AIAssistants 크롤링 중...
+2026-03-15 22:34:12,298 [RUN] HTTP 404 for r/AIAssistants q=SSD storage NVMe
+2026-03-15 22:34:14,581 [RUN] HTTP 404 for r/AIAssistants q=model weights storage disk
+2026-03-15 22:34:16,936 [RUN] HTTP 404 for r/AIAssistants q=offload VRAM swap SSD
+2026-03-15 22:34:19,293 [RUN] HTTP 404 for r/AIAssistants q=storage upgrade local llm
+2026-03-15 22:34:21,647 [RUN] HTTP 404 for r/AIAssistants q=portable SSD local AI
+2026-03-15 22:34:24,003 [RUN] HTTP 404 for r/AIAssistants q=external drive model files
+2026-03-15 22:34:26,358 [RUN] HTTP 404 for r/AIAssistants q=NVMe speed model loading
+2026-03-15 22:34:28,713 [RUN] HTTP 404 for r/AIAssistants q=disk space model weights
+2026-03-15 22:34:30,723 [RUN]   r/AIAssistants: +0개
+2026-03-15 22:34:30,724 [RUN] [12/15] r/OllamaAI 크롤링 중...
+2026-03-15 22:34:54,151 [RUN]   r/OllamaAI: +0개
+2026-03-15 22:34:54,152 [RUN] [13/15] r/StableDiffusion 크롤링 중...
+2026-03-15 22:35:11,933 [RUN] Rate limited. Sleeping 60s...
+2026-03-15 22:36:12,206 [RUN] Rate limited. Sleeping 60s...
+2026-03-15 22:37:12,436 [RUN] Rate limited. Sleeping 60s...
+2026-03-15 22:38:12,646 [RUN] Rate limited. Sleeping 60s...
+2026-03-15 22:39:12,873 [RUN] Rate limited. Sleeping 60s...
+2026-03-15 22:40:49,527 [RUN]   r/StableDiffusion: +28개
+2026-03-15 22:40:49,528 [RUN] [14/15] r/Oobabooga 크롤링 중...
+2026-03-15 22:41:30,180 [RUN]   r/Oobabooga: +0개
+2026-03-15 22:41:30,181 [RUN] [15/15] r/KoboldAI 크롤링 중...
+2026-03-15 22:42:10,115 [RUN]   r/KoboldAI: +1개
+2026-03-15 22:42:10,115 [RUN] HackerNews 크롤링 중...
+2026-03-15 22:42:15,740 [RUN]   HackerNews: +0개
+2026-03-15 22:42:15,815 [RUN] 총 3792개 포스트 저장
+2026-03-15 22:42:15,815 [RUN] 크롤링 완료 — 신규 270개 / 누적 3792개
+2026-03-15 22:42:15,815 [RUN] 크롤링 완료: 신규 270개
+2026-03-15 22:42:15,815 [RUN] ─── [2/3] 분석 시작 ───
+2026-03-15 22:42:15,853 [RUN] 3792개 포스트 분석 시작
+2026-03-15 22:42:15,854 [RUN] 키워드 미분류: 270개
+2026-03-15 22:42:15,953 [RUN] ANTHROPIC_API_KEY 없음 → 키워드 분류만 사용
+2026-03-15 22:42:15,998 [RUN] 분석 완료 — 수요 신호: 346개 (9.1%)
+2026-03-15 22:42:15,999 [RUN] 분석 완료: 수요신호 346개 (9.1%)
+2026-03-15 22:42:15,999 [RUN] ─── [3/3] 리포트 생성 ───
+2026-03-15 22:42:16,001 [RUN] 리포트 생성: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-15_1342.html
+2026-03-15 22:42:16,001 [RUN] 리포트 생성 완료: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-15_1342.html
+2026-03-15 22:42:16,007 [RUN] === 완료 | 소요시간: 1330초 ===
+2026-03-16 09:00:05,176 [RUN] === SSD × AI 수요 조사 시작 | 모드: incremental | 2026-03-16T00:00:05.176486+00:00 ===
+2026-03-16 09:00:05,176 [RUN] === SSD × AI 수요 조사 시작 | 모드: incremental | 2026-03-16T00:00:05.176486+00:00 ===
+2026-03-16 09:00:05,177 [RUN] ─── [1/3] 크롤링 시작 ───
+2026-03-16 09:00:05,177 [RUN] ─── [1/3] 크롤링 시작 ───
+2026-03-16 09:00:05,290 [RUN] 기존 포스트 3792개 로드
+2026-03-16 09:00:05,290 [RUN] 기존 포스트 3792개 로드
+2026-03-16 09:00:05,291 [RUN] 증분 모드: 2026-03-15T13:42:15.815512+00:00 이후 수집
+2026-03-16 09:00:05,291 [RUN] 증분 모드: 2026-03-15T13:42:15.815512+00:00 이후 수집
+2026-03-16 09:00:05,291 [RUN] [1/15] r/LocalLLaMA 크롤링 중...
+2026-03-16 09:00:05,291 [RUN] [1/15] r/LocalLLaMA 크롤링 중...
+2026-03-16 09:01:04,707 [RUN]   r/LocalLLaMA: +24개
+2026-03-16 09:01:04,707 [RUN]   r/LocalLLaMA: +24개
+2026-03-16 09:01:04,709 [RUN] [2/15] r/LocalAI 크롤링 중...
+2026-03-16 09:01:04,709 [RUN] [2/15] r/LocalAI 크롤링 중...
+2026-03-16 09:01:06,570 [RUN] HTTP 403 for r/LocalAI q=SSD storage NVMe
+2026-03-16 09:01:06,570 [RUN] HTTP 403 for r/LocalAI q=SSD storage NVMe
+2026-03-16 09:01:10,450 [RUN] HTTP 403 for r/LocalAI q=model weights storage disk
+2026-03-16 09:01:10,450 [RUN] HTTP 403 for r/LocalAI q=model weights storage disk
+2026-03-16 09:01:13,047 [RUN] HTTP 403 for r/LocalAI q=offload VRAM swap SSD
+2026-03-16 09:01:13,047 [RUN] HTTP 403 for r/LocalAI q=offload VRAM swap SSD
+2026-03-16 09:01:15,710 [RUN] HTTP 403 for r/LocalAI q=storage upgrade local llm
+2026-03-16 09:01:15,710 [RUN] HTTP 403 for r/LocalAI q=storage upgrade local llm
+2026-03-16 09:01:18,276 [RUN] HTTP 403 for r/LocalAI q=portable SSD local AI
+2026-03-16 09:01:18,276 [RUN] HTTP 403 for r/LocalAI q=portable SSD local AI
+2026-03-16 09:01:20,626 [RUN] HTTP 403 for r/LocalAI q=external drive model files
+2026-03-16 09:01:20,626 [RUN] HTTP 403 for r/LocalAI q=external drive model files
+2026-03-16 09:01:23,082 [RUN] HTTP 403 for r/LocalAI q=NVMe speed model loading
+2026-03-16 09:01:23,082 [RUN] HTTP 403 for r/LocalAI q=NVMe speed model loading
+2026-03-16 09:01:25,642 [RUN] HTTP 403 for r/LocalAI q=disk space model weights
+2026-03-16 09:01:25,642 [RUN] HTTP 403 for r/LocalAI q=disk space model weights
+2026-03-16 09:01:27,753 [RUN]   r/LocalAI: +0개
+2026-03-16 09:01:27,753 [RUN]   r/LocalAI: +0개
+2026-03-16 09:01:27,753 [RUN] [3/15] r/SelfHosted 크롤링 중...
+2026-03-16 09:01:27,753 [RUN] [3/15] r/SelfHosted 크롤링 중...
+2026-03-16 09:02:25,388 [RUN]   r/SelfHosted: +5개
+2026-03-16 09:02:25,388 [RUN]   r/SelfHosted: +5개
+2026-03-16 09:02:25,389 [RUN] [4/15] r/homelab 크롤링 중...
+2026-03-16 09:02:25,389 [RUN] [4/15] r/homelab 크롤링 중...
+2026-03-16 09:03:20,562 [RUN]   r/homelab: +13개
+2026-03-16 09:03:20,562 [RUN]   r/homelab: +13개
+2026-03-16 09:03:20,564 [RUN] [5/15] r/hardware 크롤링 중...
+2026-03-16 09:03:20,564 [RUN] [5/15] r/hardware 크롤링 중...
+2026-03-16 09:03:53,048 [RUN]   r/hardware: +0개
+2026-03-16 09:03:53,048 [RUN]   r/hardware: +0개
+2026-03-16 09:03:53,049 [RUN] [6/15] r/buildapc 크롤링 중...
+2026-03-16 09:03:53,049 [RUN] [6/15] r/buildapc 크롤링 중...
+2026-03-16 09:04:39,943 [RUN]   r/buildapc: +17개
+2026-03-16 09:04:39,943 [RUN]   r/buildapc: +17개
+2026-03-16 09:04:39,943 [RUN] [7/15] r/singularity 크롤링 중...
+2026-03-16 09:04:39,943 [RUN] [7/15] r/singularity 크롤링 중...
+2026-03-16 09:05:21,436 [RUN]   r/singularity: +0개
+2026-03-16 09:05:21,436 [RUN]   r/singularity: +0개
+2026-03-16 09:05:21,437 [RUN] [8/15] r/MachineLearning 크롤링 중...
+2026-03-16 09:05:21,437 [RUN] [8/15] r/MachineLearning 크롤링 중...
+2026-03-16 09:05:22,167 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:05:22,167 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:06:22,500 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:06:22,500 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:07:22,746 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:07:22,746 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:08:22,964 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:08:22,964 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:09:23,334 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:09:23,334 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:11:12,904 [RUN]   r/MachineLearning: +1개
+2026-03-16 09:11:12,904 [RUN]   r/MachineLearning: +1개
+2026-03-16 09:11:12,904 [RUN] [9/15] r/nvidia 크롤링 중...
+2026-03-16 09:11:12,904 [RUN] [9/15] r/nvidia 크롤링 중...
+2026-03-16 09:12:09,795 [RUN]   r/nvidia: +1개
+2026-03-16 09:12:09,795 [RUN]   r/nvidia: +1개
+2026-03-16 09:12:09,795 [RUN] [10/15] r/linux 크롤링 중...
+2026-03-16 09:12:09,795 [RUN] [10/15] r/linux 크롤링 중...
+2026-03-16 09:13:03,039 [RUN]   r/linux: +1개
+2026-03-16 09:13:03,039 [RUN]   r/linux: +1개
+2026-03-16 09:13:03,040 [RUN] [11/15] r/AIAssistants 크롤링 중...
+2026-03-16 09:13:03,040 [RUN] [11/15] r/AIAssistants 크롤링 중...
+2026-03-16 09:13:03,291 [RUN] HTTP 404 for r/AIAssistants q=SSD storage NVMe
+2026-03-16 09:13:03,291 [RUN] HTTP 404 for r/AIAssistants q=SSD storage NVMe
+2026-03-16 09:13:05,716 [RUN] HTTP 404 for r/AIAssistants q=model weights storage disk
+2026-03-16 09:13:05,716 [RUN] HTTP 404 for r/AIAssistants q=model weights storage disk
+2026-03-16 09:13:08,061 [RUN] HTTP 404 for r/AIAssistants q=offload VRAM swap SSD
+2026-03-16 09:13:08,061 [RUN] HTTP 404 for r/AIAssistants q=offload VRAM swap SSD
+2026-03-16 09:13:10,415 [RUN] HTTP 404 for r/AIAssistants q=storage upgrade local llm
+2026-03-16 09:13:10,415 [RUN] HTTP 404 for r/AIAssistants q=storage upgrade local llm
+2026-03-16 09:13:12,683 [RUN] HTTP 404 for r/AIAssistants q=portable SSD local AI
+2026-03-16 09:13:12,683 [RUN] HTTP 404 for r/AIAssistants q=portable SSD local AI
+2026-03-16 09:13:15,084 [RUN] HTTP 404 for r/AIAssistants q=external drive model files
+2026-03-16 09:13:15,084 [RUN] HTTP 404 for r/AIAssistants q=external drive model files
+2026-03-16 09:13:17,451 [RUN] HTTP 404 for r/AIAssistants q=NVMe speed model loading
+2026-03-16 09:13:17,451 [RUN] HTTP 404 for r/AIAssistants q=NVMe speed model loading
+2026-03-16 09:13:19,785 [RUN] HTTP 404 for r/AIAssistants q=disk space model weights
+2026-03-16 09:13:19,785 [RUN] HTTP 404 for r/AIAssistants q=disk space model weights
+2026-03-16 09:13:21,919 [RUN]   r/AIAssistants: +0개
+2026-03-16 09:13:21,919 [RUN]   r/AIAssistants: +0개
+2026-03-16 09:13:21,919 [RUN] [12/15] r/OllamaAI 크롤링 중...
+2026-03-16 09:13:21,919 [RUN] [12/15] r/OllamaAI 크롤링 중...
+2026-03-16 09:13:45,458 [RUN]   r/OllamaAI: +0개
+2026-03-16 09:13:45,458 [RUN]   r/OllamaAI: +0개
+2026-03-16 09:13:45,459 [RUN] [13/15] r/StableDiffusion 크롤링 중...
+2026-03-16 09:13:45,459 [RUN] [13/15] r/StableDiffusion 크롤링 중...
+2026-03-16 09:14:40,033 [RUN]   r/StableDiffusion: +6개
+2026-03-16 09:14:40,033 [RUN]   r/StableDiffusion: +6개
+2026-03-16 09:14:40,035 [RUN] [14/15] r/Oobabooga 크롤링 중...
+2026-03-16 09:14:40,035 [RUN] [14/15] r/Oobabooga 크롤링 중...
+2026-03-16 09:14:46,005 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:14:46,005 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:15:46,366 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:15:46,366 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:16:46,668 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:16:46,668 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:17:46,982 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:17:46,982 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:18:47,201 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:18:47,201 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:19:47,562 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:19:47,562 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 09:21:16,147 [RUN]   r/Oobabooga: +0개
+2026-03-16 09:21:16,147 [RUN]   r/Oobabooga: +0개
+2026-03-16 09:21:16,148 [RUN] [15/15] r/KoboldAI 크롤링 중...
+2026-03-16 09:21:16,148 [RUN] [15/15] r/KoboldAI 크롤링 중...
+2026-03-16 09:21:57,504 [RUN]   r/KoboldAI: +1개
+2026-03-16 09:21:57,504 [RUN]   r/KoboldAI: +1개
+2026-03-16 09:21:57,504 [RUN] HackerNews 크롤링 중...
+2026-03-16 09:21:57,504 [RUN] HackerNews 크롤링 중...
+2026-03-16 09:22:03,405 [RUN]   HackerNews: +0개
+2026-03-16 09:22:03,405 [RUN]   HackerNews: +0개
+2026-03-16 09:22:03,496 [RUN] 총 3861개 포스트 저장
+2026-03-16 09:22:03,496 [RUN] 총 3861개 포스트 저장
+2026-03-16 09:22:03,496 [RUN] 크롤링 완료 — 신규 69개 / 누적 3861개
+2026-03-16 09:22:03,496 [RUN] 크롤링 완료 — 신규 69개 / 누적 3861개
+2026-03-16 09:22:03,496 [RUN] 크롤링 완료: 신규 69개
+2026-03-16 09:22:03,496 [RUN] 크롤링 완료: 신규 69개
+2026-03-16 09:22:03,496 [RUN] ─── [2/3] 분석 시작 ───
+2026-03-16 09:22:03,496 [RUN] ─── [2/3] 분석 시작 ───
+2026-03-16 09:22:03,528 [RUN] 3861개 포스트 분석 시작
+2026-03-16 09:22:03,528 [RUN] 3861개 포스트 분석 시작
+2026-03-16 09:22:03,528 [RUN] 키워드 미분류: 69개
+2026-03-16 09:22:03,528 [RUN] 키워드 미분류: 69개
+2026-03-16 09:22:03,555 [RUN] ANTHROPIC_API_KEY 없음 → 키워드 분류만 사용
+2026-03-16 09:22:03,555 [RUN] ANTHROPIC_API_KEY 없음 → 키워드 분류만 사용
+2026-03-16 09:22:03,605 [RUN] 분석 완료 — 수요 신호: 349개 (9.0%)
+2026-03-16 09:22:03,605 [RUN] 분석 완료 — 수요 신호: 349개 (9.0%)
+2026-03-16 09:22:03,606 [RUN] 분석 완료: 수요신호 349개 (9.0%)
+2026-03-16 09:22:03,606 [RUN] 분석 완료: 수요신호 349개 (9.0%)
+2026-03-16 09:22:03,606 [RUN] ─── [3/3] 리포트 생성 ───
+2026-03-16 09:22:03,606 [RUN] ─── [3/3] 리포트 생성 ───
+2026-03-16 09:22:03,607 [RUN] 리포트 생성: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-16_0022.html
+2026-03-16 09:22:03,607 [RUN] 리포트 생성: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-16_0022.html
+2026-03-16 09:22:03,607 [RUN] 리포트 생성 완료: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-16_0022.html
+2026-03-16 09:22:03,607 [RUN] 리포트 생성 완료: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-16_0022.html
+2026-03-16 09:22:03,607 [RUN] === 완료 | 소요시간: 1318초 ===
+2026-03-16 09:22:03,607 [RUN] === 완료 | 소요시간: 1318초 ===
+
+============================================================
+📊 SSD × AI 수요 분석 요약
+============================================================
+분석 포스트: 3,861개
+수요 신호:   349개 (9.0%)
+  ▸ 구매 의향:    171건
+  ▸ 교체/확장:    94건
+  ▸ 기술적 필요:  84건
+포터블 SSD:  122건 (3.2%)
+기술 근거 TOP3: model_weight_size(118), portability(116), io_bottleneck(61)
+
+리포트: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-16_0022.html
+============================================================
+2026-03-16 21:00:05,388 [RUN] === SSD × AI 수요 조사 시작 | 모드: incremental | 2026-03-16T12:00:05.387870+00:00 ===
+2026-03-16 21:00:05,388 [RUN] === SSD × AI 수요 조사 시작 | 모드: incremental | 2026-03-16T12:00:05.387870+00:00 ===
+2026-03-16 21:00:05,388 [RUN] ─── [1/3] 크롤링 시작 ───
+2026-03-16 21:00:05,388 [RUN] ─── [1/3] 크롤링 시작 ───
+2026-03-16 21:00:05,543 [RUN] 기존 포스트 3861개 로드
+2026-03-16 21:00:05,543 [RUN] 기존 포스트 3861개 로드
+2026-03-16 21:00:05,544 [RUN] 증분 모드: 2026-03-16T00:22:03.496140+00:00 이후 수집
+2026-03-16 21:00:05,544 [RUN] 증분 모드: 2026-03-16T00:22:03.496140+00:00 이후 수집
+2026-03-16 21:00:05,544 [RUN] [1/15] r/LocalLLaMA 크롤링 중...
+2026-03-16 21:00:05,544 [RUN] [1/15] r/LocalLLaMA 크롤링 중...
+2026-03-16 21:01:24,761 [RUN]   r/LocalLLaMA: +30개
+2026-03-16 21:01:24,761 [RUN]   r/LocalLLaMA: +30개
+2026-03-16 21:01:24,763 [RUN] [2/15] r/LocalAI 크롤링 중...
+2026-03-16 21:01:24,763 [RUN] [2/15] r/LocalAI 크롤링 중...
+2026-03-16 21:01:25,021 [RUN] HTTP 403 for r/LocalAI q=SSD storage NVMe
+2026-03-16 21:01:25,021 [RUN] HTTP 403 for r/LocalAI q=SSD storage NVMe
+2026-03-16 21:01:27,880 [RUN] HTTP 403 for r/LocalAI q=model weights storage disk
+2026-03-16 21:01:27,880 [RUN] HTTP 403 for r/LocalAI q=model weights storage disk
+2026-03-16 21:01:30,300 [RUN] HTTP 403 for r/LocalAI q=offload VRAM swap SSD
+2026-03-16 21:01:30,300 [RUN] HTTP 403 for r/LocalAI q=offload VRAM swap SSD
+2026-03-16 21:01:32,694 [RUN] HTTP 403 for r/LocalAI q=storage upgrade local llm
+2026-03-16 21:01:32,694 [RUN] HTTP 403 for r/LocalAI q=storage upgrade local llm
+2026-03-16 21:01:35,048 [RUN] HTTP 403 for r/LocalAI q=portable SSD local AI
+2026-03-16 21:01:35,048 [RUN] HTTP 403 for r/LocalAI q=portable SSD local AI
+2026-03-16 21:01:37,507 [RUN] HTTP 403 for r/LocalAI q=external drive model files
+2026-03-16 21:01:37,507 [RUN] HTTP 403 for r/LocalAI q=external drive model files
+2026-03-16 21:01:39,800 [RUN] HTTP 403 for r/LocalAI q=NVMe speed model loading
+2026-03-16 21:01:39,800 [RUN] HTTP 403 for r/LocalAI q=NVMe speed model loading
+2026-03-16 21:01:42,153 [RUN] HTTP 403 for r/LocalAI q=disk space model weights
+2026-03-16 21:01:42,153 [RUN] HTTP 403 for r/LocalAI q=disk space model weights
+2026-03-16 21:01:44,272 [RUN]   r/LocalAI: +0개
+2026-03-16 21:01:44,272 [RUN]   r/LocalAI: +0개
+2026-03-16 21:01:44,272 [RUN] [3/15] r/SelfHosted 크롤링 중...
+2026-03-16 21:01:44,272 [RUN] [3/15] r/SelfHosted 크롤링 중...
+2026-03-16 21:02:36,823 [RUN]   r/SelfHosted: +0개
+2026-03-16 21:02:36,823 [RUN]   r/SelfHosted: +0개
+2026-03-16 21:02:36,825 [RUN] [4/15] r/homelab 크롤링 중...
+2026-03-16 21:02:36,825 [RUN] [4/15] r/homelab 크롤링 중...
+2026-03-16 21:03:30,833 [RUN]   r/homelab: +7개
+2026-03-16 21:03:30,833 [RUN]   r/homelab: +7개
+2026-03-16 21:03:30,834 [RUN] [5/15] r/hardware 크롤링 중...
+2026-03-16 21:03:30,834 [RUN] [5/15] r/hardware 크롤링 중...
+2026-03-16 21:04:04,242 [RUN]   r/hardware: +0개
+2026-03-16 21:04:04,242 [RUN]   r/hardware: +0개
+2026-03-16 21:04:04,244 [RUN] [6/15] r/buildapc 크롤링 중...
+2026-03-16 21:04:04,244 [RUN] [6/15] r/buildapc 크롤링 중...
+2026-03-16 21:04:49,505 [RUN]   r/buildapc: +12개
+2026-03-16 21:04:49,505 [RUN]   r/buildapc: +12개
+2026-03-16 21:04:49,507 [RUN] [7/15] r/singularity 크롤링 중...
+2026-03-16 21:04:49,507 [RUN] [7/15] r/singularity 크롤링 중...
+2026-03-16 21:05:30,427 [RUN]   r/singularity: +1개
+2026-03-16 21:05:30,427 [RUN]   r/singularity: +1개
+2026-03-16 21:05:30,428 [RUN] [8/15] r/MachineLearning 크롤링 중...
+2026-03-16 21:05:30,428 [RUN] [8/15] r/MachineLearning 크롤링 중...
+2026-03-16 21:05:30,633 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:05:30,633 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:06:30,996 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:06:30,996 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:07:31,325 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:07:31,325 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:08:32,004 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:08:32,004 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:09:32,134 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:09:32,134 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:11:22,152 [RUN]   r/MachineLearning: +1개
+2026-03-16 21:11:22,152 [RUN]   r/MachineLearning: +1개
+2026-03-16 21:11:22,154 [RUN] [9/15] r/nvidia 크롤링 중...
+2026-03-16 21:11:22,154 [RUN] [9/15] r/nvidia 크롤링 중...
+2026-03-16 21:12:19,390 [RUN]   r/nvidia: +0개
+2026-03-16 21:12:19,390 [RUN]   r/nvidia: +0개
+2026-03-16 21:12:19,391 [RUN] [10/15] r/linux 크롤링 중...
+2026-03-16 21:12:19,391 [RUN] [10/15] r/linux 크롤링 중...
+2026-03-16 21:13:09,410 [RUN]   r/linux: +0개
+2026-03-16 21:13:09,410 [RUN]   r/linux: +0개
+2026-03-16 21:13:09,412 [RUN] [11/15] r/AIAssistants 크롤링 중...
+2026-03-16 21:13:09,412 [RUN] [11/15] r/AIAssistants 크롤링 중...
+2026-03-16 21:13:09,669 [RUN] HTTP 404 for r/AIAssistants q=SSD storage NVMe
+2026-03-16 21:13:09,669 [RUN] HTTP 404 for r/AIAssistants q=SSD storage NVMe
+2026-03-16 21:13:11,991 [RUN] HTTP 404 for r/AIAssistants q=model weights storage disk
+2026-03-16 21:13:11,991 [RUN] HTTP 404 for r/AIAssistants q=model weights storage disk
+2026-03-16 21:13:14,356 [RUN] HTTP 404 for r/AIAssistants q=offload VRAM swap SSD
+2026-03-16 21:13:14,356 [RUN] HTTP 404 for r/AIAssistants q=offload VRAM swap SSD
+2026-03-16 21:13:16,711 [RUN] HTTP 404 for r/AIAssistants q=storage upgrade local llm
+2026-03-16 21:13:16,711 [RUN] HTTP 404 for r/AIAssistants q=storage upgrade local llm
+2026-03-16 21:13:19,080 [RUN] HTTP 404 for r/AIAssistants q=portable SSD local AI
+2026-03-16 21:13:19,080 [RUN] HTTP 404 for r/AIAssistants q=portable SSD local AI
+2026-03-16 21:13:21,458 [RUN] HTTP 404 for r/AIAssistants q=external drive model files
+2026-03-16 21:13:21,458 [RUN] HTTP 404 for r/AIAssistants q=external drive model files
+2026-03-16 21:13:23,775 [RUN] HTTP 404 for r/AIAssistants q=NVMe speed model loading
+2026-03-16 21:13:23,775 [RUN] HTTP 404 for r/AIAssistants q=NVMe speed model loading
+2026-03-16 21:13:26,070 [RUN] HTTP 404 for r/AIAssistants q=disk space model weights
+2026-03-16 21:13:26,070 [RUN] HTTP 404 for r/AIAssistants q=disk space model weights
+2026-03-16 21:13:28,073 [RUN]   r/AIAssistants: +0개
+2026-03-16 21:13:28,073 [RUN]   r/AIAssistants: +0개
+2026-03-16 21:13:28,074 [RUN] [12/15] r/OllamaAI 크롤링 중...
+2026-03-16 21:13:28,074 [RUN] [12/15] r/OllamaAI 크롤링 중...
+2026-03-16 21:13:51,766 [RUN]   r/OllamaAI: +0개
+2026-03-16 21:13:51,766 [RUN]   r/OllamaAI: +0개
+2026-03-16 21:13:51,767 [RUN] [13/15] r/StableDiffusion 크롤링 중...
+2026-03-16 21:13:51,767 [RUN] [13/15] r/StableDiffusion 크롤링 중...
+2026-03-16 21:14:47,897 [RUN]   r/StableDiffusion: +2개
+2026-03-16 21:14:47,897 [RUN]   r/StableDiffusion: +2개
+2026-03-16 21:14:47,897 [RUN] [14/15] r/Oobabooga 크롤링 중...
+2026-03-16 21:14:47,897 [RUN] [14/15] r/Oobabooga 크롤링 중...
+2026-03-16 21:14:54,377 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:14:54,377 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:15:54,860 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:15:54,860 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:16:55,101 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:16:55,101 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:17:55,376 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:17:55,376 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:18:55,749 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:18:55,749 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:19:56,094 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:19:56,094 [RUN] Rate limited. Sleeping 60s...
+2026-03-16 21:21:26,233 [RUN]   r/Oobabooga: +0개
+2026-03-16 21:21:26,233 [RUN]   r/Oobabooga: +0개
+2026-03-16 21:21:26,233 [RUN] [15/15] r/KoboldAI 크롤링 중...
+2026-03-16 21:21:26,233 [RUN] [15/15] r/KoboldAI 크롤링 중...
+2026-03-16 21:22:06,219 [RUN]   r/KoboldAI: +2개
+2026-03-16 21:22:06,219 [RUN]   r/KoboldAI: +2개
+2026-03-16 21:22:06,219 [RUN] HackerNews 크롤링 중...
+2026-03-16 21:22:06,219 [RUN] HackerNews 크롤링 중...
+2026-03-16 21:22:12,374 [RUN]   HackerNews: +0개
+2026-03-16 21:22:12,374 [RUN]   HackerNews: +0개
+2026-03-16 21:22:12,463 [RUN] 총 3916개 포스트 저장
+2026-03-16 21:22:12,463 [RUN] 총 3916개 포스트 저장
+2026-03-16 21:22:12,463 [RUN] 크롤링 완료 — 신규 55개 / 누적 3916개
+2026-03-16 21:22:12,463 [RUN] 크롤링 완료 — 신규 55개 / 누적 3916개
+2026-03-16 21:22:12,463 [RUN] 크롤링 완료: 신규 55개
+2026-03-16 21:22:12,463 [RUN] 크롤링 완료: 신규 55개
+2026-03-16 21:22:12,463 [RUN] ─── [2/3] 분석 시작 ───
+2026-03-16 21:22:12,463 [RUN] ─── [2/3] 분석 시작 ───
+2026-03-16 21:22:12,498 [RUN] 3916개 포스트 분석 시작
+2026-03-16 21:22:12,498 [RUN] 3916개 포스트 분석 시작
+2026-03-16 21:22:12,498 [RUN] 키워드 미분류: 55개
+2026-03-16 21:22:12,498 [RUN] 키워드 미분류: 55개
+2026-03-16 21:22:12,519 [RUN] ANTHROPIC_API_KEY 없음 → 키워드 분류만 사용
+2026-03-16 21:22:12,519 [RUN] ANTHROPIC_API_KEY 없음 → 키워드 분류만 사용
+2026-03-16 21:22:12,575 [RUN] 분석 완료 — 수요 신호: 352개 (9.0%)
+2026-03-16 21:22:12,575 [RUN] 분석 완료 — 수요 신호: 352개 (9.0%)
+2026-03-16 21:22:12,576 [RUN] 분석 완료: 수요신호 352개 (9.0%)
+2026-03-16 21:22:12,576 [RUN] 분석 완료: 수요신호 352개 (9.0%)
+2026-03-16 21:22:12,576 [RUN] ─── [3/3] 리포트 생성 ───
+2026-03-16 21:22:12,576 [RUN] ─── [3/3] 리포트 생성 ───
+2026-03-16 21:22:12,578 [RUN] 리포트 생성: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-16_1222.html
+2026-03-16 21:22:12,578 [RUN] 리포트 생성: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-16_1222.html
+2026-03-16 21:22:12,578 [RUN] 리포트 생성 완료: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-16_1222.html
+2026-03-16 21:22:12,578 [RUN] 리포트 생성 완료: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-16_1222.html
+2026-03-16 21:22:12,578 [RUN] === 완료 | 소요시간: 1327초 ===
+2026-03-16 21:22:12,578 [RUN] === 완료 | 소요시간: 1327초 ===
+
+============================================================
+📊 SSD × AI 수요 분석 요약
+============================================================
+분석 포스트: 3,916개
+수요 신호:   352개 (9.0%)
+  ▸ 구매 의향:    173건
+  ▸ 교체/확장:    95건
+  ▸ 기술적 필요:  84건
+포터블 SSD:  123건 (3.1%)
+기술 근거 TOP3: model_weight_size(122), portability(117), io_bottleneck(62)
+
+리포트: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-16_1222.html
+============================================================
+2026-03-17 09:00:05,262 [RUN] === SSD × AI 수요 조사 시작 | 모드: incremental | 2026-03-17T00:00:05.262396+00:00 ===
+2026-03-17 09:00:05,262 [RUN] === SSD × AI 수요 조사 시작 | 모드: incremental | 2026-03-17T00:00:05.262396+00:00 ===
+2026-03-17 09:00:05,263 [RUN] ─── [1/3] 크롤링 시작 ───
+2026-03-17 09:00:05,263 [RUN] ─── [1/3] 크롤링 시작 ───
+2026-03-17 09:00:05,421 [RUN] 기존 포스트 3916개 로드
+2026-03-17 09:00:05,421 [RUN] 기존 포스트 3916개 로드
+2026-03-17 09:00:05,421 [RUN] 증분 모드: 2026-03-16T12:22:12.463556+00:00 이후 수집
+2026-03-17 09:00:05,421 [RUN] 증분 모드: 2026-03-16T12:22:12.463556+00:00 이후 수집
+2026-03-17 09:00:05,421 [RUN] [1/15] r/LocalLLaMA 크롤링 중...
+2026-03-17 09:00:05,421 [RUN] [1/15] r/LocalLLaMA 크롤링 중...
+2026-03-17 09:01:04,885 [RUN]   r/LocalLLaMA: +35개
+2026-03-17 09:01:04,885 [RUN]   r/LocalLLaMA: +35개
+2026-03-17 09:01:04,886 [RUN] [2/15] r/LocalAI 크롤링 중...
+2026-03-17 09:01:04,886 [RUN] [2/15] r/LocalAI 크롤링 중...
+2026-03-17 09:01:05,146 [RUN] HTTP 403 for r/LocalAI q=SSD storage NVMe
+2026-03-17 09:01:05,146 [RUN] HTTP 403 for r/LocalAI q=SSD storage NVMe
+2026-03-17 09:01:07,437 [RUN] HTTP 403 for r/LocalAI q=model weights storage disk
+2026-03-17 09:01:07,437 [RUN] HTTP 403 for r/LocalAI q=model weights storage disk
+2026-03-17 09:01:09,792 [RUN] HTTP 403 for r/LocalAI q=offload VRAM swap SSD
+2026-03-17 09:01:09,792 [RUN] HTTP 403 for r/LocalAI q=offload VRAM swap SSD
+2026-03-17 09:01:12,204 [RUN] HTTP 403 for r/LocalAI q=storage upgrade local llm
+2026-03-17 09:01:12,204 [RUN] HTTP 403 for r/LocalAI q=storage upgrade local llm
+2026-03-17 09:01:14,709 [RUN] HTTP 403 for r/LocalAI q=portable SSD local AI
+2026-03-17 09:01:14,709 [RUN] HTTP 403 for r/LocalAI q=portable SSD local AI
+2026-03-17 09:01:17,071 [RUN] HTTP 403 for r/LocalAI q=external drive model files
+2026-03-17 09:01:17,071 [RUN] HTTP 403 for r/LocalAI q=external drive model files
+2026-03-17 09:01:19,422 [RUN] HTTP 403 for r/LocalAI q=NVMe speed model loading
+2026-03-17 09:01:19,422 [RUN] HTTP 403 for r/LocalAI q=NVMe speed model loading
+2026-03-17 09:01:21,812 [RUN] HTTP 403 for r/LocalAI q=disk space model weights
+2026-03-17 09:01:21,812 [RUN] HTTP 403 for r/LocalAI q=disk space model weights
+2026-03-17 09:01:23,955 [RUN]   r/LocalAI: +0개
+2026-03-17 09:01:23,955 [RUN]   r/LocalAI: +0개
+2026-03-17 09:01:23,956 [RUN] [3/15] r/SelfHosted 크롤링 중...
+2026-03-17 09:01:23,956 [RUN] [3/15] r/SelfHosted 크롤링 중...
+2026-03-17 09:02:16,604 [RUN]   r/SelfHosted: +9개
+2026-03-17 09:02:16,604 [RUN]   r/SelfHosted: +9개
+2026-03-17 09:02:16,606 [RUN] [4/15] r/homelab 크롤링 중...
+2026-03-17 09:02:16,606 [RUN] [4/15] r/homelab 크롤링 중...
+2026-03-17 09:03:08,021 [RUN]   r/homelab: +14개
+2026-03-17 09:03:08,021 [RUN]   r/homelab: +14개
+2026-03-17 09:03:08,022 [RUN] [5/15] r/hardware 크롤링 중...
+2026-03-17 09:03:08,022 [RUN] [5/15] r/hardware 크롤링 중...
+2026-03-17 09:03:40,831 [RUN]   r/hardware: +1개
+2026-03-17 09:03:40,831 [RUN]   r/hardware: +1개
+2026-03-17 09:03:40,831 [RUN] [6/15] r/buildapc 크롤링 중...
+2026-03-17 09:03:40,831 [RUN] [6/15] r/buildapc 크롤링 중...
+2026-03-17 09:04:27,774 [RUN]   r/buildapc: +25개
+2026-03-17 09:04:27,774 [RUN]   r/buildapc: +25개
+2026-03-17 09:04:27,775 [RUN] [7/15] r/singularity 크롤링 중...
+2026-03-17 09:04:27,775 [RUN] [7/15] r/singularity 크롤링 중...
+2026-03-17 09:05:07,992 [RUN]   r/singularity: +0개
+2026-03-17 09:05:07,992 [RUN]   r/singularity: +0개
+2026-03-17 09:05:07,993 [RUN] [8/15] r/MachineLearning 크롤링 중...
+2026-03-17 09:05:07,993 [RUN] [8/15] r/MachineLearning 크롤링 중...
+2026-03-17 09:05:08,204 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:05:08,204 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:06:08,522 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:06:08,522 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:07:08,838 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:07:08,838 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:08:09,213 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:08:09,213 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:09:09,555 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:09:09,555 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:11:00,350 [RUN]   r/MachineLearning: +0개
+2026-03-17 09:11:00,350 [RUN]   r/MachineLearning: +0개
+2026-03-17 09:11:00,350 [RUN] [9/15] r/nvidia 크롤링 중...
+2026-03-17 09:11:00,350 [RUN] [9/15] r/nvidia 크롤링 중...
+2026-03-17 09:11:52,569 [RUN]   r/nvidia: +1개
+2026-03-17 09:11:52,569 [RUN]   r/nvidia: +1개
+2026-03-17 09:11:52,571 [RUN] [10/15] r/linux 크롤링 중...
+2026-03-17 09:11:52,571 [RUN] [10/15] r/linux 크롤링 중...
+2026-03-17 09:12:41,827 [RUN]   r/linux: +0개
+2026-03-17 09:12:41,827 [RUN]   r/linux: +0개
+2026-03-17 09:12:41,828 [RUN] [11/15] r/AIAssistants 크롤링 중...
+2026-03-17 09:12:41,828 [RUN] [11/15] r/AIAssistants 크롤링 중...
+2026-03-17 09:12:42,205 [RUN] HTTP 404 for r/AIAssistants q=SSD storage NVMe
+2026-03-17 09:12:42,205 [RUN] HTTP 404 for r/AIAssistants q=SSD storage NVMe
+2026-03-17 09:12:45,335 [RUN] HTTP 404 for r/AIAssistants q=model weights storage disk
+2026-03-17 09:12:45,335 [RUN] HTTP 404 for r/AIAssistants q=model weights storage disk
+2026-03-17 09:12:47,714 [RUN] HTTP 404 for r/AIAssistants q=offload VRAM swap SSD
+2026-03-17 09:12:47,714 [RUN] HTTP 404 for r/AIAssistants q=offload VRAM swap SSD
+2026-03-17 09:12:50,119 [RUN] HTTP 404 for r/AIAssistants q=storage upgrade local llm
+2026-03-17 09:12:50,119 [RUN] HTTP 404 for r/AIAssistants q=storage upgrade local llm
+2026-03-17 09:12:52,489 [RUN] HTTP 404 for r/AIAssistants q=portable SSD local AI
+2026-03-17 09:12:52,489 [RUN] HTTP 404 for r/AIAssistants q=portable SSD local AI
+2026-03-17 09:12:54,752 [RUN] HTTP 404 for r/AIAssistants q=external drive model files
+2026-03-17 09:12:54,752 [RUN] HTTP 404 for r/AIAssistants q=external drive model files
+2026-03-17 09:12:57,143 [RUN] HTTP 404 for r/AIAssistants q=NVMe speed model loading
+2026-03-17 09:12:57,143 [RUN] HTTP 404 for r/AIAssistants q=NVMe speed model loading
+2026-03-17 09:12:59,447 [RUN] HTTP 404 for r/AIAssistants q=disk space model weights
+2026-03-17 09:12:59,447 [RUN] HTTP 404 for r/AIAssistants q=disk space model weights
+2026-03-17 09:13:01,594 [RUN]   r/AIAssistants: +0개
+2026-03-17 09:13:01,594 [RUN]   r/AIAssistants: +0개
+2026-03-17 09:13:01,594 [RUN] [12/15] r/OllamaAI 크롤링 중...
+2026-03-17 09:13:01,594 [RUN] [12/15] r/OllamaAI 크롤링 중...
+2026-03-17 09:13:27,528 [RUN]   r/OllamaAI: +0개
+2026-03-17 09:13:27,528 [RUN]   r/OllamaAI: +0개
+2026-03-17 09:13:27,529 [RUN] [13/15] r/StableDiffusion 크롤링 중...
+2026-03-17 09:13:27,529 [RUN] [13/15] r/StableDiffusion 크롤링 중...
+2026-03-17 09:14:21,258 [RUN]   r/StableDiffusion: +7개
+2026-03-17 09:14:21,258 [RUN]   r/StableDiffusion: +7개
+2026-03-17 09:14:21,259 [RUN] [14/15] r/Oobabooga 크롤링 중...
+2026-03-17 09:14:21,259 [RUN] [14/15] r/Oobabooga 크롤링 중...
+2026-03-17 09:14:27,536 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:14:27,536 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:15:27,987 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:15:27,987 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:16:28,346 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:16:28,346 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:17:28,637 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:17:28,637 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:18:28,911 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:18:28,911 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:19:29,221 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:19:29,221 [RUN] Rate limited. Sleeping 60s...
+2026-03-17 09:20:52,866 [RUN]   r/Oobabooga: +0개
+2026-03-17 09:20:52,866 [RUN]   r/Oobabooga: +0개
+2026-03-17 09:20:52,866 [RUN] [15/15] r/KoboldAI 크롤링 중...
+2026-03-17 09:20:52,866 [RUN] [15/15] r/KoboldAI 크롤링 중...
+2026-03-17 09:21:29,978 [RUN]   r/KoboldAI: +0개
+2026-03-17 09:21:29,978 [RUN]   r/KoboldAI: +0개
+2026-03-17 09:21:29,979 [RUN] HackerNews 크롤링 중...
+2026-03-17 09:21:29,979 [RUN] HackerNews 크롤링 중...
+2026-03-17 09:21:36,176 [RUN]   HackerNews: +0개
+2026-03-17 09:21:36,176 [RUN]   HackerNews: +0개
+2026-03-17 09:21:36,268 [RUN] 총 4008개 포스트 저장
+2026-03-17 09:21:36,268 [RUN] 총 4008개 포스트 저장
+2026-03-17 09:21:36,268 [RUN] 크롤링 완료 — 신규 92개 / 누적 4008개
+2026-03-17 09:21:36,268 [RUN] 크롤링 완료 — 신규 92개 / 누적 4008개
+2026-03-17 09:21:36,268 [RUN] 크롤링 완료: 신규 92개
+2026-03-17 09:21:36,268 [RUN] 크롤링 완료: 신규 92개
+2026-03-17 09:21:36,268 [RUN] ─── [2/3] 분석 시작 ───
+2026-03-17 09:21:36,268 [RUN] ─── [2/3] 분석 시작 ───
+2026-03-17 09:21:36,304 [RUN] 4008개 포스트 분석 시작
+2026-03-17 09:21:36,304 [RUN] 4008개 포스트 분석 시작
+2026-03-17 09:21:36,304 [RUN] 키워드 미분류: 92개
+2026-03-17 09:21:36,304 [RUN] 키워드 미분류: 92개
+2026-03-17 09:21:36,337 [RUN] ANTHROPIC_API_KEY 없음 → 키워드 분류만 사용
+2026-03-17 09:21:36,337 [RUN] ANTHROPIC_API_KEY 없음 → 키워드 분류만 사용
+2026-03-17 09:21:36,390 [RUN] 분석 완료 — 수요 신호: 368개 (9.2%)
+2026-03-17 09:21:36,390 [RUN] 분석 완료 — 수요 신호: 368개 (9.2%)
+2026-03-17 09:21:36,391 [RUN] 분석 완료: 수요신호 368개 (9.2%)
+2026-03-17 09:21:36,391 [RUN] 분석 완료: 수요신호 368개 (9.2%)
+2026-03-17 09:21:36,391 [RUN] ─── [3/3] 리포트 생성 ───
+2026-03-17 09:21:36,391 [RUN] ─── [3/3] 리포트 생성 ───
+2026-03-17 09:21:36,392 [RUN] 리포트 생성: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-17_0021.html
+2026-03-17 09:21:36,392 [RUN] 리포트 생성: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-17_0021.html
+2026-03-17 09:21:36,392 [RUN] 리포트 생성 완료: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-17_0021.html
+2026-03-17 09:21:36,392 [RUN] 리포트 생성 완료: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-17_0021.html
+2026-03-17 09:21:36,392 [RUN] === 완료 | 소요시간: 1291초 ===
+2026-03-17 09:21:36,392 [RUN] === 완료 | 소요시간: 1291초 ===
+
+============================================================
+📊 SSD × AI 수요 분석 요약
+============================================================
+분석 포스트: 4,008개
+수요 신호:   368개 (9.2%)
+  ▸ 구매 의향:    186건
+  ▸ 교체/확장:    98건
+  ▸ 기술적 필요:  84건
+포터블 SSD:  127건 (3.2%)
+기술 근거 TOP3: model_weight_size(125), portability(122), io_bottleneck(66)
+
+리포트: /Users/idongseong/Claude/ssd_ai_potential/outputs/reports/ssd_ai_demand_2026-03-17_0021.html
+============================================================

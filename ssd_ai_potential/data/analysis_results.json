@@ -1,0 +1,2978 @@
+[
+  {
+    "analysis_date": "2026-03-13T15:12:17.426284+00:00",
+    "total_posts": 3522,
+    "demand_signals": {
+      "buy_intent": 163,
+      "upgrade_intent": 83,
+      "technical_need": 82,
+      "co_mention": 300,
+      "no_signal": 2894
+    },
+    "demand_total": 328,
+    "demand_rate_pct": 9.3,
+    "technical_factors": {
+      "portability": 110,
+      "model_weight_size": 107,
+      "io_bottleneck": 57,
+      "vram_offload": 24,
+      "capacity": 17,
+      "swap_speed": 12,
+      "speed_matters": 4
+    },
+    "portable_ssd_mentions": 116,
+    "portable_ssd_pct": 3.3,
+    "top_demand_posts": [
+      {
+        "source": "reddit/r/SelfHosted",
+        "title": "This will be interesting to self-host.",
+        "url": "https://www.reddit.com/r/selfhosted/comments/1rirc31/this_will_be_interesting_to_selfhost/",
+        "signal": "buy_intent",
+        "score": 2214,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Made A 9-Slot SSD Backplane",
+        "url": "https://www.reddit.com/r/homelab/comments/1pkg5cn/made_a_9slot_ssd_backplane/",
+        "signal": "upgrade_intent",
+        "score": 2069,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "Flathub popularity by country",
+        "url": "https://www.reddit.com/r/linux/comments/1nle38v/flathub_popularity_by_country/",
+        "signal": "upgrade_intent",
+        "score": 1157,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "I sold all my homelab equipment and rented a server instead",
+        "url": "https://www.reddit.com/r/homelab/comments/1qv5epo/i_sold_all_my_homelab_equipment_and_rented_a/",
+        "signal": "technical_need",
+        "score": 1118,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "48 Core | 128 GB | 2.5G Homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1rqyfwe/48_core_128_gb_25g_homelab/",
+        "signal": "upgrade_intent",
+        "score": 815,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "You should use zram probably",
+        "url": "https://www.reddit.com/r/linux/comments/1no3uzr/you_should_use_zram_probably/",
+        "signal": "technical_need",
+        "score": 791,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "My first proper homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1qktgsf/my_first_proper_homelab/",
+        "signal": "buy_intent",
+        "score": 702,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "My home lab",
+        "url": "https://www.reddit.com/r/homelab/comments/1r3b0fh/my_home_lab/",
+        "signal": "upgrade_intent",
+        "score": 560,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "Introducing PCIem",
+        "url": "https://www.reddit.com/r/linux/comments/1qhf32l/introducing_pciem/",
+        "signal": "buy_intent",
+        "score": 496,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "I have just created an \"Only Fans\", what do you guys think?",
+        "url": "https://www.reddit.com/r/homelab/comments/1q178rn/i_have_just_created_an_only_fans_what_do_you_guys/",
+        "signal": "technical_need",
+        "score": 494,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Showcase/Project 5-Bay NAS",
+        "url": "https://www.reddit.com/r/homelab/comments/1qh2k2z/showcaseproject_5bay_nas/",
+        "signal": "technical_need",
+        "score": 447,
+        "key_quote": "",
+        "technical_factors": [
+          "swap_speed"
+        ]
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Replaced my power-hungry tower server Mini PCs",
+        "url": "https://www.reddit.com/r/homelab/comments/1qzda68/replaced_my_powerhungry_tower_server_mini_pcs/",
+        "signal": "upgrade_intent",
+        "score": 412,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Any chance at getting this into an m.2 slot? Lol",
+        "url": "https://www.reddit.com/r/homelab/comments/1ritk2p/any_chance_at_getting_this_into_an_m2_slot_lol/",
+        "signal": "buy_intent",
+        "score": 298,
+        "key_quote": "",
+        "technical_factors": [
+          "portability"
+        ]
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Begun my homelabbing journey and I am excited",
+        "url": "https://www.reddit.com/r/homelab/comments/1rhslps/begun_my_homelabbing_journey_and_i_am_excited/",
+        "signal": "buy_intent",
+        "score": 277,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Just scored 12 Dell Optiplex 9020 SFF i5s for my homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1o668r2/just_scored_12_dell_optiplex_9020_sff_i5s_for_my/",
+        "signal": "upgrade_intent",
+        "score": 243,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "🤯 Do not use Ai generation on SSD virtual memory ! 🪦",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1ph5t8r/do_not_use_ai_generation_on_ssd_virtual_memory/",
+        "signal": "technical_need",
+        "score": 206,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "swap_speed"
+        ]
+      },
+      {
+        "source": "reddit/r/hardware",
+        "title": "The hidden write latency penalty of Linux Page Cache on ARM64 (Jetson Orin)",
+        "url": "https://www.reddit.com/r/hardware/comments/1pym29z/the_hidden_write_latency_penalty_of_linux_page/",
+        "signal": "technical_need",
+        "score": 188,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "I built a hybrid MoE runtime that does 3,324 tok/s prefill on a single 5080.  Here are the benchmarks.",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rgfm00/i_built_a_hybrid_moe_runtime_that_does_3324_toks/",
+        "signal": "technical_need",
+        "score": 185,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size"
+        ]
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "I bought a slower nvme by mistake for my first build",
+        "url": "https://www.reddit.com/r/buildapc/comments/1rcrxcc/i_bought_a_slower_nvme_by_mistake_for_my_first/",
+        "signal": "buy_intent",
+        "score": 178,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "Qwen3.5-35B-A3B quantization quality + speed benchmarks on RTX 5080 16GB (Q8_0 vs Q4_K_M vs UD-Q4_K_XL)",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rei65v/qwen3535ba3b_quantization_quality_speed/",
+        "signal": "technical_need",
+        "score": 150,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "vram_offload"
+        ]
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "Last time I (thought) I knew PC's, Battlefield 3 was the benchmark.",
+        "url": "https://www.reddit.com/r/buildapc/comments/1rp7eej/last_time_i_thought_i_knew_pcs_battlefield_3_was/",
+        "signal": "technical_need",
+        "score": 146,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Made some wall art out of an old drive.",
+        "url": "https://www.reddit.com/r/homelab/comments/1okee39/made_some_wall_art_out_of_an_old_drive/",
+        "signal": "technical_need",
+        "score": 128,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "How to run Qwen3-Coder-Next 80b parameters model on 8Gb VRAM",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1r5m4vl/how_to_run_qwen3codernext_80b_parameters_model_on/",
+        "signal": "technical_need",
+        "score": 121,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "vram_offload",
+          "io_bottleneck"
+        ]
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "Starting to narrow in on LTX2 Prompting",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1qcv9gv/starting_to_narrow_in_on_ltx2_prompting/",
+        "signal": "technical_need",
+        "score": 121,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "Replaced Motherboard and PSU, but PC still kills any connected HDD instantly",
+        "url": "https://www.reddit.com/r/buildapc/comments/1psk0f3/replaced_motherboard_and_psu_but_pc_still_kills/",
+        "signal": "upgrade_intent",
+        "score": 113,
+        "key_quote": "",
+        "technical_factors": [
+          "capacity"
+        ]
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "Almost 10,000 Apple Silicon benchmark runs submitted by the community — here's what the data actually shows",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rrvyyh/almost_10000_apple_silicon_benchmark_runs/",
+        "signal": "technical_need",
+        "score": 98,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/SelfHosted",
+        "title": "Homelab Setup",
+        "url": "https://www.reddit.com/r/selfhosted/comments/1roqmbu/homelab_setup/",
+        "signal": "upgrade_intent",
+        "score": 90,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "Last week in Image &amp; Video Generation",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1rr9iwd/last_week_in_image_video_generation/",
+        "signal": "technical_need",
+        "score": 89,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "UENorth UE-S6 - Beginner Mini Home Server",
+        "url": "https://www.reddit.com/r/homelab/comments/1p0i8bd/uenorth_ues6_beginner_mini_home_server/",
+        "signal": "upgrade_intent",
+        "score": 85,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "HomeLab evolution as 15yo",
+        "url": "https://www.reddit.com/r/homelab/comments/1rj6l8x/homelab_evolution_as_15yo/",
+        "signal": "buy_intent",
+        "score": 78,
+        "key_quote": "",
+        "technical_factors": []
+      }
+    ],
+    "by_source": {
+      "reddit/r/homelab": {
+        "total": 554,
+        "demand": 114
+      },
+      "reddit/r/buildapc": {
+        "total": 559,
+        "demand": 87
+      },
+      "reddit/r/SelfHosted": {
+        "total": 494,
+        "demand": 68
+      },
+      "reddit/r/LocalLLaMA": {
+        "total": 528,
+        "demand": 27
+      },
+      "reddit/r/StableDiffusion": {
+        "total": 505,
+        "demand": 15
+      },
+      "reddit/r/nvidia": {
+        "total": 198,
+        "demand": 8
+      },
+      "reddit/r/linux": {
+        "total": 114,
+        "demand": 5
+      },
+      "reddit/r/MachineLearning": {
+        "total": 221,
+        "demand": 2
+      },
+      "reddit/r/hardware": {
+        "total": 19,
+        "demand": 1
+      },
+      "reddit/r/Oobabooga": {
+        "total": 32,
+        "demand": 1
+      },
+      "reddit/r/singularity": {
+        "total": 256,
+        "demand": 0
+      },
+      "reddit/r/OllamaAI": {
+        "total": 1,
+        "demand": 0
+      },
+      "reddit/r/KoboldAI": {
+        "total": 38,
+        "demand": 0
+      },
+      "hackernews": {
+        "total": 3,
+        "demand": 0
+      }
+    }
+  },
+  {
+    "analysis_date": "2026-03-13T15:13:20.427817+00:00",
+    "total_posts": 3522,
+    "demand_signals": {
+      "buy_intent": 163,
+      "upgrade_intent": 83,
+      "technical_need": 82,
+      "co_mention": 300,
+      "no_signal": 2894
+    },
+    "demand_total": 328,
+    "demand_rate_pct": 9.3,
+    "technical_factors": {
+      "portability": 110,
+      "model_weight_size": 107,
+      "io_bottleneck": 57,
+      "vram_offload": 24,
+      "capacity": 17,
+      "swap_speed": 12,
+      "speed_matters": 4
+    },
+    "portable_ssd_mentions": 116,
+    "portable_ssd_pct": 3.3,
+    "top_demand_posts": [
+      {
+        "source": "reddit/r/SelfHosted",
+        "title": "This will be interesting to self-host.",
+        "url": "https://www.reddit.com/r/selfhosted/comments/1rirc31/this_will_be_interesting_to_selfhost/",
+        "signal": "buy_intent",
+        "score": 2214,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Made A 9-Slot SSD Backplane",
+        "url": "https://www.reddit.com/r/homelab/comments/1pkg5cn/made_a_9slot_ssd_backplane/",
+        "signal": "upgrade_intent",
+        "score": 2069,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "Flathub popularity by country",
+        "url": "https://www.reddit.com/r/linux/comments/1nle38v/flathub_popularity_by_country/",
+        "signal": "upgrade_intent",
+        "score": 1157,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "I sold all my homelab equipment and rented a server instead",
+        "url": "https://www.reddit.com/r/homelab/comments/1qv5epo/i_sold_all_my_homelab_equipment_and_rented_a/",
+        "signal": "technical_need",
+        "score": 1118,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "48 Core | 128 GB | 2.5G Homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1rqyfwe/48_core_128_gb_25g_homelab/",
+        "signal": "upgrade_intent",
+        "score": 815,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "You should use zram probably",
+        "url": "https://www.reddit.com/r/linux/comments/1no3uzr/you_should_use_zram_probably/",
+        "signal": "technical_need",
+        "score": 791,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "My first proper homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1qktgsf/my_first_proper_homelab/",
+        "signal": "buy_intent",
+        "score": 702,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "My home lab",
+        "url": "https://www.reddit.com/r/homelab/comments/1r3b0fh/my_home_lab/",
+        "signal": "upgrade_intent",
+        "score": 560,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "Introducing PCIem",
+        "url": "https://www.reddit.com/r/linux/comments/1qhf32l/introducing_pciem/",
+        "signal": "buy_intent",
+        "score": 496,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "I have just created an \"Only Fans\", what do you guys think?",
+        "url": "https://www.reddit.com/r/homelab/comments/1q178rn/i_have_just_created_an_only_fans_what_do_you_guys/",
+        "signal": "technical_need",
+        "score": 494,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Showcase/Project 5-Bay NAS",
+        "url": "https://www.reddit.com/r/homelab/comments/1qh2k2z/showcaseproject_5bay_nas/",
+        "signal": "technical_need",
+        "score": 447,
+        "key_quote": "",
+        "technical_factors": [
+          "swap_speed"
+        ]
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Replaced my power-hungry tower server Mini PCs",
+        "url": "https://www.reddit.com/r/homelab/comments/1qzda68/replaced_my_powerhungry_tower_server_mini_pcs/",
+        "signal": "upgrade_intent",
+        "score": 412,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Any chance at getting this into an m.2 slot? Lol",
+        "url": "https://www.reddit.com/r/homelab/comments/1ritk2p/any_chance_at_getting_this_into_an_m2_slot_lol/",
+        "signal": "buy_intent",
+        "score": 298,
+        "key_quote": "",
+        "technical_factors": [
+          "portability"
+        ]
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Begun my homelabbing journey and I am excited",
+        "url": "https://www.reddit.com/r/homelab/comments/1rhslps/begun_my_homelabbing_journey_and_i_am_excited/",
+        "signal": "buy_intent",
+        "score": 277,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Just scored 12 Dell Optiplex 9020 SFF i5s for my homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1o668r2/just_scored_12_dell_optiplex_9020_sff_i5s_for_my/",
+        "signal": "upgrade_intent",
+        "score": 243,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "🤯 Do not use Ai generation on SSD virtual memory ! 🪦",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1ph5t8r/do_not_use_ai_generation_on_ssd_virtual_memory/",
+        "signal": "technical_need",
+        "score": 206,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "swap_speed"
+        ]
+      },
+      {
+        "source": "reddit/r/hardware",
+        "title": "The hidden write latency penalty of Linux Page Cache on ARM64 (Jetson Orin)",
+        "url": "https://www.reddit.com/r/hardware/comments/1pym29z/the_hidden_write_latency_penalty_of_linux_page/",
+        "signal": "technical_need",
+        "score": 188,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "I built a hybrid MoE runtime that does 3,324 tok/s prefill on a single 5080.  Here are the benchmarks.",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rgfm00/i_built_a_hybrid_moe_runtime_that_does_3324_toks/",
+        "signal": "technical_need",
+        "score": 185,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size"
+        ]
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "I bought a slower nvme by mistake for my first build",
+        "url": "https://www.reddit.com/r/buildapc/comments/1rcrxcc/i_bought_a_slower_nvme_by_mistake_for_my_first/",
+        "signal": "buy_intent",
+        "score": 178,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "Qwen3.5-35B-A3B quantization quality + speed benchmarks on RTX 5080 16GB (Q8_0 vs Q4_K_M vs UD-Q4_K_XL)",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rei65v/qwen3535ba3b_quantization_quality_speed/",
+        "signal": "technical_need",
+        "score": 150,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "vram_offload"
+        ]
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "Last time I (thought) I knew PC's, Battlefield 3 was the benchmark.",
+        "url": "https://www.reddit.com/r/buildapc/comments/1rp7eej/last_time_i_thought_i_knew_pcs_battlefield_3_was/",
+        "signal": "technical_need",
+        "score": 146,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Made some wall art out of an old drive.",
+        "url": "https://www.reddit.com/r/homelab/comments/1okee39/made_some_wall_art_out_of_an_old_drive/",
+        "signal": "technical_need",
+        "score": 128,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "How to run Qwen3-Coder-Next 80b parameters model on 8Gb VRAM",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1r5m4vl/how_to_run_qwen3codernext_80b_parameters_model_on/",
+        "signal": "technical_need",
+        "score": 121,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "vram_offload",
+          "io_bottleneck"
+        ]
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "Starting to narrow in on LTX2 Prompting",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1qcv9gv/starting_to_narrow_in_on_ltx2_prompting/",
+        "signal": "technical_need",
+        "score": 121,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "Replaced Motherboard and PSU, but PC still kills any connected HDD instantly",
+        "url": "https://www.reddit.com/r/buildapc/comments/1psk0f3/replaced_motherboard_and_psu_but_pc_still_kills/",
+        "signal": "upgrade_intent",
+        "score": 113,
+        "key_quote": "",
+        "technical_factors": [
+          "capacity"
+        ]
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "Almost 10,000 Apple Silicon benchmark runs submitted by the community — here's what the data actually shows",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rrvyyh/almost_10000_apple_silicon_benchmark_runs/",
+        "signal": "technical_need",
+        "score": 98,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/SelfHosted",
+        "title": "Homelab Setup",
+        "url": "https://www.reddit.com/r/selfhosted/comments/1roqmbu/homelab_setup/",
+        "signal": "upgrade_intent",
+        "score": 90,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "Last week in Image &amp; Video Generation",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1rr9iwd/last_week_in_image_video_generation/",
+        "signal": "technical_need",
+        "score": 89,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "UENorth UE-S6 - Beginner Mini Home Server",
+        "url": "https://www.reddit.com/r/homelab/comments/1p0i8bd/uenorth_ues6_beginner_mini_home_server/",
+        "signal": "upgrade_intent",
+        "score": 85,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "HomeLab evolution as 15yo",
+        "url": "https://www.reddit.com/r/homelab/comments/1rj6l8x/homelab_evolution_as_15yo/",
+        "signal": "buy_intent",
+        "score": 78,
+        "key_quote": "",
+        "technical_factors": []
+      }
+    ],
+    "by_source": {
+      "reddit/r/homelab": {
+        "total": 554,
+        "demand": 114
+      },
+      "reddit/r/buildapc": {
+        "total": 559,
+        "demand": 87
+      },
+      "reddit/r/SelfHosted": {
+        "total": 494,
+        "demand": 68
+      },
+      "reddit/r/LocalLLaMA": {
+        "total": 528,
+        "demand": 27
+      },
+      "reddit/r/StableDiffusion": {
+        "total": 505,
+        "demand": 15
+      },
+      "reddit/r/nvidia": {
+        "total": 198,
+        "demand": 8
+      },
+      "reddit/r/linux": {
+        "total": 114,
+        "demand": 5
+      },
+      "reddit/r/MachineLearning": {
+        "total": 221,
+        "demand": 2
+      },
+      "reddit/r/hardware": {
+        "total": 19,
+        "demand": 1
+      },
+      "reddit/r/Oobabooga": {
+        "total": 32,
+        "demand": 1
+      },
+      "reddit/r/singularity": {
+        "total": 256,
+        "demand": 0
+      },
+      "reddit/r/OllamaAI": {
+        "total": 1,
+        "demand": 0
+      },
+      "reddit/r/KoboldAI": {
+        "total": 38,
+        "demand": 0
+      },
+      "hackernews": {
+        "total": 3,
+        "demand": 0
+      }
+    }
+  },
+  {
+    "analysis_date": "2026-03-13T15:28:03.170824+00:00",
+    "total_posts": 3522,
+    "demand_signals": {
+      "buy_intent": 163,
+      "upgrade_intent": 83,
+      "technical_need": 82,
+      "co_mention": 300,
+      "no_signal": 2894
+    },
+    "demand_total": 328,
+    "demand_rate_pct": 9.3,
+    "technical_factors": {
+      "portability": 110,
+      "model_weight_size": 107,
+      "io_bottleneck": 57,
+      "vram_offload": 24,
+      "capacity": 17,
+      "swap_speed": 12,
+      "speed_matters": 4
+    },
+    "portable_ssd_mentions": 116,
+    "portable_ssd_pct": 3.3,
+    "top_demand_posts": [
+      {
+        "source": "reddit/r/SelfHosted",
+        "title": "This will be interesting to self-host.",
+        "url": "https://www.reddit.com/r/selfhosted/comments/1rirc31/this_will_be_interesting_to_selfhost/",
+        "signal": "buy_intent",
+        "score": 2214,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Made A 9-Slot SSD Backplane",
+        "url": "https://www.reddit.com/r/homelab/comments/1pkg5cn/made_a_9slot_ssd_backplane/",
+        "signal": "upgrade_intent",
+        "score": 2069,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "Flathub popularity by country",
+        "url": "https://www.reddit.com/r/linux/comments/1nle38v/flathub_popularity_by_country/",
+        "signal": "upgrade_intent",
+        "score": 1157,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "I sold all my homelab equipment and rented a server instead",
+        "url": "https://www.reddit.com/r/homelab/comments/1qv5epo/i_sold_all_my_homelab_equipment_and_rented_a/",
+        "signal": "technical_need",
+        "score": 1118,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "48 Core | 128 GB | 2.5G Homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1rqyfwe/48_core_128_gb_25g_homelab/",
+        "signal": "upgrade_intent",
+        "score": 815,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "You should use zram probably",
+        "url": "https://www.reddit.com/r/linux/comments/1no3uzr/you_should_use_zram_probably/",
+        "signal": "technical_need",
+        "score": 791,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "My first proper homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1qktgsf/my_first_proper_homelab/",
+        "signal": "buy_intent",
+        "score": 702,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "My home lab",
+        "url": "https://www.reddit.com/r/homelab/comments/1r3b0fh/my_home_lab/",
+        "signal": "upgrade_intent",
+        "score": 560,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "Introducing PCIem",
+        "url": "https://www.reddit.com/r/linux/comments/1qhf32l/introducing_pciem/",
+        "signal": "buy_intent",
+        "score": 496,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "I have just created an \"Only Fans\", what do you guys think?",
+        "url": "https://www.reddit.com/r/homelab/comments/1q178rn/i_have_just_created_an_only_fans_what_do_you_guys/",
+        "signal": "technical_need",
+        "score": 494,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Showcase/Project 5-Bay NAS",
+        "url": "https://www.reddit.com/r/homelab/comments/1qh2k2z/showcaseproject_5bay_nas/",
+        "signal": "technical_need",
+        "score": 447,
+        "key_quote": "",
+        "technical_factors": [
+          "swap_speed"
+        ]
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Replaced my power-hungry tower server Mini PCs",
+        "url": "https://www.reddit.com/r/homelab/comments/1qzda68/replaced_my_powerhungry_tower_server_mini_pcs/",
+        "signal": "upgrade_intent",
+        "score": 412,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Any chance at getting this into an m.2 slot? Lol",
+        "url": "https://www.reddit.com/r/homelab/comments/1ritk2p/any_chance_at_getting_this_into_an_m2_slot_lol/",
+        "signal": "buy_intent",
+        "score": 298,
+        "key_quote": "",
+        "technical_factors": [
+          "portability"
+        ]
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Begun my homelabbing journey and I am excited",
+        "url": "https://www.reddit.com/r/homelab/comments/1rhslps/begun_my_homelabbing_journey_and_i_am_excited/",
+        "signal": "buy_intent",
+        "score": 277,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Just scored 12 Dell Optiplex 9020 SFF i5s for my homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1o668r2/just_scored_12_dell_optiplex_9020_sff_i5s_for_my/",
+        "signal": "upgrade_intent",
+        "score": 243,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "🤯 Do not use Ai generation on SSD virtual memory ! 🪦",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1ph5t8r/do_not_use_ai_generation_on_ssd_virtual_memory/",
+        "signal": "technical_need",
+        "score": 206,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "swap_speed"
+        ]
+      },
+      {
+        "source": "reddit/r/hardware",
+        "title": "The hidden write latency penalty of Linux Page Cache on ARM64 (Jetson Orin)",
+        "url": "https://www.reddit.com/r/hardware/comments/1pym29z/the_hidden_write_latency_penalty_of_linux_page/",
+        "signal": "technical_need",
+        "score": 188,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "I built a hybrid MoE runtime that does 3,324 tok/s prefill on a single 5080.  Here are the benchmarks.",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rgfm00/i_built_a_hybrid_moe_runtime_that_does_3324_toks/",
+        "signal": "technical_need",
+        "score": 185,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size"
+        ]
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "I bought a slower nvme by mistake for my first build",
+        "url": "https://www.reddit.com/r/buildapc/comments/1rcrxcc/i_bought_a_slower_nvme_by_mistake_for_my_first/",
+        "signal": "buy_intent",
+        "score": 178,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "Qwen3.5-35B-A3B quantization quality + speed benchmarks on RTX 5080 16GB (Q8_0 vs Q4_K_M vs UD-Q4_K_XL)",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rei65v/qwen3535ba3b_quantization_quality_speed/",
+        "signal": "technical_need",
+        "score": 150,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "vram_offload"
+        ]
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "Last time I (thought) I knew PC's, Battlefield 3 was the benchmark.",
+        "url": "https://www.reddit.com/r/buildapc/comments/1rp7eej/last_time_i_thought_i_knew_pcs_battlefield_3_was/",
+        "signal": "technical_need",
+        "score": 146,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Made some wall art out of an old drive.",
+        "url": "https://www.reddit.com/r/homelab/comments/1okee39/made_some_wall_art_out_of_an_old_drive/",
+        "signal": "technical_need",
+        "score": 128,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "How to run Qwen3-Coder-Next 80b parameters model on 8Gb VRAM",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1r5m4vl/how_to_run_qwen3codernext_80b_parameters_model_on/",
+        "signal": "technical_need",
+        "score": 121,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "vram_offload",
+          "io_bottleneck"
+        ]
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "Starting to narrow in on LTX2 Prompting",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1qcv9gv/starting_to_narrow_in_on_ltx2_prompting/",
+        "signal": "technical_need",
+        "score": 121,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "Replaced Motherboard and PSU, but PC still kills any connected HDD instantly",
+        "url": "https://www.reddit.com/r/buildapc/comments/1psk0f3/replaced_motherboard_and_psu_but_pc_still_kills/",
+        "signal": "upgrade_intent",
+        "score": 113,
+        "key_quote": "",
+        "technical_factors": [
+          "capacity"
+        ]
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "Almost 10,000 Apple Silicon benchmark runs submitted by the community — here's what the data actually shows",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rrvyyh/almost_10000_apple_silicon_benchmark_runs/",
+        "signal": "technical_need",
+        "score": 98,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/SelfHosted",
+        "title": "Homelab Setup",
+        "url": "https://www.reddit.com/r/selfhosted/comments/1roqmbu/homelab_setup/",
+        "signal": "upgrade_intent",
+        "score": 90,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "Last week in Image &amp; Video Generation",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1rr9iwd/last_week_in_image_video_generation/",
+        "signal": "technical_need",
+        "score": 89,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "UENorth UE-S6 - Beginner Mini Home Server",
+        "url": "https://www.reddit.com/r/homelab/comments/1p0i8bd/uenorth_ues6_beginner_mini_home_server/",
+        "signal": "upgrade_intent",
+        "score": 85,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "HomeLab evolution as 15yo",
+        "url": "https://www.reddit.com/r/homelab/comments/1rj6l8x/homelab_evolution_as_15yo/",
+        "signal": "buy_intent",
+        "score": 78,
+        "key_quote": "",
+        "technical_factors": []
+      }
+    ],
+    "by_source": {
+      "reddit/r/homelab": {
+        "total": 554,
+        "demand": 114
+      },
+      "reddit/r/buildapc": {
+        "total": 559,
+        "demand": 87
+      },
+      "reddit/r/SelfHosted": {
+        "total": 494,
+        "demand": 68
+      },
+      "reddit/r/LocalLLaMA": {
+        "total": 528,
+        "demand": 27
+      },
+      "reddit/r/StableDiffusion": {
+        "total": 505,
+        "demand": 15
+      },
+      "reddit/r/nvidia": {
+        "total": 198,
+        "demand": 8
+      },
+      "reddit/r/linux": {
+        "total": 114,
+        "demand": 5
+      },
+      "reddit/r/MachineLearning": {
+        "total": 221,
+        "demand": 2
+      },
+      "reddit/r/hardware": {
+        "total": 19,
+        "demand": 1
+      },
+      "reddit/r/Oobabooga": {
+        "total": 32,
+        "demand": 1
+      },
+      "reddit/r/singularity": {
+        "total": 256,
+        "demand": 0
+      },
+      "reddit/r/OllamaAI": {
+        "total": 1,
+        "demand": 0
+      },
+      "reddit/r/KoboldAI": {
+        "total": 38,
+        "demand": 0
+      },
+      "hackernews": {
+        "total": 3,
+        "demand": 0
+      }
+    }
+  },
+  {
+    "analysis_date": "2026-03-13T15:30:19.896251+00:00",
+    "total_posts": 3522,
+    "demand_signals": {
+      "buy_intent": 163,
+      "upgrade_intent": 83,
+      "technical_need": 82,
+      "co_mention": 300,
+      "no_signal": 2894
+    },
+    "demand_total": 328,
+    "demand_rate_pct": 9.3,
+    "technical_factors": {
+      "portability": 110,
+      "model_weight_size": 107,
+      "io_bottleneck": 57,
+      "vram_offload": 24,
+      "capacity": 17,
+      "swap_speed": 12,
+      "speed_matters": 4
+    },
+    "portable_ssd_mentions": 116,
+    "portable_ssd_pct": 3.3,
+    "top_demand_posts": [
+      {
+        "source": "reddit/r/SelfHosted",
+        "title": "This will be interesting to self-host.",
+        "url": "https://www.reddit.com/r/selfhosted/comments/1rirc31/this_will_be_interesting_to_selfhost/",
+        "signal": "buy_intent",
+        "score": 2214,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Made A 9-Slot SSD Backplane",
+        "url": "https://www.reddit.com/r/homelab/comments/1pkg5cn/made_a_9slot_ssd_backplane/",
+        "signal": "upgrade_intent",
+        "score": 2069,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "Flathub popularity by country",
+        "url": "https://www.reddit.com/r/linux/comments/1nle38v/flathub_popularity_by_country/",
+        "signal": "upgrade_intent",
+        "score": 1157,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "I sold all my homelab equipment and rented a server instead",
+        "url": "https://www.reddit.com/r/homelab/comments/1qv5epo/i_sold_all_my_homelab_equipment_and_rented_a/",
+        "signal": "technical_need",
+        "score": 1118,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "48 Core | 128 GB | 2.5G Homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1rqyfwe/48_core_128_gb_25g_homelab/",
+        "signal": "upgrade_intent",
+        "score": 815,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "You should use zram probably",
+        "url": "https://www.reddit.com/r/linux/comments/1no3uzr/you_should_use_zram_probably/",
+        "signal": "technical_need",
+        "score": 791,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "My first proper homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1qktgsf/my_first_proper_homelab/",
+        "signal": "buy_intent",
+        "score": 702,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "My home lab",
+        "url": "https://www.reddit.com/r/homelab/comments/1r3b0fh/my_home_lab/",
+        "signal": "upgrade_intent",
+        "score": 560,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "Introducing PCIem",
+        "url": "https://www.reddit.com/r/linux/comments/1qhf32l/introducing_pciem/",
+        "signal": "buy_intent",
+        "score": 496,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "I have just created an \"Only Fans\", what do you guys think?",
+        "url": "https://www.reddit.com/r/homelab/comments/1q178rn/i_have_just_created_an_only_fans_what_do_you_guys/",
+        "signal": "technical_need",
+        "score": 494,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Showcase/Project 5-Bay NAS",
+        "url": "https://www.reddit.com/r/homelab/comments/1qh2k2z/showcaseproject_5bay_nas/",
+        "signal": "technical_need",
+        "score": 447,
+        "key_quote": "",
+        "technical_factors": [
+          "swap_speed"
+        ]
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Replaced my power-hungry tower server Mini PCs",
+        "url": "https://www.reddit.com/r/homelab/comments/1qzda68/replaced_my_powerhungry_tower_server_mini_pcs/",
+        "signal": "upgrade_intent",
+        "score": 412,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Any chance at getting this into an m.2 slot? Lol",
+        "url": "https://www.reddit.com/r/homelab/comments/1ritk2p/any_chance_at_getting_this_into_an_m2_slot_lol/",
+        "signal": "buy_intent",
+        "score": 298,
+        "key_quote": "",
+        "technical_factors": [
+          "portability"
+        ]
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Begun my homelabbing journey and I am excited",
+        "url": "https://www.reddit.com/r/homelab/comments/1rhslps/begun_my_homelabbing_journey_and_i_am_excited/",
+        "signal": "buy_intent",
+        "score": 277,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Just scored 12 Dell Optiplex 9020 SFF i5s for my homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1o668r2/just_scored_12_dell_optiplex_9020_sff_i5s_for_my/",
+        "signal": "upgrade_intent",
+        "score": 243,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "🤯 Do not use Ai generation on SSD virtual memory ! 🪦",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1ph5t8r/do_not_use_ai_generation_on_ssd_virtual_memory/",
+        "signal": "technical_need",
+        "score": 206,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "swap_speed"
+        ]
+      },
+      {
+        "source": "reddit/r/hardware",
+        "title": "The hidden write latency penalty of Linux Page Cache on ARM64 (Jetson Orin)",
+        "url": "https://www.reddit.com/r/hardware/comments/1pym29z/the_hidden_write_latency_penalty_of_linux_page/",
+        "signal": "technical_need",
+        "score": 188,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "I built a hybrid MoE runtime that does 3,324 tok/s prefill on a single 5080.  Here are the benchmarks.",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rgfm00/i_built_a_hybrid_moe_runtime_that_does_3324_toks/",
+        "signal": "technical_need",
+        "score": 185,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size"
+        ]
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "I bought a slower nvme by mistake for my first build",
+        "url": "https://www.reddit.com/r/buildapc/comments/1rcrxcc/i_bought_a_slower_nvme_by_mistake_for_my_first/",
+        "signal": "buy_intent",
+        "score": 178,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "Qwen3.5-35B-A3B quantization quality + speed benchmarks on RTX 5080 16GB (Q8_0 vs Q4_K_M vs UD-Q4_K_XL)",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rei65v/qwen3535ba3b_quantization_quality_speed/",
+        "signal": "technical_need",
+        "score": 150,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "vram_offload"
+        ]
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "Last time I (thought) I knew PC's, Battlefield 3 was the benchmark.",
+        "url": "https://www.reddit.com/r/buildapc/comments/1rp7eej/last_time_i_thought_i_knew_pcs_battlefield_3_was/",
+        "signal": "technical_need",
+        "score": 146,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Made some wall art out of an old drive.",
+        "url": "https://www.reddit.com/r/homelab/comments/1okee39/made_some_wall_art_out_of_an_old_drive/",
+        "signal": "technical_need",
+        "score": 128,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "How to run Qwen3-Coder-Next 80b parameters model on 8Gb VRAM",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1r5m4vl/how_to_run_qwen3codernext_80b_parameters_model_on/",
+        "signal": "technical_need",
+        "score": 121,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "vram_offload",
+          "io_bottleneck"
+        ]
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "Starting to narrow in on LTX2 Prompting",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1qcv9gv/starting_to_narrow_in_on_ltx2_prompting/",
+        "signal": "technical_need",
+        "score": 121,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "Replaced Motherboard and PSU, but PC still kills any connected HDD instantly",
+        "url": "https://www.reddit.com/r/buildapc/comments/1psk0f3/replaced_motherboard_and_psu_but_pc_still_kills/",
+        "signal": "upgrade_intent",
+        "score": 113,
+        "key_quote": "",
+        "technical_factors": [
+          "capacity"
+        ]
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "Almost 10,000 Apple Silicon benchmark runs submitted by the community — here's what the data actually shows",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rrvyyh/almost_10000_apple_silicon_benchmark_runs/",
+        "signal": "technical_need",
+        "score": 98,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/SelfHosted",
+        "title": "Homelab Setup",
+        "url": "https://www.reddit.com/r/selfhosted/comments/1roqmbu/homelab_setup/",
+        "signal": "upgrade_intent",
+        "score": 90,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "Last week in Image &amp; Video Generation",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1rr9iwd/last_week_in_image_video_generation/",
+        "signal": "technical_need",
+        "score": 89,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "UENorth UE-S6 - Beginner Mini Home Server",
+        "url": "https://www.reddit.com/r/homelab/comments/1p0i8bd/uenorth_ues6_beginner_mini_home_server/",
+        "signal": "upgrade_intent",
+        "score": 85,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "HomeLab evolution as 15yo",
+        "url": "https://www.reddit.com/r/homelab/comments/1rj6l8x/homelab_evolution_as_15yo/",
+        "signal": "buy_intent",
+        "score": 78,
+        "key_quote": "",
+        "technical_factors": []
+      }
+    ],
+    "by_source": {
+      "reddit/r/homelab": {
+        "total": 554,
+        "demand": 114
+      },
+      "reddit/r/buildapc": {
+        "total": 559,
+        "demand": 87
+      },
+      "reddit/r/SelfHosted": {
+        "total": 494,
+        "demand": 68
+      },
+      "reddit/r/LocalLLaMA": {
+        "total": 528,
+        "demand": 27
+      },
+      "reddit/r/StableDiffusion": {
+        "total": 505,
+        "demand": 15
+      },
+      "reddit/r/nvidia": {
+        "total": 198,
+        "demand": 8
+      },
+      "reddit/r/linux": {
+        "total": 114,
+        "demand": 5
+      },
+      "reddit/r/MachineLearning": {
+        "total": 221,
+        "demand": 2
+      },
+      "reddit/r/hardware": {
+        "total": 19,
+        "demand": 1
+      },
+      "reddit/r/Oobabooga": {
+        "total": 32,
+        "demand": 1
+      },
+      "reddit/r/singularity": {
+        "total": 256,
+        "demand": 0
+      },
+      "reddit/r/OllamaAI": {
+        "total": 1,
+        "demand": 0
+      },
+      "reddit/r/KoboldAI": {
+        "total": 38,
+        "demand": 0
+      },
+      "hackernews": {
+        "total": 3,
+        "demand": 0
+      }
+    }
+  },
+  {
+    "analysis_date": "2026-03-15T13:42:15.995640+00:00",
+    "total_posts": 3792,
+    "demand_signals": {
+      "buy_intent": 168,
+      "upgrade_intent": 94,
+      "technical_need": 84,
+      "co_mention": 308,
+      "no_signal": 3138
+    },
+    "demand_total": 346,
+    "demand_rate_pct": 9.1,
+    "technical_factors": {
+      "model_weight_size": 116,
+      "portability": 116,
+      "io_bottleneck": 60,
+      "vram_offload": 24,
+      "capacity": 18,
+      "swap_speed": 13,
+      "speed_matters": 4
+    },
+    "portable_ssd_mentions": 122,
+    "portable_ssd_pct": 3.2,
+    "top_demand_posts": [
+      {
+        "source": "reddit/r/SelfHosted",
+        "title": "This will be interesting to self-host.",
+        "url": "https://www.reddit.com/r/selfhosted/comments/1rirc31/this_will_be_interesting_to_selfhost/",
+        "signal": "buy_intent",
+        "score": 2214,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Made A 9-Slot SSD Backplane",
+        "url": "https://www.reddit.com/r/homelab/comments/1pkg5cn/made_a_9slot_ssd_backplane/",
+        "signal": "upgrade_intent",
+        "score": 2069,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "Flathub popularity by country",
+        "url": "https://www.reddit.com/r/linux/comments/1nle38v/flathub_popularity_by_country/",
+        "signal": "upgrade_intent",
+        "score": 1157,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "I sold all my homelab equipment and rented a server instead",
+        "url": "https://www.reddit.com/r/homelab/comments/1qv5epo/i_sold_all_my_homelab_equipment_and_rented_a/",
+        "signal": "technical_need",
+        "score": 1118,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "48 Core | 128 GB | 2.5G Homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1rqyfwe/48_core_128_gb_25g_homelab/",
+        "signal": "upgrade_intent",
+        "score": 815,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "You should use zram probably",
+        "url": "https://www.reddit.com/r/linux/comments/1no3uzr/you_should_use_zram_probably/",
+        "signal": "technical_need",
+        "score": 791,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "My first proper homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1qktgsf/my_first_proper_homelab/",
+        "signal": "buy_intent",
+        "score": 702,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "My home lab",
+        "url": "https://www.reddit.com/r/homelab/comments/1r3b0fh/my_home_lab/",
+        "signal": "upgrade_intent",
+        "score": 560,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "Introducing PCIem",
+        "url": "https://www.reddit.com/r/linux/comments/1qhf32l/introducing_pciem/",
+        "signal": "buy_intent",
+        "score": 496,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "I have just created an \"Only Fans\", what do you guys think?",
+        "url": "https://www.reddit.com/r/homelab/comments/1q178rn/i_have_just_created_an_only_fans_what_do_you_guys/",
+        "signal": "technical_need",
+        "score": 494,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Showcase/Project 5-Bay NAS",
+        "url": "https://www.reddit.com/r/homelab/comments/1qh2k2z/showcaseproject_5bay_nas/",
+        "signal": "technical_need",
+        "score": 447,
+        "key_quote": "",
+        "technical_factors": [
+          "swap_speed"
+        ]
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Replaced my power-hungry tower server Mini PCs",
+        "url": "https://www.reddit.com/r/homelab/comments/1qzda68/replaced_my_powerhungry_tower_server_mini_pcs/",
+        "signal": "upgrade_intent",
+        "score": 412,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Any chance at getting this into an m.2 slot? Lol",
+        "url": "https://www.reddit.com/r/homelab/comments/1ritk2p/any_chance_at_getting_this_into_an_m2_slot_lol/",
+        "signal": "buy_intent",
+        "score": 298,
+        "key_quote": "",
+        "technical_factors": [
+          "portability"
+        ]
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Begun my homelabbing journey and I am excited",
+        "url": "https://www.reddit.com/r/homelab/comments/1rhslps/begun_my_homelabbing_journey_and_i_am_excited/",
+        "signal": "buy_intent",
+        "score": 277,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Just scored 12 Dell Optiplex 9020 SFF i5s for my homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1o668r2/just_scored_12_dell_optiplex_9020_sff_i5s_for_my/",
+        "signal": "upgrade_intent",
+        "score": 243,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "🤯 Do not use Ai generation on SSD virtual memory ! 🪦",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1ph5t8r/do_not_use_ai_generation_on_ssd_virtual_memory/",
+        "signal": "technical_need",
+        "score": 206,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "swap_speed"
+        ]
+      },
+      {
+        "source": "reddit/r/hardware",
+        "title": "The hidden write latency penalty of Linux Page Cache on ARM64 (Jetson Orin)",
+        "url": "https://www.reddit.com/r/hardware/comments/1pym29z/the_hidden_write_latency_penalty_of_linux_page/",
+        "signal": "technical_need",
+        "score": 188,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "I built a hybrid MoE runtime that does 3,324 tok/s prefill on a single 5080.  Here are the benchmarks.",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rgfm00/i_built_a_hybrid_moe_runtime_that_does_3324_toks/",
+        "signal": "technical_need",
+        "score": 185,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size"
+        ]
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "I bought a slower nvme by mistake for my first build",
+        "url": "https://www.reddit.com/r/buildapc/comments/1rcrxcc/i_bought_a_slower_nvme_by_mistake_for_my_first/",
+        "signal": "buy_intent",
+        "score": 178,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "Qwen3.5-35B-A3B quantization quality + speed benchmarks on RTX 5080 16GB (Q8_0 vs Q4_K_M vs UD-Q4_K_XL)",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rei65v/qwen3535ba3b_quantization_quality_speed/",
+        "signal": "technical_need",
+        "score": 150,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "vram_offload"
+        ]
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "Last time I (thought) I knew PC's, Battlefield 3 was the benchmark.",
+        "url": "https://www.reddit.com/r/buildapc/comments/1rp7eej/last_time_i_thought_i_knew_pcs_battlefield_3_was/",
+        "signal": "technical_need",
+        "score": 146,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/MachineLearning",
+        "title": "[P] I got tired of PyTorch Geometric OOMing my laptop, so I wrote a C++ zero-copy graph engine to bypass RAM entirely.",
+        "url": "https://www.reddit.com/r/MachineLearning/comments/1ru7bnz/p_i_got_tired_of_pytorch_geometric_ooming_my/",
+        "signal": "upgrade_intent",
+        "score": 143,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Made some wall art out of an old drive.",
+        "url": "https://www.reddit.com/r/homelab/comments/1okee39/made_some_wall_art_out_of_an_old_drive/",
+        "signal": "technical_need",
+        "score": 128,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "How to run Qwen3-Coder-Next 80b parameters model on 8Gb VRAM",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1r5m4vl/how_to_run_qwen3codernext_80b_parameters_model_on/",
+        "signal": "technical_need",
+        "score": 121,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "vram_offload",
+          "io_bottleneck"
+        ]
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "Starting to narrow in on LTX2 Prompting",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1qcv9gv/starting_to_narrow_in_on_ltx2_prompting/",
+        "signal": "technical_need",
+        "score": 121,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "Replaced Motherboard and PSU, but PC still kills any connected HDD instantly",
+        "url": "https://www.reddit.com/r/buildapc/comments/1psk0f3/replaced_motherboard_and_psu_but_pc_still_kills/",
+        "signal": "upgrade_intent",
+        "score": 113,
+        "key_quote": "",
+        "technical_factors": [
+          "capacity"
+        ]
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "Almost 10,000 Apple Silicon benchmark runs submitted by the community — here's what the data actually shows",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rrvyyh/almost_10000_apple_silicon_benchmark_runs/",
+        "signal": "technical_need",
+        "score": 98,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/SelfHosted",
+        "title": "Homelab Setup",
+        "url": "https://www.reddit.com/r/selfhosted/comments/1roqmbu/homelab_setup/",
+        "signal": "upgrade_intent",
+        "score": 90,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "Last week in Image &amp; Video Generation",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1rr9iwd/last_week_in_image_video_generation/",
+        "signal": "technical_need",
+        "score": 89,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "UENorth UE-S6 - Beginner Mini Home Server",
+        "url": "https://www.reddit.com/r/homelab/comments/1p0i8bd/uenorth_ues6_beginner_mini_home_server/",
+        "signal": "upgrade_intent",
+        "score": 85,
+        "key_quote": "",
+        "technical_factors": []
+      }
+    ],
+    "by_source": {
+      "reddit/r/homelab": {
+        "total": 589,
+        "demand": 120
+      },
+      "reddit/r/buildapc": {
+        "total": 640,
+        "demand": 96
+      },
+      "reddit/r/SelfHosted": {
+        "total": 523,
+        "demand": 70
+      },
+      "reddit/r/LocalLLaMA": {
+        "total": 614,
+        "demand": 27
+      },
+      "reddit/r/StableDiffusion": {
+        "total": 533,
+        "demand": 15
+      },
+      "reddit/r/nvidia": {
+        "total": 201,
+        "demand": 8
+      },
+      "reddit/r/linux": {
+        "total": 115,
+        "demand": 5
+      },
+      "reddit/r/MachineLearning": {
+        "total": 226,
+        "demand": 3
+      },
+      "reddit/r/hardware": {
+        "total": 20,
+        "demand": 1
+      },
+      "reddit/r/Oobabooga": {
+        "total": 32,
+        "demand": 1
+      },
+      "reddit/r/singularity": {
+        "total": 256,
+        "demand": 0
+      },
+      "reddit/r/OllamaAI": {
+        "total": 1,
+        "demand": 0
+      },
+      "reddit/r/KoboldAI": {
+        "total": 39,
+        "demand": 0
+      },
+      "hackernews": {
+        "total": 3,
+        "demand": 0
+      }
+    }
+  },
+  {
+    "analysis_date": "2026-03-16T00:22:03.600177+00:00",
+    "total_posts": 3861,
+    "demand_signals": {
+      "buy_intent": 171,
+      "upgrade_intent": 94,
+      "technical_need": 84,
+      "co_mention": 312,
+      "no_signal": 3200
+    },
+    "demand_total": 349,
+    "demand_rate_pct": 9.0,
+    "technical_factors": {
+      "model_weight_size": 118,
+      "portability": 116,
+      "io_bottleneck": 61,
+      "vram_offload": 25,
+      "capacity": 18,
+      "swap_speed": 13,
+      "speed_matters": 4
+    },
+    "portable_ssd_mentions": 122,
+    "portable_ssd_pct": 3.2,
+    "top_demand_posts": [
+      {
+        "source": "reddit/r/SelfHosted",
+        "title": "This will be interesting to self-host.",
+        "url": "https://www.reddit.com/r/selfhosted/comments/1rirc31/this_will_be_interesting_to_selfhost/",
+        "signal": "buy_intent",
+        "score": 2214,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Made A 9-Slot SSD Backplane",
+        "url": "https://www.reddit.com/r/homelab/comments/1pkg5cn/made_a_9slot_ssd_backplane/",
+        "signal": "upgrade_intent",
+        "score": 2069,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "Flathub popularity by country",
+        "url": "https://www.reddit.com/r/linux/comments/1nle38v/flathub_popularity_by_country/",
+        "signal": "upgrade_intent",
+        "score": 1157,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "I sold all my homelab equipment and rented a server instead",
+        "url": "https://www.reddit.com/r/homelab/comments/1qv5epo/i_sold_all_my_homelab_equipment_and_rented_a/",
+        "signal": "technical_need",
+        "score": 1118,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "48 Core | 128 GB | 2.5G Homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1rqyfwe/48_core_128_gb_25g_homelab/",
+        "signal": "upgrade_intent",
+        "score": 815,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "You should use zram probably",
+        "url": "https://www.reddit.com/r/linux/comments/1no3uzr/you_should_use_zram_probably/",
+        "signal": "technical_need",
+        "score": 791,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "My first proper homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1qktgsf/my_first_proper_homelab/",
+        "signal": "buy_intent",
+        "score": 702,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "My home lab",
+        "url": "https://www.reddit.com/r/homelab/comments/1r3b0fh/my_home_lab/",
+        "signal": "upgrade_intent",
+        "score": 560,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "Introducing PCIem",
+        "url": "https://www.reddit.com/r/linux/comments/1qhf32l/introducing_pciem/",
+        "signal": "buy_intent",
+        "score": 496,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "I have just created an \"Only Fans\", what do you guys think?",
+        "url": "https://www.reddit.com/r/homelab/comments/1q178rn/i_have_just_created_an_only_fans_what_do_you_guys/",
+        "signal": "technical_need",
+        "score": 494,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Showcase/Project 5-Bay NAS",
+        "url": "https://www.reddit.com/r/homelab/comments/1qh2k2z/showcaseproject_5bay_nas/",
+        "signal": "technical_need",
+        "score": 447,
+        "key_quote": "",
+        "technical_factors": [
+          "swap_speed"
+        ]
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Replaced my power-hungry tower server Mini PCs",
+        "url": "https://www.reddit.com/r/homelab/comments/1qzda68/replaced_my_powerhungry_tower_server_mini_pcs/",
+        "signal": "upgrade_intent",
+        "score": 412,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Any chance at getting this into an m.2 slot? Lol",
+        "url": "https://www.reddit.com/r/homelab/comments/1ritk2p/any_chance_at_getting_this_into_an_m2_slot_lol/",
+        "signal": "buy_intent",
+        "score": 298,
+        "key_quote": "",
+        "technical_factors": [
+          "portability"
+        ]
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Begun my homelabbing journey and I am excited",
+        "url": "https://www.reddit.com/r/homelab/comments/1rhslps/begun_my_homelabbing_journey_and_i_am_excited/",
+        "signal": "buy_intent",
+        "score": 277,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Just scored 12 Dell Optiplex 9020 SFF i5s for my homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1o668r2/just_scored_12_dell_optiplex_9020_sff_i5s_for_my/",
+        "signal": "upgrade_intent",
+        "score": 243,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "🤯 Do not use Ai generation on SSD virtual memory ! 🪦",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1ph5t8r/do_not_use_ai_generation_on_ssd_virtual_memory/",
+        "signal": "technical_need",
+        "score": 206,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "swap_speed"
+        ]
+      },
+      {
+        "source": "reddit/r/hardware",
+        "title": "The hidden write latency penalty of Linux Page Cache on ARM64 (Jetson Orin)",
+        "url": "https://www.reddit.com/r/hardware/comments/1pym29z/the_hidden_write_latency_penalty_of_linux_page/",
+        "signal": "technical_need",
+        "score": 188,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "I built a hybrid MoE runtime that does 3,324 tok/s prefill on a single 5080.  Here are the benchmarks.",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rgfm00/i_built_a_hybrid_moe_runtime_that_does_3324_toks/",
+        "signal": "technical_need",
+        "score": 185,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size"
+        ]
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "I bought a slower nvme by mistake for my first build",
+        "url": "https://www.reddit.com/r/buildapc/comments/1rcrxcc/i_bought_a_slower_nvme_by_mistake_for_my_first/",
+        "signal": "buy_intent",
+        "score": 178,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "Qwen3.5-35B-A3B quantization quality + speed benchmarks on RTX 5080 16GB (Q8_0 vs Q4_K_M vs UD-Q4_K_XL)",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rei65v/qwen3535ba3b_quantization_quality_speed/",
+        "signal": "technical_need",
+        "score": 150,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "vram_offload"
+        ]
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "Last time I (thought) I knew PC's, Battlefield 3 was the benchmark.",
+        "url": "https://www.reddit.com/r/buildapc/comments/1rp7eej/last_time_i_thought_i_knew_pcs_battlefield_3_was/",
+        "signal": "technical_need",
+        "score": 146,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/MachineLearning",
+        "title": "[P] I got tired of PyTorch Geometric OOMing my laptop, so I wrote a C++ zero-copy graph engine to bypass RAM entirely.",
+        "url": "https://www.reddit.com/r/MachineLearning/comments/1ru7bnz/p_i_got_tired_of_pytorch_geometric_ooming_my/",
+        "signal": "upgrade_intent",
+        "score": 143,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Made some wall art out of an old drive.",
+        "url": "https://www.reddit.com/r/homelab/comments/1okee39/made_some_wall_art_out_of_an_old_drive/",
+        "signal": "technical_need",
+        "score": 128,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "How to run Qwen3-Coder-Next 80b parameters model on 8Gb VRAM",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1r5m4vl/how_to_run_qwen3codernext_80b_parameters_model_on/",
+        "signal": "technical_need",
+        "score": 121,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "vram_offload",
+          "io_bottleneck"
+        ]
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "Starting to narrow in on LTX2 Prompting",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1qcv9gv/starting_to_narrow_in_on_ltx2_prompting/",
+        "signal": "technical_need",
+        "score": 121,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "Replaced Motherboard and PSU, but PC still kills any connected HDD instantly",
+        "url": "https://www.reddit.com/r/buildapc/comments/1psk0f3/replaced_motherboard_and_psu_but_pc_still_kills/",
+        "signal": "upgrade_intent",
+        "score": 113,
+        "key_quote": "",
+        "technical_factors": [
+          "capacity"
+        ]
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "Almost 10,000 Apple Silicon benchmark runs submitted by the community — here's what the data actually shows",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rrvyyh/almost_10000_apple_silicon_benchmark_runs/",
+        "signal": "technical_need",
+        "score": 98,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/SelfHosted",
+        "title": "Homelab Setup",
+        "url": "https://www.reddit.com/r/selfhosted/comments/1roqmbu/homelab_setup/",
+        "signal": "upgrade_intent",
+        "score": 90,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "Last week in Image &amp; Video Generation",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1rr9iwd/last_week_in_image_video_generation/",
+        "signal": "technical_need",
+        "score": 89,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "UENorth UE-S6 - Beginner Mini Home Server",
+        "url": "https://www.reddit.com/r/homelab/comments/1p0i8bd/uenorth_ues6_beginner_mini_home_server/",
+        "signal": "upgrade_intent",
+        "score": 85,
+        "key_quote": "",
+        "technical_factors": []
+      }
+    ],
+    "by_source": {
+      "reddit/r/homelab": {
+        "total": 602,
+        "demand": 120
+      },
+      "reddit/r/buildapc": {
+        "total": 657,
+        "demand": 99
+      },
+      "reddit/r/SelfHosted": {
+        "total": 528,
+        "demand": 70
+      },
+      "reddit/r/LocalLLaMA": {
+        "total": 638,
+        "demand": 27
+      },
+      "reddit/r/StableDiffusion": {
+        "total": 539,
+        "demand": 15
+      },
+      "reddit/r/nvidia": {
+        "total": 202,
+        "demand": 8
+      },
+      "reddit/r/linux": {
+        "total": 116,
+        "demand": 5
+      },
+      "reddit/r/MachineLearning": {
+        "total": 227,
+        "demand": 3
+      },
+      "reddit/r/hardware": {
+        "total": 20,
+        "demand": 1
+      },
+      "reddit/r/Oobabooga": {
+        "total": 32,
+        "demand": 1
+      },
+      "reddit/r/singularity": {
+        "total": 256,
+        "demand": 0
+      },
+      "reddit/r/OllamaAI": {
+        "total": 1,
+        "demand": 0
+      },
+      "reddit/r/KoboldAI": {
+        "total": 40,
+        "demand": 0
+      },
+      "hackernews": {
+        "total": 3,
+        "demand": 0
+      }
+    }
+  },
+  {
+    "analysis_date": "2026-03-16T12:22:12.568975+00:00",
+    "total_posts": 3916,
+    "demand_signals": {
+      "buy_intent": 173,
+      "upgrade_intent": 95,
+      "technical_need": 84,
+      "co_mention": 315,
+      "no_signal": 3249
+    },
+    "demand_total": 352,
+    "demand_rate_pct": 9.0,
+    "technical_factors": {
+      "model_weight_size": 122,
+      "portability": 117,
+      "io_bottleneck": 62,
+      "vram_offload": 25,
+      "capacity": 18,
+      "swap_speed": 13,
+      "speed_matters": 4
+    },
+    "portable_ssd_mentions": 123,
+    "portable_ssd_pct": 3.1,
+    "top_demand_posts": [
+      {
+        "source": "reddit/r/SelfHosted",
+        "title": "This will be interesting to self-host.",
+        "url": "https://www.reddit.com/r/selfhosted/comments/1rirc31/this_will_be_interesting_to_selfhost/",
+        "signal": "buy_intent",
+        "score": 2214,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Made A 9-Slot SSD Backplane",
+        "url": "https://www.reddit.com/r/homelab/comments/1pkg5cn/made_a_9slot_ssd_backplane/",
+        "signal": "upgrade_intent",
+        "score": 2069,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "Flathub popularity by country",
+        "url": "https://www.reddit.com/r/linux/comments/1nle38v/flathub_popularity_by_country/",
+        "signal": "upgrade_intent",
+        "score": 1157,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "I sold all my homelab equipment and rented a server instead",
+        "url": "https://www.reddit.com/r/homelab/comments/1qv5epo/i_sold_all_my_homelab_equipment_and_rented_a/",
+        "signal": "technical_need",
+        "score": 1118,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "48 Core | 128 GB | 2.5G Homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1rqyfwe/48_core_128_gb_25g_homelab/",
+        "signal": "upgrade_intent",
+        "score": 815,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "You should use zram probably",
+        "url": "https://www.reddit.com/r/linux/comments/1no3uzr/you_should_use_zram_probably/",
+        "signal": "technical_need",
+        "score": 791,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "My first proper homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1qktgsf/my_first_proper_homelab/",
+        "signal": "buy_intent",
+        "score": 702,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "My home lab",
+        "url": "https://www.reddit.com/r/homelab/comments/1r3b0fh/my_home_lab/",
+        "signal": "upgrade_intent",
+        "score": 560,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "Introducing PCIem",
+        "url": "https://www.reddit.com/r/linux/comments/1qhf32l/introducing_pciem/",
+        "signal": "buy_intent",
+        "score": 496,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "I have just created an \"Only Fans\", what do you guys think?",
+        "url": "https://www.reddit.com/r/homelab/comments/1q178rn/i_have_just_created_an_only_fans_what_do_you_guys/",
+        "signal": "technical_need",
+        "score": 494,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Showcase/Project 5-Bay NAS",
+        "url": "https://www.reddit.com/r/homelab/comments/1qh2k2z/showcaseproject_5bay_nas/",
+        "signal": "technical_need",
+        "score": 447,
+        "key_quote": "",
+        "technical_factors": [
+          "swap_speed"
+        ]
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Replaced my power-hungry tower server Mini PCs",
+        "url": "https://www.reddit.com/r/homelab/comments/1qzda68/replaced_my_powerhungry_tower_server_mini_pcs/",
+        "signal": "upgrade_intent",
+        "score": 412,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Any chance at getting this into an m.2 slot? Lol",
+        "url": "https://www.reddit.com/r/homelab/comments/1ritk2p/any_chance_at_getting_this_into_an_m2_slot_lol/",
+        "signal": "buy_intent",
+        "score": 298,
+        "key_quote": "",
+        "technical_factors": [
+          "portability"
+        ]
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Begun my homelabbing journey and I am excited",
+        "url": "https://www.reddit.com/r/homelab/comments/1rhslps/begun_my_homelabbing_journey_and_i_am_excited/",
+        "signal": "buy_intent",
+        "score": 277,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Just scored 12 Dell Optiplex 9020 SFF i5s for my homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1o668r2/just_scored_12_dell_optiplex_9020_sff_i5s_for_my/",
+        "signal": "upgrade_intent",
+        "score": 243,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "🤯 Do not use Ai generation on SSD virtual memory ! 🪦",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1ph5t8r/do_not_use_ai_generation_on_ssd_virtual_memory/",
+        "signal": "technical_need",
+        "score": 206,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "swap_speed"
+        ]
+      },
+      {
+        "source": "reddit/r/hardware",
+        "title": "The hidden write latency penalty of Linux Page Cache on ARM64 (Jetson Orin)",
+        "url": "https://www.reddit.com/r/hardware/comments/1pym29z/the_hidden_write_latency_penalty_of_linux_page/",
+        "signal": "technical_need",
+        "score": 188,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "I built a hybrid MoE runtime that does 3,324 tok/s prefill on a single 5080.  Here are the benchmarks.",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rgfm00/i_built_a_hybrid_moe_runtime_that_does_3324_toks/",
+        "signal": "technical_need",
+        "score": 185,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size"
+        ]
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "I bought a slower nvme by mistake for my first build",
+        "url": "https://www.reddit.com/r/buildapc/comments/1rcrxcc/i_bought_a_slower_nvme_by_mistake_for_my_first/",
+        "signal": "buy_intent",
+        "score": 178,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "Qwen3.5-35B-A3B quantization quality + speed benchmarks on RTX 5080 16GB (Q8_0 vs Q4_K_M vs UD-Q4_K_XL)",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rei65v/qwen3535ba3b_quantization_quality_speed/",
+        "signal": "technical_need",
+        "score": 150,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "vram_offload"
+        ]
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "Last time I (thought) I knew PC's, Battlefield 3 was the benchmark.",
+        "url": "https://www.reddit.com/r/buildapc/comments/1rp7eej/last_time_i_thought_i_knew_pcs_battlefield_3_was/",
+        "signal": "technical_need",
+        "score": 146,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/MachineLearning",
+        "title": "[P] I got tired of PyTorch Geometric OOMing my laptop, so I wrote a C++ zero-copy graph engine to bypass RAM entirely.",
+        "url": "https://www.reddit.com/r/MachineLearning/comments/1ru7bnz/p_i_got_tired_of_pytorch_geometric_ooming_my/",
+        "signal": "upgrade_intent",
+        "score": 143,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Made some wall art out of an old drive.",
+        "url": "https://www.reddit.com/r/homelab/comments/1okee39/made_some_wall_art_out_of_an_old_drive/",
+        "signal": "technical_need",
+        "score": 128,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "How to run Qwen3-Coder-Next 80b parameters model on 8Gb VRAM",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1r5m4vl/how_to_run_qwen3codernext_80b_parameters_model_on/",
+        "signal": "technical_need",
+        "score": 121,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "vram_offload",
+          "io_bottleneck"
+        ]
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "Starting to narrow in on LTX2 Prompting",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1qcv9gv/starting_to_narrow_in_on_ltx2_prompting/",
+        "signal": "technical_need",
+        "score": 121,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "Replaced Motherboard and PSU, but PC still kills any connected HDD instantly",
+        "url": "https://www.reddit.com/r/buildapc/comments/1psk0f3/replaced_motherboard_and_psu_but_pc_still_kills/",
+        "signal": "upgrade_intent",
+        "score": 113,
+        "key_quote": "",
+        "technical_factors": [
+          "capacity"
+        ]
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "Almost 10,000 Apple Silicon benchmark runs submitted by the community — here's what the data actually shows",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rrvyyh/almost_10000_apple_silicon_benchmark_runs/",
+        "signal": "technical_need",
+        "score": 98,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/SelfHosted",
+        "title": "Homelab Setup",
+        "url": "https://www.reddit.com/r/selfhosted/comments/1roqmbu/homelab_setup/",
+        "signal": "upgrade_intent",
+        "score": 90,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "Last week in Image &amp; Video Generation",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1rr9iwd/last_week_in_image_video_generation/",
+        "signal": "technical_need",
+        "score": 89,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "UENorth UE-S6 - Beginner Mini Home Server",
+        "url": "https://www.reddit.com/r/homelab/comments/1p0i8bd/uenorth_ues6_beginner_mini_home_server/",
+        "signal": "upgrade_intent",
+        "score": 85,
+        "key_quote": "",
+        "technical_factors": []
+      }
+    ],
+    "by_source": {
+      "reddit/r/homelab": {
+        "total": 609,
+        "demand": 121
+      },
+      "reddit/r/buildapc": {
+        "total": 669,
+        "demand": 101
+      },
+      "reddit/r/SelfHosted": {
+        "total": 528,
+        "demand": 70
+      },
+      "reddit/r/LocalLLaMA": {
+        "total": 668,
+        "demand": 27
+      },
+      "reddit/r/StableDiffusion": {
+        "total": 541,
+        "demand": 15
+      },
+      "reddit/r/nvidia": {
+        "total": 202,
+        "demand": 8
+      },
+      "reddit/r/linux": {
+        "total": 116,
+        "demand": 5
+      },
+      "reddit/r/MachineLearning": {
+        "total": 228,
+        "demand": 3
+      },
+      "reddit/r/hardware": {
+        "total": 20,
+        "demand": 1
+      },
+      "reddit/r/Oobabooga": {
+        "total": 32,
+        "demand": 1
+      },
+      "reddit/r/singularity": {
+        "total": 257,
+        "demand": 0
+      },
+      "reddit/r/OllamaAI": {
+        "total": 1,
+        "demand": 0
+      },
+      "reddit/r/KoboldAI": {
+        "total": 42,
+        "demand": 0
+      },
+      "hackernews": {
+        "total": 3,
+        "demand": 0
+      }
+    }
+  },
+  {
+    "analysis_date": "2026-03-17T00:21:36.386494+00:00",
+    "total_posts": 4008,
+    "demand_signals": {
+      "buy_intent": 186,
+      "upgrade_intent": 98,
+      "technical_need": 84,
+      "co_mention": 320,
+      "no_signal": 3320
+    },
+    "demand_total": 368,
+    "demand_rate_pct": 9.2,
+    "technical_factors": {
+      "model_weight_size": 125,
+      "portability": 122,
+      "io_bottleneck": 66,
+      "vram_offload": 25,
+      "capacity": 19,
+      "swap_speed": 13,
+      "speed_matters": 4
+    },
+    "portable_ssd_mentions": 127,
+    "portable_ssd_pct": 3.2,
+    "top_demand_posts": [
+      {
+        "source": "reddit/r/SelfHosted",
+        "title": "This will be interesting to self-host.",
+        "url": "https://www.reddit.com/r/selfhosted/comments/1rirc31/this_will_be_interesting_to_selfhost/",
+        "signal": "buy_intent",
+        "score": 2214,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Made A 9-Slot SSD Backplane",
+        "url": "https://www.reddit.com/r/homelab/comments/1pkg5cn/made_a_9slot_ssd_backplane/",
+        "signal": "upgrade_intent",
+        "score": 2069,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "Flathub popularity by country",
+        "url": "https://www.reddit.com/r/linux/comments/1nle38v/flathub_popularity_by_country/",
+        "signal": "upgrade_intent",
+        "score": 1157,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "I sold all my homelab equipment and rented a server instead",
+        "url": "https://www.reddit.com/r/homelab/comments/1qv5epo/i_sold_all_my_homelab_equipment_and_rented_a/",
+        "signal": "technical_need",
+        "score": 1118,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "48 Core | 128 GB | 2.5G Homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1rqyfwe/48_core_128_gb_25g_homelab/",
+        "signal": "upgrade_intent",
+        "score": 815,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "You should use zram probably",
+        "url": "https://www.reddit.com/r/linux/comments/1no3uzr/you_should_use_zram_probably/",
+        "signal": "technical_need",
+        "score": 791,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "My first proper homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1qktgsf/my_first_proper_homelab/",
+        "signal": "buy_intent",
+        "score": 702,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "My home lab",
+        "url": "https://www.reddit.com/r/homelab/comments/1r3b0fh/my_home_lab/",
+        "signal": "upgrade_intent",
+        "score": 560,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/linux",
+        "title": "Introducing PCIem",
+        "url": "https://www.reddit.com/r/linux/comments/1qhf32l/introducing_pciem/",
+        "signal": "buy_intent",
+        "score": 496,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "I have just created an \"Only Fans\", what do you guys think?",
+        "url": "https://www.reddit.com/r/homelab/comments/1q178rn/i_have_just_created_an_only_fans_what_do_you_guys/",
+        "signal": "technical_need",
+        "score": 494,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Out of control",
+        "url": "https://www.reddit.com/r/homelab/comments/1rvkitl/out_of_control/",
+        "signal": "buy_intent",
+        "score": 460,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Showcase/Project 5-Bay NAS",
+        "url": "https://www.reddit.com/r/homelab/comments/1qh2k2z/showcaseproject_5bay_nas/",
+        "signal": "technical_need",
+        "score": 447,
+        "key_quote": "",
+        "technical_factors": [
+          "swap_speed"
+        ]
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Replaced my power-hungry tower server Mini PCs",
+        "url": "https://www.reddit.com/r/homelab/comments/1qzda68/replaced_my_powerhungry_tower_server_mini_pcs/",
+        "signal": "upgrade_intent",
+        "score": 412,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Any chance at getting this into an m.2 slot? Lol",
+        "url": "https://www.reddit.com/r/homelab/comments/1ritk2p/any_chance_at_getting_this_into_an_m2_slot_lol/",
+        "signal": "buy_intent",
+        "score": 298,
+        "key_quote": "",
+        "technical_factors": [
+          "portability"
+        ]
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Begun my homelabbing journey and I am excited",
+        "url": "https://www.reddit.com/r/homelab/comments/1rhslps/begun_my_homelabbing_journey_and_i_am_excited/",
+        "signal": "buy_intent",
+        "score": 277,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Just scored 12 Dell Optiplex 9020 SFF i5s for my homelab",
+        "url": "https://www.reddit.com/r/homelab/comments/1o668r2/just_scored_12_dell_optiplex_9020_sff_i5s_for_my/",
+        "signal": "upgrade_intent",
+        "score": 243,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "🤯 Do not use Ai generation on SSD virtual memory ! 🪦",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1ph5t8r/do_not_use_ai_generation_on_ssd_virtual_memory/",
+        "signal": "technical_need",
+        "score": 206,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "swap_speed"
+        ]
+      },
+      {
+        "source": "reddit/r/hardware",
+        "title": "The hidden write latency penalty of Linux Page Cache on ARM64 (Jetson Orin)",
+        "url": "https://www.reddit.com/r/hardware/comments/1pym29z/the_hidden_write_latency_penalty_of_linux_page/",
+        "signal": "technical_need",
+        "score": 188,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "I built a hybrid MoE runtime that does 3,324 tok/s prefill on a single 5080.  Here are the benchmarks.",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rgfm00/i_built_a_hybrid_moe_runtime_that_does_3324_toks/",
+        "signal": "technical_need",
+        "score": 185,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size"
+        ]
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "I bought a slower nvme by mistake for my first build",
+        "url": "https://www.reddit.com/r/buildapc/comments/1rcrxcc/i_bought_a_slower_nvme_by_mistake_for_my_first/",
+        "signal": "buy_intent",
+        "score": 178,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "Qwen3.5-35B-A3B quantization quality + speed benchmarks on RTX 5080 16GB (Q8_0 vs Q4_K_M vs UD-Q4_K_XL)",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rei65v/qwen3535ba3b_quantization_quality_speed/",
+        "signal": "technical_need",
+        "score": 150,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "vram_offload"
+        ]
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "Last time I (thought) I knew PC's, Battlefield 3 was the benchmark.",
+        "url": "https://www.reddit.com/r/buildapc/comments/1rp7eej/last_time_i_thought_i_knew_pcs_battlefield_3_was/",
+        "signal": "technical_need",
+        "score": 146,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/MachineLearning",
+        "title": "[P] I got tired of PyTorch Geometric OOMing my laptop, so I wrote a C++ zero-copy graph engine to bypass RAM entirely.",
+        "url": "https://www.reddit.com/r/MachineLearning/comments/1ru7bnz/p_i_got_tired_of_pytorch_geometric_ooming_my/",
+        "signal": "upgrade_intent",
+        "score": 143,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/homelab",
+        "title": "Made some wall art out of an old drive.",
+        "url": "https://www.reddit.com/r/homelab/comments/1okee39/made_some_wall_art_out_of_an_old_drive/",
+        "signal": "technical_need",
+        "score": 128,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "How to run Qwen3-Coder-Next 80b parameters model on 8Gb VRAM",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1r5m4vl/how_to_run_qwen3codernext_80b_parameters_model_on/",
+        "signal": "technical_need",
+        "score": 121,
+        "key_quote": "",
+        "technical_factors": [
+          "model_weight_size",
+          "vram_offload",
+          "io_bottleneck"
+        ]
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "Starting to narrow in on LTX2 Prompting",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1qcv9gv/starting_to_narrow_in_on_ltx2_prompting/",
+        "signal": "technical_need",
+        "score": 121,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/buildapc",
+        "title": "Replaced Motherboard and PSU, but PC still kills any connected HDD instantly",
+        "url": "https://www.reddit.com/r/buildapc/comments/1psk0f3/replaced_motherboard_and_psu_but_pc_still_kills/",
+        "signal": "upgrade_intent",
+        "score": 113,
+        "key_quote": "",
+        "technical_factors": [
+          "capacity"
+        ]
+      },
+      {
+        "source": "reddit/r/LocalLLaMA",
+        "title": "Almost 10,000 Apple Silicon benchmark runs submitted by the community — here's what the data actually shows",
+        "url": "https://www.reddit.com/r/LocalLLaMA/comments/1rrvyyh/almost_10000_apple_silicon_benchmark_runs/",
+        "signal": "technical_need",
+        "score": 98,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/SelfHosted",
+        "title": "Homelab Setup",
+        "url": "https://www.reddit.com/r/selfhosted/comments/1roqmbu/homelab_setup/",
+        "signal": "upgrade_intent",
+        "score": 90,
+        "key_quote": "",
+        "technical_factors": []
+      },
+      {
+        "source": "reddit/r/StableDiffusion",
+        "title": "Last week in Image &amp; Video Generation",
+        "url": "https://www.reddit.com/r/StableDiffusion/comments/1rr9iwd/last_week_in_image_video_generation/",
+        "signal": "technical_need",
+        "score": 89,
+        "key_quote": "",
+        "technical_factors": []
+      }
+    ],
+    "by_source": {
+      "reddit/r/homelab": {
+        "total": 623,
+        "demand": 124
+      },
+      "reddit/r/buildapc": {
+        "total": 694,
+        "demand": 111
+      },
+      "reddit/r/SelfHosted": {
+        "total": 537,
+        "demand": 73
+      },
+      "reddit/r/LocalLLaMA": {
+        "total": 703,
+        "demand": 27
+      },
+      "reddit/r/StableDiffusion": {
+        "total": 548,
+        "demand": 15
+      },
+      "reddit/r/nvidia": {
+        "total": 203,
+        "demand": 8
+      },
+      "reddit/r/linux": {
+        "total": 116,
+        "demand": 5
+      },
+      "reddit/r/MachineLearning": {
+        "total": 228,
+        "demand": 3
+      },
+      "reddit/r/hardware": {
+        "total": 21,
+        "demand": 1
+      },
+      "reddit/r/Oobabooga": {
+        "total": 32,
+        "demand": 1
+      },
+      "reddit/r/singularity": {
+        "total": 257,
+        "demand": 0
+      },
+      "reddit/r/OllamaAI": {
+        "total": 1,
+        "demand": 0
+      },
+      "reddit/r/KoboldAI": {
+        "total": 42,
+        "demand": 0
+      },
+      "hackernews": {
+        "total": 3,
+        "demand": 0
+      }
+    }
+  }
+]
