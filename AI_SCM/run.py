@@ -349,10 +349,11 @@ def run_full_pipeline(quick=False, report_only=False, db_only=False):
         print(f"  Next Bottleneck:    {next_b}")
 
     if modeling_results:
-        snap = modeling_results.get("current_snapshot_2025", {})
-        print(f"  2025 Token Demand:  {snap.get('total_tokens_per_day_fmt', 'N/A')}/day")
-        print(f"  2025 GPU Required:  {snap.get('gpu_count_fmt', 'N/A')} (H100-equiv)")
-        print(f"  2025 HBM Demand:    {snap.get('hbm_demand_fmt', 'N/A')}")
+        snap = modeling_results.get("current_snapshot", modeling_results.get("current_snapshot_2025", {}))
+        curr_yr = modeling_results.get("current_year", 2026)
+        print(f"  {curr_yr} Token Demand:  {snap.get('total_tokens_per_day_fmt', 'N/A')}/day  ← 현재")
+        print(f"  {curr_yr} GPU Required:  {snap.get('gpu_count_fmt', 'N/A')} (H100-equiv)  ← 현재")
+        print(f"  {curr_yr} HBM Demand:    {snap.get('hbm_demand_fmt', 'N/A')}  ← 현재")
 
     if strategy_results:
         phase = strategy_results.get("phase_position", "N/A")

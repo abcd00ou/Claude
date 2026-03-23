@@ -177,7 +177,7 @@ def build(state=None, bottleneck=None, strategy=None, modeling=None, mapping=Non
     _add_table(doc, ["수식명", "공식"], formulas)
     doc.add_paragraph()
 
-    _add_heading(doc, "2.2 2025년 기준 수치 (Base 시나리오)", 2)
+    _add_heading(doc, "2.2 2026년 Q1 현재 수치 (Base 시나리오)", 2)
     base_rows = [
         ["토큰 수요",      "88.5T tokens/day",  "ChatGPT·Claude·Gemini·오픈소스 합산"],
         ["필요 GPU",       "60만 개 (H100 기준)", "가동률 85% 가정"],
@@ -190,13 +190,13 @@ def build(state=None, bottleneck=None, strategy=None, modeling=None, mapping=Non
 
     _add_heading(doc, "2.3 시나리오별 예측 (2024-2027)", 2)
     scenario_rows = [
-        ["Base", "2024", "29.4T/day",   "38만 GPU",  "7.1GW"],
-        ["Base", "2025", "88.5T/day",   "60만 GPU",  "7.7GW"],
-        ["Base", "2026", "177T/day",    "120만 GPU", "15.4GW"],
-        ["Bull", "2025", "132.7T/day",  "90만 GPU",  "11.5GW"],
-        ["Bull", "2026", "398T/day",    "270만 GPU", "34.7GW"],
-        ["Bear", "2025", "61.9T/day",   "42만 GPU",  "5.4GW"],
-        ["Bear", "2026", "105.3T/day",  "71만 GPU",  "9.2GW"],
+        ["Base", "2024", "29.4T/day (실적)",   "38만 GPU",  "7.1GW"],
+        ["Base", "2025", "88.5T/day (실적)",   "60만 GPU",  "7.7GW"],
+        ["Base", "2026 ★현재", "265T/day",    "180만 GPU", "23GW"],
+        ["Bull", "2025", "132.7T/day (실적)", "90만 GPU",  "11.5GW"],
+        ["Bull", "2026 ★현재", "398T/day",   "270만 GPU", "34.7GW"],
+        ["Bear", "2025", "61.9T/day (실적)", "42만 GPU",  "5.4GW"],
+        ["Bear", "2026 ★현재", "132T/day",   "89만 GPU",  "11.5GW"],
     ]
     _add_table(doc, ["시나리오", "연도", "토큰/일", "GPU 수요", "전력(MW)"], scenario_rows)
 
@@ -216,7 +216,7 @@ def build(state=None, bottleneck=None, strategy=None, modeling=None, mapping=Non
         "2025년 현재 HBM이 1차 병목이며, Power/Grid가 2026년 주요 병목으로 전환될 전망입니다."
     )
 
-    _add_heading(doc, "3.1 레이어별 가동률 현황 (2025 기준)", 2)
+    _add_heading(doc, "3.1 레이어별 가동률 현황 (2026년 Q1 현재)", 2)
     bn_rows = []
     for layer, util in config.CURRENT_CAPACITY_UTILIZATION.items():
         sev = "위험" if util >= 0.85 else ("높음" if util >= 0.70 else ("보통" if util >= 0.50 else "낮음"))
@@ -366,14 +366,14 @@ def build(state=None, bottleneck=None, strategy=None, modeling=None, mapping=Non
     _add_table(doc, ["시나리오", "가정", "토큰 성장률", "GPU 가동률", "공급 환경"], scenario_def)
     doc.add_paragraph()
 
-    _add_heading(doc, "7.2 핵심 지표 예측 (2024-2027)", 2)
+    _add_heading(doc, "7.2 핵심 지표 예측 (2025실적 / 2026현재 / 2027-2028예측)", 2)
     pred_rows = [
-        ["2024", "Base", "29.4T/day", "28만", "22.3PB",  "320MW"],
-        ["2025", "Base", "88.5T/day", "60만", "48.2PB",  "768MW"],
-        ["2025", "Bull", "132.7T/day","90만", "72.4PB", "1,152MW"],
-        ["2025", "Bear", "61.9T/day", "42만", "33.7PB",  "538MW"],
-        ["2026", "Base", "177T/day", "120만", "96.4PB", "1,536MW"],
-        ["2026", "Bull", "398T/day", "270만","216.8PB", "3,456MW"],
+        ["2025", "Base (실적)", "88.5T/day", "60만", "48.2PB",  "768MW"],
+        ["2025", "Base (실적)", "88.5T/day", "60만", "48.2PB",  "768MW"],
+        ["2026", "Base ★현재", "265T/day", "180만", "144PB", "2,304MW"],
+        ["2026", "Bull", "398T/day", "270만", "216PB", "3,456MW"],
+        ["2026", "Bear", "132T/day", "89만", "72PB", "1,152MW"],
+        ["2027", "Base (예측)", "530T/day", "360만", "290PB", "4,608MW"],
         ["2027", "Base", "354T/day", "240만","192.8PB", "3,072MW"],
     ]
     _add_table(doc, ["연도","시나리오","토큰/일","GPU 수요","HBM 수요","전력(MW)"], pred_rows)

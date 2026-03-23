@@ -41,12 +41,14 @@ BOTTLENECK_CASCADE = [
 
 # Investment windows per bottleneck phase
 INVESTMENT_WINDOWS = {
-    "HBM": "H2 2024 - H2 2025",
-    "CoWoS": "H2 2024 - H1 2026",
-    "Power_DC": "H1 2025 - H2 2026",
-    "GPU": "2023 - ongoing",
-    "Networking": "H2 2025 - H1 2026",
-    "Foundry_Advanced": "2024 - 2026",
+    # 기준일 2026-03-24 기준으로 업데이트
+    "HBM":               "2024~2025 (이미 진입) → 2026 H1 핵심 구간",
+    "CoWoS":             "2024~2025 (이미 진입) → 2026 H1 핵심 구간",
+    "Power_DC":          "2026 H1 ~ 2027 H1 ★현재 진입 중 (2차 병목)",
+    "GPU":               "2023~ 지속 / B200 전환 수혜 2026",
+    "Networking":        "2026 H1 ~ 2027 H1 ★현재 진입 중 (3차 병목)",
+    "Foundry_Advanced":  "2025 ~ 2027 (N3 CoWoS 캐파 타이트)",
+    "ASIC":              "2026 ~ 2027 (TPU v5, Trainium2, Maia 본격화)",
 }
 
 

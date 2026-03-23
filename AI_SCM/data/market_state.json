@@ -277,17 +277,17 @@
     "yield_rate_cowos": 0.75
   },
   "capacity_utilization": {
-    "HBM": 0.95,
-    "CoWoS": 0.92,
-    "GPU": 0.88,
-    "Power_DC": 0.78,
-    "Networking": 0.65,
-    "DRAM": 0.55,
-    "SSD": 0.4,
-    "CPU": 0.45,
-    "Foundry_Advanced": 0.82,
-    "ASIC": 0.7,
-    "Edge_AI": 0.5
+    "HBM": 0.92,
+    "CoWoS": 0.88,
+    "Power_DC": 0.85,
+    "Networking": 0.78,
+    "GPU": 0.82,
+    "Foundry": 0.84,
+    "ASIC": 0.78,
+    "DRAM": 0.62,
+    "SSD": 0.42,
+    "CPU": 0.48,
+    "Edge_AI": 0.6
   },
   "token_demand": {
     "ChatGPT": {

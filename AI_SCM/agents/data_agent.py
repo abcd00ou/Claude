@@ -182,7 +182,8 @@ def run(quick=False):
         "hyperscaler_capex": seed_data.get("hyperscaler_capex_usd_bn", {}),
         "gpu_shipments": seed_data.get("gpu_shipments", {}),
         "hbm_market": seed_data.get("hbm_market", {}),
-        "capacity_utilization": seed_data.get("capacity_utilization_2025", {}),
+        # config.CURRENT_CAPACITY_UTILIZATION이 항상 최신값 (2026 Q1 기준)
+        "capacity_utilization": config.CURRENT_CAPACITY_UTILIZATION,
         "token_demand": seed_data.get("token_demand_estimates", {}),
         "cowos_capacity": seed_data.get("cowos_capacity", {}),
         "datacenter_power": seed_data.get("datacenter_power", {}),

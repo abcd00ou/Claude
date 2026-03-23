@@ -74,11 +74,17 @@ GPU_SPECS = {
 # HYPERSCALER CAPEX (USD billion, actual + guidance)
 # ============================================================
 HYPERSCALER_CAPEX = {
-    "Microsoft": {"2022": 22, "2023": 28, "2024": 55, "2025": 80, "2026_est": 90},
-    "Google":    {"2022": 25, "2023": 32, "2024": 52, "2025": 75, "2026_est": 85},
-    "Amazon":    {"2022": 38, "2023": 48, "2024": 75, "2025": 105, "2026_est": 120},
-    "Meta":      {"2022": 31, "2023": 28, "2024": 37, "2025": 65, "2026_est": 72},
-    "xAI":       {"2022": 0,  "2023": 0,  "2024": 6,  "2025": 15, "2026_est": 25},
+    # 2022-2025: 실제 집행 (actual), 2026: 현재연도 가이던스, 2027: 추정
+    "Microsoft": {"2022": 22, "2023": 28, "2024": 55, "2025": 80,  "2026": 95,  "2027_est": 105},
+    "Google":    {"2022": 25, "2023": 32, "2024": 52, "2025": 75,  "2026": 90,  "2027_est": 100},
+    "Amazon":    {"2022": 38, "2023": 48, "2024": 75, "2025": 105, "2026": 120, "2027_est": 130},
+    "Meta":      {"2022": 31, "2023": 28, "2024": 37, "2025": 65,  "2026": 72,  "2027_est": 80},
+    "xAI":       {"2022": 0,  "2023": 0,  "2024": 6,  "2025": 15,  "2026": 30,  "2027_est": 50},
+}
+# 연도별 데이터 유형 (actual=실적, guidance=가이던스, estimate=추정)
+HYPERSCALER_CAPEX_TYPE = {
+    "2022": "actual", "2023": "actual", "2024": "actual",
+    "2025": "actual", "2026": "guidance", "2027_est": "estimate",
 }
 
 # ============================================================
@@ -101,10 +107,11 @@ HBM_MARKET = {
         "HBM3e": 18,
     },
     "market_size_usd_bn": {
-        "2023": 14,
-        "2024": 22,
-        "2025E": 35,
-        "2026E": 55,
+        "2023": 14,   # actual
+        "2024": 22,   # actual
+        "2025": 35,   # actual (확정)
+        "2026": 55,   # 현재연도 추정 (진행 중)
+        "2027_est": 80,
     },
     "cowos_dependency": True,   # TSMC CoWoS required
     "yield_rate": 0.75,          # HBM on CoWoS yield
@@ -239,40 +246,59 @@ BOTTLENECK_THRESHOLDS = {
     "low": 0.30,
 }
 
-# Current capacity utilization (2025 baseline)
+# ============================================================
+# 현재 시점 앵커 (리포트 기준일)
+# ============================================================
+AS_OF_DATE    = "2026-03-24"   # 리포트 기준일
+CURRENT_YEAR  = 2026           # 현재 연도
+BASE_YEAR     = 2024           # 토큰 수요 베이스라인 연도
+CURRENT_YEAR_OFFSET = 2        # 2024 + 2 = 2026
+
+# Current capacity utilization (2026년 Q1 기준)
+# 2025년 대비 변화: CoWoS 캐파 증설로 HBM 소폭 완화,
+# 그러나 B200/GB200 수요 폭증으로 Power/Networking이 새 병목으로 부상
 CURRENT_CAPACITY_UTILIZATION = {
-    "HBM": 0.95,        # extremely tight
-    "CoWoS": 0.92,      # critical packaging bottleneck
-    "GPU": 0.88,        # high demand vs supply
-    "Power_DC": 0.78,   # growing constraint
-    "Networking": 0.65, # manageable but rising
-    "DRAM": 0.55,       # relatively balanced
-    "SSD": 0.40,        # oversupplied
-    "CPU": 0.45,        # balanced
-    "Foundry": 0.82,    # tight for advanced nodes
-    "ASIC": 0.70,       # scaling up
-    "Edge_AI": 0.50,    # early stage
+    "HBM":        0.92,   # 2025(95%) → 2026 Q1(92%): CoWoS 캐파 증설 효과, B200 수요는 여전히 타이트
+    "CoWoS":      0.88,   # 2025(92%) → 2026 Q1(88%): TSMC 90K wpm 달성, 수요도 동반 급증
+    "Power_DC":   0.85,   # 2025(78%) → 2026 Q1(85%): 2차 병목으로 급부상 (GB200 전력 1MW/rack)
+    "Networking": 0.78,   # 2025(65%) → 2026 Q1(78%): GB200 NVL72 InfiniBand 수요 급증
+    "GPU":        0.82,   # 2025(88%) → 2026 Q1(82%): B200 출하 증가로 공급 개선
+    "Foundry":    0.84,   # N3/N4 CoWoS 수요 여전히 타이트
+    "ASIC":       0.78,   # TPU v5, Trainium2, Maia 100 본격 ramping
+    "DRAM":       0.62,   # 상대적 균형 유지
+    "SSD":        0.42,   # 공급 우위 지속
+    "CPU":        0.48,   # 안정적
+    "Edge_AI":    0.60,   # 스마트폰/자동차 AI 수요 증가
 }
 
 # ============================================================
 # GPU SHIPMENT ESTIMATES
 # ============================================================
 GPU_SHIPMENTS = {
+    # actual = 확정 실적 | estimate = 추정
     "NVIDIA_H100": {
-        "2023": 500000,
-        "2024": 3000000,
-        "2025E": 5000000,
-        "2026E": 7000000,
+        "2023": 500000,    # actual
+        "2024": 3000000,   # actual
+        "2025": 5000000,   # actual
+        "2026_est": 3000000,  # H100 레거시 전환, B200으로 교체 중
+        "2027_est": 1000000,  # 단종 수순
     },
     "NVIDIA_B200": {
-        "2024": 50000,
-        "2025E": 1500000,
-        "2026E": 4000000,
+        "2024": 50000,       # actual (초기 출하)
+        "2025": 1500000,     # actual (대량 ramp)
+        "2026_est": 5000000, # 현재 주력 제품 (GB200 NVL72 포함)
+        "2027_est": 7000000,
+    },
+    "NVIDIA_GB200_NVL72": {
+        "2025": 5000,        # actual (랙 단위, ~36만 GPU 환산)
+        "2026_est": 40000,   # 현재 주력 출하 형태 (랙 단위)
+        "2027_est": 80000,
     },
     "AMD_MI300X": {
-        "2024": 200000,
-        "2025E": 600000,
-        "2026E": 1200000,
+        "2024": 200000,      # actual
+        "2025": 600000,      # actual
+        "2026_est": 1500000, # MI325X 출시로 모멘텀
+        "2027_est": 2500000,
     },
 }
 
@@ -280,23 +306,25 @@ GPU_SHIPMENTS = {
 # COWOS CAPACITY (TSMC)
 # ============================================================
 COWOS_CAPACITY = {
-    "2023_wpm": 35000,   # wafers per month
-    "2024_wpm": 50000,
-    "2025E_wpm": 80000,
-    "2026E_wpm": 120000,
-    "yield_rate": 0.75,
-    "lead_time_months": 18,  # capacity expansion lead time
+    "2023_wpm": 35000,    # actual
+    "2024_wpm": 50000,    # actual
+    "2025_wpm": 85000,    # actual (목표 80K 초과 달성)
+    "2026_wpm": 120000,   # 현재 목표 (진행 중)
+    "2027_est_wpm": 160000,
+    "yield_rate": 0.78,   # 2025 개선 (2024: 0.75)
+    "lead_time_months": 18,
 }
 
 # ============================================================
 # DATA CENTER POWER (Global)
 # ============================================================
 DC_POWER = {
-    "2022_gw": 30,
-    "2023_gw": 40,
-    "2024_gw": 50,
-    "2025E_gw": 70,
-    "2026E_gw": 100,
+    "2022_gw": 30,    # actual
+    "2023_gw": 40,    # actual
+    "2024_gw": 50,    # actual
+    "2025_gw": 70,    # actual
+    "2026_gw": 100,   # 현재연도 추정 (진행 중)
+    "2027_est_gw": 140,
     "ai_fraction": 0.40,  # AI workloads share of DC power
     "transformer_lead_time_months": 30,  # US transformer lead time
     "pue_average": 1.4,

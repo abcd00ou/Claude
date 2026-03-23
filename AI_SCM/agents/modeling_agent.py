@@ -205,16 +205,14 @@ def model_hardware_demand(year_offset=0, scenario="base", gpu_model="H100_SXM5")
 
 def build_scenario_table():
     """
-    Build 2025-2027 demand forecast across all scenarios.
-
-    Returns:
-        Nested dict: scenario -> year -> metrics
+    수요 예측 테이블 생성: 2025(실적) / 2026(현재) / 2027-2028(예측)
+    2024는 베이스라인이므로 테이블에서 제외 (과거 실적은 seed_data 참조)
     """
     table = {}
 
     for scenario in ["bear", "base", "bull"]:
         table[scenario] = {}
-        for year_offset in range(0, 4):  # 2024, 2025, 2026, 2027
+        for year_offset in range(1, 5):  # 2025, 2026, 2027, 2028
             year = 2024 + year_offset
             metrics = model_hardware_demand(year_offset, scenario)
             table[scenario][str(year)] = metrics
@@ -223,19 +221,19 @@ def build_scenario_table():
 
 
 def compute_current_snapshot():
-    """Compute current (2025) market snapshot."""
-    return model_hardware_demand(year_offset=1, scenario="base")
+    """현재 시점(2026년 Q1) 시장 스냅샷 계산. 기준: 2024 베이스라인 + 2년 성장."""
+    return model_hardware_demand(year_offset=config.CURRENT_YEAR_OFFSET, scenario="base")
 
 
 def run(market_state=None):
     """Run the modeling agent and return quantitative analysis."""
     print("[ModelingAgent] Running quantitative demand models...")
 
-    # Current snapshot (2025)
+    # 현재 스냅샷 (2026년 Q1 기준)
     current = compute_current_snapshot()
-    print(f"  [ModelingAgent] 2025 base GPU demand: {current['gpu_count_fmt']} GPUs")
-    print(f"  [ModelingAgent] 2025 base HBM demand: {current['hbm_demand_fmt']}")
-    print(f"  [ModelingAgent] 2025 base Power demand: {current['power_demand_fmt']}")
+    print(f"  [ModelingAgent] {config.CURRENT_YEAR} base GPU demand: {current['gpu_count_fmt']} GPUs")
+    print(f"  [ModelingAgent] {config.CURRENT_YEAR} base HBM demand: {current['hbm_demand_fmt']}")
+    print(f"  [ModelingAgent] {config.CURRENT_YEAR} base Power demand: {current['power_demand_fmt']}")
 
     # Full scenario table 2024-2027
     scenario_table = build_scenario_table()
@@ -257,18 +255,23 @@ def run(market_state=None):
             "power_mw": power_demand(gpu_h100, "H100_SXM5"),
         }
 
-    # GPU mix modeling (H100 vs B200 transition)
-    gpu_mix_2025 = {
-        "H100_SXM5": {"share": 0.60, "description": "Legacy fleet, still dominant"},
-        "H200_SXM5": {"share": 0.20, "description": "Transition model"},
-        "B200_SXM6": {"share": 0.20, "description": "Blackwell ramp begins"},
+    # GPU 믹스 (2026년 Q1 현재: B200이 신규 출하 주력, H100은 설치베이스 잔존)
+    gpu_mix_2026 = {
+        "H100_SXM5": {"share": 0.35, "description": "레거시 설치베이스 잔존, 신규 출하 감소"},
+        "H200_SXM5": {"share": 0.20, "description": "전환 모델, 일부 클라우드 선호"},
+        "B200_SXM6": {"share": 0.35, "description": "신규 출하 주력 (Blackwell 본격 ramping)"},
+        "GB200_NVL72": {"share": 0.10, "description": "대형 클러스터용, 수요 급증"},
     }
 
+    curr_yr = config.CURRENT_YEAR
     result = {
-        "current_snapshot_2025": current,
+        "current_snapshot": current,           # 현재(2026) 스냅샷
+        "current_snapshot_2025": current,      # 하위호환 유지
         "scenario_table": scenario_table,
         "service_breakdown_2024": service_breakdown,
-        "gpu_mix_2025": gpu_mix_2025,
+        "gpu_mix_current": gpu_mix_2026,
+        "as_of_date": config.AS_OF_DATE,
+        "current_year": curr_yr,
         "model_parameters": {
             "default_gpu": "H100_SXM5",
             "utilization": 0.85,
@@ -277,11 +280,11 @@ def run(market_state=None):
             "avg_context_tokens": 32000,
         },
         "key_insights": [
-            f"2025 total token demand (base): {scenario_table['base']['2025']['total_tokens_per_day_fmt']}/day",
-            f"2025 GPU demand (base): {scenario_table['base']['2025']['gpu_count_fmt']} H100-equivalent",
-            f"2025 HBM demand (base): {scenario_table['base']['2025']['hbm_demand_fmt']}",
-            f"2026 bull case tokens: {scenario_table['bull']['2026']['total_tokens_per_day_fmt']}/day",
-            f"2027 bull case GPU demand: {scenario_table['bull']['2027']['gpu_count_fmt']}",
+            f"{curr_yr} 현재 총 토큰 수요 (base): {scenario_table['base'][str(curr_yr)]['total_tokens_per_day_fmt']}/day",
+            f"{curr_yr} GPU 수요 (base): {scenario_table['base'][str(curr_yr)]['gpu_count_fmt']} H100-환산",
+            f"{curr_yr} HBM 수요 (base): {scenario_table['base'][str(curr_yr)]['hbm_demand_fmt']}",
+            f"2027 bull case 토큰: {scenario_table['bull']['2027']['total_tokens_per_day_fmt']}/day",
+            f"2028 bull case GPU: {scenario_table['bull']['2028']['gpu_count_fmt']}",
         ],
     }
 

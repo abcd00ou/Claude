@@ -387,7 +387,7 @@ def generate_html_report(data_results, mapping_results, modeling_results,
 
   <!-- SECTION 6: SCENARIO FORECAST -->
   <div class="section">
-    <div class="section-title">섹션 6 &nbsp;|&nbsp; 2025-2027 수요 예측 시나리오</div>
+    <div class="section-title">섹션 6 &nbsp;|&nbsp; 2025-2028 수요 예측 시나리오 (기준일: 2026-03-24)</div>
     {forecast_html}
   </div>
 
@@ -507,13 +507,13 @@ def _build_demand_table(modeling_results):
     if not modeling_results:
         return "<p>Modeling data unavailable</p>"
 
-    snap = modeling_results.get("current_snapshot_2025", {})
+    snap = modeling_results.get("current_snapshot", modeling_results.get("current_snapshot_2025", {}))
     service_breakdown = modeling_results.get("service_breakdown_2024", {})
 
     # Summary metrics
     metrics_html = '<div class="card-grid">'
     metrics = [
-        ("Total Tokens/Day", snap.get("total_tokens_per_day_fmt", "N/A"), "2025 Base estimate"),
+        ("Total Tokens/Day", snap.get("total_tokens_per_day_fmt", "N/A"), "2026년 Q1 현재 (Base)"),
         ("GPU Required", snap.get("gpu_count_fmt", "N/A"), "H100-equivalent"),
         ("HBM Demand", snap.get("hbm_demand_fmt", "N/A"), "Total installed"),
         ("Power Required", snap.get("power_demand_fmt", "N/A"), "Data center MW"),
@@ -586,7 +586,7 @@ def _build_bottleneck_section(bottleneck_results):
     next_b = bottleneck_results.get("next_bottleneck", "CoWoS")
     after_b = bottleneck_results.get("after_bottleneck", "Power_DC")
     resolution = bottleneck_results.get("resolution_timeline_months", 18)
-    inv_window = bottleneck_results.get("investment_window", "H2 2025")
+    inv_window = bottleneck_results.get("investment_window", "H1 2026 ~ H1 2027")
 
     primary_color = SEVERITY_COLORS.get(primary_sev, "#f44336")
 
@@ -676,7 +676,7 @@ def _build_capex_section(data_results):
     if not capex_data:
         capex_data = config.HYPERSCALER_CAPEX
 
-    years = ["2022", "2023", "2024", "2025", "2026_est"]
+    years = ["2022", "2023", "2024", "2025", "2026"]
     max_val = 0
     for company, year_data in capex_data.items():
         for y in years:
@@ -689,7 +689,7 @@ def _build_capex_section(data_results):
     for y in years:
         label = y.replace("_est", "E")
         html += f'<th style="text-align: center;">{label}</th>'
-    html += '<th>Bar (2025)</th></tr></thead><tbody>'
+    html += '<th>Bar (2026)</th></tr></thead><tbody>'
 
     company_order = ["Amazon", "Microsoft", "Google", "Meta", "xAI"]
     company_colors = {
@@ -705,8 +705,8 @@ def _build_capex_section(data_results):
     for company in company_order:
         year_data = capex_data.get(company, {})
         color = company_colors.get(company, COLORS["accent_cyan"])
-        capex_2025 = year_data.get("2025", 0)
-        bar = make_ascii_bar(capex_2025, max_val, 20)
+        capex_2026 = year_data.get("2026", year_data.get("2025", 0))
+        bar = make_ascii_bar(capex_2026, max_val, 20)
 
         html += f'<tr><td style="font-weight: 600; color: {color};">{company}</td>'
         for y in years:
@@ -724,8 +724,8 @@ def _build_capex_section(data_results):
     for y in years:
         total = total_by_year[y]
         html += f'<td style="text-align: center; color: {COLORS["accent_cyan"]};">${total:.0f}B</td>'
-    total_2025 = total_by_year.get("2025", 0)
-    bar = make_ascii_bar(total_2025, max_val * 5, 20)
+    total_2026 = total_by_year.get("2026", total_by_year.get("2025", 0))
+    bar = make_ascii_bar(total_2026, max_val * 5, 20)
     html += f'<td style="font-family: monospace; color: {COLORS["accent_cyan"]}; font-size: 12px;">{bar}</td></tr>'
 
     html += '</tbody></table></div>'
@@ -735,9 +735,9 @@ def _build_capex_section(data_results):
     <div class="card" style="margin-top: 12px; background: {COLORS['bg_card2']};">
       <div style="font-size: 13px; color: {COLORS['text_secondary']};">
         <strong style="color: {COLORS['accent_cyan']};">Key Insight:</strong>
-        Big 5 combined CapEx 2022: ~$154B → 2025: ~$340B → 2026E: ~$392B.
+        Big 5 합산 CapEx: 2022 ~$154B → 2025 ~$340B(실적) → 2026 ~$407B(가이던스).
         2-year CAGR: ~30%. AI infrastructure spending has become the largest single CapEx category in tech history.
-        Amazon leads at $105B (2025), driven by AWS + Alexa AI infrastructure.
+        Amazon 최대 $105B(2025실적) → $120B(2026가이던스). AWS + AI 인프라 주도.
       </div>
     </div>"""
 
@@ -839,7 +839,7 @@ def _build_signals_section(strategy_results):
 
 
 def _build_forecast_section(modeling_results):
-    """Build 2025-2027 scenario forecast section."""
+    """2025-2028 수요 예측 섹션 생성 (2026 현재 기준)."""
     if not modeling_results:
         return "<p>Modeling data unavailable</p>"
 
@@ -859,7 +859,7 @@ def _build_forecast_section(modeling_results):
         ("ssd_demand_fmt", "SSD Access/Day"),
     ]
 
-    years = ["2024", "2025", "2026", "2027"]
+    years = ["2025", "2026", "2027", "2028"]
 
     html = f'<div class="card"><table>'
     html += '<thead><tr><th>Scenario</th><th>Metric</th>'
@@ -1207,9 +1207,9 @@ def generate_pptx(data_results, mapping_results, modeling_results,
                  0.3, 0.1, 12.73, 0.5, font_size=20, bold=True, color=WHITE)
 
     if modeling_results:
-        snap = modeling_results.get("current_snapshot_2025", {})
+        snap = modeling_results.get("current_snapshot", modeling_results.get("current_snapshot_2025", {}))
         metrics_pptx = [
-            ("Tokens/Day (2025 Base)", snap.get("total_tokens_per_day_fmt", "N/A")),
+            ("Tokens/Day (2026 현재 Base)", snap.get("total_tokens_per_day_fmt", "N/A")),
             ("GPU Required (H100 eq.)", snap.get("gpu_count_fmt", "N/A")),
             ("HBM Demand", snap.get("hbm_demand_fmt", "N/A")),
             ("Power Required", snap.get("power_demand_fmt", "N/A")),
@@ -1322,7 +1322,7 @@ def generate_pptx(data_results, mapping_results, modeling_results,
         all_scores = bottleneck_results.get("all_scores", {})
         sorted_scores = sorted(all_scores.items(), key=lambda x: x[1]["utilization"], reverse=True)
 
-        add_text_box(slide4, "Component Utilization (2025)",
+        add_text_box(slide4, "레이어별 가동률 (2026년 Q1 현재)",
                      0.3, 3.1, 12.73, 0.35, font_size=12, bold=True, color=ACCENT)
 
         bar_colors = {
@@ -1355,7 +1355,7 @@ def generate_pptx(data_results, mapping_results, modeling_results,
                  0.3, 0.1, 12.73, 0.5, font_size=20, bold=True, color=WHITE)
 
     capex_data = config.HYPERSCALER_CAPEX
-    years_pptx = ["2022", "2023", "2024", "2025", "2026_est"]
+    years_pptx = ["2022", "2023", "2024", "2025", "2026"]
     headers_pptx = ["Company"] + [y.replace("_est", "E") for y in years_pptx] + ["CAGR 22-25"]
     col_w_pptx = [2.0, 1.7, 1.7, 1.7, 1.7, 1.7, 1.5]
     x_start_pptx = 0.3
@@ -1387,8 +1387,8 @@ def generate_pptx(data_results, mapping_results, modeling_results,
         x_cur += col_w_pptx[0]
 
         v_2022 = year_data.get("2022", 0)
-        v_2025 = year_data.get("2025", 0)
-        cagr = ((v_2025 / v_2022) ** (1/3) - 1) * 100 if v_2022 > 0 else 0
+        v_2026 = year_data.get("2026", year_data.get("2025", 0))
+        cagr = ((v_2026 / v_2022) ** (1/4) - 1) * 100 if v_2022 > 0 else 0
 
         for i, y_key in enumerate(years_pptx):
             val = year_data.get(y_key, "-")
@@ -1414,7 +1414,7 @@ def generate_pptx(data_results, mapping_results, modeling_results,
         x_cur += col_w_pptx[i+1]
 
     add_text_box(slide5,
-                 "Big 5 combined CapEx: $154B (2022) → $340B (2025) → $392B (2026E)  |  "
+                 "Big 5 합산 CapEx: $154B (2022) → $340B (2025실적) → $407B (2026가이던스)  |  "
                  "AI infrastructure is now the largest single CapEx category in tech history",
                  0.3, 4.3, 12.73, 0.5, font_size=10, color=GRAY)
 
@@ -1506,12 +1506,12 @@ def generate_pptx(data_results, mapping_results, modeling_results,
     # ---- Slide 8: 2025-2027 Forecast ----
     slide8 = add_slide()
     add_rect(slide8, 0, 0, 13.33, 0.6, RGBColor(0x0d, 0x47, 0xa1))
-    add_text_box(slide8, "2025-2027 AI Demand Forecast Scenarios",
+    add_text_box(slide8, "2026-2028 AI 수요 예측 시나리오 (기준일: 2026-03-24)",
                  0.3, 0.1, 12.73, 0.5, font_size=20, bold=True, color=WHITE)
 
     if modeling_results:
         scenario_table = modeling_results.get("scenario_table", {})
-        years_f = ["2024", "2025", "2026", "2027"]
+        years_f = ["2025", "2026", "2027", "2028"]
         metrics_f = [
             ("total_tokens_per_day_fmt", "Tokens/Day"),
             ("gpu_count_fmt", "GPU Required"),
