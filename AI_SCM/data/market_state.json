@@ -1,0 +1,522 @@
+{
+  "events": [
+    {
+      "event": "capex",
+      "company": "Microsoft",
+      "value": 80000000000.0,
+      "year": "2025",
+      "source": "seed_data",
+      "confidence": "high"
+    },
+    {
+      "event": "capex",
+      "company": "Microsoft",
+      "value": 90000000000.0,
+      "year": "2026",
+      "source": "seed_data",
+      "confidence": "estimate"
+    },
+    {
+      "event": "capex",
+      "company": "Google",
+      "value": 75000000000.0,
+      "year": "2025",
+      "source": "seed_data",
+      "confidence": "high"
+    },
+    {
+      "event": "capex",
+      "company": "Google",
+      "value": 85000000000.0,
+      "year": "2026",
+      "source": "seed_data",
+      "confidence": "estimate"
+    },
+    {
+      "event": "capex",
+      "company": "Amazon",
+      "value": 105000000000.0,
+      "year": "2025",
+      "source": "seed_data",
+      "confidence": "high"
+    },
+    {
+      "event": "capex",
+      "company": "Amazon",
+      "value": 120000000000.0,
+      "year": "2026",
+      "source": "seed_data",
+      "confidence": "estimate"
+    },
+    {
+      "event": "capex",
+      "company": "Meta",
+      "value": 65000000000.0,
+      "year": "2025",
+      "source": "seed_data",
+      "confidence": "high"
+    },
+    {
+      "event": "capex",
+      "company": "Meta",
+      "value": 72000000000.0,
+      "year": "2026",
+      "source": "seed_data",
+      "confidence": "estimate"
+    },
+    {
+      "event": "capex",
+      "company": "xAI",
+      "value": 15000000000.0,
+      "year": "2025",
+      "source": "seed_data",
+      "confidence": "high"
+    },
+    {
+      "event": "capex",
+      "company": "xAI",
+      "value": 25000000000.0,
+      "year": "2026",
+      "source": "seed_data",
+      "confidence": "estimate"
+    },
+    {
+      "event": "supply_constraint",
+      "component": "HBM",
+      "severity": "critical",
+      "utilization": 0.95,
+      "detail": "HBM at 95% utilization",
+      "source": "seed_data"
+    },
+    {
+      "event": "supply_constraint",
+      "component": "CoWoS",
+      "severity": "critical",
+      "utilization": 0.92,
+      "detail": "CoWoS at 92% utilization",
+      "source": "seed_data"
+    },
+    {
+      "event": "supply_constraint",
+      "component": "GPU",
+      "severity": "critical",
+      "utilization": 0.88,
+      "detail": "GPU at 88% utilization",
+      "source": "seed_data"
+    },
+    {
+      "event": "supply_constraint",
+      "component": "Power_DC",
+      "severity": "high",
+      "utilization": 0.78,
+      "detail": "Power_DC at 78% utilization",
+      "source": "seed_data"
+    },
+    {
+      "event": "supply_constraint",
+      "component": "Foundry_Advanced",
+      "severity": "high",
+      "utilization": 0.82,
+      "detail": "Foundry_Advanced at 82% utilization",
+      "source": "seed_data"
+    },
+    {
+      "event": "supply_constraint",
+      "component": "ASIC",
+      "severity": "high",
+      "utilization": 0.7,
+      "detail": "ASIC at 70% utilization",
+      "source": "seed_data"
+    },
+    {
+      "event": "demand_signal",
+      "headline": "ChatGPT reaches 100M users",
+      "date": "2023-Q2",
+      "impact": "Triggers GPU demand surge",
+      "source": "seed_data"
+    },
+    {
+      "event": "supply_constraint",
+      "headline": "NVIDIA H100 allocation waitlist 12+ months",
+      "date": "2023-Q4",
+      "impact": "GPU supply constraint established",
+      "source": "seed_data"
+    },
+    {
+      "event": "supply_update",
+      "headline": "SK Hynix HBM3e wins majority NVIDIA H200 supply",
+      "date": "2024-Q1",
+      "impact": "HBM market share solidified",
+      "source": "seed_data"
+    },
+    {
+      "event": "capex",
+      "headline": "Microsoft announces $80B AI CapEx for FY2025",
+      "date": "2024-Q2",
+      "impact": "Largest single CapEx announcement in tech history",
+      "source": "seed_data"
+    },
+    {
+      "event": "supply_constraint",
+      "headline": "TSMC CoWoS capacity becomes critical bottleneck",
+      "date": "2024-Q3",
+      "impact": "Limits GPU shipment velocity",
+      "source": "seed_data"
+    },
+    {
+      "event": "supply_update",
+      "headline": "NVIDIA Blackwell (B200/GB200) launch delayed then ramping",
+      "date": "2024-Q4",
+      "impact": "H200 transition bridge period",
+      "source": "seed_data"
+    },
+    {
+      "event": "demand_signal",
+      "headline": "UAE announces $100B AI investment partnership",
+      "date": "2025-Q1",
+      "impact": "Sovereign AI demand wave begins",
+      "source": "seed_data"
+    },
+    {
+      "event": "supply_constraint",
+      "headline": "Vertiv and Eaton capacity sold out through 2026",
+      "date": "2025-Q2",
+      "impact": "Power infrastructure bottleneck emerging",
+      "source": "seed_data"
+    },
+    {
+      "event": "supply_update",
+      "headline": "GB200 NVL72 rack shipments ramping",
+      "date": "2025-Q3",
+      "impact": "Next-gen AI cluster deployment begins",
+      "source": "seed_data"
+    },
+    {
+      "event": "capex",
+      "headline": "Total AI CapEx projected $500B+ for 2026",
+      "date": "2026-Q1",
+      "impact": "AI infrastructure spend becomes largest capex category globally",
+      "source": "seed_data"
+    }
+  ],
+  "hyperscaler_capex": {
+    "Microsoft": {
+      "2022": 22,
+      "2023": 28,
+      "2024": 55,
+      "2025": 80,
+      "2026_est": 90
+    },
+    "Google": {
+      "2022": 25,
+      "2023": 32,
+      "2024": 52,
+      "2025": 75,
+      "2026_est": 85
+    },
+    "Amazon": {
+      "2022": 38,
+      "2023": 48,
+      "2024": 75,
+      "2025": 105,
+      "2026_est": 120
+    },
+    "Meta": {
+      "2022": 31,
+      "2023": 28,
+      "2024": 37,
+      "2025": 65,
+      "2026_est": 72
+    },
+    "xAI": {
+      "2022": 0,
+      "2023": 0,
+      "2024": 6,
+      "2025": 15,
+      "2026_est": 25
+    }
+  },
+  "gpu_shipments": {
+    "NVIDIA_H100": {
+      "2023": 500000,
+      "2024": 3000000,
+      "2025E": 5000000,
+      "2026E": 7000000
+    },
+    "NVIDIA_B200": {
+      "2024": 50000,
+      "2025E": 1500000,
+      "2026E": 4000000
+    },
+    "AMD_MI300X": {
+      "2024": 200000,
+      "2025E": 600000,
+      "2026E": 1200000
+    },
+    "notes": "H100: 3M units 2024 per analyst estimates; B200 ramp starts H2 2025"
+  },
+  "hbm_market": {
+    "market_size_usd_bn": {
+      "2022": 8,
+      "2023": 14,
+      "2024": 22,
+      "2025E": 35,
+      "2026E": 55
+    },
+    "market_share_2024": {
+      "SK_Hynix": 0.5,
+      "Samsung": 0.4,
+      "Micron": 0.1
+    },
+    "price_per_gb_usd": {
+      "HBM2e": 8,
+      "HBM3": 14,
+      "HBM3e": 18
+    },
+    "demand_growth_yoy": 2.5,
+    "yield_rate_cowos": 0.75
+  },
+  "capacity_utilization": {
+    "HBM": 0.95,
+    "CoWoS": 0.92,
+    "GPU": 0.88,
+    "Power_DC": 0.78,
+    "Networking": 0.65,
+    "DRAM": 0.55,
+    "SSD": 0.4,
+    "CPU": 0.45,
+    "Foundry_Advanced": 0.82,
+    "ASIC": 0.7,
+    "Edge_AI": 0.5
+  },
+  "token_demand": {
+    "ChatGPT": {
+      "tokens_day_2024": 10000000000000,
+      "growth_rate_yoy": 3.0
+    },
+    "Claude": {
+      "tokens_day_2024": 2000000000000,
+      "growth_rate_yoy": 4.0
+    },
+    "Gemini": {
+      "tokens_day_2024": 3000000000000,
+      "growth_rate_yoy": 3.5
+    },
+    "Llama_OSS": {
+      "tokens_day_2024": 5000000000000,
+      "growth_rate_yoy": 5.0
+    },
+    "Other": {
+      "tokens_day_2024": 5000000000000,
+      "growth_rate_yoy": 3.0
+    },
+    "total_2024_tokens_per_day": 25000000000000,
+    "notes": "Estimates based on public statements, analyst reports. ChatGPT ~100M DAU * 100K tokens/day"
+  },
+  "cowos_capacity": {
+    "tsmc_wpm": {
+      "2023": 35000,
+      "2024": 50000,
+      "2025E": 80000,
+      "2026E": 120000
+    },
+    "utilization": {
+      "2024": 0.92,
+      "2025E": 0.88
+    },
+    "lead_time_months": 18,
+    "notes": "CoWoS = Chip on Wafer on Substrate, required for HBM+GPU integration"
+  },
+  "datacenter_power": {
+    "global_gw": {
+      "2022": 30,
+      "2023": 40,
+      "2024": 50,
+      "2025E": 70,
+      "2026E": 100
+    },
+    "ai_workload_fraction": 0.4,
+    "average_pue": 1.4,
+    "transformer_lead_time_months": 30,
+    "hyperscaler_committed_gw_2025": 25,
+    "notes": "Transformer shortage persists through 2026; grid interconnection 3-5yr"
+  },
+  "investment_signals_seed": [
+    {
+      "company": "SK Hynix",
+      "ticker": "000660.KS",
+      "layer": "HBM",
+      "signal": "Strong Buy",
+      "thesis": "HBM3e dominant supplier, 95% utilization, 2.5x demand growth, GB200 key beneficiary",
+      "catalyst": "GB200 NVL72 rack ramp H2 2025",
+      "risk": "Samsung capacity catch-up, CoWoS yield risk, Samsung HBM4 competition",
+      "timeframe": "6-18 months"
+    },
+    {
+      "company": "Micron",
+      "ticker": "MU",
+      "layer": "HBM",
+      "signal": "Buy",
+      "thesis": "HBM3e market share gain from 10% to 20%+, US CHIPS Act beneficiary",
+      "catalyst": "NVIDIA HBM supply diversification",
+      "risk": "Execution risk, SK Hynix competitive moat",
+      "timeframe": "12-24 months"
+    },
+    {
+      "company": "TSMC",
+      "ticker": "TSM",
+      "layer": "Packaging/Foundry",
+      "signal": "Buy",
+      "thesis": "CoWoS monopoly for AI packaging, foundry pricing power at 3nm/2nm",
+      "catalyst": "CoWoS expansion 50K->80K wpm 2025",
+      "risk": "Geopolitical Taiwan risk, Intel Foundry competition",
+      "timeframe": "12-36 months"
+    },
+    {
+      "company": "Vertiv",
+      "ticker": "VRT",
+      "layer": "Power",
+      "signal": "Buy",
+      "thesis": "Data center power infrastructure bottleneck, sold out through 2026",
+      "catalyst": "Hyperscaler DC buildout acceleration",
+      "risk": "Execution risk at scale, new entrants",
+      "timeframe": "6-18 months"
+    },
+    {
+      "company": "Broadcom",
+      "ticker": "AVGO",
+      "layer": "Networking",
+      "signal": "Buy",
+      "thesis": "InfiniBand/Ethernet dominance for AI clusters, ASIC custom chip design wins",
+      "catalyst": "400G/800G upgrade cycle, custom ASIC for hyperscalers",
+      "risk": "NVIDIA NVLink competition, market saturation",
+      "timeframe": "12-24 months"
+    },
+    {
+      "company": "NVIDIA",
+      "ticker": "NVDA",
+      "layer": "GPU",
+      "signal": "Hold",
+      "thesis": "Dominant but Phase 1 largely priced in; Blackwell ramp key",
+      "catalyst": "B200/GB200 adoption, software moat (CUDA)",
+      "risk": "Valuation stretched, custom ASIC displacement, export controls",
+      "timeframe": "24+ months for next leg"
+    },
+    {
+      "company": "GE Vernova",
+      "ticker": "GEV",
+      "layer": "Power",
+      "signal": "Buy",
+      "thesis": "Gas turbine and grid equipment for AI data center power",
+      "catalyst": "DC power demand growth 50GW->100GW 2024-2026",
+      "risk": "Regulatory, permitting delays",
+      "timeframe": "12-24 months"
+    },
+    {
+      "company": "Marvell",
+      "ticker": "MRVL",
+      "layer": "Networking",
+      "signal": "Buy",
+      "thesis": "Custom ASIC and networking silicon for hyperscalers",
+      "catalyst": "Amazon Trainium3, Google TPU interconnect wins",
+      "risk": "Broadcom competition, hyperscaler insourcing",
+      "timeframe": "12-24 months"
+    }
+  ],
+  "sovereign_ai": {
+    "UAE": {
+      "investment_usd_bn": 100,
+      "timeline": "2025-2030",
+      "gpu_demand_units": 50000
+    },
+    "Saudi_Arabia": {
+      "investment_usd_bn": 40,
+      "timeline": "2024-2027",
+      "gpu_demand_units": 30000
+    },
+    "EU": {
+      "investment_usd_bn": 20,
+      "timeline": "2025-2030",
+      "gpu_demand_units": 40000
+    },
+    "Japan": {
+      "investment_usd_bn": 7,
+      "timeline": "2024-2026",
+      "gpu_demand_units": 20000
+    },
+    "India": {
+      "investment_usd_bn": 1.25,
+      "timeline": "2024-2027",
+      "gpu_demand_units": 10000
+    }
+  },
+  "key_events": [
+    {
+      "date": "2023-Q2",
+      "event": "ChatGPT reaches 100M users",
+      "impact": "Triggers GPU demand surge",
+      "category": "demand_signal"
+    },
+    {
+      "date": "2023-Q4",
+      "event": "NVIDIA H100 allocation waitlist 12+ months",
+      "impact": "GPU supply constraint established",
+      "category": "supply_constraint"
+    },
+    {
+      "date": "2024-Q1",
+      "event": "SK Hynix HBM3e wins majority NVIDIA H200 supply",
+      "impact": "HBM market share solidified",
+      "category": "supply_update"
+    },
+    {
+      "date": "2024-Q2",
+      "event": "Microsoft announces $80B AI CapEx for FY2025",
+      "impact": "Largest single CapEx announcement in tech history",
+      "category": "capex"
+    },
+    {
+      "date": "2024-Q3",
+      "event": "TSMC CoWoS capacity becomes critical bottleneck",
+      "impact": "Limits GPU shipment velocity",
+      "category": "supply_constraint"
+    },
+    {
+      "date": "2024-Q4",
+      "event": "NVIDIA Blackwell (B200/GB200) launch delayed then ramping",
+      "impact": "H200 transition bridge period",
+      "category": "supply_update"
+    },
+    {
+      "date": "2025-Q1",
+      "event": "UAE announces $100B AI investment partnership",
+      "impact": "Sovereign AI demand wave begins",
+      "category": "demand_signal"
+    },
+    {
+      "date": "2025-Q2",
+      "event": "Vertiv and Eaton capacity sold out through 2026",
+      "impact": "Power infrastructure bottleneck emerging",
+      "category": "supply_constraint"
+    },
+    {
+      "date": "2025-Q3",
+      "event": "GB200 NVL72 rack shipments ramping",
+      "impact": "Next-gen AI cluster deployment begins",
+      "category": "supply_update"
+    },
+    {
+      "date": "2026-Q1",
+      "event": "Total AI CapEx projected $500B+ for 2026",
+      "impact": "AI infrastructure spend becomes largest capex category globally",
+      "category": "capex"
+    }
+  ],
+  "last_updated": "2026-03-24",
+  "web_scraping_enabled": false,
+  "event_counts": {
+    "total": 26,
+    "from_seed": 26,
+    "from_web": 0
+  }
+}

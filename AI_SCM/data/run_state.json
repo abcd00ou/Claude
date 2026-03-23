@@ -1,0 +1,22 @@
+{
+  "last_run_start": "2026-03-24 07:45:08.281474",
+  "mode": "quick",
+  "last_run_end": "2026-03-24 07:45:08.434331",
+  "last_run_elapsed_sec": 0.152827,
+  "last_agent_status": {
+    "data": "success",
+    "mapping": "success",
+    "modeling": "success",
+    "bottleneck": "success",
+    "strategy": "success",
+    "db": "fallback",
+    "report": "success",
+    "word": "success"
+  },
+  "last_outputs": {
+    "html": "/Users/idongseong/Claude/AI_SCM/outputs/reports/ai_scm_dashboard_20260324.html",
+    "pptx": "/Users/idongseong/Claude/AI_SCM/outputs/pptx/ai_scm_20260324.pptx",
+    "word": "/Users/idongseong/Claude/AI_SCM/outputs/reports/ai_scm_study_20260324.docx",
+    "db_ok": false
+  }
+}
