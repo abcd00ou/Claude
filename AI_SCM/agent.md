@@ -20,7 +20,7 @@ python3 run.py --db-only     # DB 저장만 실행
 |---------|------|------|------|
 | Data | agents/data_agent.py | 시장 데이터 수집 (Reuters 스크래핑 + seed fallback) | market_state.json |
 | Mapping | agents/mapping_agent.py | 61개 회사 → 14개 레이어 매핑 + 투자 네트워크 그래프 | company_map + network_graph |
-| Modeling | agents/modeling_agent.py | Token→GPU→HBM→Power 정량 모델 (3개 시나리오) | scenarios (2024-2027) |
+| Modeling | agents/modeling_agent.py | Token→GPU→HBM→Power 정량 모델 (3개 시나리오) | scenarios (2025-2028) |
 | Bottleneck | agents/bottleneck_agent.py | 레이어별 가동률 스코어링, cascade 예측 | bottleneck + resolution 타임라인 |
 | Strategy | agents/strategy_agent.py | 투자 시그널 10개, Phase 로드맵, 리스크 분석 | investment_signals |
 | Report | agents/report_agent.py | HTML 대시보드 (D3.js 네트워크 그래프 포함) + PPT 8슬라이드 | HTML + PPTX |
@@ -43,12 +43,13 @@ Data → Mapping → Modeling → Bottleneck → Strategy → DB(저장) → Rep
 | SSD 수요 | SSD = RAG 토큰 × 바이트/토큰 |
 | 전력 수요 | MW = GPU × TDP × 1.3 × PUE ÷ 10⁶ |
 
-## 2025년 현재 분석 결과
+## 2026년 Q1 현재 분석 결과 (기준일: 2026-03-24)
 
-- **1차 병목**: HBM (95% 가동률) — SK Hynix 독점 수혜
-- **2차 병목**: CoWoS 패키징 (92%) — TSMC 독점
-- **투자 국면**: Phase 2 (HBM & Packaging) 진행 중
-- **Strong Buy**: SK Hynix, TSMC CoWoS, Vertiv, Broadcom
+- **1차 병목**: HBM (92% 가동률) — SK Hynix 독점 수혜, GB200 NVL72 전용 공급
+- **2차 병목**: Power_DC (85%) — 전력 인프라 병목 급부상, Vertiv/GE Vernova 수혜
+- **3차 병목**: CoWoS 패키징 (88%) — TSMC 독점, 캐파 120K wpm(2026) 확대 중
+- **투자 국면**: Phase 2~3 전환기 (HBM·패키징 → 전력 인프라)
+- **Strong Buy**: SK Hynix, TSMC CoWoS, Vertiv, GE Vernova, Broadcom
 
 ## 산출물 경로
 

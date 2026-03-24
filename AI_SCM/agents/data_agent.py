@@ -107,21 +107,24 @@ def build_market_events(seed_data):
     """Build structured market events from seed data."""
     events = []
 
-    # CapEx events
+    # CapEx events (2025 actual + 2026 guidance)
     for company, years in seed_data.get("hyperscaler_capex_usd_bn", {}).items():
+        if company.startswith("_"):
+            continue
         for year, value in years.items():
-            if year in ["2025", "2026_est"]:
+            if year in ["2025", "2026", "2026_est"]:
+                yr_clean = year.replace("_est", "")
                 events.append({
                     "event": "capex",
                     "company": company,
                     "value": value * 1e9,
-                    "year": year.replace("_est", ""),
+                    "year": yr_clean,
                     "source": "seed_data",
-                    "confidence": "high" if "_est" not in year else "estimate",
+                    "confidence": "actual" if year == "2025" else "guidance",
                 })
 
-    # Supply constraint events
-    util = seed_data.get("capacity_utilization_2025", {})
+    # Supply constraint events from current utilization
+    util = config.CURRENT_CAPACITY_UTILIZATION
     for component, util_rate in util.items():
         if util_rate >= config.BOTTLENECK_THRESHOLDS["critical"]:
             severity = "critical"
@@ -139,7 +142,7 @@ def build_market_events(seed_data):
                 "severity": severity,
                 "utilization": util_rate,
                 "detail": f"{component} at {util_rate:.0%} utilization",
-                "source": "seed_data",
+                "source": "config_current",
             })
 
     # Key timeline events
@@ -153,6 +156,54 @@ def build_market_events(seed_data):
         })
 
     return events
+
+
+def build_timeseries_summary(seed_data):
+    """과거 시계열 데이터 요약 — 시계열 분석용."""
+    ts = {}
+
+    # NVIDIA 분기 매출
+    nvidia_dc = seed_data.get("nvidia_datacenter_revenue_quarterly_usd_bn", {})
+    if nvidia_dc:
+        filtered = {k: v for k, v in nvidia_dc.items() if not k.startswith("_")}
+        ts["nvidia_datacenter_qtrly"] = filtered
+        ts["nvidia_latest_quarter_usd_bn"] = max(
+            ((q, v) for q, v in filtered.items()),
+            key=lambda x: x[0]
+        ) if filtered else None
+
+    # HBM 시장 규모
+    hbm_size = seed_data.get("hbm_market", {}).get("market_size_usd_bn", {})
+    ts["hbm_market_annual"] = {k: v for k, v in hbm_size.items() if not k.startswith("_")}
+
+    # DC 전력
+    dc_power = seed_data.get("datacenter_power", {}).get("global_gw", {})
+    ts["datacenter_power_gw"] = {k: v for k, v in dc_power.items() if not k.startswith("_")}
+
+    # 토큰 수요 연간
+    token_ann = seed_data.get("token_demand_annual_estimates", {})
+    ts["token_demand_annual"] = {k: v for k, v in token_ann.items() if not k.startswith("_")}
+
+    # 가동률 시계열
+    util_ts = seed_data.get("capacity_utilization_time_series", {})
+    ts["capacity_utilization_timeseries"] = {
+        k: v for k, v in util_ts.items() if not k.startswith("_")
+    }
+
+    # GPU 출하
+    gpu_ship = seed_data.get("gpu_shipments", {})
+    ts["gpu_shipments"] = {k: v for k, v in gpu_ship.items() if not k.startswith("_")}
+
+    # AI 모델 파라미터 트렌드
+    models = seed_data.get("ai_model_milestones", [])
+    ts["ai_model_count"] = len(models)
+    ts["ai_model_milestones_summary"] = [
+        {"date": m["date"], "model": m["model"], "org": m["org"],
+         "params": m.get("params", m.get("params_est", 0))}
+        for m in models
+    ]
+
+    return ts
 
 
 def run(quick=False):
@@ -176,6 +227,9 @@ def run(quick=False):
 
     all_events = events + web_events
 
+    # Build timeseries summary
+    timeseries = build_timeseries_summary(seed_data)
+
     # Build market state
     market_state = {
         "events": all_events,
@@ -190,7 +244,10 @@ def run(quick=False):
         "investment_signals_seed": seed_data.get("investment_signals_seed", []),
         "sovereign_ai": seed_data.get("sovereign_ai_programs", {}),
         "key_events": seed_data.get("key_events_timeline", []),
+        "ai_model_milestones": seed_data.get("ai_model_milestones", []),
+        "timeseries": timeseries,
         "last_updated": str(datetime.date.today()),
+        "as_of_date": config.AS_OF_DATE,
         "web_scraping_enabled": not quick and WEB_ENABLED,
         "event_counts": {
             "total": len(all_events),
