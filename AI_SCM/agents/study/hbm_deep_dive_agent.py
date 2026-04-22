@@ -219,10 +219,12 @@ def _quiz_section(doc, questions):
 # ──────────────────────────────────────────────────────────────
 # 메인 빌드 함수
 # ──────────────────────────────────────────────────────────────
-def build():
+def build(level=1):
     if not DOCX_AVAILABLE:
         print("  [HBM Study] python-docx 미설치")
         return None
+
+    level_prefix = {1: "", 2: "[Lv.2 심화] ", 3: "[Lv.3 전문가] "}.get(level, "")
 
     doc = Document()
     for s in doc.sections:
@@ -233,7 +235,7 @@ def build():
 
     # ── 표지 ──────────────────────────────────────────────────
     doc.add_paragraph()
-    t = doc.add_heading("HBM 심층 분석", 0)
+    t = doc.add_heading(f"{level_prefix}HBM 심층 분석", 0)
     t.alignment = WD_ALIGN_PARAGRAPH.CENTER
     s = doc.add_paragraph("High Bandwidth Memory — 기술 원리부터 투자 시그널까지")
     s.alignment = WD_ALIGN_PARAGRAPH.CENTER
@@ -695,6 +697,129 @@ def build():
     doc.add_page_break()
 
     # ══════════════════════════════════════════════════════════
+    # 레벨별 심화 섹션 (8장 복습 문제 직전)
+    # ══════════════════════════════════════════════════════════
+    if level >= 2:
+        _add_heading(doc, "심화 분석")
+        doc.add_paragraph(
+            "이 섹션은 Level 2 심화 과정으로, HBM 시장을 정량적으로 모델링하는 방법과 "
+            "SK하이닉스 HBM4 최신 로드맵을 다룹니다."
+        )
+
+        _add_heading(doc, "HBM 세대별 Bandwidth×Capacity 시장 모델", 2)
+        doc.add_paragraph(
+            "HBM의 가치는 단순 대역폭뿐 아니라 '대역폭 × 용량' 곱(BW×Cap)으로 평가해야 합니다. "
+            "이 지표는 AI 모델 크기 증가에 따른 수요를 정확히 반영합니다."
+        )
+        bw_cap_rows = [
+            ["HBM2e", "410 GB/s", "16 GB", "6,560 GB²/s", "H100 이전 세대 기준"],
+            ["HBM3",  "665 GB/s", "24 GB", "15,960 GB²/s", "H100 탑재 (8-Hi)"],
+            ["HBM3e", "1,229 GB/s", "36 GB (12-Hi)", "44,244 GB²/s", "B200 탑재, SK Hynix 독점"],
+            ["HBM4",  "~2,000 GB/s (예상)", "64 GB (16-Hi)", "~128,000 GB²/s", "2025년 하반기 샘플, 2026 양산"],
+            ["HBM4e", "~3,000 GB/s (예상)", "96 GB (16-Hi)", "~288,000 GB²/s", "2027년 이후 목표"],
+        ]
+        _add_table(doc, ["세대", "대역폭", "용량(스택당)", "BW×Cap 지수", "비고"], bw_cap_rows)
+        doc.add_paragraph(
+            "시장 모델: GPU당 HBM 탑재 스택 수 × 스택당 BW×Cap 지수 → AI 연산 성능 프록시. "
+            "B200 8스택 기준 BW×Cap = 8 × 44,244 = 353,952. "
+            "HBM4 세대 전환 시 동일 스택 수에서 성능 ~3배 향상 → GPU 수요 억제 효과 가능. "
+            "반대로 모델 크기가 BW×Cap 증가를 앞지르면 스택 수 증가 → 수요 급증."
+        )
+        doc.add_paragraph(
+            "투자 시사점: BW×Cap 지수가 세대별 2-3배 증가 → ASP도 비례 상승. "
+            "HBM3e→HBM4 전환 시 ASP +50~70% 예상 (TrendForce 추정). "
+            "SK하이닉스의 세대 전환 속도가 ASP 방어의 핵심."
+        )
+
+        _add_heading(doc, "SK하이닉스 HBM4 로드맵 최신 동향", 2)
+        doc.add_paragraph(
+            "SK하이닉스 HBM4 개발 현황 (2025-2026 로드맵):"
+        )
+        hbm4_rows = [
+            ["HBM4 기반 기술", "TSMC N5 로직 베이스다이 + 하이닉스 DRAM 스택 (이종 적층)",
+             "처음으로 파운드리(TSMC) 협업 구조 도입"],
+            ["스택 구성", "16-Hi (16단 적층), 용량 64GB/스택",
+             "HBM3e 12-Hi 대비 4단 추가 → 수율 도전"],
+            ["대역폭 목표", "~2,048 GB/s (JEDEC HBM4 표준)", "HBM3e 1,229 GB/s 대비 +67%"],
+            ["인터페이스", "2,048-bit I/O (HBM3e 동일)", "비트폭 동일, 속도 향상으로 대역폭 증가"],
+            ["양산 일정", "2026년 상반기 양산 목표",
+             "NVIDIA Rubin GPU 탑재 예정 (2026 H2)"],
+            ["경쟁사 현황", "삼성 HBM4 2025년 양산 시도 (수율 미확인), Micron 2026년 예정",
+             "SK하이닉스 6-12개월 리드 유지 전망"],
+        ]
+        _add_table(doc, ["항목", "내용", "비고"], hbm4_rows)
+        doc.add_paragraph(
+            "핵심 리스크: 16-Hi 스태킹 수율 → HBM3e 12-Hi 대비 불량률 증가 가능. "
+            "TSMC 로직 베이스다이 협업 → CoWoS 패키징 복잡도 추가 증가. "
+            "모니터링 포인트: SK하이닉스 Q3 2025 컨퍼런스 콜에서 HBM4 수율 언급 여부."
+        )
+
+    if level >= 3:
+        _add_heading(doc, "전문가 심층 분석")
+        doc.add_paragraph(
+            "이 섹션은 Level 3 전문가 과정으로, HBM4e 기술 스펙 예측, "
+            "경쟁사 TSV 특허 분석, 2027-2030 시장 전망 모델을 다룹니다."
+        )
+
+        _add_heading(doc, "HBM4e 기술 스펙 예측 + 경쟁사 TSV 특허 분석", 2)
+        doc.add_paragraph(
+            "HBM4e는 HBM4의 확장 버전으로 2027-2028년 양산이 예상됩니다. "
+            "현재 공개된 JEDEC 로드맵과 특허 출원 동향을 기반으로 스펙을 예측합니다."
+        )
+        hbm4e_rows = [
+            ["대역폭", "~3,000 GB/s", "HBM4 2,048 GB/s 대비 +47%",
+             "JEDEC HBM4e 예비 표준, 2024년 논의 시작"],
+            ["용량", "96-128 GB/스택", "16-Hi + 더 큰 다이 크기",
+             "SK Hynix 특허 US20240006334A1 관련 스택 구조"],
+            ["인터페이스", "2,048-bit 이상 또는 HBI(HBM Bridge Interface)",
+             "NVIDIA Rubin Ultra 대응",
+             "HBI: 칩간 직결 가능성 (패키징 혁신)"],
+            ["전력 효율", "I/O당 0.3 pJ 목표 (HBM4 0.4 pJ 대비 25% 개선)",
+             "전력 밀도 제한 극복",
+             "DRAM 어레이 구조 특허 변화"],
+        ]
+        _add_table(doc, ["스펙", "목표치", "근거", "참고 특허/출처"], hbm4e_rows)
+
+        doc.add_paragraph("TSV 특허 경쟁 분석:")
+        tsv_patent_rows = [
+            ["SK하이닉스", "TSV 비아 크기 미세화 (직경 4μm → 2μm 목표)",
+             "수율 한계 극복 핵심 특허 다수 보유",
+             "KR102548547B1, US11688716B2"],
+            ["삼성전자", "TSV 열 팽창 보상 구조 (CTE mismatch 해결)",
+             "고단 스태킹 시 열 응력 문제 대응",
+             "US20230307437A1"],
+            ["Micron", "TSV + 몰딩 복합 구조 (2.5D 통합용)",
+             "CoWoS 없이 직접 집적 가능성 탐색",
+             "US20240088078A1"],
+        ]
+        _add_table(doc, ["기업", "핵심 특허 방향", "전략적 의미", "대표 특허번호"], tsv_patent_rows)
+
+        _add_heading(doc, "2027-2030 HBM 시장 전망 모델", 2)
+        doc.add_paragraph(
+            "Bottom-up 수요 모델 기반 2027-2030 HBM 시장 규모 예측:"
+        )
+        forecast_rows = [
+            ["2027E", "~900만", "HBM4 주력", "$28-32", "~$420B", "공급 균형 도달"],
+            ["2028E", "~1,300만", "HBM4e 도입", "$30-35", "~$590B", "HBM4e 프리미엄 ASP"],
+            ["2029E", "~1,800만", "HBM4e 확산", "$28-33", "~$780B", "경쟁 심화로 ASP 소폭 하락"],
+            ["2030E", "~2,500만", "HBM5 초기", "$32-40", "~$1,050B", "HBM5 도입으로 ASP 재상승"],
+        ]
+        _add_table(doc, ["연도", "GPU 출하 (환산)", "주력 HBM 세대",
+                          "ASP($/GB)", "HBM 시장규모", "시장 구조"],
+                   forecast_rows)
+        doc.add_paragraph(
+            "핵심 가정: GPU 출하량 연 40% CAGR (AI 수요 지속). "
+            "HBM 탑재량 GPU당 평균 200GB (2027E) → 300GB (2030E). "
+            "Bear Case: GPU 출하 성장률 20%대로 둔화 시 시장규모 30-40% 하향. "
+            "Bull Case: Sovereign AI + 로보틱스 AI 수요 가세 시 추가 상향 여지."
+        )
+        doc.add_paragraph(
+            "투자자 관점: 2027년 이후 공급 균형 도달 → SK하이닉스 마진 압박. "
+            "단, HBM4e/HBM5 세대 전환이 다시 구조적 희소성 창출 가능. "
+            "세대 전환 기간(~12개월) 동안이 가장 높은 ASP 유지 구간 → 이 시기 매수 타이밍."
+        )
+
+    # ══════════════════════════════════════════════════════════
     # 8장. 복습 문제
     # ══════════════════════════════════════════════════════════
     _add_heading(doc, "8장. 복습 문제 — 능동적 학습")
@@ -805,15 +930,16 @@ def build():
     # ── 저장 ─────────────────────────────────────────────────
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     today_str = date.today().strftime("%Y%m%d")
-    out = OUTPUT_DIR / f"study_hbm_deep_dive_{today_str}.docx"
+    level_suffix = {1: "", 2: "_lv2", 3: "_lv3"}.get(level, "")
+    out = OUTPUT_DIR / f"study_hbm_deep_dive{level_suffix}_{today_str}.docx"
     doc.save(str(out))
     print(f"  [HBM Study] 생성 완료: {out}")
-    print(f"  [HBM Study] 8장 구성, {len(REFS)}개 참고자료, 7문항 복습 문제")
+    print(f"  [HBM Study] 8장 구성, {len(REFS)}개 참고자료, 7문항 복습 문제 (Level {level})")
     return str(out)
 
 
-def run():
-    return {"word_path": build()}
+def run(level=1):
+    return {"word_path": build(level)}
 
 
 if __name__ == "__main__":

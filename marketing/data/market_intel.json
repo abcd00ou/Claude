@@ -1,61 +1,64 @@
 {
-  "fetched_at": "2026-03-17T10:59:13.210390",
+  "fetched_at": "2026-04-22T19:43:43.669026",
   "nand_signal": "tight",
   "price_trend": "flat",
-  "price_change_pct": 7.4,
+  "price_change_pct": 3.5,
   "headlines": [
     {
-      "title": "Spiralling memory spot prices could trigger 'industry cycle collapse,' report warns",
-      "date": "2026-03-06T04:01:00+00:00",
-      "url": "https://www.msn.com/en-gb/money/other/spiralling-memory-spot-prices-could-trigger-industry-cycle-collapse-report-warns/ar-AA1XB9gR"
+      "title": "After RAM, AI boom sends SSD prices soaring",
+      "date": "2026-04-09T10:43:33+00:00",
+      "url": "https://www.newsbytesapp.com/news/science/after-ram-ai-boom-sends-ssd-prices-soaring/story"
     },
     {
-      "title": "Micron: Memory Downcycle Sooner Than Expected",
-      "date": "2026-03-16T15:32:00+00:00",
-      "url": "https://seekingalpha.com/article/4882771-micron-memory-downcycle-sooner-than-expected"
+      "title": "AI Memory Giant Hits All-Time High Amid Soaring Demand",
+      "date": "2026-04-21T18:07:00+00:00",
+      "url": "https://nz.finance.yahoo.com/news/ai-memory-giant-hits-time-153900343.html"
     },
     {
-      "title": "Samsung Could Double NAND Prices in 2026 Amid Exploding AI Demand",
-      "date": "2026-03-06T13:40:00+00:00",
-      "url": "https://windowsreport.com/samsung-could-double-nand-prices-in-2026-amid-exploding-ai-demand/"
+      "title": "DRAM prices to increase by up to 63% in Q2, NAND Flash by up to 75%, new report says",
+      "date": "2026-04-02T04:36:00+00:00",
+      "url": "https://www.tweaktown.com/news/110829/dram-prices-to-increase-by-up-to-63-percent-in-q2-nand-flash-by-up-to-75-percent-new-report-says/index.html"
     },
     {
-      "title": "China's NDRC warns memory price surge spreading across electronics supply chain",
-      "date": "2026-03-13T04:16:00+00:00",
-      "url": "https://www.digitimes.com/news/a20260310PD237/price-electronics-supply-chain-dram-2025.html"
+      "title": "AI Memory Products Market to Reach USD 92.4 Billion by 2031, Driven by Explosive Demand for HBM and AI Servers | Valuates Reports",
+      "date": "2026-04-16T14:15:00+00:00",
+      "url": "https://www.prnewswire.co.uk/news-releases/ai-memory-products-market-to-reach-usd-92-4-billion-by-2031--driven-by-explosive-demand-for-hbm-and-ai-servers--valuates-reports-302744892.html"
     },
     {
-      "title": "8 Gadgets That Could Jump In Price Due To The RAM Shortage",
-      "date": "2026-03-10T19:01:00+00:00",
-      "url": "https://www.msn.com/en-us/news/technology/8-gadgets-that-could-jump-in-price-due-to-the-ram-shortage/ar-AA1XU5qG"
+      "title": "The AI RAM shortage is also driving up SSD prices",
+      "date": "2026-04-08T23:31:00+00:00",
+      "url": "https://www.theverge.com/tech/908916/ssd-storage-shortages-price-increases"
     },
     {
-      "title": "Phison says NAND prices jumped 50% overnight as supply crunch continues",
-      "date": "2026-03-10T01:59:07+00:00",
-      "url": "https://www.digitimes.com/news/a20260309PD212/phison-nand-flash-inventory-price-2026.html"
+      "title": "As 2D NAND fades, UMC faces steep hurdles to enter a shrinking market",
+      "date": "2026-04-20T10:43:34+00:00",
+      "url": "https://www.digitimes.com/news/a20260420PD207/umc-nand-flash-price-production.html"
     },
     {
-      "title": "China's NDRC warns memory price surge spreading across electronics supply chain",
-      "date": "2026-03-14T01:59:07+00:00",
-      "url": "https://www.digitimes.com/news/a20260310PD237/price-electronics-supply-chain-dram-2025.html"
+      "title": "AI compression won't ease memory crunch, NAND shortage set to persist",
+      "date": "2026-03-29T15:00:00+00:00",
+      "url": "https://www.digitimes.com/news/a20260330PD206/phison-nand-flash-capacity-demand-price.html"
     },
     {
-      "title": "Kioxia sells out 2026 NAND capacity as AI demand tightens global memory supply",
-      "date": "2026-02-22T15:00:00+00:00",
-      "url": "https://www.digitimes.com/news/a20260223VL214/kioxia-nand-demand-2026.html"
+      "title": "Phison eyes US$1.4B fundraising to tackle severe NAND shortage in 4Q26",
+      "date": "2026-04-14T10:43:34+00:00",
+      "url": "https://www.digitimes.com/news/a20260413PD227/phison-nand-fundraising-2026-ceo.html"
     }
   ],
   "key_insights": [
-    "4% month-over-month, while 1Tb TLC flash wafers jumped 25% to $25",
-    "Samsung Could Double NAND Prices in 2026 Amid Exploding AI Demand Samsung may double NAND prices in 2026 as AI demand drives storage shortages, potentially raising SSD prices for consumers"
+    "After RAM, AI boom sends SSD prices soaring The ongoing AI RAM shortage has led to a significant surge in SSD prices, with costs doubling or even tripling since December",
+    "The company was formerly Western Digital's flash memory business that was spun off and relisted in February 2025",
+    "Limited GDDR6/7 supply will increase GPU memory costs, while NAND Flash prices may surge up to 75%, impacting SSD",
+    "The AI RAM shortage is also driving up SSD prices NAND flash is the type of memory used for SSDs, USB drives, and SD cards",
+    "As a result, NAND storage is more appealing for AI companies and consumers alike"
   ],
   "sim_adjustments": {
-    "nand_cost_delta_pct": 5.92,
-    "demand_delta_pct": -2.22,
+    "nand_cost_delta_pct": 2.8,
+    "demand_delta_pct": -1.05,
     "supply_risk": 0.25
   },
-  "market_context": "NAND 시장: 공급 부족 | 가격 트렌드: 보합 (추정 +7.4%/월) | 공급 리스크: 25%",
-  "supply_score": -5,
+  "market_context": "NAND 시장: 공급 부족 | 가격 트렌드: 보합 (추정 +3.5%/월) | 공급 리스크: 25%",
+  "supply_score": -2,
   "price_score": 0,
   "source": "web"
 }

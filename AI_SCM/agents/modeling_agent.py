@@ -138,7 +138,7 @@ def compute_total_token_demand(year_offset=0, scenario="base"):
     Compute total daily token demand across all AI services.
 
     Args:
-        year_offset: Years from 2024 baseline (0=2024, 1=2025, 2=2026)
+        year_offset: Years from BASE_YEAR baseline (0=2025, 1=2026, 2=2027)
         scenario: bear / base / bull
 
     Returns:
@@ -148,9 +148,12 @@ def compute_total_token_demand(year_offset=0, scenario="base"):
     total = 0
     breakdown = {}
 
+    base_key = f"tokens_day_{config.BASE_YEAR}"
+    fallback_key = "tokens_day_2024"
+
     for service, data in config.TOKEN_DEMAND.items():
-        baseline = data["tokens_day_2024"]
-        # growth_rate_yoy is a multiplier (3.0 = 3x per year)
+        baseline = data.get(base_key, data.get(fallback_key, 0))
+        # growth_rate_yoy is a multiplier (2.5 = 2.5x per year)
         # Apply scenario multiplier to the growth rate
         growth = data["growth_rate_yoy"] * multiplier
         # Compound growth: baseline * growth^years
@@ -182,7 +185,7 @@ def model_hardware_demand(year_offset=0, scenario="base", gpu_model="H100_SXM5")
     kv_cache_gb = memory_pressure(avg_context, concurrent)
 
     return {
-        "year": 2024 + year_offset,
+        "year": config.BASE_YEAR + year_offset,
         "scenario": scenario,
         "gpu_model": gpu_model,
         "total_tokens_per_day": total_tokens,
@@ -213,7 +216,7 @@ def build_scenario_table():
     for scenario in ["bear", "base", "bull"]:
         table[scenario] = {}
         for year_offset in range(1, 5):  # 2025, 2026, 2027, 2028
-            year = 2024 + year_offset
+            year = config.BASE_YEAR + year_offset
             metrics = model_hardware_demand(year_offset, scenario)
             table[scenario][str(year)] = metrics
 
@@ -239,13 +242,14 @@ def run(market_state=None):
     scenario_table = build_scenario_table()
 
     # Individual model outputs for each service
+    base_key = f"tokens_day_{config.BASE_YEAR}"
     service_breakdown = {}
     for service, data in config.TOKEN_DEMAND.items():
-        tokens = data["tokens_day_2024"]
+        tokens = data.get(base_key, data.get("tokens_day_2024", 0))
         gpu_h100 = token_to_gpu(tokens, "H100_SXM5")
         gpu_b200 = token_to_gpu(tokens, "B200_SXM6")
         service_breakdown[service] = {
-            "tokens_per_day_2024": tokens,
+            f"tokens_per_day_{config.BASE_YEAR}": tokens,
             "tokens_fmt": f"{tokens/1e12:.1f}T",
             "h100_equivalent": int(gpu_h100),
             "h100_fmt": f"{gpu_h100:,.0f}",
@@ -268,7 +272,8 @@ def run(market_state=None):
         "current_snapshot": current,           # 현재(2026) 스냅샷
         "current_snapshot_2025": current,      # 하위호환 유지
         "scenario_table": scenario_table,
-        "service_breakdown_2024": service_breakdown,
+        "service_breakdown_2024": service_breakdown,   # 하위호환 키 유지
+        f"service_breakdown_{config.BASE_YEAR}": service_breakdown,
         "gpu_mix_current": gpu_mix_2026,
         "as_of_date": config.AS_OF_DATE,
         "current_year": curr_yr,

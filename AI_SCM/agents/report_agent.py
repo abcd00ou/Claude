@@ -508,7 +508,8 @@ def _build_demand_table(modeling_results):
         return "<p>Modeling data unavailable</p>"
 
     snap = modeling_results.get("current_snapshot", modeling_results.get("current_snapshot_2025", {}))
-    service_breakdown = modeling_results.get("service_breakdown_2024", {})
+    base_yr = modeling_results.get("current_year", 2026) - 1  # 전년도 = 베이스라인
+    service_breakdown = modeling_results.get(f"service_breakdown_{base_yr}", modeling_results.get("service_breakdown_2024", {}))
 
     # Summary metrics
     metrics_html = '<div class="card-grid">'
@@ -529,23 +530,42 @@ def _build_demand_table(modeling_results):
         </div>"""
     metrics_html += "</div>"
 
-    # Service breakdown table
+    # Service breakdown table — source/methodology per service from config
+    import config as _cfg
+    _token_cfg = _cfg.TOKEN_DEMAND
+
+    METHODOLOGY_LABEL = {
+        "official_statement": ("공식 발언", "#4caf50"),
+        "gpu_fleet_reverse":  ("GPU fleet 역산", "#ff9800"),
+    }
+    CONFIDENCE_COLOR = lambda c: "#4caf50" if c >= 0.70 else ("#ff9800" if c >= 0.50 else "#f44336")
+
     table_html = f"""
     <div class="card" style="margin-top: 16px;">
       <table>
         <thead>
           <tr>
             <th>AI Service</th>
-            <th>Tokens/Day (2024)</th>
+            <th>Tokens/Day ({base_yr})</th>
             <th>H100 Equivalent</th>
             <th>B200 Equivalent</th>
             <th>HBM (GB)</th>
             <th>Power (MW)</th>
+            <th>방법론</th>
+            <th>신뢰도</th>
           </tr>
         </thead>
         <tbody>"""
 
     for service, data in service_breakdown.items():
+        cfg_entry = _token_cfg.get(service, {})
+        method = cfg_entry.get("methodology", "unknown")
+        conf   = cfg_entry.get("confidence", 0.0)
+        source_detail = cfg_entry.get("source_detail", "정보 없음")
+        method_label, method_color = METHODOLOGY_LABEL.get(method, (method, "#888"))
+        conf_color = CONFIDENCE_COLOR(conf)
+        conf_bar = int(conf * 10)  # 0~10 칸
+
         table_html += f"""
           <tr>
             <td style="font-weight: 600;">{service}</td>
@@ -554,11 +574,30 @@ def _build_demand_table(modeling_results):
             <td style="color: {COLORS['accent_green']};">{data.get('b200_fmt', 'N/A')}</td>
             <td>{data.get('hbm_gb', 0)/1e6:.1f}M</td>
             <td>{data.get('power_mw', 0):.1f}</td>
+            <td>
+              <span title="{source_detail}"
+                    style="background:{method_color}22; color:{method_color};
+                           padding:2px 7px; border-radius:4px; font-size:11px;
+                           border:1px solid {method_color}55; cursor:help;">
+                {method_label}
+              </span>
+            </td>
+            <td>
+              <span style="color:{conf_color}; font-size:12px; font-weight:600;">{conf:.0%}</span>
+              <span title="{source_detail}"
+                    style="display:inline-block; margin-left:4px; font-size:10px;
+                           color:#888; cursor:help;" >ⓘ</span>
+            </td>
           </tr>"""
 
     table_html += """
         </tbody>
       </table>
+      <div style="font-size:11px; color:#888; margin-top:8px; padding:0 4px;">
+        * 방법론 컬럼에 마우스를 올리면 역산 근거 상세 표시 &nbsp;|&nbsp;
+        공식 발언: Sam Altman (OpenAI) 공개 발언 기반 &nbsp;|&nbsp;
+        GPU fleet 역산: CapEx 공시 → fleet 추정 → tok/s × 가동률 × 86400s
+      </div>
     </div>"""
 
     # Model explanation
@@ -1240,7 +1279,8 @@ def generate_pptx(data_results, mapping_results, modeling_results,
 
     # Service breakdown table
     if modeling_results:
-        services = modeling_results.get("service_breakdown_2024", {})
+        _base_yr = modeling_results.get("current_year", 2026) - 1
+        services = modeling_results.get(f"service_breakdown_{_base_yr}", modeling_results.get("service_breakdown_2024", {}))
         headers = ["Service", "Tokens/Day", "H100 eq.", "Power MW"]
         col_widths = [2.0, 2.5, 2.5, 2.0]
         x_start = 0.5

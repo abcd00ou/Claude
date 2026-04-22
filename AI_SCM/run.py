@@ -36,6 +36,17 @@ bottleneck_agent = _import_agent("bottleneck_agent")
 strategy_agent   = _import_agent("strategy_agent")
 report_agent     = _import_agent("report_agent")
 
+# Supply-Demand Intelligence Engine (공시 기반 수급갭 분석)
+try:
+    earnings_agent = _import_agent("earnings_agent")
+    demand_mapper  = _import_agent("demand_mapper")
+    gap_engine     = _import_agent("gap_engine")
+    SUPPLY_INTEL_AVAILABLE = True
+except Exception as _e:
+    earnings_agent = demand_mapper = gap_engine = None
+    SUPPLY_INTEL_AVAILABLE = False
+    print(f"[WARNING] Supply-Demand Intelligence Engine 로드 실패: {_e}")
+
 try:
     db_agent = _import_agent("db_agent")
     DB_AGENT_AVAILABLE = True
@@ -97,13 +108,14 @@ def print_step(step_num, total, name):
     print("-" * 50)
 
 
-def run_full_pipeline(quick=False, report_only=False, db_only=False):
+def run_full_pipeline(quick=False, report_only=False, db_only=False, skip_supply=False):
     """Execute the full agent pipeline."""
     print_banner()
 
     run_state = load_run_state()
     run_state["last_run_start"] = str(datetime.datetime.now())
-    run_state["mode"] = "quick" if quick else ("report_only" if report_only else ("db_only" if db_only else "full"))
+    base_mode = "quick" if quick else ("report_only" if report_only else ("db_only" if db_only else "full"))
+    run_state["mode"] = base_mode + ("+skip_supply" if skip_supply else "")
 
     results = {}
     start_time = datetime.datetime.now()
@@ -144,7 +156,7 @@ def run_full_pipeline(quick=False, report_only=False, db_only=False):
     # ============================================================
     # STEP 1: Data Agent
     # ============================================================
-    total_steps = 8
+    total_steps = 11
     print_step(1, total_steps, "Data Intelligence Agent")
     if report_only:
         print("  [SKIP] Report-only mode: loading existing market state")
@@ -198,9 +210,85 @@ def run_full_pipeline(quick=False, report_only=False, db_only=False):
         results["modeling"] = "failed"
 
     # ============================================================
-    # STEP 4: Bottleneck Agent
+    # STEP 4: Earnings Agent (공급 수치 수집 — 공시 기반)
     # ============================================================
-    print_step(4, total_steps, "Bottleneck Detection Agent")
+    supply_state = demand_state = gap_report = None
+    print_step(4, total_steps, "Earnings Agent (공급 수치 수집)")
+    if SUPPLY_INTEL_AVAILABLE and not skip_supply and not report_only:
+        try:
+            supply_state = earnings_agent.run()
+            results["earnings"] = "success"
+            print(f"  [OK] Earnings agent completed")
+        except Exception as e:
+            print(f"  [ERROR] Earnings agent failed: {e}")
+            traceback.print_exc()
+            supply_state = earnings_agent.load_supply_state()
+            results["earnings"] = "fallback" if supply_state else "failed"
+            if supply_state:
+                print("  [FALLBACK] Using cached supply_state.json")
+    elif report_only:
+        supply_state = earnings_agent.load_supply_state() if SUPPLY_INTEL_AVAILABLE else None
+        results["earnings"] = "skip (report-only)"
+        print("  [SKIP] report-only mode — loading cached supply_state")
+    else:
+        results["earnings"] = "skip"
+        print("  [SKIP] supply intelligence disabled (--skip-supply)")
+
+    # ============================================================
+    # STEP 5: Demand Mapper (고객 수요 역산)
+    # ============================================================
+    print_step(5, total_steps, "Demand Mapper (고객 수요 역산)")
+    if SUPPLY_INTEL_AVAILABLE and not skip_supply and not report_only:
+        try:
+            demand_state = demand_mapper.run()
+            results["demand"] = "success"
+            print(f"  [OK] Demand mapper completed")
+        except Exception as e:
+            print(f"  [ERROR] Demand mapper failed: {e}")
+            traceback.print_exc()
+            demand_state = demand_mapper.load_demand_state()
+            results["demand"] = "fallback" if demand_state else "failed"
+            if demand_state:
+                print("  [FALLBACK] Using cached demand_state.json")
+    elif report_only:
+        demand_state = demand_mapper.load_demand_state() if SUPPLY_INTEL_AVAILABLE else None
+        results["demand"] = "skip (report-only)"
+        print("  [SKIP] report-only mode — loading cached demand_state")
+    else:
+        results["demand"] = "skip"
+        print("  [SKIP] supply intelligence disabled (--skip-supply)")
+
+    # ============================================================
+    # STEP 6: Gap Engine (수급 갭 분석)
+    # ============================================================
+    print_step(6, total_steps, "Gap Engine (수급 갭 분석)")
+    if SUPPLY_INTEL_AVAILABLE and not skip_supply and not report_only:
+        try:
+            gap_report = gap_engine.run(
+                supply_state=supply_state,
+                demand_state=demand_state,
+            )
+            results["gap"] = "success"
+            print(f"  [OK] Gap engine completed")
+        except Exception as e:
+            print(f"  [ERROR] Gap engine failed: {e}")
+            traceback.print_exc()
+            gap_report = gap_engine.load_gap_report()
+            results["gap"] = "fallback" if gap_report else "failed"
+            if gap_report:
+                print("  [FALLBACK] Using cached gap_report.json")
+    elif report_only:
+        gap_report = gap_engine.load_gap_report() if SUPPLY_INTEL_AVAILABLE else None
+        results["gap"] = "skip (report-only)"
+        print("  [SKIP] report-only mode — loading cached gap_report")
+    else:
+        results["gap"] = "skip"
+        print("  [SKIP] supply intelligence disabled (--skip-supply)")
+
+    # ============================================================
+    # STEP 7: Bottleneck Agent  (gap_report.json 자동 연동)
+    # ============================================================
+    print_step(7, total_steps, "Bottleneck Detection Agent")
     try:
         bottleneck_results = bottleneck_agent.run(
             market_state=data_results,
@@ -217,7 +305,7 @@ def run_full_pipeline(quick=False, report_only=False, db_only=False):
     # ============================================================
     # STEP 5: Strategy Agent
     # ============================================================
-    print_step(5, total_steps, "Strategy & Investment Agent")
+    print_step(8, total_steps, "Strategy & Investment Agent")
     try:
         strategy_results = strategy_agent.run(
             bottleneck_results=bottleneck_results,
@@ -236,7 +324,7 @@ def run_full_pipeline(quick=False, report_only=False, db_only=False):
     # ============================================================
     # STEP 6: DB Agent
     # ============================================================
-    print_step(6, total_steps, "DB Agent (PostgreSQL)")
+    print_step(9, total_steps, "DB Agent (PostgreSQL)")
     db_results = {"db_available": False, "db_url": "unavailable"}
     if DB_AGENT_AVAILABLE:
         try:
@@ -262,7 +350,7 @@ def run_full_pipeline(quick=False, report_only=False, db_only=False):
     # ============================================================
     # STEP 7: Report Agent
     # ============================================================
-    print_step(7, total_steps, "Report & Visualization Agent")
+    print_step(10, total_steps, "Report & Visualization Agent")
     try:
         report_results = report_agent.run(
             data_results=data_results,
@@ -282,7 +370,7 @@ def run_full_pipeline(quick=False, report_only=False, db_only=False):
     # ============================================================
     # STEP 8: Word Agent
     # ============================================================
-    print_step(8, total_steps, "Word Report Agent (한국어 학습 문서)")
+    print_step(11, total_steps, "Word Report Agent (한국어 학습 문서)")
     word_results = {"word_path": None}
     if WORD_AGENT_AVAILABLE:
         try:
@@ -341,6 +429,15 @@ def run_full_pipeline(quick=False, report_only=False, db_only=False):
 
     # Key findings
     print("\nKey Findings:")
+    if gap_report and gap_report.get("layers"):
+        layers = gap_report["layers"]
+        print("  Supply-Demand Gap:")
+        for layer_name, layer_data in layers.items():
+            ratio = layer_data.get("gap_ratio")
+            status = layer_data.get("gap_status", "?")
+            conf = layer_data.get("supply_confidence", "?")
+            ratio_str = f"{ratio:.2f}x" if isinstance(ratio, (int, float)) else "?"
+            print(f"    {layer_name:10s}: {ratio_str} ({status}) conf={conf}")
     if bottleneck_results:
         primary = bottleneck_results.get("current_bottleneck", "N/A")
         util = bottleneck_results.get("current_utilization", 0)
@@ -401,6 +498,8 @@ Examples:
                         help="Regenerate reports from last analysis results")
     parser.add_argument("--db-only", action="store_true",
                         help="DB 저장만 실행 (마지막 분석 결과 기반)")
+    parser.add_argument("--skip-supply", action="store_true",
+                        help="Supply-Demand Intelligence Engine 건너뜀 (earnings/demand/gap)")
 
     args = parser.parse_args()
 
@@ -408,6 +507,7 @@ Examples:
         quick=args.quick,
         report_only=args.report_only,
         db_only=args.db_only,
+        skip_supply=args.skip_supply,
     )
 
 

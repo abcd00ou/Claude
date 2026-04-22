@@ -1,0 +1,3512 @@
+{
+  "start_date": "2026-04-06",
+  "current_day": 2,
+  "topic_index": 6,
+  "round": 3,
+  "completed": [
+    {
+      "topic_id": "hbm_deep_dive",
+      "level": 1,
+      "date": "2026-04-06"
+    }
+  ],
+  "quiz_scores": {},
+  "last_morning_sent": "2026-04-06",
+  "last_evening_sent": "2026-04-06",
+  "history": [
+    {
+      "topic_id": "hbm_deep_dive",
+      "title": "HBM (High Bandwidth Memory) 심층 분석",
+      "num": 1,
+      "sent_at": "2026-04-06 21:58:47.944218"
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "title": "CoWoS & 첨단 패키징 기술",
+      "num": 2,
+      "sent_at": "2026-04-06 22:00:03.199018"
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "title": "AI 데이터센터 전력 인프라",
+      "num": 3,
+      "sent_at": "2026-04-06 22:30:04.129060"
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "title": "NVIDIA GPU 공급망 & 비즈니스 모델",
+      "num": 4,
+      "sent_at": "2026-04-06 23:00:03.675412"
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "title": "하이퍼스케일러 CapEx 전략 & AI 투자",
+      "num": 5,
+      "sent_at": "2026-04-06 23:30:08.966832"
+    },
+    {
+      "topic_id": "ai_networking",
+      "title": "AI 클러스터 네트워킹 (InfiniBand & Ethernet)",
+      "num": 6,
+      "sent_at": "2026-04-07 00:00:05.456437"
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "title": "Sovereign AI & 지정학적 반도체 전략",
+      "num": 7,
+      "sent_at": "2026-04-07 00:30:47.658203"
+    },
+    {
+      "topic_id": "investment_framework",
+      "title": "AI 공급망 투자 프레임워크 & 포트폴리오",
+      "num": 8,
+      "sent_at": "2026-04-07 01:00:08.633099"
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "title": "HBM (High Bandwidth Memory) 심층 분석",
+      "num": 1,
+      "sent_at": "2026-04-07 01:33:17.696536"
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "title": "CoWoS & 첨단 패키징 기술",
+      "num": 2,
+      "sent_at": "2026-04-07 02:00:11.395241"
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "title": "AI 데이터센터 전력 인프라",
+      "num": 3,
+      "sent_at": "2026-04-07 03:00:07.995714"
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "title": "NVIDIA GPU 공급망 & 비즈니스 모델",
+      "num": 4,
+      "sent_at": "2026-04-07 03:30:05.093347"
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "title": "하이퍼스케일러 CapEx 전략 & AI 투자",
+      "num": 5,
+      "sent_at": "2026-04-07 04:00:03.479605"
+    },
+    {
+      "topic_id": "ai_networking",
+      "title": "AI 클러스터 네트워킹 (InfiniBand & Ethernet)",
+      "num": 6,
+      "sent_at": "2026-04-07 04:30:03.299770"
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "title": "Sovereign AI & 지정학적 반도체 전략",
+      "num": 7,
+      "sent_at": "2026-04-07 05:00:04.496731"
+    },
+    {
+      "topic_id": "investment_framework",
+      "title": "AI 공급망 투자 프레임워크 & 포트폴리오",
+      "num": 8,
+      "sent_at": "2026-04-07 05:30:02.684670"
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "title": "HBM (High Bandwidth Memory) 심층 분석",
+      "num": 1,
+      "sent_at": "2026-04-07 06:00:03.401171"
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "title": "CoWoS & 첨단 패키징 기술",
+      "num": 2,
+      "sent_at": "2026-04-07 06:30:03.747424"
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "title": "AI 데이터센터 전력 인프라",
+      "num": 3,
+      "sent_at": "2026-04-07 07:00:03.004291"
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "title": "NVIDIA GPU 공급망 & 비즈니스 모델",
+      "num": 4,
+      "sent_at": "2026-04-07 07:30:10.378297"
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "title": "하이퍼스케일러 CapEx 전략 & AI 투자",
+      "num": 5,
+      "sent_at": "2026-04-07 08:00:02.951795"
+    },
+    {
+      "topic_id": "ai_networking",
+      "title": "AI 클러스터 네트워킹 (InfiniBand & Ethernet)",
+      "num": 6,
+      "sent_at": "2026-04-07 08:30:03.537339"
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "title": "Sovereign AI & 지정학적 반도체 전략",
+      "num": 7,
+      "sent_at": "2026-04-07 09:00:04.290789"
+    },
+    {
+      "topic_id": "investment_framework",
+      "title": "AI 공급망 투자 프레임워크 & 포트폴리오",
+      "num": 8,
+      "sent_at": "2026-04-07 09:30:04.418499"
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "title": "HBM (High Bandwidth Memory) 심층 분석",
+      "num": 1,
+      "sent_at": "2026-04-07 10:00:04.098540"
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 1,
+      "sent_at": "2026-04-07 10:30:03.753259",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 1,
+      "sent_at": "2026-04-07 11:00:03.224755",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 1,
+      "sent_at": "2026-04-07 11:30:03.546533",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 1,
+      "sent_at": "2026-04-07 12:00:04.487163",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 1,
+      "sent_at": "2026-04-07 12:30:03.739588",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 1,
+      "sent_at": "2026-04-07 13:00:03.858939",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 1,
+      "sent_at": "2026-04-07 13:30:03.759630",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 2,
+      "sent_at": "2026-04-07 14:00:02.494784",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 2,
+      "sent_at": "2026-04-07 14:30:03.100694",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 2,
+      "sent_at": "2026-04-07 15:00:03.473378",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 2,
+      "sent_at": "2026-04-07 15:30:06.510164",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 2,
+      "sent_at": "2026-04-07 16:00:04.343937",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 2,
+      "sent_at": "2026-04-07 16:30:04.808406",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 2,
+      "sent_at": "2026-04-07 17:00:02.851725",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 2,
+      "sent_at": "2026-04-07 17:30:02.748998",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-07 18:00:03.296719",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-07 18:30:03.289347",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-07 19:00:03.696202",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-07 19:30:03.094469",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-07 20:00:03.101717",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-07 20:30:03.354212",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-07 21:00:02.672054",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-07 21:30:04.379264",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-07 22:00:02.945765",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-07 22:30:04.432267",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-07 23:00:03.796526",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-07 23:30:10.772363",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-08 00:00:02.511953",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-08 00:30:04.098277",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-08 01:00:03.665265",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-08 01:30:03.934544",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-08 02:00:03.247174",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-08 02:30:03.198567",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-08 03:00:03.823198",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-08 03:30:02.434151",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-08 04:00:03.739339",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-08 04:30:04.024043",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-08 05:00:03.373028",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-08 05:30:02.925453",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-08 06:00:03.927151",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-08 06:30:04.279468",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-08 07:00:03.560667",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-08 07:30:03.404997",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-08 08:00:02.285835",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-08 08:30:03.580326",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-08 09:00:03.599513",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-08 09:30:03.339609",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-08 10:00:03.437751",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-08 10:30:04.167567",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-08 11:00:03.913315",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-08 11:30:02.447170",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-08 12:00:03.373308",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-08 12:30:03.508694",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-08 13:00:03.405006",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-08 13:30:03.509041",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-08 14:00:06.327035",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-08 14:30:02.832924",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-08 15:00:02.714223",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-08 15:30:03.128161",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-08 16:00:03.478003",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-08 16:30:18.114921",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-08 17:00:03.339837",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-08 17:30:03.517270",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-08 18:00:02.896206",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-08 18:30:02.990527",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-08 19:00:04.083077",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-08 19:30:02.985028",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-08 20:00:02.976535",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-08 20:30:02.781843",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-08 21:00:03.325092",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-08 21:30:03.684060",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-08 22:00:05.514922",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-08 22:30:07.765621",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-08 23:00:03.064585",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-08 23:30:03.143860",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-09 00:00:07.232888",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-09 00:30:05.738768",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-09 01:00:03.020075",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-09 01:30:04.814361",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-09 02:00:03.430933",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-09 02:30:03.733428",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-09 03:00:04.052608",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-09 03:30:04.315282",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-09 04:00:03.244002",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-09 04:30:03.198920",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-09 05:00:09.540824",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-09 05:30:02.884837",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-09 06:00:03.538011",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-09 06:30:04.254583",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-09 07:00:03.973402",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-09 07:30:03.651037",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-09 08:00:03.707658",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-09 08:30:03.057592",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-09 09:00:03.300606",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-09 09:30:03.119157",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-09 10:00:02.933096",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-09 10:30:03.136087",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-09 11:00:02.816869",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-09 11:30:03.776849",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-09 12:00:02.615410",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-09 12:30:03.053477",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-09 13:00:03.206028",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-09 13:30:03.012768",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-09 14:00:03.222821",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-09 14:30:03.138175",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-09 15:00:03.056857",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-09 15:30:02.865699",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-09 16:00:03.271762",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-09 16:30:04.091221",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-09 17:00:03.521081",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-09 17:30:03.776101",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-09 18:00:03.490842",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-09 18:30:04.940073",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-09 19:00:03.250881",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-09 19:30:03.630630",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-09 20:00:03.695410",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-09 20:30:03.579391",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-09 21:00:03.054308",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-09 21:30:04.040349",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-09 22:00:03.219863",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-09 22:30:03.518085",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-09 23:00:04.224011",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-09 23:30:03.387728",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-10 00:00:07.884200",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-10 00:30:03.266829",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-10 01:00:03.487597",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-10 01:30:04.593421",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-10 02:00:03.625673",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-10 02:30:02.785657",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-10 03:00:03.258990",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-10 03:30:03.480976",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-10 04:00:03.353859",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-10 04:30:03.656506",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-10 05:00:04.106643",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-10 05:30:03.948566",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-10 06:00:02.710192",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-10 06:30:04.070162",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-10 07:00:04.285682",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-10 07:30:03.187434",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-10 08:00:03.434489",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-10 08:30:03.651542",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-10 09:00:03.651283",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-10 09:30:03.422633",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-10 10:00:03.610759",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-10 10:30:03.700538",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-10 11:00:02.636484",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-10 11:30:03.988978",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-10 12:00:02.758791",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-10 12:30:03.587974",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-10 13:00:03.253243",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-10 13:30:03.683625",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-10 14:00:03.365037",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-10 14:30:03.602886",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-10 15:00:04.116801",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-10 15:30:03.296465",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-10 16:00:02.794743",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-10 16:30:03.057879",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-10 17:00:02.722947",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-10 17:30:03.513217",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-10 18:00:03.098625",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-10 18:30:03.195756",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-10 19:00:03.504966",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-10 19:30:03.944506",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-10 20:00:03.298354",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-10 20:30:03.498684",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-10 21:00:03.886501",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-10 21:30:03.476155",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-10 22:00:03.022453",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-10 22:30:03.071121",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-10 23:00:03.366899",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-10 23:30:03.408244",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-11 00:00:03.079907",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-11 00:30:03.543918",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-11 01:00:04.015940",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-11 01:30:02.918764",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-11 02:00:03.345528",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-11 02:30:03.706753",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-11 03:00:02.801470",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-11 03:30:02.834180",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-11 04:00:04.777782",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-11 04:30:03.117504",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-11 05:00:03.561593",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-11 05:30:03.420738",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-11 06:00:03.533105",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-11 06:30:03.162966",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-11 07:00:02.962075",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-11 07:30:03.344280",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-11 08:00:03.509947",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-11 08:30:03.475075",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-11 09:00:03.653977",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-11 09:30:03.187752",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-11 10:30:12.585345",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-11 11:00:04.355849",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-11 11:30:02.892773",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-11 12:00:03.113783",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-11 12:30:03.672380",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-11 13:00:03.657747",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-11 13:30:03.396915",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-11 14:00:03.226463",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-11 14:30:03.312487",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-11 15:00:03.024428",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-11 15:30:03.563059",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-11 16:00:04.031474",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-11 16:30:02.412300",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-11 17:00:03.277508",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-11 17:30:03.163113",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-11 18:00:03.479813",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-11 18:30:03.704479",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-11 19:00:03.390298",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-11 19:30:03.808654",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-11 20:00:02.748496",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-11 20:30:03.863436",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-11 21:00:05.213858",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-11 21:30:03.823997",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-11 22:00:02.879091",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-11 22:30:04.172258",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-11 23:00:02.793570",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-12 00:00:03.293366",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-12 00:30:03.098598",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-12 01:00:03.231310",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-12 01:30:04.199016",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-12 02:00:03.829679",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-12 02:30:02.752159",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-12 03:00:03.386704",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-12 03:30:03.316323",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-12 04:00:02.640946",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-12 04:30:04.019271",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-12 05:00:03.286847",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-12 05:30:03.029649",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-12 06:00:02.511703",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-12 06:30:03.125402",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-12 07:00:03.266126",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-12 07:30:02.703073",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-12 08:00:03.961913",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-12 08:30:03.248357",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-12 09:00:03.787668",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-12 09:30:03.653977",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-12 10:00:03.853700",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-12 10:30:02.501562",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-12 11:00:03.673660",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-12 11:30:03.289460",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-12 12:00:03.267081",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-12 12:30:03.817440",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-12 13:00:03.773888",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-12 13:30:02.632234",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-12 14:30:03.038116",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-12 15:00:03.173046",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-12 15:30:03.332664",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-12 16:00:03.623671",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-12 16:30:04.287963",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-12 17:00:03.472019",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-12 17:30:03.870137",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-12 18:00:04.543390",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-12 18:30:03.557708",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-12 19:00:04.095572",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-12 19:30:04.309495",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-12 20:00:03.476289",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-12 20:30:03.498331",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-12 21:30:04.446951",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-12 22:00:03.888017",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-12 22:30:05.119345",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-12 23:00:03.569049",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-12 23:30:04.484168",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-13 00:00:03.461738",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-13 00:30:03.241568",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-13 01:00:04.405710",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-13 01:30:04.789964",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-13 02:00:03.227859",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-13 02:30:03.834179",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-13 03:00:04.032389",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-13 03:30:03.872642",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-13 04:00:03.777904",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-13 04:30:03.362412",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-13 05:00:03.500265",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-13 05:30:04.361554",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-13 06:00:04.874229",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-13 06:30:03.739770",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-13 07:00:02.969293",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-13 07:30:03.583669",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-13 08:00:04.127997",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-13 08:30:04.327608",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-13 09:00:02.916320",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-13 09:30:03.698710",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-13 10:00:04.667934",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-13 10:30:03.610505",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-13 11:00:02.954232",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-13 11:30:04.504616",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-13 12:00:03.780107",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-13 12:30:04.151007",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-13 13:00:04.655618",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-13 14:00:03.827527",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-13 14:30:03.306725",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-13 15:00:04.009159",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-13 15:30:03.996664",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-13 16:00:02.722006",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-13 16:30:05.677922",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-13 17:00:04.311280",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-13 17:30:02.667246",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-13 18:30:04.219431",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-13 19:00:03.359509",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-13 19:30:04.723396",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-13 20:00:02.931142",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-13 20:30:03.259719",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-13 21:00:03.375739",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-13 21:30:03.936431",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-13 22:00:04.026951",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-13 22:30:02.531975",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-13 23:30:03.094874",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-14 00:00:03.443163",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-14 00:30:03.867968",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-14 01:30:03.085152",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-14 02:00:03.377225",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-14 02:30:03.372270",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-14 03:00:03.057921",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-14 03:30:03.615210",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-14 04:00:04.337080",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-14 04:30:04.276271",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-14 05:00:03.824129",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-14 05:30:03.282422",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-14 06:00:03.027875",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-14 06:30:03.851788",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-14 07:00:03.400113",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-14 07:30:03.424614",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-14 08:00:03.562277",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-14 08:30:03.313395",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-14 09:00:04.744687",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-14 09:30:03.618522",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-14 10:00:03.831172",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-14 10:30:02.473271",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-14 11:00:05.139940",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-14 11:30:03.935399",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-14 12:00:03.352196",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-14 12:30:03.762420",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-14 13:00:02.202035",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-14 13:30:03.111238",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-14 14:00:04.314307",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-14 14:30:05.718026",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-14 15:00:04.171636",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-14 15:30:04.165303",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-14 16:00:03.957681",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-14 16:30:03.889989",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-14 17:00:12.223038",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-14 17:30:03.359526",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-14 18:00:04.483497",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-14 18:30:03.393359",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-14 19:00:03.302454",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-14 19:30:07.045977",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-14 20:00:06.644475",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-14 20:30:06.674926",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-14 21:00:03.690906",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-14 21:30:03.963122",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-14 22:00:06.384496",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-14 22:30:04.639136",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-14 23:00:04.595625",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-14 23:30:03.730225",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-15 00:00:04.277925",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-15 00:30:03.957859",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-15 01:00:05.451339",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-15 01:30:05.534071",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-15 02:00:06.209282",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-15 02:30:03.657844",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-15 03:00:03.007441",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-15 03:30:05.452258",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-15 04:00:04.782521",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-15 04:30:04.624567",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-15 05:00:02.893737",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-15 05:30:22.424375",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-15 06:00:04.368265",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-15 06:30:05.368422",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-15 07:00:04.339324",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-15 07:30:04.063931",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-15 08:00:03.777703",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-15 08:30:03.714959",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-15 09:00:03.757241",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-15 09:30:04.322753",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-15 10:00:04.508229",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-15 10:30:04.605024",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-15 11:01:44.874555",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-15 11:30:04.660344",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-15 12:00:05.003545",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-15 12:30:04.205950",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-15 13:00:03.616233",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-15 13:30:03.948489",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-15 14:00:03.572490",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-15 14:30:03.959811",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-15 15:00:04.000116",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-15 15:30:03.326501",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-15 16:00:04.548284",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-15 16:30:03.886606",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-15 17:00:04.046597",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-15 17:30:03.357416",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-15 18:00:04.281400",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-15 19:00:04.303248",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-15 19:30:03.225248",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-15 20:00:03.130453",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-15 20:30:04.394844",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-15 21:00:04.039937",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-15 21:30:03.783548",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-15 22:00:05.387245",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-15 22:30:03.089837",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-15 23:30:03.970894",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-16 00:00:03.779815",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-16 00:30:03.688939",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-16 01:30:04.437938",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-16 02:00:04.994731",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-16 02:30:04.238945",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-16 03:00:03.157752",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-16 03:30:03.254066",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-16 04:00:04.373442",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-16 04:30:03.774957",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-16 05:00:03.863044",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-16 05:30:03.845360",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-16 06:00:04.604707",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-16 06:30:03.633102",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-16 07:00:04.279740",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-16 07:30:03.011322",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-16 08:00:02.799834",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-16 08:30:03.550842",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-16 09:00:03.500619",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-16 09:30:02.376724",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-16 10:00:04.656787",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-16 10:30:02.884732",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-16 11:00:03.962141",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-16 11:30:05.863553",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-16 12:00:03.095256",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-16 12:30:03.858127",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-16 13:00:03.302163",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-16 13:30:03.817503",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-16 14:00:03.027791",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-16 14:30:04.400319",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-16 15:00:02.937111",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-16 15:30:05.082838",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-16 16:00:03.775119",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-16 16:30:04.595043",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-16 17:00:03.118880",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-16 17:30:05.428224",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-16 18:00:02.967937",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-16 18:30:03.707607",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-16 19:00:03.145259",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-16 19:30:03.960877",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-16 20:00:04.480200",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-16 20:30:03.837194",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-16 21:00:03.775045",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-16 21:30:03.072640",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-16 22:00:02.923179",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-16 22:30:05.443568",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-16 23:00:03.661058",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-16 23:30:04.207622",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-17 00:00:11.196720",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-17 00:30:03.140415",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-17 01:00:04.836312",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-17 02:00:04.263994",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-17 02:30:03.833985",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-17 03:00:03.215341",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-17 03:30:03.111892",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-17 04:00:04.643344",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-17 05:00:03.934308",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-17 05:30:05.789503",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-17 06:00:04.674703",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-17 06:30:02.562439",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-17 07:30:04.263102",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-17 08:00:03.703219",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-17 08:30:03.405739",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-17 09:00:03.503455",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-17 09:30:03.999076",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-17 10:00:03.237047",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-17 10:39:28.052008",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-17 11:00:02.818095",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-17 11:30:03.339890",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-17 12:00:02.651830",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-17 12:30:03.734782",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-17 13:00:03.566622",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-17 13:30:03.869038",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-17 14:00:03.856610",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-17 14:30:02.729235",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-17 15:30:04.125821",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-17 16:00:03.491655",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-17 17:00:04.883579",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-17 17:30:03.512770",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-17 18:00:04.161392",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-17 18:30:03.816428",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-17 19:00:05.950537",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-17 19:30:03.040240",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-17 20:00:03.704404",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-17 20:30:03.062042",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-17 21:00:03.965340",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-17 21:30:04.700821",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-17 22:00:04.440276",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-17 22:30:03.820027",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-17 23:00:02.283123",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-18 00:00:06.270109",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-18 00:30:03.294039",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-18 01:00:03.394426",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-18 01:30:04.143561",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-18 02:00:04.236853",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-18 02:30:03.721120",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-18 03:00:04.391370",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-18 03:30:05.367237",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-18 04:00:03.908131",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-18 05:00:05.455353",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-18 05:30:03.486519",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-18 06:00:04.458081",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-18 06:30:15.824973",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-18 07:01:24.775535",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-18 07:30:03.192128",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-18 08:00:05.667196",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-18 08:30:05.300963",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-18 09:00:03.348574",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-18 09:30:02.370003",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-18 10:00:04.575051",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-18 10:30:04.066239",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-18 11:00:04.969607",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-18 11:30:03.212496",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-18 12:00:03.289891",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-18 12:30:03.465523",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-18 13:00:04.220625",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-18 14:00:04.727228",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-18 14:30:02.878969",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-18 15:00:04.296597",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-18 15:30:05.787565",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-18 16:30:03.835182",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-18 17:00:03.242890",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-18 17:30:06.272495",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-18 18:00:04.224671",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-18 18:30:04.318352",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-18 19:00:04.565689",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-18 19:30:03.085011",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-18 20:00:03.388949",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-18 20:30:02.866569",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-18 21:00:03.565747",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-18 21:30:03.778990",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-18 22:00:03.902502",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-18 22:30:03.710031",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-18 23:00:03.905968",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-18 23:30:02.845126",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-19 00:00:03.346046",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-19 00:30:04.623149",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-19 01:30:03.321558",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-19 02:00:02.702908",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-19 02:30:03.261081",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-19 03:00:03.518263",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-19 03:30:04.773992",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-19 04:00:04.054313",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-19 04:30:03.759934",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-19 05:00:04.530054",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-19 05:30:04.033796",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-19 06:00:03.269505",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-19 06:30:05.724379",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-19 07:00:03.605600",
+      "summary": ""
+    },
+    {
+      "topic_id": "sovereign_ai",
+      "round": 3,
+      "sent_at": "2026-04-19 07:30:04.894584",
+      "summary": ""
+    },
+    {
+      "topic_id": "investment_framework",
+      "round": 3,
+      "sent_at": "2026-04-19 08:00:03.661275",
+      "summary": ""
+    },
+    {
+      "topic_id": "hbm_deep_dive",
+      "round": 3,
+      "sent_at": "2026-04-19 08:30:04.577124",
+      "summary": ""
+    },
+    {
+      "topic_id": "cowos_packaging",
+      "round": 3,
+      "sent_at": "2026-04-19 09:00:04.620242",
+      "summary": ""
+    },
+    {
+      "topic_id": "power_infrastructure",
+      "round": 3,
+      "sent_at": "2026-04-19 09:30:04.587040",
+      "summary": ""
+    },
+    {
+      "topic_id": "nvidia_supply_chain",
+      "round": 3,
+      "sent_at": "2026-04-19 10:00:03.246357",
+      "summary": ""
+    },
+    {
+      "topic_id": "hyperscaler_capex",
+      "round": 3,
+      "sent_at": "2026-04-19 10:30:03.471947",
+      "summary": ""
+    },
+    {
+      "topic_id": "ai_networking",
+      "round": 3,
+      "sent_at": "2026-04-19 11:30:04.894088",
+      "summary": ""
+    }
+  ],
+  "index": 1,
+  "sent_count": 582
+}

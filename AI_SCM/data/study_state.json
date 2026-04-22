@@ -1,0 +1,245 @@
+{
+  "completed": [
+    {
+      "id": "hbm_deep_dive",
+      "title": "HBM (High Bandwidth Memory) 심화",
+      "index": 0,
+      "status": "sent",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_hbm_deep_dive_20260325.docx",
+      "run_at": "2026-03-26 06:11:00"
+    },
+    {
+      "id": "cowos_packaging",
+      "title": "CoWoS & 첨단 패키징 심화",
+      "index": 1,
+      "status": "sent",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_cowos_packaging_20260326.docx",
+      "run_at": "2026-03-26 08:34:56.004985"
+    }
+  ],
+  "last_run": "2026-03-26 19:30:03.553931",
+  "next_index": 8,
+  "history": [
+    {
+      "id": "power_infrastructure",
+      "title": "[Lv.1 기초] AI 데이터센터 전력 인프라",
+      "round": 1,
+      "level": 1,
+      "index": 2,
+      "status": "email_failed",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_power_infrastructure_20260326.docx",
+      "run_at": "2026-03-26 09:00:01.581107"
+    },
+    {
+      "id": "nvidia_supply_chain",
+      "title": "[Lv.1 기초] NVIDIA GPU 공급망 & 비즈니스 모델",
+      "round": 1,
+      "level": 1,
+      "index": 3,
+      "status": "email_failed",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_nvidia_supply_chain_20260326.docx",
+      "run_at": "2026-03-26 09:30:01.218513"
+    },
+    {
+      "id": "hyperscaler_capex",
+      "title": "[Lv.1 기초] 하이퍼스케일러 CapEx 전략 & AI 투자",
+      "round": 1,
+      "level": 1,
+      "index": 4,
+      "status": "email_failed",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_hyperscaler_capex_20260326.docx",
+      "run_at": "2026-03-26 10:00:00.878471"
+    },
+    {
+      "id": "ai_networking",
+      "title": "[Lv.1 기초] AI 클러스터 네트워킹 (InfiniBand & Ethernet)",
+      "round": 1,
+      "level": 1,
+      "index": 5,
+      "status": "email_failed",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_ai_networking_20260326.docx",
+      "run_at": "2026-03-26 10:30:01.352860"
+    },
+    {
+      "id": "sovereign_ai",
+      "title": "[Lv.1 기초] Sovereign AI & 지정학적 반도체 전략",
+      "round": 1,
+      "level": 1,
+      "index": 6,
+      "status": "sent",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_sovereign_ai_20260326.docx",
+      "run_at": "2026-03-26 11:00:04.353888"
+    },
+    {
+      "id": "investment_framework",
+      "title": "[Lv.1 기초] AI 공급망 투자 프레임워크 & 포트폴리오 전략",
+      "round": 1,
+      "level": 1,
+      "index": 7,
+      "status": "sent",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_investment_framework_20260326.docx",
+      "run_at": "2026-03-26 11:30:03.813248"
+    },
+    {
+      "id": "hbm_deep_dive",
+      "title": "[Lv.2 심화] HBM (High Bandwidth Memory)",
+      "round": 2,
+      "level": 2,
+      "index": 0,
+      "status": "sent",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_hbm_deep_dive_lv2_20260326.docx",
+      "run_at": "2026-03-26 12:00:04.512055"
+    },
+    {
+      "id": "cowos_packaging",
+      "title": "[Lv.2 심화] CoWoS & 첨단 패키징",
+      "round": 2,
+      "level": 2,
+      "index": 1,
+      "status": "sent",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_cowos_packaging_lv2_20260326.docx",
+      "run_at": "2026-03-26 12:30:04.612806"
+    },
+    {
+      "id": "power_infrastructure",
+      "title": "[Lv.2 심화] AI 데이터센터 전력 인프라",
+      "round": 2,
+      "level": 2,
+      "index": 2,
+      "status": "sent",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_power_infrastructure_lv2_20260326.docx",
+      "run_at": "2026-03-26 13:00:03.673876"
+    },
+    {
+      "id": "nvidia_supply_chain",
+      "title": "[Lv.2 심화] NVIDIA GPU 공급망 & 비즈니스 모델",
+      "round": 2,
+      "level": 2,
+      "index": 3,
+      "status": "sent",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_nvidia_supply_chain_lv2_20260326.docx",
+      "run_at": "2026-03-26 13:30:06.952967"
+    },
+    {
+      "id": "hyperscaler_capex",
+      "title": "[Lv.2 심화] 하이퍼스케일러 CapEx 전략 & AI 투자",
+      "round": 2,
+      "level": 2,
+      "index": 4,
+      "status": "sent",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_hyperscaler_capex_lv2_20260326.docx",
+      "run_at": "2026-03-26 14:00:02.854587"
+    },
+    {
+      "id": "ai_networking",
+      "title": "[Lv.2 심화] AI 클러스터 네트워킹 (InfiniBand & Ethernet)",
+      "round": 2,
+      "level": 2,
+      "index": 5,
+      "status": "sent",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_ai_networking_lv2_20260326.docx",
+      "run_at": "2026-03-26 14:30:04.661635"
+    },
+    {
+      "id": "sovereign_ai",
+      "title": "[Lv.2 심화] Sovereign AI & 지정학적 반도체 전략",
+      "round": 2,
+      "level": 2,
+      "index": 6,
+      "status": "sent",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_sovereign_ai_lv2_20260326.docx",
+      "run_at": "2026-03-26 15:00:04.072556"
+    },
+    {
+      "id": "investment_framework",
+      "title": "[Lv.2 심화] AI 공급망 투자 프레임워크 & 포트폴리오 전략",
+      "round": 2,
+      "level": 2,
+      "index": 7,
+      "status": "sent",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_investment_framework_lv2_20260326.docx",
+      "run_at": "2026-03-26 15:30:03.697399"
+    },
+    {
+      "id": "hbm_deep_dive",
+      "title": "[Lv.3 전문가] HBM (High Bandwidth Memory)",
+      "round": 3,
+      "level": 3,
+      "index": 0,
+      "status": "sent",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_hbm_deep_dive_lv3_20260326.docx",
+      "run_at": "2026-03-26 16:00:04.207093"
+    },
+    {
+      "id": "cowos_packaging",
+      "title": "[Lv.3 전문가] CoWoS & 첨단 패키징",
+      "round": 3,
+      "level": 3,
+      "index": 1,
+      "status": "sent",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_cowos_packaging_lv3_20260326.docx",
+      "run_at": "2026-03-26 16:30:07.054527"
+    },
+    {
+      "id": "power_infrastructure",
+      "title": "[Lv.3 전문가] AI 데이터센터 전력 인프라",
+      "round": 3,
+      "level": 3,
+      "index": 2,
+      "status": "sent",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_power_infrastructure_lv3_20260326.docx",
+      "run_at": "2026-03-26 17:00:04.603289"
+    },
+    {
+      "id": "nvidia_supply_chain",
+      "title": "[Lv.3 전문가] NVIDIA GPU 공급망 & 비즈니스 모델",
+      "round": 3,
+      "level": 3,
+      "index": 3,
+      "status": "sent",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_nvidia_supply_chain_lv3_20260326.docx",
+      "run_at": "2026-03-26 17:30:04.149816"
+    },
+    {
+      "id": "hyperscaler_capex",
+      "title": "[Lv.3 전문가] 하이퍼스케일러 CapEx 전략 & AI 투자",
+      "round": 3,
+      "level": 3,
+      "index": 4,
+      "status": "sent",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_hyperscaler_capex_lv3_20260326.docx",
+      "run_at": "2026-03-26 18:00:03.728242"
+    },
+    {
+      "id": "ai_networking",
+      "title": "[Lv.3 전문가] AI 클러스터 네트워킹 (InfiniBand & Ethernet)",
+      "round": 3,
+      "level": 3,
+      "index": 5,
+      "status": "sent",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_ai_networking_lv3_20260326.docx",
+      "run_at": "2026-03-26 18:30:04.584078"
+    },
+    {
+      "id": "sovereign_ai",
+      "title": "[Lv.3 전문가] Sovereign AI & 지정학적 반도체 전략",
+      "round": 3,
+      "level": 3,
+      "index": 6,
+      "status": "sent",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_sovereign_ai_lv3_20260326.docx",
+      "run_at": "2026-03-26 19:00:07.423930"
+    },
+    {
+      "id": "investment_framework",
+      "title": "[Lv.3 전문가] AI 공급망 투자 프레임워크 & 포트폴리오 전략",
+      "round": 3,
+      "level": 3,
+      "index": 7,
+      "status": "sent",
+      "docx": "/Users/idongseong/Claude/AI_SCM/outputs/reports/study_investment_framework_lv3_20260326.docx",
+      "run_at": "2026-03-26 19:30:03.553882"
+    }
+  ],
+  "round": 3
+}
