@@ -201,7 +201,7 @@ def model_hardware_demand(year_offset=0, scenario="base", gpu_model="H100_SXM5")
         "kv_cache_gb": kv_cache_gb,
         "kv_cache_fmt": f"{kv_cache_gb/1e6:.1f}PB",
         "capex_gpu_usd": capex_usd,
-        "capex_gpu_fmt": f"${capex_usd/1e12:.1f}T",
+        "capex_gpu_fmt": f"${capex_usd/1e9:.0f}B",
         "token_breakdown": {k: f"{v/1e12:.1f}T" for k, v in breakdown.items()},
     }
 
@@ -241,21 +241,27 @@ def run(market_state=None):
     # Full scenario table 2024-2027
     scenario_table = build_scenario_table()
 
-    # Individual model outputs for each service
+    # Individual model outputs for each service — current_year 기준 (snapshot과 동일 연도)
     base_key = f"tokens_day_{config.BASE_YEAR}"
+    multiplier_base = config.SCENARIOS["base"]["growth_multiplier"]
     service_breakdown = {}
     for service, data in config.TOKEN_DEMAND.items():
-        tokens = data.get(base_key, data.get("tokens_day_2024", 0))
+        baseline = data.get(base_key, data.get("tokens_day_2024", 0))
+        # current snapshot과 동일하게 CURRENT_YEAR_OFFSET 적용
+        growth = data["growth_rate_yoy"] * multiplier_base
+        tokens = baseline * (growth ** config.CURRENT_YEAR_OFFSET)
         gpu_h100 = token_to_gpu(tokens, "H100_SXM5")
         gpu_b200 = token_to_gpu(tokens, "B200_SXM6")
+        hbm_pb = gpu_to_hbm(gpu_h100, "H100_SXM5") / 1e6  # GB → PB
         service_breakdown[service] = {
-            f"tokens_per_day_{config.BASE_YEAR}": tokens,
+            f"tokens_per_day_{config.CURRENT_YEAR}": tokens,
             "tokens_fmt": f"{tokens/1e12:.1f}T",
             "h100_equivalent": int(gpu_h100),
             "h100_fmt": f"{gpu_h100:,.0f}",
             "b200_equivalent": int(gpu_b200),
             "b200_fmt": f"{gpu_b200:,.0f}",
-            "hbm_gb": gpu_to_hbm(gpu_h100, "H100_SXM5"),
+            "hbm_pb": hbm_pb,
+            "hbm_gb": gpu_to_hbm(gpu_h100, "H100_SXM5"),  # 하위호환
             "power_mw": power_demand(gpu_h100, "H100_SXM5"),
         }
 
@@ -273,7 +279,7 @@ def run(market_state=None):
         "current_snapshot_2025": current,      # 하위호환 유지
         "scenario_table": scenario_table,
         "service_breakdown_2024": service_breakdown,   # 하위호환 키 유지
-        f"service_breakdown_{config.BASE_YEAR}": service_breakdown,
+        f"service_breakdown_{config.CURRENT_YEAR}": service_breakdown,
         "gpu_mix_current": gpu_mix_2026,
         "as_of_date": config.AS_OF_DATE,
         "current_year": curr_yr,

@@ -1,8 +1,8 @@
 {
-  "last_run_start": "2026-04-22 22:07:45.430538",
+  "last_run_start": "2026-04-23 05:28:37.547070",
   "mode": "quick",
-  "last_run_end": "2026-04-22 22:07:49.022692",
-  "last_run_elapsed_sec": 3.592123,
+  "last_run_end": "2026-04-23 05:29:21.081513",
+  "last_run_elapsed_sec": 43.534399,
   "last_agent_status": {
     "data": "success",
     "mapping": "success",
@@ -17,9 +17,9 @@
     "word": "success"
   },
   "last_outputs": {
-    "html": "/Users/idongseong/Claude/AI_SCM/outputs/reports/ai_scm_dashboard_20260422.html",
-    "pptx": "/Users/idongseong/Claude/AI_SCM/outputs/pptx/ai_scm_20260422.pptx",
-    "word": "/Users/idongseong/Claude/AI_SCM/outputs/reports/ai_scm_study_20260422.docx",
+    "html": "/Users/idongseong/Claude/AI_SCM/outputs/reports/ai_scm_dashboard_20260423.html",
+    "pptx": "/Users/idongseong/Claude/AI_SCM/outputs/pptx/ai_scm_20260423.pptx",
+    "word": "/Users/idongseong/Claude/AI_SCM/outputs/reports/ai_scm_study_20260423.docx",
     "db_ok": false
   }
 }

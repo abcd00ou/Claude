@@ -1,0 +1,530 @@
+{
+  "metadata": {
+    "collected_at": "2026-04-22",
+    "source": "artificialanalysis.ai, vellum.ai, company announcements, public benchmarks",
+    "note": "Pricing in USD per 1M tokens (input/output). Speed in tokens/sec (output). Power estimates are approximate.",
+    "benchmark_notes": {
+      "GPQA_Diamond": "Graduate-level science Q&A, expert-level reasoning (0-100%)",
+      "SWE_Bench_Verified": "Real GitHub issues resolved by AI, verified subset (0-100%)",
+      "AIME_2025": "American Invitational Math Exam 2025 (0-30 problems, shown as %)",
+      "MMLU": "Massive Multitask Language Understanding - saturating frontier (0-100%)",
+      "HumanEval": "Python coding problems - largely saturated (0-100%)",
+      "Intelligence_Index": "Artificial Analysis composite score (0-100)"
+    }
+  },
+  "models": [
+    {
+      "id": "claude-opus-4-7",
+      "name": "Claude Opus 4.7",
+      "provider": "Anthropic",
+      "release_date": "2026-03",
+      "category": "frontier",
+      "context_length_k": 1000,
+      "pricing": {
+        "input_per_1m": 10.0,
+        "output_per_1m": 50.0,
+        "currency": "USD"
+      },
+      "speed_tok_per_sec": 42,
+      "benchmarks": {
+        "GPQA_Diamond": 94.2,
+        "SWE_Bench_Verified": 87.6,
+        "AIME_2025": 93.3,
+        "MMLU": 89.5,
+        "Intelligence_Index": 63
+      },
+      "specialization": ["reasoning", "coding", "long_context", "agent"],
+      "power_per_1k_output_tokens_wh": 0.8,
+      "user_volume_tier": "high",
+      "notes": "Extended thinking mode. Best-in-class coding agent performance."
+    },
+    {
+      "id": "claude-opus-4-6",
+      "name": "Claude Opus 4.6",
+      "provider": "Anthropic",
+      "release_date": "2025-12",
+      "category": "frontier",
+      "context_length_k": 200,
+      "pricing": {
+        "input_per_1m": 5.0,
+        "output_per_1m": 25.0,
+        "currency": "USD"
+      },
+      "speed_tok_per_sec": 67,
+      "benchmarks": {
+        "GPQA_Diamond": 91.3,
+        "SWE_Bench_Verified": 80.8,
+        "AIME_2025": 88.7,
+        "MMLU": 88.0,
+        "Intelligence_Index": 59
+      },
+      "specialization": ["reasoning", "coding", "research"],
+      "power_per_1k_output_tokens_wh": 0.6,
+      "user_volume_tier": "high",
+      "notes": "Current production frontier model. Strong coding and research."
+    },
+    {
+      "id": "claude-sonnet-4-6",
+      "name": "Claude Sonnet 4.6",
+      "provider": "Anthropic",
+      "release_date": "2025-10",
+      "category": "balanced",
+      "context_length_k": 200,
+      "pricing": {
+        "input_per_1m": 3.0,
+        "output_per_1m": 15.0,
+        "currency": "USD"
+      },
+      "speed_tok_per_sec": 55,
+      "benchmarks": {
+        "GPQA_Diamond": 89.9,
+        "SWE_Bench_Verified": 79.6,
+        "AIME_2025": 85.2,
+        "MMLU": 86.8,
+        "Intelligence_Index": 57
+      },
+      "specialization": ["general", "coding", "balanced"],
+      "power_per_1k_output_tokens_wh": 0.45,
+      "user_volume_tier": "very_high",
+      "notes": "Best performance-per-dollar at mid-tier. Powers Claude Code."
+    },
+    {
+      "id": "claude-haiku-4-5",
+      "name": "Claude Haiku 4.5",
+      "provider": "Anthropic",
+      "release_date": "2025-07",
+      "category": "efficient",
+      "context_length_k": 200,
+      "pricing": {
+        "input_per_1m": 0.8,
+        "output_per_1m": 4.0,
+        "currency": "USD"
+      },
+      "speed_tok_per_sec": 120,
+      "benchmarks": {
+        "GPQA_Diamond": 71.5,
+        "SWE_Bench_Verified": 52.0,
+        "AIME_2025": 55.0,
+        "MMLU": 80.5,
+        "Intelligence_Index": 42
+      },
+      "specialization": ["fast", "cost_efficient", "agentic_tasks"],
+      "power_per_1k_output_tokens_wh": 0.12,
+      "user_volume_tier": "very_high",
+      "notes": "Optimized for high-throughput agentic pipelines."
+    },
+    {
+      "id": "gpt-5-5",
+      "name": "GPT-5.5",
+      "provider": "OpenAI",
+      "release_date": "2026-03",
+      "category": "frontier",
+      "context_length_k": 1000,
+      "pricing": {
+        "input_per_1m": 11.25,
+        "output_per_1m": 56.25,
+        "currency": "USD"
+      },
+      "speed_tok_per_sec": 38,
+      "benchmarks": {
+        "GPQA_Diamond": 93.6,
+        "SWE_Bench_Verified": 58.6,
+        "AIME_2025": 95.1,
+        "MMLU": 90.1,
+        "Intelligence_Index": 60
+      },
+      "specialization": ["reasoning", "multimodal", "long_context"],
+      "power_per_1k_output_tokens_wh": 0.9,
+      "user_volume_tier": "very_high",
+      "notes": "Latest OpenAI frontier. Strong math/reasoning, weaker coding vs Claude."
+    },
+    {
+      "id": "gpt-5-4",
+      "name": "GPT-5.4",
+      "provider": "OpenAI",
+      "release_date": "2026-01",
+      "category": "frontier",
+      "context_length_k": 1050,
+      "pricing": {
+        "input_per_1m": 5.63,
+        "output_per_1m": 28.13,
+        "currency": "USD"
+      },
+      "speed_tok_per_sec": 75,
+      "benchmarks": {
+        "GPQA_Diamond": 90.8,
+        "SWE_Bench_Verified": 55.0,
+        "AIME_2025": 91.5,
+        "MMLU": 89.2,
+        "Intelligence_Index": 57
+      },
+      "specialization": ["reasoning", "general", "multimodal"],
+      "power_per_1k_output_tokens_wh": 0.7,
+      "user_volume_tier": "very_high",
+      "notes": "Production-grade reasoning model with broad capability."
+    },
+    {
+      "id": "gpt-4o-mini",
+      "name": "GPT-4o mini",
+      "provider": "OpenAI",
+      "release_date": "2024-07",
+      "category": "efficient",
+      "context_length_k": 128,
+      "pricing": {
+        "input_per_1m": 0.15,
+        "output_per_1m": 0.60,
+        "currency": "USD"
+      },
+      "speed_tok_per_sec": 180,
+      "benchmarks": {
+        "GPQA_Diamond": 40.2,
+        "SWE_Bench_Verified": 23.0,
+        "AIME_2025": 70.0,
+        "MMLU": 82.0,
+        "Intelligence_Index": 32
+      },
+      "specialization": ["cost_efficient", "fast", "general"],
+      "power_per_1k_output_tokens_wh": 0.08,
+      "user_volume_tier": "extremely_high",
+      "notes": "Dominant budget model by volume. Extremely low cost."
+    },
+    {
+      "id": "gemini-3-1-pro-preview",
+      "name": "Gemini 3.1 Pro Preview",
+      "provider": "Google",
+      "release_date": "2026-04",
+      "category": "frontier",
+      "context_length_k": 1000,
+      "pricing": {
+        "input_per_1m": 4.50,
+        "output_per_1m": 22.50,
+        "currency": "USD"
+      },
+      "speed_tok_per_sec": 128,
+      "benchmarks": {
+        "GPQA_Diamond": 92.8,
+        "SWE_Bench_Verified": 72.0,
+        "AIME_2025": 98.0,
+        "MMLU": 90.5,
+        "Intelligence_Index": 57
+      },
+      "specialization": ["multimodal", "long_context", "reasoning", "speed"],
+      "power_per_1k_output_tokens_wh": 0.6,
+      "user_volume_tier": "high",
+      "notes": "Preview release. Best-in-class speed for frontier tier."
+    },
+    {
+      "id": "gemini-3-pro",
+      "name": "Gemini 3 Pro",
+      "provider": "Google",
+      "release_date": "2026-01",
+      "category": "frontier",
+      "context_length_k": 10000,
+      "pricing": {
+        "input_per_1m": 2.0,
+        "output_per_1m": 12.0,
+        "currency": "USD"
+      },
+      "speed_tok_per_sec": 128,
+      "benchmarks": {
+        "GPQA_Diamond": 91.9,
+        "SWE_Bench_Verified": 70.5,
+        "AIME_2025": 100.0,
+        "MMLU": 89.8,
+        "Intelligence_Index": 55
+      },
+      "specialization": ["multimodal", "ultra_long_context", "reasoning"],
+      "power_per_1k_output_tokens_wh": 0.55,
+      "user_volume_tier": "high",
+      "notes": "10M token context — unique at scale. AIME 2025 perfect score."
+    },
+    {
+      "id": "gemini-flash-2-0",
+      "name": "Gemini Flash 2.0",
+      "provider": "Google",
+      "release_date": "2025-02",
+      "category": "efficient",
+      "context_length_k": 1000,
+      "pricing": {
+        "input_per_1m": 0.10,
+        "output_per_1m": 0.40,
+        "currency": "USD"
+      },
+      "speed_tok_per_sec": 320,
+      "benchmarks": {
+        "GPQA_Diamond": 62.0,
+        "SWE_Bench_Verified": 35.0,
+        "AIME_2025": 72.0,
+        "MMLU": 83.5,
+        "Intelligence_Index": 36
+      },
+      "specialization": ["speed", "cost_efficient", "multimodal", "long_context"],
+      "power_per_1k_output_tokens_wh": 0.05,
+      "user_volume_tier": "very_high",
+      "notes": "High-volume workloads. 1M context at near-zero cost."
+    },
+    {
+      "id": "deepseek-v3",
+      "name": "DeepSeek V3",
+      "provider": "DeepSeek",
+      "release_date": "2024-12",
+      "category": "frontier_value",
+      "context_length_k": 128,
+      "pricing": {
+        "input_per_1m": 0.27,
+        "output_per_1m": 1.10,
+        "currency": "USD"
+      },
+      "speed_tok_per_sec": 58,
+      "benchmarks": {
+        "GPQA_Diamond": 68.4,
+        "SWE_Bench_Verified": 42.0,
+        "AIME_2025": 75.3,
+        "MMLU": 87.1,
+        "Intelligence_Index": 44
+      },
+      "specialization": ["coding", "cost_efficient", "general"],
+      "power_per_1k_output_tokens_wh": 0.35,
+      "user_volume_tier": "high",
+      "notes": "Exceptional value. MoE architecture (671B total, 37B active). Open weights."
+    },
+    {
+      "id": "deepseek-r2",
+      "name": "DeepSeek R2",
+      "provider": "DeepSeek",
+      "release_date": "2026-02",
+      "category": "reasoning",
+      "context_length_k": 128,
+      "pricing": {
+        "input_per_1m": 0.55,
+        "output_per_1m": 2.19,
+        "currency": "USD"
+      },
+      "speed_tok_per_sec": 35,
+      "benchmarks": {
+        "GPQA_Diamond": 82.0,
+        "SWE_Bench_Verified": 60.0,
+        "AIME_2025": 97.5,
+        "MMLU": 89.5,
+        "Intelligence_Index": 54
+      },
+      "specialization": ["reasoning", "math", "coding", "cost_efficient"],
+      "power_per_1k_output_tokens_wh": 0.45,
+      "user_volume_tier": "medium",
+      "notes": "Open-source reasoning model. Near-frontier at fraction of cost. Chain-of-thought."
+    },
+    {
+      "id": "llama-4-maverick",
+      "name": "Llama 4 Maverick",
+      "provider": "Meta",
+      "release_date": "2025-08",
+      "category": "open_frontier",
+      "context_length_k": 1000,
+      "pricing": {
+        "input_per_1m": 0.50,
+        "output_per_1m": 1.50,
+        "currency": "USD",
+        "note": "API pricing via Meta/partners. Self-hosted: compute cost only."
+      },
+      "speed_tok_per_sec": 95,
+      "benchmarks": {
+        "GPQA_Diamond": 80.5,
+        "SWE_Bench_Verified": 55.0,
+        "AIME_2025": 88.0,
+        "MMLU": 87.8,
+        "Intelligence_Index": 50
+      },
+      "specialization": ["open_source", "general", "multimodal"],
+      "power_per_1k_output_tokens_wh": 0.4,
+      "user_volume_tier": "very_high",
+      "notes": "Best open-source model. MoE. Self-hostable. Huge ecosystem."
+    },
+    {
+      "id": "llama-4-scout",
+      "name": "Llama 4 Scout",
+      "provider": "Meta",
+      "release_date": "2025-07",
+      "category": "efficient",
+      "context_length_k": 128,
+      "pricing": {
+        "input_per_1m": 0.11,
+        "output_per_1m": 0.34,
+        "currency": "USD"
+      },
+      "speed_tok_per_sec": 2600,
+      "benchmarks": {
+        "GPQA_Diamond": 52.0,
+        "SWE_Bench_Verified": 28.0,
+        "AIME_2025": 58.0,
+        "MMLU": 79.0,
+        "Intelligence_Index": 30
+      },
+      "specialization": ["speed", "open_source", "edge"],
+      "power_per_1k_output_tokens_wh": 0.02,
+      "user_volume_tier": "high",
+      "notes": "Fastest model measured. 2,600 tok/s. MoE efficient routing."
+    },
+    {
+      "id": "mistral-large-3",
+      "name": "Mistral Large 3",
+      "provider": "Mistral AI",
+      "release_date": "2025-09",
+      "category": "balanced",
+      "context_length_k": 128,
+      "pricing": {
+        "input_per_1m": 2.0,
+        "output_per_1m": 6.0,
+        "currency": "USD"
+      },
+      "speed_tok_per_sec": 85,
+      "benchmarks": {
+        "GPQA_Diamond": 74.0,
+        "SWE_Bench_Verified": 48.0,
+        "AIME_2025": 68.0,
+        "MMLU": 84.5,
+        "Intelligence_Index": 43
+      },
+      "specialization": ["multilingual", "general", "EU_data_residency"],
+      "power_per_1k_output_tokens_wh": 0.25,
+      "user_volume_tier": "medium",
+      "notes": "Strong European compliance story. GDPR, EU AI Act friendly."
+    },
+    {
+      "id": "qwen3-5-0-8b",
+      "name": "Qwen3.5 0.8B",
+      "provider": "Alibaba",
+      "release_date": "2026-02",
+      "category": "ultra_efficient",
+      "context_length_k": 32,
+      "pricing": {
+        "input_per_1m": 0.02,
+        "output_per_1m": 0.02,
+        "currency": "USD"
+      },
+      "speed_tok_per_sec": 950,
+      "benchmarks": {
+        "GPQA_Diamond": 28.0,
+        "SWE_Bench_Verified": 8.0,
+        "AIME_2025": 22.0,
+        "MMLU": 58.0,
+        "Intelligence_Index": 15
+      },
+      "specialization": ["edge", "on_device", "ultra_low_cost"],
+      "power_per_1k_output_tokens_wh": 0.005,
+      "user_volume_tier": "medium",
+      "notes": "Cheapest available. $0.02/1M tokens. Suitable for classification, simple extraction."
+    },
+    {
+      "id": "mercury-2",
+      "name": "Mercury 2",
+      "provider": "Inception Labs",
+      "release_date": "2026-03",
+      "category": "speed_specialist",
+      "context_length_k": 64,
+      "pricing": {
+        "input_per_1m": 0.25,
+        "output_per_1m": 0.25,
+        "currency": "USD"
+      },
+      "speed_tok_per_sec": 687,
+      "benchmarks": {
+        "GPQA_Diamond": 58.0,
+        "SWE_Bench_Verified": 30.0,
+        "AIME_2025": 48.0,
+        "MMLU": 75.0,
+        "Intelligence_Index": 33
+      },
+      "specialization": ["speed", "diffusion_model", "streaming"],
+      "power_per_1k_output_tokens_wh": 0.06,
+      "user_volume_tier": "low",
+      "notes": "Diffusion-based LM. 687 tok/s with reasonable quality. Novel architecture."
+    },
+    {
+      "id": "granite-4-0-small",
+      "name": "Granite 4.0 H Small",
+      "provider": "IBM",
+      "release_date": "2026-01",
+      "category": "efficient",
+      "context_length_k": 128,
+      "pricing": {
+        "input_per_1m": 0.08,
+        "output_per_1m": 0.24,
+        "currency": "USD"
+      },
+      "speed_tok_per_sec": 455,
+      "benchmarks": {
+        "GPQA_Diamond": 44.0,
+        "SWE_Bench_Verified": 22.0,
+        "AIME_2025": 35.0,
+        "MMLU": 72.0,
+        "Intelligence_Index": 25
+      },
+      "specialization": ["enterprise", "on_premise", "code", "speed"],
+      "power_per_1k_output_tokens_wh": 0.04,
+      "user_volume_tier": "medium",
+      "notes": "IBM enterprise model. Strong on-prem/air-gapped deployment story."
+    },
+    {
+      "id": "o1-pro",
+      "name": "o1 Pro",
+      "provider": "OpenAI",
+      "release_date": "2025-11",
+      "category": "reasoning_specialist",
+      "context_length_k": 200,
+      "pricing": {
+        "input_per_1m": 150.0,
+        "output_per_1m": 600.0,
+        "currency": "USD"
+      },
+      "speed_tok_per_sec": 20,
+      "benchmarks": {
+        "GPQA_Diamond": 90.2,
+        "SWE_Bench_Verified": 48.0,
+        "AIME_2025": 99.5,
+        "MMLU": 90.8,
+        "Intelligence_Index": 58
+      },
+      "specialization": ["deep_reasoning", "math", "scientific"],
+      "power_per_1k_output_tokens_wh": 2.5,
+      "user_volume_tier": "low",
+      "notes": "Most expensive model. Extreme reasoning depth via compute-scaling. Scientific use cases."
+    },
+    {
+      "id": "grok-3",
+      "name": "Grok 3",
+      "provider": "xAI",
+      "release_date": "2025-10",
+      "category": "frontier",
+      "context_length_k": 128,
+      "pricing": {
+        "input_per_1m": 3.0,
+        "output_per_1m": 15.0,
+        "currency": "USD"
+      },
+      "speed_tok_per_sec": 60,
+      "benchmarks": {
+        "GPQA_Diamond": 84.0,
+        "SWE_Bench_Verified": 52.0,
+        "AIME_2025": 93.0,
+        "MMLU": 87.0,
+        "Intelligence_Index": 52
+      },
+      "specialization": ["reasoning", "math", "real_time_data"],
+      "power_per_1k_output_tokens_wh": 0.5,
+      "user_volume_tier": "medium",
+      "notes": "Real-time X/Twitter data integration. Colossus 100K H100 cluster. Strong math."
+    }
+  ],
+  "market_summary": {
+    "price_range_input_per_1m": {"min": 0.02, "max": 150.0, "unit": "USD"},
+    "speed_range_tok_per_sec": {"min": 20, "max": 2600},
+    "price_drop_2024_2026_pct": 80,
+    "frontier_threshold_gpqa": 85.0,
+    "top_coding_model": "claude-opus-4-7",
+    "top_math_model": "gemini-3-pro",
+    "top_speed_model": "llama-4-scout",
+    "best_value_frontier": "gemini-3-pro",
+    "cheapest_model": "qwen3-5-0-8b",
+    "as_of": "2026-04-22"
+  }
+}

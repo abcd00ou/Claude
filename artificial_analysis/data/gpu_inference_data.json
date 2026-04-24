@@ -1,0 +1,388 @@
+{
+  "metadata": {
+    "source": "InferenceX by SemiAnalysis (inferencex.semianalysis.com)",
+    "collected_at": "2026-04-24",
+    "methodology": "Open-source continuous benchmarking. Real GPU cluster measurements.",
+    "frameworks_tested": ["Dynamo TRT-LLM", "SGLang", "MoRI (disaggregated)"],
+    "models_tested": ["DeepSeek-R1", "gpt-oss-120B", "Llama 3.3 70B", "Qwen3.5", "gpt-oss-480B"],
+    "notes": "TPS = tokens per second. ISL/OSL = input/output sequence length. MTP = multi-token prediction."
+  },
+
+  "gpu_specs": [
+    {
+      "name": "H100 SXM",
+      "vendor": "NVIDIA",
+      "generation": "Hopper",
+      "hbm_gb": 80,
+      "hbm_bandwidth_tbs": 3.35,
+      "fp8_tflops": 1979,
+      "bf16_tflops": 989,
+      "fp4_tflops": null,
+      "nvlink_version": 4,
+      "nvlink_bw_per_8gpu_gbs": 450,
+      "tdp_w": 700,
+      "process_node": "TSMC 4N",
+      "release_year": 2022,
+      "hbm_type": "HBM3"
+    },
+    {
+      "name": "H200 SXM",
+      "vendor": "NVIDIA",
+      "generation": "Hopper",
+      "hbm_gb": 141,
+      "hbm_bandwidth_tbs": 4.8,
+      "fp8_tflops": 1979,
+      "bf16_tflops": 989,
+      "fp4_tflops": null,
+      "nvlink_version": 4,
+      "nvlink_bw_per_8gpu_gbs": 450,
+      "tdp_w": 700,
+      "process_node": "TSMC 4N",
+      "release_year": 2024,
+      "hbm_type": "HBM3e"
+    },
+    {
+      "name": "B200 SXM",
+      "vendor": "NVIDIA",
+      "generation": "Blackwell",
+      "hbm_gb": 180,
+      "hbm_bandwidth_tbs": 8.0,
+      "fp8_tflops": 4500,
+      "bf16_tflops": 2250,
+      "fp4_tflops": 9000,
+      "nvlink_version": 5,
+      "nvlink_bw_per_8gpu_gbs": 900,
+      "tdp_w": 1000,
+      "process_node": "TSMC 4NP",
+      "release_year": 2025,
+      "hbm_type": "HBM3e"
+    },
+    {
+      "name": "B300 SXM",
+      "vendor": "NVIDIA",
+      "generation": "Blackwell Ultra",
+      "hbm_gb": 268,
+      "hbm_bandwidth_tbs": 8.0,
+      "fp8_tflops": 4500,
+      "bf16_tflops": 2250,
+      "fp4_tflops": 13500,
+      "nvlink_version": 5,
+      "nvlink_bw_per_8gpu_gbs": 900,
+      "tdp_w": 1000,
+      "process_node": "TSMC 4NP",
+      "release_year": 2025,
+      "hbm_type": "HBM3e"
+    },
+    {
+      "name": "GB200 NVL72",
+      "vendor": "NVIDIA",
+      "generation": "Blackwell",
+      "hbm_gb": 192,
+      "hbm_bandwidth_tbs": 8.0,
+      "fp8_tflops": 4500,
+      "bf16_tflops": 2250,
+      "fp4_tflops": 9000,
+      "nvlink_version": 5,
+      "nvlink_bw_per_8gpu_gbs": 900,
+      "tdp_w": null,
+      "process_node": "TSMC 4NP",
+      "release_year": 2025,
+      "hbm_type": "HBM3e",
+      "note": "Rack-scale: 72 GPUs per NVL72 rack. NVLink domain spans entire rack."
+    },
+    {
+      "name": "GB300 NVL72",
+      "vendor": "NVIDIA",
+      "generation": "Blackwell Ultra",
+      "hbm_gb": 288,
+      "hbm_bandwidth_tbs": 8.0,
+      "fp8_tflops": 4500,
+      "bf16_tflops": 2250,
+      "fp4_tflops": 13500,
+      "nvlink_version": 5,
+      "nvlink_bw_per_8gpu_gbs": 900,
+      "tdp_w": null,
+      "process_node": "TSMC 4NP",
+      "release_year": 2026,
+      "hbm_type": "HBM3e",
+      "note": "Next-gen rack-scale. Scale-out InfiniBand: 50-100 GB/s per GPU."
+    },
+    {
+      "name": "MI300X",
+      "vendor": "AMD",
+      "generation": "CDNA3",
+      "hbm_gb": 192,
+      "hbm_bandwidth_tbs": 5.3,
+      "fp8_tflops": 2615,
+      "bf16_tflops": 1307,
+      "fp4_tflops": null,
+      "infinity_fabric_bw_per_8gpu_gbs": 448,
+      "tdp_w": 750,
+      "process_node": "TSMC 5nm + 6nm chiplet",
+      "release_year": 2023,
+      "hbm_type": "HBM3"
+    },
+    {
+      "name": "MI325X",
+      "vendor": "AMD",
+      "generation": "CDNA3+",
+      "hbm_gb": 256,
+      "hbm_bandwidth_tbs": 6.0,
+      "fp8_tflops": 2615,
+      "bf16_tflops": 1307,
+      "fp4_tflops": null,
+      "infinity_fabric_bw_per_8gpu_gbs": 448,
+      "tdp_w": 750,
+      "process_node": "TSMC 5nm + 6nm chiplet",
+      "release_year": 2024,
+      "hbm_type": "HBM3e"
+    },
+    {
+      "name": "MI355X",
+      "vendor": "AMD",
+      "generation": "CDNA3.5",
+      "hbm_gb": 288,
+      "hbm_bandwidth_tbs": 8.0,
+      "fp8_tflops": 5033,
+      "bf16_tflops": 2516,
+      "fp4_tflops": 10066,
+      "infinity_fabric_bw_per_8gpu_gbs": 576,
+      "tdp_w": 800,
+      "process_node": "TSMC 3nm",
+      "release_year": 2025,
+      "hbm_type": "HBM3e"
+    }
+  ],
+
+  "inference_benchmarks": [
+    {
+      "model": "DeepSeek-R1",
+      "model_type": "MoE",
+      "params_total_b": 671,
+      "params_active_b": 37,
+      "isl": 8000,
+      "osl": 1000,
+      "scenario": "deep_reasoning",
+      "results": [
+        {
+          "gpu": "GB200 NVL72",
+          "precision": "FP8",
+          "framework": "Dynamo TRT",
+          "tps_per_gpu": 10000,
+          "tps_per_user": 50,
+          "cost_per_1m_tokens_usd": 0.10,
+          "vs_h100_x": 200,
+          "data_date": "2026-01"
+        },
+        {
+          "gpu": "GB300 NVL72",
+          "precision": "FP8",
+          "framework": "Dynamo TRT",
+          "tps_per_gpu": null,
+          "tps_per_user": 75,
+          "vs_h100_x": 98,
+          "data_date": "2026-02"
+        },
+        {
+          "gpu": "GB300 NVL72",
+          "precision": "FP4",
+          "framework": "Dynamo TRT",
+          "tps_per_gpu": null,
+          "tps_per_user": 75,
+          "vs_h100_x": 100,
+          "data_date": "2026-02"
+        },
+        {
+          "gpu": "B200 SXM",
+          "precision": "FP4",
+          "framework": "Dynamo TRT",
+          "cost_per_1m_tokens_usd": 0.251,
+          "cost_with_mtp_per_1m_usd": 0.057,
+          "mtp_cost_reduction_pct": 77,
+          "data_date": "2026-01"
+        },
+        {
+          "gpu": "MI355X",
+          "precision": "FP8",
+          "framework": "SGLang MoRI",
+          "note": "Competitive with B200 on disaggregated prefill at mid-range interactivity",
+          "vs_mi300x_x": 10,
+          "data_date": "2026-02"
+        },
+        {
+          "gpu": "H200 SXM",
+          "precision": "FP8",
+          "framework": "SGLang",
+          "tps_per_gpu": 50,
+          "cost_per_1m_tokens_usd": 1.56,
+          "data_date": "2025-10"
+        },
+        {
+          "gpu": "H100 SXM",
+          "precision": "FP8",
+          "framework": "SGLang",
+          "tps_per_gpu": null,
+          "tps_per_user": null,
+          "note": "Baseline reference. GB200 NVL72 = 55x at 75 tok/s/user interactivity",
+          "data_date": "2025-08"
+        }
+      ]
+    },
+    {
+      "model": "gpt-oss-120B",
+      "model_type": "MoE",
+      "params_total_b": 117,
+      "params_active_b": 5.1,
+      "isl": 1000,
+      "osl": 1000,
+      "scenario": "chat",
+      "results": [
+        {
+          "gpu": "B200 SXM",
+          "precision": "FP4",
+          "framework": "TRT-LLM",
+          "tps_per_gpu_max": 60000,
+          "tps_per_user_max": 1000,
+          "cost_per_1m_tokens_usd": 0.02,
+          "data_date": "2026-01",
+          "note": "Peak throughput. $0.11→$0.02 over 2 months of software optimization."
+        },
+        {
+          "gpu": "B200 SXM",
+          "precision": "FP8",
+          "framework": "TRT-LLM",
+          "tps_per_gpu": 30000,
+          "tps_per_user": 100,
+          "data_date": "2025-10"
+        },
+        {
+          "gpu": "H100 SXM",
+          "precision": "FP8",
+          "framework": "TRT-LLM",
+          "power_efficiency_tps_per_mw": 900000,
+          "data_date": "2025-08"
+        },
+        {
+          "gpu": "B200 SXM",
+          "precision": "FP4",
+          "framework": "TRT-LLM",
+          "power_efficiency_tps_per_mw": 2800000,
+          "vs_h100_power_efficiency_x": 3.1,
+          "data_date": "2026-01"
+        }
+      ]
+    },
+    {
+      "model": "Llama 3.3 70B",
+      "model_type": "Dense",
+      "params_total_b": 70,
+      "params_active_b": 70,
+      "isl": 1000,
+      "osl": 1000,
+      "scenario": "chat",
+      "results": [
+        {
+          "gpu": "B200 SXM",
+          "precision": "FP8",
+          "framework": "TRT-LLM",
+          "tps_per_gpu": 10000,
+          "tps_per_user": 50,
+          "data_date": "2026-01"
+        },
+        {
+          "gpu": "H200 SXM",
+          "precision": "FP8",
+          "framework": "TRT-LLM",
+          "tps_per_gpu": 2500,
+          "tps_per_user": 50,
+          "vs_b200_x": 0.25,
+          "data_date": "2025-10"
+        }
+      ]
+    }
+  ],
+
+  "provider_pricing": [
+    {
+      "provider": "Crusoe Energy",
+      "gpu": "B200 NVL72",
+      "model": "DeepSeek-R1",
+      "tps_per_user": 36,
+      "input_per_1m_usd": 1.35,
+      "output_per_1m_usd": 5.40,
+      "implied_margin_input_pct": 83,
+      "implied_margin_output_pct": 45
+    },
+    {
+      "provider": "Nebius AI",
+      "gpu": "B200",
+      "model": "DeepSeek-R1",
+      "precision": "FP4",
+      "tps_per_user": 167,
+      "input_per_1m_usd": 2.00,
+      "output_per_1m_usd": 6.00
+    }
+  ],
+
+  "generation_comparisons": [
+    {
+      "comparison": "H100 → GB200 NVL72",
+      "model": "DeepSeek-R1",
+      "metric": "throughput at 75 tok/s/user",
+      "improvement_x": 55
+    },
+    {
+      "comparison": "H100 → GB300 NVL72 (FP4)",
+      "model": "DeepSeek-R1",
+      "metric": "throughput at 75 tok/s/user",
+      "improvement_x": 100
+    },
+    {
+      "comparison": "H100 → GB300 NVL72 (FP8)",
+      "model": "DeepSeek-R1",
+      "metric": "throughput at 75 tok/s/user",
+      "improvement_x": 98
+    },
+    {
+      "comparison": "H200 → B200",
+      "model": "Llama 3.3 70B",
+      "metric": "throughput at 50 tok/s/user",
+      "improvement_x": 4
+    },
+    {
+      "comparison": "MI300X → MI355X",
+      "model": "DeepSeek workloads",
+      "metric": "throughput",
+      "improvement_x": 10
+    },
+    {
+      "comparison": "B200 → GB200 NVL72",
+      "model": "gpt-oss or DeepSeek",
+      "metric": "tokens/sec/GPU at 60 tok/s/user",
+      "improvement_x": 3
+    },
+    {
+      "comparison": "Hopper → Blackwell",
+      "model": "TCO across scenarios",
+      "metric": "tokens per dollar",
+      "improvement_x_range": "9.7x – 65x"
+    },
+    {
+      "comparison": "H100 → B200",
+      "model": "gpt-oss-120B",
+      "metric": "power efficiency (tok/s/MW)",
+      "h100_tps_per_mw": 900000,
+      "b200_tps_per_mw": 2800000,
+      "improvement_x": 3.1
+    }
+  ],
+
+  "roi_analysis": {
+    "gb200_nvl72": {
+      "hardware_cost_usd": 5000000,
+      "3yr_token_revenue_usd": 75000000,
+      "roi_multiple": 15,
+      "source": "NVIDIA InferenceMAX blog"
+    }
+  }
+}

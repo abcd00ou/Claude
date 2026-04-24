@@ -508,8 +508,9 @@ def _build_demand_table(modeling_results):
         return "<p>Modeling data unavailable</p>"
 
     snap = modeling_results.get("current_snapshot", modeling_results.get("current_snapshot_2025", {}))
-    base_yr = modeling_results.get("current_year", 2026) - 1  # 전년도 = 베이스라인
-    service_breakdown = modeling_results.get(f"service_breakdown_{base_yr}", modeling_results.get("service_breakdown_2024", {}))
+    curr_yr = modeling_results.get("current_year", 2026)
+    base_yr = curr_yr  # breakdown도 current_year 기준 (snapshot과 동일)
+    service_breakdown = modeling_results.get(f"service_breakdown_{curr_yr}", modeling_results.get("service_breakdown_2024", {}))
 
     # Summary metrics
     metrics_html = '<div class="card-grid">'
@@ -549,7 +550,7 @@ def _build_demand_table(modeling_results):
             <th>Tokens/Day ({base_yr})</th>
             <th>H100 Equivalent</th>
             <th>B200 Equivalent</th>
-            <th>HBM (GB)</th>
+            <th>HBM (PB)</th>
             <th>Power (MW)</th>
             <th>방법론</th>
             <th>신뢰도</th>
@@ -572,7 +573,7 @@ def _build_demand_table(modeling_results):
             <td>{data.get('tokens_fmt', 'N/A')}</td>
             <td style="color: {COLORS['accent_cyan']};">{data.get('h100_fmt', 'N/A')}</td>
             <td style="color: {COLORS['accent_green']};">{data.get('b200_fmt', 'N/A')}</td>
-            <td>{data.get('hbm_gb', 0)/1e6:.1f}M</td>
+            <td>{data.get('hbm_pb', data.get('hbm_gb', 0)/1e6):.2f}</td>
             <td>{data.get('power_mw', 0):.1f}</td>
             <td>
               <span title="{source_detail}"
