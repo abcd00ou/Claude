@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-04-23",
+  "fetched_at": "2026-04-30",
   "period": "2026",
   "tiers": {
     "1": {
@@ -8,49 +8,49 @@
       "companies": {
         "Microsoft": {
           "company": "Microsoft",
-          "capex_usd_bn": 95,
+          "capex_usd_bn": 190,
           "ai_infra_share": 0.6,
-          "ai_budget_usd_bn": 57.0,
-          "gb200_racks_est": 13300,
-          "hbm_demand_gb": 216689664,
-          "hbm_demand_pb": 216.69,
-          "basis": "CapEx $95B × AI비중 60% → GB200 역산",
+          "ai_budget_usd_bn": 114.0,
+          "gb200_racks_est": 26600,
+          "hbm_demand_gb": 433380864,
+          "hbm_demand_pb": 433.38,
+          "basis": "CapEx $190B × AI비중 60% → GB200 역산",
           "confidence": 0.44999999999999996,
           "period": "2026"
         },
         "Amazon": {
           "company": "Amazon",
-          "capex_usd_bn": 130,
+          "capex_usd_bn": 200,
           "ai_infra_share": 0.5,
-          "ai_budget_usd_bn": 65.0,
-          "gb200_racks_est": 15166,
-          "hbm_demand_gb": 247094784,
-          "hbm_demand_pb": 247.09,
-          "basis": "CapEx $130B × AI비중 50% → GB200 역산",
+          "ai_budget_usd_bn": 100.0,
+          "gb200_racks_est": 23333,
+          "hbm_demand_gb": 380155392,
+          "hbm_demand_pb": 380.16,
+          "basis": "CapEx $200B × AI비중 50% → GB200 역산",
           "confidence": 0.375,
           "period": "2026"
         },
         "Google": {
           "company": "Google",
-          "capex_usd_bn": 90,
+          "capex_usd_bn": 190,
           "ai_infra_share": 0.55,
-          "ai_budget_usd_bn": 49.5,
-          "gb200_racks_est": 11550,
-          "hbm_demand_gb": 188178432,
-          "hbm_demand_pb": 188.18,
-          "basis": "CapEx $90B × AI비중 55% → GB200 역산",
+          "ai_budget_usd_bn": 104.5,
+          "gb200_racks_est": 24383,
+          "hbm_demand_gb": 397261824,
+          "hbm_demand_pb": 397.26,
+          "basis": "CapEx $190B × AI비중 55% → GB200 역산",
           "confidence": 0.41250000000000003,
           "period": "2026"
         },
         "Meta": {
           "company": "Meta",
-          "capex_usd_bn": 72,
+          "capex_usd_bn": 135,
           "ai_infra_share": 0.7,
-          "ai_budget_usd_bn": 50.4,
-          "gb200_racks_est": 11759,
-          "hbm_demand_gb": 191586816,
-          "hbm_demand_pb": 191.59,
-          "basis": "CapEx $72B × AI비중 70% → GB200 역산",
+          "ai_budget_usd_bn": 94.5,
+          "gb200_racks_est": 22049,
+          "hbm_demand_gb": 359236608,
+          "hbm_demand_pb": 359.24,
+          "basis": "CapEx $135B × AI비중 70% → GB200 역산",
           "confidence": 0.5249999999999999,
           "period": "2026"
         },
@@ -79,8 +79,8 @@
           "period": "2026"
         }
       },
-      "total_hbm_demand_pb": 1003.2,
-      "total_cowos_demand_wpm": 74500,
+      "total_hbm_demand_pb": 1729.69,
+      "total_cowos_demand_wpm": 128453,
       "confidence": 0.75,
       "priority_rank": 1,
       "has_long_term_contract": true,
@@ -157,8 +157,8 @@
       "notes": "엣지/기업은 주로 LPDDR5X, GDDR7 사용. HBM 수요 미미."
     }
   },
-  "total_hbm_demand_pb": 1079.1,
-  "total_cowos_demand_wpm": 74500,
-  "demand_confidence": 0.73,
+  "total_hbm_demand_pb": 1805.59,
+  "total_cowos_demand_wpm": 128453,
+  "demand_confidence": 0.74,
   "notes": "Tier 1은 CapEx 공시 역산 (신뢰도 0.75). Tier 2~4는 간접 시그널 기반 (신뢰도 0.35~0.50). 전체 수치는 하한 추정값 — 실제 수요는 10~20% 높을 수 있음."
 }

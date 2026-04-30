@@ -1,5 +1,5 @@
 {
-  "fetched_at": "2026-04-23",
+  "fetched_at": "2026-04-30",
   "companies": {
     "SK_Hynix": {
       "source_type": "ir_presentation",
@@ -26,8 +26,8 @@
       },
       "quotes": [],
       "parsed_method": "regex_html",
-      "fetched_at": "2026-04-23",
-      "next_earnings_date": "2026-04-24"
+      "fetched_at": "2026-04-30",
+      "next_earnings_date": "2026-07-25"
     },
     "Samsung": {
       "source_type": "seed_hardcoded",
@@ -44,7 +44,7 @@
         "hbm4_qual_timeline": "2027Q1"
       },
       "notes": "Samsung HBM3e NVIDIA 퀄 지연이 핵심 리스크. 2026 Q1 기준 점유율 하락 중.",
-      "fetched_at": "2026-04-23",
+      "fetched_at": "2026-04-30",
       "parsed_from_pdf": null,
       "next_earnings_date": null
     },
@@ -74,7 +74,7 @@
       },
       "quotes": [],
       "parsed_method": "regex_html",
-      "fetched_at": "2026-04-23",
+      "fetched_at": "2026-04-30",
       "next_earnings_date": "2026-07-01"
     },
     "TSMC": {
@@ -101,7 +101,7 @@
       },
       "quotes": [],
       "parsed_method": "regex_html",
-      "fetched_at": "2026-04-23",
+      "fetched_at": "2026-04-30",
       "next_earnings_date": "2026-07-17"
     },
     "Vertiv": {
@@ -118,7 +118,7 @@
         "dc_power_rev_share_pct": 75
       },
       "notes": "Vertiv 2025 10-K + 2026 Q1 10-Q. 수주잔고 $8.2B, 2026 Q2까지 Sold Out.",
-      "fetched_at": "2026-04-23",
+      "fetched_at": "2026-04-30",
       "parsed_from_pdf": null,
       "next_earnings_date": "2026-04-30"
     },
@@ -135,9 +135,9 @@
         "revenue_usd_bn_quarter": 8.6
       },
       "notes": "GE Vernova 2025 10-K. 변압기 납기 30개월로 전력 인프라 병목의 핵심 지표.",
-      "fetched_at": "2026-04-23",
+      "fetched_at": "2026-04-30",
       "parsed_from_pdf": null,
-      "next_earnings_date": "2026-04-23"
+      "next_earnings_date": "2026-07-23"
     },
     "NVIDIA": {
       "source_type": "sec_filing",
@@ -165,7 +165,7 @@
       },
       "quotes": [],
       "parsed_method": "regex_html",
-      "fetched_at": "2026-04-23",
+      "fetched_at": "2026-04-30",
       "next_earnings_date": "2026-05-28"
     }
   },

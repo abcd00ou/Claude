@@ -11,7 +11,7 @@
     {
       "event": "capex",
       "company": "Microsoft",
-      "value": 95000000000.0,
+      "value": 190000000000.0,
       "year": "2026",
       "source": "seed_data",
       "confidence": "guidance"
@@ -27,7 +27,7 @@
     {
       "event": "capex",
       "company": "Google",
-      "value": 90000000000.0,
+      "value": 190000000000.0,
       "year": "2026",
       "source": "seed_data",
       "confidence": "guidance"
@@ -43,7 +43,7 @@
     {
       "event": "capex",
       "company": "Amazon",
-      "value": 130000000000.0,
+      "value": 200000000000.0,
       "year": "2026",
       "source": "seed_data",
       "confidence": "guidance"
@@ -59,7 +59,7 @@
     {
       "event": "capex",
       "company": "Meta",
-      "value": 72000000000.0,
+      "value": 135000000000.0,
       "year": "2026",
       "source": "seed_data",
       "confidence": "guidance"
@@ -290,6 +290,48 @@
       "date": "2026-Q1",
       "impact": "China forced to domestic Huawei Ascend 910B/C; NVIDIA loses $10B+ China revenue",
       "source": "seed_data"
+    },
+    {
+      "event": "earnings",
+      "headline": "SK Hynix Q1 2026 earnings \u2014 KRW 52.5T revenue (+198% YoY), 72% operating margin",
+      "date": "2026-Q1",
+      "impact": "HBM supercycle confirmed; operating margin 72% signals pricing power; HBM demand exceeds 3-year supply capacity",
+      "source": "seed_data"
+    },
+    {
+      "event": "capex",
+      "headline": "Meta Q1 2026 earnings \u2014 CapEx $19.84B; FY2026 guidance raised to $125-145B",
+      "date": "2026-Q1",
+      "impact": "GPU and AI infrastructure spend nearly doubles YoY; Llama 4 training cluster scaling",
+      "source": "seed_data"
+    },
+    {
+      "event": "capex",
+      "headline": "Google Q1 2026 earnings \u2014 CapEx $35.7B; Cloud revenue >$20B (+63% YoY); FY guidance up to $190B",
+      "date": "2026-Q1",
+      "impact": "Largest quarterly CapEx in Google history; Cloud AI services driving revenue acceleration",
+      "source": "seed_data"
+    },
+    {
+      "event": "capex",
+      "headline": "Amazon Q1 2026 earnings \u2014 CapEx $44.2B; AWS +28% to $37.6B; FY2026 CapEx $200B",
+      "date": "2026-Q1",
+      "impact": "AWS AI infrastructure investment accelerating; $200B FY CapEx largest in hyperscaler history",
+      "source": "seed_data"
+    },
+    {
+      "event": "capex",
+      "headline": "Microsoft Q1 CY2026 \u2014 Azure +39% CC; AI revenue run-rate $37B; FY CapEx guidance $190B",
+      "date": "2026-Q1",
+      "impact": "Azure AI becoming primary growth engine; Copilot and OpenAI integration driving enterprise adoption",
+      "source": "seed_data"
+    },
+    {
+      "event": "earnings",
+      "headline": "NVIDIA Q1 FY2027 guidance \u2014 ~$78B revenue; Data Center ~$70B",
+      "date": "2026-Q1",
+      "impact": "Blackwell demand continues to exceed supply; GB300/B300 roadmap confirmed",
+      "source": "seed_data"
     }
   ],
   "hyperscaler_capex": {
@@ -302,7 +344,7 @@
       "2023": 28,
       "2024": 55,
       "2025": 80,
-      "2026": 95
+      "2026": 190
     },
     "Google": {
       "2018": 25,
@@ -313,7 +355,7 @@
       "2023": 32,
       "2024": 52,
       "2025": 75,
-      "2026": 90
+      "2026": 190
     },
     "Amazon": {
       "2018": 13,
@@ -324,7 +366,7 @@
       "2023": 48,
       "2024": 75,
       "2025": 105,
-      "2026": 130
+      "2026": 200
     },
     "Meta": {
       "2018": 14,
@@ -335,7 +377,7 @@
       "2023": 28,
       "2024": 37,
       "2025": 65,
-      "2026": 72
+      "2026": 135
     },
     "xAI": {
       "2022": 0,
@@ -352,8 +394,8 @@
       "2026": 20
     },
     "_notes": {
-      "2024_2026_type": "2024 = audited actual; 2025 = full year actual/guidance; 2026 = guidance as stated in Q4 2025 earnings",
-      "source": "Company 10-K and earnings calls; Microsoft FY2025 guidance $80B; Amazon guidance $105B 2025",
+      "2024_2026_type": "2024 = audited actual; 2025 = full year actual; 2026 = Q1 2026 earnings-based raised guidance (updated 2026-04-28)",
+      "source": "Q1 2026 earnings: Meta $125-145B guidance (Q1 actual $19.84B); Google up to $190B (Q1 actual $35.7B); Amazon $200B (Q1 actual $44.2B); Microsoft $190B (Azure +39% CC)",
       "unit": "USD billion (annual CapEx, includes real estate, network, data centers, GPU purchases)"
     }
   },
@@ -855,6 +897,72 @@
       "event": "US-China export controls expand \u2014 H20 restrictions confirmed",
       "impact": "China forced to domestic Huawei Ascend 910B/C; NVIDIA loses $10B+ China revenue",
       "category": "supply_constraint"
+    },
+    {
+      "date": "2026-Q1",
+      "event": "SK Hynix Q1 2026 earnings \u2014 KRW 52.5T revenue (+198% YoY), 72% operating margin",
+      "impact": "HBM supercycle confirmed; operating margin 72% signals pricing power; HBM demand exceeds 3-year supply capacity",
+      "category": "earnings",
+      "data": {
+        "revenue_krw_t": 52.5,
+        "revenue_yoy_pct": 198,
+        "op_margin_pct": 72,
+        "hbm4e_samples": "H2 2026"
+      }
+    },
+    {
+      "date": "2026-Q1",
+      "event": "Meta Q1 2026 earnings \u2014 CapEx $19.84B; FY2026 guidance raised to $125-145B",
+      "impact": "GPU and AI infrastructure spend nearly doubles YoY; Llama 4 training cluster scaling",
+      "category": "capex",
+      "data": {
+        "q1_capex_usd_bn": 19.84,
+        "fy_guidance_low": 125,
+        "fy_guidance_high": 145
+      }
+    },
+    {
+      "date": "2026-Q1",
+      "event": "Google Q1 2026 earnings \u2014 CapEx $35.7B; Cloud revenue >$20B (+63% YoY); FY guidance up to $190B",
+      "impact": "Largest quarterly CapEx in Google history; Cloud AI services driving revenue acceleration",
+      "category": "capex",
+      "data": {
+        "q1_capex_usd_bn": 35.7,
+        "cloud_revenue_usd_bn": 20,
+        "cloud_yoy_pct": 63
+      }
+    },
+    {
+      "date": "2026-Q1",
+      "event": "Amazon Q1 2026 earnings \u2014 CapEx $44.2B; AWS +28% to $37.6B; FY2026 CapEx $200B",
+      "impact": "AWS AI infrastructure investment accelerating; $200B FY CapEx largest in hyperscaler history",
+      "category": "capex",
+      "data": {
+        "q1_capex_usd_bn": 44.2,
+        "aws_revenue_usd_bn": 37.6,
+        "aws_yoy_pct": 28
+      }
+    },
+    {
+      "date": "2026-Q1",
+      "event": "Microsoft Q1 CY2026 \u2014 Azure +39% CC; AI revenue run-rate $37B; FY CapEx guidance $190B",
+      "impact": "Azure AI becoming primary growth engine; Copilot and OpenAI integration driving enterprise adoption",
+      "category": "capex",
+      "data": {
+        "azure_growth_cc_pct": 39,
+        "ai_annual_run_rate_usd_bn": 37
+      }
+    },
+    {
+      "date": "2026-Q1",
+      "event": "NVIDIA Q1 FY2027 guidance \u2014 ~$78B revenue; Data Center ~$70B",
+      "impact": "Blackwell demand continues to exceed supply; GB300/B300 roadmap confirmed",
+      "category": "earnings",
+      "data": {
+        "guided_total_rev_usd_bn": 78,
+        "dc_rev_est_usd_bn": 70,
+        "report_date": "2026-05-20"
+      }
     }
   ],
   "ai_model_milestones": [
@@ -997,11 +1105,12 @@
       "2025Q2": 42.8,
       "2025Q3": 51.2,
       "2025Q4": 62.3,
-      "2026Q1_est": 70.0
+      "2026Q1_est": 70.0,
+      "2026Q1_guided_total_rev": 78.0
     },
     "nvidia_latest_quarter_usd_bn": [
-      "2026Q1_est",
-      70.0
+      "2026Q1_guided_total_rev",
+      78.0
     ],
     "hbm_market_annual": {
       "2019": 2.5,
@@ -1234,12 +1343,12 @@
       }
     ]
   },
-  "last_updated": "2026-04-23",
-  "as_of_date": "2026-04-11",
-  "web_scraping_enabled": false,
+  "last_updated": "2026-04-30",
+  "as_of_date": "2026-04-28",
+  "web_scraping_enabled": true,
   "event_counts": {
-    "total": 39,
-    "from_seed": 39,
+    "total": 45,
+    "from_seed": 45,
     "from_web": 0
   }
 }
