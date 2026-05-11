@@ -13,12 +13,15 @@ from config import TARGET_COMPANIES, DATA_DIR, DASHBOARD_DIR, AI_SCM_SEED
 
 
 # SCM layer order for sidebar grouping
-LAYER_ORDER = ["HBM", "GPU", "Foundry", "Hyperscaler"]
+LAYER_ORDER = ["HBM", "GPU", "ASIC", "Foundry", "Hyperscaler", "Power", "China"]
 LAYER_LABELS = {
     "HBM": "HBM Memory",
     "GPU": "GPU",
+    "ASIC": "Custom ASIC",
     "Foundry": "Foundry / Packaging",
     "Hyperscaler": "Hyperscalers",
+    "Power": "Power & Infrastructure",
+    "China": "China AI Supply Chain",
 }
 
 
@@ -169,8 +172,11 @@ def build_html(profiles: list[dict], hbm_share: dict, capex_annual: dict) -> str
                   margin-left: 8px; font-weight: 600; }}
   .badge-HBM {{ background: #BEE3F8; color: #2C5282; }}
   .badge-GPU {{ background: #C6F6D5; color: #22543D; }}
+  .badge-ASIC {{ background: #B2F5EA; color: #234E52; }}
   .badge-Foundry {{ background: #FAF089; color: #744210; }}
   .badge-Hyperscaler {{ background: #E9D8FD; color: #44337A; }}
+  .badge-Power {{ background: #FED7D7; color: #9B2C2C; }}
+  .badge-China {{ background: #FFF5F5; color: #C53030; border: 1px solid #FC8181; }}
   .last-updated {{ font-size: 12px; color: #718096;
                    background: #EDF2F7; padding: 4px 10px; border-radius: 4px; }}
 
@@ -318,6 +324,27 @@ function renderSnapshot(profile) {{
       {{ val: s.headcount ? s.headcount.toLocaleString() : '—', lbl: 'Headcount' }},
       {{ val: s.market_cap_usd_bn ? '$' + s.market_cap_usd_bn + 'B' : '—', lbl: 'Market Cap' }},
     ];
+  }} else if (layer === 'ASIC') {{
+    items = [
+      {{ val: s.revenue_qtr || '—', lbl: 'Latest Revenue' }},
+      {{ val: s.ai_revenue_qtr_usd || s.datacenter_revenue_qtr_usd || '—', lbl: 'AI Revenue' }},
+      {{ val: s.op_margin_pct != null ? s.op_margin_pct + '%' : '—', lbl: 'Operating Margin' }},
+      {{ val: s.market_cap_usd_bn ? '$' + s.market_cap_usd_bn + 'B' : '—', lbl: 'Market Cap' }},
+    ];
+  }} else if (layer === 'Power') {{
+    items = [
+      {{ val: s.revenue_qtr || '—', lbl: 'Latest Revenue' }},
+      {{ val: s.op_margin_pct != null ? s.op_margin_pct + '%' : '—', lbl: 'Operating Margin' }},
+      {{ val: s.nuclear_capacity_gw ? s.nuclear_capacity_gw + ' GW' : (s.headcount ? s.headcount.toLocaleString() : '—'), lbl: s.nuclear_capacity_gw ? 'Nuclear Capacity' : 'Headcount' }},
+      {{ val: s.market_cap_usd_bn ? '$' + s.market_cap_usd_bn + 'B' : '—', lbl: 'Market Cap' }},
+    ];
+  }} else if (layer === 'China') {{
+    items = [
+      {{ val: s.revenue_qtr || '—', lbl: 'Latest Revenue' }},
+      {{ val: s.op_margin_pct != null ? s.op_margin_pct + '%' : '—', lbl: 'Operating Margin' }},
+      {{ val: s.hbm_china_market_share_pct != null ? s.hbm_china_market_share_pct + '%' : (s.headcount ? s.headcount.toLocaleString() : '—'), lbl: s.hbm_china_market_share_pct != null ? 'China HBM Share' : 'Headcount' }},
+      {{ val: s.cloud_ai_revenue_2025_usd || '—', lbl: 'AI Revenue Est.' }},
+    ];
   }} else {{
     // Hyperscaler
     items = [
@@ -370,13 +397,17 @@ function renderRoadmap(profile) {{
       </tr>`).join('')}}
     </table>`;
   }} else {{
-    // Hyperscaler
+    // Hyperscaler / ASIC / Power / China — generic table with HBM supplier or customer column
+    const hasHbm = items.some(r => r.hbm_supplier);
+    const hasCust = items.some(r => r.customer);
+    const col3label = hasHbm ? 'HBM Supplier' : (hasCust ? 'Customer' : 'Details');
+    const col3val = r => r.hbm_supplier || r.customer || r.note || '—';
     return `<table>
-      <tr><th>Product / Cluster</th><th>Status</th><th>HBM Supplier</th><th>Notes</th></tr>
+      <tr><th>Product / Program</th><th>Status</th><th>${{col3label}}</th><th>Notes</th></tr>
       ${{items.map(r => `<tr>
         <td><strong>${{r.product}}</strong></td>
         <td><span class="status-badge ${{statusClass(r.status)}}">${{(r.status||'').replace(/_/g,' ')}}</span></td>
-        <td>${{r.hbm_supplier || '—'}}</td>
+        <td>${{col3val(r)}}</td>
         <td>${{r.note || '—'}}</td>
       </tr>`).join('')}}
     </table>`;
@@ -574,35 +605,77 @@ function showOverview() {{
       <div><span class="company-title">AI Supply Chain Overview</span></div>
     </div>
 
-    <div class="card" style="margin-bottom:16px; padding: 20px 24px;">
-      <h3 style="margin-bottom:14px">Supply Chain Flow</h3>
-      <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:13px;">
-        <div style="text-align:center; padding:10px 14px; background:#E9D8FD; border-radius:8px; cursor:pointer" onclick="selectCompany('meta')">
-          <div style="font-weight:700">Meta</div><div style="font-size:11px;color:#718096">Hyperscaler</div>
+    <div class="card" style="margin-bottom:16px; padding: 20px 24px; overflow-x:auto;">
+      <h3 style="margin-bottom:16px">AI Supply Chain Flow</h3>
+
+      <div style="display:flex; gap:16px; align-items:flex-start; min-width:900px;">
+
+        <!-- Power layer (vertical) -->
+        <div style="display:flex; flex-direction:column; gap:4px; align-items:center;">
+          <div style="font-size:10px; color:#718096; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">Power</div>
+          <div style="padding:7px 10px; background:#FED7D7; border-radius:6px; cursor:pointer; font-size:11px; font-weight:600; text-align:center" onclick="selectCompany('constellation_energy')">Constellation<br><span style="font-weight:400;color:#718096">Nuclear</span></div>
+          <div style="padding:7px 10px; background:#FED7D7; border-radius:6px; cursor:pointer; font-size:11px; font-weight:600; text-align:center" onclick="selectCompany('ge_vernova')">GE Vernova<br><span style="font-weight:400;color:#718096">Grid/Gas</span></div>
+          <div style="padding:7px 10px; background:#FED7D7; border-radius:6px; cursor:pointer; font-size:11px; font-weight:600; text-align:center" onclick="selectCompany('vertiv')">Vertiv<br><span style="font-weight:400;color:#718096">Power/Cool</span></div>
         </div>
-        <div style="text-align:center; padding:10px 14px; background:#E9D8FD; border-radius:8px; cursor:pointer" onclick="selectCompany('google')">
-          <div style="font-weight:700">Google</div><div style="font-size:11px;color:#718096">Hyperscaler</div>
+
+        <div style="color:#CBD5E0; font-size:18px; padding-top:40px;">⬇</div>
+
+        <!-- Hyperscalers -->
+        <div style="display:flex; flex-direction:column; gap:4px; align-items:center;">
+          <div style="font-size:10px; color:#718096; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">Hyperscalers</div>
+          <div style="display:flex; gap:4px;">
+            <div style="padding:7px 10px; background:#E9D8FD; border-radius:6px; cursor:pointer; font-size:11px; font-weight:600; text-align:center" onclick="selectCompany('microsoft')">MSFT</div>
+            <div style="padding:7px 10px; background:#E9D8FD; border-radius:6px; cursor:pointer; font-size:11px; font-weight:600; text-align:center" onclick="selectCompany('google')">GOOGL</div>
+            <div style="padding:7px 10px; background:#E9D8FD; border-radius:6px; cursor:pointer; font-size:11px; font-weight:600; text-align:center" onclick="selectCompany('amazon')">AMZN</div>
+            <div style="padding:7px 10px; background:#E9D8FD; border-radius:6px; cursor:pointer; font-size:11px; font-weight:600; text-align:center" onclick="selectCompany('meta')">META</div>
+          </div>
+          <div style="font-size:10px; color:#718096; margin-top:2px;">$710B+ CapEx 2026</div>
         </div>
-        <div style="text-align:center; padding:10px 14px; background:#E9D8FD; border-radius:8px; cursor:pointer" onclick="selectCompany('microsoft')">
-          <div style="font-weight:700">Microsoft</div><div style="font-size:11px;color:#718096">Hyperscaler</div>
+
+        <div style="color:#CBD5E0; font-size:18px; padding-top:30px;">→</div>
+
+        <!-- GPU + ASIC split -->
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="display:flex; flex-direction:column; gap:4px; align-items:center;">
+            <div style="font-size:10px; color:#718096; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">GPU</div>
+            <div style="padding:8px 14px; background:#C6F6D5; border-radius:6px; cursor:pointer; font-size:12px; font-weight:700" onclick="selectCompany('nvidia')">NVIDIA</div>
+            <div style="padding:6px 10px; background:#C6F6D5; border-radius:6px; cursor:pointer; font-size:11px; font-weight:600" onclick="selectCompany('amd')">AMD</div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:4px; align-items:center;">
+            <div style="font-size:10px; color:#718096; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">Custom ASIC</div>
+            <div style="padding:6px 10px; background:#B2F5EA; border-radius:6px; cursor:pointer; font-size:11px; font-weight:600" onclick="selectCompany('broadcom')">Broadcom</div>
+            <div style="padding:6px 10px; background:#B2F5EA; border-radius:6px; cursor:pointer; font-size:11px; font-weight:600" onclick="selectCompany('marvell')">Marvell</div>
+          </div>
         </div>
-        <div style="text-align:center; padding:10px 14px; background:#E9D8FD; border-radius:8px; cursor:pointer" onclick="selectCompany('amazon')">
-          <div style="font-weight:700">Amazon</div><div style="font-size:11px;color:#718096">Hyperscaler</div>
+
+        <div style="color:#CBD5E0; font-size:18px; padding-top:30px;">→</div>
+
+        <!-- Foundry / Packaging -->
+        <div style="display:flex; flex-direction:column; gap:4px; align-items:center;">
+          <div style="font-size:10px; color:#718096; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">Foundry</div>
+          <div style="padding:8px 14px; background:#FAF089; border-radius:6px; cursor:pointer; font-size:12px; font-weight:700" onclick="selectCompany('tsmc')">TSMC<br><span style="font-size:10px; font-weight:400; color:#718096">CoWoS 95%</span></div>
         </div>
-        <div style="color:#CBD5E0; font-size:20px">→</div>
-        <div style="text-align:center; padding:10px 14px; background:#C6F6D5; border-radius:8px; cursor:pointer" onclick="selectCompany('nvidia')">
-          <div style="font-weight:700">NVIDIA</div><div style="font-size:11px;color:#718096">GPU</div>
+
+        <div style="color:#CBD5E0; font-size:18px; padding-top:30px;">→</div>
+
+        <!-- HBM Suppliers -->
+        <div style="display:flex; flex-direction:column; gap:4px; align-items:center;">
+          <div style="font-size:10px; color:#718096; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px;">HBM Memory</div>
+          <div style="padding:8px 12px; background:#BEE3F8; border-radius:6px; cursor:pointer; font-size:11px; font-weight:600; text-align:center" onclick="selectCompany('sk_hynix')">SK Hynix<br><span style="font-weight:400;color:#2C5282">50%</span></div>
+          <div style="padding:8px 12px; background:#BEE3F8; border-radius:6px; cursor:pointer; font-size:11px; font-weight:600; text-align:center" onclick="selectCompany('samsung_semiconductor')">Samsung<br><span style="font-weight:400;color:#2C5282">35%</span></div>
+          <div style="padding:8px 12px; background:#BEE3F8; border-radius:6px; cursor:pointer; font-size:11px; font-weight:600; text-align:center" onclick="selectCompany('micron')">Micron<br><span style="font-weight:400;color:#2C5282">15%</span></div>
         </div>
-        <div style="color:#CBD5E0; font-size:20px">→</div>
-        <div style="text-align:center; padding:10px 14px; background:#FAF089; border-radius:8px; cursor:pointer" onclick="selectCompany('tsmc')">
-          <div style="font-weight:700">TSMC</div><div style="font-size:11px;color:#718096">CoWoS Packaging</div>
+
+        <!-- China parallel chain -->
+        <div style="border-left: 2px dashed #FC8181; padding-left:16px; margin-left:8px;">
+          <div style="font-size:10px; color:#FC8181; text-transform:uppercase; letter-spacing:0.5px; margin-bottom:8px; font-weight:700;">🇨🇳 China Alt Chain</div>
+          <div style="display:flex; flex-direction:column; gap:4px;">
+            <div style="padding:7px 10px; background:#FFF5F5; border:1px solid #FC8181; border-radius:6px; cursor:pointer; font-size:11px; font-weight:600; text-align:center" onclick="selectCompany('huawei')">Huawei<br><span style="font-size:10px;color:#718096">Ascend (GPU)</span></div>
+            <div style="padding:7px 10px; background:#FFF5F5; border:1px solid #FC8181; border-radius:6px; cursor:pointer; font-size:11px; font-weight:600; text-align:center" onclick="selectCompany('smic')">SMIC<br><span style="font-size:10px;color:#718096">Foundry</span></div>
+            <div style="padding:7px 10px; background:#FFF5F5; border:1px solid #FC8181; border-radius:6px; cursor:pointer; font-size:11px; font-weight:600; text-align:center" onclick="selectCompany('cxmt')">CXMT<br><span style="font-size:10px;color:#718096">HBM Alt</span></div>
+          </div>
         </div>
-        <div style="color:#CBD5E0; font-size:20px">→</div>
-        <div style="display:flex; flex-direction:column; gap:4px;">
-          <div style="text-align:center; padding:8px 12px; background:#BEE3F8; border-radius:8px; cursor:pointer; font-size:12px" onclick="selectCompany('sk_hynix')">SK Hynix (50%)</div>
-          <div style="text-align:center; padding:8px 12px; background:#BEE3F8; border-radius:8px; cursor:pointer; font-size:12px" onclick="selectCompany('samsung_semiconductor')">Samsung (35%)</div>
-          <div style="text-align:center; padding:8px 12px; background:#BEE3F8; border-radius:8px; cursor:pointer; font-size:12px" onclick="selectCompany('micron')">Micron (15%)</div>
-        </div>
+
       </div>
     </div>
 

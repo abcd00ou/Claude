@@ -90,6 +90,81 @@ TARGET_COMPANIES = [
         "ir_url": "https://investor.fb.com/",
         "news_query": "Meta AI datacenter GPU CapEx Llama",
     },
+    # ── Custom ASIC Designers ────────────────────────────────────────────────
+    {
+        "id": "broadcom",
+        "name": "Broadcom",
+        "ticker": "AVGO",
+        "layer": "ASIC",
+        "ir_url": "https://investors.broadcom.com/",
+        "news_query": "Broadcom ASIC TPU AI custom silicon HBM",
+    },
+    {
+        "id": "marvell",
+        "name": "Marvell Technology",
+        "ticker": "MRVL",
+        "layer": "ASIC",
+        "ir_url": "https://investor.marvell.com/",
+        "news_query": "Marvell AI ASIC Trainium custom silicon",
+    },
+    {
+        "id": "amd",
+        "name": "AMD",
+        "ticker": "AMD",
+        "layer": "ASIC",
+        "ir_url": "https://ir.amd.com/",
+        "news_query": "AMD Instinct MI300 MI325 HBM datacenter GPU",
+    },
+    # ── Power & Infrastructure ───────────────────────────────────────────────
+    {
+        "id": "vertiv",
+        "name": "Vertiv",
+        "ticker": "VRT",
+        "layer": "Power",
+        "ir_url": "https://ir.vertiv.com/",
+        "news_query": "Vertiv AI data center power cooling liquid",
+    },
+    {
+        "id": "ge_vernova",
+        "name": "GE Vernova",
+        "ticker": "GEV",
+        "layer": "Power",
+        "ir_url": "https://www.gevernova.com/investors",
+        "news_query": "GE Vernova data center power grid AI electricity",
+    },
+    {
+        "id": "constellation_energy",
+        "name": "Constellation Energy",
+        "ticker": "CEG",
+        "layer": "Power",
+        "ir_url": "https://ir.constellationenergy.com/",
+        "news_query": "Constellation Energy nuclear AI data center power PPA",
+    },
+    # ── China AI Supply Chain ────────────────────────────────────────────────
+    {
+        "id": "huawei",
+        "name": "Huawei (AI/Cloud)",
+        "ticker": "Unlisted",
+        "layer": "China",
+        "ir_url": "https://www.huawei.com/en/investor-relations",
+        "news_query": "Huawei Ascend AI chip HBM cloud datacenter",
+    },
+    {
+        "id": "cxmt",
+        "name": "CXMT (ChangXin Memory)",
+        "ticker": "Unlisted",
+        "layer": "China",
+        "ir_url": "",
+        "news_query": "CXMT ChangXin Memory HBM China DRAM",
+    },
+    {
+        "id": "smic",
+        "name": "SMIC",
+        "ticker": "0981.HK",
+        "layer": "China",
+        "ir_url": "https://www.smics.com/en/site/company_investor",
+        "news_query": "SMIC China foundry advanced node AI chip",
+    },
 ]
 
 # News collection (Phase 1-2: Google News RSS, free)

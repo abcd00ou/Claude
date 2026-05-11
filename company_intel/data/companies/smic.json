@@ -1,0 +1,78 @@
+{
+  "company": "SMIC (Semiconductor Manufacturing International)",
+  "ticker": "0981.HK",
+  "last_updated": "2026-05-11",
+  "snapshot": {
+    "revenue_qtr": "$2.24B (Q1 2026, +28% YoY)",
+    "revenue_qtr_usd": "$2.24B",
+    "op_margin_pct": 9,
+    "headcount": 21000,
+    "market_cap_usd_bn": 18
+  },
+  "product_roadmap": [
+    {
+      "product": "N+2 Node (7nm equivalent, DUV)",
+      "status": "mass_production",
+      "customer": "Huawei Kirin/Ascend, domestic fabless",
+      "note": "Achieved without EUV; SMIC's most advanced node; limited yield vs TSMC N7"
+    },
+    {
+      "product": "FinFET DUV (N+3 development)",
+      "status": "development",
+      "customer": "Domestic AI chip makers (Biren, Cambricon)",
+      "note": "Attempting 5nm equivalent with DUV multi-patterning; technically very challenging"
+    },
+    {
+      "product": "28nm+ (mature nodes — volume)",
+      "status": "mass_production",
+      "customer": "Auto, IoT, consumer electronics",
+      "note": "Volume revenue driver; immune to export controls; competing with TSMC, GlobalFoundries"
+    }
+  ],
+  "key_contacts": [
+    {
+      "name": "",
+      "title": "VP, Marketing & Sales",
+      "linkedin": null,
+      "note": "Manual entry — update before next meeting"
+    }
+  ],
+  "recent_news": [
+    {
+      "date": "2026-04-24",
+      "title": "SMIC returns to advanced packaging, scales team to boost AI chip strategy",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNbmptZjl2MXByT3BNR1o5ZE1RT200YlhxekZZeS1nWGg4X2pqMHdpYzBPMnRaSVZuRWtfaVBnQjZvVWh5X2puZVg1R3R6bC1rdlMxNjVqWlhSWnhMZFlPS21HYjI5X3pyX1RlTm04TUtpYXJjNjc5X2VrWkt3OHFKMmNMbmRYeTZpbHVyM3lrXzFvRFk4WGtz?oc=5",
+      "source": "digitimes"
+    },
+    {
+      "date": "2026-05-08",
+      "title": "TechChain Insights Q&A: Inside TSMC, Intel and SMIC's Advanced-Node Pipeline - M31 (6643 TT)",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQTFJNcnRpMFUwamJYWmVFWHBoZHpxUkxqS0dTcWk0Y3lmZXZickR1MkRnVUZpX3FzTUNJVWg0c1NKOUh5Sk1sdnVFQjdJWm1WZ05JdGxpUDFRSm9LTk9qQ2lRSHRoXzd3NXBHMFNNOHBRTElFSDZaMXpLb2lRTHVfMGFrQVRGQVN1OEtPSUp3VVNoTGhjTm5JeG9FNE5vejRxUUZCSG5iX1ZmQlhBX1Y1ZzItZlJERmlCeC05RHNNaw?oc=5",
+      "source": "Smartkarma"
+    }
+  ],
+  "sales_hooks": [
+    "SMIC is the only advanced node foundry available to Chinese AI chip designers — every Huawei Ascend chip and CXMT HBM-equivalent die is fabbed here, making SMIC's capacity the bottleneck for China's AI buildout.",
+    "SMIC N+2 yield improvement is a technology risk signal — as their DUV-based 7nm equivalent matures, it reduces China's AI chip gap with the West, impacting global HBM demand forecasts for China.",
+    "SMIC's 28nm+ expansion (funded by China government) is serving automotive/IoT — this capacity does not compete with AI HBM, but the revenue signals SMIC's overall financial health and investment capacity.",
+    "Export control changes affecting SMIC's equipment purchases (ASML DUV, applied materials) are a leading indicator of China's domestic AI capability trajectory."
+  ],
+  "competitive_position": {
+    "china_foundry_market_share_pct": 40,
+    "vs_tsmc": "3-4 generation technology gap; no EUV access; yield significantly lower on advanced nodes",
+    "vs_hua_hong": "SMIC leads on advanced nodes; Hua Hong stronger on specialty/power semiconductors",
+    "moat": "Only Chinese advanced foundry; guaranteed domestic demand; government backing"
+  },
+  "financials_history": {
+    "2025Q1_revenue_usd_bn": 2.24,
+    "2024Q4_revenue_usd_bn": 2.21,
+    "2024Q3_revenue_usd_bn": 2.17,
+    "2024Q2_revenue_usd_bn": 1.9,
+    "2024Q1_revenue_usd_bn": 1.75
+  },
+  "sources": [
+    "SMIC Q1 2026 Earnings (Apr 2026)",
+    "SemiAnalysis China foundry analysis"
+  ],
+  "flagged_news": []
+}

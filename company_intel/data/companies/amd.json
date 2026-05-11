@@ -1,0 +1,75 @@
+{
+  "company": "AMD",
+  "ticker": "AMD",
+  "last_updated": "2026-05-11",
+  "snapshot": {
+    "revenue_qtr": "$7.4B (Q1 2026, +36% YoY)",
+    "revenue_qtr_usd": "$7.4B",
+    "datacenter_revenue_qtr_usd": "$3.7B",
+    "op_margin_pct": 22,
+    "headcount": 26000,
+    "market_cap_usd_bn": 220
+  },
+  "product_roadmap": [
+    {
+      "product": "MI300X (HBM3, 192GB)",
+      "status": "mass_production",
+      "hbm_supplier": "SK Hynix (primary), Samsung",
+      "hbm_per_gpu_gb": 192,
+      "note": "NVIDIA H100 competitor; strong in inference, Microsoft Azure large deployment"
+    },
+    {
+      "product": "MI325X (HBM3e, 256GB)",
+      "status": "mass_production",
+      "hbm_supplier": "SK Hynix",
+      "hbm_per_gpu_gb": 256,
+      "note": "Highest HBM capacity per GPU in market; memory bandwidth leadership story"
+    },
+    {
+      "product": "MI350 (HBM3e, 288GB)",
+      "status": "sampling_2026H1",
+      "hbm_supplier": "SK Hynix / Micron (target)",
+      "hbm_per_gpu_gb": 288,
+      "note": "3nm; targets NVIDIA B200; HBM4 migration in MI400"
+    },
+    {
+      "product": "MI400 (HBM4)",
+      "status": "development",
+      "hbm_supplier": "TBD",
+      "hbm_per_gpu_gb": null,
+      "note": "2027 target; first AMD GPU requiring HBM4"
+    }
+  ],
+  "key_contacts": [
+    {
+      "name": "",
+      "title": "VP, Instinct GPU Product Marketing",
+      "linkedin": null,
+      "note": "Manual entry — update before next meeting"
+    }
+  ],
+  "recent_news": [],
+  "sales_hooks": [
+    "AMD MI325X has 256GB HBM — highest per-GPU capacity on the market, making AMD the natural choice for memory-constrained LLM inference. This is a positioning story memory suppliers should amplify.",
+    "Samsung is AMD's primary HBM3 supplier for MI300X — a unique customer relationship that Samsung's memory marketing team should be actively managing vs SK Hynix's NVIDIA dominance.",
+    "AMD datacenter GPU revenue +36% YoY — the 'alternative to NVIDIA' demand is real; hyperscalers are dual-sourcing AMD to reduce NVIDIA dependency, which diversifies HBM demand.",
+    "MI350 (3nm, HBM3e 288GB) samples H1 2026 — qualification timing for Micron HBM3e is a live opportunity. Micron could break AMD's SK Hynix dependency at this transition."
+  ],
+  "competitive_position": {
+    "gpu_market_share_ai_pct": 12,
+    "vs_nvidia": "Price/performance competitive for inference; CUDA ecosystem remains a 10-year moat for NVIDIA",
+    "vs_intel": "AMD far ahead on AI GPU; Intel Gaudi largely irrelevant at hyperscaler scale",
+    "hbm_relationship": "Samsung primary for MI300X; SK Hynix growing share in MI325X/MI350"
+  },
+  "financials_history": {
+    "2025Q1_dc_revenue_usd_bn": 3.7,
+    "2024Q4_dc_revenue_usd_bn": 3.9,
+    "2024Q3_dc_revenue_usd_bn": 3.5,
+    "2024Q2_dc_revenue_usd_bn": 2.8,
+    "2024Q1_dc_revenue_usd_bn": 2.3
+  },
+  "sources": [
+    "AMD Q1 2026 Earnings (Apr 2026)"
+  ],
+  "flagged_news": []
+}

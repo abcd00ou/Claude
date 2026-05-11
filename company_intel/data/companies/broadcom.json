@@ -1,0 +1,97 @@
+{
+  "company": "Broadcom",
+  "ticker": "AVGO",
+  "last_updated": "2026-05-11",
+  "snapshot": {
+    "revenue_qtr": "$14.9B (FY2025 Q2, +25% YoY)",
+    "revenue_qtr_usd": "$14.9B",
+    "ai_revenue_qtr_usd": "$4.1B",
+    "op_margin_pct": 60,
+    "headcount": 40000,
+    "market_cap_usd_bn": 780
+  },
+  "product_roadmap": [
+    {
+      "product": "Google TPU v5/v6 ASIC (Trillium)",
+      "status": "mass_production",
+      "hbm_supplier": "Samsung (primary), SK Hynix",
+      "note": "Co-designed with Google; Broadcom handles SerDes + packaging integration"
+    },
+    {
+      "product": "Meta MTIA v2",
+      "status": "deployed",
+      "hbm_supplier": "TBD (direct procurement)",
+      "note": "Inference ASIC for Meta Reels/Feed; replaces GPU for inference workloads"
+    },
+    {
+      "product": "ByteDance custom AI ASIC",
+      "status": "development",
+      "hbm_supplier": "TBD",
+      "note": "Reported 2025-2026; largest-ever ASIC order volume per analyst estimates"
+    },
+    {
+      "product": "Apple custom AI inference chip",
+      "status": "development",
+      "hbm_supplier": "N/A (edge device)",
+      "note": "On-device inference; no HBM but signals AI silicon market breadth"
+    }
+  ],
+  "key_contacts": [
+    {
+      "name": "",
+      "title": "VP, Custom AI Silicon (ASIC)",
+      "linkedin": null,
+      "note": "Manual entry — update before next meeting"
+    }
+  ],
+  "recent_news": [
+    {
+      "date": "2026-04-29",
+      "title": "MediaTek to Contribute 1 in 4 AI ASIC Server Compute Shipments in 2028",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxObFQ0UGZXVTFqaUJBakhIbFNJS2J4amV6SlpLeHFZbXI5bi1HV1JqTjB1RkZhejJzQXYwYk1aTTdqc2QyMFFBQzRqVlBEdWZyODZocmlFYTlIU1VCNVRKeWRfT0djcUd1MHJvNjgyQjZpSFFDTVlhbXItcG5rZ19HUkFzd3l2NnlRODI4M0JkNHEtdFFpbWNTTi1MM2txc1dGSnh1RHpxUUdFbWFjNEQwUkRDeU9Jdw?oc=5",
+      "source": "Counterpoint Research"
+    },
+    {
+      "date": "2026-04-27",
+      "title": "Broadcom set to retain leadership position as AI server compute ASIC partner through 2027: Counterpoint",
+      "url": "https://news.google.com/rss/articles/CBMioANBVV95cUxQc0RjdkVveDdfekl3aUF6TjdzblFaS3dHQlNhNDRNVkhpQVd1ODU2dXhQSzIxaVYtS2t5RUVUZTJ2RmFlZElFTXAxeW5zY20tUjZ4OE5FdWliTzViMEZyNDVLeEswM3R0NllWY3ozTlpWTFFkSl8wWVRBeEFJTXlsOTBaNW1JWmpYVDI2eElLellwQ00xSE1CZXhwcW45VVZVckNLWGdPaUtKb09xRXpPdTh0clRGakFlZDBBOWFVUmpXV1QtbDVJX0FjMzFCcWF0dUhuRk9hVXIxVEh0S0hRZE5NU0U3VjVFQXA5X1IwTmgzWVNld05YV3pYLWRPSHZnWDFMUnVpRkpHZE9IeEM4Uk9Ma0ZfS0hROXE5cHEtM2docjVmVE93b2RlY0Y1VUF3QjBxaFdJclRnblZ2VTQyVHFqVnlMX282RHpZdzQzM0Nud1FJeDRXU3dISVYtS1FfMzV3ellHXy1Mbk1SbExoakhTeGM1SG1vZkxjTDRTemZhX0YycDRreTRCQVhNU2tiZVdjX0x4S19feWdsZjJaQw?oc=5",
+      "source": "MSN"
+    },
+    {
+      "date": "2026-05-08",
+      "title": "Top 25+ AI Chip Makers: NVIDIA & Its Competitors",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9UYlQtNjVDT09maWxpR0pGbEU0MGxYaDdad1VzYnp6cXBTcjc4RlY0TXJ0SVVvb0NTU19DdkVCbFFOVjk1MUNmdUg4UjhEdw?oc=5",
+      "source": "AIMultiple"
+    },
+    {
+      "date": "2026-04-28",
+      "title": "5 AI Infrastructure Stocks to Watch on Mag 7 Earnings",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxQWUtkTTZvYkhpejFOamxPMXd6VHNwSDdqTHdGMDgxUkp2YnZGSHlVY3ZMQjdZM0dxS0w0Y2JJWERIVVJqWWNDVTRudXE2aFZMLTlVdUpYbzJtc2dpOFJWeHNYVEx3dkM1ZmRXSHF3NzZNWXRoSE9aMXdfNlZNT3pGcGdWSDhnaDdNclpWdVp6Yi1hdw?oc=5",
+      "source": "Gotrade"
+    }
+  ],
+  "sales_hooks": [
+    "Broadcom is the 'arms dealer' of the ASIC economy — Google, Meta, and ByteDance all route their custom AI silicon through Broadcom. HBM qualification must happen at Broadcom before it reaches the hyperscaler's TPU.",
+    "Broadcom AI revenue run rate: $4.1B/quarter and accelerating — every ASIC win at a hyperscaler adds a new HBM demand channel that bypasses NVIDIA's supply chain.",
+    "ByteDance ASIC reportedly the largest single ASIC order in history — if it ships with HBM, understanding Broadcom's supplier selection process is critical for memory marketing teams.",
+    "Broadcom's SerDes IP is the interconnect between HBM and the compute die — memory suppliers who co-optimize with Broadcom's signal integrity requirements win design-ins earlier."
+  ],
+  "competitive_position": {
+    "asic_market_share_hyperscaler_pct": 55,
+    "vs_marvell": "Broadcom leads on compute ASICs (TPU/NPU); Marvell stronger on networking/DPU ASICs",
+    "vs_nvidia": "ASIC displaces GPU for predictable inference; Broadcom captures margin NVIDIA would have taken",
+    "moat": "Multi-generation co-design relationships with hyperscalers; 5-year design cycle creates lock-in"
+  },
+  "financials_history": {
+    "FY2025Q1_ai_revenue_usd_bn": 4.1,
+    "FY2024Q4_ai_revenue_usd_bn": 3.8,
+    "FY2024Q3_ai_revenue_usd_bn": 3.1,
+    "FY2024Q2_ai_revenue_usd_bn": 3.0,
+    "FY2024Q1_ai_revenue_usd_bn": 2.3
+  },
+  "sources": [
+    "Broadcom FY2025 Q2 Earnings (Mar 2026)",
+    "Broadcom AI ASIC analyst days"
+  ],
+  "flagged_news": []
+}

@@ -1,0 +1,92 @@
+{
+  "company": "CXMT (ChangXin Memory)",
+  "ticker": "Unlisted (state-owned)",
+  "last_updated": "2026-05-11",
+  "snapshot": {
+    "revenue_qtr": "~CNY 8B est. (Q1 2026)",
+    "revenue_qtr_usd": "~$1.1B (est.)",
+    "op_margin_pct": null,
+    "hbm_china_market_share_pct": 100,
+    "headcount": 10000,
+    "market_cap_usd_bn": null
+  },
+  "product_roadmap": [
+    {
+      "product": "DDR5 / LPDDR5 DRAM",
+      "status": "mass_production",
+      "customer": "Huawei smartphones, domestic PC/server",
+      "note": "Mainstream DRAM; competing with Samsung/SK Hynix/Micron in China market"
+    },
+    {
+      "product": "HBM2E (domestic 'HBM-like' stack)",
+      "status": "development",
+      "customer": "Huawei Ascend 910C/D",
+      "note": "Reported 2024-2025; 1-2 generations behind SK Hynix HBM3e; critical for China AI self-sufficiency"
+    },
+    {
+      "product": "Next-gen HBM (HBM3 equivalent target)",
+      "status": "early_development",
+      "customer": "Domestic AI chip makers",
+      "note": "2026-2027 target; requires ASML DUV only (CXMT does not have EUV access)"
+    }
+  ],
+  "key_contacts": [
+    {
+      "name": "",
+      "title": "Marketing Director",
+      "linkedin": null,
+      "note": "Manual entry — update before next meeting; limited public executive disclosure"
+    }
+  ],
+  "recent_news": [
+    {
+      "date": "2026-04-22",
+      "title": "CXMT HBM3 timeline slips, mass production unlikely in 2026",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNV1NSUjF1MldXQUFXeFVwZHN5VWx1Y3l5cmRla0xjd0x5SnlZZFR3Q1FKRUloenNrSFZRZXFiWDBYOUgzWUx5d3l5bndJeW5XRGZ0VG90ZnFscllCeHlxYkp6bl82T3BHb0tJMmE4NDZsZExVSHN6NGpPeW9nMUZYSmpFc1RldnRV?oc=5",
+      "source": "digitimes"
+    },
+    {
+      "date": "2026-04-13",
+      "title": "Qualcomm moves into custom DRAM with CXMT for smartphones",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxPdWhLLThmZG1GeUpfYzJ2dkdQTE53NFpfOS1YSzduM1ZEN1BjcHlmUUd3REFhYkFrdUlnLTRJWEstazgyb0NQUmtLcS1QMmFvYzdPeEpTN0phWEdJYTFkWE12U2o5X1d3N05CZV9LOGloUkxKZjRWaldfbjdIWWcxcVlwN1pNQWxraHdpVEZfRl9OUQ?oc=5",
+      "source": "digitimes"
+    },
+    {
+      "date": "2026-04-22",
+      "title": "Former Samsung Electronics researcher jailed for leaking chip technology to Chinese firm",
+      "url": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxPNk94R196b3JwQmZvR3VpY042cjJkMVpRM29pTGFVSWc1bGdONFNNWkpKREdqbTh4cUlQWldVQUtUV2VFZzV1ZmlVdkR4a0ZuamlNOHRvU0htTHdxTGRGOGo2bDFHQnA3OU42SWhPY2FxdG9GX2tLRmxXSzdwUE8tc2dpZ2VCZHNPOFI0TE5aVEtBNkRRX0pmRjNxaVJXZ2s1ZjE1UEpxY1NlQWRfRFN0bzdMYkowMHVtTW5rdzVsZjFSOUFWODRiZQ?oc=5",
+      "source": "Reuters"
+    }
+  ],
+  "sales_hooks": [
+    "CXMT is the only Chinese HBM development program — its progress (or lack thereof) determines whether China's AI cluster buildout is HBM-constrained. SK Hynix/Samsung should track CXMT's technology node closely.",
+    "CXMT lacks EUV lithography (export-controlled) — this limits their HBM to DUV-achievable density, capping them at HBM2E/3 equivalent, 1-2 generations behind SK Hynix. This gap is a durable sales advantage.",
+    "China AI chip demand for HBM-equivalent is ~$2-3B/year and growing — if export controls limit Korean/US suppliers from selling to China, CXMT fills the gap. Monitor US export control decisions closely.",
+    "CXMT is state-backed with near-unlimited government funding — their trajectory is a policy risk, not a technology risk. Track MIIT funding announcements as leading indicators."
+  ],
+  "competitive_position": {
+    "hbm_china_rank": 1,
+    "vs_sk_hynix": "2+ generation gap; no EUV access limits density and yield; not commercially competitive outside China",
+    "vs_samsung": "Similar technology gap; CXMT's advantage is zero export-control risk for Chinese customers",
+    "risk_to_incumbents": "Medium-term risk in China market only; no near-term threat to global HBM market"
+  },
+  "financials_history": {
+    "2023_revenue_cny_bn_est": 18,
+    "2024_revenue_cny_bn_est": 28,
+    "2025_revenue_cny_bn_est": 38
+  },
+  "sources": [
+    "SemiAnalysis China memory analysis",
+    "TechInsights CXMT teardown reports",
+    "CSIS China semiconductor tracker"
+  ],
+  "flagged_news": [
+    {
+      "title": "CXMT HBM3 timeline slips, mass production unlikely in 2026",
+      "date": "2026-04-22",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxNV1NSUjF1MldXQUFXeFVwZHN5VWx1Y3l5cmRla0xjd0x5SnlZZFR3Q1FKRUloenNrSFZRZXFiWDBYOUgzWUx5d3l5bndJeW5XRGZ0VG90ZnFscllCeHlxYkp6bl82T3BHb0tJMmE4NDZsZExVSHN6NGpPeW9nMUZYSmpFc1RldnRV?oc=5",
+      "category": "roadmap",
+      "relevance_score": 1
+    }
+  ]
+}

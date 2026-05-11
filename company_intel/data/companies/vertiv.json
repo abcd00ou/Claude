@@ -1,0 +1,125 @@
+{
+  "company": "Vertiv",
+  "ticker": "VRT",
+  "last_updated": "2026-05-11",
+  "snapshot": {
+    "revenue_qtr": "$2.35B (Q1 2026, +24% YoY)",
+    "revenue_qtr_usd": "$2.35B",
+    "op_margin_pct": 20,
+    "headcount": 29000,
+    "market_cap_usd_bn": 38
+  },
+  "product_roadmap": [
+    {
+      "product": "Liebert EXL S1 UPS (AI DC)",
+      "status": "mass_production",
+      "customer": "NVIDIA GB200 NVL72 rack certified",
+      "note": "Only UPS certified for GB200 NVL rack power profile (>100kW/rack)"
+    },
+    {
+      "product": "Liquid Cooling CDU (400kW+)",
+      "status": "mass_production",
+      "customer": "Microsoft, Google, AWS",
+      "note": "Coolant distribution units for direct liquid cooling; mandatory for HBM thermal requirements"
+    },
+    {
+      "product": "High-density power shelf (48V DC Bus)",
+      "status": "mass_production",
+      "customer": "NVIDIA MGX, GB200 ecosystem",
+      "note": "48V DC architecture required by GB200; replacing legacy AC power distribution"
+    }
+  ],
+  "key_contacts": [
+    {
+      "name": "",
+      "title": "VP, Data Center Solutions",
+      "linkedin": null,
+      "note": "Manual entry — update before next meeting"
+    }
+  ],
+  "recent_news": [
+    {
+      "date": "2026-05-10",
+      "title": "Vertiv (VRT) Stock Hits Record High on AI Data Center Demand",
+      "url": "https://news.google.com/rss/articles/CBMiSEFVX3lxTE1OT0tlS0pqLXNKY08xWWt3TFdkVm91bUFWUEFfUjVBaHRSNmNCZUFEaF93eGV5OUVKTmVIU1VXdzF1Ry1CREZUag?oc=5",
+      "source": "MEXC"
+    },
+    {
+      "date": "2026-05-05",
+      "title": "How Raised 2026 Guidance And AI Data Center Demand At Vertiv Holdings Co (VRT) Has Changed Its Investment Story",
+      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNUmJpMGZobjlLYjJLSTJhbHR0VjJXTHFJYlRIOG5uaVdBQUY1YUc0cl9kSElLaXlfSElhTzlyMUZzRVAwdWY5T2xQSUxDblBwcURqLWMxa0ljbUxqNmlLaXBzdXl3dUJhSE5BdEpNOU5nSUhaOTBsTXhmYW12dUZ6V1pYVWRQZ1pBRVFhY1l0ZE5LTVl3Qk5SUEFBWS1UWEpNLW1RbktiX0J3S2x5bjFEYnIydTR3ZVdTcFg5N1Z1bXdrZ1FXcmxaTjI4M3F3eHFtVFdnSnhB0gHbAUFVX3lxTFBCdzd0bHZBWEt2MjJVUHQ4RUxoZU0tWElGcTBCOEJUVzBSYWFMbGxrWVlJMGpFY0s4YVRkVlRnWnZuc19CaGMzMVQ5RzR5R0Y5ME5ILThsZWU4U0lJNXRraTBOamJueENiRXNXVFY5V0M1NV9Mb29ONmQwZndhd3FNbWVVcUFhQlBUNU9xd3lGUmE3NzUxR3lFamxKV1BzUk55aGhTLWEzaTVxOXlmcHB4dy1leWFROVBtZkg3c29Va285MVByWHJaY19FVHNiaFZXelZ0T2xxRTZfWQ?oc=5",
+      "source": "simplywall.st"
+    },
+    {
+      "date": "2026-04-29",
+      "title": "Vertiv Acquires Strategic Thermal Labs to Advance Liquid Cooling for AI Data Centers",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPa19uMFlRZDhnbEdLRjV4SkRKeDFSS2JJSDExQ3JuT0FWUEYxdi1UcTlfdVBwM19hbmk4cFlZWWlhRDNEdWVEbFB3cVlGQ2xKekN2MEt6SnJYVVZhZEZvU2czMDBNeDhWWllCS2ZuSnYwNldzSGZRdHB2MWhGbHF2SElfSm5HdUh4MHNIc3hWanRUVWxUWjVrcDVQckxDcTlWSTE1N1BmazdfTVBLbFJZRnJ3S2NBd1hTajhYY2Uxczg?oc=5",
+      "source": "TechAfrica News"
+    },
+    {
+      "date": "2026-04-30",
+      "title": "Vertiv bets $50 million on Ohio to power AI infrastructure boom",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTE9Sb3FjZjNrcEpHUkNycUlRM1NPczFicHNnUlg5RUxaTl8wbWkzMWg4NEpNNTVXTTFKTXhoZkJmUkxvUVRNRXA1dW9SeGhwZVdsMWpsbW9takZyczZkUUxNSW82VmZZQURtanYzbVR6d3V6UDg1cmRmNEM2WnhOb00?oc=5",
+      "source": "Ohio Tech News"
+    },
+    {
+      "date": "2026-05-07",
+      "title": "Vertiv stock hits record as AI demand drives surge",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOY3M3MEN4VS1iVjNfZnQ2WWVBeWtXaXJJZi1PQ3lMdVRWZ3I0NWhTZ2ZRV0FaTDB2VlVaVktfSENuc1JzZDhHRi1VMnRLT0J1R3QtMlhiZGZQWnpxdkRpYU9VQTg0S1ZYY0tvcldDUFpFczVlZ0RLdl96emozZENxZW1qYS1LRjZfRmhuNUEyYTF3VlZDck5VVi04RnZlNzJjZVZr?oc=5",
+      "source": "MSN"
+    },
+    {
+      "date": "2026-05-01",
+      "title": "Data Center Demand Drove Vertiv's Earnings up 83%, but Is This AI Infrastructure Play Worth its Lofy Valuation?",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNa0piNEJCLTBCdnE2NFUtLTl1X0ZlNUFiQlFvb3RGaENNN0Nrc0M3UmNPNnRULWYya0xTb0UxbHpHQzdjcXFKVTNCQWktVEhLRVMzYVRSVDlNaDdBanBEZmlkUFZ3Y0FibXBya2tfM1RkMW1TZTBVQTg2VG51MWJOTm9IcGhOWDZBRVlnbEZVbzVYcy1ZVFZYcw?oc=5",
+      "source": "The Motley Fool"
+    },
+    {
+      "date": "2026-04-22",
+      "title": "Top 10: Direct to Chip Cooling Companies",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQazI3RmNRVkdKcXFlN09WOGY3aFdoNzA1azRiRUpoN25LWU4xZUJpQ3ZaZFFNV2JZdzhmT0FXUjNvaDBrZWxMSVFhaE44amJYZ3M5anNCS0Jtb1licWVEMS1BZFl2ZVBqMDI5LVgweXNnYmFnaGROczA1b2dnXzVYaHNYM2pkOHBTN3YwVnhCc3o?oc=5",
+      "source": "Data Centre Magazine"
+    },
+    {
+      "date": "2026-04-27",
+      "title": "Vertiv: Acquisition Of Strategic Thermal Labs Expands Liquid Cooling And AI Infrastructure Capabilities",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxOTFFFZUdwTXYxTnJHWnRuaFlidkJHQ2xmNm9YbThsZU9UR09oeHBObU9RSEk0RGVEUHcxcXNpbXgwbThMX3hfSmRITWYxWW5XRGdmRFA3YVVncHRnUGQ2bEU0RDBlY0JsS1U0cnRiZndXc3BHaG9YbXNuXy1mZ1E1aEpOLUctQzhYajJyRExtbjFqelQ5Sk1xeTZKZmJSbjVQSkxuV29ydFpSSC1TQTNyc3hyZzNrZGEzSHZtYUhaNNIBxAFBVV95cUxQakF3RXYwOC0yUnVMZDV3U3Y4SXZRYmV0b0Npb293MllWb3pPVkRMelFfb2wxSUFoT0U1LWdZUlFIRWJ4b3BTeV9pbnhlYUhEMXdwNWlqRGxsckVFN1NMeHpIeHQwbGtVdmMzZjhXWlVlelJNdG0wSVp2NDF6bTVualVRWW1PLXEzMm9sai0wN2xpSmgwZEpUbk1WUW9GT2RQUEhaS1RYMmt4cVZJak44N2dSQzJSUTlQbnpHQ1M5TkRBOXN6?oc=5",
+      "source": "Pulse 2.0"
+    },
+    {
+      "date": "2026-04-24",
+      "title": "Vertiv Is Riding The AI Wave. Can It Keep Its Lead?",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxQRHZJSHc1S25KNmsyRzZKQ2JQNDRpY29CcFllOWozM1hYMlo1cUdTUWZZb2NJWlhmRWJZSkdTNlZTZkdMNVJmYkVaM3hyVTdlWDVRX0M3X185N1NMX2lpcWRKM2pocjVKZ21UV2lQV09rbnFUaGJQMDB4dXZORjRYc2dtc25FQ3k0MGtnREZIMjBKXzhSaXZya2NmcElYZXBxV1hHQm15WFFhcE5PNlplUnZ3M0dNcDh5Uk5IeGFoV0U?oc=5",
+      "source": "Forbes"
+    },
+    {
+      "date": "2026-04-17",
+      "title": "Vertiv’s Ohio Capacity Expansion for AI Data Centers Could Be A Game Changer For Vertiv (VRT)",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNT3NDSmtneExJUzlXaVdzLV9YWGlQaXZIQkctQjJ3MmtjSjdoWE5HcEItRHhzS3FOMFhONEUyVlZGUk5rVEJMTE5neTVrRUlIVFNkaDFNREVRRW1BVEFvRXJEamN5VWRvaC1UVFpQZVVxRHhkU04zNG9FVkNyeGxZZm5YOElzRzNtajl5cGZzZzhOME1zdVkyUVIyUFExVGs?oc=5",
+      "source": "Yahoo Finance"
+    }
+  ],
+  "sales_hooks": [
+    "Vertiv is the only certified UPS for NVIDIA GB200 NVL72 — every HBM-packed Blackwell rack requires Vertiv power infrastructure. HBM density growth directly drives Vertiv's addressable market.",
+    "HBM generates 3-5x more heat per rack than DRAM — liquid cooling is no longer optional. Vertiv's CDU backlog is a leading indicator of HBM deployment velocity at hyperscalers.",
+    "Vertiv order backlog: $7.5B (record) — visibility into where new AI compute is being built. Use Vertiv's geographic deployment data as a proxy for where HBM demand will land.",
+    "As HBM stacks go from 8-Hi to 12-Hi, power per GPU rises from 700W to 1200W+ — Vertiv is a direct beneficiary of every HBM generation step-up."
+  ],
+  "competitive_position": {
+    "power_cooling_market_share_ai_pct": 35,
+    "vs_eaton": "Vertiv leads on liquid cooling; Eaton stronger in traditional UPS/PDU",
+    "vs_schneider": "Vertiv ahead on AI DC certification (GB200); Schneider broader industrial presence",
+    "moat": "NVIDIA ecosystem certification + liquid cooling IP + 29K global field service engineers"
+  },
+  "financials_history": {
+    "2025Q1_revenue_usd_bn": 2.35,
+    "2024Q4_revenue_usd_bn": 2.27,
+    "2024Q3_revenue_usd_bn": 2.07,
+    "2024Q2_revenue_usd_bn": 1.97,
+    "2024Q1_revenue_usd_bn": 1.9
+  },
+  "sources": [
+    "Vertiv Q1 2026 Earnings (Apr 2026)"
+  ],
+  "flagged_news": []
+}

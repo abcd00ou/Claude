@@ -1,0 +1,125 @@
+{
+  "company": "GE Vernova",
+  "ticker": "GEV",
+  "last_updated": "2026-05-11",
+  "snapshot": {
+    "revenue_qtr": "$9.2B (Q1 2026, +13% YoY)",
+    "revenue_qtr_usd": "$9.2B",
+    "op_margin_pct": 8,
+    "headcount": 80000,
+    "market_cap_usd_bn": 70
+  },
+  "product_roadmap": [
+    {
+      "product": "Gas Turbine (HA Series) — AI DC power",
+      "status": "mass_production",
+      "customer": "Microsoft, Google, Amazon (behind-the-meter)",
+      "note": "Natural gas turbines for AI data center on-site power generation (100-500MW projects)"
+    },
+    {
+      "product": "Grid Transformer (HVDC)",
+      "status": "mass_production",
+      "customer": "Hyperscaler grid interconnect",
+      "note": "18-36 month lead time; transformer shortage is the #1 AI data center power bottleneck"
+    },
+    {
+      "product": "Small Modular Reactor (partnership)",
+      "status": "development",
+      "customer": "Microsoft (Three Mile Island successor), Google",
+      "note": "Nuclear-backed clean AI power; 2030+ timeline"
+    }
+  ],
+  "key_contacts": [
+    {
+      "name": "",
+      "title": "VP, Data Center Power Solutions",
+      "linkedin": null,
+      "note": "Manual entry — update before next meeting"
+    }
+  ],
+  "recent_news": [
+    {
+      "date": "2026-05-04",
+      "title": "3 Energy Stocks to Buy and 2 to Avoid as AI Power Demand Explodes",
+      "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxOWm9lRkJud1JqeTM1RjdNZmRHSG1aaVFMaFZSaGxkNDNhbjhQUTVzWUJmWlpwSExCMGlJaDYzNzRNVVJvdlByS0duM2lLZndBV3paMTlNaGFmdEIwTDRWaFZQYzhMbjkwcENLb2MzUmxZU1NaSnNEdUNsUDZWQnpyTkI5RlNjeGdrMTMzR1huYw?oc=5",
+      "source": "Yahoo Finance"
+    },
+    {
+      "date": "2026-05-08",
+      "title": "Are AI Data Centers Becoming a Power Stock Story?",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFBfMVZQcFlJcV9hbElsNzhNQUZCM09RWUIxTHJucmpjWE14dlo1RDd2NjFtZC1HVU5fNTVwdlctdC1zSTBVQzR3QjE5NDBRS0xCejBsYjlWOElXVU5fRmJNTEYxTTVFN2M?oc=5",
+      "source": "techi.com"
+    },
+    {
+      "date": "2026-05-04",
+      "title": "How AI Data Centers Are Reshaping the Power Market (And the 4 Plays Investors Are Making)",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNeUZVT1NaSExfZGh5dUdCNDBtZENycnQ4bDk3VkJtejFLZnZ0OGZZQ0YxeWw3OE9LamNHQU94NHEtQnpoVnFxRGZXanFZZG9KVmw5M3hNNmVYNlVzTFR1enR2RXFTaUVORUN5emVZLWJXeUNTeF9WZUtDNG4yY280TUpKOEtJRHliajc1QXV3cS16bENsOEQzb3VEeDlZcDhKUVFpNUM2dllUTmNSVmp6czFMdkFKWFlkbUtpZXVfLWJ4M3N2djJwc2toOA?oc=5",
+      "source": "24/7 Wall St."
+    },
+    {
+      "date": "2026-05-05",
+      "title": "The Top 4 Clean Energy Stocks Dominating 2026 as AI Supercharges Power Demand",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPYkVEU2h6dlU0S0ZoUW5uUE55ZkpzTFlBUHJ3VlFYa0JTMkJJWnBkeUVpTHlzOUtsZUJyMTlSV2xNTHk3dXROT2xYSzMyazVZR2hsX1poUXJvNS1tZjdPOXNyeEZPVzVXWmxDS1FCSWN4WWQwcGpWMndFT1lmWXkzeDR0MGJTUjQwdk95WE81NDY4cjAwb2tmT0pXUUdWa2UtTXpmaEhQQQ?oc=5",
+      "source": "CarbonCredits.com"
+    },
+    {
+      "date": "2026-04-22",
+      "title": "GE Vernova lifts 2026 outlook as AI boom fuels power equipment demand",
+      "url": "https://news.google.com/rss/articles/CBMisAFBVV95cUxNcENWa2tZOXJJcUtMYUtZS3lOYUVyQlp3STFjZnd6akRHQ2wxNktyQnNMalZZRUVYMTZJaExVekVRaTEtSlgxQnN4ZzUwY0NKOFRUZjE1MHJwcUlVdTkzak9qSEMyWTdTYkZJQkpfMTdKaWlWWERnaWRKM1B6OXBHODJkZ2hUV21TOV91U1lWdzJPenBySkhLWldVNW5NT21zZFJ5bHdSb3dTdDE3T09rMg?oc=5",
+      "source": "Reuters"
+    },
+    {
+      "date": "2026-04-22",
+      "title": "Top 5 ETFs Positioned to Benefit From the AI Power Demand Boom",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxPcGU2OUhmZjNaNC1zZGRSM3p5V1pOajFjMGZBRzJhcm5ha3BySWhmTU1JZktEMnZ4cUFrTzRyb3JjQkg2cnpWalFrSFVJTXVCNS1JdGFVTHNralVoY0xIdF9Ha21udm12S3licHp5RkoxWG5LcU5Ya0U4RkxUVVFyLWNzMjdUUUMxcDE5SQ?oc=5",
+      "source": "ETF.com"
+    },
+    {
+      "date": "2026-04-27",
+      "title": "GEV vs. AEP: Which Grid Stock Is Positioned Better Today?",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQNUJRendpZWN6Uk9QUWthVnZzWS1wdHNlQWxBY04tc0VCRUNzQk82UTUxSmUyU0t4bXI4VGc1TWk3N2ZlSUo2WVZGaWc1ZnBsWWJrYTdFT3VMVVJEMzF6UmFPMDJycUpmSWNtT29GNmF2UU9lSk1OVk5YWXV2ZUdwampDZjF6Zlg0Y044NUkxRkZSMUdYUE80SEtKdUYzS3pPTnVJS1UtNERqcTd3ekdJ?oc=5",
+      "source": "TradingView"
+    },
+    {
+      "date": "2026-04-24",
+      "title": "The 1 Energy Stock You Should Be Buying for the $700 Billion AI Spending Spree",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE8ycUJBa2FKMUlOWTB2R1FRbVZYR0NVYlFKbFd6YTBRZkJOYmh6WGs4Y1Qwck5RQzUzbnJjV0lMT0J1d29pandzMk5mQ1p5Z0JHN1pOTmdFUEE4ZzVRT2dsa3ZVME5QNFVaQmVwNVpVdHNzTUhqb185cg?oc=5",
+      "source": "AOL.com"
+    },
+    {
+      "date": "2026-05-05",
+      "title": "Industrial-Strength Rally: Why Caterpillar Is Up 53% and GE Vernova Is Up 65% in 2026",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOZjlCUWNxckpMZkRza0lUTC1uS252bmNQZDk1bWJnRU5vVnN4bUV1WllMYnRCVnZWNTk0c3J4VU80N0VwY2Y0T1BueWZHTllRVWtTaXJnYWVYVnlTTG1FR2dfZWk0X0xiQjJnM3JucDlqelpUSkw4SmFTM2Jyd2R0ejB4Y3ZQUVBXclJ0cUhIYlFQcTlrUkszalhKUXhfLXE1MUt1TXBGY1kwYmQ4MmFrRF9WSUZQYlBZZWJNaEh2ZXY1ZXAx?oc=5",
+      "source": "24/7 Wall St."
+    },
+    {
+      "date": "2026-05-05",
+      "title": "The Real AI Trade May Not Be Software. It May Be Power Equipment",
+      "url": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNUTM2MnlqT3hEOXU5aUhFTGZDeVhESzkzZ3JkdU9NakJ1M0xiLVhMQ09wTi1QYy1zREdKX01pckJvMzQ0RmVOZHREamJNS3FkUEd1X2pEVktmbEtCbVRlRllZQ2J2UkxkckVGRXZ1U2Z4a2JKejVZQ3JBTldMVUxaNVZ3NVlIeERwRGZpSERHaWpaUTBsT2cxUzJJbXlyeVFjVEx0YjZkTXl6RzQ?oc=5",
+      "source": "24/7 Wall St."
+    }
+  ],
+  "sales_hooks": [
+    "GE Vernova's transformer lead time is 18-36 months — every new AI data center is power-constrained before it's GPU-constrained. HBM demand is gated by GE Vernova's backlog.",
+    "GE Vernova's gas turbine orders from hyperscalers are a 24-month leading indicator of where large-scale GPU clusters (and thus HBM) will be deployed geographically.",
+    "Power demand for GB200 NVL72 racks: >100kW per rack; a 100K GPU cluster needs ~1GW of dedicated power — GE Vernova is the primary beneficiary of this new power demand class.",
+    "Nuclear + AI: Microsoft's Three Mile Island deal, Google's Kairos SMR partnership — GE Vernova's nuclear expertise positions it as the long-term clean power partner for hyperscalers."
+  ],
+  "competitive_position": {
+    "grid_equipment_market_share_pct": 20,
+    "vs_siemens_energy": "GE Vernova stronger in North America; Siemens Energy leads in Europe",
+    "vs_hitachi_energy": "Hitachi ABB leads on transformer technology; GE Vernova leads on gas turbine",
+    "moat": "Transformer production capacity is a physical bottleneck — cannot be replicated quickly; 2-3 year backlog"
+  },
+  "financials_history": {
+    "2025Q1_revenue_usd_bn": 9.2,
+    "2024Q4_revenue_usd_bn": 10.6,
+    "2024Q3_revenue_usd_bn": 8.9,
+    "2024Q2_revenue_usd_bn": 8.2,
+    "2024Q1_revenue_usd_bn": 8.1
+  },
+  "sources": [
+    "GE Vernova Q1 2026 Earnings (Apr 2026)"
+  ],
+  "flagged_news": []
+}

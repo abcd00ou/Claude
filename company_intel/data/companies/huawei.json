@@ -1,0 +1,84 @@
+{
+  "company": "Huawei (AI/Cloud)",
+  "ticker": "Unlisted",
+  "last_updated": "2026-05-11",
+  "snapshot": {
+    "revenue_qtr": "~CNY 179B (Q1 2026, est. +21% YoY)",
+    "revenue_qtr_usd": "~$24.7B",
+    "cloud_ai_revenue_2025_usd": "$3.4B (est.)",
+    "op_margin_pct": 15,
+    "headcount": 207000,
+    "market_cap_usd_bn": null
+  },
+  "product_roadmap": [
+    {
+      "product": "Ascend 910C (HBM equivalent: domestic DRAM)",
+      "status": "mass_production",
+      "hbm_supplier": "CXMT (ChangXin Memory) — domestic HBM-like DRAM",
+      "note": "NVIDIA H100 competitor for China market; uses domestic memory, bypasses export controls"
+    },
+    {
+      "product": "Ascend 910D",
+      "status": "development",
+      "hbm_supplier": "CXMT / Yangtze Memory (YTLM)",
+      "note": "Next-gen; reportedly matching H100 on some benchmarks; 2025-2026"
+    },
+    {
+      "product": "CloudMatrix 384 (AI cluster)",
+      "status": "deployed",
+      "hbm_supplier": "Domestic DRAM stack",
+      "note": "Claimed 384-NPU cluster outperforms NVIDIA H100 cluster on transformer inference"
+    }
+  ],
+  "key_contacts": [
+    {
+      "name": "",
+      "title": "VP, Intelligent Cloud & AI (Huawei Cloud)",
+      "linkedin": null,
+      "note": "Manual entry — update before next meeting"
+    }
+  ],
+  "recent_news": [
+    {
+      "date": "2026-05-08",
+      "title": "Top 25+ AI Chip Makers: NVIDIA & Its Competitors",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9UYlQtNjVDT09maWxpR0pGbEU0MGxYaDdad1VzYnp6cXBTcjc4RlY0TXJ0SVVvb0NTU19DdkVCbFFOVjk1MUNmdUg4UjhEdw?oc=5",
+      "source": "AIMultiple"
+    },
+    {
+      "date": "2026-05-05",
+      "title": "US to Deploy AI Systems on Classified Networks - China Focuses on Own Domestic AI Stack",
+      "url": "https://news.google.com/rss/articles/CBMirAFBVV95cUxORDQtVXFCem1aTFR4My00UlZNbC1TbnNxWVZnR1pKYXZZTnRaYlcyZlFMbFNWcEluVi1YNGJiRzhkMktmbTVHMzE5LTRQZGdoRFh2ZmlkUzNUZ0JCVnQ0NVlmYTJsd3h0QXBHT1BUeDdWQ0lRTmhzVnNSLXFrVU5wZUF5VzVJamdYYVoxWHJJOG4xLTlUYTJhRUs3RzJ6SWtmUG1lUDZhZlBBLW1h?oc=5",
+      "source": "HackerNoon"
+    },
+    {
+      "date": "2026-05-05",
+      "title": "Huawei braces for $12 billion in AI chip revenue driven by homegrown AI model demand — Chinese fabs can barely keep up as Nvidia's market share craters within the region",
+      "url": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxOT2c1b3JlMmtpcEdrdlFnTkM2Q2k1cjQyVTZVTDNBOEVhdUc4eExyZGcxQUNPbUVPNTIwVUFRS2hEQ3pNUUJuNmkwa0dvektLdHQ2a0gwUDdJMnh5SXdIbFM4OXh0Q0ZpcGo4RDJWdGVGby0zaEdjdDNtQUhPMS00R0xaR0xQXzcxQ2h1Tm15Z3JhSUd0QVVuQWVva09sMzlDOGw5V01KdWhtQS0zaXVvRjFFUkhuVFVqUFFCTDhCdFJOZkxlSnRsV3Bhb011TUJPWHJV?oc=5",
+      "source": "Tom's Hardware"
+    }
+  ],
+  "sales_hooks": [
+    "Huawei Ascend 910C is creating a self-contained China AI supply chain — NVIDIA export controls are accelerating China's domestic HBM alternatives (CXMT), which threatens global HBM supplier market share in China.",
+    "Huawei CloudMatrix 384 cluster benchmarks are improving rapidly — if China AI self-sufficiency succeeds, ~35% of global AI compute demand could be served domestically, reducing HBM export addressable market.",
+    "China hyperscalers (ByteDance, Baidu, Alibaba) are dual-sourcing: NVIDIA (where licenses allow) + Huawei Ascend — understanding this split is critical for memory supplier sales into China.",
+    "Huawei's domestic memory reliance on CXMT creates a vulnerability: CXMT's HBM-equivalent is 1-2 generations behind SK Hynix/Samsung — this gap is a sales opportunity if export controls relax."
+  ],
+  "competitive_position": {
+    "china_ai_gpu_market_share_pct": 30,
+    "vs_nvidia": "Performance gap closing; export controls are Huawei's market tailwind",
+    "vs_domestic_asic": "Huawei competes with Biren, Cambricon; Huawei has strongest software ecosystem (MindSpore)",
+    "risk_factors": "US entity list restrictions; TSMC access denied; reliant on SMIC N+2 (7nm equivalent)"
+  },
+  "financials_history": {
+    "2023_total_revenue_cny_bn": 704,
+    "2024_total_revenue_cny_bn": 862,
+    "2025_total_revenue_cny_bn_est": 1020
+  },
+  "sources": [
+    "Huawei Annual Report 2024",
+    "TechInsights Ascend 910C teardown",
+    "Export control analysis (CSIS, SemiAnalysis)"
+  ],
+  "flagged_news": []
+}

@@ -1,0 +1,72 @@
+{
+  "company": "Marvell Technology",
+  "ticker": "MRVL",
+  "last_updated": "2026-05-11",
+  "snapshot": {
+    "revenue_qtr": "$1.875B (FY2026 Q1, +61% YoY)",
+    "revenue_qtr_usd": "$1.875B",
+    "ai_revenue_qtr_usd": "$1.1B",
+    "op_margin_pct": 18,
+    "headcount": 5300,
+    "market_cap_usd_bn": 65
+  },
+  "product_roadmap": [
+    {
+      "product": "AWS Trainium2/3 (custom ASIC)",
+      "status": "mass_production",
+      "hbm_supplier": "SK Hynix / Samsung (direct, via TSMC CoWoS)",
+      "note": "Primary ASIC partner for Amazon; Trainium2 deployed in Project Rainier"
+    },
+    {
+      "product": "Microsoft Azure custom AI ASIC",
+      "status": "development",
+      "hbm_supplier": "TBD",
+      "note": "Maia successor; Marvell silicon platform rumored"
+    },
+    {
+      "product": "5nm/3nm Networking DPU (Octeon)",
+      "status": "mass_production",
+      "hbm_supplier": "N/A",
+      "note": "Data center networking; complements AI cluster interconnect"
+    }
+  ],
+  "key_contacts": [
+    {
+      "name": "",
+      "title": "VP, Custom AI Silicon",
+      "linkedin": null,
+      "note": "Manual entry — update before next meeting"
+    }
+  ],
+  "recent_news": [
+    {
+      "date": "2026-05-06",
+      "title": "Marvell Technology (MRVL): The Custom AI Silicon Story Beyond NVDA and AVGO",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQbkJ2OHRQS25rV0ZrRUJnb3RVT0VnbF9fTVpFd3VvaGpzRkp5QXJGRGF4M2l4dVgyRmJhNTRYZHlaV0VNMzZpMlpaOHlpRkRZRWpJbUZDc1NobTFQNmZCaUxIYmVTakdpd0tXeGNUaTJFNXktRkZUWHVpVjJzcGxmNG83ZC1VTnZLa003Q3QxN2NsWWM?oc=5",
+      "source": "Gotrade"
+    }
+  ],
+  "sales_hooks": [
+    "Marvell AI revenue +61% YoY — AWS Trainium2 is the primary driver; every Trainium2 chip contains HBM sourced directly from SK Hynix or Samsung, bypassing NVIDIA.",
+    "Marvell is the pure-play ASIC partner for AWS — unlike Broadcom's diversified portfolio, Marvell's AI revenue is concentrated in AWS, making it a proxy for Amazon's custom silicon HBM pull.",
+    "Project Rainier (400K+ Trainium2 chips) = discrete, trackable HBM demand stream. Memory suppliers can model this separately from NVIDIA GPU orders.",
+    "Marvell's 3nm ASIC roadmap with TSMC aligns with HBM4 timing — design-win conversations for Trainium3 HBM selection are happening now."
+  ],
+  "competitive_position": {
+    "asic_market_share_hyperscaler_pct": 25,
+    "vs_broadcom": "Marvell focused on AWS and networking; Broadcom broader hyperscaler ASIC portfolio",
+    "vs_nvidia": "Trainium2 price/performance competitive for training; CUDA ecosystem remains NVIDIA moat",
+    "moat": "Deep AWS co-design relationship; TSMC advanced node access; networking IP portfolio"
+  },
+  "financials_history": {
+    "FY2026Q1_ai_revenue_usd_bn": 1.1,
+    "FY2025Q4_ai_revenue_usd_bn": 0.9,
+    "FY2025Q3_ai_revenue_usd_bn": 0.8,
+    "FY2025Q2_ai_revenue_usd_bn": 0.7,
+    "FY2025Q1_ai_revenue_usd_bn": 0.46
+  },
+  "sources": [
+    "Marvell FY2026 Q1 Earnings (Mar 2026)"
+  ],
+  "flagged_news": []
+}

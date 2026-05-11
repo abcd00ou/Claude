@@ -1,0 +1,85 @@
+{
+  "company": "Constellation Energy",
+  "ticker": "CEG",
+  "last_updated": "2026-05-11",
+  "snapshot": {
+    "revenue_qtr": "$6.3B (Q1 2026)",
+    "revenue_qtr_usd": "$6.3B",
+    "op_margin_pct": 14,
+    "nuclear_capacity_gw": 21.5,
+    "headcount": 13700,
+    "market_cap_usd_bn": 68
+  },
+  "product_roadmap": [
+    {
+      "product": "Three Mile Island Unit 1 (Crane Clean Energy Center)",
+      "status": "deployed",
+      "customer": "Microsoft (20-year PPA)",
+      "note": "Restarted Sep 2024; 835MW nuclear dedicated to Microsoft Azure. Landmark AI-nuclear deal."
+    },
+    {
+      "product": "Nuclear PPA (power purchase agreements)",
+      "status": "mass_production",
+      "customer": "Google, Amazon, Meta",
+      "note": "24/7 carbon-free nuclear power for AI data centers; 10-20 year contracts"
+    },
+    {
+      "product": "Crestwood Nuclear Expansion (Illinois)",
+      "status": "development",
+      "customer": "TBD",
+      "note": "1.6GW expansion; expected 2030; targeting hyperscaler AI demand"
+    }
+  ],
+  "key_contacts": [
+    {
+      "name": "",
+      "title": "VP, Commercial & Industrial Power",
+      "linkedin": null,
+      "note": "Manual entry — update before next meeting"
+    }
+  ],
+  "recent_news": [
+    {
+      "date": "2026-05-07",
+      "title": "Data centres drive momentum for nuclear and North American natural gas",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNeTJjRldaakFKX1I1N0ZQci1ORnhzWGRGOG0yUVplamxSSDc3QVpWeExrQ2Y0Z3JjU0ZHNVlyem1aazBwcDRKVmFCOE05NzQzZ1ExOHJnNzlsc2Z5WUp0QW9DQmFORTI5akJsRk1qaVN4VE9pMV9JV3NfZFVsa1YyT1p3emZvUk4waF9TQS1YRm5fUS1oUWNRamZxRE9vMElUTXJvendHWHg?oc=5",
+      "source": "ETF Stream"
+    },
+    {
+      "date": "2026-05-09",
+      "title": "Three Mile Island Nuclear Plant Set to Restart Amid Booming AI Power Demand",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQUGYxd1dVOGgzQU9XcjI5R3R0M2xMTTNNcm9fTlQzd09lZ3RGYkJLLVdGdHEwVjMtRkdrT0hRdG9pVDJkcmg5aTlIVE9IVmtCZ2hHRWVyUUNKamsxazlFMUhKZUFFVVIyZ2RXZUtLdlFKNUZnbEY4dWVjRzBadTI3Mlc0MTB6SjM5dVhwTHBzNGJyTWQtLVhpT0k5aVNDUEVrUHJBZnJGaVZlLTFRR0NqcEs5ajE?oc=5",
+      "source": "Energy News Beat"
+    },
+    {
+      "date": "2026-04-28",
+      "title": "Constellation Energy: Riding Nuclear Demand And The AI Power Boom (NASDAQ:CEG)",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNNGMwMzJ1YjluZmkxZEdNQy13S25ROC0yZm84akdpTFpSdjVxeUpUVTBfVFdRX2hkVV8wNkRYOTlKU0VUM2dkYXpnbng4cmVCck1VNmxkbVJfa1d4V3NkeHhvZVJGV0doX2JIYnFfaHpzei14ZnVzeTlJeHdxd2x6dkVlUC1FTkRWV0dqb2UxN2gzSlNwOXd4RVk3bk1CS1piNDNV?oc=5",
+      "source": "Seeking Alpha"
+    }
+  ],
+  "sales_hooks": [
+    "Constellation powers Microsoft Azure's AI training clusters with nuclear energy — the nuclear-to-AI pipeline is now a real supply chain layer. HBM suppliers should understand how power sourcing affects data center location decisions.",
+    "AI data centers need 24/7 reliable power, not intermittent solar/wind — nuclear is the only carbon-free source that matches AI compute's always-on profile. Constellation has a structural moat.",
+    "Every new GPU cluster requires a power contract before construction begins — Constellation's PPA pipeline is a 24-36 month forward indicator of where AI compute (and HBM) will be deployed.",
+    "Nuclear capacity shortage means power is constraining AI buildout ahead of GPU/HBM availability — memory suppliers should track power availability in key data center markets (Virginia, Illinois, Texas)."
+  ],
+  "competitive_position": {
+    "nuclear_power_market_share_us_pct": 22,
+    "vs_vistra": "Constellation leads on nuclear; Vistra diversified across gas/wind/nuclear",
+    "vs_ge_vernova": "Complementary: GE Vernova builds the generators, Constellation operates nuclear plants",
+    "moat": "Largest US nuclear fleet (21.5GW); restart expertise (TMI); AI PPA deal template established"
+  },
+  "financials_history": {
+    "2025Q1_revenue_usd_bn": 6.3,
+    "2024Q4_revenue_usd_bn": 5.9,
+    "2024Q3_revenue_usd_bn": 5.4,
+    "2024Q2_revenue_usd_bn": 5.8,
+    "2024Q1_revenue_usd_bn": 5.3
+  },
+  "sources": [
+    "Constellation Energy Q1 2026 Earnings (Apr 2026)",
+    "Microsoft-Constellation TMI PPA announcement"
+  ],
+  "flagged_news": []
+}
