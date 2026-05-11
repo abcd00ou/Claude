@@ -121,5 +121,49 @@
   "sources": [
     "GE Vernova Q1 2026 Earnings (Apr 2026)"
   ],
-  "flagged_news": []
+  "flagged_news": [],
+  "scm_engagement": {
+    "scm_role": "Provides the power generation and grid equipment that AI datacenters run on. As AI GPU clusters scale from 1MW to 1GW+, GE Vernova's gas turbines (on-site generation) and grid transformers (grid connection) are the physical bottleneck before any HBM-packed server can be powered up.",
+    "server_products": [
+      {
+        "name": "HA-class Gas Turbine (9HA.02)",
+        "type": "On-site power generation",
+        "used_in": "Hyperscaler AI datacenter behind-the-meter power (Microsoft, Google, Amazon)",
+        "output": "571MW per unit",
+        "note": "Hyperscalers build private gas turbine plants next to large AI datacenters. Avoids grid congestion. 18-24 month delivery."
+      },
+      {
+        "name": "Grid Transformer (step-up/step-down)",
+        "type": "Electrical grid infrastructure",
+        "used_in": "Every AI datacenter grid connection (utility to datacenter)",
+        "note": "Transformer shortage = 18-36 month lead time. Every new datacenter needs a transformer. This is currently the #1 bottleneck for new AI datacenter openings."
+      },
+      {
+        "name": "HVDC (High Voltage Direct Current) Link",
+        "type": "Long-distance power transmission",
+        "used_in": "Connecting remote renewable/nuclear power to AI datacenter clusters",
+        "note": "Microsoft, Google moving to offshore wind + HVDC for AI datacenters. GE Vernova makes the HVDC converter."
+      },
+      {
+        "name": "Advanced Grid Automation (GridOS)",
+        "type": "Grid software and control systems",
+        "used_in": "Datacenter power quality management, demand response",
+        "note": "AI datacenters need frequency regulation and power quality management. GE Vernova's GridOS handles this."
+      }
+    ],
+    "upstream_from": [
+      "Steel, copper, rare earth metals",
+      "Blade manufacturers (for wind)",
+      "Uranium (nuclear fuel, via partnerships)"
+    ],
+    "downstream_to": [
+      "Microsoft (direct power contracts)",
+      "Google (direct)",
+      "Amazon (direct)",
+      "Meta (direct)",
+      "Data center developers",
+      "Utilities"
+    ],
+    "scm_position": "Power generation + grid tier — provides electricity that AI datacenters consume"
+  }
 }

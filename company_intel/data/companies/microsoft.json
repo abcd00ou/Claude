@@ -95,5 +95,59 @@
     "Microsoft Q3 FY2026 Earnings (Apr 2026)",
     "AI_SCM/data/seed_data.json"
   ],
-  "flagged_news": []
+  "flagged_news": [],
+  "scm_engagement": {
+    "scm_role": "Largest AI compute buyer globally. Procures GPU servers (NVIDIA H200/B200) for Azure AI, deploys them as cloud services, and also designs custom AI ASICs (Maia 2) for inference. Consumes HBM indirectly via NVIDIA and directly via Maia chip procurement.",
+    "server_products": [
+      {
+        "name": "Azure ND H100 v5 (8× H100 SXM)",
+        "type": "AI training VM / bare-metal server",
+        "used_in": "Azure AI compute; OpenAI GPT training",
+        "hbm": "640GB HBM3 per server (8 × 80GB)",
+        "note": "Microsoft is NVIDIA's largest single customer for H100. GPT-4 trained on Azure ND H100."
+      },
+      {
+        "name": "Azure ND H200 v5 (8× H200 SXM)",
+        "type": "AI training VM",
+        "used_in": "Azure AI; OpenAI GPT-4o/5 training",
+        "hbm": "1.13TB HBM3e per server (8 × 141GB)",
+        "note": "Deployed in 2025. 40% more memory than H100 server; critical for larger model context."
+      },
+      {
+        "name": "Azure GB200 NVL72 cluster",
+        "type": "AI supercomputing rack",
+        "used_in": "Azure Maia + NVIDIA Blackwell deployments",
+        "hbm": "13.8TB HBM3e per rack",
+        "note": "Deployed for OpenAI Orion/GPT-5 training. Requires Vertiv liquid cooling."
+      },
+      {
+        "name": "Maia 2 (custom AI ASIC)",
+        "type": "AI inference accelerator",
+        "used_in": "Azure internal inference (Bing, Copilot, Office 365 AI)",
+        "hbm": "HBM (supplier TBD, likely SK Hynix or Micron via Broadcom ASIC)",
+        "note": "Replaces GPU for ~30% of inference workloads. Lowers per-token cost for Copilot."
+      },
+      {
+        "name": "Azure HBv4 (8× AMD MI300X)",
+        "type": "AI inference VM",
+        "used_in": "Azure AI inference; large context models",
+        "hbm": "1.5TB HBM3 per server (8 × 192GB)",
+        "note": "MI300X's 192GB HBM makes it the best for inference on 70B+ parameter models."
+      }
+    ],
+    "upstream_from": [
+      "NVIDIA (H100/H200/B200 GPUs)",
+      "AMD (MI300X GPUs)",
+      "Broadcom (Maia 2 ASIC)",
+      "TSMC (via chip vendors)",
+      "Vertiv/Schneider (power/cooling)",
+      "Constellation Energy (nuclear PPA)"
+    ],
+    "downstream_to": [
+      "Enterprise customers (Azure AI services)",
+      "OpenAI (dedicated compute)",
+      "Developers (Azure ML, AI Studio)"
+    ],
+    "scm_position": "Demand tier — largest HBM consumer (via NVIDIA GPU procurement)"
+  }
 }

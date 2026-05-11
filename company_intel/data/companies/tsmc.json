@@ -92,5 +92,55 @@
     "TSMC Q1 2026 Earnings (Apr 2026)",
     "TSMC Technology Symposium 2025"
   ],
-  "flagged_news": []
+  "flagged_news": [],
+  "scm_engagement": {
+    "scm_role": "Manufactures all advanced AI GPU/ASIC dies AND performs CoWoS advanced packaging (bonding HBM stacks to GPU dies). TSMC is the only supplier capable of both steps at volume, making it the single most critical chokepoint in the AI hardware supply chain.",
+    "server_products": [
+      {
+        "name": "CoWoS-S (GPU + HBM interposer)",
+        "type": "Advanced packaging (wafer-on-substrate)",
+        "used_in": "NVIDIA H100/H200/B200, AMD MI300X/MI325X, Google TPU v5",
+        "note": "Bonds GPU die + HBM stacks on a silicon interposer. 50K+ WPM capacity in 2025. 18-month lead time."
+      },
+      {
+        "name": "CoWoS-L (multi-die, large interposer)",
+        "type": "Advanced packaging (multi-chiplet)",
+        "used_in": "NVIDIA GB200 (Grace CPU + Blackwell GPU + NVLink chiplets)",
+        "note": "Larger interposer for multi-chip modules. Required for Grace Blackwell Superchip (GB200)."
+      },
+      {
+        "name": "N3E/N3P Die (3nm GPU wafer)",
+        "type": "Foundry wafer production",
+        "used_in": "NVIDIA Blackwell GPU die, Apple M4",
+        "note": "NVIDIA Blackwell uses TSMC N4 for compute die, N3 for components. Highest-demand node in 2025-2026."
+      },
+      {
+        "name": "N4P Die (4nm GPU wafer)",
+        "type": "Foundry wafer production",
+        "used_in": "NVIDIA Hopper (H100/H200), AMD MI300X",
+        "note": "Most H100/H200 GPU dies produced on N4P. ~$17K per wafer for N4."
+      },
+      {
+        "name": "SoIC-X (3D stacking, next-gen)",
+        "type": "3D IC integration",
+        "used_in": "HBM4+ integration (2026-2027)",
+        "note": "Enables direct die-to-die bonding of HBM4 on logic. Co-developed with SK Hynix."
+      }
+    ],
+    "upstream_from": [
+      "ASML (EUV scanners — only supplier)",
+      "Applied Materials (deposition)",
+      "Lam Research (etch)",
+      "SK Hynix/Samsung/Micron (HBM for CoWoS)"
+    ],
+    "downstream_to": [
+      "NVIDIA (GPU dies + CoWoS packaging)",
+      "AMD (GPU dies + CoWoS)",
+      "Apple (M-series)",
+      "Broadcom (ASIC dies)",
+      "Marvell (ASIC dies)",
+      "Google (TPU dies)"
+    ],
+    "scm_position": "Foundry + packaging tier — manufactures GPU dies AND bonds HBM to GPU (CoWoS)"
+  }
 }

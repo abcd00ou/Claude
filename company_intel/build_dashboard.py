@@ -414,6 +414,48 @@ function renderRoadmap(profile) {{
   }}
 }}
 
+function renderScmEngagement(profile) {{
+  const eng = profile.scm_engagement;
+  if (!eng) return '<p class="empty-state">No SCM detail yet.</p>';
+
+  // Server products table
+  const prods = eng.server_products || [];
+  const prodRows = prods.map(p => {{
+    const extra = p.hbm || p.bandwidth || p.output || p.process || p.cooling_capacity || '';
+    return `<tr>
+      <td><strong>${{p.name}}</strong></td>
+      <td><span style="font-size:11px;color:#4A5568">${{p.type}}</span></td>
+      <td style="font-size:12px">${{p.used_in || '—'}}</td>
+      <td style="font-size:12px;color:#2B6CB0">${{extra || '—'}}</td>
+      <td style="font-size:12px">${{p.note || '—'}}</td>
+    </tr>`;
+  }}).join('');
+
+  // Upstream / downstream
+  const up = (eng.upstream_from || []).map(x => `<span style="background:#FED7D7;color:#9B2C2C;padding:2px 7px;border-radius:10px;font-size:11px;margin:2px;display:inline-block">${{x}}</span>`).join(' ');
+  const dn = (eng.downstream_to || []).map(x => `<span style="background:#C6F6D5;color:#22543D;padding:2px 7px;border-radius:10px;font-size:11px;margin:2px;display:inline-block">${{x}}</span>`).join(' ');
+
+  return `
+    <div style="background:#EBF8FF;border-left:3px solid #3182CE;padding:10px 14px;border-radius:0 4px 4px 0;font-size:13px;line-height:1.6;margin-bottom:12px">
+      ${{eng.scm_role || ''}}
+    </div>
+    <div style="margin-bottom:6px;font-size:11px;color:#718096;text-transform:uppercase;letter-spacing:0.5px">SCM Position</div>
+    <div style="background:#F7FAFC;padding:6px 10px;border-radius:4px;font-size:12px;margin-bottom:12px;font-weight:600;color:#2D3748">${{eng.scm_position || '—'}}</div>
+
+    <div style="margin-bottom:6px;font-size:11px;color:#718096;text-transform:uppercase;letter-spacing:0.5px">Upstream Dependencies</div>
+    <div style="margin-bottom:12px">${{up || '<span style="color:#718096;font-size:12px">—</span>'}}</div>
+
+    <div style="margin-bottom:6px;font-size:11px;color:#718096;text-transform:uppercase;letter-spacing:0.5px">Downstream Customers</div>
+    <div style="margin-bottom:16px">${{dn || '<span style="color:#718096;font-size:12px">—</span>'}}</div>
+
+    <div style="margin-bottom:8px;font-size:11px;color:#718096;text-transform:uppercase;letter-spacing:0.5px">Server-Level Products (${{prods.length}})</div>
+    <table>
+      <tr><th>Product</th><th>Type</th><th>Used In</th><th>Key Spec</th><th>Notes</th></tr>
+      ${{prodRows || '<tr><td colspan="5" style="color:#718096;font-style:italic">No server products listed yet.</td></tr>'}}
+    </table>
+  `;
+}}
+
 function renderHooks(profile) {{
   const hooks = profile.sales_hooks || [];
   if (!hooks.length) return '<p class="empty-state">No sales hooks yet.</p>';
@@ -531,6 +573,11 @@ function render(id) {{
     </div>
 
     ${{renderSnapshot(profile)}}
+
+    <div class="card" style="margin-bottom:16px">
+      <h3>SCM Engagement — Role, Products & Dependencies</h3>
+      ${{renderScmEngagement(profile)}}
+    </div>
 
     <div class="grid-2" style="margin-bottom:16px">
       <div class="card" style="grid-column: span 2">

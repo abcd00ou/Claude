@@ -74,5 +74,49 @@
     "SMIC Q1 2026 Earnings (Apr 2026)",
     "SemiAnalysis China foundry analysis"
   ],
-  "flagged_news": []
+  "flagged_news": [],
+  "scm_engagement": {
+    "scm_role": "China's only advanced node foundry, capable of manufacturing at N+2 (7nm equivalent) using DUV multi-patterning (no EUV). SMIC fabricates Huawei's Ascend AI chips and CXMT's HBM-equivalent dies, making it the foundry bottleneck for the entire Chinese domestic AI supply chain.",
+    "server_products": [
+      {
+        "name": "Huawei Ascend 910C/D die (N+2 node)",
+        "type": "AI chip wafer production",
+        "used_in": "Atlas 800T A2 AI server, CloudMatrix 384 cluster",
+        "process": "N+2 (7nm DUV equivalent, ~30% lower transistor density vs TSMC N7)",
+        "note": "SMIC's most advanced node. Yield lower than TSMC N7 but improving. US export controls prevent ASML EUV access."
+      },
+      {
+        "name": "HiSilicon Kirin 9000S (smartphone SoC)",
+        "type": "Mobile SoC wafer production",
+        "used_in": "Huawei Mate 60 Pro smartphone",
+        "process": "N+2",
+        "note": "Proof point that SMIC can manufacture N+2 at commercial volume. Signal that Ascend die yields are improving."
+      },
+      {
+        "name": "28nm+ mature node wafers",
+        "type": "Mainstream chip production",
+        "used_in": "Automotive, IoT, industrial, consumer electronics",
+        "note": "Volume revenue driver immune to export controls. SMIC has 35K+ WPM at 28nm. Funds advanced node R&D."
+      },
+      {
+        "name": "CXMT HBM die (N+2, outsourced)",
+        "type": "Memory die wafer production",
+        "used_in": "CXMT HBM2E-equivalent stack → Huawei Ascend",
+        "note": "CXMT designs, SMIC fabs the HBM die. Both companies are state-backed; capacity allocation is coordinated."
+      }
+    ],
+    "upstream_from": [
+      "ASML DUV (no EUV — blocked by export controls)",
+      "Applied Materials / Lam Research (older generation tools)",
+      "Domestic tools (NAURA, AMEC — limited capability)",
+      "Chinese photoresist/chemical suppliers"
+    ],
+    "downstream_to": [
+      "Huawei (Ascend 910C/D)",
+      "CXMT (HBM die fab)",
+      "HiSilicon (smartphone SoC)",
+      "Chinese fabless chip companies (Biren, Cambricon for advanced nodes)"
+    ],
+    "scm_position": "China foundry tier — fabricates all China advanced AI chip dies (GPU + HBM die)"
+  }
 }

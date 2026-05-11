@@ -80,5 +80,50 @@
     "TechInsights Ascend 910C teardown",
     "Export control analysis (CSIS, SemiAnalysis)"
   ],
-  "flagged_news": []
+  "flagged_news": [],
+  "scm_engagement": {
+    "scm_role": "China's leading AI chip designer and AI server vendor, operating a fully domestic supply chain (SMIC foundry + CXMT HBM) to circumvent US export controls. Huawei's Ascend GPU is the primary alternative to NVIDIA in China, and its Atlas server platform is the primary AI training server for Chinese hyperscalers.",
+    "server_products": [
+      {
+        "name": "Ascend 910C NPU",
+        "type": "AI training/inference NPU (Neural Processing Unit)",
+        "used_in": "Atlas 800T A2 server, Huawei Cloud ModelArts, Chinese hyperscaler clusters",
+        "hbm": "CXMT HBM2E-equivalent, ~64GB (estimated), ~960 GB/s bandwidth",
+        "note": "SMIC N+2 (7nm equivalent) fab. Benchmarks approaching H100 on some transformer workloads. Exported controls prevent TSMC/SK Hynix access."
+      },
+      {
+        "name": "Atlas 800T A2 AI Training Server",
+        "type": "AI training server (8× Ascend 910C)",
+        "used_in": "ByteDance, Baidu, Alibaba, Tencent AI training",
+        "hbm": "8× Ascend 910C × 64GB ≈ 512GB per server",
+        "note": "Direct competitor to NVIDIA DGX H100. Used by all major Chinese internet companies."
+      },
+      {
+        "name": "CloudMatrix 384 AI Cluster",
+        "type": "AI supercomputer cluster (384 Ascend NPUs)",
+        "used_in": "Huawei Cloud AI training; sold to Chinese enterprises",
+        "note": "Huawei claims CloudMatrix 384 outperforms NVIDIA H100 NVL cluster on transformer inference. Uses CXMT HBM equivalent."
+      },
+      {
+        "name": "MindSpore AI Framework",
+        "type": "AI software framework (PyTorch alternative)",
+        "used_in": "All Ascend-based AI servers",
+        "note": "China's answer to PyTorch/CUDA. Required for Ascend deployment. Limits interoperability with Western AI ecosystem."
+      }
+    ],
+    "upstream_from": [
+      "SMIC (N+2 foundry for Ascend die)",
+      "CXMT (HBM-equivalent memory)",
+      "Domestic lithography (SMEE, limited)",
+      "Chinese substrate suppliers"
+    ],
+    "downstream_to": [
+      "ByteDance",
+      "Baidu",
+      "Alibaba (Aliyun)",
+      "Tencent Cloud",
+      "Chinese government AI programs"
+    ],
+    "scm_position": "China GPU + server tier — complete domestic AI server stack (chip → server → cloud)"
+  }
 }

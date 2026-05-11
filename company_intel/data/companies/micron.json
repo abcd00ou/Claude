@@ -121,5 +121,51 @@
     "Micron FY2026 Q2 Earnings (Mar 2026)",
     "AI_SCM/data/seed_data.json"
   ],
-  "flagged_news": []
+  "flagged_news": [],
+  "scm_engagement": {
+    "scm_role": "Only US-headquartered HBM supplier. Fastest growing HBM share (10% → 15%). Supplies HBM3e to NVIDIA H200 (partial allocation) and is in qualification race for Blackwell Ultra HBM4. Also the largest US DRAM supplier for server host memory.",
+    "server_products": [
+      {
+        "name": "HBM3e 24GB Stack",
+        "type": "Memory stack",
+        "used_in": "NVIDIA H200 (partial), Microsoft Azure AI servers",
+        "bandwidth": "1.23 TB/s per stack",
+        "note": "Qualified for NVIDIA H200 in 2024. Growing from ~10% to 15%+ share of total HBM."
+      },
+      {
+        "name": "DDR5-6400 RDIMM",
+        "type": "CPU memory module",
+        "used_in": "Intel Xeon / AMD EPYC host slots in AI servers",
+        "bandwidth": "~100 GB/s per channel",
+        "note": "Micron is #1 DRAM supplier in North America; strong in US hyperscaler supply chains."
+      },
+      {
+        "name": "LPCAMM2 (Compression-Attached Memory Module)",
+        "type": "Low-power server/edge DRAM",
+        "used_in": "Next-gen AI laptops, edge inference servers",
+        "bandwidth": "LPDDR5X speeds",
+        "note": "New form factor; first to production. Apple M4 MacBook Pro uses Micron LPCAMM2."
+      },
+      {
+        "name": "232-layer NAND (QLC/TLC)",
+        "type": "Storage",
+        "used_in": "AI server NVMe SSDs (training dataset storage)",
+        "bandwidth": "7+ GB/s sequential read",
+        "note": "AI training clusters need petabytes of fast storage. Micron's 232L NAND is industry-leading density."
+      }
+    ],
+    "upstream_from": [
+      "ASML (EUV, DUV)",
+      "Applied Materials",
+      "US CHIPS Act DOE funding ($6.1B)",
+      "Boise/Idaho fabs (domestic)"
+    ],
+    "downstream_to": [
+      "TSMC (HBM packaging)",
+      "NVIDIA",
+      "Microsoft Azure (direct HBM allocation)",
+      "OEM server makers"
+    ],
+    "scm_position": "Memory tier — HBM on GPU die + DRAM/NAND in AI server host"
+  }
 }

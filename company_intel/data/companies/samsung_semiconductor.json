@@ -118,5 +118,52 @@
       "category": "risk",
       "relevance_score": 2
     }
-  ]
+  ],
+  "scm_engagement": {
+    "scm_role": "HBM supplier (#2 globally) and the only company supplying both HBM (for AI GPUs) and DDR5/LPDDR5 DRAM (for AI server hosts). Also supplies HBM directly to Google TPU and Amazon Trainium custom silicon, bypassing NVIDIA.",
+    "server_products": [
+      {
+        "name": "HBM3e 24GB Stack",
+        "type": "Memory stack",
+        "used_in": "AMD MI300X (primary), Google TPU v5",
+        "bandwidth": "1.23 TB/s per stack",
+        "note": "NVIDIA HBM3e qualification still pending Q1 2026. AMD MI300X uses 8 stacks (192GB)."
+      },
+      {
+        "name": "DDR5-6400 RDIMM (64GB/128GB)",
+        "type": "CPU memory module",
+        "used_in": "Intel Xeon and AMD EPYC host CPU slots in all AI servers",
+        "bandwidth": "~100 GB/s per channel",
+        "note": "Every AI server has 12-24 DDR5 DIMMs in the CPU host. Samsung is #1 DDR5 supplier."
+      },
+      {
+        "name": "CXL Memory Expander",
+        "type": "Memory expansion",
+        "used_in": "Next-gen AI inference servers (CXL 2.0)",
+        "bandwidth": "PCIe Gen5 ~64 GB/s",
+        "note": "CXL memory pooling for LLM inference; reduces per-server HBM requirement."
+      },
+      {
+        "name": "UFS 4.0 / eMMC",
+        "type": "Storage",
+        "used_in": "Edge AI devices, smartphones with on-device AI",
+        "bandwidth": "—",
+        "note": "Samsung's NAND/UFS also feeds the edge AI tier."
+      }
+    ],
+    "upstream_from": [
+      "ASML (EUV, DUV)",
+      "Applied Materials",
+      "Lam Research",
+      "Silicon wafers (ShinEtsu, Sumco)"
+    ],
+    "downstream_to": [
+      "TSMC (HBM packaging)",
+      "AMD",
+      "Google",
+      "Amazon Trainium (direct)",
+      "OEM server makers (Dell, HPE, Supermicro)"
+    ],
+    "scm_position": "Memory tier — HBM on GPU die + DDR5 in server host slots"
+  }
 }

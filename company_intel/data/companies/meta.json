@@ -82,5 +82,51 @@
     "Meta Q1 2026 Earnings (Apr 2026)",
     "AI_SCM/data/seed_data.json"
   ],
-  "flagged_news": []
+  "flagged_news": [],
+  "scm_engagement": {
+    "scm_role": "Largest non-cloud-provider AI compute buyer. Builds and operates its own AI training clusters (not selling cloud services), making HBM procurement a direct cost with no revenue offset. Drives AI chip demand through open-source Llama model releases, which indirectly multiplies HBM demand across thousands of Llama fine-tuners.",
+    "server_products": [
+      {
+        "name": "Grand Teton AI Training Server (H100 OAM)",
+        "type": "Custom AI training server (Open Rack 3.0)",
+        "used_in": "Meta's 350K-GPU H100 cluster; Llama 3/4 training",
+        "hbm": "640GB HBM3 per server (8× H100 80GB)",
+        "note": "Meta designed custom OAM (Open Accelerator Module) form factor. 350K H100 cluster is world's largest single-tenant cluster."
+      },
+      {
+        "name": "Grand Teton v2 (H200 OAM)",
+        "type": "Custom AI training server",
+        "used_in": "Llama 4 / next-gen model training",
+        "hbm": "1.13TB HBM3e per server",
+        "note": "Upgrade of Grand Teton with H200. Meta buying large H200 allocations from NVIDIA in 2025."
+      },
+      {
+        "name": "MTIA v2 (Meta Training & Inference Accelerator)",
+        "type": "Custom AI inference ASIC",
+        "used_in": "Reels/Feed ranking inference, content recommendation (3B+ daily users)",
+        "hbm": "HBM3 (direct, Broadcom ASIC + TSMC fab)",
+        "note": "Handles prediction/ranking inference without NVIDIA. Deployed at scale in Meta datacenters."
+      },
+      {
+        "name": "RSC (Research SuperCluster) — Llama training",
+        "type": "AI supercomputer cluster",
+        "used_in": "Foundation model pre-training (Llama 3 70B, 405B)",
+        "hbm": "~28TB HBM3 total (35K H100 GPUs × 80GB)",
+        "note": "Meta RSC = 35K H100 + 4 Exaflop/s compute. One of the largest AI training systems globally."
+      }
+    ],
+    "upstream_from": [
+      "NVIDIA (H100/H200 GPUs)",
+      "Broadcom (MTIA v2 ASIC)",
+      "TSMC (via NVIDIA + Broadcom)",
+      "SK Hynix (HBM via NVIDIA)",
+      "Vertiv (liquid cooling for H100/H200 racks)"
+    ],
+    "downstream_to": [
+      "Meta internal AI (Instagram, Facebook, WhatsApp AI)",
+      "Open-source community (Llama models)",
+      "Meta AI assistant (external product)"
+    ],
+    "scm_position": "Demand tier — direct HBM consumer via NVIDIA GPU purchases + MTIA direct path"
+  }
 }

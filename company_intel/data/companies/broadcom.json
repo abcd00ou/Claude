@@ -93,5 +93,59 @@
     "Broadcom FY2025 Q2 Earnings (Mar 2026)",
     "Broadcom AI ASIC analyst days"
   ],
-  "flagged_news": []
+  "flagged_news": [],
+  "scm_engagement": {
+    "scm_role": "Designs the custom AI ASIC dies that hyperscalers use instead of NVIDIA GPUs (Google TPU, Meta MTIA, ByteDance custom chip). Also makes the high-speed SerDes (signal integrity IP) and Ethernet/InfiniBand switch ASICs that connect AI servers in a cluster. Broadcom is the 'behind-the-scenes' chip designer for the entire AI ASIC economy.",
+    "server_products": [
+      {
+        "name": "Google TPU v5 Trillium ASIC die",
+        "type": "AI accelerator ASIC (custom for Google)",
+        "used_in": "Google TPU pods, Google Cloud TPU v5e instances",
+        "hbm": "Samsung HBM3 (bonded at TSMC CoWoS)",
+        "note": "Broadcom designs the compute die; TSMC fabricates; Samsung supplies HBM; TSMC packages all together."
+      },
+      {
+        "name": "Meta MTIA v2 ASIC die",
+        "type": "AI inference ASIC (custom for Meta)",
+        "used_in": "Meta Reels/Feed/Ads inference at global scale",
+        "hbm": "HBM3 (direct procurement, supplier TBD)",
+        "note": "Deployed across Meta's inference fleet. Reduces GPU purchase from NVIDIA by ~30% for inference."
+      },
+      {
+        "name": "Jericho3-AI Ethernet Switch ASIC",
+        "type": "AI cluster networking switch chip",
+        "used_in": "AI datacenter spine-leaf switches (Arista, Cisco)",
+        "bandwidth": "51.2 Tbps per chip",
+        "note": "AI clusters need ultra-low-latency switching. Jericho3-AI is purpose-built for GPU-to-GPU traffic."
+      },
+      {
+        "name": "Tomahawk 5 / 6 Ethernet Switch ASIC",
+        "type": "Datacenter switch chip",
+        "used_in": "AI cluster Ethernet fabric (400G/800G)",
+        "bandwidth": "51.2 Tbps per chip",
+        "note": "Used in AI datacenter top-of-rack and spine switches. Alternative to NVIDIA Quantum InfiniBand."
+      },
+      {
+        "name": "PCIe Gen 5 Switch / Retimer",
+        "type": "Server internal interconnect",
+        "used_in": "AI server PCIe switching between GPU, NIC, storage",
+        "bandwidth": "512 GB/s",
+        "note": "Every AI server needs PCIe switches to connect GPU → NIC → NVMe. Broadcom leads this market."
+      }
+    ],
+    "upstream_from": [
+      "TSMC (ASIC die fabrication on N3/N5)",
+      "SK Hynix/Samsung (HBM for ASIC packaging at TSMC CoWoS)",
+      "ARM (CPU IP cores)",
+      "Synopsys/Cadence (EDA tools)"
+    ],
+    "downstream_to": [
+      "Google (TPU ASIC dies)",
+      "Meta (MTIA ASIC dies)",
+      "ByteDance (custom ASIC)",
+      "Arista Networks (switching ASICs)",
+      "Cisco (switching ASICs)"
+    ],
+    "scm_position": "ASIC tier — designs HBM-consuming compute dies for hyperscalers + switching chips for AI cluster networking"
+  }
 }

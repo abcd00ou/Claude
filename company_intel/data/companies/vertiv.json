@@ -121,5 +121,55 @@
   "sources": [
     "Vertiv Q1 2026 Earnings (Apr 2026)"
   ],
-  "flagged_news": []
+  "flagged_news": [],
+  "scm_engagement": {
+    "scm_role": "Makes the power and cooling infrastructure that AI servers physically cannot operate without. As HBM density grows (more stacks per GPU), power per rack rises from 40kW → 100kW+, making Vertiv's liquid cooling and UPS systems the literal prerequisite for deploying HBM-packed GPUs.",
+    "server_products": [
+      {
+        "name": "Liebert EXL S1 UPS (Uninterruptible Power Supply)",
+        "type": "Rack-level power protection",
+        "used_in": "All AI datacenter racks (GB200 NVL72 certified)",
+        "note": "Only UPS certified for NVIDIA GB200 NVL72 rack's power profile (>100kW). Protects HBM from power surges."
+      },
+      {
+        "name": "CDU (Coolant Distribution Unit)",
+        "type": "Liquid cooling infrastructure",
+        "used_in": "AI server racks requiring liquid cooling (H100 SXM, B200, MI300X)",
+        "cooling_capacity": "400kW+ per CDU",
+        "note": "B200 GPU TDP 1000W → 72 GPUs × 1000W = 72kW per rack, requiring liquid cooling. Vertiv CDU handles this."
+      },
+      {
+        "name": "Vertiv VRC (Vertical Row Cooling)",
+        "type": "In-row liquid cooling",
+        "used_in": "Existing datacenter retrofits for AI GPU rows",
+        "note": "Allows AI GPU servers in legacy air-cooled datacenters. Transition product for hyperscaler upgrades."
+      },
+      {
+        "name": "48V DC Power Shelf",
+        "type": "Rack power distribution",
+        "used_in": "GB200 NVL72 racks, NVIDIA MGX servers",
+        "note": "GB200 requires 48V DC architecture (more efficient than traditional 12V AC). Vertiv makes the 48V shelf for NVIDIA racks."
+      },
+      {
+        "name": "Thermal management system (AI Datacenter)",
+        "type": "Datacenter-level cooling system",
+        "used_in": "Microsoft, Google, Amazon, Meta AI datacenter buildouts",
+        "note": "Complete cooling solution from rack CDU → building chiller → campus cooling tower. Vertiv does full-stack."
+      }
+    ],
+    "upstream_from": [
+      "Steel/copper/aluminum (commodity)",
+      "Power electronics components",
+      "Compressors (Emerson, Danfoss)",
+      "Coolant manufacturers"
+    ],
+    "downstream_to": [
+      "Microsoft Azure datacenter",
+      "Google Cloud datacenter",
+      "Amazon AWS datacenter",
+      "Meta AI datacenter",
+      "Colocation providers (Equinix, Digital Realty)"
+    ],
+    "scm_position": "Infrastructure tier — power and cooling prerequisite for all AI server deployments"
+  }
 }

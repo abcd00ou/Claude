@@ -88,5 +88,41 @@
       "category": "roadmap",
       "relevance_score": 1
     }
-  ]
+  ],
+  "scm_engagement": {
+    "scm_role": "China's only HBM development program. Manufactures the HBM-equivalent memory stacks used in Huawei's Ascend AI chips. CXMT is the critical bottleneck in China's domestic AI supply chain — if CXMT cannot produce adequate HBM, China's AI training capacity is capped regardless of chip availability.",
+    "server_products": [
+      {
+        "name": "HBM2E-equivalent Stack (domestic, DUV)",
+        "type": "High-bandwidth memory stack",
+        "used_in": "Huawei Ascend 910C NPU (in Atlas 800T A2 server)",
+        "bandwidth": "~460-920 GB/s (estimated, DUV-limited yield)",
+        "note": "1-2 generations behind SK Hynix HBM3e. No EUV access limits density. Critical for China AI self-sufficiency."
+      },
+      {
+        "name": "DDR5 DRAM (16Gb die)",
+        "type": "Server DRAM module",
+        "used_in": "Chinese-branded AI servers (CPU host DRAM), smartphones (Huawei Mate series)",
+        "bandwidth": "~89 GB/s per module",
+        "note": "Mainstream product; competing with SK Hynix/Samsung/Micron in China market. Qualcomm partnering with CXMT for smartphone DRAM."
+      },
+      {
+        "name": "LPDDR5 (mobile DRAM)",
+        "type": "Mobile DRAM",
+        "used_in": "Huawei smartphones, Chinese Android devices",
+        "note": "Revenue product that funds HBM R&D. CXMT uses LPDDR5 profits to subsidize HBM development."
+      }
+    ],
+    "upstream_from": [
+      "ASML DUV (immersion, no EUV access)",
+      "Domestic lithography (SMEE, limited)",
+      "Chinese chemical suppliers (photoresist from domestic sources)"
+    ],
+    "downstream_to": [
+      "Huawei (HBM for Ascend)",
+      "CXMT-branded DRAM (China OEM server market)",
+      "Qualcomm (smartphone DRAM partnership)"
+    ],
+    "scm_position": "China memory tier — only domestic HBM supplier; critical bottleneck for China AI self-sufficiency"
+  }
 }

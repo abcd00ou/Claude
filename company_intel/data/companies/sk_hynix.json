@@ -130,5 +130,51 @@
     "SK Hynix Q1 2026 Earnings Release (Apr 2026)",
     "AI_SCM/data/seed_data.json"
   ],
-  "flagged_news": []
+  "flagged_news": [],
+  "scm_engagement": {
+    "scm_role": "World's #1 HBM supplier. Manufactures the high-bandwidth memory stacks that are bonded directly onto NVIDIA/AMD AI GPU dies via TSMC CoWoS packaging. Without SK Hynix HBM, NVIDIA cannot ship H200 or B200 GPUs.",
+    "server_products": [
+      {
+        "name": "HBM3e 24GB Stack (8-Hi)",
+        "type": "Memory stack",
+        "used_in": "NVIDIA H200 SXM5, AMD MI325X",
+        "bandwidth": "1.23 TB/s per stack",
+        "note": "12 stacks per H200 GPU (141GB total). SK Hynix supplies ~52% of all HBM to NVIDIA."
+      },
+      {
+        "name": "HBM3e 24GB Stack (12-Hi)",
+        "type": "Memory stack",
+        "used_in": "NVIDIA B200, GB200 NVL72",
+        "bandwidth": "1.23 TB/s per stack",
+        "note": "16 stacks per B200 GPU (192GB total). GB200 NVL72 rack = 72 GPUs = 13.8TB HBM."
+      },
+      {
+        "name": "HBM4 32GB Stack (target)",
+        "type": "Next-gen memory stack",
+        "used_in": "NVIDIA GB300 Blackwell Ultra (target)",
+        "bandwidth": "2.0 TB/s per stack (target)",
+        "note": "Mass production expected H2 2026. Qualification race with Micron."
+      },
+      {
+        "name": "DDR5 Server DRAM",
+        "type": "CPU memory module",
+        "used_in": "AI server CPU DRAM slots (Intel Xeon, AMD EPYC hosts)",
+        "bandwidth": "~89 GB/s per module",
+        "note": "All AI servers need host DRAM for OS, data pipelines, model orchestration."
+      }
+    ],
+    "upstream_from": [
+      "ASML (EUV lithography)",
+      "Tokyo Electron (deposition equipment)",
+      "Silicon wafer suppliers (Shin-Etsu)"
+    ],
+    "downstream_to": [
+      "TSMC (CoWoS packaging of HBM+GPU)",
+      "NVIDIA",
+      "AMD",
+      "Google (TPU)",
+      "Amazon (Trainium direct)"
+    ],
+    "scm_position": "Memory tier — bonded onto GPU die at TSMC CoWoS"
+  }
 }

@@ -68,5 +68,50 @@
   "sources": [
     "Marvell FY2026 Q1 Earnings (Mar 2026)"
   ],
-  "flagged_news": []
+  "flagged_news": [],
+  "scm_engagement": {
+    "scm_role": "Designs custom AI training ASICs for Amazon (Trainium2/3) and custom networking chips for AI clusters. Marvell's ASIC business is concentrated in AWS, making it a pure-play proxy for Amazon's custom silicon HBM demand.",
+    "server_products": [
+      {
+        "name": "AWS Trainium2 ASIC die",
+        "type": "AI training accelerator ASIC (custom for AWS)",
+        "used_in": "Project Rainier (400K+ chips), AWS UltraServer, Trn2 instances",
+        "hbm": "SK Hynix / Samsung HBM3 (96GB per chip, direct AWS procurement)",
+        "note": "Marvell designs, TSMC N4 fabs, SK Hynix/Samsung supplies HBM, TSMC CoWoS packages. Largest custom silicon cluster globally."
+      },
+      {
+        "name": "AWS Trainium3 ASIC die (development)",
+        "type": "Next-gen AI training ASIC",
+        "used_in": "AWS next-gen AI training cluster (2026+)",
+        "hbm": "HBM4 (target, qualification in progress)",
+        "note": "3nm TSMC. HBM4 qualification for Trainium3 is a live design-win opportunity for memory suppliers."
+      },
+      {
+        "name": "OCTEON 10 DPU (Data Processing Unit)",
+        "type": "Network data processing offload chip",
+        "used_in": "AI server network offload (storage, security, virtualization)",
+        "bandwidth": "400Gb/s network processing",
+        "note": "Used alongside NVIDIA and Trainium servers to offload networking from host CPU."
+      },
+      {
+        "name": "Alaska C 400G/800G Ethernet PHY",
+        "type": "High-speed optical interconnect",
+        "used_in": "AI datacenter optical transceivers (800G OSFP between servers)",
+        "bandwidth": "800 Gb/s per port",
+        "note": "AI clusters need 800G optical between racks. Marvell leads optical PHY market."
+      }
+    ],
+    "upstream_from": [
+      "TSMC (N4/N3 fabrication)",
+      "SK Hynix / Samsung (HBM for Trainium)",
+      "ARM (CPU IP)",
+      "ANSYS/Synopsys (EDA)"
+    ],
+    "downstream_to": [
+      "Amazon AWS (Trainium ASIC)",
+      "Cloud providers (networking chips)",
+      "Optical module makers (InnoLight, Coherent)"
+    ],
+    "scm_position": "ASIC tier — Trainium2/3 ASIC design (HBM sourced directly for AWS, bypassing NVIDIA)"
+  }
 }

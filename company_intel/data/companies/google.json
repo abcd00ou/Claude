@@ -99,5 +99,50 @@
     "Alphabet Q1 2026 Earnings (Apr 2026)",
     "AI_SCM/data/seed_data.json"
   ],
-  "flagged_news": []
+  "flagged_news": [],
+  "scm_engagement": {
+    "scm_role": "Unique dual-path AI compute buyer: purchases NVIDIA GPUs for Google Cloud AND designs its own TPU ASICs (manufactured by Broadcom/TSMC), which use HBM directly without NVIDIA intermediary. Google is both a major HBM demand source and a direct Samsung/SK Hynix customer.",
+    "server_products": [
+      {
+        "name": "TPU v5 (Trillium) Pod",
+        "type": "Custom AI training/inference accelerator",
+        "used_in": "Google internal AI (Gemini Ultra training), Google Cloud TPU v5e",
+        "hbm": "HBM3 (Samsung primary), 16GB–32GB per chip",
+        "note": "Broadcom ASIC + Samsung HBM + TSMC CoWoS. Google's TPU bypasses NVIDIA completely."
+      },
+      {
+        "name": "TPU v6 (Trillium 2)",
+        "type": "Next-gen AI accelerator",
+        "used_in": "Gemini 2.0/2.5 training, Google Cloud",
+        "hbm": "HBM4 (target, supplier TBD)",
+        "note": "Announced 2025. Google announced selling TPUs to select external customers."
+      },
+      {
+        "name": "Google Cloud A3 Ultra (8× H200)",
+        "type": "GPU cloud instance",
+        "used_in": "Google Cloud AI compute for external customers",
+        "hbm": "1.13TB HBM3e per server",
+        "note": "Google resells NVIDIA GPU compute via A3/A3 Ultra instances."
+      },
+      {
+        "name": "Axion CPU (custom Arm server CPU)",
+        "type": "Custom server CPU",
+        "used_in": "Google Cloud general compute, AI inference host",
+        "note": "Google's own Arm-based server CPU (TSMC N5). Replaces Intel Xeon in some Google datacenters."
+      }
+    ],
+    "upstream_from": [
+      "Broadcom (TPU ASIC design/fab)",
+      "TSMC (TPU die + CoWoS)",
+      "Samsung (HBM for TPU)",
+      "SK Hynix (HBM for Cloud GPU)",
+      "NVIDIA (A3 GPU instances)"
+    ],
+    "downstream_to": [
+      "Google Cloud customers",
+      "Internal AI teams (DeepMind, Google Brain)",
+      "Enterprise (Workspace AI, Gemini API)"
+    ],
+    "scm_position": "Demand tier — dual-path: TPU (direct Samsung HBM) + GPU cloud (via NVIDIA)"
+  }
 }

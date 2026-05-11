@@ -123,5 +123,58 @@
     "Amazon Q1 2026 Earnings (Apr 2026)",
     "AI_SCM/data/seed_data.json"
   ],
-  "flagged_news": []
+  "flagged_news": [],
+  "scm_engagement": {
+    "scm_role": "Largest cloud infrastructure provider. Procures NVIDIA GPUs for AWS GPU cloud AND operates the most advanced hyperscaler custom silicon program (Trainium for training, Inferentia for inference), both sourcing HBM directly. Project Rainier is the largest-ever single custom silicon cluster.",
+    "server_products": [
+      {
+        "name": "AWS P5 / P5e Instance (8× H100/H200 SXM)",
+        "type": "GPU cloud instance",
+        "used_in": "AWS AI training (Anthropic Claude, third-party AI)",
+        "hbm": "640GB (P5) / 1.13TB (P5e) per server",
+        "note": "AWS resells NVIDIA GPU compute. Used by Anthropic, Stability AI, Cohere."
+      },
+      {
+        "name": "Trainium2 Chip (custom AI training ASIC)",
+        "type": "Custom AI training accelerator",
+        "used_in": "Project Rainier (Anthropic Claude training), AWS UltraServer",
+        "hbm": "HBM3 (SK Hynix / Samsung direct), 96GB per chip",
+        "note": "Marvell ASIC design, TSMC N4 fab, SK Hynix/Samsung HBM. 400K+ chips in Project Rainier cluster."
+      },
+      {
+        "name": "Inferentia3 Chip (custom AI inference ASIC)",
+        "type": "Custom AI inference accelerator",
+        "used_in": "AWS internal inference (Alexa, AWS Bedrock), Inf2 instances",
+        "hbm": "HBM (Samsung, lower bandwidth config)",
+        "note": "Handles ~40% of AWS inference workloads. 4× better price-performance than GPU for inference."
+      },
+      {
+        "name": "Graviton4 (custom Arm server CPU)",
+        "type": "Custom Arm server CPU",
+        "used_in": "AWS general compute, AI inference host",
+        "note": "TSMC N4P. Accompanies Trainium/Inferentia in AI server racks as the host CPU."
+      },
+      {
+        "name": "Nitro System (custom network + security chip)",
+        "type": "Data center offload chip",
+        "used_in": "All AWS EC2 instances including AI GPU instances",
+        "note": "Offloads networking/storage/security from host CPU. Required in all AWS AI servers."
+      }
+    ],
+    "upstream_from": [
+      "Marvell (Trainium2 ASIC design)",
+      "TSMC (all custom chip fabrication)",
+      "SK Hynix/Samsung (HBM for Trainium)",
+      "NVIDIA (GPU instances)",
+      "Vertiv (power/cooling)",
+      "Constellation/GE Vernova (power)"
+    ],
+    "downstream_to": [
+      "AWS cloud customers",
+      "Anthropic (dedicated Rainier cluster)",
+      "Enterprise (Bedrock AI services)",
+      "Third-party AI startups"
+    ],
+    "scm_position": "Demand tier — dual-path GPU cloud (NVIDIA HBM) + custom silicon (direct HBM from SKH/Samsung)"
+  }
 }

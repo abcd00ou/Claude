@@ -79,5 +79,69 @@
     "NVIDIA FY2026 Q4 Earnings (Feb 2026)",
     "NVIDIA Q1 FY2027 Guidance (May 2026)"
   ],
-  "flagged_news": []
+  "flagged_news": [],
+  "scm_engagement": {
+    "scm_role": "Designs the AI GPUs that are the primary compute engine in every major AI training server. NVIDIA is the central node of the entire AI supply chain: it dictates which HBM supplier qualifies, which foundry (TSMC) packages the chips, and which server OEM integrates the systems.",
+    "server_products": [
+      {
+        "name": "H100 SXM5 GPU",
+        "type": "AI training GPU (SXM form factor)",
+        "used_in": "DGX H100, HGX H100 (8-GPU server board), cloud GPU instances",
+        "hbm": "80GB HBM3 (SK Hynix), 6 stacks",
+        "note": "~$30K/chip street price at peak. Still the most deployed AI training GPU in 2025."
+      },
+      {
+        "name": "H200 SXM5 GPU",
+        "type": "AI training GPU (SXM form factor)",
+        "used_in": "DGX H200, HGX H200, Azure ND H200 v5, AWS P5e",
+        "hbm": "141GB HBM3e (SK Hynix primary, Micron partial), 8 stacks",
+        "note": "141GB is 1.8x more HBM than H100. Memory bandwidth 4.8 TB/s."
+      },
+      {
+        "name": "B200 SXM GPU",
+        "type": "AI training/inference GPU (Blackwell)",
+        "used_in": "GB200 NVL72 rack unit, DGX B200",
+        "hbm": "192GB HBM3e (SK Hynix), 8 stacks × 24GB",
+        "note": "Performance: 20 petaFLOPS FP4. TDP 1000W. Requires liquid cooling."
+      },
+      {
+        "name": "GB200 NVL72 Rack Unit",
+        "type": "AI supercomputer rack (72 GPUs)",
+        "used_in": "Hyperscaler AI training clusters (Microsoft, Google, Meta, Amazon)",
+        "hbm": "13.8TB HBM3e total per rack (72 × 192GB)",
+        "note": "72 B200 GPUs + 36 Grace CPUs in one 19-inch rack. Requires Vertiv/Schneider liquid cooling."
+      },
+      {
+        "name": "NVSwitch 4.0",
+        "type": "GPU interconnect switch",
+        "used_in": "Inside DGX/HGX servers, NVL72 rack backplane",
+        "bandwidth": "3.2 TB/s per switch, NVLink 4.0",
+        "note": "Connects all 72 B200 GPUs inside GB200 NVL72 at full bandwidth. TSMC N4 process."
+      },
+      {
+        "name": "ConnectX-7 / BlueField-3 (Mellanox)",
+        "type": "InfiniBand / Ethernet NIC + DPU",
+        "used_in": "AI server cluster networking (all NVIDIA-based AI clusters)",
+        "bandwidth": "400Gb/s HDR InfiniBand",
+        "note": "InfiniBand connects servers in a training cluster. BlueField-3 handles offloaded networking."
+      }
+    ],
+    "upstream_from": [
+      "SK Hynix (HBM)",
+      "Micron (HBM partial)",
+      "TSMC (GPU die + CoWoS packaging)",
+      "Synopsys/Cadence (EDA)",
+      "ASML (via TSMC)"
+    ],
+    "downstream_to": [
+      "Microsoft Azure",
+      "Google Cloud",
+      "Amazon AWS",
+      "Meta",
+      "Dell EMC (DGX/HGX OEM)",
+      "Supermicro",
+      "HPE"
+    ],
+    "scm_position": "GPU tier — central integrator of HBM + GPU die at TSMC; sold to hyperscalers and server OEMs"
+  }
 }

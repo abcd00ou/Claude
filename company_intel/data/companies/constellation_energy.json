@@ -81,5 +81,43 @@
     "Constellation Energy Q1 2026 Earnings (Apr 2026)",
     "Microsoft-Constellation TMI PPA announcement"
   ],
-  "flagged_news": []
+  "flagged_news": [],
+  "scm_engagement": {
+    "scm_role": "Operates the largest US nuclear fleet, providing 24/7 carbon-free power to AI datacenters via long-term PPAs (Power Purchase Agreements). Nuclear is uniquely suited for AI compute because AI training runs 24/7 and needs reliable baseload power that solar/wind cannot provide.",
+    "server_products": [
+      {
+        "name": "Crane Clean Energy Center (TMI Unit 1 restart)",
+        "type": "Nuclear power plant (835MW)",
+        "used_in": "Microsoft Azure data centers (20-year exclusive PPA)",
+        "output": "835MW continuous (powers ~800K homes, or ~10-15 large AI datacenters)",
+        "note": "Restarted Sep 2024. Landmark deal: first nuclear plant restarted specifically for AI compute demand. Powers GPT training."
+      },
+      {
+        "name": "Nuclear PPA (Power Purchase Agreement)",
+        "type": "Long-term clean power contract",
+        "used_in": "Google Cloud, Amazon AWS, Meta AI datacenters",
+        "note": "10-20 year PPAs guarantee carbon-free 24/7 power. Google, Amazon, Meta signed nuclear PPAs for AI datacenter expansion."
+      },
+      {
+        "name": "Illinois Nuclear Fleet (Braidwood, Byron, Dresden)",
+        "type": "Nuclear power fleet",
+        "used_in": "PJM grid (Virginia/Maryland data center corridor)",
+        "output": "10+ GW combined",
+        "note": "Northern Virginia (data center capital of the world) is powered largely by Constellation's Illinois nuclear."
+      }
+    ],
+    "upstream_from": [
+      "Uranium enrichment (Centrus, Urenco)",
+      "Nuclear fuel assemblies (Westinghouse, Framatome)",
+      "NRC regulatory approvals"
+    ],
+    "downstream_to": [
+      "Microsoft (TMI PPA, 20yr)",
+      "Google (nuclear PPA)",
+      "Amazon AWS (nuclear PPA)",
+      "Meta (nuclear PPA)",
+      "PJM grid (VA/MD data center corridor)"
+    ],
+    "scm_position": "Power generation tier — nuclear baseload that enables 24/7 AI cluster operation"
+  }
 }
