@@ -1,0 +1,122 @@
+{
+  "company": "Samsung Semiconductor",
+  "ticker": "005930.KS",
+  "last_updated": "2026-05-11",
+  "snapshot": {
+    "revenue_qtr": "DS Division KRW ~28T (Q1 2026 est.)",
+    "revenue_qtr_usd": "~$19.7B",
+    "op_margin_pct": 18,
+    "hbm_market_share_pct": 35.0,
+    "headcount": 110000,
+    "market_cap_usd_bn": 280
+  },
+  "product_roadmap": [
+    {
+      "product": "HBM3e",
+      "status": "mass_production",
+      "customer": "AMD MI300X (primary), Google TPU (partial)",
+      "bandwidth_tbps": 1.23,
+      "capacity_gb_stack": 24,
+      "note": "NVIDIA HBM3e qualification still pending as of Q1 2026"
+    },
+    {
+      "product": "HBM4",
+      "status": "development",
+      "customer": "TBD",
+      "bandwidth_tbps": 2.0,
+      "capacity_gb_stack": 32,
+      "note": "Behind SK Hynix by ~1-2 quarters"
+    }
+  ],
+  "key_contacts": [
+    {
+      "name": "",
+      "title": "VP, Semiconductor Marketing",
+      "linkedin": null,
+      "note": "Manual entry — update before next meeting"
+    }
+  ],
+  "recent_news": [
+    {
+      "date": "2026-05-07",
+      "title": "Samsungs Internal Strife Threatens HBM Competitiveness",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5PVnR0bGxYa0E3bUttYU1ZdGxTcHVKbXNsQ2ZmbVh0X0xVWjE5cGFpM1BRTmQ0dEpDZ2lHLVdGU25RWVFLVl9DTVdEMzFUZFBtS0RiY0xSa9IBV0FVX3lxTE5PVnR0bGxYa0E3bUttYU1ZdGxTcHVKbXNsQ2ZmbVh0X0xVWjE5cGFpM1BRTmQ0dEpDZ2lHLVdGU25RWVFLVl9DTVdEMzFUZFBtS0RiY0xSaw?oc=5",
+      "source": "aju press"
+    },
+    {
+      "date": "2026-05-05",
+      "title": "There are no people who don't know HBM while investing in our semiconductor company. In particular",
+      "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5wNVp5cEIxbVpTc1dYRlAzYUpESzBueW5QWE5wOTk0LTFkMlVnRFhMdHJWNWhIeFV1R2JSRUQtVU9NYlVyakRjWTlhcmEzUEU?oc=5",
+      "source": "매일경제"
+    },
+    {
+      "date": "2026-04-14",
+      "title": "AI Demand Disrupts Semiconductor Cycle as Samsung, SK Hynix See Shifting Fortunes",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOeFpSaWNIWnlGTWh3RnNpRzRUaXNhYWRCN1ozRXhYcXI5LXI0dVZtWEc2ckFxZVE3TThFckFpWmF3SjJMMV83UmFfYmNDdkZndi14bXN5cmdBc3RSN3pPVGdLRlEtODRtdEc1aGhDR0pJRnl1czlZSWd5OEdfY2V0NVpFRTg4YnRRVUM4OHpR?oc=5",
+      "source": "조선일보"
+    },
+    {
+      "date": "2026-05-01",
+      "title": "Samsung Electronics Posts Record 53.7 Trillion Won Semiconductor Profit",
+      "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOcmdXRzJlQVRETEl5UUFFcHdmNUczc1M2MUlVNXVtOHVsSjJWU2FodEtUVzQtaURNMmpBdXM4RlVhUkZ2NWRyeW5QOExWQVpuWjN2N3gyRng2TnVaU3lVS2dGY2NpMUprVl8xRmkwQTctcFJqY0RYOEhJSXBYNVNuQVdlSENqWV9K?oc=5",
+      "source": "조선일보"
+    },
+    {
+      "date": "2026-04-18",
+      "title": "Memory shortage set to run until 2027 as chipmakers focus on AI",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPd3dOQ0tBN0dJMjM2em5Cc1JoYmtIMG9LTWQ1c3ZXcG1rd1BmWlNUeVZhd1JvRkJoTzY0a0xfaERONXJfa19oZ1V0NV8xMElZRGlXUUVBNjRtbXpsb1ZVMGZuYm9LZmp2c3M2UUVmY1FlVXR3MWxzYUJWcUE3MklQc3RXeHJQM19QcldDeWxSSEZuaHJNQVNxZ2hJVXZrdVpwWHMxaFltSElib3hNbXhnT0RxQ0lDbjQ?oc=5",
+      "source": "Nikkei Asia"
+    },
+    {
+      "date": "2026-04-13",
+      "title": "Samsung, SK Hynix Stocks Could Double With AI Semiconductor Shift",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOYWpvVS1sbjNnNEZiWnZuV3JCY2J1cm9IbkRXQnR4WFctbUZlTEdrQ3ZONWdXcG0xRnhMcy1Eb2JHR3hoOWZtQmVCbVI0TndBOTY4N1hBeDdKcloxY2RWWmplRjRyOUhwb0tIdFhFWkpFSGdERloxTGZ1ZmVRSzk2LUVwOG5PVVkzOUZWMnp3?oc=5",
+      "source": "조선일보"
+    },
+    {
+      "date": "2026-04-12",
+      "title": "Concerns Grow Over Worsening Global Memory Shortage ... Direct Hit to Korean Exports and Exchange Rate",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5US2QyeWtNM0pnNVVjSXhRSUk3UlBMb1JHZ01sQlRmNmhjNmVIWFI5cG1ZVVZrS1pPQmVhb0l6TG5SVG1GRThQRmdHUktsczlJR3pV?oc=5",
+      "source": "매일경제"
+    }
+  ],
+  "sales_hooks": [
+    "Samsung HBM3e still awaiting full NVIDIA qualification — catching up story, ask how marketing positions 'catch-up' vs SK Hynix without sounding defensive",
+    "Samsung DS Division facing margin pressure vs SK Hynix — profitability story, explore how they're justifying premium pricing to customers",
+    "HBM4 roadmap reportedly 1-2 quarters behind SK Hynix — how does product marketing address the perception gap?",
+    "Samsung has broadest customer base (AMD, Google, Qualcomm) — portfolio diversification as a narrative: how do they market 'not dependent on NVIDIA' as a strength?"
+  ],
+  "competitive_position": {
+    "hbm_rank": 2,
+    "vs_sk_hynix": "Yield gap on HBM3e, NVIDIA not yet qualified; stronger in non-AI DRAM",
+    "vs_micron": "Larger scale, more customer relationships; Micron catching up on HBM share",
+    "moat": "Vertical integration (foundry + memory + packaging), broadest portfolio"
+  },
+  "financials_history": {
+    "2025Q1_ds_revenue_krw_t": 25.0,
+    "2025Q2_ds_revenue_krw_t": 27.0,
+    "2025Q3_ds_revenue_krw_t": 28.0,
+    "2025Q4_ds_revenue_krw_t": 30.0,
+    "2026Q1_ds_revenue_krw_t_est": 28.0
+  },
+  "sources": [
+    "Samsung Q1 2026 Earnings (Apr 2026)",
+    "AI_SCM/data/seed_data.json"
+  ],
+  "flagged_news": [
+    {
+      "title": "Memory shortage set to run until 2027 as chipmakers focus on AI",
+      "date": "2026-04-18",
+      "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPd3dOQ0tBN0dJMjM2em5Cc1JoYmtIMG9LTWQ1c3ZXcG1rd1BmWlNUeVZhd1JvRkJoTzY0a0xfaERONXJfa19oZ1V0NV8xMElZRGlXUUVBNjRtbXpsb1ZVMGZuYm9LZmp2c3M2UUVmY1FlVXR3MWxzYUJWcUE3MklQc3RXeHJQM19QcldDeWxSSEZuaHJNQVNxZ2hJVXZrdVpwWHMxaFltSElib3hNbXhnT0RxQ0lDbjQ?oc=5",
+      "category": "risk",
+      "relevance_score": 2
+    },
+    {
+      "title": "Concerns Grow Over Worsening Global Memory Shortage ... Direct Hit to Korean Exports and Exchange Rate",
+      "date": "2026-04-12",
+      "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5US2QyeWtNM0pnNVVjSXhRSUk3UlBMb1JHZ01sQlRmNmhjNmVIWFI5cG1ZVVZrS1pPQmVhb0l6TG5SVG1GRThQRmdHUktsczlJR3pV?oc=5",
+      "category": "risk",
+      "relevance_score": 2
+    }
+  ]
+}

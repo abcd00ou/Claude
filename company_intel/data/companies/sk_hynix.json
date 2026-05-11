@@ -1,0 +1,134 @@
+{
+  "company": "SK Hynix",
+  "ticker": "000660.KS",
+  "last_updated": "2026-05-11",
+  "snapshot": {
+    "revenue_qtr": "KRW 52.5T (2026Q1)",
+    "revenue_qtr_usd": "~$36.9B",
+    "op_margin_pct": 72,
+    "hbm_market_share_pct": 50.0,
+    "net_income_qtr": "KRW 8.1T",
+    "headcount": 30000,
+    "market_cap_usd_bn": 100
+  },
+  "product_roadmap": [
+    {
+      "product": "HBM3e",
+      "status": "mass_production",
+      "customer": "NVIDIA B200/H200",
+      "bandwidth_tbps": 1.23,
+      "capacity_gb_stack": 24,
+      "note": "Dominant NVIDIA supply, 50%+ share"
+    },
+    {
+      "product": "HBM4",
+      "status": "sampling_2026H2",
+      "customer": "NVIDIA GB300 (target)",
+      "bandwidth_tbps": 2.0,
+      "capacity_gb_stack": 32,
+      "note": "Mass production expected 2026H2"
+    },
+    {
+      "product": "HBM4E",
+      "status": "development",
+      "customer": "Next-gen Blackwell Ultra",
+      "bandwidth_tbps": null,
+      "capacity_gb_stack": null,
+      "note": "Sampling H2 2026, roadmap confirmed"
+    }
+  ],
+  "key_contacts": [
+    {
+      "name": "",
+      "title": "VP, Product Marketing (HBM)",
+      "linkedin": null,
+      "note": "Manual entry — update before next meeting"
+    }
+  ],
+  "recent_news": [
+    {
+      "date": "2026-05-10",
+      "title": "LS Securities lifts SK hynix target as labor, bonus risks rise with memory surge - CHOSUNBIZ",
+      "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQamVOSHJFbTZXYjFRdndQTFotei1iaUk4VlUtNFI3VXJHMWhzUXcwSl9QblR0SUIyanVMT0EzVW4yN25uUF9PTFRXNXYtVHJjOXdrOTU0cklERHZ6cm41YzFVUFNYcWRyV1RjRzctckdaNHk4X1I3bng3ZlFic3VqVdIBlAFBVV95cUxNb3gzOUpYN1UzVEJBdnVWYVdXSVlCZWZYQjZkeTdLSFZjUFFEOUlyNFUwWE5XSFhsdXB0ZEpialJiVjlOTTQ5YU9FLU1lc0F2ZmprUE8wel9Rb0ljX0lQV0xybHJvUmxpRmhaS0tzaHlWanFSN2xtSGZmMDh5WWZDeEFMWGtGbGk3dEhLZjA3S29yWmNI?oc=5",
+      "source": "Chosunbiz"
+    },
+    {
+      "date": "2026-05-09",
+      "title": "SK hynix AI Memory Crunch: Big Tech Offers to Fund Fabs as Capacity Runs Out",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQajduZFZveWV1T2dYVlpiRDZob0IwTFRoZGNXMkVMMm9QZTUwMTFnSndkamxFYS0zWWY1b3JicDlCanZhN3MyTEsteXI0VDdlVWJPWHZCRDFxZVBzbTRJTV9vOHRWRGthV2pFVnBfVUY4STlzNm5IVk8tbjhlcmRqTTd5SDVPbHJ5WGs5LTBWYnEtUWl4Vkp5ZWVFS2k?oc=5",
+      "source": "TechStock²"
+    },
+    {
+      "date": "2026-04-22",
+      "title": "SK Hynix posts record first-quarter profit, in line with estimates as memory prices climb",
+      "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOQ0tFSG9ORVR6dy1MMXFOWWxISXVOM3hMdjNxSXpVS1ZNTG9QRGVRdjFqZUQxZ0MwbS0tM1UwbFZUaE1pd19QeVV0ZmNzeVR4RVcyVWVBOTVlZnJoVkFSclEyelFLYzRaTjdjTk9xeVhZaWk2YWYzaG9mV3hSV0ZuM21MdUtLd184SDVSeNIBkgFBVV95cUxNc0F5bGJJNTAwMmZydnp1UUJqR19wUU0tel9RekdyODZhUDY1NFJScXVJWlRXSUNPM09kZzZMX2llM3dHMzdMbi1KSFpsYUhhV3k4cDFCM2RNVFVuTDVEbnZTWEVwdi1obzRTU3p2cjVJZFE3LUdDY01GbV9obXNsSzUwN2VIX18xeDVoMm1GRDREUQ?oc=5",
+      "source": "CNBC"
+    },
+    {
+      "date": "2026-05-08",
+      "title": "SK Hynix Buried Under Customer Cash Offers to Expand Memory Output, but Insider Warns Available Capacity Is ‘Essentially Zero’",
+      "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOcWpBbjQ2RXZTa3Q1aTV0Y0RQV1Z1QTA1eXlYSldqT0FKVDc5OC1UVjVWYWk0U1diYmNvUHhaTkFsZzV5dXIzeU5KUV9KZ0VpTjdsVVVkcFhsTWhvdk5DR1pnVlBPTWE3cTMxR0dwdkNMTXp1TXNLSWFJUlY0M3hWVkgtUXFCcFhVcm83dTNWai0zSVVpUGstaTItUFFVMjYxa3lKRU5sck1EQ0RiYTFJSTVtOFVScGlrbFE4Vm5EMEc2Skg2N2JUdlRUTmctV0ZqTnlLTGk4c2p0QdIB3wFBVV95cUxQQnF1Zy1QNGM4dHpXcmtKN1pIdWV3MGNlSGU4YlEzak0yOFdFMENWN2p2ekNDTVV0MXMyT19LVUR5aU5MeU5qVmtXbjdYQktuTzVBR3Y5Q1lpandNRVhIeDBURmU5Y1RRZHF5VXdEWkV4bGl1bFNmanVPR1VRNjA4Ylc2QVZxRm5FOXBkdUlON2k0RHo4bVE2WFAwZnBxcmhQbDN0S01CeWJTdlFRbk5XOFpFSUs1R1JhbVRPRHdKZmlkOExOdFhNamY3WWVfVUtXTy1rWENTdDN4MGFnT2hN?oc=5",
+      "source": "Wccftech"
+    },
+    {
+      "date": "2026-04-23",
+      "title": "SK hynix sees HBM demand outpacing supply for three years",
+      "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1Mc3FuNkNSeDZzd3RRZXhrWWQxZFlpTXRjSGtyQUV3WGwwN1o2b3BsQ29oVy15QlNZdGdTS2hOTG1XeW1hb2NYSXZDWFp3RnVZeWY3dVFRdw?oc=5",
+      "source": "The Korea Herald"
+    },
+    {
+      "date": "2026-05-10",
+      "title": "LS Securities Raises SK hynix Target Price to 2.1 Million Won on HBM Strength",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNT3VoUzc1UDV1WEtjWEstZHZvWHo4R2lSajJsMDExMER2amVjYW9ZTnBURk9iT2NOSDBQZFoyNFlZUmJuZjV3N2JUVUtpay05UUF0TWduSlNmaFpVY2lwZ0ZtRmZwZjNnSlVqaDJhNVUzQWNrZGQ1NURQaXFzSUhueENQYmRsN0VTcFR4T1EzWmdWb2YxaUxpMDVuNkpybEU?oc=5",
+      "source": "Seoul Economic Daily"
+    },
+    {
+      "date": "2026-05-06",
+      "title": "SK Hynix disputes report on M15X memory investment shift",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOODgya05KVy1qeUExdTMtR2xVcWdRXzFjMGpHXy1UNXdXMzc1UU5PcGNLTEZkSnJBb0RlLWVsdlljMy1sME5kS3FjY1VXanBNZkN0WnlZTVdQTmlmbG8xdVJLWUN5WUlNNlg1U3ZQbHVDdThoYUVqQ0ptTVpUb3JBd3I1T2FWNWxSdlcw?oc=5",
+      "source": "digitimes"
+    },
+    {
+      "date": "2026-04-22",
+      "title": "SK Hynix breaks ground on Indiana advanced packaging plant",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5xbW1wbWMtNmtub3I0MWZTN1JsY3ZCNk1DaEVUYnhVWkktNlVaWEtpUTNBNGZYR1BiYk9qZGFoVlFMcHk3Z2x0T05DZVE4R0UxZkM0RE85RVNwUWN1Q0liSUsyejEwRkE?oc=5",
+      "source": "The Register"
+    },
+    {
+      "date": "2026-04-22",
+      "title": "SK Hynix’s New Memory Plant Isn’t Good News for Micron. Why the Stock Is Rising Anyway.",
+      "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5hekZ6V0lxOHd1SDR2RVlVc1psdmlGOVFUMG9DNGZZUnNJX3FEUGxXQWY3NS1lbnZYZzZ1REpHQUtDVEMxTUt6YnJPT2xnSHdUenNIZVg3T1VnVTVUcVYxZmQyWVAtZm1YLVBHcVRiZ0VZaTlTWVFtLUNsQlFFZw?oc=5",
+      "source": "Barron's"
+    },
+    {
+      "date": "2026-04-21",
+      "title": "SK Hynix to invest about $13 bln in a new South Korea plant to meet AI memory demand",
+      "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPQ0Vqc2tLZ3lfbXRRQ1lIUUdBTjNySC0wUC1GUnE0XzVvNXVVQVZNd0RpTnBWdGJmcTlIMnc5NDVYSlZDeFo3bFdiVGYyWmlNSDZMTUlFLVl3TzJIYmEtY083bjlvaUJlMlRGSl9qV3R4Y1NJajJFUjZpaFAwZTNPOGttVWRkZmdCN3dNb3RSbVg2TDdaX0RHOVZzOWZoRGtKYUZMQzRHZ1N4NDRIYUlyQS1HSGl6NDg0YzBfQ1RycVFEU0ZaeGc?oc=5",
+      "source": "Reuters"
+    }
+  ],
+  "sales_hooks": [
+    "HBM4E sampling starts H2 2026 — roadmap visibility window: use this to open a conversation about how they communicate roadmap confidence to downstream customers",
+    "Q1 2026 operating margin 72% — premium positioning story, ask how marketing communicates value vs. commodity pricing pressure from Samsung/Micron",
+    "HBM demand exceeds 3-year supply capacity — supply constraint as a credibility asset: how does their marketing manage expectation setting with allocation-constrained customers?",
+    "SK Hynix revenues +198% YoY — fastest-growing major semiconductor company right now; explore how they're scaling their marketing org to match"
+  ],
+  "competitive_position": {
+    "hbm_rank": 1,
+    "vs_samsung": "HBM3e yield advantage, NVIDIA supply share ~52% vs Samsung ~35%",
+    "vs_micron": "2-generation lead in HBM; Micron at ~13% share, still on HBM3e",
+    "moat": "CoWoS packaging relationship with TSMC + NVIDIA qualification lead time"
+  },
+  "financials_history": {
+    "2025Q1_revenue_krw_t": 17.6,
+    "2025Q2_revenue_krw_t": 34.0,
+    "2025Q3_revenue_krw_t": 42.0,
+    "2025Q4_revenue_krw_t": 47.0,
+    "2026Q1_revenue_krw_t": 52.5
+  },
+  "sources": [
+    "SK Hynix Q1 2026 Earnings Release (Apr 2026)",
+    "AI_SCM/data/seed_data.json"
+  ],
+  "flagged_news": []
+}

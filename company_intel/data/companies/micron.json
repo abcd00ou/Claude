@@ -1,0 +1,125 @@
+{
+  "company": "Micron Technology",
+  "ticker": "MU",
+  "last_updated": "2026-05-11",
+  "snapshot": {
+    "revenue_qtr": "$8.7B (FY2026 Q2, +38% YoY)",
+    "revenue_qtr_usd": "$8.7B",
+    "op_margin_pct": 22,
+    "hbm_market_share_pct": 15.0,
+    "headcount": 48000,
+    "market_cap_usd_bn": 110
+  },
+  "product_roadmap": [
+    {
+      "product": "HBM3e",
+      "status": "mass_production",
+      "customer": "NVIDIA H200 (partial), Meta, Microsoft",
+      "bandwidth_tbps": 1.23,
+      "capacity_gb_stack": 24,
+      "note": "Fastest-growing HBM share: 10% → 13%+ in 2025-2026"
+    },
+    {
+      "product": "HBM4",
+      "status": "development",
+      "customer": "Target: NVIDIA Blackwell Ultra",
+      "bandwidth_tbps": 2.0,
+      "capacity_gb_stack": 32,
+      "note": "Idaho fab expansion under CHIPS Act"
+    }
+  ],
+  "key_contacts": [
+    {
+      "name": "",
+      "title": "VP, AI Memory Marketing",
+      "linkedin": null,
+      "note": "Manual entry — update before next meeting"
+    }
+  ],
+  "recent_news": [
+    {
+      "date": "2026-05-10",
+      "title": "Are SanDisk and Micron Too Expensive? Here's How You Can Invest in the Artificial Intelligence (AI) Memory Supercycle for Just $50.",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOMjZxU0hyNU1WLXVVSS1PMHhIZUpXVFhGaGFza2NpTXdMaE80NkFDVC1RdkJjdFV2Y0JaMi1ubkRCX0lqM1NJb2UwSGZqQVZxOExRRzI5ZWR5TzQ1UlBFNHE3RmtYemtCSlRjbmJham03OVJwR29xLTZZM05RdjdZQlFaNU9GSEZqQkZSTmRteDBwYzB5NHNyUg?oc=5",
+      "source": "The Motley Fool"
+    },
+    {
+      "date": "2026-05-10",
+      "title": "This new AI trade is leaving Nvidia and Micron in the dust",
+      "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFA3bDNGdFk0SHVuc2h2Z080TjVXdU5pS2ZCdFY5cXI3OFUtbGNmaWxFdUprYmE5T2pIZkFvMV9JdlVjOVJkRFRKdi1UU2J1UnE1dnN6RWY4dUZYVFltRFBzVjhpaklHeEd5dGtGN0ZlbERYMGRhV2M1c2E5MmRLN0E?oc=5",
+      "source": "AOL.com"
+    },
+    {
+      "date": "2026-05-10",
+      "title": "Is Micron the Next Nvidia? Why the 2026 \"Memory Crunch\" Makes MU Stock a Top AI Buy",
+      "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNNUJ2aFRHTHd6WVZXaUZrUVlJODF1ZkotSmNFSllEYmtCa3VwN3dLRG41WTQ4VE4wZ1Y4NDMtMFkya1drdU1IVVU3WkpxLWtDUEtkRU50N29MUUEtckhVRXV0MFF0aVZIQ25OcjBXbHQ4a3VXOWtnSzhKa3Q1Z000dmI2d1Y1MEdZVlNSWkdRQkpYaER0YWNCcHdNVXhwYVpHUmZQMEJZejZrMlJ4WnJGVk1GT296TkpMaFVvUTlEWW1PS1ZWSFdfSFJVTkxsb3dNUkpYNw?oc=5",
+      "source": "TradingKey"
+    },
+    {
+      "date": "2026-05-10",
+      "title": "Micron vs. Sandisk: One AI Stock Is a Buy, One Is a Sell, Says Investor",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQNS1TclpvZE9FTVg4eXlGVHYtYnFHemI3elM3VUFiWmU4ckJiRmRlMmpfci1HYm9maEp4WXh1eUV5ODhRVHluNm9zSFZwYjJfRkdKaldEdms2dG1OblE3d0FyOFZZV3l5MERZcGthMU5uWXEzREpoTEI1SGRra3F0d2FVZFVlOGpBX3QzOWtVMmRMWk1vb1BRWWpLWVBnb1JSTmpMc0Fibw?oc=5",
+      "source": "TipRanks"
+    },
+    {
+      "date": "2026-05-10",
+      "title": "Micron Stock Just Became the AI Memory Trade Wall Street Can’t Ignore",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNYk9CMjk1QVN5V3VHLXFvT2FINHpPOVh6RFFKSDIzTnNGZXVVdUNtazBPRC1KNjN1UjdrMzVvLXZMQ24tQ0x1YTA0S0NFQWVXcE5vVTlGamFRMVNuZXlPNG9Cai1iRDh0Q2pxTkpSS1FPdjlNQzM0M0FZYmY1Zjd3N3lzS0ZuZUNwakE0cVhkZjJsbkk?oc=5",
+      "source": "TechStock²"
+    },
+    {
+      "date": "2026-05-09",
+      "title": "Micron Is the Memory Toll Booth Behind NVIDIA’s AI GPU Boom",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE80QUFIS0ZjRGhHY0EyRTFjcnI0ZEFobzNCR1J5b3owU3pUbG5yV3lCVGZxa29GZ3J5eDFLa2FiUlM0Z0k2TXFOaVh3VWxOOGE4S21KUzF4bmRQaDhWZEp0UTl6QURMOVU?oc=5",
+      "source": "techi.com"
+    },
+    {
+      "date": "2026-05-05",
+      "title": "Micron's CEO says AI memory demand is just in its 'first innings' and memory supply is already insufficient",
+      "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQQnBaVm42RWoySzQxRHpsMndlTDdCOTdDSzdHMDZDeWFpOTV5WWdHUTYzck5FSkhaY3RBbGpBRFZ2Y3JBVHdkRG9kV0l2Y3Jya2xSb1pBUjBwVGltNTVyNlk2NFRVaTJQV3BIQi1XZU1hUUVWeFpFWGlMdnRNWktoaEJORWJEUVBVSlVIakJMdG84MlF5QzVidDQ2eXhqR056Q3F2SG5RbUE1eC1Fdk1IVUt3QnluMlExNXltMzZ0MW9MdzlGT0hudnNEQ3c5WFNUZzdoMVg4dk1zNzdIV0V6cGVwdUxFQVBi?oc=5",
+      "source": "TweakTown"
+    },
+    {
+      "date": "2026-05-06",
+      "title": "Micron just did in three days what once took 37 years",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQc0VTX1phbVlNcVVYczBTOU1fM1U0QlppNy1SMkJnZWtJR3BPaC03ZEpWQlZFa2JiLV84cVVyZG45MXFLbHFpT2YzVGJNdmgzdWtUQ0Y5eU1JZDlUNUo3LUljeTRkekRRTFVGMUxjdUpiU2RQOEV2M2tDMDFLT3VFOUdOZ3hycmhfR3dLaEV2OGxJRHJOZTNxMGhTUzI?oc=5",
+      "source": "MarketWatch"
+    },
+    {
+      "date": "2026-05-07",
+      "title": "Sandisk vs Micron: Which Stock Has a Better Chance of Continuing Its Magical Run?",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPOEpuY2xIYjFtU2dUcl9XWnlrNHdPLU1EQTMzVUFld01fQVBoMVJZQTFYU2xra05NRGNaeEFBZUZBbVFtQmZCeE9Yb21DOEt6NEI4cUJXb3NBT1o0V1dqSDRCQTEtVWtLLVcxMVkzd1J3OWJGYWwtMHpSZjBsTHhRRklaWjdMeThDLTZEVUtxeEFmNUlCbGxRRHZKc3F4MTRBd0VjM1dfazY?oc=5",
+      "source": "TIKR.com"
+    },
+    {
+      "date": "2026-05-04",
+      "title": "Micron Jumps 7%: Is the Memory Maker Now a Structural AI Winner?",
+      "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxObVNCUmVlOU9HMVl1Wkd1MjQteFl2NGR4WUIxVUtlQkdYUFhTbkZWVzFzWkQxMGlfNVJBemZwQWNvbnBJb3ZaUzVXaGZ6dnVHMms0c1UxZVRVdWNwUkdyZDBxbW9OdklGSmJmZVZGWm0wRTljbGFhQ0VnU1FnR0dxYmc4ZTE0b3NUbEFTbkVPR1hOMk5mVy01QzNrOUZJZU9QaHpWcV83ZjM?oc=5",
+      "source": "24/7 Wall St."
+    }
+  ],
+  "sales_hooks": [
+    "Micron growing HBM share fastest (10% → 13%+) — underdog momentum story: how does marketing turn 'catching up' into 'best positioned for growth'?",
+    "CHIPS Act beneficiary, US-based Idaho HBM fab — geopolitical hedge narrative: how do they market 'US-made HBM' to US hyperscalers facing export control pressure?",
+    "Only Western HBM supplier — unique positioning in a Korea-dominated market: explore how they communicate supply chain diversification value",
+    "Micron's HBM3e qualified for NVIDIA H200, Microsoft Azure — customer logo marketing: ask how they amplify these wins in market positioning"
+  ],
+  "competitive_position": {
+    "hbm_rank": 3,
+    "vs_sk_hynix": "2-generation gap narrowing; SK Hynix still leads on yield and NVIDIA volume",
+    "vs_samsung": "Smaller scale but US-based manufacturing is a differentiator for US customers",
+    "moat": "Only US-headquartered HBM supplier + CHIPS Act funding + NVIDIA diversification demand"
+  },
+  "financials_history": {
+    "2024Q4_revenue_usd_bn": 7.75,
+    "2025Q1_revenue_usd_bn": 8.05,
+    "2025Q2_revenue_usd_bn": 8.35,
+    "2025Q3_revenue_usd_bn": 8.55,
+    "2025Q4_revenue_usd_bn": 8.7
+  },
+  "sources": [
+    "Micron FY2026 Q2 Earnings (Mar 2026)",
+    "AI_SCM/data/seed_data.json"
+  ],
+  "flagged_news": []
+}

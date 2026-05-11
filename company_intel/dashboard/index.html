@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Company Intelligence Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+          background: #F7FAFC; color: #1A202C; display: flex; min-height: 100vh; }
+
+  /* Sidebar */
+  #sidebar { width: 220px; min-width: 220px; background: #1A202C; padding: 20px 0;
+              display: flex; flex-direction: column; }
+  #sidebar h2 { color: #63B3ED; font-size: 11px; text-transform: uppercase;
+                 letter-spacing: 1px; padding: 0 16px 12px; border-bottom: 1px solid #2D3748; }
+  .company-btn { display: block; width: 100%; text-align: left; padding: 10px 16px;
+                  background: none; border: none; color: #A0AEC0; cursor: pointer;
+                  font-size: 13px; transition: all 0.15s; }
+  .company-btn:hover { background: #2D3748; color: #E2E8F0; }
+  .company-btn.active { background: #2B6CB0; color: white; font-weight: 600; }
+  #build-ts { color: #4A5568; font-size: 10px; padding: 12px 16px; margin-top: auto; }
+
+  /* Main */
+  #main { flex: 1; padding: 24px; overflow-y: auto; }
+  .header-bar { display: flex; justify-content: space-between; align-items: center;
+                  margin-bottom: 20px; }
+  .company-title { font-size: 22px; font-weight: 700; }
+  .ticker { font-size: 13px; color: #718096; margin-left: 8px; font-weight: 400; }
+  .last-updated { font-size: 12px; color: #718096;
+                   background: #EDF2F7; padding: 4px 10px; border-radius: 4px; }
+
+  /* Cards */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .card { background: white; border: 1px solid #E2E8F0; border-radius: 8px; padding: 16px; }
+  .card h3 { font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
+               color: #718096; margin-bottom: 10px; }
+  .metric { font-size: 22px; font-weight: 700; color: #1A202C; }
+  .metric-label { font-size: 12px; color: #718096; margin-top: 2px; }
+
+  /* Snapshot row */
+  .snapshot-grid { display: grid; grid-template-columns: repeat(4, 1fr);
+                     gap: 12px; margin-bottom: 16px; }
+  .snap-card { background: white; border: 1px solid #E2E8F0; border-radius: 8px;
+                padding: 14px 16px; }
+  .snap-val { font-size: 18px; font-weight: 700; }
+  .snap-lbl { font-size: 11px; color: #718096; margin-top: 3px; }
+
+  /* Sales hooks */
+  .hook { background: #EBF8FF; border-left: 3px solid #3182CE;
+           padding: 10px 14px; margin-bottom: 8px; border-radius: 0 4px 4px 0;
+           font-size: 13px; line-height: 1.5; }
+
+  /* Roadmap table */
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: #F7FAFC; text-align: left; padding: 8px 12px;
+        font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
+        color: #718096; border-bottom: 2px solid #E2E8F0; }
+  td { padding: 9px 12px; border-bottom: 1px solid #F0F0F0; vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  .status-badge { display: inline-block; padding: 2px 8px; border-radius: 10px;
+                    font-size: 11px; font-weight: 600; }
+  .status-mass_production { background: #C6F6D5; color: #22543D; }
+  .status-sampling_2026H2 { background: #FEFCBF; color: #744210; }
+  .status-development { background: #E2E8F0; color: #4A5568; }
+
+  /* News */
+  .news-item { display: flex; gap: 10px; padding: 8px 0;
+                border-bottom: 1px solid #F0F0F0; align-items: flex-start; }
+  .news-item:last-child { border-bottom: none; }
+  .news-date { font-size: 11px; color: #718096; white-space: nowrap; min-width: 72px; }
+  .news-title a { color: #2B6CB0; text-decoration: none; font-size: 13px;
+                    line-height: 1.4; display: block; }
+  .news-title a:hover { text-decoration: underline; }
+  .news-source { font-size: 11px; color: #718096; margin-top: 2px; }
+  .flagged-badge { background: #FED7D7; color: #9B2C2C; font-size: 10px;
+                     padding: 1px 6px; border-radius: 3px; margin-left: 6px; }
+
+  /* Competitive */
+  .comp-item { margin-bottom: 8px; font-size: 13px; line-height: 1.5; }
+  .comp-label { font-weight: 600; color: #4A5568; margin-bottom: 2px; font-size: 11px; }
+
+  /* Revenue chart */
+  .chart-container { position: relative; height: 180px; }
+
+  /* Revenue trend */
+  .trend-positive { color: #276749; }
+  .empty-state { color: #718096; font-size: 13px; font-style: italic; padding: 8px 0; }
+</style>
+</head>
+<body>
+
+<div id="sidebar">
+  <h2>Companies</h2>
+  <div id="company-nav"></div>
+  <div id="build-ts">Built 2026-05-11 00:53 UTC</div>
+</div>
+
+<div id="main">
+  <div id="content"></div>
+</div>
+
+<script>
+const PROFILES = [{"company": "SK Hynix", "ticker": "000660.KS", "last_updated": "2026-05-11", "snapshot": {"revenue_qtr": "KRW 52.5T (2026Q1)", "revenue_qtr_usd": "~$36.9B", "op_margin_pct": 72, "hbm_market_share_pct": 50.0, "net_income_qtr": "KRW 8.1T", "headcount": 30000, "market_cap_usd_bn": 100}, "product_roadmap": [{"product": "HBM3e", "status": "mass_production", "customer": "NVIDIA B200/H200", "bandwidth_tbps": 1.23, "capacity_gb_stack": 24, "note": "Dominant NVIDIA supply, 50%+ share"}, {"product": "HBM4", "status": "sampling_2026H2", "customer": "NVIDIA GB300 (target)", "bandwidth_tbps": 2.0, "capacity_gb_stack": 32, "note": "Mass production expected 2026H2"}, {"product": "HBM4E", "status": "development", "customer": "Next-gen Blackwell Ultra", "bandwidth_tbps": null, "capacity_gb_stack": null, "note": "Sampling H2 2026, roadmap confirmed"}], "key_contacts": [{"name": "", "title": "VP, Product Marketing (HBM)", "linkedin": null, "note": "Manual entry — update before next meeting"}], "recent_news": [{"date": "2026-05-10", "title": "LS Securities lifts SK hynix target as labor, bonus risks rise with memory surge - CHOSUNBIZ", "url": "https://news.google.com/rss/articles/CBMigAFBVV95cUxQamVOSHJFbTZXYjFRdndQTFotei1iaUk4VlUtNFI3VXJHMWhzUXcwSl9QblR0SUIyanVMT0EzVW4yN25uUF9PTFRXNXYtVHJjOXdrOTU0cklERHZ6cm41YzFVUFNYcWRyV1RjRzctckdaNHk4X1I3bng3ZlFic3VqVdIBlAFBVV95cUxNb3gzOUpYN1UzVEJBdnVWYVdXSVlCZWZYQjZkeTdLSFZjUFFEOUlyNFUwWE5XSFhsdXB0ZEpialJiVjlOTTQ5YU9FLU1lc0F2ZmprUE8wel9Rb0ljX0lQV0xybHJvUmxpRmhaS0tzaHlWanFSN2xtSGZmMDh5WWZDeEFMWGtGbGk3dEhLZjA3S29yWmNI?oc=5", "source": "Chosunbiz"}, {"date": "2026-05-09", "title": "SK hynix AI Memory Crunch: Big Tech Offers to Fund Fabs as Capacity Runs Out", "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQajduZFZveWV1T2dYVlpiRDZob0IwTFRoZGNXMkVMMm9QZTUwMTFnSndkamxFYS0zWWY1b3JicDlCanZhN3MyTEsteXI0VDdlVWJPWHZCRDFxZVBzbTRJTV9vOHRWRGthV2pFVnBfVUY4STlzNm5IVk8tbjhlcmRqTTd5SDVPbHJ5WGs5LTBWYnEtUWl4Vkp5ZWVFS2k?oc=5", "source": "TechStock²"}, {"date": "2026-04-22", "title": "SK Hynix posts record first-quarter profit, in line with estimates as memory prices climb", "url": "https://news.google.com/rss/articles/CBMijAFBVV95cUxOQ0tFSG9ORVR6dy1MMXFOWWxISXVOM3hMdjNxSXpVS1ZNTG9QRGVRdjFqZUQxZ0MwbS0tM1UwbFZUaE1pd19QeVV0ZmNzeVR4RVcyVWVBOTVlZnJoVkFSclEyelFLYzRaTjdjTk9xeVhZaWk2YWYzaG9mV3hSV0ZuM21MdUtLd184SDVSeNIBkgFBVV95cUxNc0F5bGJJNTAwMmZydnp1UUJqR19wUU0tel9RekdyODZhUDY1NFJScXVJWlRXSUNPM09kZzZMX2llM3dHMzdMbi1KSFpsYUhhV3k4cDFCM2RNVFVuTDVEbnZTWEVwdi1obzRTU3p2cjVJZFE3LUdDY01GbV9obXNsSzUwN2VIX18xeDVoMm1GRDREUQ?oc=5", "source": "CNBC"}, {"date": "2026-05-08", "title": "SK Hynix Buried Under Customer Cash Offers to Expand Memory Output, but Insider Warns Available Capacity Is ‘Essentially Zero’", "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOcWpBbjQ2RXZTa3Q1aTV0Y0RQV1Z1QTA1eXlYSldqT0FKVDc5OC1UVjVWYWk0U1diYmNvUHhaTkFsZzV5dXIzeU5KUV9KZ0VpTjdsVVVkcFhsTWhvdk5DR1pnVlBPTWE3cTMxR0dwdkNMTXp1TXNLSWFJUlY0M3hWVkgtUXFCcFhVcm83dTNWai0zSVVpUGstaTItUFFVMjYxa3lKRU5sck1EQ0RiYTFJSTVtOFVScGlrbFE4Vm5EMEc2Skg2N2JUdlRUTmctV0ZqTnlLTGk4c2p0QdIB3wFBVV95cUxQQnF1Zy1QNGM4dHpXcmtKN1pIdWV3MGNlSGU4YlEzak0yOFdFMENWN2p2ekNDTVV0MXMyT19LVUR5aU5MeU5qVmtXbjdYQktuTzVBR3Y5Q1lpandNRVhIeDBURmU5Y1RRZHF5VXdEWkV4bGl1bFNmanVPR1VRNjA4Ylc2QVZxRm5FOXBkdUlON2k0RHo4bVE2WFAwZnBxcmhQbDN0S01CeWJTdlFRbk5XOFpFSUs1R1JhbVRPRHdKZmlkOExOdFhNamY3WWVfVUtXTy1rWENTdDN4MGFnT2hN?oc=5", "source": "Wccftech"}, {"date": "2026-04-23", "title": "SK hynix sees HBM demand outpacing supply for three years", "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE1Mc3FuNkNSeDZzd3RRZXhrWWQxZFlpTXRjSGtyQUV3WGwwN1o2b3BsQ29oVy15QlNZdGdTS2hOTG1XeW1hb2NYSXZDWFp3RnVZeWY3dVFRdw?oc=5", "source": "The Korea Herald"}, {"date": "2026-05-10", "title": "LS Securities Raises SK hynix Target Price to 2.1 Million Won on HBM Strength", "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNT3VoUzc1UDV1WEtjWEstZHZvWHo4R2lSajJsMDExMER2amVjYW9ZTnBURk9iT2NOSDBQZFoyNFlZUmJuZjV3N2JUVUtpay05UUF0TWduSlNmaFpVY2lwZ0ZtRmZwZjNnSlVqaDJhNVUzQWNrZGQ1NURQaXFzSUhueENQYmRsN0VTcFR4T1EzWmdWb2YxaUxpMDVuNkpybEU?oc=5", "source": "Seoul Economic Daily"}, {"date": "2026-05-06", "title": "SK Hynix disputes report on M15X memory investment shift", "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOODgya05KVy1qeUExdTMtR2xVcWdRXzFjMGpHXy1UNXdXMzc1UU5PcGNLTEZkSnJBb0RlLWVsdlljMy1sME5kS3FjY1VXanBNZkN0WnlZTVdQTmlmbG8xdVJLWUN5WUlNNlg1U3ZQbHVDdThoYUVqQ0ptTVpUb3JBd3I1T2FWNWxSdlcw?oc=5", "source": "digitimes"}, {"date": "2026-04-22", "title": "SK Hynix breaks ground on Indiana advanced packaging plant", "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE5xbW1wbWMtNmtub3I0MWZTN1JsY3ZCNk1DaEVUYnhVWkktNlVaWEtpUTNBNGZYR1BiYk9qZGFoVlFMcHk3Z2x0T05DZVE4R0UxZkM0RE85RVNwUWN1Q0liSUsyejEwRkE?oc=5", "source": "The Register"}, {"date": "2026-04-22", "title": "SK Hynix’s New Memory Plant Isn’t Good News for Micron. Why the Stock Is Rising Anyway.", "url": "https://news.google.com/rss/articles/CBMifkFVX3lxTE5hekZ6V0lxOHd1SDR2RVlVc1psdmlGOVFUMG9DNGZZUnNJX3FEUGxXQWY3NS1lbnZYZzZ1REpHQUtDVEMxTUt6YnJPT2xnSHdUenNIZVg3T1VnVTVUcVYxZmQyWVAtZm1YLVBHcVRiZ0VZaTlTWVFtLUNsQlFFZw?oc=5", "source": "Barron's"}, {"date": "2026-04-21", "title": "SK Hynix to invest about $13 bln in a new South Korea plant to meet AI memory demand", "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPQ0Vqc2tLZ3lfbXRRQ1lIUUdBTjNySC0wUC1GUnE0XzVvNXVVQVZNd0RpTnBWdGJmcTlIMnc5NDVYSlZDeFo3bFdiVGYyWmlNSDZMTUlFLVl3TzJIYmEtY083bjlvaUJlMlRGSl9qV3R4Y1NJajJFUjZpaFAwZTNPOGttVWRkZmdCN3dNb3RSbVg2TDdaX0RHOVZzOWZoRGtKYUZMQzRHZ1N4NDRIYUlyQS1HSGl6NDg0YzBfQ1RycVFEU0ZaeGc?oc=5", "source": "Reuters"}], "sales_hooks": ["HBM4E sampling starts H2 2026 — roadmap visibility window: use this to open a conversation about how they communicate roadmap confidence to downstream customers", "Q1 2026 operating margin 72% — premium positioning story, ask how marketing communicates value vs. commodity pricing pressure from Samsung/Micron", "HBM demand exceeds 3-year supply capacity — supply constraint as a credibility asset: how does their marketing manage expectation setting with allocation-constrained customers?", "SK Hynix revenues +198% YoY — fastest-growing major semiconductor company right now; explore how they're scaling their marketing org to match"], "competitive_position": {"hbm_rank": 1, "vs_samsung": "HBM3e yield advantage, NVIDIA supply share ~52% vs Samsung ~35%", "vs_micron": "2-generation lead in HBM; Micron at ~13% share, still on HBM3e", "moat": "CoWoS packaging relationship with TSMC + NVIDIA qualification lead time"}, "financials_history": {"2025Q1_revenue_krw_t": 17.6, "2025Q2_revenue_krw_t": 34.0, "2025Q3_revenue_krw_t": 42.0, "2025Q4_revenue_krw_t": 47.0, "2026Q1_revenue_krw_t": 52.5}, "sources": ["SK Hynix Q1 2026 Earnings Release (Apr 2026)", "AI_SCM/data/seed_data.json"], "flagged_news": []}, {"company": "Samsung Semiconductor", "ticker": "005930.KS", "last_updated": "2026-05-11", "snapshot": {"revenue_qtr": "DS Division KRW ~28T (Q1 2026 est.)", "revenue_qtr_usd": "~$19.7B", "op_margin_pct": 18, "hbm_market_share_pct": 35.0, "headcount": 110000, "market_cap_usd_bn": 280}, "product_roadmap": [{"product": "HBM3e", "status": "mass_production", "customer": "AMD MI300X (primary), Google TPU (partial)", "bandwidth_tbps": 1.23, "capacity_gb_stack": 24, "note": "NVIDIA HBM3e qualification still pending as of Q1 2026"}, {"product": "HBM4", "status": "development", "customer": "TBD", "bandwidth_tbps": 2.0, "capacity_gb_stack": 32, "note": "Behind SK Hynix by ~1-2 quarters"}], "key_contacts": [{"name": "", "title": "VP, Semiconductor Marketing", "linkedin": null, "note": "Manual entry — update before next meeting"}], "recent_news": [{"date": "2026-05-07", "title": "Samsungs Internal Strife Threatens HBM Competitiveness", "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTE5PVnR0bGxYa0E3bUttYU1ZdGxTcHVKbXNsQ2ZmbVh0X0xVWjE5cGFpM1BRTmQ0dEpDZ2lHLVdGU25RWVFLVl9DTVdEMzFUZFBtS0RiY0xSa9IBV0FVX3lxTE5PVnR0bGxYa0E3bUttYU1ZdGxTcHVKbXNsQ2ZmbVh0X0xVWjE5cGFpM1BRTmQ0dEpDZ2lHLVdGU25RWVFLVl9DTVdEMzFUZFBtS0RiY0xSaw?oc=5", "source": "aju press"}, {"date": "2026-05-05", "title": "There are no people who don't know HBM while investing in our semiconductor company. In particular", "url": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE5wNVp5cEIxbVpTc1dYRlAzYUpESzBueW5QWE5wOTk0LTFkMlVnRFhMdHJWNWhIeFV1R2JSRUQtVU9NYlVyakRjWTlhcmEzUEU?oc=5", "source": "매일경제"}, {"date": "2026-04-14", "title": "AI Demand Disrupts Semiconductor Cycle as Samsung, SK Hynix See Shifting Fortunes", "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOeFpSaWNIWnlGTWh3RnNpRzRUaXNhYWRCN1ozRXhYcXI5LXI0dVZtWEc2ckFxZVE3TThFckFpWmF3SjJMMV83UmFfYmNDdkZndi14bXN5cmdBc3RSN3pPVGdLRlEtODRtdEc1aGhDR0pJRnl1czlZSWd5OEdfY2V0NVpFRTg4YnRRVUM4OHpR?oc=5", "source": "조선일보"}, {"date": "2026-05-01", "title": "Samsung Electronics Posts Record 53.7 Trillion Won Semiconductor Profit", "url": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOcmdXRzJlQVRETEl5UUFFcHdmNUczc1M2MUlVNXVtOHVsSjJWU2FodEtUVzQtaURNMmpBdXM4RlVhUkZ2NWRyeW5QOExWQVpuWjN2N3gyRng2TnVaU3lVS2dGY2NpMUprVl8xRmkwQTctcFJqY0RYOEhJSXBYNVNuQVdlSENqWV9K?oc=5", "source": "조선일보"}, {"date": "2026-04-18", "title": "Memory shortage set to run until 2027 as chipmakers focus on AI", "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPd3dOQ0tBN0dJMjM2em5Cc1JoYmtIMG9LTWQ1c3ZXcG1rd1BmWlNUeVZhd1JvRkJoTzY0a0xfaERONXJfa19oZ1V0NV8xMElZRGlXUUVBNjRtbXpsb1ZVMGZuYm9LZmp2c3M2UUVmY1FlVXR3MWxzYUJWcUE3MklQc3RXeHJQM19QcldDeWxSSEZuaHJNQVNxZ2hJVXZrdVpwWHMxaFltSElib3hNbXhnT0RxQ0lDbjQ?oc=5", "source": "Nikkei Asia"}, {"date": "2026-04-13", "title": "Samsung, SK Hynix Stocks Could Double With AI Semiconductor Shift", "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxOYWpvVS1sbjNnNEZiWnZuV3JCY2J1cm9IbkRXQnR4WFctbUZlTEdrQ3ZONWdXcG0xRnhMcy1Eb2JHR3hoOWZtQmVCbVI0TndBOTY4N1hBeDdKcloxY2RWWmplRjRyOUhwb0tIdFhFWkpFSGdERloxTGZ1ZmVRSzk2LUVwOG5PVVkzOUZWMnp3?oc=5", "source": "조선일보"}, {"date": "2026-04-12", "title": "Concerns Grow Over Worsening Global Memory Shortage ... Direct Hit to Korean Exports and Exchange Rate", "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5US2QyeWtNM0pnNVVjSXhRSUk3UlBMb1JHZ01sQlRmNmhjNmVIWFI5cG1ZVVZrS1pPQmVhb0l6TG5SVG1GRThQRmdHUktsczlJR3pV?oc=5", "source": "매일경제"}], "sales_hooks": ["Samsung HBM3e still awaiting full NVIDIA qualification — catching up story, ask how marketing positions 'catch-up' vs SK Hynix without sounding defensive", "Samsung DS Division facing margin pressure vs SK Hynix — profitability story, explore how they're justifying premium pricing to customers", "HBM4 roadmap reportedly 1-2 quarters behind SK Hynix — how does product marketing address the perception gap?", "Samsung has broadest customer base (AMD, Google, Qualcomm) — portfolio diversification as a narrative: how do they market 'not dependent on NVIDIA' as a strength?"], "competitive_position": {"hbm_rank": 2, "vs_sk_hynix": "Yield gap on HBM3e, NVIDIA not yet qualified; stronger in non-AI DRAM", "vs_micron": "Larger scale, more customer relationships; Micron catching up on HBM share", "moat": "Vertical integration (foundry + memory + packaging), broadest portfolio"}, "financials_history": {"2025Q1_ds_revenue_krw_t": 25.0, "2025Q2_ds_revenue_krw_t": 27.0, "2025Q3_ds_revenue_krw_t": 28.0, "2025Q4_ds_revenue_krw_t": 30.0, "2026Q1_ds_revenue_krw_t_est": 28.0}, "sources": ["Samsung Q1 2026 Earnings (Apr 2026)", "AI_SCM/data/seed_data.json"], "flagged_news": [{"title": "Memory shortage set to run until 2027 as chipmakers focus on AI", "date": "2026-04-18", "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxPd3dOQ0tBN0dJMjM2em5Cc1JoYmtIMG9LTWQ1c3ZXcG1rd1BmWlNUeVZhd1JvRkJoTzY0a0xfaERONXJfa19oZ1V0NV8xMElZRGlXUUVBNjRtbXpsb1ZVMGZuYm9LZmp2c3M2UUVmY1FlVXR3MWxzYUJWcUE3MklQc3RXeHJQM19QcldDeWxSSEZuaHJNQVNxZ2hJVXZrdVpwWHMxaFltSElib3hNbXhnT0RxQ0lDbjQ?oc=5", "category": "risk", "relevance_score": 2}, {"title": "Concerns Grow Over Worsening Global Memory Shortage ... Direct Hit to Korean Exports and Exchange Rate", "date": "2026-04-12", "url": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5US2QyeWtNM0pnNVVjSXhRSUk3UlBMb1JHZ01sQlRmNmhjNmVIWFI5cG1ZVVZrS1pPQmVhb0l6TG5SVG1GRThQRmdHUktsczlJR3pV?oc=5", "category": "risk", "relevance_score": 2}]}, {"company": "Micron Technology", "ticker": "MU", "last_updated": "2026-05-11", "snapshot": {"revenue_qtr": "$8.7B (FY2026 Q2, +38% YoY)", "revenue_qtr_usd": "$8.7B", "op_margin_pct": 22, "hbm_market_share_pct": 15.0, "headcount": 48000, "market_cap_usd_bn": 110}, "product_roadmap": [{"product": "HBM3e", "status": "mass_production", "customer": "NVIDIA H200 (partial), Meta, Microsoft", "bandwidth_tbps": 1.23, "capacity_gb_stack": 24, "note": "Fastest-growing HBM share: 10% → 13%+ in 2025-2026"}, {"product": "HBM4", "status": "development", "customer": "Target: NVIDIA Blackwell Ultra", "bandwidth_tbps": 2.0, "capacity_gb_stack": 32, "note": "Idaho fab expansion under CHIPS Act"}], "key_contacts": [{"name": "", "title": "VP, AI Memory Marketing", "linkedin": null, "note": "Manual entry — update before next meeting"}], "recent_news": [{"date": "2026-05-10", "title": "Are SanDisk and Micron Too Expensive? Here's How You Can Invest in the Artificial Intelligence (AI) Memory Supercycle for Just $50.", "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOMjZxU0hyNU1WLXVVSS1PMHhIZUpXVFhGaGFza2NpTXdMaE80NkFDVC1RdkJjdFV2Y0JaMi1ubkRCX0lqM1NJb2UwSGZqQVZxOExRRzI5ZWR5TzQ1UlBFNHE3RmtYemtCSlRjbmJham03OVJwR29xLTZZM05RdjdZQlFaNU9GSEZqQkZSTmRteDBwYzB5NHNyUg?oc=5", "source": "The Motley Fool"}, {"date": "2026-05-10", "title": "This new AI trade is leaving Nvidia and Micron in the dust", "url": "https://news.google.com/rss/articles/CBMif0FVX3lxTFA3bDNGdFk0SHVuc2h2Z080TjVXdU5pS2ZCdFY5cXI3OFUtbGNmaWxFdUprYmE5T2pIZkFvMV9JdlVjOVJkRFRKdi1UU2J1UnE1dnN6RWY4dUZYVFltRFBzVjhpaklHeEd5dGtGN0ZlbERYMGRhV2M1c2E5MmRLN0E?oc=5", "source": "AOL.com"}, {"date": "2026-05-10", "title": "Is Micron the Next Nvidia? Why the 2026 \"Memory Crunch\" Makes MU Stock a Top AI Buy", "url": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNNUJ2aFRHTHd6WVZXaUZrUVlJODF1ZkotSmNFSllEYmtCa3VwN3dLRG41WTQ4VE4wZ1Y4NDMtMFkya1drdU1IVVU3WkpxLWtDUEtkRU50N29MUUEtckhVRXV0MFF0aVZIQ25OcjBXbHQ4a3VXOWtnSzhKa3Q1Z000dmI2d1Y1MEdZVlNSWkdRQkpYaER0YWNCcHdNVXhwYVpHUmZQMEJZejZrMlJ4WnJGVk1GT296TkpMaFVvUTlEWW1PS1ZWSFdfSFJVTkxsb3dNUkpYNw?oc=5", "source": "TradingKey"}, {"date": "2026-05-10", "title": "Micron vs. Sandisk: One AI Stock Is a Buy, One Is a Sell, Says Investor", "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQNS1TclpvZE9FTVg4eXlGVHYtYnFHemI3elM3VUFiWmU4ckJiRmRlMmpfci1HYm9maEp4WXh1eUV5ODhRVHluNm9zSFZwYjJfRkdKaldEdms2dG1OblE3d0FyOFZZV3l5MERZcGthMU5uWXEzREpoTEI1SGRra3F0d2FVZFVlOGpBX3QzOWtVMmRMWk1vb1BRWWpLWVBnb1JSTmpMc0Fibw?oc=5", "source": "TipRanks"}, {"date": "2026-05-10", "title": "Micron Stock Just Became the AI Memory Trade Wall Street Can’t Ignore", "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNYk9CMjk1QVN5V3VHLXFvT2FINHpPOVh6RFFKSDIzTnNGZXVVdUNtazBPRC1KNjN1UjdrMzVvLXZMQ24tQ0x1YTA0S0NFQWVXcE5vVTlGamFRMVNuZXlPNG9Cai1iRDh0Q2pxTkpSS1FPdjlNQzM0M0FZYmY1Zjd3N3lzS0ZuZUNwakE0cVhkZjJsbkk?oc=5", "source": "TechStock²"}, {"date": "2026-05-09", "title": "Micron Is the Memory Toll Booth Behind NVIDIA’s AI GPU Boom", "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE80QUFIS0ZjRGhHY0EyRTFjcnI0ZEFobzNCR1J5b3owU3pUbG5yV3lCVGZxa29GZ3J5eDFLa2FiUlM0Z0k2TXFOaVh3VWxOOGE4S21KUzF4bmRQaDhWZEp0UTl6QURMOVU?oc=5", "source": "techi.com"}, {"date": "2026-05-05", "title": "Micron's CEO says AI memory demand is just in its 'first innings' and memory supply is already insufficient", "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxQQnBaVm42RWoySzQxRHpsMndlTDdCOTdDSzdHMDZDeWFpOTV5WWdHUTYzck5FSkhaY3RBbGpBRFZ2Y3JBVHdkRG9kV0l2Y3Jya2xSb1pBUjBwVGltNTVyNlk2NFRVaTJQV3BIQi1XZU1hUUVWeFpFWGlMdnRNWktoaEJORWJEUVBVSlVIakJMdG84MlF5QzVidDQ2eXhqR056Q3F2SG5RbUE1eC1Fdk1IVUt3QnluMlExNXltMzZ0MW9MdzlGT0hudnNEQ3c5WFNUZzdoMVg4dk1zNzdIV0V6cGVwdUxFQVBi?oc=5", "source": "TweakTown"}, {"date": "2026-05-06", "title": "Micron just did in three days what once took 37 years", "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxQc0VTX1phbVlNcVVYczBTOU1fM1U0QlppNy1SMkJnZWtJR3BPaC03ZEpWQlZFa2JiLV84cVVyZG45MXFLbHFpT2YzVGJNdmgzdWtUQ0Y5eU1JZDlUNUo3LUljeTRkekRRTFVGMUxjdUpiU2RQOEV2M2tDMDFLT3VFOUdOZ3hycmhfR3dLaEV2OGxJRHJOZTNxMGhTUzI?oc=5", "source": "MarketWatch"}, {"date": "2026-05-07", "title": "Sandisk vs Micron: Which Stock Has a Better Chance of Continuing Its Magical Run?", "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxPOEpuY2xIYjFtU2dUcl9XWnlrNHdPLU1EQTMzVUFld01fQVBoMVJZQTFYU2xra05NRGNaeEFBZUZBbVFtQmZCeE9Yb21DOEt6NEI4cUJXb3NBT1o0V1dqSDRCQTEtVWtLLVcxMVkzd1J3OWJGYWwtMHpSZjBsTHhRRklaWjdMeThDLTZEVUtxeEFmNUlCbGxRRHZKc3F4MTRBd0VjM1dfazY?oc=5", "source": "TIKR.com"}, {"date": "2026-05-04", "title": "Micron Jumps 7%: Is the Memory Maker Now a Structural AI Winner?", "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxObVNCUmVlOU9HMVl1Wkd1MjQteFl2NGR4WUIxVUtlQkdYUFhTbkZWVzFzWkQxMGlfNVJBemZwQWNvbnBJb3ZaUzVXaGZ6dnVHMms0c1UxZVRVdWNwUkdyZDBxbW9OdklGSmJmZVZGWm0wRTljbGFhQ0VnU1FnR0dxYmc4ZTE0b3NUbEFTbkVPR1hOMk5mVy01QzNrOUZJZU9QaHpWcV83ZjM?oc=5", "source": "24/7 Wall St."}], "sales_hooks": ["Micron growing HBM share fastest (10% → 13%+) — underdog momentum story: how does marketing turn 'catching up' into 'best positioned for growth'?", "CHIPS Act beneficiary, US-based Idaho HBM fab — geopolitical hedge narrative: how do they market 'US-made HBM' to US hyperscalers facing export control pressure?", "Only Western HBM supplier — unique positioning in a Korea-dominated market: explore how they communicate supply chain diversification value", "Micron's HBM3e qualified for NVIDIA H200, Microsoft Azure — customer logo marketing: ask how they amplify these wins in market positioning"], "competitive_position": {"hbm_rank": 3, "vs_sk_hynix": "2-generation gap narrowing; SK Hynix still leads on yield and NVIDIA volume", "vs_samsung": "Smaller scale but US-based manufacturing is a differentiator for US customers", "moat": "Only US-headquartered HBM supplier + CHIPS Act funding + NVIDIA diversification demand"}, "financials_history": {"2024Q4_revenue_usd_bn": 7.75, "2025Q1_revenue_usd_bn": 8.05, "2025Q2_revenue_usd_bn": 8.35, "2025Q3_revenue_usd_bn": 8.55, "2025Q4_revenue_usd_bn": 8.7}, "sources": ["Micron FY2026 Q2 Earnings (Mar 2026)", "AI_SCM/data/seed_data.json"], "flagged_news": []}];
+const HBM_CHART = {"labels": ["SK Hynix", "Samsung", "Micron"], "data": [50.0, 35.0, 15.0], "colors": ["#3182CE", "#2D3748", "#E53E3E"], "year": "2026E"};
+const COMPANY_IDS = ["sk_hynix", "samsung_semiconductor", "micron"];
+
+let activeId = COMPANY_IDS[0] || null;
+
+function getProfile(id) {
+  return PROFILES.find(p => p.company.toLowerCase().replace(/\s+/g, '_') === id
+    || id.includes(p.company.toLowerCase().split(' ')[0].toLowerCase())) || PROFILES[0];
+}
+
+function statusClass(s) {
+  return 'status-' + (s || 'development').replace(/[^a-z0-9_]/gi, '_');
+}
+
+function renderSnapshot(profile) {
+  const s = profile.snapshot || {};
+  const items = [
+    { val: s.revenue_qtr || '—', lbl: 'Latest Revenue' },
+    { val: s.op_margin_pct != null ? s.op_margin_pct + '%' : '—', lbl: 'Operating Margin' },
+    { val: s.hbm_market_share_pct != null ? s.hbm_market_share_pct + '%' : '—', lbl: 'HBM Market Share' },
+    { val: s.headcount ? s.headcount.toLocaleString() : '—', lbl: 'Headcount' },
+  ];
+  return `<div class="snapshot-grid">${items.map(i =>
+    `<div class="snap-card"><div class="snap-val">${i.val}</div><div class="snap-lbl">${i.lbl}</div></div>`
+  ).join('')}</div>`;
+}
+
+function renderRoadmap(profile) {
+  const items = profile.product_roadmap || [];
+  if (!items.length) return '<p class="empty-state">No roadmap data yet.</p>';
+  return `<table>
+    <tr><th>Product</th><th>Status</th><th>Customer</th><th>Notes</th></tr>
+    ${items.map(r => `<tr>
+      <td><strong>${r.product}</strong></td>
+      <td><span class="status-badge ${statusClass(r.status)}">${(r.status||'').replace(/_/g,' ')}</span></td>
+      <td>${r.customer || '—'}</td>
+      <td>${r.note || '—'}</td>
+    </tr>`).join('')}
+  </table>`;
+}
+
+function renderHooks(profile) {
+  const hooks = profile.sales_hooks || [];
+  if (!hooks.length) return '<p class="empty-state">No sales hooks yet.</p>';
+  return hooks.map(h => `<div class="hook">${h}</div>`).join('');
+}
+
+function renderNews(profile) {
+  const news = profile.recent_news || [];
+  const flagged = new Set((profile.flagged_news || []).map(f => f.title));
+  if (!news.length) return '<p class="empty-state">No news collected yet. Run python run.py to fetch.</p>';
+  return news.slice(0, 8).map(n => {
+    const isFlagged = flagged.has(n.title);
+    return `<div class="news-item">
+      <div class="news-date">${n.date}</div>
+      <div class="news-title">
+        <a href="${n.url}" target="_blank" rel="noopener">${n.title}${isFlagged ? '<span class="flagged-badge">★ relevant</span>' : ''}</a>
+        <div class="news-source">${n.source}</div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderCompetitive(profile) {
+  const c = profile.competitive_position || {};
+  const items = [
+    { label: 'HBM Rank', val: c.hbm_rank ? '#' + c.hbm_rank : '—' },
+    { label: 'vs SK Hynix', val: c.vs_sk_hynix || '—' },
+    { label: 'vs Samsung',  val: c.vs_samsung  || '—' },
+    { label: 'vs Micron',   val: c.vs_micron   || '—' },
+    { label: 'Moat',        val: c.moat        || '—' },
+  ].filter(i => i.val !== '—');
+  if (!items.length) return '<p class="empty-state">No competitive data yet.</p>';
+  return items.map(i =>
+    `<div class="comp-item"><div class="comp-label">${i.label}</div>${i.val}</div>`
+  ).join('');
+}
+
+let revenueChart = null;
+let hbmPieChart = null;
+
+function renderCharts(profile) {
+  // Revenue trend chart
+  const hist = profile.financials_history || {};
+  const quarters = Object.entries(hist)
+    .filter(([k]) => !k.startsWith('_'))
+    .sort(([a],[b]) => a.localeCompare(b));
+
+  if (quarters.length > 1) {
+    const ctx = document.getElementById('revenueChart');
+    if (ctx) {
+      if (revenueChart) revenueChart.destroy();
+      revenueChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: quarters.map(([k]) => k.replace('_revenue_krw_t','').replace('_revenue_usd_bn','')),
+          datasets: [{ label: 'Revenue', data: quarters.map(([,v]) => v),
+            backgroundColor: '#3182CE', borderRadius: 4 }]
+        },
+        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: false } } }
+      });
+    }
+  }
+
+  // HBM market share pie
+  const pieCtx = document.getElementById('hbmPieChart');
+  if (pieCtx && HBM_CHART.data.length) {
+    if (hbmPieChart) hbmPieChart.destroy();
+    hbmPieChart = new Chart(pieCtx, {
+      type: 'doughnut',
+      data: {
+        labels: HBM_CHART.labels,
+        datasets: [{ data: HBM_CHART.data, backgroundColor: HBM_CHART.colors, borderWidth: 2 }]
+      },
+      options: { responsive: true, maintainAspectRatio: false, cutout: '60%',
+        plugins: { legend: { position: 'right', labels: { font: { size: 11 } } } } }
+    });
+  }
+}
+
+function render(id) {
+  const profile = getProfile(id);
+  const hist = profile.financials_history || {};
+  const hasRevChart = Object.keys(hist).filter(k=>!k.startsWith('_')).length > 1;
+
+  document.getElementById('content').innerHTML = `
+    <div class="header-bar">
+      <div>
+        <span class="company-title">${profile.company}</span>
+        <span class="ticker">${profile.ticker || ''}</span>
+      </div>
+      <div class="last-updated">Last updated: ${profile.last_updated || 'N/A'}</div>
+    </div>
+
+    ${renderSnapshot(profile)}
+
+    <div class="grid-2">
+      <div class="card" style="grid-column: span 2">
+        <h3>Sales Hooks — Conversation Starters</h3>
+        ${renderHooks(profile)}
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:16px">
+      <div class="card">
+        <h3>Product Roadmap</h3>
+        ${renderRoadmap(profile)}
+      </div>
+      <div class="card">
+        <h3>Competitive Position</h3>
+        ${renderCompetitive(profile)}
+      </div>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:16px">
+      ${hasRevChart ? `<div class="card">
+        <h3>Revenue Trend</h3>
+        <div class="chart-container"><canvas id="revenueChart"></canvas></div>
+      </div>` : ''}
+      ${HBM_CHART.data.length ? `<div class="card">
+        <h3>HBM Market Share (${HBM_CHART.year})</h3>
+        <div class="chart-container"><canvas id="hbmPieChart"></canvas></div>
+      </div>` : ''}
+    </div>
+
+    <div class="card">
+      <h3>Recent News</h3>
+      ${renderNews(profile)}
+    </div>
+  `;
+
+  setTimeout(() => renderCharts(profile), 0);
+}
+
+function init() {
+  const nav = document.getElementById('company-nav');
+  COMPANY_IDS.forEach(id => {
+    const p = getProfile(id);
+    const btn = document.createElement('button');
+    btn.className = 'company-btn' + (id === activeId ? ' active' : '');
+    btn.textContent = p ? p.company : id;
+    btn.onclick = () => {
+      activeId = id;
+      document.querySelectorAll('.company-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      render(id);
+    };
+    nav.appendChild(btn);
+  });
+
+  if (activeId) render(activeId);
+}
+
+init();
+</script>
+</body>
+</html>
