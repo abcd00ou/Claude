@@ -149,5 +149,110 @@
       "Developers (Azure ML, AI Studio)"
     ],
     "scm_position": "Demand tier — largest HBM consumer (via NVIDIA GPU procurement)"
-  }
+  },
+  "lead_time": {
+    "total_months_to_token": 3,
+    "description": "Microsoft GPU receipt → tokens served ≈ 3 months. Fastest path because Azure has pre-built data center space and power. Time is dominated by networking setup and software stack deployment.",
+    "bottleneck": "Power availability — new datacenter regions require 12-24 months for grid connection",
+    "pipeline": [
+      {
+        "stage": "GPU server receipt from NVIDIA/Dell/Supermicro",
+        "weeks": 0,
+        "owner": "Microsoft receiving"
+      },
+      {
+        "stage": "Rack assembly, power, cooling (Vertiv)",
+        "weeks": 3,
+        "owner": "Microsoft DC ops"
+      },
+      {
+        "stage": "InfiniBand / Ethernet networking setup",
+        "weeks": 2,
+        "owner": "Microsoft network"
+      },
+      {
+        "stage": "CUDA/software stack, health checks",
+        "weeks": 3,
+        "owner": "Azure AI team"
+      },
+      {
+        "stage": "Capacity allocation (OpenAI / Azure AI)",
+        "weeks": 2,
+        "owner": "Azure capacity"
+      },
+      {
+        "stage": "Tokens served via Azure AI / OpenAI API",
+        "weeks": 0,
+        "owner": "End users"
+      }
+    ]
+  },
+  "key_events": [
+    {
+      "date": "2024-01",
+      "event": "GPT-4 Turbo deployed on Azure ND H100 — 128K context window, 3× cheaper inference",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-03",
+      "event": "Microsoft announces $3.3B Wisconsin datacenter investment — AI infrastructure push",
+      "category": "capacity",
+      "significance": "medium"
+    },
+    {
+      "date": "2024-05",
+      "event": "Copilot+ PCs announced — edge AI with NPU; signals inference diversification away from cloud",
+      "category": "strategy",
+      "significance": "medium"
+    },
+    {
+      "date": "2024-07",
+      "event": "Maia 2 custom AI ASIC deployed in Azure for inference — first hyperscaler ASIC at scale",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-09",
+      "event": "Three Mile Island nuclear restart (Crane Clean Energy Center) — 835MW to power Azure AI",
+      "category": "capacity",
+      "significance": "high"
+    },
+    {
+      "date": "2025-01",
+      "event": "GB200 NVL72 first racks deployed in Azure — 72-GPU Blackwell cluster online",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-02",
+      "event": "Microsoft FY2025 Q2: Azure +31% CC — AI services now material to growth",
+      "category": "financial",
+      "significance": "medium"
+    },
+    {
+      "date": "2025-04",
+      "event": "$80B CapEx commitment for FY2026 announced — largest in Microsoft history",
+      "category": "capacity",
+      "significance": "high"
+    },
+    {
+      "date": "2025-07",
+      "event": "Azure HBv4 (8× AMD MI300X, 1.5TB HBM3) generally available — 192GB/GPU inference king",
+      "category": "product",
+      "significance": "medium"
+    },
+    {
+      "date": "2026-04",
+      "event": "Q3 FY2026: Azure growth +39% CC; $25B of AI budget attributed to memory/chip cost increase",
+      "category": "financial",
+      "significance": "high"
+    },
+    {
+      "date": "2026-04",
+      "event": "Microsoft calls for $190B datacenter spending — largest hyperscaler CapEx pledge",
+      "category": "capacity",
+      "significance": "high"
+    }
+  ]
 }

@@ -144,5 +144,104 @@
       "Enterprise (Workspace AI, Gemini API)"
     ],
     "scm_position": "Demand tier — dual-path: TPU (direct Samsung HBM) + GPU cloud (via NVIDIA)"
-  }
+  },
+  "lead_time": {
+    "total_months_to_token": 4,
+    "description": "Google GPU/TPU receipt → tokens served ≈ 4 months. TPU path takes slightly longer because Google builds custom TPU server racks from scratch; GPU path mirrors Azure at ~3 months.",
+    "bottleneck": "TPU cluster networking fabric (custom Google Jupiter network) — 4-6 weeks setup",
+    "pipeline": [
+      {
+        "stage": "TPU die (Broadcom) + HBM (Samsung) → TSMC CoWoS",
+        "weeks": 0,
+        "owner": "TSMC (already done)"
+      },
+      {
+        "stage": "TPU module to Google custom server rack",
+        "weeks": 4,
+        "owner": "Google hardware"
+      },
+      {
+        "stage": "Jupiter network fabric deployment",
+        "weeks": 5,
+        "owner": "Google network"
+      },
+      {
+        "stage": "JAX/XLA software stack and model integration",
+        "weeks": 3,
+        "owner": "Google AI"
+      },
+      {
+        "stage": "Gemini / Cloud TPU API serving",
+        "weeks": 4,
+        "owner": "Google Cloud"
+      },
+      {
+        "stage": "Tokens served (Gemini API / Cloud)",
+        "weeks": 0,
+        "owner": "End users"
+      }
+    ]
+  },
+  "key_events": [
+    {
+      "date": "2024-02",
+      "event": "Gemini Ultra launched on TPU v5 — Google's first frontier model matching GPT-4",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-04",
+      "event": "TPU v5e (Trillium) generally available on Google Cloud — direct NVIDIA A100 competitor",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-05",
+      "event": "Google I/O 2024: Gemini 1.5 Pro 1M context — requires massive HBM for inference",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-10",
+      "event": "Q3 2024 earnings: Google Cloud +35% YoY — AI revenue 'material' for first time",
+      "category": "financial",
+      "significance": "medium"
+    },
+    {
+      "date": "2025-01",
+      "event": "Axion Arm CPU generally available on Google Cloud — replaces Intel Xeon in new GCP nodes",
+      "category": "product",
+      "significance": "medium"
+    },
+    {
+      "date": "2025-04",
+      "event": "Google announces TPU v6 (Trillium 2) — will sell TPUs to select external customers",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-05",
+      "event": "Google I/O: Gemini 2.0 Flash/Pro — inference volume 10× vs 2024, massive HBM pull",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-09",
+      "event": "Kairos Power SMR nuclear agreement — Google commits to 500MW nuclear for AI compute",
+      "category": "capacity",
+      "significance": "high"
+    },
+    {
+      "date": "2026-04",
+      "event": "Q1 2026: $35.7B CapEx — Google Cloud +50% YoY; largest capex quarter in Alphabet history",
+      "category": "financial",
+      "significance": "high"
+    },
+    {
+      "date": "2026-04",
+      "event": "Google TPU v8 (8th gen) unveiled at Cloud Next — AI inference chips for customers",
+      "category": "product",
+      "significance": "high"
+    }
+  ]
 }

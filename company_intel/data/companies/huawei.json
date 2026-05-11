@@ -125,5 +125,86 @@
       "Chinese government AI programs"
     ],
     "scm_position": "China GPU + server tier — complete domestic AI server stack (chip → server → cloud)"
-  }
+  },
+  "lead_time": {
+    "total_months_to_token": 16,
+    "description": "Huawei Ascend chip → tokens served ≈ 16 months inside China. Longer than NVIDIA because SMIC N+2 yield is lower (more scrapped wafers = longer to fill order), CXMT HBM supply is constrained, and MindSpore software stack requires more porting.",
+    "bottleneck": "SMIC N+2 yield rate (~60% vs TSMC N5 ~80%) — doubles effective lead time for same volume",
+    "pipeline": [
+      {
+        "stage": "SMIC N+2 wafer production (Ascend die)",
+        "weeks": 14,
+        "owner": "SMIC"
+      },
+      {
+        "stage": "CXMT HBM-equivalent stack production",
+        "weeks": 12,
+        "owner": "CXMT"
+      },
+      {
+        "stage": "Ascend 910C chip packaging (domestic)",
+        "weeks": 8,
+        "owner": "Amkor / JCET China"
+      },
+      {
+        "stage": "Atlas 800T A2 server assembly + test",
+        "weeks": 6,
+        "owner": "Huawei hardware"
+      },
+      {
+        "stage": "MindSpore model porting + cluster deployment",
+        "weeks": 12,
+        "owner": "ByteDance / Baidu / Alibaba"
+      },
+      {
+        "stage": "Tokens served (Chinese AI services)",
+        "weeks": 0,
+        "owner": "End users (China)"
+      }
+    ]
+  },
+  "key_events": [
+    {
+      "date": "2024-01",
+      "event": "Ascend 910B production ramp — primary AI GPU for Chinese hyperscalers following NVIDIA export controls",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-05",
+      "event": "US expands export controls — H100/A100 banned to China; Huawei Ascend demand surges 3×",
+      "category": "risk",
+      "significance": "high"
+    },
+    {
+      "date": "2024-07",
+      "event": "Huawei CloudMatrix 384 unveiled — 384-Ascend cluster, claims outperform H100 NVL cluster on inference",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-10",
+      "event": "Huawei AI chip revenue projected $12B for 2025 — domestic demand absorbs full capacity",
+      "category": "financial",
+      "significance": "high"
+    },
+    {
+      "date": "2025-02",
+      "event": "Ascend 910C revealed via teardown — SMIC N+2 confirmed; approaching H100 on transformer benchmarks",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-05",
+      "event": "US deploys AI on classified networks; China doubles down on domestic AI stack (Ascend + MindSpore)",
+      "category": "strategy",
+      "significance": "medium"
+    },
+    {
+      "date": "2026-05",
+      "event": "Huawei braces for $12B AI chip revenue — Chinese fabs 'barely keeping up' with Ascend demand",
+      "category": "financial",
+      "significance": "high"
+    }
+  ]
 }

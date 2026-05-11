@@ -142,5 +142,105 @@
       "Google (TPU dies)"
     ],
     "scm_position": "Foundry + packaging tier — manufactures GPU dies AND bonds HBM to GPU (CoWoS)"
-  }
+  },
+  "lead_time": {
+    "total_months_to_token": 18,
+    "description": "TSMC new capacity decision → tokens served ≈ 18-24 months. Adding CoWoS capacity requires clean room construction (12-18 months), equipment delivery (6-12 months), and yield ramp (3-6 months). Existing capacity turns 3 months.",
+    "bottleneck": "EUV scanner delivery from ASML (12-18 month wait) + clean room construction",
+    "pipeline": [
+      {
+        "stage": "TSMC capacity investment decision",
+        "weeks": 0,
+        "owner": "TSMC board"
+      },
+      {
+        "stage": "Clean room construction + equipment install",
+        "weeks": 52,
+        "owner": "TSMC + construction"
+      },
+      {
+        "stage": "EUV tool qualification & yield ramp",
+        "weeks": 26,
+        "owner": "TSMC + ASML"
+      },
+      {
+        "stage": "GPU die production + CoWoS packaging",
+        "weeks": 12,
+        "owner": "TSMC"
+      },
+      {
+        "stage": "GPU → server → DC deploy → tokens",
+        "weeks": 14,
+        "owner": "NVIDIA + hyperscaler"
+      }
+    ]
+  },
+  "key_events": [
+    {
+      "date": "2024-01",
+      "event": "CoWoS capacity reaches 35K WPM — doubles from 18K in 2022",
+      "category": "capacity",
+      "significance": "high"
+    },
+    {
+      "date": "2024-04",
+      "event": "Arizona N3 fab first silicon production — first TSMC advanced node outside Taiwan",
+      "category": "capacity",
+      "significance": "high"
+    },
+    {
+      "date": "2024-07",
+      "event": "CoWoS-L (multi-chip, larger interposer) enters mass production for GB200",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-10",
+      "event": "Q3 2024 earnings: NT$759.7B (+36% YoY) — AI demand drives record margins",
+      "category": "financial",
+      "significance": "medium"
+    },
+    {
+      "date": "2025-01",
+      "event": "CoWoS capacity target raised to 85K WPM for 2025 — 2.4× growth in 3 years",
+      "category": "capacity",
+      "significance": "high"
+    },
+    {
+      "date": "2025-04",
+      "event": "N2 (2nm) process enters risk production — world's first 2nm commercial wafer",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-06",
+      "event": "SoIC-X (3D stacking for HBM4+) co-development confirmed with SK Hynix",
+      "category": "product",
+      "significance": "medium"
+    },
+    {
+      "date": "2025-10",
+      "event": "Arizona fab N3 full production — 20K WPM; TSMC US presence becomes real",
+      "category": "capacity",
+      "significance": "high"
+    },
+    {
+      "date": "2026-04",
+      "event": "Q1 2026 earnings: NT$839.3B (+41.6% YoY); CoWoS ASP nears 7nm wafer level",
+      "category": "financial",
+      "significance": "high"
+    },
+    {
+      "date": "2026-04",
+      "event": "TSMC Technology Symposium: CoWoS capacity to 120K WPM in 2026 — confirms AI demand",
+      "category": "capacity",
+      "significance": "high"
+    },
+    {
+      "date": "2026-04",
+      "event": "Indiana (Phoenix) fab CoWoS packaging announcement — US HBM packaging coming",
+      "category": "capacity",
+      "significance": "medium"
+    }
+  ]
 }

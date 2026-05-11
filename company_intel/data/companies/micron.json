@@ -167,5 +167,110 @@
       "OEM server makers"
     ],
     "scm_position": "Memory tier — HBM on GPU die + DRAM/NAND in AI server host"
-  }
+  },
+  "lead_time": {
+    "total_months_to_token": 11,
+    "description": "Micron HBM → tokens ≈ 11 months. Slightly faster than SK Hynix because Micron's Idaho fab is geographically closer to some US hyperscaler datacenters, reducing logistics time.",
+    "bottleneck": "TSMC CoWoS slot (same as SK Hynix) — Idaho packaging capacity not yet online",
+    "pipeline": [
+      {
+        "stage": "HBM wafer production (Idaho/Singapore)",
+        "weeks": 9,
+        "owner": "Micron"
+      },
+      {
+        "stage": "TSMC CoWoS packaging",
+        "weeks": 12,
+        "owner": "TSMC"
+      },
+      {
+        "stage": "GPU module assembly",
+        "weeks": 5,
+        "owner": "NVIDIA + ODM"
+      },
+      {
+        "stage": "Server integration & testing",
+        "weeks": 5,
+        "owner": "Dell / Supermicro"
+      },
+      {
+        "stage": "US hyperscaler deployment (closer logistics)",
+        "weeks": 5,
+        "owner": "Microsoft / AWS"
+      },
+      {
+        "stage": "Tokens served",
+        "weeks": 0,
+        "owner": "End users"
+      }
+    ]
+  },
+  "key_events": [
+    {
+      "date": "2024-02",
+      "event": "HBM3e qualification announced for NVIDIA H200 — first US company to achieve this",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-06",
+      "event": "HBM3e 8-Hi mass production begins; Micron starts shipping to NVIDIA for H200 partial allocation",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-08",
+      "event": "CHIPS Act funding confirmed: $6.1B for Idaho HBM fab expansion",
+      "category": "capacity",
+      "significance": "high"
+    },
+    {
+      "date": "2024-11",
+      "event": "Idaho fab groundbreaking for HBM-dedicated production (Boise, ID)",
+      "category": "capacity",
+      "significance": "high"
+    },
+    {
+      "date": "2025-01",
+      "event": "HBM market share reaches 13% — fastest-growing among three suppliers",
+      "category": "product",
+      "significance": "medium"
+    },
+    {
+      "date": "2025-03",
+      "event": "FY2025 Q2 earnings: $7.9B revenue, HBM revenue 'exceeds $1B per quarter' for first time",
+      "category": "financial",
+      "significance": "high"
+    },
+    {
+      "date": "2025-06",
+      "event": "CEO Sanjay Mehrotra: 'AI memory demand in first innings; supply already insufficient'",
+      "category": "strategy",
+      "significance": "high"
+    },
+    {
+      "date": "2025-09",
+      "event": "HBM3e qualification for NVIDIA B200 Blackwell confirmed",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-11",
+      "event": "Micron stock +7% single day: structural AI winner designation by analysts",
+      "category": "financial",
+      "significance": "medium"
+    },
+    {
+      "date": "2026-03",
+      "event": "FY2026 Q2 earnings: $8.7B (+38% YoY); HBM share approaches 15%",
+      "category": "financial",
+      "significance": "high"
+    },
+    {
+      "date": "2026-05",
+      "event": "Analyst: Micron vs SanDisk — Micron named top AI memory buy for 2026 'memory crunch'",
+      "category": "financial",
+      "significance": "medium"
+    }
+  ]
 }

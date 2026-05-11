@@ -119,5 +119,92 @@
       "PJM grid (VA/MD data center corridor)"
     ],
     "scm_position": "Power generation tier — nuclear baseload that enables 24/7 AI cluster operation"
-  }
+  },
+  "lead_time": {
+    "total_months_to_token": 48,
+    "description": "Constellation nuclear PPA signing → tokens served ≈ 48 months for new capacity (restart: 24 months). Existing plants can deliver power faster, but new nuclear capacity or restarts require years of regulatory work.",
+    "bottleneck": "NRC regulatory approval for restart or new capacity — minimum 18-24 months even for favorable cases",
+    "pipeline": [
+      {
+        "stage": "PPA negotiation + NRC restart application",
+        "weeks": 24,
+        "owner": "Constellation + regulators"
+      },
+      {
+        "stage": "Safety upgrades + equipment refurbishment",
+        "weeks": 52,
+        "owner": "Constellation engineering"
+      },
+      {
+        "stage": "NRC inspection + final approval",
+        "weeks": 20,
+        "owner": "NRC"
+      },
+      {
+        "stage": "Grid reconnection + capacity testing",
+        "weeks": 8,
+        "owner": "Constellation + utility"
+      },
+      {
+        "stage": "Hyperscaler datacenter construction + GPU install",
+        "weeks": 52,
+        "owner": "Microsoft / Google DC"
+      },
+      {
+        "stage": "Tokens served (24/7 nuclear-powered AI cluster)",
+        "weeks": 0,
+        "owner": "End users"
+      }
+    ]
+  },
+  "key_events": [
+    {
+      "date": "2023-09",
+      "event": "Microsoft signs 20-year PPA for Three Mile Island Unit 1 restart — landmark AI-nuclear deal",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-03",
+      "event": "NRC approves Three Mile Island Unit 1 restart license amendment",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-05",
+      "event": "Google signs nuclear PPA with Kairos Power (SMR) — 500MW for AI datacenters by 2030",
+      "category": "product",
+      "significance": "medium"
+    },
+    {
+      "date": "2024-09",
+      "event": "Three Mile Island (Crane Clean Energy Center) restarts — first nuclear restart for AI demand globally",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-11",
+      "event": "Amazon signs nuclear PPA with Constellation for Virginia datacenter corridor",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-02",
+      "event": "Constellation stock +80% since TMI announcement — recognized as AI infrastructure play",
+      "category": "financial",
+      "significance": "medium"
+    },
+    {
+      "date": "2025-06",
+      "event": "Crestwood Illinois nuclear expansion (1.6GW) approved — targeting AI demand through 2035",
+      "category": "capacity",
+      "significance": "high"
+    },
+    {
+      "date": "2026-05",
+      "event": "Data centres drive momentum for nuclear — analyst: 'Nuclear capacity shortage constraints AI buildout ahead of HBM'",
+      "category": "strategy",
+      "significance": "high"
+    }
+  ]
 }

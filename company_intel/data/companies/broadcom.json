@@ -147,5 +147,92 @@
       "Cisco (switching ASICs)"
     ],
     "scm_position": "ASIC tier — designs HBM-consuming compute dies for hyperscalers + switching chips for AI cluster networking"
-  }
+  },
+  "lead_time": {
+    "total_months_to_token": 30,
+    "description": "Broadcom ASIC design win → tokens served ≈ 30 months (2.5 years). Custom ASIC has the longest supply chain lead time because it requires 12-18 months of co-design with the hyperscaler before any silicon is produced.",
+    "bottleneck": "Co-design cycle (12-18 months) before TSMC tape-out even begins",
+    "pipeline": [
+      {
+        "stage": "Hyperscaler ASIC requirements definition",
+        "weeks": 12,
+        "owner": "Google / Meta / ByteDance"
+      },
+      {
+        "stage": "Broadcom co-design (architecture, SerDes, layout)",
+        "weeks": 40,
+        "owner": "Broadcom engineering"
+      },
+      {
+        "stage": "TSMC tape-out + silicon bring-up (N3/N5)",
+        "weeks": 16,
+        "owner": "TSMC + Broadcom"
+      },
+      {
+        "stage": "HBM qualification + CoWoS packaging",
+        "weeks": 12,
+        "owner": "TSMC + SK Hynix / Samsung"
+      },
+      {
+        "stage": "Hyperscaler ASIC validation + cluster build",
+        "weeks": 12,
+        "owner": "Google / Meta"
+      },
+      {
+        "stage": "Tokens served (TPU / MTIA online)",
+        "weeks": 0,
+        "owner": "End users"
+      }
+    ]
+  },
+  "key_events": [
+    {
+      "date": "2024-01",
+      "event": "Broadcom reveals it has 3 hyperscaler ASIC customers — Google, Meta + unnamed (ByteDance)",
+      "category": "strategy",
+      "significance": "high"
+    },
+    {
+      "date": "2024-03",
+      "event": "Google TPU v5 Trillium confirmed as Broadcom ASIC — co-designed over 4-year cycle",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-06",
+      "event": "FY2024 AI revenue run rate exceeds $11B annualized — ASIC revenue surpasses networking",
+      "category": "financial",
+      "significance": "high"
+    },
+    {
+      "date": "2024-09",
+      "event": "Analyst day: each hyperscaler ASIC customer to deploy 1M+ chips by 2027 — massive HBM pull",
+      "category": "strategy",
+      "significance": "high"
+    },
+    {
+      "date": "2025-01",
+      "event": "ByteDance custom AI ASIC confirmed — reportedly Broadcom's largest-ever single ASIC order by volume",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-04",
+      "event": "Jericho3-AI Ethernet switch ASIC launched — enables 51.2T AI cluster fabric, NVIDIA InfiniBand alternative",
+      "category": "product",
+      "significance": "medium"
+    },
+    {
+      "date": "2025-07",
+      "event": "Broadcom retains #1 hyperscaler ASIC partner position through 2027 per Counterpoint Research",
+      "category": "strategy",
+      "significance": "medium"
+    },
+    {
+      "date": "2026-03",
+      "event": "FY2025 Q2 earnings: $14.9B (+25% YoY); AI revenue $4.1B/quarter",
+      "category": "financial",
+      "significance": "high"
+    }
+  ]
 }

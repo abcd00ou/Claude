@@ -176,5 +176,104 @@
       "Third-party AI startups"
     ],
     "scm_position": "Demand tier — dual-path GPU cloud (NVIDIA HBM) + custom silicon (direct HBM from SKH/Samsung)"
-  }
+  },
+  "lead_time": {
+    "total_months_to_token": 5,
+    "description": "Amazon GPU/Trainium receipt → tokens served ≈ 5 months. Trainium2 path takes longer than GPU because AWS builds custom server racks and must integrate with its proprietary Nitro network. GPU path ≈ 3 months.",
+    "bottleneck": "AWS Nitro network integration (custom silicon) — adds 4-6 weeks vs off-shelf GPU",
+    "pipeline": [
+      {
+        "stage": "Trainium2 (Marvell ASIC) from TSMC + HBM bonding",
+        "weeks": 0,
+        "owner": "TSMC CoWoS"
+      },
+      {
+        "stage": "AWS custom server rack assembly (Trainium2 + Graviton4 host)",
+        "weeks": 5,
+        "owner": "AWS hardware"
+      },
+      {
+        "stage": "Nitro network card integration + EFA fabric",
+        "weeks": 4,
+        "owner": "AWS Annapurna"
+      },
+      {
+        "stage": "UltraCluster networking + health sweep",
+        "weeks": 5,
+        "owner": "AWS DC ops"
+      },
+      {
+        "stage": "Bedrock / SageMaker model serving",
+        "weeks": 6,
+        "owner": "AWS AI team"
+      },
+      {
+        "stage": "Tokens served (Bedrock / Anthropic Claude API)",
+        "weeks": 0,
+        "owner": "End users"
+      }
+    ]
+  },
+  "key_events": [
+    {
+      "date": "2024-03",
+      "event": "Trainium2 chip tape-out complete; AWS announces Project Rainier (400K+ Trainium2 for Anthropic)",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-06",
+      "event": "AWS announces $11B investment in Indiana datacenter — power + physical capacity for Trainium scale",
+      "category": "capacity",
+      "significance": "medium"
+    },
+    {
+      "date": "2024-09",
+      "event": "Graviton4 (custom Arm CPU, TSMC N4P) generally available — host CPU in all new Trainium servers",
+      "category": "product",
+      "significance": "medium"
+    },
+    {
+      "date": "2024-11",
+      "event": "AWS re:Invent: Trainium2 UltraServer (16× Trainium2) and Trn2 instances launched",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-02",
+      "event": "Project Rainier online: 400K+ Trainium2 chips, 1 EF/s cluster — Anthropic Claude 3 trains here",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-05",
+      "event": "Q1 2025 AWS earnings: $29.3B (+17% YoY); AI services now 'largest growth driver'",
+      "category": "financial",
+      "significance": "medium"
+    },
+    {
+      "date": "2025-09",
+      "event": "Trainium3 development confirmed (3nm TSMC, HBM4 target) — Marvell next-gen ASIC",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2026-01",
+      "event": "CEO Andy Jassy shareholder letter: 'Declaring war on NVIDIA and Intel' — custom silicon priority",
+      "category": "strategy",
+      "significance": "high"
+    },
+    {
+      "date": "2026-04",
+      "event": "Q1 2026 CapEx $44.2B — Amazon chips contributed $20B+ in AI infrastructure spend",
+      "category": "financial",
+      "significance": "high"
+    },
+    {
+      "date": "2026-04",
+      "event": "Big Tech Q1 2026 total: $630B AI CapEx collectively — AWS + Azure + GCP + Meta combined",
+      "category": "financial",
+      "significance": "high"
+    }
+  ]
 }

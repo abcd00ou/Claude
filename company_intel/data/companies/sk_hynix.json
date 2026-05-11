@@ -176,5 +176,122 @@
       "Amazon (Trainium direct)"
     ],
     "scm_position": "Memory tier — bonded onto GPU die at TSMC CoWoS"
-  }
+  },
+  "lead_time": {
+    "total_months_to_token": 12,
+    "description": "HBM wafer-out → tokens served ≈ 12 months under normal conditions. TSMC CoWoS slot is the rate-limiter (18-month capacity lead time for new capacity).",
+    "bottleneck": "TSMC CoWoS packaging slot — 18-month lead for new capacity additions",
+    "pipeline": [
+      {
+        "stage": "HBM wafer production",
+        "weeks": 10,
+        "owner": "SK Hynix"
+      },
+      {
+        "stage": "TSMC CoWoS bonding (HBM + GPU die)",
+        "weeks": 12,
+        "owner": "TSMC"
+      },
+      {
+        "stage": "GPU module & server assembly",
+        "weeks": 6,
+        "owner": "NVIDIA + ODM"
+      },
+      {
+        "stage": "Hyperscaler rack integration & burn-in",
+        "weeks": 6,
+        "owner": "Microsoft / Google / AWS"
+      },
+      {
+        "stage": "DC networking, software, deployment",
+        "weeks": 14,
+        "owner": "Hyperscaler ops"
+      },
+      {
+        "stage": "Tokens served (inference online)",
+        "weeks": 0,
+        "owner": "End users"
+      }
+    ]
+  },
+  "key_events": [
+    {
+      "date": "2023-07",
+      "event": "HBM3 mass production for NVIDIA H100 — first ever HBM3 at volume",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-01",
+      "event": "HBM3e 8-Hi (24GB) enters mass production for H200",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-04",
+      "event": "Q1 2024 earnings: HBM revenue surpasses commodity DRAM for first time",
+      "category": "financial",
+      "significance": "high"
+    },
+    {
+      "date": "2024-06",
+      "event": "HBM3e qualification confirmed for NVIDIA H200; SK Hynix sole supplier at launch",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-07",
+      "event": "Indiana advanced packaging plant groundbreaking (with Purdue University)",
+      "category": "capacity",
+      "significance": "medium"
+    },
+    {
+      "date": "2024-10",
+      "event": "HBM3e 12-Hi (36GB stack) sampling begins for Blackwell B200",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-01",
+      "event": "HBM4 (32GB, 2.0 TB/s) sampling begins — target NVIDIA GB300 Blackwell Ultra",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-04",
+      "event": "Q1 2025 record: KRW 17.6T revenue, operating margin 40%+",
+      "category": "financial",
+      "significance": "medium"
+    },
+    {
+      "date": "2025-06",
+      "event": "Big Tech offers to fund SK Hynix fab expansion — available capacity 'essentially zero'",
+      "category": "capacity",
+      "significance": "high"
+    },
+    {
+      "date": "2025-09",
+      "event": "$13B investment announced for new South Korea M15X HBM plant",
+      "category": "capacity",
+      "significance": "high"
+    },
+    {
+      "date": "2026-01",
+      "event": "HBM4E sampling confirmed for H2 2026 — roadmap extends to next Blackwell generation",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2026-04",
+      "event": "Q1 2026 record: KRW 52.5T revenue (+198% YoY), 72% operating margin",
+      "category": "financial",
+      "significance": "high"
+    },
+    {
+      "date": "2026-04",
+      "event": "Indiana US packaging plant breaks ground (advanced HBM packaging, CHIPS Act)",
+      "category": "capacity",
+      "significance": "medium"
+    }
+  ]
 }

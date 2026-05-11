@@ -253,6 +253,58 @@ def build_html(profiles: list[dict], hbm_share: dict, capex_annual: dict) -> str
   .chart-container {{ position: relative; height: 200px; }}
   .empty-state {{ color: #718096; font-size: 13px; font-style: italic; padding: 8px 0; }}
 
+  /* Lead time pipeline */
+  .pipeline {{ display: flex; align-items: stretch; gap: 0; overflow-x: auto; margin-bottom: 12px; }}
+  .pipe-stage {{ flex: 1; min-width: 110px; padding: 10px 8px; background: #F7FAFC;
+                 border: 1px solid #E2E8F0; text-align: center; position: relative; }}
+  .pipe-stage:not(:last-child)::after {{ content: '→'; position: absolute; right: -13px; top: 50%;
+    transform: translateY(-50%); color: #CBD5E0; font-size: 18px; z-index: 1; }}
+  .pipe-stage:not(:first-child) {{ border-left: none; }}
+  .pipe-stage.bottleneck {{ background: #FFF5F5; border-color: #FC8181; border-width: 2px; }}
+  .pipe-stage .ps-stage {{ font-size: 11px; font-weight: 600; color: #2D3748; margin-bottom: 4px; line-height: 1.3; }}
+  .pipe-stage .ps-weeks {{ font-size: 16px; font-weight: 700; color: #3182CE; }}
+  .pipe-stage.bottleneck .ps-weeks {{ color: #E53E3E; }}
+  .pipe-stage .ps-unit {{ font-size: 10px; color: #718096; }}
+  .pipe-stage .ps-owner {{ font-size: 10px; color: #718096; margin-top: 3px; background: #EDF2F7;
+                            padding: 2px 5px; border-radius: 3px; display: inline-block; }}
+  .pipe-stage.bottleneck .ps-owner {{ background: #FED7D7; color: #9B2C2C; }}
+
+  /* Event timeline */
+  .timeline-list {{ list-style: none; padding: 0; position: relative; }}
+  .timeline-list::before {{ content: ''; position: absolute; left: 72px; top: 0; bottom: 0;
+                             width: 2px; background: #E2E8F0; }}
+  .tl-item {{ display: flex; gap: 0; align-items: flex-start; margin-bottom: 10px; position: relative; }}
+  .tl-date {{ min-width: 62px; font-size: 11px; color: #718096; padding-top: 2px; text-align: right; padding-right: 10px; }}
+  .tl-dot {{ width: 10px; height: 10px; border-radius: 50%; margin-top: 4px; flex-shrink: 0; z-index: 1; }}
+  .tl-body {{ padding-left: 10px; font-size: 13px; line-height: 1.4; flex: 1; }}
+  .tl-cat {{ font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;
+              padding: 1px 5px; border-radius: 3px; margin-left: 6px; vertical-align: middle; }}
+  .cat-product {{ color: #2C5282; background: #BEE3F8; }}
+  .cat-financial {{ color: #22543D; background: #C6F6D5; }}
+  .cat-capacity {{ color: #744210; background: #FEFCBF; }}
+  .cat-risk {{ color: #9B2C2C; background: #FED7D7; }}
+  .cat-org {{ color: #4A5568; background: #E2E8F0; }}
+  .cat-strategy {{ color: #44337A; background: #E9D8FD; }}
+  .dot-product {{ background: #3182CE; }}
+  .dot-financial {{ background: #38A169; }}
+  .dot-capacity {{ background: #D69E2E; }}
+  .dot-risk {{ background: #E53E3E; }}
+  .dot-org {{ background: #718096; }}
+  .dot-strategy {{ background: #805AD5; }}
+  .sig-high {{ font-weight: 600; }}
+
+  /* Global timeline filter */
+  .tl-filter-bar {{ display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }}
+  .tl-filter-btn {{ padding: 4px 10px; border: 1px solid #E2E8F0; border-radius: 12px;
+                    background: white; font-size: 11px; cursor: pointer; color: #4A5568; }}
+  .tl-filter-btn.active {{ background: #2B6CB0; color: white; border-color: #2B6CB0; }}
+  .global-tl-item {{ display: flex; gap: 8px; padding: 8px 0; border-bottom: 1px solid #F0F0F0;
+                     align-items: flex-start; }}
+  .global-tl-item:last-child {{ border-bottom: none; }}
+  .gtl-date {{ min-width: 62px; font-size: 11px; color: #718096; white-space: nowrap; padding-top:2px; }}
+  .gtl-company {{ min-width: 110px; font-size: 11px; font-weight: 600; color: #2D3748; padding-top:2px; }}
+  .gtl-body {{ flex: 1; font-size: 13px; line-height: 1.4; }}
+
   /* Overview table */
   .overview-table {{ width: 100%; border-collapse: collapse; font-size: 13px; }}
   .overview-table th {{ background: #F7FAFC; text-align: left; padding: 10px 12px;
@@ -456,6 +508,49 @@ function renderScmEngagement(profile) {{
   `;
 }}
 
+function renderLeadTime(profile) {{
+  const lt = profile.lead_time;
+  if (!lt) return '';
+  const pipeline = lt.pipeline || [];
+  const bottleneck = (lt.bottleneck || '').toLowerCase();
+
+  const stageHtml = pipeline.map(s => {{
+    const isBottleneck = bottleneck.toLowerCase().includes(s.stage.split(' ')[0].toLowerCase()) ||
+                         bottleneck.includes(s.owner ? s.owner.toLowerCase() : '___');
+    return `<div class="pipe-stage${{isBottleneck ? ' bottleneck' : ''}}">
+      <div class="ps-stage">${{s.stage}}</div>
+      <div class="ps-weeks">${{s.weeks}}</div>
+      <div class="ps-unit">weeks</div>
+      <div class="ps-owner">${{s.owner || ''}}</div>
+    </div>`;
+  }}).join('');
+
+  return `
+    <div style="margin-bottom:10px">
+      <span style="font-size:22px;font-weight:700;color:#2D3748">${{lt.total_months_to_token}}</span>
+      <span style="font-size:12px;color:#718096;margin-left:4px">months: action → AI tokens served</span>
+      ${{lt.bottleneck ? `<div style="margin-top:6px;font-size:12px;background:#FFF5F5;border-left:3px solid #FC8181;padding:6px 10px;border-radius:0 4px 4px 0;color:#9B2C2C">⚠ Bottleneck: ${{lt.bottleneck}}</div>` : ''}}
+      ${{lt.description ? `<div style="margin-top:6px;font-size:12px;color:#718096;line-height:1.5">${{lt.description}}</div>` : ''}}
+    </div>
+    <div class="pipeline">${{stageHtml}}</div>
+  `;
+}}
+
+function renderTimeline(profile) {{
+  const events = (profile.key_events || []).slice().sort((a, b) => a.date.localeCompare(b.date));
+  if (!events.length) return '<p class="empty-state">No events yet.</p>';
+  const items = events.map(e => {{
+    const cat = e.category || 'product';
+    const sig = e.significance === 'high' ? ' sig-high' : '';
+    return `<li class="tl-item">
+      <div class="tl-date">${{e.date}}</div>
+      <div class="tl-dot dot-${{cat}}"></div>
+      <div class="tl-body${{sig}}">${{e.event}}<span class="tl-cat cat-${{cat}}">${{cat}}</span></div>
+    </li>`;
+  }}).join('');
+  return `<ul class="timeline-list">${{items}}</ul>`;
+}}
+
 function renderHooks(profile) {{
   const hooks = profile.sales_hooks || [];
   if (!hooks.length) return '<p class="empty-state">No sales hooks yet.</p>';
@@ -579,6 +674,16 @@ function render(id) {{
       ${{renderScmEngagement(profile)}}
     </div>
 
+    ${{profile.lead_time ? `<div class="card" style="margin-bottom:16px">
+      <h3>Lead Time to AI Token Throughput</h3>
+      ${{renderLeadTime(profile)}}
+    </div>` : ''}}
+
+    ${{profile.key_events && profile.key_events.length ? `<div class="card" style="margin-bottom:16px">
+      <h3>Company Timeline — Key Events</h3>
+      ${{renderTimeline(profile)}}
+    </div>` : ''}}
+
     <div class="grid-2" style="margin-bottom:16px">
       <div class="card" style="grid-column: span 2">
         <h3>Sales Hooks — Conversation Starters</h3>
@@ -635,6 +740,7 @@ function showOverview() {{
       const s = p.snapshot || {{}};
       const isHBM = p._layer === 'HBM';
       const isHyperscaler = p._layer === 'Hyperscaler';
+      const lt = p.lead_time;
       rows.push(`<tr>
         <td><span class="clickable" onclick="selectCompany('${{id}}')">${{p.company}}</span></td>
         <td><span class="layer-badge badge-${{p._layer}}">${{p._layer}}</span></td>
@@ -642,6 +748,7 @@ function showOverview() {{
         <td>${{isHBM ? (s.hbm_market_share_pct != null ? s.hbm_market_share_pct + '%' : '—') :
               isHyperscaler ? (s.capex_qtr_usd || '—') : '—'}}</td>
         <td>${{s.op_margin_pct != null ? s.op_margin_pct + '%' : '—'}}</td>
+        <td>${{lt ? `<span style="font-weight:600;color:${{lt.total_months_to_token<=6?'#22543D':lt.total_months_to_token<=18?'#744210':'#9B2C2C'}}">${{lt.total_months_to_token}}mo</span>` : '—'}}</td>
         <td>${{p.last_updated || '—'}}</td>
       </tr>`);
     }});
@@ -726,17 +833,92 @@ function showOverview() {{
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" style="margin-bottom:16px">
       <h3 style="margin-bottom:12px">All Companies</h3>
       <table class="overview-table">
         <tr>
           <th>Company</th><th>Layer</th><th>Latest Revenue</th>
-          <th>HBM Share / Q CapEx</th><th>Op Margin</th><th>Updated</th>
+          <th>HBM Share / Q CapEx</th><th>Op Margin</th><th>Months→Token</th><th>Updated</th>
         </tr>
         ${{rows.join('')}}
       </table>
     </div>
+
+    <div class="card" id="global-timeline-card">
+      <h3 style="margin-bottom:12px">Global Supply Chain Timeline — 2023–2026</h3>
+      <div class="tl-filter-bar" id="gtl-filters"></div>
+      <div id="gtl-events" style="max-height:520px;overflow-y:auto;"></div>
+    </div>
   `;
+
+  // Build global timeline
+  (function() {{
+    const allEvents = [];
+    const layerSet = new Set();
+    const catSet = new Set();
+    PROFILES.forEach(p => {{
+      const layer = p._layer || 'Other';
+      layerSet.add(layer);
+      (p.key_events || []).forEach(e => {{
+        catSet.add(e.category || 'product');
+        allEvents.push({{
+          date: e.date,
+          event: e.event,
+          category: e.category || 'product',
+          significance: e.significance || 'medium',
+          company: p.company,
+          companyId: p._id,
+          layer: layer,
+        }});
+      }});
+    }});
+    allEvents.sort((a, b) => a.date.localeCompare(b.date));
+
+    let activeLayer = null;
+    let activeCat = null;
+
+    function renderGlobalEvents() {{
+      const filtered = allEvents.filter(e =>
+        (!activeLayer || e.layer === activeLayer) &&
+        (!activeCat || e.category === activeCat)
+      );
+      const el = document.getElementById('gtl-events');
+      if (!el) return;
+      if (!filtered.length) {{ el.innerHTML = '<p class="empty-state">No events match filter.</p>'; return; }}
+      el.innerHTML = filtered.map(e => {{
+        const sig = e.significance === 'high' ? ' sig-high' : '';
+        return `<div class="global-tl-item">
+          <div class="gtl-date">${{e.date}}</div>
+          <div class="gtl-company"><span class="clickable" onclick="selectCompany('${{e.companyId}}')">${{e.company}}</span>
+            <span class="layer-badge badge-${{e.layer}}" style="font-size:9px;padding:1px 5px;">${{e.layer}}</span>
+          </div>
+          <div class="gtl-body${{sig}}">${{e.event}}<span class="tl-cat cat-${{e.category}}">${{e.category}}</span></div>
+        </div>`;
+      }}).join('');
+    }}
+
+    function renderFilters() {{
+      const bar = document.getElementById('gtl-filters');
+      if (!bar) return;
+      let html = `<button class="tl-filter-btn${{!activeLayer && !activeCat ? ' active' : ''}}" onclick="_gtlClear()">All</button>`;
+      html += '<span style="color:#CBD5E0;font-size:11px;padding:4px 2px">Layer:</span>';
+      [...layerSet].forEach(l => {{
+        html += `<button class="tl-filter-btn${{activeLayer===l ? ' active' : ''}}" onclick="_gtlLayer('${{l}}')">${{l}}</button>`;
+      }});
+      html += '<span style="color:#CBD5E0;font-size:11px;padding:4px 6px">Category:</span>';
+      [...catSet].forEach(c => {{
+        html += `<button class="tl-filter-btn${{activeCat===c ? ' active' : ''}}" onclick="_gtlCat('${{c}}')">${{c}}</button>`;
+      }});
+      bar.innerHTML = html;
+    }}
+
+    window._gtlClear = () => {{ activeLayer = null; activeCat = null; renderFilters(); renderGlobalEvents(); }};
+    window._gtlLayer = l => {{ activeLayer = (activeLayer === l) ? null : l; activeCat = null; renderFilters(); renderGlobalEvents(); }};
+    window._gtlCat = c => {{ activeCat = (activeCat === c) ? null : c; renderFilters(); renderGlobalEvents(); }};
+
+    renderFilters();
+    renderGlobalEvents();
+  }})();
 }}
 
 function selectCompany(id) {{

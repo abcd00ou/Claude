@@ -113,5 +113,86 @@
       "Optical module makers (InnoLight, Coherent)"
     ],
     "scm_position": "ASIC tier — Trainium2/3 ASIC design (HBM sourced directly for AWS, bypassing NVIDIA)"
-  }
+  },
+  "lead_time": {
+    "total_months_to_token": 28,
+    "description": "Marvell ASIC design win → tokens served ≈ 28 months. Similar to Broadcom. Trainium2 took ~3 years from initial design to Project Rainier going live.",
+    "bottleneck": "AWS software integration (MindSpore-equivalent for Trainium) adds 6 months post-silicon vs CUDA-ready NVIDIA",
+    "pipeline": [
+      {
+        "stage": "AWS Trainium requirements + Marvell co-design",
+        "weeks": 36,
+        "owner": "AWS + Marvell"
+      },
+      {
+        "stage": "TSMC N4 tape-out + silicon bring-up",
+        "weeks": 14,
+        "owner": "TSMC + Marvell"
+      },
+      {
+        "stage": "HBM qualification (SK Hynix/Samsung) + CoWoS",
+        "weeks": 12,
+        "owner": "TSMC"
+      },
+      {
+        "stage": "AWS Nitro integration + UltraCluster validation",
+        "weeks": 10,
+        "owner": "AWS Annapurna"
+      },
+      {
+        "stage": "Neuron SDK + model porting (PyTorch → Trainium)",
+        "weeks": 16,
+        "owner": "AWS AI team"
+      },
+      {
+        "stage": "Tokens served (Claude on Project Rainier)",
+        "weeks": 0,
+        "owner": "Anthropic / AWS Bedrock"
+      }
+    ]
+  },
+  "key_events": [
+    {
+      "date": "2024-03",
+      "event": "Trainium2 tape-out complete; AWS Project Rainier (400K+ chips) confirmed as largest ever custom cluster",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-06",
+      "event": "Marvell AI revenue crosses $1B annualized — Trainium2 production ramp begins",
+      "category": "financial",
+      "significance": "high"
+    },
+    {
+      "date": "2024-10",
+      "event": "OCTEON 10 DPU (400G) adopted by major US cloud providers for AI workload offload",
+      "category": "product",
+      "significance": "medium"
+    },
+    {
+      "date": "2025-01",
+      "event": "Marvell FY2025 Q3: AI revenue $1.1B/quarter — Trainium2 dominant driver",
+      "category": "financial",
+      "significance": "high"
+    },
+    {
+      "date": "2025-06",
+      "event": "800G optical PHY (Alaska C) enters mass production — AI inter-rack connectivity leader",
+      "category": "product",
+      "significance": "medium"
+    },
+    {
+      "date": "2025-09",
+      "event": "Trainium3 (3nm, HBM4 target) development confirmed with AWS — Marvell's N+1 ASIC",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2026-03",
+      "event": "FY2026 Q1: revenue $1.875B (+61% YoY); Marvell AI revenue '10× larger than 2 years ago'",
+      "category": "financial",
+      "significance": "high"
+    }
+  ]
 }

@@ -123,5 +123,92 @@
       "HPE"
     ],
     "scm_position": "GPU + CPU tier — AI GPU (HBM consumer) + host CPU in every AI server"
-  }
+  },
+  "lead_time": {
+    "total_months_to_token": 8,
+    "description": "AMD GPU ship-out → tokens served ≈ 8 months. Longer than NVIDIA because AMD ROCm software stack requires more porting work (less mature than CUDA), adding 2-3 months for model optimization.",
+    "bottleneck": "ROCm software stack maturity — vLLM/PyTorch support adds 6-8 weeks vs NVIDIA CUDA",
+    "pipeline": [
+      {
+        "stage": "TSMC CoWoS (MI300X GPU die + HBM bonding)",
+        "weeks": 12,
+        "owner": "TSMC"
+      },
+      {
+        "stage": "AMD GPU test, binning, OAM module assembly",
+        "weeks": 4,
+        "owner": "AMD"
+      },
+      {
+        "stage": "Server OEM integration (Dell PowerEdge XE9680)",
+        "weeks": 4,
+        "owner": "Dell / Supermicro"
+      },
+      {
+        "stage": "Hyperscaler deployment + ROCm stack setup",
+        "weeks": 6,
+        "owner": "Microsoft / Oracle"
+      },
+      {
+        "stage": "Model porting / optimization for ROCm (vs CUDA)",
+        "weeks": 8,
+        "owner": "Customer AI team"
+      },
+      {
+        "stage": "Tokens served (Azure HBv4 / Oracle GPU)",
+        "weeks": 0,
+        "owner": "End users"
+      }
+    ]
+  },
+  "key_events": [
+    {
+      "date": "2024-01",
+      "event": "MI300X (192GB HBM3, $15K/chip) generally available — highest GPU HBM capacity at launch",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-03",
+      "event": "Microsoft Azure HBv4 (8× MI300X, 1.5TB HBM3/server) announced — largest AMD AI deployment",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-06",
+      "event": "AMD datacenter revenue $2.8B — GPU revenue 'inflecting significantly' per Lisa Su",
+      "category": "financial",
+      "significance": "medium"
+    },
+    {
+      "date": "2024-09",
+      "event": "MI325X (256GB HBM3e) announced — breaks NVIDIA HBM capacity record per GPU",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-01",
+      "event": "EPYC Turin (5nm, 192-core) takes #1 datacenter CPU market share from Intel Xeon",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-04",
+      "event": "MI350 (3nm TSMC, 288GB HBM3e) announced — targets NVIDIA B200 performance",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-06",
+      "event": "vLLM and PyTorch ROCm support reaches parity with CUDA — AMD inference adoption accelerates",
+      "category": "product",
+      "significance": "medium"
+    },
+    {
+      "date": "2026-04",
+      "event": "Q1 2026: datacenter revenue $3.7B; MI400 (HBM4) roadmap confirmed for 2027",
+      "category": "financial",
+      "significance": "high"
+    }
+  ]
 }

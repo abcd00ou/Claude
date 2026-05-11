@@ -118,5 +118,86 @@
       "Chinese fabless chip companies (Biren, Cambricon for advanced nodes)"
     ],
     "scm_position": "China foundry tier — fabricates all China advanced AI chip dies (GPU + HBM die)"
-  }
+  },
+  "lead_time": {
+    "total_months_to_token": 18,
+    "description": "SMIC N+2 wafer-out → tokens served ≈ 18 months inside China. Yield at N+2 is ~60-65% vs TSMC's 80%+ on comparable nodes, meaning effectively 20-30% more wafer time is needed to fill the same chip order.",
+    "bottleneck": "DUV multi-patterning yield at N+2 node — physically limited by 193nm wavelength without EUV",
+    "pipeline": [
+      {
+        "stage": "SMIC N+2 wafer production (Ascend / CXMT dies)",
+        "weeks": 14,
+        "owner": "SMIC"
+      },
+      {
+        "stage": "Wafer test + die sort (lower yield = more time)",
+        "weeks": 4,
+        "owner": "SMIC"
+      },
+      {
+        "stage": "Packaging (Amkor China / JCET — domestic)",
+        "weeks": 8,
+        "owner": "Amkor / JCET"
+      },
+      {
+        "stage": "Chip delivery to Huawei / CXMT",
+        "weeks": 2,
+        "owner": "Logistics"
+      },
+      {
+        "stage": "Server assembly + cluster build",
+        "weeks": 10,
+        "owner": "Huawei"
+      },
+      {
+        "stage": "Tokens served (Chinese AI)",
+        "weeks": 0,
+        "owner": "End users"
+      }
+    ]
+  },
+  "key_events": [
+    {
+      "date": "2024-01",
+      "event": "SMIC N+2 yield reported at 60-65% — double-patterning DUV achieves 7nm-class at scale",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-03",
+      "event": "Huawei Mate 60 Pro (Kirin 9000S, SMIC N+2) teardown confirms advanced node capability",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-06",
+      "event": "SMIC 28nm expansion: 35K WPM capacity for automotive/IoT — mature node funds advanced R&D",
+      "category": "capacity",
+      "significance": "medium"
+    },
+    {
+      "date": "2024-09",
+      "event": "US BIS rule: no new ASML DUV tools to SMIC — equipment access frozen at 2024 baseline",
+      "category": "risk",
+      "significance": "high"
+    },
+    {
+      "date": "2025-04",
+      "event": "SMIC returns to advanced packaging — scales team for AI chip CoWoS-like capability (domestic)",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-07",
+      "event": "SMIC N+3 (5nm-class DUV) development attempts begin — technically very challenging without EUV",
+      "category": "product",
+      "significance": "medium"
+    },
+    {
+      "date": "2026-05",
+      "event": "SMIC Q1 2026: $2.24B revenue (+28% YoY); advanced node utilization near 100%",
+      "category": "financial",
+      "significance": "high"
+    }
+  ]
 }

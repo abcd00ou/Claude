@@ -124,5 +124,86 @@
       "Qualcomm (smartphone DRAM partnership)"
     ],
     "scm_position": "China memory tier — only domestic HBM supplier; critical bottleneck for China AI self-sufficiency"
-  }
+  },
+  "lead_time": {
+    "total_months_to_token": 20,
+    "description": "CXMT HBM-equivalent → tokens served ≈ 20 months inside China. Longer than SK Hynix because CXMT yield is lower, production volume is constrained, and the HBM spec is 1-2 generations behind, so more stacks are needed per GPU.",
+    "bottleneck": "DUV multi-patterning yield (~50-60% vs SK Hynix EUV ~75%) — every 10% yield improvement reduces effective lead time by 2 months",
+    "pipeline": [
+      {
+        "stage": "ASML DUV wafer production (CXMT)",
+        "weeks": 14,
+        "owner": "CXMT"
+      },
+      {
+        "stage": "HBM-equivalent stack assembly (domestic packaging)",
+        "weeks": 10,
+        "owner": "CXMT + Amkor China"
+      },
+      {
+        "stage": "Huawei Ascend NPU + HBM bonding (domestic CoWoS-like)",
+        "weeks": 10,
+        "owner": "CXMT / Huawei packaging"
+      },
+      {
+        "stage": "Atlas 800T A2 server assembly",
+        "weeks": 6,
+        "owner": "Huawei hardware"
+      },
+      {
+        "stage": "MindSpore cluster deployment",
+        "weeks": 8,
+        "owner": "Chinese hyperscaler"
+      },
+      {
+        "stage": "Tokens served",
+        "weeks": 0,
+        "owner": "End users (China)"
+      }
+    ]
+  },
+  "key_events": [
+    {
+      "date": "2024-01",
+      "event": "CXMT DDR5 enters mass production — commercial product funds HBM R&D",
+      "category": "product",
+      "significance": "medium"
+    },
+    {
+      "date": "2024-04",
+      "event": "CXMT HBM2E-equivalent development program confirmed via supply chain reports",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-06",
+      "event": "Qualcomm partners with CXMT for smartphone DRAM — signals CXMT quality improving",
+      "category": "product",
+      "significance": "medium"
+    },
+    {
+      "date": "2024-10",
+      "event": "Former Samsung researcher jailed for leaking chip technology to CXMT — talent acquisition strategy exposed",
+      "category": "risk",
+      "significance": "high"
+    },
+    {
+      "date": "2025-03",
+      "event": "CXMT HBM3 development timeline slips — mass production unlikely in 2026 per Digitimes",
+      "category": "risk",
+      "significance": "high"
+    },
+    {
+      "date": "2025-07",
+      "event": "CXMT state funding round: additional CNY 50B — government commits to self-sufficient HBM by 2027",
+      "category": "capacity",
+      "significance": "high"
+    },
+    {
+      "date": "2026-04",
+      "event": "CXMT HBM2E sampling reportedly delivered to Huawei — validation testing begins",
+      "category": "product",
+      "significance": "high"
+    }
+  ]
 }

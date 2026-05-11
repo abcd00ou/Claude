@@ -171,5 +171,92 @@
       "Colocation providers (Equinix, Digital Realty)"
     ],
     "scm_position": "Infrastructure tier — power and cooling prerequisite for all AI server deployments"
-  }
+  },
+  "lead_time": {
+    "total_months_to_token": 18,
+    "description": "Vertiv power/cooling order → tokens served ≈ 18 months. CDU/UPS must be installed before any GPU rack goes live. Liquid cooling retrofit adds 12-16 months of construction before racks can be installed.",
+    "bottleneck": "Building construction + electrical permit approval — adds 6-12 months before Vertiv equipment can install",
+    "pipeline": [
+      {
+        "stage": "Hyperscaler DC construction + electrical rough-in",
+        "weeks": 36,
+        "owner": "DC developer + electricians"
+      },
+      {
+        "stage": "Vertiv CDU + UPS delivery and installation",
+        "weeks": 12,
+        "owner": "Vertiv field service"
+      },
+      {
+        "stage": "Cooling commissioning + pressure testing",
+        "weeks": 4,
+        "owner": "Vertiv + DC ops"
+      },
+      {
+        "stage": "GPU rack installation + power-on",
+        "weeks": 3,
+        "owner": "NVIDIA / ODM"
+      },
+      {
+        "stage": "Network, software, model deployment",
+        "weeks": 9,
+        "owner": "Hyperscaler"
+      },
+      {
+        "stage": "Tokens served",
+        "weeks": 0,
+        "owner": "End users"
+      }
+    ]
+  },
+  "key_events": [
+    {
+      "date": "2024-01",
+      "event": "Vertiv signs NVIDIA GB200 NVL72 certification — only UPS/cooling vendor certified for Blackwell rack",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-04",
+      "event": "Q1 2024 earnings: order backlog hits record $6B — AI demand overwhelming cooling supply",
+      "category": "financial",
+      "significance": "high"
+    },
+    {
+      "date": "2024-07",
+      "event": "48V DC power shelf production begins — required by GB200 NVL72 architecture",
+      "category": "product",
+      "significance": "medium"
+    },
+    {
+      "date": "2024-10",
+      "event": "400kW CDU (Coolant Distribution Unit) capacity — enables 100kW+ per rack deployments",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-01",
+      "event": "Q4 2024 earnings: 83% profit growth; backlog $7.5B; liquid cooling backlog 3× YoY",
+      "category": "financial",
+      "significance": "high"
+    },
+    {
+      "date": "2025-04",
+      "event": "Vertiv acquires Strategic Thermal Labs — expands direct liquid cooling IP portfolio",
+      "category": "strategy",
+      "significance": "medium"
+    },
+    {
+      "date": "2025-06",
+      "event": "$50M Ohio manufacturing expansion — new liquid cooling production for AI datacenter demand",
+      "category": "capacity",
+      "significance": "medium"
+    },
+    {
+      "date": "2026-05",
+      "event": "VRT stock hits record high; analyst: AI power demand creates multi-year structural backlog",
+      "category": "financial",
+      "significance": "high"
+    }
+  ]
 }

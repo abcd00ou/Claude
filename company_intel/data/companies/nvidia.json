@@ -143,5 +143,105 @@
       "HPE"
     ],
     "scm_position": "GPU tier — central integrator of HBM + GPU die at TSMC; sold to hyperscalers and server OEMs"
-  }
+  },
+  "lead_time": {
+    "total_months_to_token": 6,
+    "description": "NVIDIA GPU ship-out → tokens served ≈ 6 months. HBM must be qualified and ready at TSMC before GPU ships; the actual GPU→server→DC pipeline runs fast because hyperscalers have pre-built infrastructure.",
+    "bottleneck": "TSMC CoWoS capacity — GPU production is gated by CoWoS slot availability, not GPU design speed",
+    "pipeline": [
+      {
+        "stage": "TSMC CoWoS (GPU die + HBM bonding)",
+        "weeks": 12,
+        "owner": "TSMC"
+      },
+      {
+        "stage": "GPU module test & binning",
+        "weeks": 3,
+        "owner": "NVIDIA"
+      },
+      {
+        "stage": "Server OEM integration (DGX/HGX build)",
+        "weeks": 4,
+        "owner": "Dell / Supermicro / ODM"
+      },
+      {
+        "stage": "Hyperscaler rack deployment & networking",
+        "weeks": 5,
+        "owner": "Microsoft / AWS / Google"
+      },
+      {
+        "stage": "Tokens served",
+        "weeks": 0,
+        "owner": "End users"
+      }
+    ]
+  },
+  "key_events": [
+    {
+      "date": "2024-03",
+      "event": "H200 SXM5 (141GB HBM3e) first deliveries — 1.8× more HBM than H100",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-05",
+      "event": "FY2025 Q1 earnings: $22.6B datacenter revenue — 427% YoY growth",
+      "category": "financial",
+      "significance": "high"
+    },
+    {
+      "date": "2024-08",
+      "event": "Blackwell B200 / GB200 unveiled — 192GB HBM3e per GPU, 1000W TDP",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-09",
+      "event": "Blackwell yield issues reported — CoWoS defects delay mass production by ~1 quarter",
+      "category": "risk",
+      "significance": "high"
+    },
+    {
+      "date": "2024-11",
+      "event": "Blackwell B200 mass production confirmed — yield issues resolved at TSMC N4",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-01",
+      "event": "GB200 NVL72 first deliveries to Microsoft, Google, Meta — 72-GPU liquid-cooled rack",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-03",
+      "event": "FY2025 Q4 earnings: $35.6B datacenter revenue; Blackwell = >50% of DC revenue",
+      "category": "financial",
+      "significance": "high"
+    },
+    {
+      "date": "2025-05",
+      "event": "Rubin GPU (HBM4E) roadmap confirmed for 2027 — successor to Blackwell",
+      "category": "product",
+      "significance": "medium"
+    },
+    {
+      "date": "2025-07",
+      "event": "GB300 (Blackwell Ultra, HBM4) announced — qualification race for SK Hynix vs Micron",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2026-02",
+      "event": "FY2026 Q4 earnings: $39.3B total revenue, DC $35.6B — new record",
+      "category": "financial",
+      "significance": "high"
+    },
+    {
+      "date": "2026-05",
+      "event": "Q1 FY2027 guidance: ~$78B total revenue — Blackwell Ultra ramp begins",
+      "category": "financial",
+      "significance": "high"
+    }
+  ]
 }

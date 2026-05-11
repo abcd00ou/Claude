@@ -165,5 +165,86 @@
       "Utilities"
     ],
     "scm_position": "Power generation + grid tier — provides electricity that AI datacenters consume"
-  }
+  },
+  "lead_time": {
+    "total_months_to_token": 36,
+    "description": "GE Vernova transformer order → tokens served ≈ 36 months. The longest lead time in the AI supply chain. Transformer (18-36 months) + substation construction (12 months) + grid interconnect approval (6-12 months) must all complete before any server gets power.",
+    "bottleneck": "Grid transformer manufacturing — 18-36 month backlog; cannot be fast-tracked without pre-ordering 3 years ahead",
+    "pipeline": [
+      {
+        "stage": "Hyperscaler orders transformer from GE Vernova",
+        "weeks": 0,
+        "owner": "GE Vernova order"
+      },
+      {
+        "stage": "Transformer manufacturing (specialized, long cycle)",
+        "weeks": 72,
+        "owner": "GE Vernova factory"
+      },
+      {
+        "stage": "Substation construction + electrical permit",
+        "weeks": 36,
+        "owner": "Utility / developer"
+      },
+      {
+        "stage": "Grid interconnection approval (FERC/NERC)",
+        "weeks": 24,
+        "owner": "Regulatory"
+      },
+      {
+        "stage": "Server racks powered + network deployed",
+        "weeks": 14,
+        "owner": "Hyperscaler"
+      },
+      {
+        "stage": "Tokens served",
+        "weeks": 0,
+        "owner": "End users"
+      }
+    ]
+  },
+  "key_events": [
+    {
+      "date": "2024-01",
+      "event": "GE Vernova spin-off from GE completes — standalone company focused on energy transition",
+      "category": "org",
+      "significance": "medium"
+    },
+    {
+      "date": "2024-06",
+      "event": "GE Vernova IPO pricing $32B — AI power demand cited as primary growth driver",
+      "category": "financial",
+      "significance": "high"
+    },
+    {
+      "date": "2024-09",
+      "event": "Transformer backlog reaches 3+ years — every new AI datacenter faces 18-36 month power constraint",
+      "category": "capacity",
+      "significance": "high"
+    },
+    {
+      "date": "2025-01",
+      "event": "Microsoft signs direct HA gas turbine contract — first hyperscaler to build own on-site power generation",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-04",
+      "event": "GEV stock +65% YTD — recognized as critical AI supply chain node alongside NVIDIA and SK Hynix",
+      "category": "financial",
+      "significance": "medium"
+    },
+    {
+      "date": "2025-07",
+      "event": "Google signs HVDC contract for offshore wind-to-datacenter link — GE Vernova provides conversion",
+      "category": "product",
+      "significance": "medium"
+    },
+    {
+      "date": "2026-04",
+      "event": "Q1 2026 earnings: GE Vernova lifts 2026 outlook; power equipment demand driven by AI boom",
+      "category": "financial",
+      "significance": "high"
+    }
+  ]
 }

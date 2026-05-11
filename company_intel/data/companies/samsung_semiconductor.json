@@ -165,5 +165,110 @@
       "OEM server makers (Dell, HPE, Supermicro)"
     ],
     "scm_position": "Memory tier — HBM on GPU die + DDR5 in server host slots"
-  }
+  },
+  "lead_time": {
+    "total_months_to_token": 14,
+    "description": "Samsung HBM → tokens ≈ 14 months. Longer than SK Hynix because NVIDIA qualification is still pending, adding 2-month uncertainty buffer.",
+    "bottleneck": "NVIDIA HBM3e yield qualification — still unresolved as of Q1 2026 for Blackwell",
+    "pipeline": [
+      {
+        "stage": "HBM wafer production",
+        "weeks": 10,
+        "owner": "Samsung DS"
+      },
+      {
+        "stage": "TSMC CoWoS packaging (for AMD/Google path)",
+        "weeks": 12,
+        "owner": "TSMC"
+      },
+      {
+        "stage": "GPU module assembly (AMD MI300X / Google TPU)",
+        "weeks": 5,
+        "owner": "AMD / Google ODM"
+      },
+      {
+        "stage": "Server integration & testing",
+        "weeks": 6,
+        "owner": "Dell / Google"
+      },
+      {
+        "stage": "Hyperscaler rack deployment",
+        "weeks": 8,
+        "owner": "Microsoft Azure / Google Cloud"
+      },
+      {
+        "stage": "Tokens served",
+        "weeks": 0,
+        "owner": "End users"
+      }
+    ]
+  },
+  "key_events": [
+    {
+      "date": "2023-06",
+      "event": "HBM3 production for AMD MI300X — Samsung primary supplier for AMD",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-01",
+      "event": "HBM3e 8-Hi starts mass production for AMD MI300X and Google TPU v5",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-05",
+      "event": "NVIDIA HBM3e qualification failure reported — yield issues on thermal/electrical spec",
+      "category": "risk",
+      "significance": "high"
+    },
+    {
+      "date": "2024-09",
+      "event": "CEO Lee Jae-yong restructures DS Division; MX division head replaced amid HBM crisis",
+      "category": "org",
+      "significance": "high"
+    },
+    {
+      "date": "2024-11",
+      "event": "Second attempt at NVIDIA HBM3e qualification; timeline slips to 2025",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-02",
+      "event": "HBM3 12-Hi (36GB) development announced; focus shifts to B200 opportunity",
+      "category": "product",
+      "significance": "medium"
+    },
+    {
+      "date": "2025-05",
+      "event": "NVIDIA HBM3e qualification reportedly passed for partial B200 supply",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-07",
+      "event": "HBM4 roadmap confirmed — 1-2 quarters behind SK Hynix per analyst estimates",
+      "category": "product",
+      "significance": "medium"
+    },
+    {
+      "date": "2026-01",
+      "event": "Record semiconductor profit announced: KRW 53.7T for FY2025",
+      "category": "financial",
+      "significance": "high"
+    },
+    {
+      "date": "2026-04",
+      "event": "Q1 2026 DS revenue KRW 28T — HBM share grows despite NVIDIA qualification delay",
+      "category": "financial",
+      "significance": "medium"
+    },
+    {
+      "date": "2026-04",
+      "event": "Internal strife report: engineering exodus to SK Hynix affects HBM yield recovery",
+      "category": "risk",
+      "significance": "high"
+    }
+  ]
 }

@@ -128,5 +128,104 @@
       "Meta AI assistant (external product)"
     ],
     "scm_position": "Demand tier — direct HBM consumer via NVIDIA GPU purchases + MTIA direct path"
-  }
+  },
+  "lead_time": {
+    "total_months_to_token": 4,
+    "description": "Meta GPU receipt → tokens served ≈ 4 months. Meta builds its own racks (OAM form factor) and does not sell cloud compute, so deployment speed depends on Meta DC ops. Inference (MTIA) goes live faster than training clusters.",
+    "bottleneck": "OAM chassis manufacturing and liquid cooling retrofit — custom form factor adds 3-4 weeks vs standard rack",
+    "pipeline": [
+      {
+        "stage": "NVIDIA H200 / MTIA chip delivery",
+        "weeks": 0,
+        "owner": "Meta receiving"
+      },
+      {
+        "stage": "OAM rack chassis assembly (custom Meta design)",
+        "weeks": 4,
+        "owner": "Meta hardware ops"
+      },
+      {
+        "stage": "Liquid cooling installation (CDU, Vertiv)",
+        "weeks": 3,
+        "owner": "Meta DC ops"
+      },
+      {
+        "stage": "PyTorch / MTIA software stack deployment",
+        "weeks": 3,
+        "owner": "Meta AI Infra"
+      },
+      {
+        "stage": "Model training run / Llama fine-tuning / inference routing",
+        "weeks": 6,
+        "owner": "Meta AI Research"
+      },
+      {
+        "stage": "Tokens served (Meta AI, Llama API)",
+        "weeks": 0,
+        "owner": "End users"
+      }
+    ]
+  },
+  "key_events": [
+    {
+      "date": "2024-01",
+      "event": "Meta commits to buying 350K H100 GPUs — world's largest single purchase; 'Grand Teton' cluster",
+      "category": "capacity",
+      "significance": "high"
+    },
+    {
+      "date": "2024-04",
+      "event": "Llama 3 (8B, 70B, 405B) released open-source — trained on Grand Teton H100 cluster",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-06",
+      "event": "MTIA v2 deployed at scale for Reels/Feed inference — reduces GPU requirement for inference",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2024-07",
+      "event": "Meta AI assistant launched globally — inference demand surge, new HBM pull from MTIA + GPU",
+      "category": "product",
+      "significance": "medium"
+    },
+    {
+      "date": "2024-10",
+      "event": "Q3 2024 earnings: $15.7B net income; CapEx raised to $37-40B for 2024 full year",
+      "category": "financial",
+      "significance": "medium"
+    },
+    {
+      "date": "2025-01",
+      "event": "Meta announces 2GW Louisiana AI datacenter — largest single AI datacenter project announced",
+      "category": "capacity",
+      "significance": "high"
+    },
+    {
+      "date": "2025-04",
+      "event": "Llama 4 (Scout, Maverick, Behemoth) released — trained on H200 clusters, largest open-source model",
+      "category": "product",
+      "significance": "high"
+    },
+    {
+      "date": "2025-07",
+      "event": "Meta CapEx raised to $64-72B for 2026 — 3× increase in 18 months from 2024 guidance",
+      "category": "capacity",
+      "significance": "high"
+    },
+    {
+      "date": "2026-03",
+      "event": "Facebook fires 8,000 employees amid $145B AI investment push — efficiency + AI double-down",
+      "category": "org",
+      "significance": "medium"
+    },
+    {
+      "date": "2026-04",
+      "event": "Q1 2026: $42.3B revenue (+16% YoY); CapEx $19.84B — AI infrastructure now 40%+ of total spend",
+      "category": "financial",
+      "significance": "high"
+    }
+  ]
 }
