@@ -1,0 +1,99 @@
+{
+  "company": "Microsoft",
+  "ticker": "MSFT",
+  "last_updated": "2026-05-11",
+  "snapshot": {
+    "revenue_qtr": "$70.1B (Q3 FY2026, +13% YoY)",
+    "revenue_qtr_usd": "$70.1B",
+    "azure_growth_cc_pct": 39,
+    "capex_qtr_usd": "$21.4B",
+    "capex_2026_guidance_usd": "$80B",
+    "headcount": 228000,
+    "market_cap_usd_bn": 3100
+  },
+  "product_roadmap": [
+    {
+      "product": "Azure AI (H100/H200 clusters)",
+      "status": "deployed",
+      "hbm_supplier": "SK Hynix / Micron (via NVIDIA)",
+      "note": "OpenAI exclusive compute partner; largest single NVIDIA customer"
+    },
+    {
+      "product": "Maia 2 (custom AI ASIC)",
+      "status": "deployed",
+      "hbm_supplier": "TBD",
+      "note": "Custom AI inferencing chip for Azure; partial HBM replacement for NVIDIA"
+    },
+    {
+      "product": "Azure GB200 NVL72",
+      "status": "ramping",
+      "hbm_supplier": "SK Hynix (via NVIDIA)",
+      "note": "Blackwell rack deployments for OpenAI GPT-5 training workloads"
+    }
+  ],
+  "key_contacts": [
+    {
+      "name": "",
+      "title": "CVP, Azure Infrastructure",
+      "linkedin": null,
+      "note": "Manual entry — update before next meeting"
+    }
+  ],
+  "recent_news": [
+    {
+      "date": "2026-04-29",
+      "title": "Microsoft calls for $190 billion in 2026 capital spending on soaring memory prices",
+      "url": "https://news.google.com/rss/articles/CBMitAFBVV95cUxObTZKenV0dGZROWs1UF9zeUNsV01tYzNvVHNZNU1wNlFGR0paeDQ1bEJzQ21BVUJKa01SSHpyLVl3dWtuM25YMEJoNWo2aVdOY2o5VmJfNXhfMzhvSVZ4VTk4QVNPRjJ4Ymltb2kybEVVNWhyMlpyMlZVdFlYT1ZNR0dpQ3FJMEs1NkpUSGFUUThXMkRTQ2stQXhzMmltQTdKX3lRUXdfX3RCRHRjMURzSVpMMmc?oc=5",
+      "source": "The Tech Buzz"
+    },
+    {
+      "date": "2026-05-01",
+      "title": "The Big 4 Hyperscalers Are Spending $710 Billion on AI. Here’s the Stock That Profits Most",
+      "url": "https://news.google.com/rss/articles/CBMiywFBVV95cUxPdk1oX1owTDBUTFY1VjRmUVhiZng0eTlScVRpX3FjMW9SZTZJc0JjQWdaQTVXeWtiVHBnSnplUjlzM3phRTd4NmZzTFdEeGg2ZDZlQjZka1VRcWpZTlFRZXU3SWdZZ3VHcl9WTmlNNWctNFZFN3VPeFlaVTVaSmZ2ZXkzR19VblkwSm1iTDlCWUhzTGt2VDlKM09OeFJIUU84NDVJbTlnVm5xQ2VUWEFRMkdZMmE5emdQV1h6Y2lmVHFyaWd4Ym5tUjJuYw?oc=5",
+      "source": "24/7 Wall St."
+    },
+    {
+      "date": "2026-04-30",
+      "title": "Data-Center Capex Hikes Positive For These AI Stocks",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxNZ3ZoQS1HTnhPNE04YW1Oa2pfZUlUU3U0SmRKSUJoUTFfZnNvbGpOaDg4ZUJOakptVERocGVpUkNBS0JTaHJqQ3VvOXB6amFWaHpXVk9kbVNxbTZVZDZDNklwV0JBVFNXUzl5THNVUFp3RTlvYjFyWVpWeHROMjh4VkRMaGdfQlNwM3NTQ2x3?oc=5",
+      "source": "Investor's Business Daily"
+    },
+    {
+      "date": "2026-05-01",
+      "title": "Skyrocketing component prices push Big Tech capex to record $725 billion — Microsoft alone attributes $25 billion of AI budget to increased memory and chip costs",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQWmJ3SzNCSjBYWnZjXzJVQjhCUDRFYUlUTEtzbUxpb1BJR3IxbTN2cmUxV3NyRm9zeVNrSEJPdXA0YXJON0hxUjg2Q3l2YXhpcjREbnhXUmhHVTNFb1lsMHBmVnFsdWNHYk9tQjNrekh5dFhJdjE4NnVBcS10SndIc3lWYjdtRW5qNGRjZEd2UnRrOXhZd1I5MlF3bjhIR2ctQjY4Q3JRcWpRQlRoa1BHSXdyWW5SeUxWcHMySWRvYzVibHluWGxR?oc=5",
+      "source": "Tom's Hardware"
+    },
+    {
+      "date": "2026-05-07",
+      "title": "Best AI Stocks to Buy in 2026: 10 Top Picks & How to Invest",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQcTN4SWRQbVZpY1lwSnJjN3YxWmY5LU5Qck5ia2psWWRwcWplZ0RGTFo3ZmJrZDZ1S1RQZFF2NUcwOTh0NXA3NlM0a25ieHhPWHprdTBmbWxzY2FtdHRIMlpSY1pzcTU5ZkhfN0wtcF9UeDg4WnZVYTZPSkRtcDNZaUJ1djdPQ1RVRkVQeVFUTnJrMFJ5VXdj?oc=5",
+      "source": "The Motley Fool"
+    }
+  ],
+  "sales_hooks": [
+    "Microsoft committed $80B CapEx in FY2026, with Azure growth at +39% CC — the OpenAI relationship is the largest single HBM demand multiplier outside of NVIDIA's own supply chain.",
+    "Microsoft Maia 2 custom ASIC runs on Azure for inference; if it takes share from GPU workloads, HBM demand profile shifts from NVIDIA-intermediated to direct procurement.",
+    "Azure is the #1 cloud for OpenAI GPT-5 training — every GPT generation step-up requires a discrete cluster build, each representing hundreds of millions in HBM.",
+    "Microsoft's Copilot/M365 AI integration drives inference at consumer scale — the inference memory market (lower bandwidth, higher capacity) is a key growth vector for memory suppliers."
+  ],
+  "competitive_position": {
+    "cloud_ai_rank": 1,
+    "vs_aws": "Ahead on enterprise AI (M365 Copilot); behind on raw cloud infrastructure market share",
+    "vs_google": "Stronger enterprise penetration; Google stronger on search AI and consumer",
+    "hbm_sourcing": "Primarily via NVIDIA (SK Hynix dominant); exploring direct procurement for future ASICs"
+  },
+  "financials_history": {
+    "FY2026Q3_capex_usd_bn": 21.4,
+    "FY2026Q2_capex_usd_bn": 22.6,
+    "FY2026Q1_capex_usd_bn": 20.0,
+    "FY2025Q4_capex_usd_bn": 19.0,
+    "FY2025Q3_capex_usd_bn": 14.0,
+    "2026Q1_capex_usd_bn": 21.4
+  },
+  "sources": [
+    "Microsoft Q3 FY2026 Earnings (Apr 2026)",
+    "AI_SCM/data/seed_data.json"
+  ],
+  "flagged_news": []
+}

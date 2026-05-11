@@ -1,0 +1,86 @@
+{
+  "company": "Meta Platforms",
+  "ticker": "META",
+  "last_updated": "2026-05-11",
+  "snapshot": {
+    "revenue_qtr": "$42.3B (Q1 2026, +16% YoY)",
+    "revenue_qtr_usd": "$42.3B",
+    "capex_qtr_usd": "$19.84B",
+    "capex_2026_guidance_usd_bn_low": 64,
+    "capex_2026_guidance_usd_bn_high": 72,
+    "headcount": 76000,
+    "market_cap_usd_bn": 1600
+  },
+  "product_roadmap": [
+    {
+      "product": "Grand Teton (H100 cluster, 350K GPU)",
+      "status": "deployed",
+      "hbm_supplier": "SK Hynix (via NVIDIA)",
+      "note": "World's largest single-tenant GPU cluster; Llama 3/4 training"
+    },
+    {
+      "product": "MTIA v2 (custom AI ASIC)",
+      "status": "deployed",
+      "hbm_supplier": "Direct (TBD)",
+      "note": "Meta Training and Inference Accelerator; inference for Reels/Feed ranking"
+    },
+    {
+      "product": "Next-gen 2GW AI datacenter (Louisiana)",
+      "status": "construction",
+      "hbm_supplier": "SK Hynix / Micron (via NVIDIA)",
+      "note": "Announced 2025; targeting 2027 completion; $10B+ investment"
+    }
+  ],
+  "key_contacts": [
+    {
+      "name": "",
+      "title": "VP, Infrastructure Engineering",
+      "linkedin": null,
+      "note": "Manual entry — update before next meeting"
+    }
+  ],
+  "recent_news": [
+    {
+      "date": "2026-05-10",
+      "title": "Facebook Will Fire 8000 Employees As Part Of $145 Billion AI Push",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxNd0ZLMHFYN0pGTnZsbWoxeFkwc1JrMFpYUUEzTFRtSDJJNlJVaEVNdEFFOWdpM0VHM1hXbnVGV09BVEJxd2pkSW9iX3pGR2E4cHBDUzJHbERqNXRLSXozSVBoTS1PWjV3cFN1QU1PaEVObmg4THhCdVVlNUtScjlXSUQteDlqLWNZdjlTUm5aWEQ3Nnc?oc=5",
+      "source": "Trak.in"
+    },
+    {
+      "date": "2026-05-06",
+      "title": "AI Capex Carries U.S. Economy: 75% of Q1 GDP Growth, IA13 Trickle-Down",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBMTmM5ZnNiRDdLZFZsN1d4Z29lYmdGMDhMRk55UDJRX25ZRGVOb3NWQjhmN3gzUkRoUkpGSG5MdGd6dFozUVl1ck5CX19yaGpJSFh2dTdPZWc0anVvTDNjdlU3c0dKbmFzS1hCVnRCeGRPaE40?oc=5",
+      "source": "techi.com"
+    },
+    {
+      "date": "2026-05-07",
+      "title": "Best AI Stocks to Buy in 2026: 10 Top Picks & How to Invest",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQcTN4SWRQbVZpY1lwSnJjN3YxWmY5LU5Qck5ia2psWWRwcWplZ0RGTFo3ZmJrZDZ1S1RQZFF2NUcwOTh0NXA3NlM0a25ieHhPWHprdTBmbWxzY2FtdHRIMlpSY1pzcTU5ZkhfN0wtcF9UeDg4WnZVYTZPSkRtcDNZaUJ1djdPQ1RVRkVQeVFUTnJrMFJ5VXdj?oc=5",
+      "source": "The Motley Fool"
+    }
+  ],
+  "sales_hooks": [
+    "Meta $64-72B CapEx 2026 — raised guidance 3x in 18 months; Zuckerberg publicly committed to 'not losing the AI race', making HBM procurement a board-level priority.",
+    "Meta's open-source Llama model strategy means every GPU cluster Meta builds gets replicated by thousands of fine-tuners worldwide — Meta is both a direct HBM customer and an HBM demand multiplier.",
+    "Meta is the largest buyer of NVIDIA H100s that is NOT a cloud provider — unique procurement dynamics: no resale margin, direct ROI tied to ad targeting performance.",
+    "MTIA v2 custom chip handles inference without NVIDIA; if MTIA scales, Meta's HBM procurement path shifts from NVIDIA-intermediated to direct — a threat or an opportunity depending on your supplier's direct sales relationship."
+  ],
+  "competitive_position": {
+    "ai_compute_rank_by_gpu_count": 2,
+    "vs_microsoft": "Behind on enterprise AI; ahead on consumer social AI scale (3B+ daily users)",
+    "vs_google": "Open-source strategy (Llama) vs Google's proprietary Gemini — different HBM demand curves",
+    "hbm_sourcing": "Primary via NVIDIA H100/H200; MTIA custom path growing for inference"
+  },
+  "financials_history": {
+    "2025Q1_capex_usd_bn": 13.7,
+    "2025Q2_capex_usd_bn": 10.3,
+    "2025Q3_capex_usd_bn": 8.3,
+    "2025Q4_capex_usd_bn": 11.8,
+    "2026Q1_capex_usd_bn": 19.84
+  },
+  "sources": [
+    "Meta Q1 2026 Earnings (Apr 2026)",
+    "AI_SCM/data/seed_data.json"
+  ],
+  "flagged_news": []
+}

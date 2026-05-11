@@ -1,0 +1,103 @@
+{
+  "company": "Google (Alphabet)",
+  "ticker": "GOOGL",
+  "last_updated": "2026-05-11",
+  "snapshot": {
+    "revenue_qtr": "$90.2B (Q1 2026, +12% YoY)",
+    "revenue_qtr_usd": "$90.2B",
+    "capex_qtr_usd": "$35.7B",
+    "capex_2026_guidance_usd": "$75B",
+    "headcount": 185000,
+    "market_cap_usd_bn": 2100
+  },
+  "product_roadmap": [
+    {
+      "product": "TPU v5 (Trillium)",
+      "status": "deployed",
+      "hbm_supplier": "Samsung (primary), SK Hynix",
+      "note": "Custom AI accelerator replacing GPU workloads internally"
+    },
+    {
+      "product": "TPU v6",
+      "status": "development",
+      "hbm_supplier": "TBD",
+      "note": "Next-gen; aggressive HBM capacity requirements for 2026-2027"
+    },
+    {
+      "product": "Google Cloud A3 Ultra (H200)",
+      "status": "ga",
+      "hbm_supplier": "SK Hynix / Micron",
+      "note": "Externally sold GPU cluster; HBM demand via NVIDIA supply chain"
+    }
+  ],
+  "key_contacts": [
+    {
+      "name": "",
+      "title": "VP, Infrastructure Procurement",
+      "linkedin": null,
+      "note": "Manual entry — update before next meeting"
+    }
+  ],
+  "recent_news": [
+    {
+      "date": "2026-05-08",
+      "title": "The AGI timeline is being pushed back: Silicon Valley begins to reassess the real pace of AI",
+      "url": "https://news.google.com/rss/articles/CBMiakFVX3lxTE9sYmlVdVd2Y2dwaHVTOGVsblY3WkFxRWZMb2RldXJNalR4MTJseTR2S3lSTUE1RExYdjJiTzhHZWJaMVk4SVFSV2NFd1Iwd0VmRHlJczZ5RFJtaFpfRU5VUG9wMlZFV3FiVnc?oc=5",
+      "source": "Bitget"
+    },
+    {
+      "date": "2026-05-05",
+      "title": "Global AI Server & Supply Chain Outlook 2026",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE9uNThBZzloQVd4VDlUclhoeldCeS04STFPenpNWkhDem1xaVhtZHBOR1otUWpZNzhZaWhuQzhyR0ZoX2tKY0txT2NHdDBtWHdLSERxSTIxNHA5OE0xYjB1NWlmdUpIbDg?oc=5",
+      "source": "TrendForce"
+    },
+    {
+      "date": "2026-04-30",
+      "title": "Amazon, Google, Microsoft, Meta Q1 earnings: AI profits are here, custom silicon is winning",
+      "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTFA2MXN2QmFUOWpOTFZJbXJ6czVEVUFPcXpjWEppMldUS3pabmVlT0E1bW12ZlE3dk1xWXZGdmRsb0MtZ1k1bHJ5Uk52alJoMEpaYVpaSlktN09ldmxFa210NGNsNWxsRzBWS1FDZ0tvUm9kWTIwT2FsRFBvRQ?oc=5",
+      "source": "UncoverAlpha"
+    },
+    {
+      "date": "2026-04-30",
+      "title": "Google to sell TPUs to a \"select group of customers\" for their data centers, increases capex forecast",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPSFN5M2NwZ1dySGotSi1KTGRTRTNGdC1iT0UzWjJCLTRmRlVIeG9LRGNOXzMwUXRrZ2tzVGhtZmQzMDZLT0lhZE9hakRGNXJxZTBFdjdfNXFiYVNtYjlrdi1MTkN5QWM4bUhrTWR1bEc2eEFocGY3dmJWR0pkLUpiSDIybnVEVzNWNlJveUhrNW9JaDFmME5XbDdXZlU4NHRlX1gyZ3kxUkc4ekl4d3QxNldhYk1RdEh5?oc=5",
+      "source": "Data Center Dynamics"
+    },
+    {
+      "date": "2026-05-07",
+      "title": "Did Google Just Turn Chrome Users Into Its AI Data Center?",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5ITDdJMnlYLVVHTkt0ZHpFTkRianpxeGM4MExUaTJFSkp4QWloQUxIdTdXNVBvc2Z3S1RGWmpGOHZ3Y2dxZmVITTFFaWpCTnM1THR2UG01TS1RSi1SY3dNTjNUUDRuWmtfWTc5ZUJRQWZPVjVLUHVlTDVn?oc=5",
+      "source": "AOL.com"
+    },
+    {
+      "date": "2026-04-27",
+      "title": "Google Cloud unveils eighth-generation TPUs built to support an agentic era",
+      "url": "https://news.google.com/rss/articles/CBMiowFBVV95cUxORGZpdjNfQlpBeFotQk55dW9ldUctOTJkS1FUbHVFUEJ1QnZZS1M2YlFaMkxDRkY4a1dqZnNHRVN5aWhGOFk2ZkpXRkpYV3dMWkYxNXZsMDl0Z1VDSENoRlhDTEdYZnBZeEZPUHZDa3NXMWRxeUY0MkJqbDdVQ215dkQzSkVoSjZfdWRlNnlPbDVRNVhRcGZRNUJlTm1Cc1lLOWhN?oc=5",
+      "source": "Inkl"
+    }
+  ],
+  "sales_hooks": [
+    "Google $75B CapEx 2026 — largest infrastructure spend in Alphabet history, accelerating HBM pull through both TPU and GPU cloud paths. Translate this to SKU-level memory volume for your customer.",
+    "Google TPU custom silicon uses HBM directly from Samsung/SK Hynix without NVIDIA intermediary — a direct B2B relationship that most memory sales teams don't map explicitly.",
+    "Google Cloud is competing on H200 GPU availability vs AWS and Azure — tighter NVIDIA allocation means higher HBM urgency through the NVIDIA supply chain.",
+    "Waymo, DeepMind, and Gemini Ultra all require dedicated AI training clusters — these are discrete HBM demand centers with different procurement cycles."
+  ],
+  "competitive_position": {
+    "cloud_ai_rank": 3,
+    "vs_aws": "Behind on GPU cloud market share; ahead on custom silicon (TPU) and search AI integration",
+    "vs_microsoft": "Trailing on enterprise AI adoption; strong on consumer (Gemini in Search)",
+    "hbm_sourcing": "Dual-path: TPU (Samsung/SKH direct) + GPU cloud (via NVIDIA/TSMC)"
+  },
+  "financials_history": {
+    "2025Q1_capex_usd_bn": 17.2,
+    "2025Q2_capex_usd_bn": 13.2,
+    "2025Q3_capex_usd_bn": 13.1,
+    "2025Q4_capex_usd_bn": 14.3,
+    "2026Q1_capex_usd_bn": 35.7
+  },
+  "sources": [
+    "Alphabet Q1 2026 Earnings (Apr 2026)",
+    "AI_SCM/data/seed_data.json"
+  ],
+  "flagged_news": []
+}

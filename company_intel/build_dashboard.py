@@ -6,10 +6,20 @@ Chart.js loaded from CDN (internet required for charts; text renders offline).
 """
 
 import json
-from datetime import datetime
+from datetime import datetime, timezone
 from pathlib import Path
 
 from config import TARGET_COMPANIES, DATA_DIR, DASHBOARD_DIR, AI_SCM_SEED
+
+
+# SCM layer order for sidebar grouping
+LAYER_ORDER = ["HBM", "GPU", "Foundry", "Hyperscaler"]
+LAYER_LABELS = {
+    "HBM": "HBM Memory",
+    "GPU": "GPU",
+    "Foundry": "Foundry / Packaging",
+    "Hyperscaler": "Hyperscalers",
+}
 
 
 def load_profiles() -> list[dict]:
@@ -18,23 +28,33 @@ def load_profiles() -> list[dict]:
         path = DATA_DIR / f"{company['id']}.json"
         if path.exists():
             try:
-                profiles.append(json.loads(path.read_text()))
+                p = json.loads(path.read_text())
+                p["_layer"] = company.get("layer", "Other")
+                p["_id"] = company["id"]
+                profiles.append(p)
             except Exception:
                 pass
     return profiles
 
 
-def load_hbm_market_share() -> dict:
+def load_seed_data() -> dict:
     if not AI_SCM_SEED.exists():
         return {}
     try:
-        seed = json.loads(AI_SCM_SEED.read_text())
-        return seed.get("hbm_market", {}).get("market_share_annual", {})
+        return json.loads(AI_SCM_SEED.read_text())
     except Exception:
         return {}
 
 
-def build_html(profiles: list[dict], hbm_share: dict) -> str:
+def load_hbm_market_share(seed: dict) -> dict:
+    return seed.get("hbm_market", {}).get("market_share_annual", {})
+
+
+def load_hyperscaler_capex(seed: dict) -> dict:
+    return seed.get("hyperscaler_capex_usd_bn", {})
+
+
+def build_html(profiles: list[dict], hbm_share: dict, capex_annual: dict) -> str:
     profiles_json = json.dumps(profiles, ensure_ascii=False)
 
     # HBM share chart data — latest year
@@ -45,7 +65,7 @@ def build_html(profiles: list[dict], hbm_share: dict) -> str:
     if latest_year:
         year_data = hbm_share[latest_year]
         label_map = {"SK_Hynix": "SK Hynix", "Samsung": "Samsung", "Micron": "Micron"}
-        color_map = {"SK_Hynix": "#3182CE", "Samsung": "#2D3748", "Micron": "#E53E3E"}
+        color_map = {"SK_Hynix": "#3182CE", "Samsung": "#1A365D", "Micron": "#E53E3E"}
         for k, label in label_map.items():
             if k in year_data:
                 chart_labels.append(label)
@@ -60,16 +80,57 @@ def build_html(profiles: list[dict], hbm_share: dict) -> str:
         "year": hbm_chart_year,
     })
 
-    build_ts = datetime.utcnow().strftime("%Y-%m-%d %H:%M UTC")
-    company_ids = [c["id"] for c in TARGET_COMPANIES if
-                   (DATA_DIR / f"{c['id']}.json").exists()]
+    # Hyperscaler CapEx trend chart data (latest 4 years)
+    capex_chart_labels, capex_chart_datasets = [], []
+    capex_companies = ["MSFT", "GOOGL", "AMZN", "META"]
+    capex_colors = {"MSFT": "#0078D4", "GOOGL": "#34A853", "AMZN": "#FF9900", "META": "#1877F2"}
+    capex_display = {"MSFT": "Microsoft", "GOOGL": "Google", "AMZN": "Amazon", "META": "Meta"}
+    if capex_annual:
+        all_years = sorted(
+            set(y for k in capex_companies for y in capex_annual.get(k, {}) if not y.startswith("_")),
+            reverse=True
+        )[:5]
+        all_years = sorted(all_years)
+        capex_chart_labels = all_years
+        for k in capex_companies:
+            vals = [capex_annual.get(k, {}).get(y) for y in all_years]
+            if any(v is not None for v in vals):
+                capex_chart_datasets.append({
+                    "label": capex_display[k],
+                    "data": vals,
+                    "borderColor": capex_colors[k],
+                    "backgroundColor": capex_colors[k] + "22",
+                    "tension": 0.3,
+                    "fill": False,
+                })
+
+    capex_chart_json = json.dumps({
+        "labels": capex_chart_labels,
+        "datasets": capex_chart_datasets,
+    })
+
+    build_ts = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+
+    # Group companies by layer for sidebar
+    layers_with_companies = {}
+    for company in TARGET_COMPANIES:
+        cid = company["id"]
+        layer = company.get("layer", "Other")
+        if (DATA_DIR / f"{cid}.json").exists():
+            layers_with_companies.setdefault(layer, []).append(cid)
+
+    company_ids_by_layer = {
+        layer: layers_with_companies.get(layer, [])
+        for layer in LAYER_ORDER
+        if layer in layers_with_companies
+    }
 
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Company Intelligence Dashboard</title>
+<title>AI SCM Intelligence Dashboard</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
   * {{ box-sizing: border-box; margin: 0; padding: 0; }}
@@ -77,42 +138,69 @@ def build_html(profiles: list[dict], hbm_share: dict) -> str:
           background: #F7FAFC; color: #1A202C; display: flex; min-height: 100vh; }}
 
   /* Sidebar */
-  #sidebar {{ width: 220px; min-width: 220px; background: #1A202C; padding: 20px 0;
-              display: flex; flex-direction: column; }}
-  #sidebar h2 {{ color: #63B3ED; font-size: 11px; text-transform: uppercase;
-                 letter-spacing: 1px; padding: 0 16px 12px; border-bottom: 1px solid #2D3748; }}
-  .company-btn {{ display: block; width: 100%; text-align: left; padding: 10px 16px;
+  #sidebar {{ width: 230px; min-width: 230px; background: #1A202C; padding: 16px 0;
+              display: flex; flex-direction: column; overflow-y: auto; }}
+  #sidebar .logo {{ color: #63B3ED; font-size: 13px; font-weight: 700;
+                    padding: 0 16px 14px; border-bottom: 1px solid #2D3748; letter-spacing: 0.3px; }}
+  .layer-label {{ color: #4A5568; font-size: 10px; text-transform: uppercase;
+                  letter-spacing: 1px; padding: 14px 16px 4px; }}
+  .company-btn {{ display: block; width: 100%; text-align: left; padding: 8px 16px;
                   background: none; border: none; color: #A0AEC0; cursor: pointer;
                   font-size: 13px; transition: all 0.15s; }}
   .company-btn:hover {{ background: #2D3748; color: #E2E8F0; }}
   .company-btn.active {{ background: #2B6CB0; color: white; font-weight: 600; }}
-  #build-ts {{ color: #4A5568; font-size: 10px; padding: 12px 16px; margin-top: auto; }}
+  #build-ts {{ color: #4A5568; font-size: 10px; padding: 12px 16px; margin-top: auto;
+               border-top: 1px solid #2D3748; }}
+
+  /* Overview tab */
+  .overview-btn {{ display: block; width: 100%; text-align: left; padding: 10px 16px;
+                   background: none; border: none; border-bottom: 1px solid #2D3748;
+                   color: #68D391; cursor: pointer; font-size: 12px; font-weight: 600;
+                   letter-spacing: 0.3px; }}
+  .overview-btn:hover, .overview-btn.active {{ background: #276749; color: white; }}
 
   /* Main */
   #main {{ flex: 1; padding: 24px; overflow-y: auto; }}
   .header-bar {{ display: flex; justify-content: space-between; align-items: center;
-                  margin-bottom: 20px; }}
+                  margin-bottom: 20px; flex-wrap: wrap; gap: 8px; }}
   .company-title {{ font-size: 22px; font-weight: 700; }}
   .ticker {{ font-size: 13px; color: #718096; margin-left: 8px; font-weight: 400; }}
+  .layer-badge {{ font-size: 11px; padding: 3px 8px; border-radius: 10px;
+                  margin-left: 8px; font-weight: 600; }}
+  .badge-HBM {{ background: #BEE3F8; color: #2C5282; }}
+  .badge-GPU {{ background: #C6F6D5; color: #22543D; }}
+  .badge-Foundry {{ background: #FAF089; color: #744210; }}
+  .badge-Hyperscaler {{ background: #E9D8FD; color: #44337A; }}
   .last-updated {{ font-size: 12px; color: #718096;
                    background: #EDF2F7; padding: 4px 10px; border-radius: 4px; }}
 
-  /* Cards */
-  .grid-2 {{ display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }}
-  .grid-3 {{ display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 16px; }}
-  .card {{ background: white; border: 1px solid #E2E8F0; border-radius: 8px; padding: 16px; }}
-  .card h3 {{ font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
-               color: #718096; margin-bottom: 10px; }}
-  .metric {{ font-size: 22px; font-weight: 700; color: #1A202C; }}
-  .metric-label {{ font-size: 12px; color: #718096; margin-top: 2px; }}
-
-  /* Snapshot row */
-  .snapshot-grid {{ display: grid; grid-template-columns: repeat(4, 1fr);
+  /* Snapshot grid — adapts to content */
+  .snapshot-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
                      gap: 12px; margin-bottom: 16px; }}
   .snap-card {{ background: white; border: 1px solid #E2E8F0; border-radius: 8px;
                 padding: 14px 16px; }}
   .snap-val {{ font-size: 18px; font-weight: 700; }}
   .snap-lbl {{ font-size: 11px; color: #718096; margin-top: 3px; }}
+
+  /* Cards */
+  .grid-2 {{ display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }}
+  .card {{ background: white; border: 1px solid #E2E8F0; border-radius: 8px; padding: 16px; }}
+  .card h3 {{ font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
+               color: #718096; margin-bottom: 10px; }}
+
+  /* SCM chain graphic */
+  .scm-chain {{ display: flex; align-items: center; gap: 0; margin-bottom: 20px;
+                background: white; border: 1px solid #E2E8F0; border-radius: 8px;
+                padding: 16px; overflow-x: auto; }}
+  .scm-node {{ text-align: center; min-width: 120px; cursor: pointer; }}
+  .scm-node .icon {{ font-size: 24px; }}
+  .scm-node .node-name {{ font-size: 11px; font-weight: 600; color: #2D3748; margin-top: 4px; }}
+  .scm-node .node-role {{ font-size: 10px; color: #718096; }}
+  .scm-arrow {{ color: #CBD5E0; font-size: 20px; margin: 0 4px; flex-shrink: 0; }}
+  .scm-group {{ text-align: center; }}
+  .scm-group-label {{ font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px;
+                      color: #718096; margin-bottom: 6px; }}
+  .scm-group-nodes {{ display: flex; gap: 4px; }}
 
   /* Sales hooks */
   .hook {{ background: #EBF8FF; border-left: 3px solid #3182CE;
@@ -129,8 +217,14 @@ def build_html(profiles: list[dict], hbm_share: dict) -> str:
   .status-badge {{ display: inline-block; padding: 2px 8px; border-radius: 10px;
                     font-size: 11px; font-weight: 600; }}
   .status-mass_production {{ background: #C6F6D5; color: #22543D; }}
+  .status-sampling {{ background: #FEFCBF; color: #744210; }}
   .status-sampling_2026H2 {{ background: #FEFCBF; color: #744210; }}
   .status-development {{ background: #E2E8F0; color: #4A5568; }}
+  .status-deployed {{ background: #BEE3F8; color: #2C5282; }}
+  .status-ga {{ background: #C6F6D5; color: #22543D; }}
+  .status-ramping {{ background: #FAF089; color: #744210; }}
+  .status-construction {{ background: #FBD38D; color: #7B341E; }}
+  .status-mass_production_2025 {{ background: #C6F6D5; color: #22543D; }}
 
   /* News */
   .news-item {{ display: flex; gap: 10px; padding: 8px 0;
@@ -146,20 +240,29 @@ def build_html(profiles: list[dict], hbm_share: dict) -> str:
 
   /* Competitive */
   .comp-item {{ margin-bottom: 8px; font-size: 13px; line-height: 1.5; }}
-  .comp-label {{ font-weight: 600; color: #4A5568; margin-bottom: 2px; font-size: 11px; }}
+  .comp-label {{ font-weight: 600; color: #4A5568; margin-bottom: 2px; font-size: 11px;
+                 text-transform: uppercase; letter-spacing: 0.3px; }}
 
-  /* Revenue chart */
-  .chart-container {{ position: relative; height: 180px; }}
-
-  /* Revenue trend */
-  .trend-positive {{ color: #276749; }}
+  /* Charts */
+  .chart-container {{ position: relative; height: 200px; }}
   .empty-state {{ color: #718096; font-size: 13px; font-style: italic; padding: 8px 0; }}
+
+  /* Overview table */
+  .overview-table {{ width: 100%; border-collapse: collapse; font-size: 13px; }}
+  .overview-table th {{ background: #F7FAFC; text-align: left; padding: 10px 12px;
+        font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px;
+        color: #718096; border-bottom: 2px solid #E2E8F0; }}
+  .overview-table td {{ padding: 10px 12px; border-bottom: 1px solid #F0F0F0; vertical-align: top; }}
+  .overview-table tr:hover td {{ background: #F7FAFC; }}
+  .clickable {{ cursor: pointer; color: #2B6CB0; font-weight: 600; }}
+  .clickable:hover {{ text-decoration: underline; }}
 </style>
 </head>
 <body>
 
 <div id="sidebar">
-  <h2>Companies</h2>
+  <div class="logo">AI SCM Intelligence</div>
+  <button class="overview-btn" id="overview-btn" onclick="showOverview()">Supply Chain Overview</button>
   <div id="company-nav"></div>
   <div id="build-ts">Built {build_ts}</div>
 </div>
@@ -171,27 +274,59 @@ def build_html(profiles: list[dict], hbm_share: dict) -> str:
 <script>
 const PROFILES = {profiles_json};
 const HBM_CHART = {hbm_chart_json};
-const COMPANY_IDS = {json.dumps(company_ids)};
+const CAPEX_CHART = {capex_chart_json};
+const LAYERS_WITH_COMPANIES = {json.dumps(company_ids_by_layer)};
+const LAYER_LABELS = {json.dumps(LAYER_LABELS)};
 
-let activeId = COMPANY_IDS[0] || null;
+let activeId = null;
+let revenueChart = null;
+let hbmPieChart = null;
+let capexLineChart = null;
 
 function getProfile(id) {{
-  return PROFILES.find(p => p.company.toLowerCase().replace(/\\s+/g, '_') === id
-    || id.includes(p.company.toLowerCase().split(' ')[0].toLowerCase())) || PROFILES[0];
+  return PROFILES.find(p => p._id === id) || PROFILES[0];
 }}
 
 function statusClass(s) {{
-  return 'status-' + (s || 'development').replace(/[^a-z0-9_]/gi, '_');
+  if (!s) return 'status-development';
+  return 'status-' + s.replace(/[^a-z0-9_]/gi, '_');
 }}
 
 function renderSnapshot(profile) {{
   const s = profile.snapshot || {{}};
-  const items = [
-    {{ val: s.revenue_qtr || '—', lbl: 'Latest Revenue' }},
-    {{ val: s.op_margin_pct != null ? s.op_margin_pct + '%' : '—', lbl: 'Operating Margin' }},
-    {{ val: s.hbm_market_share_pct != null ? s.hbm_market_share_pct + '%' : '—', lbl: 'HBM Market Share' }},
-    {{ val: s.headcount ? s.headcount.toLocaleString() : '—', lbl: 'Headcount' }},
-  ];
+  const layer = profile._layer;
+  let items = [];
+
+  if (layer === 'HBM') {{
+    items = [
+      {{ val: s.revenue_qtr || '—', lbl: 'Latest Revenue' }},
+      {{ val: s.op_margin_pct != null ? s.op_margin_pct + '%' : '—', lbl: 'Operating Margin' }},
+      {{ val: s.hbm_market_share_pct != null ? s.hbm_market_share_pct + '%' : '—', lbl: 'HBM Market Share' }},
+      {{ val: s.headcount ? s.headcount.toLocaleString() : '—', lbl: 'Headcount' }},
+    ];
+  }} else if (layer === 'GPU') {{
+    items = [
+      {{ val: s.revenue_qtr || '—', lbl: 'Latest Revenue' }},
+      {{ val: s.datacenter_revenue_qtr_usd || '—', lbl: 'Datacenter Revenue' }},
+      {{ val: s.op_margin_pct != null ? s.op_margin_pct + '%' : '—', lbl: 'Operating Margin' }},
+      {{ val: s.market_cap_usd_bn ? '$' + s.market_cap_usd_bn + 'B' : '—', lbl: 'Market Cap' }},
+    ];
+  }} else if (layer === 'Foundry') {{
+    items = [
+      {{ val: s.revenue_qtr || '—', lbl: 'Latest Revenue' }},
+      {{ val: s.op_margin_pct != null ? s.op_margin_pct + '%' : '—', lbl: 'Operating Margin' }},
+      {{ val: s.headcount ? s.headcount.toLocaleString() : '—', lbl: 'Headcount' }},
+      {{ val: s.market_cap_usd_bn ? '$' + s.market_cap_usd_bn + 'B' : '—', lbl: 'Market Cap' }},
+    ];
+  }} else {{
+    // Hyperscaler
+    items = [
+      {{ val: s.revenue_qtr || '—', lbl: 'Latest Revenue' }},
+      {{ val: s.capex_qtr_usd || '—', lbl: 'Q CapEx' }},
+      {{ val: s.capex_2026_guidance_usd ? '$' + s.capex_2026_guidance_usd + 'B' : '—', lbl: '2026 CapEx Guide' }},
+      {{ val: s.market_cap_usd_bn ? '$' + s.market_cap_usd_bn + 'B' : '—', lbl: 'Market Cap' }},
+    ];
+  }}
   return `<div class="snapshot-grid">${{items.map(i =>
     `<div class="snap-card"><div class="snap-val">${{i.val}}</div><div class="snap-lbl">${{i.lbl}}</div></div>`
   ).join('')}}</div>`;
@@ -200,15 +335,52 @@ function renderSnapshot(profile) {{
 function renderRoadmap(profile) {{
   const items = profile.product_roadmap || [];
   if (!items.length) return '<p class="empty-state">No roadmap data yet.</p>';
-  return `<table>
-    <tr><th>Product</th><th>Status</th><th>Customer</th><th>Notes</th></tr>
-    ${{items.map(r => `<tr>
-      <td><strong>${{r.product}}</strong></td>
-      <td><span class="status-badge ${{statusClass(r.status)}}">${{(r.status||'').replace(/_/g,' ')}}</span></td>
-      <td>${{r.customer || '—'}}</td>
-      <td>${{r.note || '—'}}</td>
-    </tr>`).join('')}}
-  </table>`;
+  const layer = profile._layer;
+
+  if (layer === 'HBM') {{
+    return `<table>
+      <tr><th>Product</th><th>Status</th><th>Customer</th><th>BW (TB/s)</th><th>Notes</th></tr>
+      ${{items.map(r => `<tr>
+        <td><strong>${{r.product}}</strong></td>
+        <td><span class="status-badge ${{statusClass(r.status)}}">${{(r.status||'').replace(/_/g,' ')}}</span></td>
+        <td>${{r.customer || '—'}}</td>
+        <td>${{r.bandwidth_tbps || '—'}}</td>
+        <td>${{r.note || '—'}}</td>
+      </tr>`).join('')}}
+    </table>`;
+  }} else if (layer === 'GPU') {{
+    return `<table>
+      <tr><th>Product</th><th>Status</th><th>HBM Supplier</th><th>HBM/GPU (GB)</th><th>Notes</th></tr>
+      ${{items.map(r => `<tr>
+        <td><strong>${{r.product}}</strong></td>
+        <td><span class="status-badge ${{statusClass(r.status)}}">${{(r.status||'').replace(/_/g,' ')}}</span></td>
+        <td>${{r.hbm_supplier || '—'}}</td>
+        <td>${{r.hbm_per_gpu_gb || '—'}}</td>
+        <td>${{r.note || '—'}}</td>
+      </tr>`).join('')}}
+    </table>`;
+  }} else if (layer === 'Foundry') {{
+    return `<table>
+      <tr><th>Product</th><th>Status</th><th>Capacity (WPM)</th><th>Notes</th></tr>
+      ${{items.map(r => `<tr>
+        <td><strong>${{r.product}}</strong></td>
+        <td><span class="status-badge ${{statusClass(r.status)}}">${{(r.status||'').replace(/_/g,' ')}}</span></td>
+        <td>${{r.capacity_wpm ? r.capacity_wpm.toLocaleString() : '—'}}</td>
+        <td>${{r.note || '—'}}</td>
+      </tr>`).join('')}}
+    </table>`;
+  }} else {{
+    // Hyperscaler
+    return `<table>
+      <tr><th>Product / Cluster</th><th>Status</th><th>HBM Supplier</th><th>Notes</th></tr>
+      ${{items.map(r => `<tr>
+        <td><strong>${{r.product}}</strong></td>
+        <td><span class="status-badge ${{statusClass(r.status)}}">${{(r.status||'').replace(/_/g,' ')}}</span></td>
+        <td>${{r.hbm_supplier || '—'}}</td>
+        <td>${{r.note || '—'}}</td>
+      </tr>`).join('')}}
+    </table>`;
+  }}
 }}
 
 function renderHooks(profile) {{
@@ -220,7 +392,7 @@ function renderHooks(profile) {{
 function renderNews(profile) {{
   const news = profile.recent_news || [];
   const flagged = new Set((profile.flagged_news || []).map(f => f.title));
-  if (!news.length) return '<p class="empty-state">No news collected yet. Run python run.py to fetch.</p>';
+  if (!news.length) return '<p class="empty-state">No news collected yet. Run <code>python run.py</code> to fetch.</p>';
   return news.slice(0, 8).map(n => {{
     const isFlagged = flagged.has(n.title);
     return `<div class="news-item">
@@ -235,26 +407,19 @@ function renderNews(profile) {{
 
 function renderCompetitive(profile) {{
   const c = profile.competitive_position || {{}};
-  const items = [
-    {{ label: 'HBM Rank', val: c.hbm_rank ? '#' + c.hbm_rank : '—' }},
-    {{ label: 'vs SK Hynix', val: c.vs_sk_hynix || '—' }},
-    {{ label: 'vs Samsung',  val: c.vs_samsung  || '—' }},
-    {{ label: 'vs Micron',   val: c.vs_micron   || '—' }},
-    {{ label: 'Moat',        val: c.moat        || '—' }},
-  ].filter(i => i.val !== '—');
-  if (!items.length) return '<p class="empty-state">No competitive data yet.</p>';
-  return items.map(i =>
-    `<div class="comp-item"><div class="comp-label">${{i.label}}</div>${{i.val}}</div>`
+  const entries = Object.entries(c).filter(([k]) => !k.startsWith('_'));
+  if (!entries.length) return '<p class="empty-state">No competitive data yet.</p>';
+  return entries.map(([k, v]) =>
+    `<div class="comp-item"><div class="comp-label">${{k.replace(/_/g,' ')}}</div>${{v}}</div>`
   ).join('');
 }}
 
-let revenueChart = null;
-let hbmPieChart = null;
-
 function renderCharts(profile) {{
-  // Revenue trend chart
   const hist = profile.financials_history || {{}};
-  const quarters = Object.entries(hist)
+  const layer = profile._layer;
+
+  // Revenue / CapEx trend chart
+  let quarters = Object.entries(hist)
     .filter(([k]) => !k.startsWith('_'))
     .sort(([a],[b]) => a.localeCompare(b));
 
@@ -262,52 +427,81 @@ function renderCharts(profile) {{
     const ctx = document.getElementById('revenueChart');
     if (ctx) {{
       if (revenueChart) revenueChart.destroy();
+      const cleanLabel = k => k
+        .replace(/_revenue_krw_t$/,'').replace(/_revenue_nt_bn$/,'')
+        .replace(/_revenue_usd_bn$/,'').replace(/_capex_usd_bn$/,'')
+        .replace(/_dc_revenue_usd_bn$/,'').replace(/_ds_revenue_krw_t$/,'')
+        .replace(/_ds_revenue_krw_t_est$/,' est').replace(/^_/,'');
+      const isCapex = layer === 'Hyperscaler';
       revenueChart = new Chart(ctx, {{
         type: 'bar',
         data: {{
-          labels: quarters.map(([k]) => k.replace('_revenue_krw_t','').replace('_revenue_usd_bn','')),
-          datasets: [{{ label: 'Revenue', data: quarters.map(([,v]) => v),
-            backgroundColor: '#3182CE', borderRadius: 4 }}]
+          labels: quarters.map(([k]) => cleanLabel(k)),
+          datasets: [{{ label: isCapex ? 'CapEx' : 'Revenue',
+            data: quarters.map(([,v]) => v),
+            backgroundColor: isCapex ? '#9F7AEA' : '#3182CE', borderRadius: 4 }}]
         }},
-        options: {{ responsive: true, maintainAspectRatio: false, plugins: {{ legend: {{ display: false }} }},
+        options: {{ responsive: true, maintainAspectRatio: false,
+          plugins: {{ legend: {{ display: false }} }},
           scales: {{ y: {{ beginAtZero: false }} }} }}
       }});
     }}
   }}
 
-  // HBM market share pie
-  const pieCtx = document.getElementById('hbmPieChart');
-  if (pieCtx && HBM_CHART.data.length) {{
-    if (hbmPieChart) hbmPieChart.destroy();
-    hbmPieChart = new Chart(pieCtx, {{
-      type: 'doughnut',
-      data: {{
-        labels: HBM_CHART.labels,
-        datasets: [{{ data: HBM_CHART.data, backgroundColor: HBM_CHART.colors, borderWidth: 2 }}]
-      }},
-      options: {{ responsive: true, maintainAspectRatio: false, cutout: '60%',
-        plugins: {{ legend: {{ position: 'right', labels: {{ font: {{ size: 11 }} }} }} }} }}
-    }});
+  // HBM market share pie (for HBM layer)
+  if (layer === 'HBM' && HBM_CHART.data.length) {{
+    const pieCtx = document.getElementById('hbmPieChart');
+    if (pieCtx) {{
+      if (hbmPieChart) hbmPieChart.destroy();
+      hbmPieChart = new Chart(pieCtx, {{
+        type: 'doughnut',
+        data: {{
+          labels: HBM_CHART.labels,
+          datasets: [{{ data: HBM_CHART.data, backgroundColor: HBM_CHART.colors, borderWidth: 2 }}]
+        }},
+        options: {{ responsive: true, maintainAspectRatio: false, cutout: '60%',
+          plugins: {{ legend: {{ position: 'right', labels: {{ font: {{ size: 11 }} }} }} }} }}
+      }});
+    }}
+  }}
+
+  // Hyperscaler CapEx comparison line chart
+  if (layer === 'Hyperscaler' && CAPEX_CHART.datasets && CAPEX_CHART.datasets.length) {{
+    const lineCtx = document.getElementById('capexLineChart');
+    if (lineCtx) {{
+      if (capexLineChart) capexLineChart.destroy();
+      capexLineChart = new Chart(lineCtx, {{
+        type: 'line',
+        data: CAPEX_CHART,
+        options: {{ responsive: true, maintainAspectRatio: false,
+          plugins: {{ legend: {{ position: 'bottom', labels: {{ font: {{ size: 11 }} }} }} }},
+          scales: {{ y: {{ beginAtZero: true, title: {{ display: true, text: 'CapEx ($B)' }} }} }} }}
+      }});
+    }}
   }}
 }}
 
 function render(id) {{
+  activeId = id;
   const profile = getProfile(id);
   const hist = profile.financials_history || {{}};
   const hasRevChart = Object.keys(hist).filter(k=>!k.startsWith('_')).length > 1;
+  const isHBM = profile._layer === 'HBM';
+  const isHyperscaler = profile._layer === 'Hyperscaler';
 
   document.getElementById('content').innerHTML = `
     <div class="header-bar">
       <div>
         <span class="company-title">${{profile.company}}</span>
         <span class="ticker">${{profile.ticker || ''}}</span>
+        <span class="layer-badge badge-${{profile._layer}}">${{profile._layer}}</span>
       </div>
       <div class="last-updated">Last updated: ${{profile.last_updated || 'N/A'}}</div>
     </div>
 
     ${{renderSnapshot(profile)}}
 
-    <div class="grid-2">
+    <div class="grid-2" style="margin-bottom:16px">
       <div class="card" style="grid-column: span 2">
         <h3>Sales Hooks — Conversation Starters</h3>
         ${{renderHooks(profile)}}
@@ -327,12 +521,16 @@ function render(id) {{
 
     <div class="grid-2" style="margin-bottom:16px">
       ${{hasRevChart ? `<div class="card">
-        <h3>Revenue Trend</h3>
+        <h3>${{isHyperscaler ? 'CapEx Trend' : 'Revenue Trend'}}</h3>
         <div class="chart-container"><canvas id="revenueChart"></canvas></div>
       </div>` : ''}}
-      ${{HBM_CHART.data.length ? `<div class="card">
+      ${{isHBM && HBM_CHART.data.length ? `<div class="card">
         <h3>HBM Market Share (${{HBM_CHART.year}})</h3>
         <div class="chart-container"><canvas id="hbmPieChart"></canvas></div>
+      </div>` : ''}}
+      ${{isHyperscaler && CAPEX_CHART.datasets && CAPEX_CHART.datasets.length ? `<div class="card">
+        <h3>Hyperscaler CapEx Comparison ($B)</h3>
+        <div class="chart-container"><canvas id="capexLineChart"></canvas></div>
       </div>` : ''}}
     </div>
 
@@ -345,23 +543,111 @@ function render(id) {{
   setTimeout(() => renderCharts(profile), 0);
 }}
 
+function showOverview() {{
+  activeId = '__overview__';
+  document.querySelectorAll('.company-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('overview-btn').classList.add('active');
+
+  // Build overview table rows grouped by layer
+  const rows = [];
+  for (const [layer, ids] of Object.entries(LAYERS_WITH_COMPANIES)) {{
+    ids.forEach(id => {{
+      const p = getProfile(id);
+      if (!p) return;
+      const s = p.snapshot || {{}};
+      const isHBM = p._layer === 'HBM';
+      const isHyperscaler = p._layer === 'Hyperscaler';
+      rows.push(`<tr>
+        <td><span class="clickable" onclick="selectCompany('${{id}}')">${{p.company}}</span></td>
+        <td><span class="layer-badge badge-${{p._layer}}">${{p._layer}}</span></td>
+        <td>${{s.revenue_qtr || '—'}}</td>
+        <td>${{isHBM ? (s.hbm_market_share_pct != null ? s.hbm_market_share_pct + '%' : '—') :
+              isHyperscaler ? (s.capex_qtr_usd || '—') : '—'}}</td>
+        <td>${{s.op_margin_pct != null ? s.op_margin_pct + '%' : '—'}}</td>
+        <td>${{p.last_updated || '—'}}</td>
+      </tr>`);
+    }});
+  }}
+
+  document.getElementById('content').innerHTML = `
+    <div class="header-bar">
+      <div><span class="company-title">AI Supply Chain Overview</span></div>
+    </div>
+
+    <div class="card" style="margin-bottom:16px; padding: 20px 24px;">
+      <h3 style="margin-bottom:14px">Supply Chain Flow</h3>
+      <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; font-size:13px;">
+        <div style="text-align:center; padding:10px 14px; background:#E9D8FD; border-radius:8px; cursor:pointer" onclick="selectCompany('meta')">
+          <div style="font-weight:700">Meta</div><div style="font-size:11px;color:#718096">Hyperscaler</div>
+        </div>
+        <div style="text-align:center; padding:10px 14px; background:#E9D8FD; border-radius:8px; cursor:pointer" onclick="selectCompany('google')">
+          <div style="font-weight:700">Google</div><div style="font-size:11px;color:#718096">Hyperscaler</div>
+        </div>
+        <div style="text-align:center; padding:10px 14px; background:#E9D8FD; border-radius:8px; cursor:pointer" onclick="selectCompany('microsoft')">
+          <div style="font-weight:700">Microsoft</div><div style="font-size:11px;color:#718096">Hyperscaler</div>
+        </div>
+        <div style="text-align:center; padding:10px 14px; background:#E9D8FD; border-radius:8px; cursor:pointer" onclick="selectCompany('amazon')">
+          <div style="font-weight:700">Amazon</div><div style="font-size:11px;color:#718096">Hyperscaler</div>
+        </div>
+        <div style="color:#CBD5E0; font-size:20px">→</div>
+        <div style="text-align:center; padding:10px 14px; background:#C6F6D5; border-radius:8px; cursor:pointer" onclick="selectCompany('nvidia')">
+          <div style="font-weight:700">NVIDIA</div><div style="font-size:11px;color:#718096">GPU</div>
+        </div>
+        <div style="color:#CBD5E0; font-size:20px">→</div>
+        <div style="text-align:center; padding:10px 14px; background:#FAF089; border-radius:8px; cursor:pointer" onclick="selectCompany('tsmc')">
+          <div style="font-weight:700">TSMC</div><div style="font-size:11px;color:#718096">CoWoS Packaging</div>
+        </div>
+        <div style="color:#CBD5E0; font-size:20px">→</div>
+        <div style="display:flex; flex-direction:column; gap:4px;">
+          <div style="text-align:center; padding:8px 12px; background:#BEE3F8; border-radius:8px; cursor:pointer; font-size:12px" onclick="selectCompany('sk_hynix')">SK Hynix (50%)</div>
+          <div style="text-align:center; padding:8px 12px; background:#BEE3F8; border-radius:8px; cursor:pointer; font-size:12px" onclick="selectCompany('samsung_semiconductor')">Samsung (35%)</div>
+          <div style="text-align:center; padding:8px 12px; background:#BEE3F8; border-radius:8px; cursor:pointer; font-size:12px" onclick="selectCompany('micron')">Micron (15%)</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3 style="margin-bottom:12px">All Companies</h3>
+      <table class="overview-table">
+        <tr>
+          <th>Company</th><th>Layer</th><th>Latest Revenue</th>
+          <th>HBM Share / Q CapEx</th><th>Op Margin</th><th>Updated</th>
+        </tr>
+        ${{rows.join('')}}
+      </table>
+    </div>
+  `;
+}}
+
+function selectCompany(id) {{
+  activeId = id;
+  document.querySelectorAll('.company-btn').forEach(b => {{
+    b.classList.toggle('active', b.dataset.id === id);
+  }});
+  document.getElementById('overview-btn').classList.remove('active');
+  render(id);
+}}
+
 function init() {{
   const nav = document.getElementById('company-nav');
-  COMPANY_IDS.forEach(id => {{
-    const p = getProfile(id);
-    const btn = document.createElement('button');
-    btn.className = 'company-btn' + (id === activeId ? ' active' : '');
-    btn.textContent = p ? p.company : id;
-    btn.onclick = () => {{
-      activeId = id;
-      document.querySelectorAll('.company-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      render(id);
-    }};
-    nav.appendChild(btn);
-  }});
 
-  if (activeId) render(activeId);
+  for (const [layer, ids] of Object.entries(LAYERS_WITH_COMPANIES)) {{
+    if (!ids.length) continue;
+    const layerDiv = document.createElement('div');
+    layerDiv.innerHTML = `<div class="layer-label">${{LAYER_LABELS[layer] || layer}}</div>`;
+    ids.forEach(id => {{
+      const p = getProfile(id);
+      const btn = document.createElement('button');
+      btn.className = 'company-btn';
+      btn.dataset.id = id;
+      btn.textContent = p ? p.company : id;
+      btn.onclick = () => selectCompany(id);
+      layerDiv.appendChild(btn);
+    }});
+    nav.appendChild(layerDiv);
+  }}
+
+  showOverview();
 }}
 
 init();
@@ -371,15 +657,17 @@ init();
 
 
 def main():
+    seed = load_seed_data()
     profiles = load_profiles()
     if not profiles:
         print("[build] no company profiles found in data/companies/")
         return
 
-    hbm_share = load_hbm_market_share()
+    hbm_share = load_hbm_market_share(seed)
+    capex_annual = load_hyperscaler_capex(seed)
 
     DASHBOARD_DIR.mkdir(parents=True, exist_ok=True)
-    html = build_html(profiles, hbm_share)
+    html = build_html(profiles, hbm_share, capex_annual)
 
     out_path = DASHBOARD_DIR / "index.html"
     out_path.write_text(html, encoding="utf-8")

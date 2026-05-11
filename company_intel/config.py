@@ -1,6 +1,9 @@
 """
 Company Intelligence Platform — Configuration
 Target: HBM/semiconductor manufacturers' marketing teams
+
+AI Supply Chain Layers:
+  Hyperscalers (demand) → NVIDIA (GPU) → TSMC (packaging) → HBM Suppliers (memory)
 """
 
 import os
@@ -11,8 +14,8 @@ DATA_DIR = BASE_DIR / "data" / "companies"
 DASHBOARD_DIR = BASE_DIR / "dashboard"
 AI_SCM_SEED = BASE_DIR.parent / "AI_SCM" / "data" / "seed_data.json"
 
-# Phase 1: SK Hynix only. Phase 2: add Samsung, Micron.
 TARGET_COMPANIES = [
+    # ── HBM Memory Suppliers ────────────────────────────────────────────────
     {
         "id": "sk_hynix",
         "name": "SK Hynix",
@@ -36,6 +39,56 @@ TARGET_COMPANIES = [
         "layer": "HBM",
         "ir_url": "https://investors.micron.com/",
         "news_query": "Micron HBM memory AI",
+    },
+    # ── GPU & Packaging ──────────────────────────────────────────────────────
+    {
+        "id": "nvidia",
+        "name": "NVIDIA",
+        "ticker": "NVDA",
+        "layer": "GPU",
+        "ir_url": "https://investor.nvidia.com/",
+        "news_query": "NVIDIA Blackwell HBM GPU datacenter",
+    },
+    {
+        "id": "tsmc",
+        "name": "TSMC",
+        "ticker": "TSM",
+        "layer": "Foundry",
+        "ir_url": "https://ir.tsmc.com/",
+        "news_query": "TSMC CoWoS AI packaging advanced node",
+    },
+    # ── Hyperscalers (demand side) ───────────────────────────────────────────
+    {
+        "id": "microsoft",
+        "name": "Microsoft",
+        "ticker": "MSFT",
+        "layer": "Hyperscaler",
+        "ir_url": "https://www.microsoft.com/en-us/investor",
+        "news_query": "Microsoft Azure AI datacenter CapEx GPU",
+    },
+    {
+        "id": "google",
+        "name": "Google (Alphabet)",
+        "ticker": "GOOGL",
+        "layer": "Hyperscaler",
+        "ir_url": "https://abc.xyz/investor/",
+        "news_query": "Google TPU datacenter AI CapEx HBM",
+    },
+    {
+        "id": "amazon",
+        "name": "Amazon (AWS)",
+        "ticker": "AMZN",
+        "layer": "Hyperscaler",
+        "ir_url": "https://ir.aboutamazon.com/",
+        "news_query": "Amazon AWS Trainium Inferentia AI CapEx",
+    },
+    {
+        "id": "meta",
+        "name": "Meta Platforms",
+        "ticker": "META",
+        "layer": "Hyperscaler",
+        "ir_url": "https://investor.fb.com/",
+        "news_query": "Meta AI datacenter GPU CapEx Llama",
     },
 ]
 

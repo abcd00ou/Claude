@@ -1,0 +1,83 @@
+{
+  "company": "NVIDIA",
+  "ticker": "NVDA",
+  "last_updated": "2026-05-11",
+  "snapshot": {
+    "revenue_qtr": "$39.3B (FY2026 Q4, +78% YoY)",
+    "revenue_qtr_usd": "$39.3B",
+    "op_margin_pct": 62,
+    "datacenter_revenue_qtr_usd": "$35.6B",
+    "headcount": 36000,
+    "market_cap_usd_bn": 2900
+  },
+  "product_roadmap": [
+    {
+      "product": "H200 (HBM3e)",
+      "status": "mass_production",
+      "hbm_supplier": "SK Hynix (primary), Micron (partial)",
+      "hbm_per_gpu_gb": 141,
+      "note": "Current high-volume AI training GPU"
+    },
+    {
+      "product": "B200 / GB200 (HBM3e)",
+      "status": "mass_production",
+      "hbm_supplier": "SK Hynix",
+      "hbm_per_gpu_gb": 192,
+      "note": "Blackwell; GB200 NVL72 rack consumes ~13.8TB HBM per rack"
+    },
+    {
+      "product": "B200 Ultra / GB300 (HBM4)",
+      "status": "sampling",
+      "hbm_supplier": "SK Hynix (target), Micron (target)",
+      "hbm_per_gpu_gb": 288,
+      "note": "Blackwell Ultra; HBM4 required — SK Hynix ahead on qualification"
+    },
+    {
+      "product": "Rubin (R100, HBM4E)",
+      "status": "development",
+      "hbm_supplier": "TBD",
+      "hbm_per_gpu_gb": null,
+      "note": "2027 target; HBM4E roadmap under development across all three suppliers"
+    }
+  ],
+  "key_contacts": [
+    {
+      "name": "",
+      "title": "VP, Data Center Products",
+      "linkedin": null,
+      "note": "Manual entry — update before next meeting"
+    }
+  ],
+  "recent_news": [
+    {
+      "date": "2026-05-08",
+      "title": "Top 25+ AI Chip Makers: NVIDIA & Its Competitors",
+      "url": "https://news.google.com/rss/articles/CBMiTkFVX3lxTE9UYlQtNjVDT09maWxpR0pGbEU0MGxYaDdad1VzYnp6cXBTcjc4RlY0TXJ0SVVvb0NTU19DdkVCbFFOVjk1MUNmdUg4UjhEdw?oc=5",
+      "source": "AIMultiple"
+    }
+  ],
+  "sales_hooks": [
+    "NVIDIA is the primary HBM customer — every H200/B200 qualification win at NVIDIA directly determines which memory supplier captures the margin. Ask how marketing teams communicate their NVIDIA qualification status.",
+    "GB200 NVL72 rack = 72 GPUs × 192GB HBM = 13.8TB per rack. At scale, NVIDIA's ramp drives the largest single demand surge in memory history — quantify this for your customer's CEO.",
+    "Blackwell Ultra (GB300) requires HBM4 — qualification race between SK Hynix and Micron is a live sales opportunity. Which supplier your contact company wins determines 2027 revenue.",
+    "NVIDIA Q1 FY2027 guided ~$78B revenue (reports May 20 2026) — a beat signals accelerated GPU ramp → accelerated HBM pull-through demand."
+  ],
+  "competitive_position": {
+    "gpu_market_share_ai_pct": 85,
+    "vs_amd": "AMD MI300X competitive on price/performance for inference; NVIDIA retains software moat (CUDA ecosystem)",
+    "vs_intel": "Intel Gaudi 3 largely irrelevant at scale; Intel focusing on custom ASICs",
+    "moat": "CUDA ecosystem lock-in + CoWoS packaging supply lock with TSMC + fastest HBM qualification cycle"
+  },
+  "financials_history": {
+    "FY2025Q4_dc_revenue_usd_bn": 35.6,
+    "FY2025Q3_dc_revenue_usd_bn": 30.8,
+    "FY2025Q2_dc_revenue_usd_bn": 26.3,
+    "FY2025Q1_dc_revenue_usd_bn": 22.6,
+    "FY2026Q1_dc_revenue_usd_bn_est": 43.0
+  },
+  "sources": [
+    "NVIDIA FY2026 Q4 Earnings (Feb 2026)",
+    "NVIDIA Q1 FY2027 Guidance (May 2026)"
+  ],
+  "flagged_news": []
+}

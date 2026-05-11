@@ -1,0 +1,96 @@
+{
+  "company": "TSMC",
+  "ticker": "TSM",
+  "last_updated": "2026-05-11",
+  "snapshot": {
+    "revenue_qtr": "NT$839.3B (Q1 2026, +41.6% YoY)",
+    "revenue_qtr_usd": "~$26.3B",
+    "op_margin_pct": 48,
+    "headcount": 77000,
+    "market_cap_usd_bn": 850
+  },
+  "product_roadmap": [
+    {
+      "product": "CoWoS-S (H100/H200/B200)",
+      "status": "mass_production",
+      "capacity_wpm": 50000,
+      "note": "Primary packaging for NVIDIA Hopper/Blackwell; ~92% utilization in 2024"
+    },
+    {
+      "product": "CoWoS-L (GB200 NVL72)",
+      "status": "mass_production",
+      "capacity_wpm": 35000,
+      "note": "Larger interposer for multi-die rack-scale modules"
+    },
+    {
+      "product": "SoIC (3D stacking for HBM4+)",
+      "status": "development",
+      "capacity_wpm": null,
+      "note": "Next-gen 3D IC for HBM4/HBM4E integration; foundry-HBM co-design with SK Hynix"
+    },
+    {
+      "product": "N2 Process Node",
+      "status": "mass_production_2025",
+      "capacity_wpm": null,
+      "note": "Apple M5 and NVIDIA Rubin GPU on N2; drives 2026-2027 wafer demand"
+    }
+  ],
+  "key_contacts": [
+    {
+      "name": "",
+      "title": "VP, Sales & Marketing",
+      "linkedin": null,
+      "note": "Manual entry — update before next meeting"
+    }
+  ],
+  "recent_news": [
+    {
+      "date": "2026-04-22",
+      "title": "TSMC Unfolds Map for Process, Packaging Tech",
+      "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE96LXczZ0JRME5rdFhZZWFFSHFWLWozZDZ6ZXlSaWZMZ193RjRNOGtnT2pmY2RWMFU2c3NxVjViWmFOQUc3THZaOHR4TXdHTGVpV1BndGZ3QUpxT1BZR1FDdG1CRW9OX190V1JLVm5jVjBFYUNjLWJR?oc=5",
+      "source": "EE Times"
+    },
+    {
+      "date": "2026-04-28",
+      "title": "[News] TSMC CoWoS Wafer ASP Reportedly Nears 7nm; Advanced Packaging to Become a Key Profit Driver",
+      "url": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOdFdEMXRRSy0xSnVKaHRvVlRzOHlpMm1GS1k3VW8wZHJLM1RCbjhwMmRjVHlHbHAyTldTYXduajRFWHZzd0E3eVVUMWJ4M2U2OWRMazlRa29IbTFmRDY1X24yd2o3UzdPX2dCWEF1aTR3cXg0UFZSMEU1TmxTY01GXzRwQ2xBRVhvaUl2eFFGN216UHRKMkU0SjhycFNraU9ka2JSeXltdnlTNW9IN1RPMXBFdm03d1BjeFFJbnhkejVPYzdpd3FCZU0xZTdKTUQyTFlRdUY5UVZERi1HUW5tSG5ERU41UzZY?oc=5",
+      "source": "TrendForce"
+    },
+    {
+      "date": "2026-04-23",
+      "title": "Alchip to Showcase Advanced AI ASIC Technologies at TSMC 2026 Technology Symposium",
+      "url": "https://news.google.com/rss/articles/CBMi7AFBVV95cUxPWkRLWU5wRTIxS0E3cEtlUlIxTHZUOEJpNXNJRWVaM21raWlqZXJrV0RhYlNVZWJEWVFyS2pSRzFZU05VMmMyWnAzM1Y2Umd4dl81TmotVjVmbk5PVzlBMUYtcFhKaFkxOG1iRFN0Rl80bUFDekljNk9MaC1kNFVmbjYydWlEeldkR2dvbWFCWnZSckVreUdZR0tFWFpHWkJDQVVjU2RDSjc1bTRfNEg5alRaR2l5TnRmbTNkX1FjNDItMnhZTkgzdktjTWpKQ3FHdjJBLUdoWGFhWmZ6Xzd2bUp3enNQekg3V01IcNIB8gFBVV95cUxOSk5lZW9sbzVoS3lxWHRKUE9zSTlIcUtOVURuVTFaeFdqMUlUaHh6TkNTNTdKSkx5TlpqVzFKdU13Sm03NzZ6Z0VCOUFBcHFWTnZZWFllMHZyVzJTMFhNbFlMLVU2c0gyTUJ1TXBEUVNpM0ZIcjVUcU1PRVIyRDltazZRLWdiRFZOS3RpMDR2QmtEQnBMd1ZRWnZQbVIwbDJ6YWJUUVlKQ2pRbVVmOHI4bE8zTmhtSFcyQ043VlJUang0TWhGLXptZW14RGNGQnNDMk40V2N1S0FsSEFyZ3B5S1VHU0l6eDUtajQwOTFxWnpPdw?oc=5",
+      "source": "The Manila Times"
+    },
+    {
+      "date": "2026-04-13",
+      "title": "TSMC Q1 Profit Set for Record on AI Chip Demand",
+      "url": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPVnp4YlpOYkloQjN0SVNVUGtRdjBsLVQzM0p3WlFxQlBKNzd4Nks3Z0JYd3FwNUhpakNVXzY2MWVuazM3eXZLeFU2ODFNSWxSMnhyVDhEMWRJNlNUOXhSalVNcWNlY1FLS1ZOQjZZSWJHVkpnS0ZVLXU1TTh5YUUzNXZUa3EyQS15ZU80SDhaUkRrUF95c1RNcW5QU3pES08xa3NYX2U0MA?oc=5",
+      "source": "Asia Business Outlook"
+    }
+  ],
+  "sales_hooks": [
+    "TSMC CoWoS is the chokepoint of the entire AI supply chain — every HBM supplier must co-package through TSMC. Qualification on CoWoS-S/L directly determines which memory sells into NVIDIA GPUs.",
+    "CoWoS capacity expanding from 85K WPM (2025) to 120K WPM (2026E) — each new WPM slot represents committed HBM demand. Ask what TSMC's expansion pace means for your customer's production planning.",
+    "TSMC N2 ramp in 2025-2026 = next NVIDIA GPU generation = next HBM generation pull. Timing TSMC node ramp with HBM roadmap is the key synchronization challenge.",
+    "TSMC Indiana fab (Phoenix) + Japan fab = geopolitical HBM packaging diversification opportunity. Micron (US-based) uniquely positioned here vs Korean suppliers."
+  ],
+  "competitive_position": {
+    "cowos_market_share_pct": 95,
+    "vs_samsung_foundry": "Samsung advanced packaging far behind on CoWoS equivalent; no credible NVIDIA alternative",
+    "vs_intel_foundry": "Intel 18A CoWoS alternative in very early stages; not a near-term threat",
+    "moat": "18-month CoWoS lead time creates a structural lock-in; customers must commit capacity 6+ quarters ahead"
+  },
+  "financials_history": {
+    "2025Q1_revenue_nt_bn": 592.6,
+    "2025Q2_revenue_nt_bn": 673.5,
+    "2025Q3_revenue_nt_bn": 759.7,
+    "2025Q4_revenue_nt_bn": 868.5,
+    "2026Q1_revenue_nt_bn": 839.3
+  },
+  "sources": [
+    "TSMC Q1 2026 Earnings (Apr 2026)",
+    "TSMC Technology Symposium 2025"
+  ],
+  "flagged_news": []
+}

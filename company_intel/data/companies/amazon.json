@@ -1,0 +1,127 @@
+{
+  "company": "Amazon (AWS)",
+  "ticker": "AMZN",
+  "last_updated": "2026-05-11",
+  "snapshot": {
+    "revenue_qtr": "$29.3B AWS (Q1 2026, +17% YoY)",
+    "revenue_qtr_usd": "$29.3B (AWS only)",
+    "capex_qtr_usd": "$44.2B",
+    "capex_2026_guidance_usd": "$100B+",
+    "headcount": 1550000,
+    "market_cap_usd_bn": 2200
+  },
+  "product_roadmap": [
+    {
+      "product": "Trainium2 (custom AI training chip)",
+      "status": "mass_production",
+      "hbm_supplier": "SK Hynix / Samsung (direct, via TSMC packaging)",
+      "note": "AWS custom silicon for LLM training; competitor to NVIDIA H100 at lower cost"
+    },
+    {
+      "product": "Inferentia3 (custom AI inference chip)",
+      "status": "deployed",
+      "hbm_supplier": "Samsung (direct)",
+      "note": "Handles ~40% of AWS inference workloads without NVIDIA"
+    },
+    {
+      "product": "AWS UltraCluster (P5 / H100)",
+      "status": "deployed",
+      "hbm_supplier": "SK Hynix (via NVIDIA)",
+      "note": "External GPU offering; used by Anthropic, Stability AI"
+    },
+    {
+      "product": "Project Rainier (Trainium2, 400K+ chips)",
+      "status": "deployed",
+      "hbm_supplier": "SK Hynix / Samsung",
+      "note": "Dedicated to Anthropic Claude model training; largest custom AI cluster announced"
+    }
+  ],
+  "key_contacts": [
+    {
+      "name": "",
+      "title": "VP, Custom Silicon (Annapurna Labs)",
+      "linkedin": null,
+      "note": "Manual entry — update before next meeting"
+    }
+  ],
+  "recent_news": [
+    {
+      "date": "2026-04-12",
+      "title": "BNP Paribas sees AI spending fears overblown for Alphabet, Amazon",
+      "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNNWV6SGZOcGFHa3JJV1dkbFpjSHZMY2J2RnZSbXBkTDA5OWRPdHJzSEptZmdxWnJCbWNuNHBFWGgxRGp2UjRLVkNTYjkzTzN0d0FXWFpHRVU1T3N3TGd3RXNoT2ZvcTg5Y2ppVkU2MDYyek5ER1JsM2N6dlh4ckFlWVpZenBadkFac1pQWTZxNXBFSlhTZzFVN3ZXNzR2cjZBNmR2MjBXNWh3dkFoNXNNMlg2NjRObXAtLXZTT0ZHUWkzeUNvbVpBckxIcjFxbVZsVGJVQ2U3eEVjaVJWbVI3ZWVEZklPT0ItWHc?oc=5",
+      "source": "MSN"
+    },
+    {
+      "date": "2026-04-29",
+      "title": "Amazon 2026 Q1 Earnings Highlights: Revenue Beat, AWS Hits 28% (Fastest in 4 Years), AI CapEx Accelerates",
+      "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9ha1dtTVlTNzFmaGdGVnRyRVJpdmNENWVFNkVjZUduVDBCUTRpeXVFdkZGRzNCLXI3Rk1kZUl4aGZtUmV0OS1jclRhWlpjV2tULWtLdkF3UlhUdlY1NlHSAWNBVV95cUxQVzJaaXFZbklJb3Nud2JpdTg5eGkzdGZiU1RBb2p2WnIyMXZzS3VQbnpMc3lOaFc1M1FLMWt2OGpvVlZBc1FsVExIN01waHUyX0dfNmlDbUVUMkpNbndDR3BQdGc?oc=5",
+      "source": "Bitget"
+    },
+    {
+      "date": "2026-04-12",
+      "title": "2 Stocks to Buy on Overdone AI Infrastructure Spending Fears That Could Rise 30% and 50%, According to One Wall Street Analyst",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNZnRtQm1VRFd6eENkbHlqRTJYLWE4eHBPb3J6RUJZWGwxU0NPXzZ6bm1EdklVYm94LWl6eUNtakQ3N0tOZmI3akpLVk9wUzdDaUREYW1nSU9oZ01rZzlZUlBfYmVERkdLQjRYQnNKTXdTWTBWWUw5bldOckFPUXFndktwemlXeU9veWhUU0daNWd5anBqUEhnRg?oc=5",
+      "source": "The Motley Fool"
+    },
+    {
+      "date": "2026-04-19",
+      "title": "Amazon Stock (AMZN): Price Target, AWS, Trainium & Analysis 2026",
+      "url": "https://news.google.com/rss/articles/CBMiS0FVX3lxTE9EV3NaQzVCNmtkYmRrNk5sMzd1LTByYVd6NWtnZ0xZS3dZR3JZSXhMSXJETWlBTXpWbEhCTjVVN1FLY0hoZUk1LVA1RQ?oc=5",
+      "source": "techi.com"
+    },
+    {
+      "date": "2026-04-28",
+      "title": "Big Tech Q1 2026 Earnings: $630B AI Capex and an Azure Supply Crunch",
+      "url": "https://news.google.com/rss/articles/CBMioAFBVV95cUxQOXJDV2ZxVWJDeEo2RDJMSHg4S1o0dDJ4SmhOSXY0VDZNMlpkd0dOQ0VCZ1BtZkIwY2lpWlNNcl9rZjNVLUltYTNGQ0s0d1Zmbi11YUtETG1yeEE3UDRoS3AtOFRMamNLbGQ1VDh4Tm9Sc3AtYk93V0wtcHVWMGxnU2d4dHBVVkVrLTVPazd3RnB3alkzZ1dQNHZfVGM0RElu?oc=5",
+      "source": "abhs.in"
+    },
+    {
+      "date": "2026-04-30",
+      "title": "Amazon's Bold Gambit: CEO Andy Jassy Declares War on Nvidia and Intel in Revealing Shareholder Letter",
+      "url": "https://news.google.com/rss/articles/CBMinwJBVV95cUxQRmhJLUZwRW4wc2pHTEdzZXRQLXhxdTdTMlJOTmxPc2Jqakk5SW1kdXR1V2UtdEZEZVZFRmhBOEk0N2M4eWZ3ZDhSZFhjQ2N6YVR3WWpzZ1JfWjNJcTRmdG1rRUVxdGcyNm1fazlySUhLZmFPY0JuNFVJWF9ZVEt1RUhPZnZ3RmF0US1YeThQVkNVa1pPdVE1MDV3Q19UUkFTbXdmZGp1ZW4xNkJLcjN4UVhIbFk1TnV2Y013R0ZaRnJtT0ZCdHViWXR4UGhiYlFMQ3FUMExsTkpCVF9CSnpwRS11aWkwd3dtMS1HMkoycFgxTnJRckRJWDRHRlFMMmtOS0tQQXdRV0M2RkJBWEdJTzRjWmhYNDZqaEIySWlhRQ?oc=5",
+      "source": "Dailyhunt"
+    },
+    {
+      "date": "2026-04-29",
+      "title": "Big Tech Q1 2026: Meta +31%, Google Cloud +50%, Amazon Chips $20B",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxPaUlHU0t4aVNmSlRWXzRuWkVGWkwtdmZ1RElkOTF3UlpKWGFOZmZXSVJrYmRWbzUyb0tKVFM2T1QwNWt4TTZRaldQQ0tvcHVpTVg3NHl0eHhMOG5fN3ZpV0NGUFl4LWNNZGxaVV9WallzOFYyNVRMZjJjV3BVc2Q0RU1iUS00R2YxN2R0Nm5JWlBLQ1VlalExY1B3?oc=5",
+      "source": "abhs.in"
+    },
+    {
+      "date": "2026-05-08",
+      "title": "Amazon Stock a Strong Buy in 2026 as AWS AI Surge and E-Commerce Resilience Drive Analyst Optimism",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOdWRrdF9MV3ZCcGtaNU1TaFJHbVBqVURTMF9WdlQydmoySS01YnJScnZ5TnN5aENIUVlKcWJBVVIzbno5U19ubjJ5Rml3Sm9XMU5hUGM3NzM4ZWtKTlY1bERmTnFlSldwZElWdmptUGJTME55bDkxd203WkR1ZHh6MHFzZXM3bFF6RWtUd25FMWpGUzJVenBZbllUSHo2Wlc2cXpxVHVmREk3SVUzV1NtZUF3ejlZTzYzT1FVRzFB?oc=5",
+      "source": "International Business Times Australia"
+    },
+    {
+      "date": "2026-04-12",
+      "title": "Buy or Sell Amazon Stock in 2026? Latest Analyst Targets Point to 20-50% Gains From AI Investments",
+      "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNTkF0VVNaNWNuMUlYMFhqeWVMV1hINUpZM1MwT0x1dExDbUVHNGpVQ05faTJEbU9aWUlleTVvRnl4RlFoX3c2dnQ0UWZxQjdHV1FlWW5tSGVSdjVCTHRYSFI5NjBxbHFjeDI4WXhFWE9NWVBsclFKaEdid01XZDhYeks1eVZXQWdKdkM3QWd0TTBwMjdSTnhTVlRONk9DbHpxbEludGtlOTlPSVZRbUZJX3RvZ0dJVGxC?oc=5",
+      "source": "International Business Times Australia"
+    }
+  ],
+  "sales_hooks": [
+    "Amazon $100B+ CapEx 2026 — the largest absolute spend of any hyperscaler; AWS is both a GPU cloud and a custom silicon buyer, meaning HBM flows through two separate procurement channels simultaneously.",
+    "Project Rainier (Trainium2, 400K+ chips) is dedicated to Anthropic — Anthropic's Claude models drive a discrete, predictable HBM demand stream that memory suppliers can forecast against.",
+    "Amazon Trainium/Inferentia custom chips source HBM directly (not via NVIDIA) — a rare direct hyperscaler-to-memory-supplier relationship. Ask how your customer tracks and grows this procurement path.",
+    "AWS is the #1 cloud by market share (~32%) — every AI workload migrating to cloud adds to AWS HBM pull even if running on NVIDIA GPUs."
+  ],
+  "competitive_position": {
+    "cloud_ai_rank": 2,
+    "vs_microsoft": "Larger cloud footprint; Microsoft ahead on enterprise AI product integration",
+    "vs_google": "AWS ahead on cloud market share; Google ahead on AI model capabilities",
+    "hbm_sourcing": "Dual-path: Trainium/Inferentia direct (Samsung/SKH) + GPU cloud via NVIDIA"
+  },
+  "financials_history": {
+    "2025Q1_capex_usd_bn": 24.3,
+    "2025Q2_capex_usd_bn": 17.6,
+    "2025Q3_capex_usd_bn": 22.6,
+    "2025Q4_capex_usd_bn": 26.3,
+    "2026Q1_capex_usd_bn": 44.2
+  },
+  "sources": [
+    "Amazon Q1 2026 Earnings (Apr 2026)",
+    "AI_SCM/data/seed_data.json"
+  ],
+  "flagged_news": []
+}
