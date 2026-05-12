@@ -15,19 +15,19 @@ cross-cutting signals that no single section agent can see alone.
 
 ## Agent Registry
 
-| Agent | File | Last Refresh |
+| Agent | Folder | Last Refresh |
 |---|---|---|
-| DRAM Expert | `section/dram.md` | — |
-| Storage Expert | `section/storage.md` | — |
-| DC Infrastructure Expert | `section/dc_infra.md` | — |
-| ASIC Expert | `section/asic.md` | — |
-| Chip Maker Expert | `section/chip_maker.md` | — |
-| Foundry & Packaging Expert | `section/foundry.md` | — |
-| Network Expert | `section/network.md` | — |
-| Power Semiconductor Expert | `section/power.md` | — |
-| PCB & Substrate Expert | `section/substrate.md` | — |
-| End Market Expert | `section/end_market.md` | — |
-| Crawler Agent | `data/crawler.md` | — |
+| DRAM Expert | `section/dram/` | — |
+| Storage Expert | `section/storage/` | — |
+| DC Infrastructure Expert | `section/dc_infra/` | — |
+| ASIC Expert | `section/asic/` | — |
+| Chip Maker Expert | `section/chip_maker/` | — |
+| Foundry & Packaging Expert | `section/foundry/` | — |
+| Network Expert | `section/network/` | — |
+| Power Semiconductor Expert | `section/power/` | — |
+| PCB & Substrate Expert | `section/substrate/` | — |
+| End Market Expert | `section/end_market/` | — |
+| Crawler Agent | `data/crawler/` | — |
 | Analysis Agent | `data/analysis.md` | — |
 | DBA Agent | `data/dba.md` | — |
 

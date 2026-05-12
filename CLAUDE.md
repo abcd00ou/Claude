@@ -120,31 +120,65 @@ supply/demand balance, key players, pricing trends, technology roadmap, and sale
 
 ## Knowledge Base Structure
 
+Each agent is a **folder**, not a single file. `README.md` is the agent's main document.
+Subfolders hold organized supporting knowledge.
+
 ```
 Claude/
-├── CLAUDE.md                        ← This file (project instructions + architecture)
+├── CLAUDE.md                            ← This file (project instructions + architecture)
 ├── agents/
-│   ├── ORCHESTRATOR.md              ← Orchestrator agent knowledge + routing logic
-│   ├── section/
-│   │   ├── dram.md
-│   │   ├── storage.md
-│   │   ├── dc_infra.md
-│   │   ├── asic.md
-│   │   ├── chip_maker.md
-│   │   ├── foundry.md
-│   │   ├── network.md
-│   │   ├── power.md
-│   │   ├── substrate.md
-│   │   └── end_market.md
-│   └── data/
-│       ├── crawler.md
-│       ├── analysis.md
-│       └── dba.md
-├── company_intel/                   ← Per-company deep dives (existing)
-├── AI_SCM/                          ← Supply chain timeline & gap analysis (existing)
-├── dashboard/                       ← HTML dashboard (existing)
-└── marketing/                       ← Marketing & sales output layer
+│   ├── orchestrator/
+│   │   ├── README.md                    ← Orchestrator: routing logic + cross-segment synthesis
+│   │   └── synthesis/                   ← Weekly/monthly synthesis reports (YYYY-MM-DD.md)
+│   │
+│   ├── section/                         ← One folder per semiconductor segment
+│   │   ├── dram/
+│   │   │   ├── README.md                ← Main agent (market overview, signals, roadmap)
+│   │   │   ├── companies/               ← Per-company deep dives (sk_hynix.md, samsung.md, micron.md)
+│   │   │   ├── market/                  ← Pricing trends, supply/demand data (pricing.md, roadmap.md)
+│   │   │   └── updates/                 ← Dated update logs (2026-Q2.md, 2026-05.md)
+│   │   ├── storage/         (same structure)
+│   │   ├── dc_infra/        (same structure)
+│   │   ├── asic/            (same structure)
+│   │   ├── chip_maker/      (same structure)
+│   │   ├── foundry/         (same structure)
+│   │   ├── network/         (same structure)
+│   │   ├── power/           (same structure)
+│   │   ├── substrate/       (same structure)
+│   │   └── end_market/      (same structure)
+│   │
+│   └── data/                            ← Data pipeline expert agents
+│       ├── crawler/
+│       │   ├── README.md                ← Source registry, crawl cadence, signal taxonomy
+│       │   ├── sources/                 ← Per-source detail files (nvidia_ir.md, tsmc_ir.md)
+│       │   └── signals/                 ← Extracted signal logs (YYYY-MM-DD.md)
+│       ├── analysis/
+│       │   ├── README.md                ← Analysis frameworks and methodology
+│       │   ├── models/                  ← Demand model snapshots (hbm_demand_2026.md)
+│       │   └── reports/                 ← Completed analysis reports
+│       └── dba/
+│           ├── README.md                ← Schema design, tagging rules, versioning
+│           └── schema/                  ← Detailed schema definitions per domain
+│
+├── company_intel/                       ← Per-company deep dives (existing)
+├── AI_SCM/                              ← Supply chain timeline & gap analysis (existing)
+├── dashboard/                           ← HTML dashboard (existing)
+└── marketing/                           ← Marketing & sales output layer
 ```
+
+### Subfolder Usage Rules
+
+| Subfolder | What goes in it |
+|---|---|
+| `companies/` | One `.md` per key player in the segment (company name in snake_case) |
+| `market/` | Thematic files: `pricing.md`, `roadmap.md`, `supply_demand.md` |
+| `updates/` | Dated update logs: `YYYY-MM.md` or `YYYY-QN.md` per period |
+| `synthesis/` | (Orchestrator only) Cross-segment reports by date |
+| `sources/` | (Crawler only) Per-source monitoring notes |
+| `signals/` | (Crawler only) Raw extracted signals by date |
+| `models/` | (Analysis only) Demand model snapshots with assumptions |
+| `reports/` | (Analysis only) Completed analytical reports |
+| `schema/` | (DBA only) Detailed schema for specific domains |
 
 ---
 
