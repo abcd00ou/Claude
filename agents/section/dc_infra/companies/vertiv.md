@@ -4,7 +4,7 @@
 **Role in AI SCM:** Leading provider of liquid cooling, UPS, and power distribution for AI data centers  
 **HQ:** Columbus, Ohio, USA  
 **Ticker:** NYSE:VRT  
-**Last Updated:** 2025-04-23
+**Last Updated:** 2026-05-01
 
 ---
 
@@ -57,6 +57,16 @@ Vertiv designs and manufactures power and cooling equipment. It is not semicondu
 ---
 
 ## Updates
+
+### Update: 2026-05-01 — Q1 2026: Backlog $12.45B (+81% YoY); Earnings +83%; FY2026 Guidance $13.25–13.75B
+
+> Vertiv Q1 2026 earnings (reported May 1, 2026): earnings rose 83% year-over-year. Order backlog as of March 31, 2026: $12.45B (+80.8% YoY), with a 12–18 month conversion horizon. FY2025 revenue approximately $10.2B; adjusted operating margins expanded 430 basis points to 20.8%; free cash flow $1.8B. FY2026 revenue guidance raised to $13.25–13.75B (27–29% organic growth, some sources citing ~30%). AI clusters hitting 120–300 kW per rack are driving DLC into mandatory territory, with liquid cooling now dominating new AI data center deployments.
+
+**Source:** Motley Fool, 2026-05-01; Seeking Alpha; SimplyWallSt; FinancialContent
+
+#segment:dc_infra #source-tier:B #signal-type:demand #company:vertiv #date:2026-05-01 #importance:high #confidence:high
+
+---
 
 ### Update: 2025-04-23 — Q1 2025: Orders $3.3B (+30% YoY); AI Data Center Primary Driver
 

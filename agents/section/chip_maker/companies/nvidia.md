@@ -78,6 +78,16 @@ NVIDIA designs GPUs and sources manufacturing from TSMC (confirmed in 10-K: uses
 
 ---
 
+### Update: 2026-01 — Vera Rubin Hardware Specs Disclosed at CES 2026: 288 GB HBM4, 22 TB/s, 50 PFLOPS
+
+> NVIDIA disclosed Vera Rubin (R100) hardware specifications at CES 2026 (January 2026): 336 billion transistors; TSMC 3nm dual-die design; 288 GB HBM4 per GPU; 22 TB/s memory bandwidth (vs. Blackwell B200: 8 TB/s — 2.75× increase); 50 PFLOPS NVFP4 inference per GPU (5× Blackwell inference performance). Vera Rubin NVL72 system: 72 GPUs connected via NVLink 6; 3.6 exaflops compute; 260 TB/s all-to-all bandwidth. Jensen Huang confirmed first Vera Rubin NVL72 rack operational at Microsoft Azure. Full production shipments targeted H2 2026. Blackwell sold out through mid-2026 with a backlog of approximately 3.6 million units; B300 lead times improved from 36 weeks to ~18 weeks.
+
+**Source:** NVIDIA Newsroom, 2026-01; Tom's Hardware, 2026-01; ServeTheHome, 2026-01; NVIDIA Technical Blog, 2026-01
+
+#segment:chip_maker #source-tier:A #signal-type:roadmap #company:nvidia #date:2026-01 #importance:high #confidence:high #cross-ref:foundry,dram
+
+---
+
 ### Update: 2026-02-25 — Vera Rubin platform: production H2 FY2027; first customers AWS/Google/Azure/Oracle
 
 > "We unveiled the NVIDIA Rubin platform, comprising six new chips to deliver up to a 10x reduction in inference token cost, compared with the NVIDIA Blackwell platform; cloud providers Amazon Web Services (AWS), Google Cloud, Microsoft Azure and Oracle Cloud Infrastructure will be among the first to deploy Vera Rubin-based instances." Production shipments expected to commence in the second half of fiscal year 2027 (calendar Aug 2027–Jan 2028).
@@ -110,6 +120,6 @@ NVIDIA designs GPUs and sources manufacturing from TSMC (confirmed in 10-K: uses
 
 ## Open Questions
 
-- [ ] Vera Rubin HBM type and capacity per chip — publicly disclosed?
+- [x] Vera Rubin HBM type and capacity per chip — **resolved**: 288 GB HBM4, 22 TB/s (CES 2026, Jan 2026)
 - [ ] NVIDIA Networking ($11B Q4 FY2026, +263% YoY) — what drives the networking spike?
 - [ ] Samsung HBM3E qualification status for Blackwell — any public update post Q4 FY2026?

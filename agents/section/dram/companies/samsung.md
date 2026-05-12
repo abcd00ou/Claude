@@ -79,6 +79,16 @@ Samsung Memory sells HBM to AI accelerator OEMs (NVIDIA, AMD, and its own Exynos
 
 ## Updates
 
+### Update: 2025-Q2 — Samsung HBM Market Share Collapsed to 17%; Micron Overtook Samsung at #2 (21%)
+
+> TrendForce Q2 2025 HBM market share data: SK Hynix 62%, Micron 21%, Samsung 17%. This represents a dramatic reversal from Samsung's historical #2 position. Samsung's share collapse is attributed to failure to pass NVIDIA's initial HBM3E qualification in 2024. Samsung is working to re-qualify with NVIDIA; multi-year supply contracts signed with other customers. HBM3E contract prices raised approximately 20% for 2026 delivery by Samsung and SK Hynix. Samsung's re-qualification efforts for NVIDIA HBM3E Blackwell are ongoing.
+
+**Source:** TrendForce, 2025-12-18; Digitimes, 2025-12-24; Silicon Analysts, 2025
+
+#segment:dram #source-tier:B #signal-type:supply #company:samsung #date:2025-Q2 #importance:high #confidence:high #cross-ref
+
+---
+
 ### Update: 2026-04-30 — Q1 2026: record revenue and profit; HBM capacity sold out for all of CY2026
 
 > Memory Business Executive Kim Jaejune: "The adoption of agentic AI drove further growth in relevant demands, mostly for HBM, server DRAM, and server SSD. Despite rising demand, because of industry-wide constraints in expanding capacity, the supply shortage has actually become more intense."

@@ -94,9 +94,20 @@ Trainium and Inferentia chips are designed at AWS (Annapurna Labs, Cupertino CA)
 
 ---
 
+### Update: 2025-12 — Trainium3 EC2 Trn3 Announced: 2.52 PFLOPS/chip; TSMC N3P; 4.4× Trainium2; Trainium4 with NVLink Fusion
+
+> AWS announced EC2 Trn3 UltraServer instances (Trainium3-based) at AWS re:Invent December 2025. Trainium3 specifications: 2.52 PFLOPS FP8 per chip; 144 GB HBM3e per chip; 4.9 TB/s memory bandwidth; manufactured on TSMC N3P. UltraServer configuration: up to 144 chips per server = 362 FP8 PFLOPs per server. Performance vs Trainium2: 4.4× performance, 3.9× memory bandwidth, 4× performance/watt. Volume production began Q3 2025; approximately 150,000 units planned total; 80% of production expected complete by end of 2026, final 20% in early 2027. TrendForce noted strong customer interest from large and mid-sized enterprises. Trainium4 also announced at re:Invent — with NVIDIA NVLink Fusion support; sample chips targeted Q4 2026; mass production 2027.
+
+**Source:** AWS press release, December 2025; TechCrunch, 2025-12-02; NextPlatform, 2025-12-03; TrendForce, 2025-10-31; SemiAnalysis newsletter, 2025
+
+#segment:asic #source-tier:A #signal-type:supply #company:amazon_trainium #date:2025-12 #importance:high #confidence:high
+
+---
+
 ## Open Questions
 
-- [ ] Trainium3 specs — TFLOPS, HBM configuration, TSMC node?
+- [x] Trainium3 specs — **resolved**: 2.52 PFLOPS FP8, 144 GB HBM3e, TSMC N3P, 4.4× Trainium2 (announced re:Invent December 2025)
+- [ ] Trainium4 (NVLink Fusion): what does NVIDIA NVLink Fusion integration enable for a competitor's chip?
 - [ ] Trainium market share vs NVIDIA within AWS infrastructure — what % of AWS AI compute is custom silicon?
-- [ ] Anthropic (Claude) training workload split between Trainium2 and NVIDIA GPUs?
+- [ ] Anthropic (Claude) training workload split between Trainium2/3 and NVIDIA GPUs?
 - [ ] AWS Neuron SDK adoption — how many external customers are using Trainium vs staying on NVIDIA?

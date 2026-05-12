@@ -4,6 +4,35 @@ Running log of all completed intelligence cycles. Updated at end of each cycle.
 
 ---
 
+## Cycle 5 — 2026-05-12
+
+**Status:** Complete  
+**Synthesis:** `synthesis/2026-05-12_cycle5.md`  
+**Type:** Research Cycle (external web agents — 2 agents, standard mode)  
+**Update logs created:** All 10 sections (dram, storage, chip_maker, foundry, power, substrate, dc_infra, network, asic, end_market) — Q2–Q3 2025 through Q1 2026  
+**Company files updated:** NVIDIA (Vera Rubin CES specs), SK Hynix (Q2 2025 HBM share + HBM4 qual), Samsung (HBM collapse to 17%), Vertiv (Q1 2026 backlog), Google TPU (Ironwood GA), Amazon Trainium (Trainium3 full specs)  
+**Signals generated:** 5 new cross-segment signals (Signals 22–26)
+
+**Key findings:**
+- Samsung HBM market share collapsed to 17% in Q2 2025 (NVIDIA qualification failure); Micron rose to #2 at 21%; SK Hynix extended lead to 62%
+- NVIDIA Vera Rubin: 288 GB HBM4 per GPU, 22 TB/s bandwidth, 50 PFLOPS per chip — single platform drives HBM TAM from $35B to $58B+ in 2026
+- Samsung Foundry SF2P hit 70% yield (January 2026) — first credible 2nm AI chip path; AMD in negotiations for Venice EPYC on SF2
+- Power transformer lead times: 128 weeks (2.5 years) in U.S. — AI DC buildout constrained by grid infrastructure, not just chip supply
+- All four hyperscalers (Google Ironwood GA Nov 2025, Amazon Trainium3 Dec 2025, Meta MTIA Gen 2, Microsoft Maia 200) now have production AI ASIC at scale
+
+**Open flags carried to Cycle 6:**
+- Samsung NVIDIA HBM3E re-qualification result
+- AMD Venice on Samsung SF2P — final confirmation
+- Vera Rubin NVL72 specific volume production quarter (H2 2026)
+- U.S. transformer manufacturing capacity response
+- Ultra Ethernet 1.0 first named hyperscaler production deployment
+- Google Ironwood TSMC node confirmation
+- Wolfspeed SiC split — Infineon vs onsemi still unquantified
+- Ibiden ¥500B investment quarterly capacity timeline
+- Amkor CoWoS qualification
+
+---
+
 ## Cycle 4 — 2026-05-12
 
 **Status:** Complete  

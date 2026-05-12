@@ -2,11 +2,21 @@
 
 **Segment:** dram  
 **Type:** Pricing Trend File  
-**Last Updated:** 2026-04-30
+**Last Updated:** 2026-05-12 (Cycle 5)
 
 ---
 
 ## HBM vs Conventional DRAM Pricing Premium
+
+### 2025-Q4 — HBM4 ~$500/Stack; HBM3E ~$300/Stack; +20% Contract Price Increase for 2026 Delivery
+
+> Samsung and SK Hynix raised HBM3E contract prices approximately 20% for 2026 delivery orders, negotiated in late 2025. Market pricing: HBM3E at approximately $300 per stack; HBM4 at approximately $500 per stack — a 30%+ premium over 12-Hi HBM3E. Total HBM market size: ~$35B in 2025, forecast ~$58B in 2026, ~$100B by 2028. HBM revenue mix forecast for 2026: HBM3E ~45%, HBM4 ~55% (HBM4 volume ramps from Q3 2026 with NVIDIA Vera Rubin NVL72).
+
+**Source:** TrendForce, 2025-12-24; Digitimes, 2025-12-24; Silicon Analysts, 2025; Introl Blog, 2025
+
+#segment:dram #source-tier:B #signal-type:pricing #date:2025-Q4 #importance:high #confidence:high
+
+---
 
 ### 2026-Q1 — HBM Premium Expanding: HBM3E ~$15–18/GB vs DDR5 ~$3–5/GB
 

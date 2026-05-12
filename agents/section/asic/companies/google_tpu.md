@@ -95,9 +95,20 @@ Google designs TPUs internally (Google DeepMind + Google Brain hardware teams). 
 
 ---
 
+### Update: 2025-11 — Google Ironwood (7th Gen TPU) GA: 4,614 FP8 TFLOPS/chip; 192 GB HBM3E; 9,216-Chip Pod = 42.5 ExaFLOPS
+
+> Google Ironwood (7th-generation TPU) reached general availability in November 2025. Specifications: 4,614 FP8 TFLOPS per chip; 192 GB HBM3E per chip; 7.37 TB/s memory bandwidth per chip (4.5× previous Trillium generation); die size 700 mm². Pod scale: 9,216 chips = 42.5 ExaFLOPS. TSMC fabrication confirmed; specific node not disclosed in public filings (not N3/N4 confirmed; TSMC N2 reported for next generation — TPU 8t "Sunfish" / TPU 8i "Zebrafish" — targeted late 2027). Ironwood was first announced at Google Cloud Next in April 2025 and reached GA in November 2025.
+
+**Source:** Google Cloud Blog, 2025-04 and 2025-11; TrendForce, 2025-11-07; The Register, 2025-11-06; ServeTheHome, 2025; The Next Web, 2025
+
+#segment:asic #source-tier:A #signal-type:supply #company:google_tpu #date:2025-11 #importance:high #confidence:high
+
+---
+
 ## Open Questions
 
-- [ ] Google Ironwood specs — TFLOPS, HBM capacity, bandwidth?
-- [ ] TPU 8t/8i: what TSMC node (N3B, N3E, or N3P)?
+- [x] Google Ironwood specs — **resolved**: 4,614 FP8 TFLOPS, 192 GB HBM3E, 7.37 TB/s, 9,216-chip pod = 42.5 ExaFLOPS (GA November 2025)
+- [ ] TPU 8t/8i (current gen): TSMC node not confirmed — N3B, N3E, or N3P?
+- [ ] TPU 8t "Sunfish" / TPU 8i "Zebrafish" (next gen, TSMC N2): exact timeline for late 2027?
 - [ ] TPU fleet total deployed chip count — 2M estimate from analysts; has Google disclosed?
 - [ ] How does Google's TPU capex split between internal use vs cloud customer-facing capacity?

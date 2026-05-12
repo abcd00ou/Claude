@@ -78,6 +78,16 @@ SK Hynix supplies HBM directly to NVIDIA (primary) and AMD. It sells server DRAM
 
 ## Updates
 
+### Update: 2025-09 — World's First HBM4 Mass Production Qualification; 62% HBM Market Share in Q2 2025
+
+> SK Hynix secured the world's first mass production qualification for HBM4 in September 2025. Q2 2025 HBM market share (TrendForce): SK Hynix 62% (up from ~57% in Q4 2024), Micron 21%, Samsung 17%. SK Hynix surpassed Samsung as the world's largest memory chip supplier by revenue in 2025, recording operating profit of approximately 47.2 trillion Korean won — a record. M15X fab first clean room completion is targeted May 2026, with over 20 trillion Korean won invested in HBM4 capacity. UBS projected SK Hynix at approximately 70% share of HBM4 supply for NVIDIA's Vera Rubin platform. HBM4 is priced at approximately $500 per stack (vs. HBM3E at ~$300/stack). HBM3E contract prices raised ~20% for 2026 delivery, negotiated in Q4 2025.
+
+**Source:** TrendForce, 2026-01-05; TrendForce, 2025-12-18; SK Hynix corporate news, 2025–2026 market outlook; Digitimes, 2025-12-24; UBS analyst note (via SK Hynix news), 2026
+
+#segment:dram #source-tier:B #signal-type:supply #company:sk-hynix #date:2025-09 #importance:high #confidence:high
+
+---
+
 ### Update: 2026-04-23 — Q1 2026 earnings: record revenue and margin; HBM4 in mass production
 
 > "Strong demand for memory products continued, driven by intensifying global investment in AI infrastructure. Demand increased significantly for both HBM and conventional server memory. The pace of industry supply growth could not keep up with demand, leading to broad-based price increases."
