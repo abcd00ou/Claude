@@ -4,6 +4,34 @@ Running log of all completed intelligence cycles. Updated at end of each cycle.
 
 ---
 
+## Cycle 4 — 2026-05-12
+
+**Status:** Complete  
+**Synthesis:** `synthesis/2026-05-12_cycle4.md`  
+**New company files:** Samsung Foundry, Intel Foundry (foundry); Western Digital/SanDisk (storage); NVIDIA Networking (network); AT&S, Shinko Electric (substrate); Google TPU, Amazon Trainium (asic)  
+**New market files:** `foundry/market/packaging.md`, `network/market/roadmap.md`  
+**New update logs:** `foundry/updates/2025-Q1.md`, `storage/updates/2025-Q1.md`, `network/updates/2025-Q2.md`  
+**Signals generated:** 5 new cross-segment signals (Signals 17–21)
+
+**Key findings:**
+- TSMC foundry monopoly on AI GPU manufacturing structurally hardened — Samsung Foundry yield gap (35–60% vs TSMC 70%+) and Intel Foundry losses (-$2.3B Q1 2025) leave no qualified backup for AI GPU production
+- WD/Kioxia JV controls ~32–34% of global NAND bits post-SanDisk spin-off (Feb 2025) — second-largest NAND concentration after Samsung
+- OSAT packaging (ASE/Amkor) not yet qualified for CoWoS-class advanced packaging; Amkor talks with TSMC unconfirmed; TSMC CoWoS remains only path for AI GPU packaging
+- Ultra Ethernet 1.0 spec ratified in 2024 but not yet in production at any hyperscaler; NVIDIA InfiniBand NDR dominance extends into 2026
+- Google TPU 8t/8i (N3) + Amazon Trainium3 at scale; both on TSMC N3 — compounding TSMC foundry pressure alongside NVIDIA B200
+
+**Open flags carried to Cycle 5:**
+- Amkor CoWoS overflow qualification timeline
+- Samsung SF2 AI GPU customer sampling
+- Ultra Ethernet 1.0 first production deployment
+- Google Ironwood specs (TFLOPS, HBM, TSMC node)
+- Trainium3 volume production timeline and specs
+- Wolfspeed SiC gap absorption split (Infineon vs onsemi) — still unquantified
+- Vera Rubin HBM4 configuration
+- AT&S Kulim 2 exact capacity addition
+
+---
+
 ## Cycle 2 — 2026-05-12
 
 **Status:** Complete  

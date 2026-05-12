@@ -22,10 +22,10 @@ cross-cutting signals that no single section agent can see alone.
 | DC Infrastructure Expert | `section/dc_infra/` | 2026-04-29 (Hyperscaler Q1 2026) |
 | ASIC Expert | `section/asic/` | 2026-04-29 (Hyperscaler Q1 2026) |
 | Chip Maker Expert | `section/chip_maker/` | 2026-05-05 (AMD Q1 2026) |
-| Foundry & Packaging Expert | `section/foundry/` | 2026-04-16 (TSMC Q1 2026) |
-| Network Expert | `section/network/` | 2025-06-05 (Broadcom Q2 FY2025, Arista Q1 2025, Marvell Q4 FY2025) |
+| Foundry & Packaging Expert | `section/foundry/` | 2026-05-12 (Samsung Foundry, Intel Foundry, packaging.md — Cycle 4) |
+| Network Expert | `section/network/` | 2026-05-12 (NVIDIA Networking, network roadmap, Q2 2025 update — Cycle 4) |
 | Power Semiconductor Expert | `section/power/` | 2025-05-07 (Infineon Q2 FY2025, MPS Q1 2025, onsemi Q1 2025) |
-| PCB & Substrate Expert | `section/substrate/` | 2025-04-25 (Ibiden Q3 FY2025, Unimicron Q1 2025) |
+| PCB & Substrate Expert | `section/substrate/` | 2026-05-12 (AT&S, Shinko Electric — Cycle 4) |
 | End Market Expert | `section/end_market/` | 2026-04-29 (Hyperscaler Q1 2026) |
 | Crawler Agent | `data/crawler/` | — |
 | Analysis Agent | `data/analysis.md` | — |
@@ -72,6 +72,16 @@ cross-cutting signals that no single section agent can see alone.
 ---
 
 ## Cross-Segment Synthesis
+
+### Update: 2026-05-12 — Cycle 4: Foundry, storage, network, substrate, ASIC gap coverage; packaging deep-dive
+
+> Full synthesis in `synthesis/2026-05-12_cycle4.md`.
+> 5 new cross-segment signals (Signals 17–21). Key: TSMC foundry monopoly structurally hardened —
+> Samsung 3nm yield gap (35–60% vs TSMC 70%+) and Intel Foundry losses confirm no qualified AI GPU backup.
+> WD/Kioxia JV controls ~32–34% of global NAND bits post-SanDisk spin-off. OSAT (Amkor/ASE) not yet
+> qualified for CoWoS-class packaging. Ultra Ethernet 1.0 spec ratified but no hyperscaler production
+> deployment confirmed — InfiniBand dominance extends. Google TPU 8 + Amazon Trainium3 both on TSMC N3,
+> compounding foundry pressure. Cumulative 21 signals across 4 cycles.
 
 ### Update: 2026-05-12 — Cycle 3: Gap company coverage; NVIDIA Q1 FY2026; market thematic files
 

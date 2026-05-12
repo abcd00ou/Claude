@@ -1,6 +1,6 @@
 # Company Master Database — AI Supply Chain
 
-**Last Updated:** 2026-05-12 (Cycle 3)  
+**Last Updated:** 2026-05-12 (Cycle 4)  
 **Coverage:** All companies tracked across 10 segment agents  
 **Source rule:** All figures sourced from Tier A/B; see individual company files for full citations
 
@@ -24,6 +24,7 @@
 | SK Hynix / Solidigm | NAND #3; enterprise SSD focus | ~19% | Integrated FY2023 | Solidigm enterprise SSD qualification at hyperscalers | 2024 |
 | Micron | NAND #4; Gen5 NVMe | ~14% | FQ2 2026: NAND $5.06B | QLC mix improving; Gen5 NVMe qualifying at hyperscalers | 2026-03-18 |
 | Kioxia | NAND #2; WD joint fab; IPO Dec 2024 | ~19% | FY2025 est: ¥2T+ | BiCS 9 (300+ layer) production ramp; CD8P Gen5 qualified | 2025-04-25 |
+| SanDisk (WD spin-off) | NAND #5 (post-spin); Kioxia JV partner | ~13–15% | Q2 FY2025: Flash ~$2.5B | Spin-off complete Feb 2025; Kioxia JV continues; enterprise SSD primary growth | 2025-02-19 |
 
 ---
 
@@ -32,8 +33,8 @@
 | Company | Role | Foundry Share | Latest Revenue | Key AI Signal | Last Sourced |
 |---|---|---|---|---|---|
 | TSMC | Sole leading-edge AI chip fab | ~64% | Q1 2026: $35.8B (+35.1% YoY) | HPC=61% revenue; $52–56B CY2026 capex (record); CoWoS = binding constraint | 2026-04-17 |
-| Samsung Foundry | #2 foundry; 3nm yield issues | ~13% | — | No major AI GPU customer; yield gap vs TSMC | 2025 |
-| Intel Foundry | #3; 18A sampling; no AI win | — | Q1 2025: ~$4.7B | 18A customer sampling; no volume AI design win confirmed | 2025-04-25 |
+| Samsung Foundry | #2 foundry; 3nm yield gap; no AI GPU customer | ~13% | DS OP: KRW 53.7T (total div.) | SF3E yield ~35–60% vs TSMC ~70%+; SF2 targeting 2025; no NVIDIA/AMD/Google win | 2025-04-30 |
+| Intel Foundry | #3; 18A sampling; -$2.3B operating loss | ~4% | Q1 2025: ~$4.7B revenue | 18A customer sampling (Microsoft); no volume AI GPU win; Falcon Shores cancelled | 2025-04-25 |
 
 ---
 
@@ -51,9 +52,9 @@
 
 | Company | Role | Programs | Key Signal | Last Sourced |
 |---|---|---|---|---|
-| Google | TPU fleet (~2M+ chips) | TPU 8t + TPU 8i in production | Cloud backlog $462B; TPU available externally | 2026-04-29 |
-| Amazon AWS | Trainium + Inferentia | Trainium3 shipping; 100K+ cluster | $225B+ multi-year AWS commitments | 2026-05-01 |
-| Meta | MTIA Gen 2 (inference) | 2nm/Broadcom in production | MI450 for training; MTIA for inference | 2026-04-29 |
+| Google | TPU fleet (~2M+ chips); TSMC N3 | TPU 8t (training) + TPU 8i (inference) in production; Ironwood announced | Cloud backlog $462B; Alphabet capex $35.7B (+107% YoY) | 2026-04-29 |
+| Amazon AWS | Trainium + Inferentia; TSMC N4/N3 | Trainium3 early shipping; Trainium2 100K+ cluster; Inferentia2 production | $225B+ multi-year AWS commitments; Anthropic confirmed Trainium2 customer | 2026-05-01 |
+| Meta | MTIA Gen 2 (inference); 2nm/Broadcom | MTIA Gen 2 in production | MI450 for training; MTIA for inference | 2026-04-29 |
 | Microsoft | Maia 200 | In production on Azure | 30%+ improved tokens/dollar vs latest silicon | 2026-04-29 |
 | Marvell | Custom XPU design partner | 3 hyperscaler programs (production) | AI rev $1.08B/Q; FY2026 guidance >$8B | 2025-03-06 |
 | Broadcom | Custom XPU + switch ASIC | 3 production + 2 qualifying | AI rev $4.4B/Q; TAM raised to $60–90B | 2025-06-05 |
@@ -64,10 +65,11 @@
 
 | Company | Role | Technology | Key AI Signal | Last Sourced |
 |---|---|---|---|---|
-| NVIDIA (networking) | InfiniBand + Spectrum-X | NDR 400G / XDR 800G / Spectrum-X | Networking rev $4.6B in Q1 FY2026 | 2025-05-28 |
-| Broadcom | Switch ASIC (Tomahawk 5) | Ethernet 51.2 Tb/s | Tomahawk 5 at multiple hyperscalers; Jericho3-AI | 2025-06-05 |
+| NVIDIA (networking) | InfiniBand + Spectrum-X | NDR 400G / XDR 800G / Spectrum-X | Networking rev $4.6B/Q; NDR lead times 12–16wk (improved); XDR 800G sampling | 2025-05-28 |
+| Broadcom | Switch ASIC (Tomahawk 5) | Ethernet 51.2 Tb/s | Tomahawk 5 at multiple hyperscalers; Jericho3-AI; AI TAM raised $60–90B | 2025-06-05 |
 | Marvell | Switch ASIC + DPU | Teralynx; Alaska 800G | AI networking growing; DC = 75% of revenue | 2025-03-06 |
 | Arista | AI cluster switches | EOS + 7800R4 | Revenue $1.93B; AI fabric "material"; Microsoft + Meta | 2025-05-07 |
+| Ultra Ethernet Consortium | Open standard (UEC 1.0) | Ethernet AI-optimized | Spec ratified 2024; no hyperscaler production deployment as of Q1 2025 | 2024 |
 
 ---
 
@@ -108,5 +110,14 @@
 |---|---|---|---|---|
 | Unimicron | Taiwan | ~25% | AI capacity fully allocated through 2025; 20–24wk lead times; Hsinchu Phase 2 Q4 2025 | 2025-04-25 |
 | Ibiden | Japan | ~20% | AI = 60%+ of electronics rev; Ogaki full capacity; new lines FY2027 | 2025-03-01 |
-| AT&S | Austria | ~10% | Kulim 100% utilization; TSMC + Intel customer | 2025 |
-| Shinko Electric | Japan | ~15% | Intel captive; R&D for CoWoS co-supply | — |
+| AT&S | Austria | ~10% | Kulim (Malaysia) 100% utilization; Kulim 2 expansion approved; TSMC + Intel customer | 2025 |
+| Shinko Electric | Japan | ~15% | Intel captive primary; CoWoS-compatible R&D underway; no external AI GPU customer | 2025 |
+
+---
+
+## OSAT / Advanced Packaging
+
+| Company | Country | Role | Key AI Signal | Last Sourced |
+|---|---|---|---|---|
+| ASE Group | Taiwan | World's largest OSAT (~$16–17B rev) | SiP + FOWLP; no CoWoS-equivalent; involved in networking ASIC packaging | 2024 |
+| Amkor Technology | US (Korea ops) | #2 OSAT (~$6–7B rev) | SLIM interposer R&D; TSMC CoWoS overflow discussions (unconfirmed) | 2025 |
