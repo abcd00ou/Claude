@@ -80,6 +80,17 @@ cross-cutting signals that no single section agent can see alone.
 
 ---
 
+## New Section Proposals
+
+If incoming knowledge does not fit any existing section, propose a new agent here.
+Do not create the folder until it has been confirmed as a recurring, substantial domain.
+
+| Proposed Segment | Reason | Date Proposed | Status |
+|---|---|---|---|
+| — | — | — | — |
+
+---
+
 ## Open Flags
 
 - [ ] All section agents need initial population

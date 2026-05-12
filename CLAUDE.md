@@ -182,13 +182,60 @@ Claude/
 
 ---
 
+## Knowledge Principles
+
+These four rules govern every piece of knowledge added to this system.
+They are non-negotiable and apply to all agents.
+
+### 1. Reliable Sources Only
+
+Only accept knowledge from:
+- Academic: peer-reviewed journals, conference papers (IEEE, ACM, Nature, Science), theses, dissertations
+- Official: company IR pages, SEC/regulatory filings (10-K, 20-F, 8-K), press releases, official roadmaps
+- Financial: earnings call transcripts, annual reports, analyst research (Goldman, Morgan Stanley, BofA, TF International Securities)
+- Industry: SEMI, JEDEC, IEEE standards bodies, trade associations
+- Research: IDC, Gartner, TechInsights, Yole Développement, Omdia (cite specific report title + date)
+
+**Not accepted:** blog posts without primary source citation, unverified social media, anonymous forums, undated content.
+
+Every knowledge entry must cite its source:
+```
+**Source:** [Title], [Publisher/Author], [Date], [URL or report name]
+```
+
+### 2. Organize by Timeline and Importance
+
+- All entries carry a date: `YYYY-MM-DD` or `YYYY-QN` or `YYYY` minimum
+- Within any file, entries are ordered **newest first** (reverse chronological)
+- Each entry carries an importance tag: `#importance:high | medium | low`
+  - `high` = affects supply/demand balance, pricing, or strategic direction
+  - `medium` = useful context, corroborating data, secondary signals
+  - `low` = background reference, historical baseline
+
+### 3. Cross-Segment Routing
+
+When knowledge better belongs to another section:
+- **Toss to existing section:** add a `→ Toss: section/X/` note and place the file or entry there
+- **Toss to multiple sections:** duplicate the entry in each relevant section, tag with `#cross-ref`
+- **Likely new section:** flag in `agents/orchestrator/README.md` under "New Section Proposals" — do not create the folder until the Orchestrator confirms it warrants a dedicated agent
+
+### 4. Facts Only — No Derived Insights
+
+- Record what sources state directly. Do not add interpretation, inference, or conclusions.
+- If a source *implies* something, quote the implication verbatim and tag `#confidence:low`
+- Analysis and modeling belong only in `agents/data/analysis/` — never in section agent files
+- Acceptable: "SK Hynix guided HBM3E capacity to grow 60% YoY in 2025 (SK Hynix Q4 2024 earnings)"
+- Not acceptable: "This suggests HBM supply will be sufficient in 2025"
+
+---
+
 ## Work Rules
 
 - **No Python code.** All knowledge, frameworks, and agent logic lives in `.md` files.
-- **Always date-stamp entries** inside MD files: `## Update: YYYY-MM-DD`
+- **Always date-stamp entries** inside MD files using `YYYY-MM-DD`.
 - **After every completed task: `git commit` and `git push`.**
-- Section expert agents write within their own file; the orchestrator synthesizes across them.
-- When a new data signal is found, update the relevant section agent file first, then flag it in `ORCHESTRATOR.md`.
+- Section expert agents write within their own folder; the orchestrator synthesizes across them.
+- When a new signal is added, update the relevant section agent first, then flag cross-refs in `orchestrator/README.md`.
 
 ---
 
