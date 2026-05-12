@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI SCM — Orchestrator Task Flow</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --surface: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --muted: #7d8590;
+    --green: #3fb950;
+    --green-dim: #1a3a1f;
+    --blue: #58a6ff;
+    --blue-dim: #0d2a4a;
+    --purple: #bc8cff;
+    --purple-dim: #2d1f4e;
+    --orange: #ffa657;
+    --orange-dim: #3d2200;
+    --red: #f85149;
+    --red-dim: #3d0f0f;
+    --yellow: #e3b341;
+    --yellow-dim: #3d2e00;
+    --gray-dim: #1c2128;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+
+  /* ── HEADER ─────────────────────────────────────── */
+  .header {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .header-left { display: flex; align-items: center; gap: 12px; }
+  .logo {
+    width: 32px; height: 32px;
+    background: linear-gradient(135deg, var(--blue), var(--purple));
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+  .header h1 { font-size: 16px; font-weight: 600; }
+  .header .sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .badge {
+    font-size: 11px; padding: 2px 8px;
+    border-radius: 12px; font-weight: 500;
+    background: var(--green-dim); color: var(--green);
+    border: 1px solid var(--green);
+  }
+
+  /* ── MAIN LAYOUT ─────────────────────────────────── */
+  .main { padding: 28px 32px; max-width: 1400px; margin: 0 auto; }
+
+  /* ── CYCLE FLOW ──────────────────────────────────── */
+  .section-title {
+    font-size: 12px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--muted);
+    margin-bottom: 16px;
+  }
+  .cycle-flow {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-bottom: 36px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .flow-step {
+    flex: 1;
+    padding: 18px 20px;
+    background: var(--surface);
+    position: relative;
+    border-right: 1px solid var(--border);
+    transition: background 0.15s;
+    cursor: default;
+  }
+  .flow-step:last-child { border-right: none; }
+  .flow-step:hover { background: #1c2128; }
+  .flow-step .step-num {
+    font-size: 11px; font-weight: 700; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+  .flow-step .step-name {
+    font-size: 14px; font-weight: 600; margin-bottom: 4px;
+  }
+  .flow-step .step-desc {
+    font-size: 12px; color: var(--muted); line-height: 1.4;
+  }
+  .flow-step .step-icon {
+    font-size: 22px; margin-bottom: 8px;
+  }
+  .flow-arrow {
+    width: 28px; flex-shrink: 0;
+    background: var(--surface);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted); font-size: 18px;
+    border-right: 1px solid var(--border);
+    position: relative;
+  }
+  .step-1 .step-name { color: var(--orange); }
+  .step-2 .step-name { color: var(--blue); }
+  .step-3 .step-name { color: var(--purple); }
+  .step-4 .step-name { color: var(--green); }
+  .step-5 .step-name { color: var(--yellow); }
+
+  /* ── TWO COLUMN LAYOUT ───────────────────────────── */
+  .columns { display: grid; grid-template-columns: 1fr 380px; gap: 24px; margin-bottom: 28px; }
+
+  /* ── AGENT GRID ──────────────────────────────────── */
+  .agent-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .agent-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+    position: relative;
+  }
+  .agent-card:hover { border-color: var(--blue); background: #1c2128; }
+  .agent-card.updated { border-left: 3px solid var(--green); }
+  .agent-card.pending { border-left: 3px solid var(--border); opacity: 0.7; }
+  .agent-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+  .agent-name { font-size: 13px; font-weight: 600; }
+  .agent-tag {
+    font-size: 10px; padding: 2px 6px; border-radius: 4px;
+    font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+  }
+  .tag-updated { background: var(--green-dim); color: var(--green); }
+  .tag-pending { background: var(--gray-dim); color: var(--muted); border: 1px solid var(--border); }
+  .agent-meta { font-size: 11px; color: var(--muted); }
+  .agent-companies { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+  .company-chip {
+    font-size: 10px; padding: 2px 6px; border-radius: 3px;
+    background: var(--blue-dim); color: var(--blue);
+    border: 1px solid #1a4a7a;
+  }
+
+  /* ── RIGHT COLUMN ────────────────────────────────── */
+  .right-col { display: flex; flex-direction: column; gap: 16px; }
+
+  /* ── DATA AGENTS ─────────────────────────────────── */
+  .data-agent-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .data-agent-card .agent-name { color: var(--purple); }
+
+  /* ── ORCHESTRATOR NODE ───────────────────────────── */
+  .orch-node {
+    background: linear-gradient(135deg, var(--blue-dim), var(--purple-dim));
+    border: 1px solid var(--blue);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .orch-node h3 { font-size: 14px; font-weight: 700; color: var(--blue); margin-bottom: 4px; }
+  .orch-node .sub { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+  .orch-stat { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-top: 1px solid var(--border); }
+  .orch-stat .label { font-size: 12px; color: var(--muted); }
+  .orch-stat .value { font-size: 12px; font-weight: 600; color: var(--text); }
+
+  /* ── SIGNALS ─────────────────────────────────────── */
+  .signals-section { margin-bottom: 28px; }
+  .signal-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .signal-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--yellow);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }
+  .signal-card .sig-num { font-size: 10px; color: var(--yellow); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .signal-card .sig-title { font-size: 13px; font-weight: 600; margin-bottom: 6px; }
+  .signal-card .sig-cross { display: flex; flex-wrap: wrap; gap: 4px; }
+  .cross-tag {
+    font-size: 10px; padding: 2px 6px; border-radius: 3px;
+    background: var(--purple-dim); color: var(--purple);
+    border: 1px solid #4a2a8a;
+  }
+  .signal-card .sig-desc { font-size: 12px; color: var(--muted); margin-bottom: 8px; line-height: 1.4; }
+
+  /* ── ROUTING TABLE ───────────────────────────────── */
+  .routing-section { margin-bottom: 28px; }
+  .routing-table { width: 100%; border-collapse: collapse; }
+  .routing-table th {
+    text-align: left; padding: 8px 12px;
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+  }
+  .routing-table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    font-size: 12px;
+    background: var(--surface);
+  }
+  .routing-table tr:last-child td { border-bottom: none; }
+  .routing-table tr:hover td { background: #1c2128; }
+  .rt-topic { color: var(--text); font-weight: 500; }
+  .rt-agent {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 11px; font-weight: 600;
+  }
+  .rt-blue { background: var(--blue-dim); color: var(--blue); }
+  .rt-green { background: var(--green-dim); color: var(--green); }
+  .rt-orange { background: var(--orange-dim); color: var(--orange); }
+  .rt-purple { background: var(--purple-dim); color: var(--purple); }
+  .rt-yellow { background: var(--yellow-dim); color: var(--yellow); }
+
+  /* ── OPEN FLAGS ──────────────────────────────────── */
+  .flags-section { margin-bottom: 28px; }
+  .flag-list { display: flex; flex-direction: column; gap: 8px; }
+  .flag-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 6px; padding: 10px 14px;
+  }
+  .flag-item .flag-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--orange); flex-shrink: 0; margin-top: 4px;
+  }
+  .flag-item .flag-text { font-size: 12px; line-height: 1.5; }
+  .flag-item .flag-seg {
+    font-size: 10px; color: var(--muted); margin-top: 2px;
+  }
+
+  /* ── FOOTER ──────────────────────────────────────── */
+  .footer {
+    border-top: 1px solid var(--border);
+    padding: 16px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 11px; color: var(--muted);
+  }
+  .footer a { color: var(--blue); text-decoration: none; }
+
+  /* ── TOOLTIP ─────────────────────────────────────── */
+  .tooltip {
+    position: absolute; z-index: 100;
+    background: #1c2128; border: 1px solid var(--border);
+    border-radius: 6px; padding: 10px 14px;
+    font-size: 12px; color: var(--text);
+    max-width: 260px; line-height: 1.5;
+    pointer-events: none;
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    .columns { grid-template-columns: 1fr; }
+    .signal-list { grid-template-columns: 1fr; }
+    .agent-grid { grid-template-columns: 1fr; }
+    .cycle-flow { flex-direction: column; }
+    .flow-arrow { display: none; }
+    .flow-step { border-right: none; border-bottom: 1px solid var(--border); }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-left">
+    <div class="logo">⬡</div>
+    <div>
+      <h1>AI SCM Orchestrator</h1>
+      <div class="sub">Semiconductor Supply Chain Intelligence — Task Flow</div>
+    </div>
+  </div>
+  <div style="display:flex;gap:10px;align-items:center;">
+    <span class="badge">Cycle 1 Complete</span>
+    <span style="font-size:12px;color:var(--muted);">Last run: 2026-05-12</span>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- CYCLE FLOW -->
+  <div class="section-title">Intelligence Cycle — 5 Stages</div>
+  <div class="cycle-flow">
+    <div class="flow-step step-1">
+      <div class="step-icon">🕷</div>
+      <div class="step-num">Stage 1</div>
+      <div class="step-name">Crawler Agent</div>
+      <div class="step-desc">Scans Tier 1–3 sources (earnings calls, SEC filings, IR sites). Extracts signals and routes to section agents.</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step step-2">
+      <div class="step-icon">📂</div>
+      <div class="step-num">Stage 2</div>
+      <div class="step-name">Section Agents</div>
+      <div class="step-desc">10 segment experts ingest signals. Facts recorded in companies/ and updates/ with full citation and tags.</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step step-3">
+      <div class="step-icon">📐</div>
+      <div class="step-num">Stage 3</div>
+      <div class="step-name">Analysis Agent</div>
+      <div class="step-desc">Demand models and supply gap frameworks updated when new signals change key assumptions.</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step step-4">
+      <div class="step-icon">⬡</div>
+      <div class="step-num">Stage 4</div>
+      <div class="step-name">Orchestrator</div>
+      <div class="step-desc">Reads cross-refs from all agents. Identifies cross-segment signals. Routes misplaced knowledge.</div>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step step-5">
+      <div class="step-icon">📄</div>
+      <div class="step-num">Stage 5</div>
+      <div class="step-name">Synthesis Report</div>
+      <div class="step-desc">Dated synthesis written to orchestrator/synthesis/. Open flags logged. Agent registry updated.</div>
+    </div>
+  </div>
+
+  <!-- TWO COLUMNS -->
+  <div class="columns">
+
+    <!-- LEFT: SECTION AGENTS -->
+    <div>
+      <div class="section-title">Section Expert Agents</div>
+      <div class="agent-grid">
+
+        <div class="agent-card updated">
+          <div class="agent-header">
+            <span class="agent-name">DRAM</span>
+            <span class="agent-tag tag-updated">Updated</span>
+          </div>
+          <div class="agent-meta">Last: 2026-04-30 · 3 company files</div>
+          <div class="agent-companies">
+            <span class="company-chip">SK Hynix</span>
+            <span class="company-chip">Samsung</span>
+            <span class="company-chip">Micron</span>
+          </div>
+        </div>
+
+        <div class="agent-card updated">
+          <div class="agent-header">
+            <span class="agent-name">Storage / NAND</span>
+            <span class="agent-tag tag-updated">Updated</span>
+          </div>
+          <div class="agent-meta">Last: 2026-04-30 · 3 company files</div>
+          <div class="agent-companies">
+            <span class="company-chip">SK Hynix</span>
+            <span class="company-chip">Samsung</span>
+            <span class="company-chip">Micron</span>
+          </div>
+        </div>
+
+        <div class="agent-card updated">
+          <div class="agent-header">
+            <span class="agent-name">Chip Maker</span>
+            <span class="agent-tag tag-updated">Updated</span>
+          </div>
+          <div class="agent-meta">Last: 2026-05-05 · 2 company files</div>
+          <div class="agent-companies">
+            <span class="company-chip">NVIDIA</span>
+            <span class="company-chip">AMD</span>
+          </div>
+        </div>
+
+        <div class="agent-card updated">
+          <div class="agent-header">
+            <span class="agent-name">Foundry & Packaging</span>
+            <span class="agent-tag tag-updated">Updated</span>
+          </div>
+          <div class="agent-meta">Last: 2026-04-16 · 1 company file</div>
+          <div class="agent-companies">
+            <span class="company-chip">TSMC</span>
+          </div>
+        </div>
+
+        <div class="agent-card updated">
+          <div class="agent-header">
+            <span class="agent-name">End Market</span>
+            <span class="agent-tag tag-updated">Updated</span>
+          </div>
+          <div class="agent-meta">Last: 2026-04-29 · 4 company files</div>
+          <div class="agent-companies">
+            <span class="company-chip">Microsoft</span>
+            <span class="company-chip">Google</span>
+            <span class="company-chip">Amazon</span>
+            <span class="company-chip">Meta</span>
+          </div>
+        </div>
+
+        <div class="agent-card updated">
+          <div class="agent-header">
+            <span class="agent-name">DC Infrastructure</span>
+            <span class="agent-tag tag-updated">Updated</span>
+          </div>
+          <div class="agent-meta">Last: 2026-04-29 · update log only</div>
+          <div class="agent-companies">
+            <span class="company-chip">Microsoft</span>
+            <span class="company-chip">Amazon</span>
+            <span class="company-chip">Meta</span>
+          </div>
+        </div>
+
+        <div class="agent-card updated">
+          <div class="agent-header">
+            <span class="agent-name">ASIC</span>
+            <span class="agent-tag tag-updated">Updated</span>
+          </div>
+          <div class="agent-meta">Last: 2026-04-29 · update log only</div>
+          <div class="agent-companies">
+            <span class="company-chip">Google TPU</span>
+            <span class="company-chip">Trainium</span>
+            <span class="company-chip">Maia</span>
+            <span class="company-chip">MTIA</span>
+          </div>
+        </div>
+
+        <div class="agent-card pending">
+          <div class="agent-header">
+            <span class="agent-name">Network</span>
+            <span class="agent-tag tag-pending">Pending</span>
+          </div>
+          <div class="agent-meta">Not updated this cycle</div>
+          <div class="agent-companies">
+            <span class="company-chip" style="background:#1c2128;color:var(--muted);border-color:var(--border);">NVIDIA / Mellanox</span>
+            <span class="company-chip" style="background:#1c2128;color:var(--muted);border-color:var(--border);">Broadcom</span>
+            <span class="company-chip" style="background:#1c2128;color:var(--muted);border-color:var(--border);">Arista</span>
+          </div>
+        </div>
+
+        <div class="agent-card pending">
+          <div class="agent-header">
+            <span class="agent-name">Power Semiconductor</span>
+            <span class="agent-tag tag-pending">Pending</span>
+          </div>
+          <div class="agent-meta">Not updated this cycle</div>
+          <div class="agent-companies">
+            <span class="company-chip" style="background:#1c2128;color:var(--muted);border-color:var(--border);">Infineon</span>
+            <span class="company-chip" style="background:#1c2128;color:var(--muted);border-color:var(--border);">ON Semi</span>
+            <span class="company-chip" style="background:#1c2128;color:var(--muted);border-color:var(--border);">MPS</span>
+          </div>
+        </div>
+
+        <div class="agent-card pending">
+          <div class="agent-header">
+            <span class="agent-name">PCB & Substrate</span>
+            <span class="agent-tag tag-pending">Pending</span>
+          </div>
+          <div class="agent-meta">Not updated this cycle</div>
+          <div class="agent-companies">
+            <span class="company-chip" style="background:#1c2128;color:var(--muted);border-color:var(--border);">Ibiden</span>
+            <span class="company-chip" style="background:#1c2128;color:var(--muted);border-color:var(--border);">Unimicron</span>
+            <span class="company-chip" style="background:#1c2128;color:var(--muted);border-color:var(--border);">AT&S</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="right-col">
+
+      <!-- ORCHESTRATOR -->
+      <div class="orch-node">
+        <h3>⬡ Orchestrator</h3>
+        <div class="sub">Cross-segment coordination hub</div>
+        <div class="orch-stat"><span class="label">Cycle</span><span class="value">1 — Q1 2026 Earnings</span></div>
+        <div class="orch-stat"><span class="label">Synthesis file</span><span class="value">synthesis/2026-05-12.md</span></div>
+        <div class="orch-stat"><span class="label">Agents updated</span><span class="value" style="color:var(--green);">7 of 10</span></div>
+        <div class="orch-stat"><span class="label">Agents pending</span><span class="value" style="color:var(--muted);">3 (network, power, substrate)</span></div>
+        <div class="orch-stat"><span class="label">Cross-segment signals</span><span class="value" style="color:var(--yellow);">7 identified</span></div>
+        <div class="orch-stat"><span class="label">Open flags</span><span class="value" style="color:var(--orange);">6 unresolved</span></div>
+        <div class="orch-stat"><span class="label">Company files created</span><span class="value">13 new files</span></div>
+        <div class="orch-stat"><span class="label">Source tier</span><span class="value">All Tier A (SEC filings, IR)</span></div>
+      </div>
+
+      <!-- DATA AGENTS -->
+      <div>
+        <div class="section-title" style="margin-top:4px;">Data Expert Agents</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div class="data-agent-card">
+            <div class="agent-header">
+              <span class="agent-name">🕷 Crawler Agent</span>
+              <span class="agent-tag tag-pending">Not formalized</span>
+            </div>
+            <div class="agent-meta">Source registry defined · signals/ not yet populated</div>
+          </div>
+          <div class="data-agent-card">
+            <div class="agent-header">
+              <span class="agent-name">📐 Analysis Agent</span>
+              <span class="agent-tag tag-pending">Frameworks ready</span>
+            </div>
+            <div class="agent-meta">7 frameworks defined · demand models not yet run</div>
+          </div>
+          <div class="data-agent-card">
+            <div class="agent-header">
+              <span class="agent-name">🗃 DBA Agent</span>
+              <span class="agent-tag tag-updated" style="background:var(--green-dim);color:var(--green);">Active</span>
+            </div>
+            <div class="agent-meta">Schema + tagging + company template operational</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CROSS-SEGMENT SIGNALS -->
+  <div class="signals-section">
+    <div class="section-title">Cross-Segment Signals — Cycle 1</div>
+    <div class="signal-list">
+
+      <div class="signal-card">
+        <div class="sig-num">Signal 1</div>
+        <div class="sig-title">All CY2026 HBM supply committed — structural shortage through 2027</div>
+        <div class="sig-desc">SK Hynix, Samsung, Micron independently confirm: no more 2026 HBM allocation. Samsung warns 2027 gap "more severe than 2026."</div>
+        <div class="sig-cross">
+          <span class="cross-tag">dram</span>
+          <span class="cross-tag">chip_maker</span>
+          <span class="cross-tag">foundry</span>
+        </div>
+      </div>
+
+      <div class="signal-card">
+        <div class="sig-num">Signal 2</div>
+        <div class="sig-title">Component pricing inflating hyperscaler capex — closed loop with memory ASP</div>
+        <div class="sig-desc">Microsoft +$25B, Meta +$10B capex raises explicitly cite "higher component pricing" — top-down confirmation of memory supplier ASP increases.</div>
+        <div class="sig-cross">
+          <span class="cross-tag">dram</span>
+          <span class="cross-tag">storage</span>
+          <span class="cross-tag">end_market</span>
+          <span class="cross-tag">dc_infra</span>
+        </div>
+      </div>
+
+      <div class="signal-card">
+        <div class="sig-num">Signal 3</div>
+        <div class="sig-title">Combined 4-hyperscaler 2026 capex ~$705–725B — demand floor</div>
+        <div class="sig-desc">Amazon $200B · Microsoft $190B · Alphabet $190B · Meta $125–145B. Alphabet Q1 alone: +107% YoY. 2027 capex to increase further.</div>
+        <div class="sig-cross">
+          <span class="cross-tag">end_market</span>
+          <span class="cross-tag">dc_infra</span>
+          <span class="cross-tag">chip_maker</span>
+          <span class="cross-tag">dram</span>
+          <span class="cross-tag">network</span>
+        </div>
+      </div>
+
+      <div class="signal-card">
+        <div class="sig-num">Signal 4</div>
+        <div class="sig-title">NVIDIA CoWoS dependency confirmed in 10-K — bottleneck structural</div>
+        <div class="sig-desc">"We utilize CoWoS technology for semiconductor packaging." Both NVIDIA and AMD depend on same TSMC CoWoS line. TSMC capex $52–56B but no capacity figures disclosed.</div>
+        <div class="sig-cross">
+          <span class="cross-tag">foundry</span>
+          <span class="cross-tag">chip_maker</span>
+          <span class="cross-tag">dram</span>
+        </div>
+      </div>
+
+      <div class="signal-card">
+        <div class="sig-num">Signal 5</div>
+        <div class="sig-title">HBM4 ramp begun — Vera Rubin + MI455X define 2027 demand peak</div>
+        <div class="sig-desc">Micron HBM4 shipping to NVIDIA Vera Rubin. Samsung HBM4 &gt;50% mix from Q3 2026. SK Hynix HBM4 in mass production. All targeting HBM4E mass production 2027.</div>
+        <div class="sig-cross">
+          <span class="cross-tag">dram</span>
+          <span class="cross-tag">chip_maker</span>
+          <span class="cross-tag">foundry</span>
+        </div>
+      </div>
+
+      <div class="signal-card">
+        <div class="sig-num">Signal 6</div>
+        <div class="sig-title">AMD gains 6 GW each from Meta + OpenAI — competitive shift underway</div>
+        <div class="sig-desc">Two 6-gigawatt MI450 commitments confirmed. AMD + Samsung HBM4 (MI455X) creates new supply channel outside NVIDIA–SK Hynix primary relationship.</div>
+        <div class="sig-cross">
+          <span class="cross-tag">chip_maker</span>
+          <span class="cross-tag">foundry</span>
+          <span class="cross-tag">dram</span>
+          <span class="cross-tag">end_market</span>
+        </div>
+      </div>
+
+      <div class="signal-card">
+        <div class="sig-num">Signal 7</div>
+        <div class="sig-title">Agentic AI shifts demand toward inference — KV-SSD and MTIA emerging</div>
+        <div class="sig-desc">Samsung, NVIDIA, and Microsoft all cite "agentic AI" driving inference/recommendation demand. KV-SSD (Samsung TLC), MTIA Gen 2 (Meta/Broadcom 2nm), and HBM4E positioned for this shift.</div>
+        <div class="sig-cross">
+          <span class="cross-tag">dram</span>
+          <span class="cross-tag">storage</span>
+          <span class="cross-tag">asic</span>
+          <span class="cross-tag">dc_infra</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ROUTING TABLE -->
+  <div class="routing-section">
+    <div class="section-title">Orchestrator Routing Rules</div>
+    <table class="routing-table">
+      <thead>
+        <tr>
+          <th>Topic / Keyword</th>
+          <th>Route to Agent</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="rt-topic">HBM supply, DDR5, LPDDR5X, memory lead times</td>
+          <td><span class="rt-agent rt-blue">dram/</span></td>
+          <td style="color:var(--muted);font-size:11px;">companies/ + updates/</td>
+        </tr>
+        <tr>
+          <td class="rt-topic">Enterprise SSD, NAND pricing, storage attach rate</td>
+          <td><span class="rt-agent rt-blue">storage/</span></td>
+          <td style="color:var(--muted);font-size:11px;">companies/ + updates/</td>
+        </tr>
+        <tr>
+          <td class="rt-topic">Custom silicon, TPU, Trainium, MTIA, Maia</td>
+          <td><span class="rt-agent rt-purple">asic/</span></td>
+          <td style="color:var(--muted);font-size:11px;">companies/ + updates/</td>
+        </tr>
+        <tr>
+          <td class="rt-topic">NVIDIA GPU, AMD Instinct, Intel Gaudi</td>
+          <td><span class="rt-agent rt-blue">chip_maker/</span></td>
+          <td style="color:var(--muted);font-size:11px;">companies/ + updates/</td>
+        </tr>
+        <tr>
+          <td class="rt-topic">TSMC CoWoS, advanced packaging, foundry node</td>
+          <td><span class="rt-agent rt-orange">foundry/</span></td>
+          <td style="color:var(--muted);font-size:11px;">companies/ + updates/</td>
+        </tr>
+        <tr>
+          <td class="rt-topic">Hyperscaler capex, AI investment, DC build-out</td>
+          <td><span class="rt-agent rt-green">end_market/</span> + <span class="rt-agent rt-green">dc_infra/</span></td>
+          <td style="color:var(--muted);font-size:11px;">companies/ + updates/</td>
+        </tr>
+        <tr>
+          <td class="rt-topic">InfiniBand, Ethernet, AI cluster fabric</td>
+          <td><span class="rt-agent rt-yellow">network/</span></td>
+          <td style="color:var(--muted);font-size:11px;">companies/ + updates/</td>
+        </tr>
+        <tr>
+          <td class="rt-topic">GaN, SiC, VRM, data center power</td>
+          <td><span class="rt-agent rt-yellow">power/</span></td>
+          <td style="color:var(--muted);font-size:11px;">companies/ + updates/</td>
+        </tr>
+        <tr>
+          <td class="rt-topic">ABF substrate, glass substrate, PCB</td>
+          <td><span class="rt-agent rt-yellow">substrate/</span></td>
+          <td style="color:var(--muted);font-size:11px;">companies/ + updates/</td>
+        </tr>
+        <tr>
+          <td class="rt-topic">Knowledge spans 3+ segments</td>
+          <td><span class="rt-agent rt-purple">orchestrator/</span></td>
+          <td style="color:var(--muted);font-size:11px;">synthesis/ + cross-ref tags</td>
+        </tr>
+        <tr>
+          <td class="rt-topic">Domain doesn't fit any existing agent</td>
+          <td><span class="rt-agent rt-purple">orchestrator/</span></td>
+          <td style="color:var(--muted);font-size:11px;">New Section Proposals table</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- OPEN FLAGS -->
+  <div class="flags-section">
+    <div class="section-title">Open Flags — Cycle 1 (6 unresolved)</div>
+    <div class="flag-list">
+      <div class="flag-item">
+        <div class="flag-dot"></div>
+        <div>
+          <div class="flag-text">CoWoS capacity: no formal filing data available. Needs earnings call Q&A transcript (TSMC Q1 2026 call).</div>
+          <div class="flag-seg">foundry → chip_maker</div>
+        </div>
+      </div>
+      <div class="flag-item">
+        <div class="flag-dot"></div>
+        <div>
+          <div class="flag-text">TSMC N2 utilization rate and AI customer mix not disclosed in formal SEC filings.</div>
+          <div class="flag-seg">foundry</div>
+        </div>
+      </div>
+      <div class="flag-item">
+        <div class="flag-dot"></div>
+        <div>
+          <div class="flag-text">Vera Rubin HBM type and GB capacity per chip — not yet publicly disclosed by NVIDIA.</div>
+          <div class="flag-seg">chip_maker → dram</div>
+        </div>
+      </div>
+      <div class="flag-item">
+        <div class="flag-dot"></div>
+        <div>
+          <div class="flag-text">AMD MI450 custom specs for Meta vs. OpenAI — same chip design or differentiated per customer?</div>
+          <div class="flag-seg">chip_maker → end_market</div>
+        </div>
+      </div>
+      <div class="flag-item">
+        <div class="flag-dot"></div>
+        <div>
+          <div class="flag-text">Meta MTIA Gen 3 roadmap — no public disclosure from Meta.</div>
+          <div class="flag-seg">asic → end_market</div>
+        </div>
+      </div>
+      <div class="flag-item">
+        <div class="flag-dot"></div>
+        <div>
+          <div class="flag-text">Microsoft Maia 200 TSMC process node — not publicly confirmed (N3 or N5?).</div>
+          <div class="flag-seg">asic → foundry</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT CYCLE -->
+  <div style="margin-bottom:28px;">
+    <div class="section-title">Next Cycle — Pending Segments</div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 18px;flex:1;min-width:200px;">
+        <div style="font-weight:600;margin-bottom:4px;color:var(--yellow);">📡 Network</div>
+        <div style="font-size:12px;color:var(--muted);">Marvell, Broadcom, Arista Q1 2026 earnings</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 18px;flex:1;min-width:200px;">
+        <div style="font-weight:600;margin-bottom:4px;color:var(--yellow);">⚡ Power</div>
+        <div style="font-size:12px;color:var(--muted);">Infineon, ON Semi, MPS, Renesas Q1 2026</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 18px;flex:1;min-width:200px;">
+        <div style="font-weight:600;margin-bottom:4px;color:var(--yellow);">🔲 Substrate</div>
+        <div style="font-size:12px;color:var(--muted);">Ibiden FY2025, Unimicron Q1 2026, AT&S</div>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px 18px;flex:1;min-width:200px;">
+        <div style="font-weight:600;margin-bottom:4px;color:var(--blue);">🏭 Foundry+</div>
+        <div style="font-size:12px;color:var(--muted);">TSMC Q1 2026 call Q&A (CoWoS capacity)</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <span>AI SCM Intelligence · Knowledge base: <code>agents/</code> · All sources Tier A–B</span>
+  <span>Cycle 1 · 2026-05-12 · 17 files · 7 cross-segment signals</span>
+</div>
+
+<script>
+  // Highlight agent cards when hovered to show which signals reference them
+  const signalMap = {
+    'dram': [1,2,3,5,7],
+    'storage': [2,7],
+    'chip_maker': [1,3,4,5,6],
+    'foundry': [1,4,5,6],
+    'end_market': [2,3,6],
+    'dc_infra': [2,3,7],
+    'asic': [7],
+    'network': [3],
+    'power': [],
+    'substrate': []
+  };
+
+  // Simple click-to-highlight on signal cards
+  document.querySelectorAll('.signal-card').forEach((card, i) => {
+    card.addEventListener('mouseenter', () => {
+      card.style.borderLeftColor = 'var(--orange)';
+      card.style.background = '#1c2128';
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.borderLeftColor = 'var(--yellow)';
+      card.style.background = 'var(--surface)';
+    });
+  });
+
+  // Update last-run timestamp display
+  const ts = document.querySelector('.footer span:last-child');
+  if (ts) ts.title = 'First intelligence cycle completed';
+</script>
+</body>
+</html>
