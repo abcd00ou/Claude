@@ -229,6 +229,50 @@ When knowledge better belongs to another section:
 
 ---
 
+### 5. Academic Architecture Standard — Bible Papers Rule
+
+Each section agent MUST maintain a `market/architecture.md` (or `market/technology.md` for foundry)
+file that is grounded exclusively in **verified foundational academic sources**.
+
+**Requirements:**
+- Minimum **5 "bible" papers** per section — foundational, highly-cited, peer-reviewed works that
+  define the technical standard for that domain
+- Each paper must be **verified**: author, title, venue, year, and DOI or publisher URL confirmed
+  via web search before being cited
+- Content entries must be **derived from what the paper explicitly states** — do not paraphrase
+  from training memory; fetch the abstract or key sections first
+- No fabricated citations — every `**Source:**` line must correspond to a retrieved document
+
+**Bible paper criteria (all must apply):**
+1. Peer-reviewed: IEEE, ACM, Nature, Science, or equivalent standards body (JEDEC, IPC, SEMI)
+2. Foundational: defines or first describes a core concept for the domain (invention paper,
+   first deployment paper, or canonical architecture reference)
+3. Highly cited: >100 citations OR is an industry-defining standard document
+4. Verifiable: DOI or publisher URL exists and resolves
+
+**Per-section canonical bible paper anchors (minimum, add more):**
+
+| Section | Bible Papers (minimum 5) |
+|---|---|
+| DRAM | Dennard et al. (1974) IEEE JSSC — MOSFET scaling; Lee et al. (2014) ISSCC — first HBM; JEDEC JESD235C; Micron DDR5 tech note; Kim et al. (2014) ISCA — Rowhammer |
+| Chip Maker | Williams et al. (2009) CACM — Roofline; Jouppi et al. (2017) ISCA — TPU; NVIDIA Hopper whitepaper; Hennessy & Patterson (2017) — Computer Architecture; Fowers et al. (2018) ISCA — Brainwave FPGA |
+| Foundry | Hisamoto et al. (2000) IEEE TED — FinFET; Bohr (2007) IEEE IEDM — 32nm HKMG; TSMC N3 VLSI 2022; Mack (2011) — EUV lithography; Clark et al. (2016) ECTC — CoWoS |
+| Storage | Masuoka et al. (1987) IEDM — NAND flash invention; Tanaka et al. (2007) VLSI — BiCS; NVMe Base Spec 1.4; Bez et al. (2003) Proc. IEEE — flash memory overview; Cai et al. (2017) SIGMETRICS — NAND reliability |
+| Network | Al-Fares et al. (2008) SIGCOMM — fat-tree; Gibiansky (2017) — ring-allreduce; IBTA InfiniBand spec; Zhu et al. (2015) SIGCOMM — DCQCN; Dean et al. (2012) NIPS — DistBelief |
+| ASIC | Kung & Leiserson (1978) — systolic array; Jouppi et al. (2017) ISCA — TPU; Chen et al. (2016) ISSCC — Eyeriss; Vaswani et al. (2017) NeurIPS — Attention; Dao et al. (2022) NeurIPS — FlashAttention |
+| Power | Baliga (1989) IEEE EDL — power device FOM; Kimoto & Cooper (2014) Wiley — SiC Technology; Jones et al. (2016) Nat. Electron. — GaN on Si; Lidow et al. (2012) — GaN textbook; IEEE Std 1547 — DER interconnect |
+| Substrate | IPC-2221B; Garrou et al. (2008) — Handbook of 3D IC; Tummala (2001) — Fundamentals of Microsystems Packaging; Lau (2011) — Reliability of RoHS-compliant 2D & 3D IC; SEMI G69 — substrate standard |
+| DC Infra | ASHRAE TC 9.9 (2021) — Thermal Guidelines; Patterson (2008) CACM — energy-proportional computing; Barroso & Hölzle (2007) IEEE Micro — warehouse-scale computing; Koomey (2011) — data center energy use; Green Grid WP #49 — PUE |
+| End Market | Vaswani et al. (2017) NeurIPS — Attention; Shoeybi et al. (2019) — Megatron-LM; Kwon et al. (2023) SOSP — PagedAttention; Rajbhandari et al. (2020) SC — ZeRO; Dean et al. (2012) NIPS — DistBelief |
+
+**Workflow for updating architecture files:**
+1. Web search each bible paper to confirm: exact title, authors, venue, year, DOI
+2. Fetch abstract or key sections (methodology, results tables, key numbers)
+3. Write knowledge entries using only what the fetched content states
+4. Tag each entry: `#source-tier:S` (peer-reviewed) or `#source-tier:A` (official whitepaper/standard)
+
+---
+
 ## Work Rules
 
 - **No Python code.** All knowledge, frameworks, and agent logic lives in `.md` files.

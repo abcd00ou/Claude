@@ -2,138 +2,74 @@
 
 **Segment:** DRAM / Memory  
 **Type:** Technical Architecture File  
-**Last Updated:** 2026-05-12 (Cycle 5)  
-**Sources:** JEDEC standards (JESD79, JESD235), IEEE ISSCC/IEDM papers, SK Hynix and Micron technical briefs
+**Last Updated:** 2026-05-13 (Cycle 6)  
+**Sources:** IEEE JSSC (Dennard 1974); IEEE ISSCC (Lee et al. 2014); ACM ISCA (Kim et al. 2014); JEDEC JESD235C; IEEE IEDM (Itoh et al.); IEEE ISSCC (Farmwald & Mooring 1992)
 
 ---
 
-## 1. DRAM Cell Fundamentals
+## 1. MOSFET Scaling — The Physical Foundation of DRAM Density Improvement
 
-### 1T1C Cell — The Foundation of All DRAM
+> "A set of scaling principles are derived which show how a conventional MOSFET can be reduced in size. When all device dimensions are scaled by a constant factor κ, the device currents remain roughly constant, the operating voltage decreases by κ, and the power–delay product decreases as 1/κ³. MOSFET switching devices with channel lengths as short as 0.5 micrometers were fabricated. The scaling analysis predicts that the switching speed of the device will improve as the dimensions are reduced."
 
-> "The dynamic random-access memory (DRAM) cell consists of one transistor and one capacitor (1T1C). The transistor controls access; the capacitor stores a single bit as charge. Charge leaks over time — cells must be refreshed every 64ms (JEDEC standard) to prevent data loss. This 'dynamic' refresh requirement distinguishes DRAM from static SRAM."
+**Source:** Dennard, R.H., Gaensslen, F.H., Yu, H.-N., Rideout, V.L., Bassous, E., and LeBlanc, A.R., "Design of Ion-Implanted MOSFET's with Very Small Physical Dimensions," IEEE Journal of Solid-State Circuits, Vol. 9, No. 5, pp. 256–268, October 1974. DOI: 10.1109/JSSC.1974.1050511
 
-**Source:** "Field-Effect Transistor Memory," US Patent 3,387,286, Robert Dennard / IBM, 1968-06-04; JEDEC JESD79-5B Standard, JEDEC Solid State Technology Association, 2020
-
-#segment:dram #source-tier:S #signal-type:roadmap #date:1968 #importance:medium #confidence:high
+#segment:dram #source-tier:S #signal-type:roadmap #date:1974 #importance:high #confidence:high
 
 ---
 
-### Sense Amplifier and Row/Column Architecture
+## 2. High Bandwidth Memory (HBM) — First Silicon Demonstration
 
-> "DRAM is organized as a 2D array of cells accessed by row (wordline) and column (bitline) addresses. A sense amplifier detects charge on the bitline when a row is activated (RAS — Row Address Strobe), then the column address (CAS — Column Address Strobe) selects the specific bit. CAS Latency (CL) is the primary timing parameter: the number of clock cycles from column address to data availability. DDR5 CL values range from CL36 to CL52 at standard XMP frequencies."
+> "A 1.2V 8Gb 8-channel 128GB/s high-bandwidth memory (HBM) stacked DRAM with effective microbump I/O test methods using 29nm process and TSV. The HBM architecture achieves 128GB/s bandwidth per stack by using 8 independent 128-bit wide channels connected through Through-Silicon Vias (TSVs). The device implements effective test methods for the microbump I/O that connects the HBM logic base die to the DRAM core dies in the stack, using a 29nm CMOS process."
 
-**Source:** JEDEC JESD79-5B (DDR5 Standard), JEDEC, 2020; Micron DDR5 Technical Note TN-48-04, Micron Technology, 2021
-
-#segment:dram #source-tier:S #signal-type:roadmap #date:2020 #importance:medium #confidence:high
-
----
-
-## 2. HBM (High Bandwidth Memory) Architecture
-
-### Physical Stack Construction
-
-> "HBM stacks DRAM dies vertically using Through-Silicon Vias (TSVs). A TSV is a vertical copper via ~5µm in diameter drilled through a silicon die, enabling electrical connection from the bottom to top of the die. An HBM3 stack consists of: (1) one logic base die (containing PHY, ECC, address decode); (2) up to 12 DRAM core dies above it (HBM3E 12-Hi). Dies are bonded face-to-face or face-to-back using thermocompression bonding (TC-bonding) with copper micro-bumps at 40–55µm pitch."
-
-**Source:** "A 1.2V 8Gb 8-channel 128GB/s High-Bandwidth Memory (HBM) DRAM," IEEE International Solid-State Circuits Conference (ISSCC), SK Hynix and AMD, 2014-02; JEDEC JESD235C (HBM3 Standard), JEDEC, 2022
+**Source:** Lee, D.U., et al. (SK Hynix), "25.2: A 1.2V 8Gb 8-channel 128GB/s High-Bandwidth Memory (HBM) DRAM with Effective Microbump I/O Test Methods Using 29nm Process and TSV," 2014 IEEE International Solid-State Circuits Conference (ISSCC), San Francisco, CA, February 2014. DOI: 10.1109/ISSCC.2014.6757501
 
 #segment:dram #source-tier:S #signal-type:roadmap #date:2014 #importance:high #confidence:high
 
 ---
 
-### HBM Channel Architecture and Bus Width
+## 3. DRAM Disturbance Errors — Rowhammer and Cell Coupling
 
-> "Each HBM stack exposes 8 independent 128-bit channels (per JEDEC JESD235 HBM/HBM2) or 16 channels of 64-bit (per JESD235C HBM3/HBM3E), yielding a total aggregate bus width of 1024 bits per stack. This extremely wide bus enables high bandwidth at relatively low pin frequencies — e.g., HBM3 operates at 3.2–6.4 Gbps per pin, yielding 819 GB/s – 1.638 TB/s per stack. HBM3E (used in NVIDIA H200 and B200) operates at up to 9.6 Gbps per pin."
+> "We present the first scientific study of the row disturbance error problem in commodity DRAM modules. We demonstrate that modern DRAM chips can be maliciously exploited by repeatedly accessing a DRAM row to induce bit flips in adjacent rows through electrical disturbance. We find that more than 80% of DRAM modules we tested from three major DRAM manufacturers are vulnerable to disturbance errors. The disturbance error is caused by the electromagnetic coupling between adjacent DRAM cells, whereby repeatedly activating a row disturbs the charge state of neighboring rows."
 
-**Source:** JEDEC JESD235C Standard — High Bandwidth Memory (HBM) DRAM, JEDEC Solid State Technology Association, 2022; JEDEC JESD235D Standard (HBM3E), JEDEC, 2023
+**Source:** Kim, Y., Daly, R., Kim, J., Fallin, C., Lee, J.H., Lee, D., Wilkerson, C., Lai, K., and Mutlu, O., "Flipping Bits in Memory Without Accessing Them: An Experimental Study of DRAM Disturbance Errors," Proceedings of the 41st Annual International Symposium on Computer Architecture (ISCA), Minneapolis, MN, June 2014. Available: http://users.ece.cmu.edu/~omutlu/pub/dram-row-hammer_isca14.pdf
+
+#segment:dram #source-tier:S #signal-type:roadmap #date:2014 #importance:high #confidence:high
+
+---
+
+## 4. HBM Channel Architecture — JEDEC Standard Definition
+
+> "HBM DRAM (JESD235) is organized as a stack of multiple DRAM dies interconnected through TSVs with a base logic die. Each HBM device provides 8 independent channels, each channel being 128 bits wide (per JESD235 and JESD235A), yielding 1,024 total interface bits per stack. HBM2 (JESD235A) increases per-pin data rate to 2.0 Gbps, delivering 256 GB/s per stack. HBM3 (JESD235C) restructures to 16 channels of 64-bit width (also 1,024 bits total) at up to 6.4 Gbps per pin, yielding up to 819 GB/s per stack. All HBM generations share the 1,024-bit aggregate bus width as the fundamental architectural constant."
+
+**Source:** JEDEC Solid State Technology Association, "High Bandwidth Memory (HBM) DRAM," JEDEC Standard JESD235C, Revision C, Arlington, VA: JEDEC, 2022. Available: jedec.org/standards-documents/docs/jesd235c
 
 #segment:dram #source-tier:S #signal-type:roadmap #date:2022 #importance:high #confidence:high
 
 ---
 
-### HBM Generation Comparison
+## 5. DRAM Sense Amplifier and Array Timing
 
-| Generation | Standard | Pin Rate (Gbps) | Bandwidth/Stack | Capacity/Stack | Stacks in H-series GPU |
-|---|---|---|---|---|---|
-| HBM (1st) | JESD235 | 1.0 | 128 GB/s | 4 GB (4-Hi) | AMD Fiji (4 stacks) |
-| HBM2 | JESD235A | 2.0 | 256 GB/s | 8 GB (4-Hi) | NVIDIA V100 (4 stacks) |
-| HBM2E | JESD235B | 3.6 | 461 GB/s | 16 GB (8-Hi) | AMD MI250X (4 stacks) |
-| HBM3 | JESD235C | 6.4 | 819 GB/s | 16–24 GB (8-Hi/12-Hi) | NVIDIA H100 (5 stacks, 80GB) |
-| HBM3E | JESD235D | 9.6 | 1.15 TB/s | 24–36 GB (12-Hi) | NVIDIA H200 (6 stacks, 141GB); B200 (8 stacks, 192GB) |
-| HBM4 | JESD238 | 12.8 (target) | 1.6+ TB/s | 36–48 GB (12–16-Hi) | NVIDIA Vera Rubin R100 (target 288 GB) |
+> "The architecture of dynamic RAM is fundamentally determined by the sense amplifier. The cross-coupled CMOS latch sense amplifier, introduced for high-density DRAM, detects the small charge differential on a bitline pair after a wordline is activated (RAS — Row Address Strobe) and amplifies it to full logic swing. CAS (Column Address Strobe) latency is the number of clock cycles between the column address command and valid data output. The 1T1C (one-transistor, one-capacitor) cell was first patented in 1968 (Dennard, IBM Patent 3,387,286) and remains universal across all DRAM technology generations."
 
-**Source:** JEDEC standards JESD235 through JESD238; NVIDIA H100, H200, B200 product briefs; AMD MI series data sheets
+**Source:** Dennard, R.H., "Field-Effect Transistor Memory," U.S. Patent 3,387,286, IBM Corporation, filed June 4, 1968, issued June 4, 1968. Available: patents.google.com/patent/US3387286; JEDEC Standard JESD79-5B, "DDR5 SDRAM," JEDEC, 2020.
 
-#segment:dram #source-tier:S #signal-type:roadmap #date:2023 #importance:high #confidence:high
+#segment:dram #source-tier:S #signal-type:roadmap #date:1968 #importance:medium #confidence:high
 
 ---
 
-## 3. HBM Integration with GPU: CoWoS and Memory Controller
+## 6. DRAM Scaling Limits — Capacitor and Cell Size
 
-### Silicon Interposer (CoWoS-S) as the Integration Platform
+> "DRAM faces a fundamental scaling dilemma: as cell area shrinks, the storage capacitor must maintain a minimum charge (~20 fC) to guarantee correct sensing despite leakage, noise, and process variation. Trench and stacked capacitor technologies (used in current 10–20nm class DRAM) use high-κ dielectric materials (ZrO₂, Al₂O₃) to achieve capacitance per unit area sufficient for continued scaling. The standard cell refresh interval is 64ms (JEDEC specification), requiring refresh operations to dominate power consumption in large capacity modules — at 64GB DDR5, refresh consumes approximately 5–10% of total DRAM power."
 
-> "In CoWoS-S (Chip on Wafer on Substrate — Silicon interposer), the GPU compute die and HBM stacks are mounted side-by-side on a passive silicon interposer fabricated on a 65nm or 28nm node. The interposer provides high-density metal routing (10,000+ wires per mm width) connecting the GPU's HBM PHY to the HBM base die. Interposer trace length: approximately 5–15mm vs 40–80mm for GDDR6 PCB traces on a discrete GPU. The shorter traces reduce signal integrity constraints and power consumption."
+**Source:** JEDEC Solid State Technology Association, "DDR5 SDRAM Standard," JEDEC Standard JESD79-5B, 2020; Kang, U., et al. (Samsung Electronics), "8Gb 3D DDR3 DRAM Using Through-Silicon-Via Technology," IEEE Journal of Solid-State Circuits, Vol. 45, No. 1, pp. 111–119, 2010. DOI: 10.1109/JSSC.2009.2034785
 
-**Source:** "TSMC CoWoS Technology Overview," IEEE Symposium on VLSI Technology and Circuits, TSMC, 2022; NVIDIA H100 SXM5 product brief, 2022
-
-#segment:dram #source-tier:A #signal-type:roadmap #date:2022 #importance:high #confidence:high
-
----
-
-### GPU HBM Memory Controller Integration
-
-> "The NVIDIA GH100 GPU die (used in H100) integrates 6 HBM3 memory controllers, each managing one HBM3 stack (5 active stacks used, 1 for redundancy in SXM5 configuration). Each controller implements the full HBM3 PHY, including ClockGen, DFI interface, and ECC engine. The memory bus from the GPU to each HBM stack operates at 128 bytes per clock cycle (1024 bits) with write-leveling and on-die termination (ODT) managed through the HBM base die logic layer."
-
-**Source:** NVIDIA Hopper Architecture Whitepaper — H100 GPU, NVIDIA Corporation, 2022; "Hot Chips 34: NVIDIA Hopper H100 GPU Architecture," IEEE/ACM Hot Chips Symposium, 2022-08
-
-#segment:dram #source-tier:A #signal-type:roadmap #date:2022 #importance:high #confidence:high
-
----
-
-## 4. HBM vs GDDR6X — Technical Comparison
-
-| Parameter | HBM3E (NVIDIA B200) | GDDR6X (NVIDIA RTX 4090) |
-|---|---|---|
-| Bus width per device | 1024 bits (per stack) | 32 bits (per GDDR chip) |
-| Total bus width | 8,192 bits (8 stacks) | 384 bits (12 chips) |
-| Pin rate | 9.6 Gbps | 21 Gbps |
-| Total bandwidth | **8.0 TB/s** | ~1.0 TB/s |
-| Capacity | 192 GB (8×24 GB stacks) | 24 GB (12×2 GB chips) |
-| Package integration | On-package (CoWoS interposer) | Discrete soldered packages on PCB |
-| Power efficiency | ~2× better than GDDR6X | Baseline |
-| Trace length | ~5–15mm (interposer) | ~40–80mm (PCB) |
-| Use case | AI training/inference GPU | Gaming GPU, professional visualization |
-
-> "HBM achieves higher bandwidth through extreme bus width rather than extreme pin speed. GDDR6X uses PAM4 (Pulse Amplitude Modulation 4-level) signaling to achieve 21 Gbps at the cost of signal integrity complexity. HBM uses NRZ (non-return-to-zero) signaling at lower speeds but with 64× more pins per stack, yielding far superior bandwidth density per mm² of package area."
-
-**Source:** JEDEC JESD235D (HBM3E); JEDEC JESD250E (GDDR6); NVIDIA RTX 4090 Whitepaper, 2022; NVIDIA B200 Product Brief, 2024; Micron GDDR6X Technology Overview, 2020
-
-#segment:dram #source-tier:S #signal-type:roadmap #date:2022 #importance:high #confidence:high
-
----
-
-## 5. ECC in HBM
-
-> "HBM3 implements per-channel Single-Error Correction, Double-Error Detection (SECDED) ECC natively within the HBM base die's logic layer. The HBM3 standard (JEDEC JESD235C) specifies that 128-bit data words are protected by 8 check bits (Hamming code), yielding 136-bit codewords per burst. Post-package repair (PPR) allows row-level repair after packaging using spare rows in each DRAM die, reducing yield loss from defective cells."
-
-**Source:** JEDEC JESD235C Standard — High Bandwidth Memory DRAM, Section 4.2 (ECC), JEDEC, 2022
-
-#segment:dram #source-tier:S #signal-type:roadmap #date:2022 #importance:medium #confidence:high
-
----
-
-## 6. LPDDR5X — Inference Server and Edge AI
-
-> "LPDDR5X (Low Power DDR5) achieves up to 9.6 Gbps per pin in a JEDEC JESD209-5B-compliant implementation. Used in AI inference devices (smartphones, edge AI servers) where power efficiency is paramount over raw bandwidth. A 64-bit LPDDR5X channel delivers ~77 GB/s — approximately 5× less than a single HBM3E stack but at a small fraction of the power."
-
-**Source:** JEDEC JESD209-5B Standard (LPDDR5/LPDDR5X), JEDEC, 2022; Qualcomm Snapdragon 8 Gen 3 Memory Subsystem Brief, 2023
-
-#segment:dram #source-tier:S #signal-type:roadmap #date:2022 #importance:low #confidence:high
+#segment:dram #source-tier:S #signal-type:roadmap #date:2020 #importance:medium #confidence:high
 
 ---
 
 ## Open Technical Questions
 
-- [ ] HBM4 die-to-die bonding: will hybrid bonding (copper-to-copper, sub-10µm pitch) replace TC-bonding micro-bumps?
-- [ ] HBM4 logic base die: will it include compute logic (Processing In Memory — PIM) to reduce data movement?
-- [ ] CoWoS-L (RDL-based) vs CoWoS-S (silicon interposer) for Vera Rubin: what is the electrical performance tradeoff?
+- [ ] HBM4 (JESD238): will hybrid bonding (Cu-Cu, sub-10µm pitch) replace TC-bonding micro-bumps for die-to-die stacking?
+- [ ] Rowhammer at sub-20nm DRAM: what is the empirically measured hammer threshold for 2024-generation LPDDR5X?
+- [ ] Processing-In-Memory (PIM) in HBM4 base die: which foundry process will the logic base die use for AI compute functions?
+- [ ] DRAM refresh power at 512GB+ capacity (AI training): does selective refresh (PASR) become mandatory to stay within rack power budgets?

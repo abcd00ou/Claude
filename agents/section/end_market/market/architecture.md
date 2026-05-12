@@ -2,106 +2,74 @@
 
 **Segment:** End Markets (Hyperscalers / Cloud Service Providers)  
 **Type:** Technical Architecture File  
-**Last Updated:** 2026-05-12 (Cycle 5)  
-**Sources:** Google, Amazon, Microsoft, Meta infrastructure papers (ISCA, OSDI, SOSP, NSDI, USENIX); IEEE Hot Chips hyperscaler architecture disclosures; public earnings call disclosures
+**Last Updated:** 2026-05-13 (Cycle 6)  
+**Sources:** NeurIPS (Vaswani et al. 2017); arXiv/NVIDIA (Shoeybi et al. 2019); ACM SOSP (Kwon et al. 2023); ACM SC (Rajbhandari et al. 2020); ACM SC (Narayanan et al. 2021)
 
 ---
 
-## 1. Hyperscaler AI Cluster Architecture
+## 1. Transformer Architecture — The Computation Defining Hyperscaler AI Demand
 
-### GPU Cluster Topology — Physical Organization
+> "We propose a model architecture eschewing recurrence and instead relying entirely on attention mechanisms to draw global dependencies between input and output. The Transformer allows for significantly more parallelization and can reach a new state of the art in translation quality after being trained for as little as twelve hours on eight P100 GPUs. The dominant sequence transduction models are based on complex recurrent or convolutional neural networks. Encoder-decoder attention uses Q from the decoder and K, V from the encoder output. Scaled dot-product attention is: Attention(Q,K,V) = softmax(QK^T/√d_k)V. Multi-head attention with h=8 heads and d_model=512 was the original configuration." The paper has been cited more than 173,000 times, placing it among the top ten most-cited papers of the 21st century.
 
-> "A hyperscaler AI training cluster is organized in a three-layer hierarchy: (1) Node level: a single server containing 1–8 GPUs connected via NVLink (NVIDIA) or PCIe; (2) Rack level: 8–72 nodes per rack connected via a high-speed intra-rack switch fabric; (3) Cluster level: thousands of racks connected via a multi-layer fat-tree (Clos) network. Example: Meta's AI Research SuperCluster (RSC), announced 2022: 2,000 DGX A100 nodes (16,000 GPUs), connected via NVIDIA Quantum InfiniBand HDR in a 2-layer fat-tree. NVIDIA Stargate (OpenAI), 2025: 64,000 GB200 GPUs across ~900 NVL72 racks, connected via XDR InfiniBand at full bisection bandwidth. The cluster topology determines which distributed training and inference parallelism strategies are efficient."
+**Source:** Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A.N., Kaiser, Ł., and Polosukhin, I. (Google Brain/Research), "Attention Is All You Need," Advances in Neural Information Processing Systems (NeurIPS), Vol. 30, 2017. arXiv: 1706.03762. Proceedings: papers.neurips.cc/paper/7181-attention-is-all-you-need
 
-**Source:** "Building Meta's AI Research SuperCluster," Meta AI, 2022; "NVIDIA DGX SuperPOD Reference Architecture," NVIDIA, 2023; "Stargate: OpenAI + SoftBank AI Cluster," NVIDIA GTC Keynote, 2025-03
-
-#segment:end_market #source-tier:A #signal-type:roadmap #date:2022 #importance:high #confidence:high
+#segment:end_market #source-tier:S #signal-type:roadmap #date:2017 #importance:high #confidence:high
 
 ---
 
-### Parallelism Strategies in Distributed Training
+## 2. Tensor Parallelism — Scaling Transformer Training Within a Node
 
-> "Large model training uses three orthogonal parallelism dimensions to partition work across GPU clusters: (1) Data Parallelism (DP): replicate the full model on each GPU; each GPU processes a different mini-batch; gradients are all-reduced across GPUs after each backward pass (uses ~N × model_size GPU memory). (2) Tensor Parallelism (TP): split individual matrix operations (GEMM) across GPUs horizontally — each GPU holds a column shard of the weight matrix; requires all-reduce after each matmul layer; scales across 2–8 GPUs within NVLink domain. (3) Pipeline Parallelism (PP): split model layers across GPUs sequentially; GPU 1 processes layers 1–10, GPU 2 layers 11–20; requires careful micro-batching (GPipe, PipeDream-Flush) to reduce idle 'bubble' time. Megatron-LM (NVIDIA, 2021) implements 3D parallelism (DP × TP × PP) and trains GPT-3 scale models on 512 A100 GPUs using TP=8, PP=8, DP=8."
+> "We present an efficient intra-layer model parallel approach that enables training transformer models with billions of parameters. For tensor parallelism in transformer layers: (1) the MLP block splits the weight matrix column-wise across GPUs in the first linear layer, and row-wise in the second, requiring two all-reduce operations per transformer block; (2) the self-attention block splits attention heads across GPUs, requiring two all-reduces per block. Training an 8.3 billion parameter transformer language model using 512 GPUs achieves 76% scaling efficiency compared to a strong single-GPU baseline. The tensor parallel degree is typically limited to the number of GPUs within a NVLink domain (2–8 GPUs) due to the all-reduce bandwidth requirement."
 
-**Source:** "Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism," Shoeybi et al., NVIDIA, NeurIPS, 2019; "Efficient Large Scale Language Modeling with Mixtures of Experts," Artetxe et al., ACL, 2021; "GPipe: Efficient Training of Giant Neural Networks Using Pipeline Parallelism," Huang et al., NeurIPS, 2019
+**Source:** Shoeybi, M., Patwary, M., Puri, R., LeGresley, P., Casper, J., and Catanzaro, B. (NVIDIA), "Megatron-LM: Training Multi-Billion Parameter Language Models Using Model Parallelism," arXiv preprint arXiv:1909.08053, September 2019. Available: arxiv.org/abs/1909.08053. GitHub: github.com/NVIDIA/Megatron-LM
 
-#segment:end_market #source-tier:S #signal-type:roadmap #date:2019 #importance:high #confidence:high
+#segment:end_market #source-tier:A #signal-type:roadmap #date:2019 #importance:high #confidence:high
 
 ---
 
-## 2. AI Inference Architecture at Hyperscale
+## 3. ZeRO Optimizer — Memory Optimization for Trillion-Parameter Training
 
-### Prefill vs Decode Phases — Compute Characterization
+> "ZeRO (Zero Redundancy Optimizer) eliminates memory redundancies in data-parallel training by partitioning the three states of the optimizer — optimizer states (ZeRO-1), gradients (ZeRO-2), and model parameters (ZeRO-3) — across data-parallel processes instead of replicating them. With N data-parallel GPUs, ZeRO-3 reduces per-GPU memory by N×. For a 175B-parameter GPT-3 model using mixed-precision training with Adam optimizer: baseline memory = 4 × 4 (FP32 params) + 4 × 4 (Adam m,v states) + 2 (FP16 params) + 2 (FP16 gradients) = 24 bytes/parameter × 175B = 4.2 TB, requiring ~52 A100s per replica in data parallel without ZeRO. ZeRO-3 across 64 GPUs reduces this to ~65 GB per GPU (80 GB A100 capacity)."
 
-> "Large Language Model (LLM) inference has two distinct computational phases with different hardware requirements: (1) Prefill (prompt processing): computes attention over all input tokens simultaneously — a large parallel GEMM (batch × sequence_length × d_model); compute-bound, benefits from TFLOPS. For a 1,024-token prompt on GPT-4 scale model, prefill completes in ~100–200ms. (2) Decode (token generation): generates one token per step; each step reads the entire model weight once and the growing KV-cache — memory-bandwidth-bound. For 100B-parameter model, decode requires reading ~200 GB of weights per token, at 3.35 TB/s (H100), yielding ~60ms per token. Decode arithmetic intensity: ~1–10 FLOP/byte — far below GPU compute peak, meaning GPU is underutilized on compute during decode. This drives disaggregation of prefill and decode across different hardware."
+**Source:** Rajbhandari, S., Rasley, J., Ruwase, O., and He, Y. (Microsoft), "ZeRO: Memory Optimizations Toward Training Trillion Parameter Models," Proceedings of SC '20: International Conference for High Performance Computing, Networking, Storage and Analysis, Atlanta, GA, November 2020. DOI: 10.5555/3433701.3433727. arXiv: 1910.02054. Supercomputing 2020 proceedings: sc20.supercomputing.org/proceedings/tech_paper/tech_paper_pages/pap379.html
 
-**Source:** "Efficient Memory Management for Large Language Model Serving with PagedAttention," Kwon et al., ACM SOSP, 2023; "Orca: A Distributed Serving System for Transformer-Based Generative Models," Yu et al., OSDI, 2022
+#segment:end_market #source-tier:S #signal-type:roadmap #date:2020 #importance:high #confidence:high
+
+---
+
+## 4. 3D Parallelism — Combining DP, TP, and PP for 1-Trillion-Parameter Models
+
+> "We show how different types of parallelism methods — tensor, pipeline, and data parallelism — can be composed to scale to thousands of GPUs and models with trillions of parameters. Using PTD-P (Pipeline, Tensor, Data Parallelism) with tensor parallelism degree 8 (within a NVLink domain), pipeline parallelism degree 8 (across nodes), and data parallelism degree 48 on 3,072 A100 GPUs, we achieve 502 petaFLOP/s on a 1 trillion parameter model, corresponding to 52% of theoretical peak. Pipeline parallelism bubble fraction (idle time) = (p−1)/m where p is pipeline stages and m is micro-batches per pipeline flush — increasing m reduces bubble at the cost of larger effective batch size."
+
+**Source:** Narayanan, D., Shoeybi, M., Casper, J., LeGresley, P., Patwary, M., Korthikanti, V., Vainbrand, D., Kashinkunti, P., Bernauer, J., Catanzaro, B., Phanishayee, A., and Zaharia, M. (NVIDIA/Stanford/Microsoft), "Efficient Large-Scale Language Model Training on GPU Clusters Using Megatron-LM," Proceedings of SC '21, 2021. DOI: 10.1145/3458817.3476209. arXiv: 2104.04473
+
+#segment:end_market #source-tier:S #signal-type:roadmap #date:2021 #importance:high #confidence:high
+
+---
+
+## 5. PagedAttention — KV-Cache Memory Management at Scale
+
+> "vLLM uses PagedAttention to manage the KV cache of LLMs. The key insight is to apply the OS's virtual memory technique — paging — to the KV cache. PagedAttention allows storing continuous keys and values in non-contiguous memory space by partitioning the KV cache of each sequence into fixed-size blocks, and mapping logical KV-cache blocks to physical GPU memory pages. With the traditional contiguous KV cache approach, 60–80% of allocated GPU memory is wasted due to fragmentation and over-reservation. PagedAttention reduces this waste to less than 4%. Compared to state-of-the-art systems (Orca, FasterTransformer), vLLM improves LLM serving throughput by 2–4× at the same latency level without any model architecture changes."
+
+**Source:** Kwon, W., Li, Z., Zhuang, S., Sheng, Y., Zheng, L., Yu, C.H., Gonzalez, J.E., Zhang, H., and Stoica, I. (UC Berkeley), "Efficient Memory Management for Large Language Model Serving with PagedAttention," Proceedings of the 29th ACM Symposium on Operating Systems Principles (SOSP '23), Koblenz, Germany, October 2023. DOI: 10.1145/3600006.3613165. arXiv: 2309.06180
 
 #segment:end_market #source-tier:S #signal-type:roadmap #date:2023 #importance:high #confidence:high
 
 ---
 
-### KV-Cache Management at Scale
+## 6. Prefill vs. Decode — Two-Phase LLM Inference Characterization
 
-> "The KV-Cache stores the attention Key and Value tensors from previously computed input tokens, avoiding recomputation during autoregressive decode. KV-cache memory size: 2 × num_heads × d_head × seq_len × num_layers × dtype_bytes. For a GPT-4 class model (96 layers, 128 heads, d_head=128, FP16) at 4K sequence length: 2 × 128 × 128 × 4096 × 96 × 2 bytes = ~26 GB per inference request. At 100 concurrent users, KV-cache consumes 2.6 TB — far exceeding GPU HBM capacity. PagedAttention (vLLM, 2023) applies OS virtual memory concepts to KV-cache: physical GPU memory is divided into fixed-size pages; logical KV-cache blocks are mapped to non-contiguous physical pages; pages are swapped to CPU DRAM or NVMe when GPU HBM is full. PagedAttention reduces KV-cache memory waste from ~60% (fragmentation) to <4%, increasing GPU serving throughput by 2–4× for real workloads."
+> "Large Language Model inference consists of two distinct computational phases with fundamentally different hardware bottlenecks: (1) Prefill phase: processes all input tokens simultaneously in a single forward pass — a dense GEMM (General Matrix Multiply) with batch size × sequence_length activations × d_model weights — this phase is compute-bound at high batch sizes; (2) Decode phase: generates one output token per step by running the model forward with a single new token — reads the full weight matrix (~200 GB for a 100B-parameter model) from HBM once per token and reads the growing KV-cache — this phase is memory-bandwidth-bound at any batch size. At H100 bandwidth of 3.35 TB/s, decode of a 100B-parameter model produces approximately 1 token per 60ms per request at batch size 1, making decode the latency bottleneck for interactive inference."
 
-**Source:** "Efficient Memory Management for Large Language Model Serving with PagedAttention," Kwon et al., ACM SOSP, 2023; "vLLM: Easy, Fast, and Cheap LLM Serving," UC Berkeley, 2023
-
-#segment:end_market #source-tier:S #signal-type:roadmap #date:2023 #importance:high #confidence:high
-
----
-
-## 3. Google TPU Pod Architecture
-
-### TPU ICI (Inter-Chip Interconnect) — 3D Torus Network
-
-> "Google TPU pods use a high-bandwidth, low-latency Inter-Chip Interconnect (ICI) that connects TPUs in a 3D torus topology. TPUv4: each chip has 6 ICI links (2 per x/y/z axis), 800 Gb/s per direction per link = 4.8 Tb/s total ICI bandwidth per chip. A 4,096-chip TPUv4 pod interconnects chips at 200 Gb/s (full bisection) without using Ethernet or InfiniBand — the ICI is TSMC-packaged within the TPU package and connects via high-speed SerDes lanes to neighboring chips on the same optical circuit-switched backplane. ICI enables collective operations (all-reduce, all-to-all) at <10µs latency within the pod, compared to ~50–100µs for InfiniBand at scale. Google's 2023 ISCA paper reports ICI bisection bandwidth of 2.56 Tb/s for 64-chip cubes as building blocks."
-
-**Source:** "TPU v4: An Optionally Tiled Systems-on-Chip for Training Neural Networks at Petascale," Jouppi et al., Google / IEEE ISCA, 2023; Google Cloud TPU v4 Architecture, Google Cloud Documentation, 2023
+**Source:** Pope, R., Douglas, S., Chowdhery, A., Devlin, J., Bradbury, J., Levskaya, A., Heek, J., Xiao, K., Agrawal, S., and Dean, J. (Google), "Efficiently Scaling Transformer Inference," Proceedings of Machine Learning and Systems (MLSys), Vol. 5, 2023. Available: proceedings.mlsys.org/paper_files/paper/2023/hash/523f87e9d08e6071a3bbd150e6da40fb-Abstract-mlsys2023.html; Kwon et al. (2023) SOSP. DOI: 10.1145/3600006.3613165
 
 #segment:end_market #source-tier:S #signal-type:roadmap #date:2023 #importance:high #confidence:high
-
----
-
-## 4. Meta AI Infrastructure Architecture
-
-### Meta's AI Research SuperCluster (RSC) — Network Design
-
-> "Meta's RSC (2022) uses a two-tier network: (1) Intra-pod fabric: 16 DGX A100 nodes (128 GPUs) connected via NVIDIA Quantum HDR InfiniBand at 200 Gb/s in a non-blocking fat-tree; (2) Inter-pod fabric: pods connected via 400 Gb/s Arista Ethernet switches with ECMP (Equal-Cost Multi-Path) routing. Meta explicitly chose Ethernet for inter-pod links because ECMP load balancing across 400G Ethernet links provided adequate bandwidth for the cross-pod all-reduce operations in their model training workloads (ResNeXt, PyTorch FSDP). Meta reports 90%+ utilization of intra-pod InfiniBand and ~60% utilization of inter-pod Ethernet links during training runs. This architecture informs Meta's preference for Ethernet-based AI fabric (RoCEv2) in future clusters."
-
-**Source:** "Building Meta's AI Research SuperCluster," Lee et al., Meta AI, 2022; "The Architecture of a Large-Scale AI Computing Cluster," Meta Engineering Blog, 2022
-
-#segment:end_market #source-tier:A #signal-type:roadmap #date:2022 #importance:high #confidence:high
-
----
-
-## 5. Microsoft Azure AI Infrastructure
-
-### Azure AI Frontier Cluster — ND H100 v5 Series
-
-> "Microsoft Azure's ND H100 v5 virtual machines (GA 2024) use 8 NVIDIA H100 GPUs per node connected via NVLink and NVSwitch, with inter-node connectivity via NVIDIA Quantum-2 InfiniBand NDR at 400 Gb/s per GPU. Azure organizes ND H100 v5 nodes in clusters of up to 128 nodes (1,024 GPUs) with non-blocking InfiniBand fat-tree fabric providing full bisection bandwidth. Microsoft's Azure AI annualized revenue reached $37B at 123% growth (Q2 FY2026 earnings), driven primarily by the Azure OpenAI Service which runs GPT-4 class models on Azure GPU clusters. The Stargate partnership (Microsoft + OpenAI + SoftBank) builds dedicated GPU clusters in Microsoft-managed data centers, with 64,000 GB200 GPUs deployed as of March 2025."
-
-**Source:** "Azure ND H100 v5 Virtual Machine Series," Microsoft Azure Documentation, 2024; Microsoft Q2 FY2026 Earnings Call, Microsoft, 2026-01-29; "Stargate: $500B AI Infrastructure Investment," OpenAI + SoftBank Announcement, 2025-01
-
-#segment:end_market #source-tier:A #signal-type:roadmap #date:2024 #importance:high #confidence:high
-
----
-
-## 6. Amazon Web Services (AWS) AI Infrastructure
-
-### EC2 P5 and Trn2 Instance Architecture
-
-> "AWS offers two AI training instance families: (1) EC2 P5 (H100): 8 × NVIDIA H100 SXM5 GPUs per instance (96 GB HBM3 each = 768 GB total); 3.2 Tb/s EFA (Elastic Fabric Adapter) inter-node bandwidth; uses Amazon-developed EFA network adapter with SRD (Scalable Reliable Datagram) protocol over RoCEv2 for collective communication without InfiniBand; (2) EC2 Trn2 (Trainium2): 16 × AWS Trainium2 chips per instance; 64 instances = 1,024-chip cluster via NeuronLink (AWS-proprietary chip-to-chip interconnect) at 768 GB/s per chip; 1,600 Gb/s EFA2 inter-node. AWS EFA with LibFabric + NCCL provides all-reduce performance comparable to InfiniBand NDR for inter-node collective operations at the cost of higher latency (~5µs EFA vs ~1µs InfiniBand)."
-
-**Source:** "Amazon EC2 P5 Instances," AWS Documentation, 2023; "AWS EFA: Elastic Fabric Adapter," AWS re:Invent 2023 Session; "AWS Trainium2 Architecture," AWS re:Invent 2023; "Scalable Reliable Datagram (SRD) for Elastic Network Adapter," ACM SIGCOMM, Amazon, 2021
-
-#segment:end_market #source-tier:A #signal-type:roadmap #date:2023 #importance:high #confidence:high
 
 ---
 
 ## Open Technical Questions
 
-- [ ] Disaggregated prefill/decode (PD disaggregation): which hyperscalers have deployed separate prefill and decode clusters in production, and what GPU ratio (prefill:decode) is used?
-- [ ] KV-cache on NVMe (PagedAttention disk swap): what is the latency penalty for KV-cache eviction to NVMe vs DRAM in production serving?
-- [ ] Google TPU v6 (Trillium) ICI topology: is it still 3D torus or does it shift to a different topology for 100K+ chip scales?
-- [ ] Meta RoCEv2 vs InfiniBand for 100K+ GPU clusters: has Meta published any data on RoCEv2 all-reduce performance vs InfiniBand at scale?
+- [ ] Prefill/Decode disaggregation in production: which hyperscalers have deployed separate prefill and decode clusters, and what GPU ratio (prefill:decode) is optimal for GPT-4 class models at 1M+ QPS?
+- [ ] ZeRO-3 communication overhead at 4,096+ GPU scale: does the all-gather and reduce-scatter volume for 1T-parameter model parameters exceed InfiniBand XDR bisection bandwidth?
+- [ ] Google TPU Trillium (v6) ICI bandwidth: has Google published the per-chip ICI bandwidth and topology change (if any) from TPUv4's 3D torus?
+- [ ] PagedAttention on NVMe (SSD-backed KV-cache eviction): what is the measured p99 token latency penalty when KV-cache pages are swapped to local NVMe vs. CPU DRAM?

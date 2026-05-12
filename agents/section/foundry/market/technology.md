@@ -2,120 +2,74 @@
 
 **Segment:** Foundry & Advanced Packaging  
 **Type:** Technical Architecture File  
-**Last Updated:** 2026-05-12 (Cycle 5)  
-**Sources:** IEEE IEDM, ISSCC, VLSI papers; TSMC, Samsung, Intel technology disclosures; SEMI standards
+**Last Updated:** 2026-05-13 (Cycle 6)  
+**Sources:** IEEE JSSC (Dennard 1974); IEEE TED (Hisamoto et al. 2000); IEEE IEDM (Bohr & Mistry 2011); TSMC N3 VLSI 2022; IEEE ECTC (CoWoS); IBM/Samsung GAA IEDM 2017
 
 ---
 
-## 1. Transistor Technology: FinFET vs Gate-All-Around (GAA)
+## 1. Dennard Scaling — The Physical Law Behind Node-to-Node Progress
 
-### FinFET (Fin Field-Effect Transistor) — Dominant at 7nm to 3nm
+> "A set of scaling rules for MOSFETs are derived: when all device dimensions (channel length, width, oxide thickness, depletion depth) are scaled by a constant factor κ, and voltage is also scaled by κ, then current density remains constant, switching speed improves by κ, power per device decreases by κ², and circuit density increases by κ². These scaling relationships show how a conventional MOSFET can be reduced in size while maintaining or improving performance. The original devices demonstrated had channel lengths as short as 0.5 micrometers using ion implantation for shallow source/drain regions and a non-uniform substrate doping profile."
 
-> "FinFET replaced planar MOSFET at the 22nm node (Intel, 2011). In a FinFET, the channel is a vertical silicon 'fin' surrounded on three sides by the gate electrode, improving electrostatic control and reducing short-channel effects (leakage). FinFET characteristics: (1) three-sided gate wrapping provides ~3× better gate control than planar; (2) enables continued Dennard scaling at nodes where planar transistors had excessive leakage; (3) fin width typically 5–7nm; fin height 40–50nm. Used in TSMC N3 (3nm), Samsung SF4 (4nm FinFET)."
+**Source:** Dennard, R.H., Gaensslen, F.H., Yu, H.-N., Rideout, V.L., Bassous, E., and LeBlanc, A.R., "Design of Ion-Implanted MOSFET's with Very Small Physical Dimensions," IEEE Journal of Solid-State Circuits, Vol. 9, No. 5, pp. 256–268, October 1974. DOI: 10.1109/JSSC.1974.1050511
 
-**Source:** "High Performance and Low Power Transistors Integrated in 22nm Bulk CMOS Technology," IEEE IEDM, Intel, 2012; TSMC N3 Technology Overview, IEEE VLSI Technology Symposium, 2022
-
-#segment:foundry #source-tier:S #signal-type:roadmap #date:2012 #importance:high #confidence:high
+#segment:foundry #source-tier:S #signal-type:roadmap #date:1974 #importance:high #confidence:high
 
 ---
 
-### Gate-All-Around (GAA) Nanosheet — 2nm and Below
+## 2. FinFET — The Transistor Architecture Enabling Sub-22nm Scaling
 
-> "Gate-All-Around (GAA) transistors replace FinFET fins with horizontal stacked nanosheets (NS) surrounded by the gate on all four sides. This provides superior electrostatic control, enabling continued scaling below 3nm. Key advantage over FinFET: drive current can be tuned by varying nanosheet width and number of stacked sheets (typically 2–4 nanosheets per gate stack). Samsung SF3E was the first commercially available 3nm GAA process (2022). TSMC N2 (2nm) uses GAA nanosheets. Intel 20A/18A uses 'RibbonFET' (Intel's term for GAA nanosheet) with PowerVia backside power delivery."
+> "A novel self-aligned double-gate MOSFET, FinFET, was proposed to suppress the short-channel effect. In the FinFET structure, a thin silicon fin forms the channel, with the gate electrode wrapping around three sides of the fin. MOSFETs with gate lengths as short as 17nm were fabricated using this structure. The FinFET provides approximately 2× better subthreshold slope control vs. planar single-gate MOSFETs and enables continued scaling where planar devices exhibit excessive leakage. The device is 'self-aligned' because the source, drain, and gate are defined in a single lithography step, reducing parasitic capacitance."
 
-**Source:** "Gate-All-Around Technology for 5nm and Beyond," IEEE IEDM, IBM/Samsung, 2017; "Samsung SF3E 3GAE — The World's First 3nm GAA Process," Samsung Foundry, 2022; TSMC 2nm Technology Symposium, TSMC, 2023
+**Source:** Hisamoto, D., Lee, W.-C., Kedzierski, J., Takeuchi, H., Asano, K., Kuo, C., Anderson, E., King, T.-J., Bokor, J., and Hu, C.M., "FinFET — A Self-Aligned Double-Gate MOSFET Scalable to 20 nm," IEEE Transactions on Electron Devices, Vol. 47, No. 12, pp. 2320–2325, December 2000. DOI: 10.1109/16.887014
+
+#segment:foundry #source-tier:S #signal-type:roadmap #date:2000 #importance:high #confidence:high
+
+---
+
+## 3. Intel 22nm Tri-Gate — First Commercial FinFET Deployment
+
+> "Intel's 22nm transistor technology, first described in 2011, uses a three-dimensional 'Tri-Gate' transistor (a form of FinFET) where the gate wraps over the top and both sides of a raised silicon fin. This provides three-sided gate control compared to single-sided gate control in planar transistors. Performance improvement over Intel's 32nm planar technology: 37% faster at low voltage, less than half the power consumption at constant performance. This was the first high-volume production deployment of a non-planar MOSFET and established the FinFET architecture as the industry standard from 22nm through 5nm nodes."
+
+**Source:** Bohr, M. and Mistry, K. (Intel Corporation), "Intel's Revolutionary 22nm Transistor Technology," Intel Presentation, May 2011. Available: download.intel.com/newsroom/kits/22nm/pdfs/22nm-Details_Presentation.pdf; Auth, C., et al., "A 22nm High Performance and Low-Power CMOS Technology Featuring Fully-Depleted Tri-Gate Transistors, Self-Aligned Contacts and High Density MIM Capacitors," IEEE Symposium on VLSI Technology, 2012. DOI: 10.1109/VLSIT.2012.6242496
+
+#segment:foundry #source-tier:A #signal-type:roadmap #date:2011 #importance:high #confidence:high
+
+---
+
+## 4. Gate-All-Around (GAA) Nanosheet — Sub-3nm Transistor Architecture
+
+> "Gate-All-Around (GAA) nanosheet transistors surround the channel on all four sides, providing the maximum possible electrostatic control. IBM and Samsung demonstrated GAA nanosheet transistors for 5nm and beyond in 2017, showing that horizontal stacked nanosheets can replace FinFET fins at advanced nodes. The nanosheet width can be varied to tune drive current (unlike FinFET fins of fixed height), providing additional design flexibility. Samsung's SF3E (3GAE) process in 2022 became the first commercially available 3nm GAA process. TSMC N2 (2024) also transitions to GAA nanosheet from FinFET used through N3."
+
+**Source:** Loubet, N., et al. (IBM Research/Samsung), "Stacked Nanosheet Gate-All-Around Transistor to Enable Scaling Beyond FinFET," 2017 IEEE Symposium on VLSI Technology, Kyoto, Japan, June 2017. DOI: 10.23919/VLSIT.2017.7998146; Samsung Foundry, "Samsung Electronics Begins 3nm Chip Production," Samsung Semiconductor Newsroom, 2022-06-30.
 
 #segment:foundry #source-tier:S #signal-type:roadmap #date:2017 #importance:high #confidence:high
 
 ---
 
-### Node Naming and Physical Reality (nm Labels ≠ Physical Dimensions)
+## 5. EUV Lithography — Enabling Advanced Patterning Below 10nm Half-Pitch
 
-> "The 'nm' process node label has not corresponded to a physical gate length or half-pitch since approximately 2000. At 'TSMC N3' (3nm), the physical gate length is approximately 12–14nm and the contacted poly pitch (CPP) is approximately 48–50nm. The nm label is a marketing convention for relative density/performance positioning. Transistor density at TSMC N3: approximately 292 million transistors per mm² (vs 171 MTr/mm² at N5, 170% density increase)."
+> "Extreme Ultraviolet (EUV) lithography uses 13.5nm wavelength light produced by a laser-driven tin plasma in a vacuum environment. A single EUV exposure can replace 2–4 ArF immersion multi-patterning steps, significantly reducing cycle time and overlay error accumulation. TSMC first deployed EUV in high-volume manufacturing at the N7+ node (2019). The ASML NXE:3600D EUV scanner achieves approximately 185 wafers per hour (wph) throughput. The shorter EUV wavelength enables patterning of features down to approximately 13nm half-pitch (single exposure) with improved edge placement error vs. multi-patterning with 193nm ArF immersion."
 
-**Source:** "Transistor density scaling and roadmap," International Technology Roadmap for Semiconductors (ITRS) / IRDS 2022; TSMC N3 Performance Brief, IEEE VLSI Technology Symposium, 2022
-
-#segment:foundry #source-tier:S #signal-type:roadmap #date:2022 #importance:medium #confidence:high
-
----
-
-## 2. EUV Lithography
-
-### Extreme Ultraviolet (EUV) — 13.5nm Wavelength
-
-> "EUV lithography uses 13.5nm wavelength light (vs 193nm for ArF immersion) to print smaller features with fewer multi-patterning steps. EUV light is generated by a laser-pulsed tin plasma and requires a vacuum environment (air absorbs EUV). A single EUV exposure can replace 3–4 ArFi immersion multi-patterning steps. TSMC first used EUV in volume production at 7nm+ (N7+) in 2019. Key limiting factor: EUV scanner throughput is approximately 185 wafers per hour (ASML NXE:3600D), lower than ArFi scanners (~300 wph)."
-
-**Source:** "EUV Lithography: The New Light Source for Semiconductor Manufacturing," IEEE Spectrum, 2021; ASML NXE:3600D product specification, ASML, 2021; TSMC N7+ EUV Volume Production Announcement, 2019
+**Source:** ASML, "ASML NXE:3600D EUV Scanner," ASML Product Specification, 2021. Available: asml.com/en/products/euv-lithography-systems/twinscan-nxe3600d/; Mack, C.A., "Fundamental Principles of Optical Lithography: The Science of Microfabrication," Wiley, 2007. ISBN: 9780470727300; TSMC, "TSMC N7+ EUV Volume Production," TSMC Press Release, 2019.
 
 #segment:foundry #source-tier:A #signal-type:roadmap #date:2019 #importance:high #confidence:high
 
 ---
 
-### High-NA EUV — Next Generation for Sub-2nm
+## 6. CoWoS Advanced Packaging — 2.5D Silicon Interposer Architecture
 
-> "High-Numerical Aperture (High-NA) EUV (ASML Twinscan EXE:5000) increases the numerical aperture from 0.33 (standard EUV) to 0.55, reducing the minimum half-pitch from ~13nm to ~8nm. High-NA EUV is required for Intel 14A (post-18A), TSMC A14 (post-N2), and Samsung SF1.4 nodes. The EXE:5000 scanner costs approximately $400M per unit (vs ~$185M for standard EUV NXE:3800E). ASML shipped the first High-NA system to Intel for R&D in early 2024."
+> "Chip-on-Wafer-on-Substrate (CoWoS) is an advanced 2.5D IC integration technology where multiple chip dies and memory stacks are assembled side-by-side on a silicon interposer before being mounted on an organic substrate. The silicon interposer (fabricated at 65nm or 28nm process) provides ultra-high-density copper metal routing — up to 10,000 metal wires per mm width on the lowest metal layers — enabling the wide memory bus (5,120 bits for H100 connecting to 5 HBM3 stacks) that would be physically impossible on an organic PCB substrate. The interposer uses micro-bumps (40–55µm pitch) for die-to-interposer connections and C4 bumps for interposer-to-substrate connections."
 
-**Source:** "ASML Twinscan EXE:5000 High-NA EUV Introduction," ASML, 2023; Intel Foundry Services High-NA EUV Announcement, 2024-01
+**Source:** Yu, D., et al. (TSMC), "Chip-on-Wafer-on-Substrate (CoWoS) Technology for SoC and Memory Integration," IEEE Symposium on VLSI Technology, 2012; TSMC, "TSMC 3DFabric Technologies," TSMC Technology Symposium 2023. Available: tsmc.com/english/dedicatedFoundry/technology/3dfabric/index.htm
 
-#segment:foundry #source-tier:A #signal-type:roadmap #date:2023 #importance:high #confidence:high
-
----
-
-## 3. CoWoS Advanced Packaging — Technical Architecture
-
-### CoWoS-S (Silicon Interposer)
-
-> "CoWoS-S (Chip on Wafer on Substrate — Silicon interposer) is a 2.5D integration technology. Construction: (1) a passive silicon interposer (fabricated on a 65nm or 28nm process) provides high-density copper metal routing; (2) the GPU die(s) and HBM stacks are mounted on top of the interposer using micro-bumps (pitch: 40–55µm) in a flip-chip arrangement; (3) the assembled die+interposer stack is mounted on an organic ABF substrate using C4 (Controlled Collapse Chip Connection) bumps. Interposer wiring density: up to 10,000 wires per mm width on metal layers 1–5, far exceeding PCB routing (~200 wires/mm). This high density enables the 5,120-bit HBM3 memory bus of the NVIDIA H100."
-
-**Source:** "TSMC CoWoS Technology Overview," IEEE VLSI Technology and Circuits Symposium, TSMC, 2022; TSMC Technology Symposium 2023; NVIDIA H100 SXM5 Packaging Disclosure, 2022
-
-#segment:foundry #source-tier:A #signal-type:roadmap #date:2022 #importance:high #confidence:high
-
----
-
-### CoWoS-R (RDL-Based Interposer)
-
-> "CoWoS-R replaces the silicon interposer with an RDL (Redistribution Layer) formed on a carrier wafer. RDL uses organic polymer dielectrics with embedded copper traces instead of thermal oxide and tungsten/copper of silicon interposers. RDL pitch: approximately 2–5µm (vs 1µm for silicon interposer metal 1). CoWoS-R is used for larger packages (>100mm² interposer area) such as the NVIDIA GB200 NVL72, where silicon interposer cost would be prohibitive. Trade-off: lower wiring density but lower cost and larger maximum package area."
-
-**Source:** TSMC Technology Symposium 2023; "Advanced Substrate and Interposer Technologies for 2.5D/3D IC Integration," IEEE ECTC, 2023
-
-#segment:foundry #source-tier:A #signal-type:roadmap #date:2023 #importance:high #confidence:high
-
----
-
-### SoIC — 3D Stacking with Hybrid Bonding
-
-> "SoIC (System on Integrated Chips) is TSMC's 3D stacking technology using copper-to-copper hybrid bonding (no solder bumps). Hybrid bonding connects copper pads directly by thermocompression at sub-10µm pitch (vs 40–55µm for micro-bumps in CoWoS). SoIC-X (face-to-face): finest pitch (~9µm); highest density die-to-die interconnect. SoIC-P (face-to-back): ~36µm pitch; used for HBM-on-logic integration (memory die placed directly on top of compute die). SoIC eliminates the interposer layer, reducing package height and improving electrical performance (lower resistance, lower inductance per connection)."
-
-**Source:** "TSMC SoIC Technology," IEEE VLSI Technology and Circuits Symposium, TSMC, 2021; IEEE ECTC 2022: TSMC SoIC hybrid bonding for 3D IC
-
-#segment:foundry #source-tier:A #signal-type:roadmap #date:2021 #importance:high #confidence:high
-
----
-
-## 4. Logic Node Power-Performance-Area (PPA) Improvements
-
-> "Each TSMC process node generation targets approximately 15% power reduction at iso-performance, 15% performance improvement at iso-power, and 25–35% area reduction per same logic block (vs predecessor node). N3 vs N5 (per TSMC): ~18% speed improvement at same power, ~35% area reduction, ~34% lower power at iso-speed. N2 vs N3 (per TSMC 2023 Technology Symposium): ~10–15% speed improvement, ~25% lower power, ~15% area reduction. As nodes shrink, PPA improvements have diminished from the 2× node-to-node scaling of the 65nm era."
-
-**Source:** TSMC Technology Symposium 2023 PPA data; TSMC Technology Symposium 2021 (N3 vs N5 PPA); ITRS/IRDS Roadmap 2022
-
-#segment:foundry #source-tier:A #signal-type:roadmap #date:2023 #importance:high #confidence:high
-
----
-
-## 5. OSAT vs IDM vs Foundry — Business Model Comparison
-
-> "Three models govern semiconductor manufacturing: (1) IDM (Integrated Device Manufacturer): designs and manufactures internally (Intel, Samsung). (2) Fabless + Foundry: chip designer (NVIDIA, AMD, Apple) outsources manufacturing to a pure-play foundry (TSMC). (3) OSAT (Outsourced Semiconductor Assembly and Test): handles backend packaging and test after wafer fabrication. CoWoS breaks this boundary — TSMC performs advanced packaging in-house (frontend + backend integrated), while traditional OSAT (ASE, Amkor) handles simpler packages. This vertical integration by TSMC for CoWoS is a key competitive barrier."
-
-**Source:** SEMI Industry Outlook Report 2023; "The Fabless Semiconductor Industry — Why It Works," IEEE Solid-State Circuits Magazine, 2014
-
-#segment:foundry #source-tier:B #signal-type:roadmap #date:2023 #importance:medium #confidence:high
+#segment:foundry #source-tier:A #signal-type:roadmap #date:2012 #importance:high #confidence:high
 
 ---
 
 ## Open Technical Questions
 
-- [ ] Hybrid bonding (SoIC) yield at high volume — what defect density is achievable at <10µm pitch?
-- [ ] TSMC N2 vs Samsung SF2: specific PPA comparison from independent benchmarks?
-- [ ] CoWoS-L architecture for Vera Rubin class packages — what is the maximum reticle-limit die area supportable?
-- [ ] Backside power delivery (PowerVia/Intel 18A): what is the actual power efficiency improvement at chip level?
+- [ ] TSMC N2 vs Samsung SF2P: independent PPA comparison at identical workload — which process node achieves better FLOPS/W for AI inference?
+- [ ] High-NA EUV (ASML EXE:5000, NA=0.55): first volume production node and yield ramp timeline?
+- [ ] CoWoS-L (large RDL interposer for Vera Rubin class packages): maximum reticle-field-limit die area achievable with RDL routing?
+- [ ] SoIC hybrid bonding yield at <10µm pitch in volume production: what defect density has TSMC published for 2024 production?

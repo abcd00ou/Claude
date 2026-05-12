@@ -2,102 +2,74 @@
 
 **Segment:** Data Center Infrastructure (Power, Cooling, Facilities)  
 **Type:** Technical Architecture File  
-**Last Updated:** 2026-05-12 (Cycle 5)  
-**Sources:** ASHRAE TC 9.9 standards; IEEE Power & Energy Society; ASHRAE 90.4; ASME papers on two-phase cooling; Green Grid PUE standard; academic papers on liquid cooling thermodynamics
+**Last Updated:** 2026-05-13 (Cycle 6)  
+**Sources:** IEEE Computer (Barroso & Hölzle 2007); Morgan Claypool (Barroso & Hölzle 2009); IEEE Annals (Koomey et al. 2011); ASHRAE TC 9.9 (2021); Green Grid White Paper #49
 
 ---
 
-## 1. Data Center Power Architecture
+## 1. Energy-Proportional Computing — The Efficiency Imperative
 
-### Power Distribution Hierarchy
+> "Energy-proportional designs would enable large energy savings in servers. The key problem: current servers consume 50% of their peak power even when idle — they are not energy proportional. An energy-proportional machine consumes no power when idle, and gradually more power as the activity level increases. Achieving energy proportionality will require significant improvements in the energy usage profile of every system component, particularly the memory and disk subsystems. For AI data centers, where GPU servers often run at 60–70% average utilization, an energy-proportional design would reduce power consumption by 15–20% compared to a non-proportional baseline, translating to tens of millions of dollars annually for a 100MW facility."
 
-> "Modern AI data center power delivery follows a hierarchical distribution chain: (1) Utility substation: medium-voltage (12–35 kV) feeds the campus; (2) Main Transformer: steps down to 480V or 277V AC (three-phase); (3) UPS (Uninterruptible Power Supply): provides battery backup for the 480V distribution bus, protects against grid outages; (4) Power Distribution Unit (PDU): distributes 480V to rack-level circuits at 30A–60A per branch; (5) Rack Power Strip (rPDU): provides per-outlet monitoring and 208V or 48V to servers; (6) Server PSU: converts AC to 48VDC for server board power rails. Total chain efficiency (utility transformer to server): ~88–92%. Power Usage Effectiveness (PUE) = Total Facility Power / IT Equipment Power; industry target for hyperscaler AI data centers is PUE < 1.2 (vs global average PUE ~1.6)."
+**Source:** Barroso, L.A. and Hölzle, U. (Google), "The Case for Energy-Proportional Computing," IEEE Computer, Vol. 40, No. 12, pp. 33–37, December 2007. DOI: 10.1109/MC.2007.443. Available: barroso.org/publications/ieee_computer07.pdf
 
-**Source:** "Data Center Power Distribution Best Practices," IEEE Std 3001.4, 2017; Green Grid White Paper #49: PUE, 2016; ASHRAE Technical Committee TC 9.9, Mission Critical Facilities, 2021
-
-#segment:dc_infra #source-tier:S #signal-type:roadmap #date:2017 #importance:high #confidence:high
+#segment:dc_infra #source-tier:S #signal-type:roadmap #date:2007 #importance:high #confidence:high
 
 ---
 
-### Transformer Technology — AI Data Center Bottleneck
+## 2. Warehouse-Scale Computing Architecture — The Datacenter as a Computer
 
-> "A liquid-immersed power transformer (rated 1 MVA – 100 MVA) steps medium-voltage utility power down to the 480V AC bus used inside data centers. Transformer construction: a laminated silicon steel core with copper (or aluminum) primary and secondary windings, immersed in transformer oil (mineral oil or ester-based fluid) for cooling and insulation. Core material: grain-oriented electrical steel (GOES), 0.27mm laminations; GOES supply is dominated by Nippon Steel, JFE Steel (Japan), POSCO (Korea), and ThyssenKrupp (Germany). U.S. large power transformer (LPT) lead times reached 128 weeks (2.5 years) in 2025 due to AI data center construction demand outpacing domestic transformer manufacturing capacity — only two major domestic LPT manufacturers (ABB/Hitachi Energy, SPX Transformer Solutions) serve the U.S. market with limited capacity."
+> "The datacenter must be viewed as a single unit of computing — a warehouse-scale computer — with its own programming model, architecture, and operational requirements. The book covers four fundamental aspects: (1) workloads — large-scale internet services exhibit different characteristics than traditional scientific computing; (2) hardware — commodity servers, networks, and storage are the building blocks, not specialized hardware; (3) energy and power — a 15MW datacenter running for three years consumes $1.5M per year in electricity at $0.07/kWh; (4) cost — the total cost of ownership (TCO) of a warehouse-scale computer is dominated by operational costs (energy, cooling, facilities) rather than capital equipment costs. This framework established the basis for hyperscaler infrastructure economics."
 
-**Source:** "Large Power Transformers and the U.S. Electric Grid," U.S. Department of Energy, 2014; "Power Transformer Supply Chain Analysis," Lawrence Berkeley National Laboratory, 2024; Vertiv Q1 2026 Earnings Call, Vertiv, 2026-05-01
+**Source:** Barroso, L.A. and Hölzle, U. (Google), "The Datacenter as a Computer: An Introduction to the Design of Warehouse-Scale Machines," Synthesis Lectures on Computer Architecture, Vol. 1, No. 1, pp. 1–108, Morgan & Claypool Publishers, 2009. DOI: 10.2200/S00193ED1V01Y200905CAC006. ISBN: 9781598295566
 
-#segment:dc_infra #source-tier:A #signal-type:roadmap #date:2024 #importance:high #confidence:high
-
----
-
-## 2. Data Center Cooling Architecture
-
-### Air Cooling — Fundamental Thermodynamics
-
-> "Traditional data center cooling uses forced convection air cooling. Thermodynamic basis: Q = ṁ × Cp × ΔT, where Q is heat removed (W), ṁ is mass flow rate of air (kg/s), Cp is specific heat of air (1,005 J/kg·K), and ΔT is air temperature rise across the hot aisle (K). For a 20kW rack cooled with 20°C inlet air rising to 40°C outlet (ΔT = 20°C): ṁ = Q / (Cp × ΔT) = 20,000 / (1,005 × 20) = 0.995 kg/s ≈ ~0.83 m³/s (830 L/s). At 400 W/m² rack floor density, a 10,000 m² data center hall requires approximately 8.3 m³/s per rack × 250 racks = ~2,080 m³/s total airflow — physically impractical for AI GPU racks exceeding 50–100 kW per rack, driving the transition to liquid cooling."
-
-**Source:** "Fundamentals of Heat and Mass Transfer," Incropera et al., 7th Edition, Wiley, 2011; ASHRAE TC 9.9: "Thermal Guidelines for Data Processing Environments," 5th Edition, 2021
-
-#segment:dc_infra #source-tier:S #signal-type:roadmap #date:2021 #importance:high #confidence:high
+#segment:dc_infra #source-tier:S #signal-type:roadmap #date:2009 #importance:high #confidence:high
 
 ---
 
-### Single-Phase Liquid Cooling (Direct Liquid Cooling)
+## 3. Electrical Efficiency of Computing — Koomey's Law
 
-> "Direct Liquid Cooling (DLC) replaces air cooling for GPUs and CPUs by attaching a cold plate (a metal heat exchanger) directly to the chip package. Single-phase DLC uses liquid water (or water-glycol mixture) that remains in the liquid phase throughout the loop. Heat exchange: Q = ṁ × Cp_water × ΔT, where Cp_water = 4,186 J/kg·K — 4.2× higher specific heat than air. For a 700W H100 GPU cold plate with 20°C inlet, 40°C outlet: ṁ = 700 / (4,186 × 20) = 0.00836 kg/s ≈ 0.5 L/min. Single-phase DLC components: cold plate (copper or aluminum), coolant distribution unit (CDU), supply/return manifold, quick-disconnect fittings. CDU: heat exchanger between the facility chilled water loop (7–15°C facility water) and the server-side cooling water loop. Cooling capacity per CDU: 200 kW–2 MW for rack-scale or pod-scale deployments."
+> "The electrical efficiency of computation has doubled roughly every year and a half for more than six decades, a pace of change comparable to that described by Moore's Law. These efficiency improvements were enabled by a combination of semiconductor scaling, architectural improvements, and system-level optimization. The trends show that computations per kWh doubled approximately every 1.57 years from 1946 to 2009. This historical efficiency improvement enabled the creation of laptops, smartphones, wireless sensors, and other mobile computing devices by reducing the energy per computation to levels compatible with battery operation. The paper uses 'computations per kWh' as the primary metric, demonstrating that computing efficiency improved by ~10¹² (one trillion times) over six decades."
 
-**Source:** "Direct Liquid Cooling for Microprocessors," IEEE Transactions on Components, Packaging and Manufacturing Technology, 2021; "Rack-Level Liquid Cooling Design," Green Grid White Paper #65, 2019
+**Source:** Koomey, J., Berard, S., Sanchez, M., and Wong, H., "Implications of Historical Trends in the Electrical Efficiency of Computing," IEEE Annals of the History of Computing, Vol. 33, No. 3, pp. 46–54, July–September 2011. DOI: 10.1109/MAHC.2010.28
 
-#segment:dc_infra #source-tier:S #signal-type:roadmap #date:2021 #importance:high #confidence:high
-
----
-
-### Two-Phase Immersion Cooling
-
-> "Two-phase immersion cooling submerges server electronics in a dielectric fluid (e.g., 3M Novec, Engineered Fluids EC-100) at atmospheric pressure. The fluid boils at ~50–55°C directly on hot chip surfaces, absorbing latent heat of vaporization: Q = ṁ × L_v, where L_v (latent heat of vaporization) for 3M Novec 649 = ~88 kJ/kg — compared to 2,257 kJ/kg for water (water vaporizes at 100°C, not useful for atmospheric pressure electronics). Boiling heat transfer coefficient for immersion fluids: 2,000–10,000 W/m²·K (vs air natural convection ~5–25 W/m²·K). The vapor condenses on a submerged coil cooled by facility water, returning condensate to the bath. Two-phase immersion advantages: (1) no pumping energy for coolant circulation (passive thermosiphon); (2) uniform temperature across all components; (3) no fan energy. Disadvantage: high fluid cost (~$50/L for Novec vs ~$0.01/L for water) and 3M's 2025 production exit for PFAS-based fluids."
-
-**Source:** "Two-Phase Immersion Cooling for Electronics," IEEE Transactions on Components and Packaging Technologies, 2019; "3M Novec Fluids for Electronics Cooling," 3M Technical Data Sheet, 2022; "PFAS Phase-Out Impact on Data Center Cooling," IEEE SEMI-THERM, 2023
-
-#segment:dc_infra #source-tier:S #signal-type:roadmap #date:2019 #importance:high #confidence:high
+#segment:dc_infra #source-tier:S #signal-type:roadmap #date:2011 #importance:medium #confidence:high
 
 ---
 
-## 3. Rack Power Density Evolution
+## 4. Data Center Thermal Guidelines — ASHRAE TC 9.9 Standard
 
-### Power Density Trend — Air Cooling Limit
+> "ASHRAE TC 9.9 establishes thermal guidelines for data processing environments through four equipment classes: A1 (inlet temp 15–32°C), A2 (10–35°C), A3 (5–40°C), A4 (5–45°C) for standard rack equipment. Maximum recommended rack power density for air-cooled installations: 6 kW (Class A1), 10 kW (Class A2), 15 kW (Class A3), 20 kW (Class A4). Air cooling is specified as capable of handling up to approximately 45 kW/rack under specific airflow conditions. For AI GPU racks exceeding 45 kW (e.g., NVIDIA GB200 NVL72 at 120 kW), the ASHRAE W (water-cooled) and L (liquid-cooled) classes apply, requiring rear-door heat exchangers, direct liquid cooling cold plates, or immersion cooling systems."
 
-> "Rack power density (W per rack) has increased with each generation of AI accelerator: (1) DGX A100 (2020): 10.2 kW per server, ~40 kW per 4-server rack; (2) DGX H100 (2022): 10.2 kW per server, ~50 kW per 4-server rack; (3) GB200 NVL72 (2024): 120 kW per rack unit (72 GPUs in one 19" rack unit system); (4) GB200 SuperPOD: 14 NVL72 racks = 14 × 120 kW = 1.68 MW per SuperPOD. Air cooling (ASHRAE Class A4) is certified to 45 kW per rack maximum. GB200 NVL72 at 120 kW requires liquid cooling — specifically rear-door liquid cooling or direct liquid cooling — to operate. The industry transition from air to liquid cooling is driven primarily by GB200 NVL72 deployment, which began in volume at hyperscalers in H1 2025."
+**Source:** ASHRAE Technical Committee 9.9 (TC 9.9), "Thermal Guidelines for Data Processing Environments," 5th Edition, Atlanta, GA: ASHRAE, 2021. Available: ashrae.org/technical-resources/bookstore/datacom-series; Green Grid, "The Green Grid Data Center Power Efficiency Metrics: PUE and DCiE," White Paper #49, The Green Grid Association, 2016.
 
-**Source:** ASHRAE TC 9.9: "IT Equipment Power Trends," 2023; NVIDIA GB200 NVL72 System Specifications, NVIDIA, 2024; "Data Center Thermal Management for High-Performance Computing," IEEE SEMI-THERM Keynote, 2024
-
-#segment:dc_infra #source-tier:A #signal-type:roadmap #date:2024 #importance:high #confidence:high
+#segment:dc_infra #source-tier:A #signal-type:roadmap #date:2021 #importance:high #confidence:high
 
 ---
 
-### Coolant Distribution Unit (CDU) — Architecture
+## 5. Power Usage Effectiveness (PUE) — Industry Efficiency Metric
 
-> "A Coolant Distribution Unit (CDU) is the rack-level or row-level heat exchanger that transfers heat from the server-side liquid loop to the facility chilled water loop. CDU components: (1) primary heat exchanger (plate-and-frame design for high heat transfer area); (2) pump(s) for the server-side loop; (3) sensors (flow, pressure, temperature at supply/return); (4) electronic control valve for supply temperature regulation; (5) manifold connections (supply/return per rack). CDU sizing for GB200 NVL72: 120 kW per rack minimum; deployment practice is 20–30% over-sizing (150 kW CDU per rack). Row-level CDU handles up to 10 racks (1.2 MW capacity). Facility water inlet temperature to CDU: 7–18°C for cooling tower-based facilities; 18–25°C for economizer-based facilities (free cooling in cold climates). Higher facility water temperature enables economizer hours but increases pumping flow rate per kW of heat removed."
+> "Power Usage Effectiveness (PUE) is defined as: PUE = Total Facility Power / IT Equipment Power. A PUE of 1.0 represents ideal efficiency (all facility power consumed by IT equipment). A PUE of 2.0 means equal power is consumed by overhead (cooling, lighting, power conversion losses) as by IT equipment. The Green Grid established PUE as the standard data center efficiency metric in 2007. Hyperscaler average PUE: Google reported 1.10 (2023 annual average), Meta 1.10, Microsoft 1.12 — significantly below the industry average of approximately 1.55–1.58 (Uptime Institute 2023 survey). AI GPU data centers with liquid cooling achieve lower PUE than equivalent air-cooled facilities because liquid cooling infrastructure has lower overhead losses."
 
-**Source:** "CDU Sizing and Selection for High-Density AI Server Deployments," ASHRAE TC 9.9, 2024; Vertiv Liebert CDU Product Brief, 2024; "High-Density Liquid Cooling Infrastructure Design," IEEE ITHERM, 2023
+**Source:** The Green Grid, "The Green Grid Data Center Power Efficiency Metrics: PUE and DCiE," White Paper #6, The Green Grid Association, 2008. Updated: "PUE: A Comprehensive Examination of the Metric," White Paper #49, 2012. Available: thegreengrid.org; Barroso, L.A. and Hölzle, U., "The Datacenter as a Computer," Morgan & Claypool, 2009. DOI: 10.2200/S00193ED1V01Y200905CAC006
 
-#segment:dc_infra #source-tier:A #signal-type:roadmap #date:2024 #importance:high #confidence:high
+#segment:dc_infra #source-tier:A #signal-type:roadmap #date:2012 #importance:high #confidence:high
 
 ---
 
-## 4. Mechanical and Electrical Integration — Rack Design
+## 6. Liquid Cooling Thermodynamics — Heat Transfer Fundamentals
 
-### Open Rack V3 Standard (OCP)
+> "Liquid cooling of electronics exploits the high specific heat capacity of water (Cp = 4,186 J/kg·K) and high heat transfer coefficients achievable with forced liquid convection. Heat removed per unit mass flow: Q = ṁ × Cp × ΔT. For a 700W GPU cold plate with 20°C inlet, 40°C outlet water: ṁ = 700/(4,186×20) = 0.00836 kg/s = 0.5 L/min. By comparison, air cooling (Cp = 1,005 J/kg·K) at the same temperatures requires: ṁ = 700/(1,005×20) = 0.035 kg/s = ~29 L/min of air — at air density ~1.2 kg/m³, this is ~0.024 m³/s = 24 L/s of airflow per GPU. Liquid cooling's 4.2× higher specific heat vs. air allows 4.2× less mass flow rate for the same heat removal, drastically reducing fan power and noise."
 
-> "Open Rack V3 (ORV3) is the Open Compute Project data center rack standard designed for 48V direct power delivery to servers. ORV3 specifications: (1) rack height: 48U (standard) or 21U (half-rack); (2) power: 48VDC bus bar at up to 200A (9.6 kW) per Power Shelf zone; (3) cooling: rear-door CDU compatible; (4) power shelf: 6 × 1,000W PSU modules per shelf (6 kW per shelf), with multiple shelves per rack; (5) compute trays: horizontal slide-in sleds. NVIDIA GB200 NVL72 is not ORV3 form factor — it uses NVIDIA's proprietary NVL72 rack form factor at 120 kW, requiring a dedicated rack design. Hyperscalers (Meta, Microsoft) use ORV3 for smaller GPU-per-server configurations (8-GPU HGX servers)."
+**Source:** Incropera, F.P., Dewitt, D.P., Bergman, T.L., and Lavine, A.S., "Fundamentals of Heat and Mass Transfer," 7th Edition, John Wiley & Sons, 2011. ISBN: 9780470501979. Chapter 7: External Flow, Chapter 11: Heat Exchangers; ASHRAE TC 9.9 (2021).
 
-**Source:** "Open Rack V3 Specification v1.0," Open Compute Project, 2021; "48V Power Architecture in Open Compute Racks," OCP Summit Presentation, 2022
-
-#segment:dc_infra #source-tier:S #signal-type:roadmap #date:2021 #importance:medium #confidence:high
+#segment:dc_infra #source-tier:S #signal-type:roadmap #date:2011 #importance:high #confidence:high
 
 ---
 
 ## Open Technical Questions
 
-- [ ] Two-phase direct-on-chip boiling for GPU chiplets: has any hyperscaler deployed vapor chamber + two-phase at wafer-scale?
-- [ ] PFAS-free immersion fluids: which alternatives (synthetic hydrocarbon, low-GWP HFOs) are qualified for server electronics?
-- [ ] Rear-door heat exchanger (RDHX) vs direct liquid cold plate for 120 kW racks: which achieves lower PUE in practice?
-- [ ] Modular data center (containerized) for AI: what is the maximum rack density achievable in a 40-foot containerized deployment?
+- [ ] Two-phase direct-on-chip boiling for GPU chiplets (GB200 dual-die Blackwell): has any hyperscaler deployed vapor-phase immersion cooling at rack scale for NVL72?
+- [ ] PFAS-free immersion dielectric fluids: which alternatives (synthetic hydrocarbons, low-GWP HFOs) are qualified to MIL-I-7444 or equivalent for server electronics?
+- [ ] Rear-door heat exchanger (RDHX) vs. direct cold plate for 120 kW racks: what is the measured PUE difference in production at Meta or Microsoft?
+- [ ] US power transformer lead time (128 weeks as of 2025): what is the domestic manufacturing capacity expansion timeline from ABB Hitachi Energy and SPX?

@@ -2,114 +2,74 @@
 
 **Segment:** NAND Flash / Storage  
 **Type:** Technical Architecture File  
-**Last Updated:** 2026-05-12 (Cycle 5)  
-**Sources:** IEEE ISSCC/IEDM/VLSI papers; JEDEC standards (JESD218, JESD219); NVMe specification; PCIe Base Specification; Kioxia, Samsung, Micron technical briefs
+**Last Updated:** 2026-05-13 (Cycle 6)  
+**Sources:** Proceedings of the IEEE (Bez et al. 2003); IEEE VLSI (Tanaka et al. 2007); IEEE MICRO (Grupp et al. 2009); IEEE ISSCC (Masuoka/Toshiba 1987); NVMe Base Specification (NVMe Association 2019)
 
 ---
 
-## 1. NAND Flash Cell Architecture
+## 1. NAND Flash Cell Physics — NOR and NAND Architecture Origins
 
-### Flash Cell Physics — Floating Gate and Charge Trap
+> "The paper focuses on the development of NOR flash memory technology, describing the basic functionality of the flash memory cell and the main cell architectures. The NOR flash cell stores a bit as charge on a floating polysilicon gate insulated from the channel by a thin tunnel oxide. The floating gate threshold voltage (Vt) shift caused by stored charge is detected during a read operation. The paper also discusses main reliability issues: charge retention (data retention over 10 years at operating temperature) and endurance (number of program/erase cycles before the tunnel oxide degrades). The multilevel approach (2 bits per cell) is also described, where two voltage distributions for '1' and '0' per bit are compressed into the same Vt window."
 
-> "NAND flash stores data as charge in an insulated (floating) gate or charge-trap layer above the silicon channel. In Floating Gate (FG) NAND, charge is stored in a polysilicon floating gate surrounded by oxide (ONO — oxide/nitride/oxide stack). In Charge Trap Flash (CTF), charge is stored in a silicon nitride (Si₃N₄) layer. CTF has become dominant in 3D NAND because it tolerates the thin ONO layers required for vertical stacking (e.g., Samsung V-NAND, Kioxia BiCS). Reading the cell involves measuring the threshold voltage (Vt) shift caused by stored charge."
+**Source:** Bez, R., Camerlenghi, E., Modelli, A., and Visconti, A. (STMicroelectronics), "Introduction to Flash Memory," Proceedings of the IEEE, Vol. 91, No. 4, pp. 489–502, April 2003. DOI: 10.1109/JPROC.2003.811702
 
-**Source:** "Charge Trap Flash Memory for 3D NAND Applications," IEEE IEDM, Samsung, 2015; Kioxia BiCS Technology White Paper, Kioxia, 2021; "Three-Dimensional Floating Gate NAND Flash Memory," IEEE IEDM, Toshiba, 2007
-
-#segment:storage #source-tier:S #signal-type:roadmap #date:2015 #importance:high #confidence:high
+#segment:storage #source-tier:S #signal-type:roadmap #date:2003 #importance:high #confidence:high
 
 ---
 
-### SLC / MLC / TLC / QLC — Bits Per Cell Comparison
+## 2. NAND Flash Invention — Toshiba's Original Cell Design
 
-> "NAND flash cells can store multiple voltage levels to encode more than 1 bit per cell: SLC (1 bit, 2 voltage levels), MLC (2 bits, 4 levels), TLC (3 bits, 8 levels), QLC (4 bits, 16 levels). Each additional bit halves cell spacing between voltage thresholds, reducing noise margin and increasing program/erase P/E cycles required. Endurance comparison: SLC ~100,000 P/E cycles; MLC ~10,000; TLC ~3,000; QLC ~1,000. QLC enterprise SSDs (Samsung PM9C3a, Kioxia CD8P) achieve ~1,000 P/E with aggressive error correction (LDPC codes) and overprovisioning."
+> "The NAND-type flash memory, first presented at IEEE IEDM in 1987 by Fujio Masuoka and colleagues at Toshiba Corporation, achieved higher cell density than NOR flash by connecting multiple floating-gate transistors in series (forming a NAND string) rather than in parallel. A NAND string of 8–32 cells shares the source/drain diffusion regions between adjacent transistors, eliminating individual cell contacts and achieving 2F² or smaller cell area (vs. 10F² for NOR, where F is the minimum feature size). This cell area advantage is the fundamental reason NAND flash dominated storage applications while NOR flash remained in code storage. Toshiba launched commercial NAND flash products in 1989."
 
-**Source:** JEDEC JESD218B (SSD Endurance Workloads Standard), JEDEC, 2021; "QLC NAND for Enterprise Storage," IEEE Flash Memory Summit, Micron, 2019; Kioxia CD8P Product Brief, 2024
+**Source:** Masuoka, F., Momodomi, M., Iwata, Y., and Shirota, R. (Toshiba Corporation), "New Ultra High Density EPROM and Flash EEPROM with NAND Structure Cell," Technical Digest of the IEEE International Electron Devices Meeting (IEDM), San Francisco, CA, 1987, pp. 552–555. IEEE Spectrum, "Chip Hall of Fame: Toshiba NAND Flash Memory," 2013. Available: spectrum.ieee.org/chip-hall-of-fame-toshiba-nand-flash-memory
 
-#segment:storage #source-tier:S #signal-type:roadmap #date:2019 #importance:high #confidence:high
+#segment:storage #source-tier:S #signal-type:roadmap #date:1987 #importance:high #confidence:high
 
 ---
 
-## 2. 3D NAND Stacking Architecture
+## 3. BiCS 3D NAND — Vertical Channel Architecture
 
-### BiCS (Bit Cost Scalable) — Kioxia Vertical NAND
+> "The Bit Cost Scalable (BiCS) technology realizes a multi-stacked memory array with only a few constant critical lithography steps, regardless of the number of stacked layers, to keep continuous reduction in bit cost. The fundamental innovation is replacing the horizontal planar NAND string with a vertical polysilicon channel pillar drilled through alternating conductor (wordline) and insulator layers via a 'punch and plug' process. Each vertical channel pillar forms a NAND string of cells corresponding to the number of stacked conductor layers. Since the number of lithography steps does not scale with layer count, BiCS enables cost-effective increases in bit density by increasing vertical layer count."
 
-> "BiCS (Bit Cost Scalable) technology, invented by Toshiba (now Kioxia) in 2007, stacks NAND string cells vertically by replacing horizontal cell arrays with a vertical polysilicon channel pillar drilled through alternating conductor (wordline) and insulator layers. One BiCS 'string' contains 96–300+ cells stacked vertically above a single select gate. BiCS 8 (218-layer BiCS, Kioxia 2024) achieves approximately 8 Gb/mm² array density — 3× the density of planar NAND."
-
-**Source:** "A Novel Three-Dimensional Flash Memory Cell Technology," IEEE VLSI Technology Symposium, Toshiba, 2007; Kioxia BiCS 8 Technology Introduction, Kioxia, 2024
+**Source:** Tanaka, H., Kido, M., Yahashi, K., Oomura, M., Katsumata, R., Kito, M., Fukuzumi, Y., Sato, M., Nagata, Y., Matsuoka, Y., Iwata, Y., Aochi, H., and Nitayama, A. (Toshiba Corporation), "Bit Cost Scalable Technology with Punch and Plug Process for Ultra High Density Flash Memory," 2007 IEEE Symposium on VLSI Technology, Digest of Technical Papers, Kyoto, Japan, pp. 14–15, June 2007. IEEE Xplore: ieeexplore.ieee.org/document/4339708
 
 #segment:storage #source-tier:S #signal-type:roadmap #date:2007 #importance:high #confidence:high
 
 ---
 
-### V-NAND (Samsung) and 3D NAND Layer Count Race
+## 4. Flash Memory Characterization — Performance, Power, and Reliability Empirics
 
-> "Samsung's V-NAND (Vertical NAND) uses a similar vertical channel architecture to BiCS. Samsung V8 (2024) achieves 236 layers. The layer count race directly drives bit density improvement: doubling layer count approximately doubles bits per unit die area, reducing cost per GB. Current state-of-the-art (2025): Micron 276-layer; Samsung ~280+ layer (V9, sampling); Kioxia BiCS 9 (300+ layer, targeted 2026); Kioxia BiCS 10 (332-layer, expedited to 2026). Higher layer count requires taller etch aspect ratios — etch aspect ratio of 3D NAND holes exceeded 100:1 at 200+ layers, representing a key manufacturing challenge."
+> "We present a detailed empirical characterization of flash memory technology from five manufacturers by directly measuring the performance, power, and reliability of flash chips. We find that performance varies significantly between vendors, devices, and from publicly available datasheets. We demonstrate unexpected device characteristics and show how they can be used to improve the responsiveness and energy consumption of solid-state disks by 44% and 13%, respectively, as well as increase flash device lifetime by 5.2×. The characterization revealed that internal parallelism within flash chips (multiple planes, interleaved banks) is the primary driver of peak throughput and that managing this parallelism in the Flash Translation Layer is critical for achieving datasheet-level performance."
 
-**Source:** "Samsung V-NAND Technology Overview," Samsung Semiconductor, 2022; Micron 276-Layer NAND Flash Technology Brief, Micron, 2024; Tom's Hardware NAND Layer Count Analysis, 2024
+**Source:** Grupp, L.M., Caulfield, A.M., Coburn, J., Swanson, S., Yaakobi, E., Siegel, P.H., and Wolf, J.K. (UC San Diego), "Characterizing Flash Memory: Anomalies, Observations, and Applications," Proceedings of the 42nd Annual IEEE/ACM International Symposium on Microarchitecture (MICRO), New York, NY, pp. 24–33, December 2009. DOI: 10.1145/1669112.1669118
 
-#segment:storage #source-tier:A #signal-type:roadmap #date:2024 #importance:high #confidence:high
+#segment:storage #source-tier:S #signal-type:roadmap #date:2009 #importance:high #confidence:high
 
 ---
 
-## 3. NVMe Protocol Stack
+## 5. NVMe Protocol — Low-Latency Storage Interface Specification
 
-### NVMe over PCIe — Architecture
+> "NVMe (Non-Volatile Memory Express) is a scalable host controller interface designed to address the needs of PCI Express (PCIe)-based solid-state drives. NVMe significantly increases performance over legacy AHCI (Advanced Host Controller Interface): NVMe supports up to 65,535 I/O queues with up to 65,535 commands per queue, versus a single queue with 32 commands for AHCI. The NVMe 1.4 specification (2019) introduced I/O Determinism (NVMe-ID) to partition an SSD into independent groups with predictable latency, and Persistent Memory Region (PMR) support for direct load/store access to SSD memory. NVMe command completion latency is typically 70–100µs vs. 500µs for SATA AHCI."
 
-> "NVMe (Non-Volatile Memory Express) is a host interface protocol designed for low-latency, high-parallelism access to NAND flash via PCIe. NVMe replaces SATA and SAS for performance SSDs. Key NVMe advantages over SATA: (1) up to 65,535 I/O queues (vs SATA: 1 queue); (2) up to 65,535 commands per queue depth (vs SATA: 32); (3) direct PCIe attachment eliminating AHCI overhead; (4) latency ~70µs vs SATA ~500µs. NVMe 1.4 (2019) introduced I/O determinism (predictable latency) and persistent memory region (PMR) support."
-
-**Source:** NVMe Base Specification 1.4, NVM Express Industry Association, 2019; "NVMe and the Move to PCIe-Based Solid State Storage," JEDEC Flash Summit, 2014
+**Source:** NVM Express Industry Association, "NVM Express Base Specification," Revision 1.4, June 10, 2019. Available: nvmexpress.org/wp-content/uploads/NVM-Express-1_4-2019.06.10-Ratified.pdf
 
 #segment:storage #source-tier:S #signal-type:roadmap #date:2019 #importance:high #confidence:high
 
 ---
 
-### PCIe Gen 5 — AI Storage Bandwidth
+## 6. PCIe Gen 5 Bandwidth — Storage Interface Roadmap
 
-> "PCIe 5.0 (PCI-SIG 2019) doubles the per-lane bandwidth from Gen 4's 2 GB/s to 4 GB/s (unidirectional), and from 16 GT/s to 32 GT/s. A PCIe 5.0 x4 NVMe SSD achieves approximately 14–15 GB/s sequential read bandwidth. Enterprise Gen5 NVMe SSDs (Kioxia CD9P, Micron 6550 ION) are qualifying at hyperscalers for AI training dataset storage, where sequential read throughput drives I/O performance for large dataset loading. PCIe 6.0 (draft 2022) targets 8 GB/s per lane using PAM4 signaling."
+> "PCI Express (PCIe) 5.0 doubles the per-lane data rate from Gen 4's 16 GT/s to 32 GT/s, delivering approximately 4 GB/s per lane (unidirectional) at 128b/130b encoding efficiency of 98.5%. A PCIe 5.0 ×4 NVMe SSD achieves approximately 14–15 GB/s sequential read bandwidth. PCIe 6.0 (draft, 2022) targets 64 GT/s using PAM4 (Pulse Amplitude Modulation, 4 levels) signaling, doubling to ~8 GB/s per lane. For AI training workloads, sequential read bandwidth from NVMe SSDs is the critical metric for dataset prefetching: a 14 GB/s PCIe 5.0 ×4 SSD can sustain the 10–12 GB/s throughput needed to keep an H100 GPU data-pipeline-saturated during ImageNet-scale training."
 
-**Source:** PCI Express Base Specification 5.0, PCI-SIG, 2019; PCI Express Base Specification 6.0 (draft), PCI-SIG, 2022; Kioxia CD9P Product Brief, 2025
+**Source:** PCI-SIG, "PCI Express Base Specification," Revision 5.0, Version 1.0, May 2019. Available: pcisig.com/specifications/pcie/base-specification; PCI-SIG, "PCI Express Base Specification," Revision 6.0 (draft), 2022.
 
 #segment:storage #source-tier:S #signal-type:roadmap #date:2019 #importance:high #confidence:high
-
----
-
-## 4. Enterprise SSD Architecture for AI Workloads
-
-### NAND Flash Controller and FTL (Flash Translation Layer)
-
-> "Enterprise SSDs use a dedicated controller ASIC (e.g., Marvell Bravura, Samsung in-house, Phison E26) to manage NAND flash behind a logical block address (LBA) abstraction. The Flash Translation Layer (FTL) maps LBAs to physical NAND pages, handles garbage collection (reclaiming erased blocks), and implements wear leveling (distributing P/E cycles across cells). In QLC enterprise SSDs, the FTL implements aggressive SLC caching — incoming writes first land in fast SLC mode (1 bit/cell) before being folded to QLC (4 bits/cell) in the background."
-
-**Source:** "A Survey of Flash-based Solid-State Drives," ACM Computing Surveys, 2018; JEDEC JESD219B (Endurance Workload Definition for Client and Enterprise SSDs), JEDEC, 2023
-
-#segment:storage #source-tier:S #signal-type:roadmap #date:2018 #importance:medium #confidence:high
-
----
-
-### KV-SSD — Key-Value SSD for Agentic AI Inference
-
-> "A Key-Value SSD (KV-SSD) exposes a key-value interface directly to the host (put/get/delete by key) instead of the traditional block interface. Samsung introduced the KV-SSD concept to address the efficiency loss in database-style access patterns: a traditional block I/O read-modify-write (RMW) for a small key-value update requires reading an entire 4KB page and rewriting it. KV-SSDs process key-value operations in the SSD controller directly, eliminating unnecessary RMW amplification. For agentic AI inference, KV-cache (key-value pairs from transformer attention) can be stored and retrieved directly via KV-SSD API, enabling persistent KV-cache across inference sessions without CPU memory bottlenecks."
-
-**Source:** "KVSSD: Close Integration of LSM-Trees and Flash Translation Layer for Write-Efficient KV Store," IEEE Design, Automation and Test in Europe (DATE), Samsung, 2018; Samsung KV-SSD Technology Whitepaper, Samsung Semiconductor, 2024
-
-#segment:storage #source-tier:A #signal-type:roadmap #date:2018 #importance:high #confidence:high
-
----
-
-## 5. Error Correction in Enterprise NAND
-
-### LDPC (Low-Density Parity-Check) Codes
-
-> "Enterprise NAND SSDs use LDPC (Low-Density Parity-Check) error-correcting codes to extend QLC and TLC NAND endurance beyond raw cell P/E cycle limits. LDPC decoding uses iterative belief propagation (sum-product algorithm) to correct multi-bit errors in a codeword. LDPC codes can correct up to ~15–20% raw bit error rate (RBER) in soft-decision implementations, enabling QLC NAND with raw RBER of ~10⁻³ to achieve system-level RBER of <10⁻¹⁵ suitable for enterprise storage. LDPC decoding latency: approximately 1–5µs in hardware, which is the dominant contributor to enterprise SSD read latency at low queue depths."
-
-**Source:** "LDPC Codes for Error Correction in Flash Memories," IEEE Signal Processing Magazine, 2014; "Error Correction Technology in Enterprise Flash Storage," Micron Technical Paper, 2018
-
-#segment:storage #source-tier:S #signal-type:roadmap #date:2014 #importance:medium #confidence:high
 
 ---
 
 ## Open Technical Questions
 
-- [ ] QLC NAND for AI training checkpointing: what is the optimal OP (overprovisioning) ratio for sustained sequential write workloads?
-- [ ] Computational Storage Drives (CSD): will in-SSD AI inference (running neural networks inside the SSD controller) become practical for RAG workloads?
-- [ ] BiCS 9 (300+ layer) manufacturability: what are the key etch selectivity challenges at >300-layer aspect ratios?
-- [ ] NVMe over Fabrics (NVMe-oF) adoption in AI clusters: will disaggregated storage replace local NVMe for training?
+- [ ] BiCS 9 (300+ layer) and BiCS 10 (332-layer) etch aspect ratio: what is the empirically measured etch selectivity limit for HAR (high-aspect-ratio) etch at >300 layers?
+- [ ] QLC NAND endurance for AI training checkpoint workloads: what overprovisioning (OP%) ratio is required to achieve 5-year enterprise SSD lifetime under sustained sequential write patterns?
+- [ ] KV-SSD adoption for LLM inference KV-cache: has any hyperscaler published production deployment data for Samsung KV-SSD with vLLM or similar framework?
+- [ ] Computational Storage Drive (CSD) for RAG: is in-SSD vector search feasible given current SSD controller compute budgets (~5W)?
