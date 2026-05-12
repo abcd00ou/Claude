@@ -228,18 +228,34 @@ reference it from the section agent update entry.
 
 ---
 
+## New Company Recording Workflow
+
+When new information about a company arrives from a reliable source:
+
+1. Identify the correct segment(s): `agents/section/<segment>/companies/`
+2. Check if `<company_slug>.md` already exists in that folder
+3. **Exists →** append a new dated entry under `## Updates` (newest first)
+4. **Does not exist →** create using the template at `agents/data/dba/schema/company_template.md`
+5. If the company spans multiple segments (e.g., Samsung: dram + storage + foundry),
+   create or update a file in **each** relevant segment's `companies/` folder
+6. Check `company_intel/` at the project root — if a file exists there, sync the same update
+
+**Company file naming:** `<company_slug>.md` in `snake_case`
+```
+sk_hynix.md   nvidia.md   tsmc.md   samsung.md   micron.md
+amd.md        google.md   microsoft.md   amazon.md   meta.md
+broadcom.md   marvell.md  ibiden.md  infineon.md  on_semi.md
+```
+
+---
+
 ## Versioning Rules
 
 1. **Never delete past entries** — history is permanent; append corrections as new entries
 2. **Update `**Last Updated:**`** in the README frontmatter with every change
 3. **When a source is superseded** (e.g., new earnings call overrides old guidance), add new entry
    and note `[supersedes: YYYY-MM-DD entry]` in the new entry body
-4. **Company files in `companies/`** are living documents — update in place but add a
-   dated changelog section at the bottom:
-   ```markdown
-   ## Changelog
-   - YYYY-MM-DD: updated market share from X% to Y% (Source: ...)
-   ```
+4. **Company files in `companies/`** are living documents — update in place, entries newest first
 5. **Do not create duplicate files** — check existing structure before creating anything new
 
 ---

@@ -237,6 +237,20 @@ When knowledge better belongs to another section:
 - Section expert agents write within their own folder; the orchestrator synthesizes across them.
 - When a new signal is added, update the relevant section agent first, then flag cross-refs in `orchestrator/README.md`.
 
+### New Company Rule
+
+When new information about a company is found from a reliable source:
+
+1. **Check if a company file exists** in the relevant section's `companies/` folder  
+   e.g., `agents/section/dram/companies/sk_hynix.md`
+2. **If the file exists** — append a dated entry under `## Updates` (newest first)
+3. **If the file does not exist** — create it using the company file template in  
+   `agents/data/dba/schema/company_template.md`
+4. **If the company spans multiple segments** — create a file in each relevant segment's  
+   `companies/` folder (e.g., Samsung appears in `dram/`, `storage/`, `foundry/`)
+5. **Always also check** `company_intel/` at the project root — if a file exists there, add  
+   the same update there too so both knowledge layers stay in sync
+
 ---
 
 ## Skill Routing
