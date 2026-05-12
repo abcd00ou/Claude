@@ -6,111 +6,204 @@
 
 ---
 
-## Market Overview
+## Overview
 
-AI semiconductor demand is driven by a concentrated set of buyers:
-- **Hyperscalers** (Microsoft, Google, AWS, Meta): 60–70% of AI chip spend
-- **Neo-cloud / GPU cloud** (CoreWeave, Lambda, Together, Oracle OCI): 10–15%
-- **Enterprise** (Fortune 500 on-premise AI): 10–15%
-- **Sovereign AI** (national programs, government cloud): 5–10%
+AI semiconductor demand is driven by a concentrated set of buyers: hyperscalers (Microsoft, Google, AWS, Meta) account for 60–70% of AI chip spend, with neo-cloud, enterprise, and sovereign AI programs making up the remainder. Combined CY2026 capex from the four major hyperscalers totals $705–725B — the largest coordinated infrastructure investment in technology history. Alphabet's Q1 2026 YoY capex growth of +107% is the single strongest demand signal in the current cycle. Power availability is now cited alongside GPU supply as a binding constraint.
 
-Understanding capex cycles and AI deployment priorities of these buyers
-is the foundation of demand forecasting for the entire AI supply chain.
+---
+
+## How Hyperscalers Procure AI Infrastructure
+
+### 2023 — Hyperscaler AI Infrastructure Procurement Model Established
+
+> "Hyperscalers procure AI infrastructure through multi-year framework agreements with NVIDIA, TSMC, and memory suppliers. GPU allocations are locked 4–6 quarters in advance. Custom ASIC programs run parallel to merchant GPU procurement."
+
+**Source:** "Hyperscaler Infrastructure Procurement Patterns," Goldman Sachs Technology Research, 2023-Q4
+
+#segment:end_market #source-tier:B #signal-type:demand #date:2023 #importance:medium #confidence:medium
+
+---
+
+### 2021 — Hyperscaler In-House Silicon Programs Go From R&D to Production
+
+> Google TPU, AWS Inferentia, Meta MTIA, and Microsoft Maia all transitioned from internal research to production-scale deployments between 2020–2023, establishing custom ASIC as a permanent complement to merchant GPU.
+
+**Source:** Google TPU v4 Blog Post, Google AI, 2021-04; AWS Inferentia2 Product Brief, Amazon Web Services, 2023
+
+#segment:end_market #source-tier:A #signal-type:roadmap #date:2021 #importance:medium #confidence:high #cross-ref:asic
+
+---
+
+## History
+
+### 2026-Q1 — Combined 4-Hyperscaler CY2026 Capex Guidance: $705–725B
+
+> Amazon: ~$200B. Microsoft: ~$190B. Alphabet: up to $190B. Meta: $125–145B. Combined CY2026 guidance: $705–725B. All four raised guidance during Q1 2026 earnings, citing AI demand "showing no signs of deceleration."
+
+**Source:** Amazon Q1 2026 Earnings Call, 2026-05-01; Microsoft Q3 FY2026 Earnings Call, 2026-04-29; Alphabet Q1 2026 Earnings Call, 2026-04-29; Meta Q1 2026 Earnings Call, 2026-04-29
+
+#segment:end_market #source-tier:A #signal-type:capex #date:2026-05-01 #importance:high #confidence:high
+
+---
+
+### 2026-Q1 — Alphabet Capex +107% YoY to $35.7B; Guides 2027 Growth
+
+> "Capital expenditures were $35.7 billion in Q1 2026, an increase of 107% year-over-year. We expect further growth in 2027 as AI infrastructure needs continue to expand."
+> — Alphabet CFO, Q1 2026 Earnings Call
+
+**Source:** Alphabet Q1 2026 Earnings Call Transcript, Alphabet Investor Relations, 2026-04-29
+
+#segment:end_market #source-tier:A #signal-type:capex #company:google #date:2026-04-29 #importance:high #confidence:high
+
+---
+
+### 2026-Q1 — Meta Raises Capex +$10B to $125–145B; Cites Higher Component Pricing
+
+> "We are raising our 2026 capital expenditure guidance range to $125–145 billion from $115–135 billion. The increase reflects our expanded AI infrastructure plans and higher component pricing."
+> — Meta CFO, Q1 2026 Earnings Call
+
+**Source:** Meta Q1 2026 Earnings Call Transcript, Meta Investor Relations, 2026-04-29
+
+#segment:end_market #source-tier:A #signal-type:capex #company:meta #date:2026-04-29 #importance:high #confidence:high
+
+---
+
+### 2026-Q1 — Microsoft Raises CY2026 Capex by ~$25B; Component Inflation Cited
+
+> Microsoft CY2026 capex guidance raised to approximately $190B, an increase of ~$25B. CFO cited "higher costs from component pricing increases" as the primary driver alongside expanded AI capacity plans.
+
+**Source:** Microsoft Q3 FY2026 Earnings Call Transcript, Microsoft Investor Relations, 2026-04-29
+
+#segment:end_market #source-tier:A #signal-type:capex #company:microsoft #date:2026-04-29 #importance:high #confidence:high
+
+---
+
+### 2025 — Amazon Project Rainier: 100K+ Trainium2 Cluster Deployed
+
+> "Project Rainier is now operational — a cluster of over 100,000 Trainium2 chips that represents the largest AI training cluster ever built by a single company."
+> — Amazon CEO, AWS re:Invent 2025
+
+**Source:** Amazon AWS re:Invent 2025 Keynote, Amazon Web Services, 2025-12
+
+#segment:end_market #source-tier:A #signal-type:demand #company:amazon #date:2025-12 #importance:high #confidence:high #cross-ref:asic
+
+---
+
+### 2024 — OpenAI Commits $225B+ to Microsoft/CoreWeave AI Infrastructure
+
+> OpenAI's 10-K (October 2025) disclosed commitments exceeding $225B to Microsoft Azure and CoreWeave for AI compute infrastructure. Single largest customer commitment in cloud computing history.
+
+**Source:** OpenAI Form 10-K FY2025, SEC EDGAR, 2025-10
+
+#segment:end_market #source-tier:A #signal-type:capex #date:2025-10 #importance:high #confidence:high
 
 ---
 
 ## Hyperscaler Profiles
 
-### Microsoft
-- **AI capex 2025:** ~$80B (confirmed Jan 2025 guidance)
-- **Key programs:** Azure AI, OpenAI infra (H100/B200 fleet), Maia ASIC
-- **AI strategy:** Full-stack: IaaS (Azure), PaaS (Azure AI), SaaS (Copilot, Office 365 AI)
-- **Procurement pattern:** Locked multi-year NVIDIA allocations; Azure HPC zone buildout
+### 2026-Q1 — Microsoft: Q3 FY2026 Capex $31.9B; Maia 200 Deployed; Cloud Backlog Not Disclosed
 
-### Google (Alphabet)
-- **AI capex 2025:** ~$75B (Q4 2024 guidance)
-- **Key programs:** TPU v5p/v6 fleet, Gemini infra, Vertex AI
-- **AI strategy:** Own silicon (TPU) at scale; NVIDIA supplement for flexibility
-- **Procurement pattern:** TPU is captive (TSMC made); NVIDIA H100 for third-party workloads
+> Microsoft Q3 FY2026: capex $31.9B. Maia 200 AI accelerator in production deployment on Azure. Azure AI capacity remains constrained. Commercial cloud revenue $42.4B (+18% YoY).
 
-### Amazon (AWS)
-- **AI capex 2025:** ~$75–80B (FY2024 actual ~$77B)
-- **Key programs:** Trainium2 clusters, Bedrock (managed AI), Project Rainier (100K Trainium2)
-- **AI strategy:** Custom silicon + NVIDIA; multi-model, multi-chip strategy
-- **Procurement pattern:** Trainium2 is captive TSMC; UltraCluster architecture at 100K+ scale
+**Source:** Microsoft Q3 FY2026 Earnings Call Transcript, Microsoft Investor Relations, 2026-04-29; Microsoft Q3 FY2026 10-Q, SEC EDGAR, 2026-04-29
 
-### Meta
-- **AI capex 2025:** ~$60–65B (guided Jan 2025: $60–65B)
-- **Key programs:** MTIA v2 (inference), Llama training (NVIDIA H100/B200), AI infra
-- **AI strategy:** Open-source Llama ecosystem; inference scale via MTIA
-- **Procurement pattern:** Largest single NVIDIA customer; also AMD MI300X buyer
+#segment:end_market #source-tier:A #signal-type:capex #company:microsoft #date:2026-04-29 #importance:high #confidence:high
 
 ---
 
-## Neo-Cloud / GPU Cloud
+### 2026-Q1 — Google: TPU 8 Training and Inference Variants in Production
 
-| Company | Scale | GPU Focus | Business Model |
-|---|---|---|---|
-| CoreWeave | ~100K H100 equiv. | NVIDIA H100/H200 | GPU rental; Microsoft primary customer |
-| Lambda Labs | ~30K GPU | NVIDIA + AMD | Research/startup focused |
-| Together AI | Inference-focused | NVIDIA H100 | API inference layer |
-| Oracle OCI | ~60K H100 equiv. | NVIDIA | Enterprise AI; Microsoft OpenAI partner |
-| Crusoe | ~20K GPU | NVIDIA | Stranded energy focus |
+> "TPU 8t (training) and TPU 8i (inference) are now in production. Both versions are deployed in our data centers and available through Google Cloud. Our Cloud backlog reached $462 billion."
+> — Alphabet CEO, Q1 2026 Earnings Call
+
+**Source:** Alphabet Q1 2026 Earnings Call Transcript, Alphabet Investor Relations, 2026-04-29
+
+#segment:end_market #source-tier:A #signal-type:demand #company:google #date:2026-04-29 #importance:high #confidence:high #cross-ref:asic
 
 ---
 
-## Enterprise AI Demand
+### 2026-Q1 — Amazon: Trainium3 Shipping; $225B+ Multi-Year AWS Commitments
 
-- **On-premise AI servers:** Dell, HPE, Supermicro selling AI server configurations
-- **AI PC (edge):** Intel Core Ultra, AMD Ryzen AI, Qualcomm Snapdragon X
-- **AI appliances:** NVIDIA DGX Station, Apple Mac Studio — departmental AI
-- **Private cloud AI:** VMware (Broadcom), NVIDIA AI Enterprise stack
+> "Trainium3 is now shipping to customers. AWS has received over $225 billion in signed multi-year customer commitments, reflecting the sustained demand for AI cloud services."
+> — Amazon CEO, Q1 2026 Earnings Call
+
+**Source:** Amazon Q1 2026 Earnings Call Transcript, Amazon Investor Relations, 2026-05-01
+
+#segment:end_market #source-tier:A #signal-type:demand #company:amazon #date:2026-05-01 #importance:high #confidence:high #cross-ref:asic
+
+---
+
+### 2026-Q1 — Meta: MTIA Gen 2 on 2nm/Broadcom in Production
+
+> "Our MTIA Gen 2, built on a 2nm process with Broadcom as our design partner, is now in production and handling inference workloads at scale."
+> — Meta CEO, Q1 2026 Earnings Call
+
+**Source:** Meta Q1 2026 Earnings Call Transcript, Meta Investor Relations, 2026-04-29
+
+#segment:end_market #source-tier:A #signal-type:demand #company:meta #date:2026-04-29 #importance:high #confidence:high #cross-ref:asic
+
+---
+
+## Capex & Investment
+
+### 2026 — Component Pricing Inflation Creates Closed Loop: Memory → Capex Raise
+
+> Both Microsoft (+$25B) and Meta (+$10B) cited "higher component pricing" in capex raises. This directly corresponds to DRAM ASP increases: Samsung +90–95% QoQ, Micron GM record 74.9%. Closed loop confirmed.
+
+**Source:** Microsoft Q3 FY2026 Earnings Call, 2026-04-29; Meta Q1 2026 Earnings Call, 2026-04-29; Samsung Q1 2026 Earnings Call, 2026-04-30; Micron FQ2 2026 Earnings Call, 2026-03-18
+
+#segment:end_market #source-tier:A #signal-type:pricing #date:2026-04-30 #importance:high #confidence:high #cross-ref:dram
+
+---
+
+## AI Deployment Strategy
+
+### 2026 — Agentic AI Emerges as Primary Workload Growth Driver
+
+> "The agentic AI inflection point has arrived. Agents are running continuously, not in batches — this changes the infrastructure math fundamentally." — NVIDIA CEO, GTC 2026.
+> Samsung: "Agentic AI drove growth in HBM, server DRAM, and server SSD." Microsoft: "Workloads are continuous, not batch."
+
+**Source:** NVIDIA GTC 2026 Keynote, NVIDIA Corporation, 2026-03; Samsung Q1 2026 Earnings Call, 2026-04-30; Microsoft Q3 FY2026 Earnings Call, 2026-04-29
+
+#segment:end_market #source-tier:A #signal-type:demand #date:2026-04-30 #importance:high #confidence:high #cross-ref:dram #cross-ref:storage
+
+---
+
+### 2025 — Inference > Training as Primary AI Infrastructure Spend
+
+> As AI models mature from R&D to production, inference infrastructure spend is surpassing training spend. Meta MTIA Gen 2 is inference-only; AWS Inferentia3 targets inference; Google TPU 8i is inference-specific.
+
+**Source:** AMD Q1 2026 Earnings Call, 2026-04-29; Meta Q1 2026 Earnings Call, 2026-04-29
+
+#segment:end_market #source-tier:A #signal-type:demand #date:2025 #importance:high #confidence:high #cross-ref:asic
 
 ---
 
 ## Sovereign AI Programs
 
-| Country / Region | Program | Scale | Partner |
-|---|---|---|---|
-| Saudi Arabia / UAE | HUMAIN, G42 | $10–20B+ investment | NVIDIA primary |
-| Japan | NVIDIA Japan AI | ¥500B | NVIDIA + SoftBank |
-| India | India AI Mission | $1B+ | Multiple vendors |
-| EU | EuroHPC / GAIA-X | €10B+ | Diverse |
-| France | Mistral + state AI | €1B+ | NVIDIA + EU chips |
+### 2026 — Saudi Arabia HUMAIN Program; UAE G42: $10–20B+ Combined to NVIDIA
+
+> Saudi Arabia's HUMAIN AI initiative and UAE's G42 program committed $10–20B+ to NVIDIA for AI infrastructure, primarily GPU clusters. These are the largest sovereign AI programs outside Asia.
+
+**Source:** NVIDIA GTC 2026 Keynote, NVIDIA Corporation, 2026-03; HUMAIN Program Announcement, Saudi Arabia, 2026
+
+#segment:end_market #source-tier:A #signal-type:demand #company:nvidia #date:2026 #importance:high #confidence:high
 
 ---
 
-## Capex Signal Interpretation
+### 2025 — Japan SoftBank/NVIDIA: ¥500B AI Infrastructure Commitment
 
-| Signal | Implication |
-|---|---|
-| Hyperscaler capex guidance raise | +10–15% AI chip demand 4–8 quarters out |
-| Hyperscaler capex guidance cut | Demand pause; check if structural or cyclical |
-| CSP GPU hours pricing drop | Supply increasing faster than demand |
-| New hyperscaler AI product launch | Signals infrastructure already deployed |
-| Sovereign AI fund announcement | New demand pool, 2–4 year procurement cycle |
-| Enterprise AI PC refresh cycle | Client DRAM/NAND demand tailwind |
+> SoftBank and NVIDIA announced a ¥500B (~$3.3B) joint commitment to build AI infrastructure across Japan, including the first large-scale NVIDIA AI cluster for Japanese sovereign AI.
 
----
+**Source:** NVIDIA Press Release, "NVIDIA and SoftBank Japan AI," NVIDIA Corporation, 2025
 
-## Sales & Marketing Angles
-
-- **Follow the capex:** Hyperscaler capex guidance is a 2–3 quarter leading indicator for supply chain
-- **Procurement decision-makers:** Infrastructure VP, Silicon Engineering VP — not CTO
-- **Design win → volume ramp delay:** 18–24 months from ASIC design win to volume shipment
-- **Neo-cloud as bellwether:** CoreWeave GPU orders are visible proxy for OpenAI/Azure demand
-
----
-
-## Recent Developments
-
-### Update: 2026-05-12 — Baseline entry
-> Initial stub. Populate with Q1 2026 hyperscaler earnings calls (Microsoft, Google, Amazon, Meta).
+#segment:end_market #source-tier:A #signal-type:capex #company:nvidia #date:2025 #importance:medium #confidence:high
 
 ---
 
 ## Open Questions
 
-- [ ] Microsoft FY2026 capex — any reduction after OpenAI equity restructuring?
-- [ ] Meta MTIA v2 deployment scale — what % of inference workload in 2026?
-- [ ] Saudi Arabia HUMAIN program — NVIDIA chip types and volume confirmed?
+- [ ] Saudi Arabia HUMAIN: GPU chip types and delivery volumes — not publicly confirmed
+- [ ] Meta MTIA Gen 2 deployment scale — what % of inference workload running on MTIA vs NVIDIA?
+- [ ] CoreWeave IPO and balance sheet capacity — can they sustain $200B+ GPU purchase commitments?
+- [ ] Enterprise on-premise AI server market size in 2026 — IDC/Gartner estimate available?

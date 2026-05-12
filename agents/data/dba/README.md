@@ -160,6 +160,80 @@ low     — indirect implication verbatim from source; no primary confirmation
 
 ---
 
+## Section Agent README Structure (Canonical)
+
+Each section agent README is organized by **topic subtitles** (not by information type like "Market Overview").
+Within every subtitle, entries are **timeline entries — newest first**.
+No static prose blocks. Every fact is a dated entry with a source citation and tags.
+
+```markdown
+# [Segment] Expert Agent
+
+**Segment:** [Full name]  
+**Sales Lens:** [One line]  
+**Last Updated:** YYYY-MM-DD
+
+---
+
+## Overview
+[3–5 sentences only — static context, no dated entries needed.]
+
+---
+
+## How It Works
+Technical fundamentals of the product/process.
+
+### YYYY-MM-DD — [Title]
+> [Fact from source]
+**Source:** [citation]
+#tags
+
+---
+
+## History
+Key milestones in reverse chronological order.
+
+### YYYY — [Milestone title]
+> [Fact]
+**Source:** [citation]
+#tags
+
+---
+
+## Supply Chain
+End-to-end flow: raw material → device → customer. Dated entries for changes/disruptions.
+
+---
+
+## Competition
+Market share data, competitive dynamics, design win landscape.
+
+---
+
+## Technology Roadmap
+Product generations, node transitions, spec milestones. One entry per confirmed milestone.
+
+---
+
+## Pricing
+ASP, spot, contract pricing events. One entry per major pricing data point.
+
+---
+
+## AI Demand Signals
+AI-specific demand drivers, hyperscaler requirements, attach rates.
+
+---
+
+## Open Questions
+- [ ] [Unresolved gap]
+```
+
+**Approved subtitle sets per segment** are in `schema/subtitle_sets.md`.
+Subtitles may vary per segment — use the closest match from that file.
+
+---
+
 ## Timeline Organization Rules
 
 1. Within every file, entries are **newest first** (reverse chronological order)
