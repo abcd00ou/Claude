@@ -23,9 +23,9 @@ cross-cutting signals that no single section agent can see alone.
 | ASIC Expert | `section/asic/` | 2026-04-29 (Hyperscaler Q1 2026) |
 | Chip Maker Expert | `section/chip_maker/` | 2026-05-05 (AMD Q1 2026) |
 | Foundry & Packaging Expert | `section/foundry/` | 2026-04-16 (TSMC Q1 2026) |
-| Network Expert | `section/network/` | — |
-| Power Semiconductor Expert | `section/power/` | — |
-| PCB & Substrate Expert | `section/substrate/` | — |
+| Network Expert | `section/network/` | 2025-06-05 (Broadcom Q2 FY2025, Arista Q1 2025, Marvell Q4 FY2025) |
+| Power Semiconductor Expert | `section/power/` | 2025-05-07 (Infineon Q2 FY2025, MPS Q1 2025, onsemi Q1 2025) |
+| PCB & Substrate Expert | `section/substrate/` | 2025-04-25 (Ibiden Q3 FY2025, Unimicron Q1 2025) |
 | End Market Expert | `section/end_market/` | 2026-04-29 (Hyperscaler Q1 2026) |
 | Crawler Agent | `data/crawler/` | — |
 | Analysis Agent | `data/analysis.md` | — |
@@ -73,6 +73,15 @@ cross-cutting signals that no single section agent can see alone.
 
 ## Cross-Segment Synthesis
 
+### Update: 2026-05-12 — Cycle 2: Network / Power / Substrate segments completed; full 10-segment coverage
+
+> Full synthesis in `synthesis/2026-05-12_cycle2.md`.
+> 5 new cross-segment signals (Signals 8–12). Key: Marvell + Broadcom divide hyperscaler ASIC
+> market (combined ~$5.5B/Q AI revenue); Ethernet winning AI cluster fabric alongside InfiniBand;
+> MPS Blackwell VRM wins + onsemi/Infineon gaining post-Wolfspeed SiC share; ABF substrate
+> (Ibiden + Unimicron) fully allocated with no new capacity until FY2027; TSMC identified as
+> single point of dependency across 9 of 10 segments.
+
 ### Update: 2026-05-12 — Cycle 1: Q1 2026 earnings
 
 > Full synthesis in `synthesis/2026-05-12.md`.
@@ -96,6 +105,10 @@ Do not create the folder until it has been confirmed as a recurring, substantial
 
 ## Open Flags
 
-- [ ] All section agents need initial population
+- [x] All 10 section agents now active (Cycle 2 complete)
 - [ ] Crawler source registry needs to be defined
 - [ ] Analysis frameworks need baseline demand model for 2025–2026
+- [ ] Network: Ultra Ethernet 1.0 production deployment — which hyperscalers in 2026?
+- [ ] Power: Wolfspeed SiC gap absorption — Infineon vs onsemi split not quantified
+- [ ] Substrate: Ibiden FY2027 new capacity — exact timeline and units needed
+- [ ] TSMC single-point-of-dependency risk: no formal risk model yet; flag for analysis agent
