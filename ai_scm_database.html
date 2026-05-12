@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Supply Chain Intelligence Database</title>
+<style>
+  :root {
+    --bg: #0d1117; --surface: #161b22; --surface2: #21262d; --surface3: #30363d;
+    --border: #30363d; --text: #e6edf3; --muted: #7d8590; --accent: #58a6ff;
+    --green: #3fb950; --yellow: #d29922; --red: #f85149; --purple: #bc8cff;
+    --orange: #ffa657; --teal: #39d353;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', monospace; font-size: 13px; }
+
+  /* HEADER */
+  .header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  .header-title { font-size: 16px; font-weight: 700; color: var(--accent); }
+  .header-sub { color: var(--muted); font-size: 11px; margin-top: 2px; }
+  .header-badges { display: flex; gap: 8px; }
+  .badge { padding: 2px 8px; border-radius: 12px; font-size: 10px; font-weight: 600; }
+  .badge-green { background: rgba(63,185,80,0.15); color: var(--green); border: 1px solid rgba(63,185,80,0.3); }
+  .badge-blue { background: rgba(88,166,255,0.15); color: var(--accent); border: 1px solid rgba(88,166,255,0.3); }
+  .badge-orange { background: rgba(255,166,87,0.15); color: var(--orange); border: 1px solid rgba(255,166,87,0.3); }
+
+  /* NAV TABS */
+  .nav { background: var(--surface); border-bottom: 1px solid var(--border); display: flex; padding: 0 24px; overflow-x: auto; }
+  .nav-tab { padding: 10px 16px; cursor: pointer; font-size: 12px; font-weight: 500; color: var(--muted); border-bottom: 2px solid transparent; white-space: nowrap; transition: all 0.15s; }
+  .nav-tab:hover { color: var(--text); }
+  .nav-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+  /* LAYOUT */
+  .main { padding: 20px 24px; max-width: 1400px; margin: 0 auto; }
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* CARDS GRID */
+  .stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-bottom: 24px; }
+  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+  .stat-label { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .stat-value { font-size: 20px; font-weight: 700; color: var(--text); }
+  .stat-sub { color: var(--green); font-size: 10px; margin-top: 3px; }
+  .stat-sub.red { color: var(--red); }
+  .stat-sub.yellow { color: var(--yellow); }
+
+  /* SEARCH */
+  .search-bar { background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; color: var(--text); font-size: 12px; width: 100%; margin-bottom: 16px; outline: none; }
+  .search-bar:focus { border-color: var(--accent); }
+  .filter-row { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .filter-btn { padding: 4px 12px; border-radius: 16px; border: 1px solid var(--border); background: var(--surface2); color: var(--muted); cursor: pointer; font-size: 11px; transition: all 0.15s; }
+  .filter-btn.active, .filter-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(88,166,255,0.1); }
+
+  /* TABLES */
+  .table-wrap { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow-x: auto; margin-bottom: 20px; }
+  table { width: 100%; border-collapse: collapse; }
+  thead th { padding: 10px 14px; text-align: left; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); border-bottom: 1px solid var(--border); background: var(--surface2); white-space: nowrap; cursor: pointer; user-select: none; }
+  thead th:hover { color: var(--text); }
+  tbody tr { border-bottom: 1px solid var(--border); transition: background 0.1s; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:hover { background: var(--surface2); }
+  tbody td { padding: 9px 14px; font-size: 12px; vertical-align: top; }
+  .td-company { font-weight: 600; color: var(--text); }
+  .td-muted { color: var(--muted); font-size: 11px; }
+  .td-signal { max-width: 320px; color: var(--muted); font-size: 11px; line-height: 1.5; }
+
+  /* TAGS */
+  .tag { display: inline-block; padding: 1px 7px; border-radius: 10px; font-size: 10px; font-weight: 600; margin: 1px; }
+  .tag-dram { background: rgba(88,166,255,0.15); color: var(--accent); }
+  .tag-storage { background: rgba(63,185,80,0.15); color: var(--green); }
+  .tag-foundry { background: rgba(188,140,255,0.15); color: var(--purple); }
+  .tag-chip_maker { background: rgba(255,166,87,0.15); color: var(--orange); }
+  .tag-asic { background: rgba(210,153,34,0.15); color: var(--yellow); }
+  .tag-network { background: rgba(57,211,83,0.15); color: var(--teal); }
+  .tag-power { background: rgba(248,81,73,0.15); color: var(--red); }
+  .tag-substrate { background: rgba(210,153,34,0.15); color: #e3b341; }
+  .tag-end_market { background: rgba(88,166,255,0.1); color: #79c0ff; }
+  .tag-dc_infra { background: rgba(188,140,255,0.1); color: #d2a8ff; }
+  .tag-high { background: rgba(248,81,73,0.15); color: var(--red); }
+  .tag-medium { background: rgba(210,153,34,0.15); color: var(--yellow); }
+  .tag-low { background: rgba(63,185,80,0.15); color: var(--green); }
+  .tag-supply { background: rgba(248,81,73,0.1); color: #ffa198; }
+  .tag-demand { background: rgba(63,185,80,0.1); color: var(--green); }
+  .tag-pricing { background: rgba(210,153,34,0.1); color: var(--yellow); }
+  .tag-roadmap { background: rgba(88,166,255,0.1); color: var(--accent); }
+  .tag-capex { background: rgba(188,140,255,0.1); color: var(--purple); }
+  .tag-design-win { background: rgba(57,211,83,0.1); color: var(--teal); }
+  .tag-geopolitical { background: rgba(248,81,73,0.15); color: #ff7b72; }
+
+  /* SIGNAL CARDS */
+  .signal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 14px; margin-bottom: 24px; }
+  .signal-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 16px; }
+  .signal-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+  .signal-num { width: 28px; height: 28px; border-radius: 6px; background: var(--accent); color: #fff; font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .signal-num.c2 { background: var(--green); }
+  .signal-num.c3 { background: var(--purple); }
+  .signal-title { font-size: 12px; font-weight: 600; color: var(--text); line-height: 1.4; }
+  .signal-body { color: var(--muted); font-size: 11px; line-height: 1.6; margin-bottom: 10px; }
+  .signal-footer { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  /* SUPPLY CHAIN */
+  .sc-flow { display: flex; align-items: stretch; gap: 0; overflow-x: auto; padding: 20px 0; margin-bottom: 24px; }
+  .sc-layer { flex: 1; min-width: 140px; }
+  .sc-header { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--muted); text-align: center; padding: 6px; }
+  .sc-arrow { display: flex; align-items: center; color: var(--border); font-size: 20px; padding: 0 4px; margin-top: 48px; }
+  .sc-companies { display: flex; flex-direction: column; gap: 6px; padding: 0 6px; }
+  .sc-company { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 8px 10px; font-size: 11px; }
+  .sc-company-name { font-weight: 600; color: var(--text); }
+  .sc-company-detail { color: var(--muted); font-size: 10px; margin-top: 2px; }
+  .sc-alert { border-color: var(--red); }
+  .sc-alert .sc-company-name { color: var(--red); }
+  .sc-strong { border-color: var(--green); }
+  .sc-strong .sc-company-name { color: var(--green); }
+
+  /* ROADMAP */
+  .roadmap { position: relative; padding: 0 0 20px; }
+  .roadmap-year { margin-bottom: 20px; }
+  .year-label { font-size: 14px; font-weight: 700; color: var(--accent); padding: 8px 0; border-bottom: 1px solid var(--border); margin-bottom: 10px; }
+  .roadmap-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 8px; }
+  .roadmap-item { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 6px; padding: 10px 12px; }
+  .roadmap-item.nvidia { border-left-color: var(--green); }
+  .roadmap-item.amd { border-left-color: var(--red); }
+  .roadmap-item.tsmc { border-left-color: var(--purple); }
+  .roadmap-item.hbm { border-left-color: var(--accent); }
+  .roadmap-item.other { border-left-color: var(--muted); }
+  .ri-title { font-size: 11px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+  .ri-detail { font-size: 10px; color: var(--muted); line-height: 1.5; }
+
+  /* PRICING */
+  .price-section { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; margin-bottom: 24px; }
+  .price-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+  .price-card-title { font-size: 11px; font-weight: 700; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+  .price-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px solid var(--border); }
+  .price-row:last-child { border-bottom: none; }
+  .price-product { font-size: 11px; color: var(--text); }
+  .price-value { font-size: 12px; font-weight: 700; color: var(--green); }
+  .price-value.red { color: var(--red); }
+  .price-value.yellow { color: var(--yellow); }
+  .price-dir { font-size: 10px; color: var(--muted); margin-left: 6px; }
+
+  /* SECTION TITLE */
+  .section-title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .section-sub { color: var(--muted); font-size: 11px; margin-bottom: 16px; }
+  .divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+  /* OPEN QUESTIONS */
+  .oq-list { list-style: none; }
+  .oq-item { padding: 8px 12px; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; margin-bottom: 6px; display: flex; gap: 8px; align-items: flex-start; font-size: 11px; color: var(--muted); }
+  .oq-seg { flex-shrink: 0; }
+
+  /* FOOTER */
+  .footer { text-align: center; color: var(--muted); font-size: 10px; padding: 20px; border-top: 1px solid var(--border); margin-top: 40px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="header-title">AI Supply Chain Intelligence Database</div>
+    <div class="header-sub">Multi-agent knowledge base · 10 segments · 3 cycles · 16 cross-segment signals</div>
+  </div>
+  <div class="header-badges">
+    <span class="badge badge-green">23 Companies</span>
+    <span class="badge badge-blue">16 Signals</span>
+    <span class="badge badge-orange">$705–725B Hyperscaler Capex</span>
+  </div>
+</div>
+
+<div class="nav">
+  <div class="nav-tab active" onclick="showTab('overview')">Overview</div>
+  <div class="nav-tab" onclick="showTab('companies')">Companies</div>
+  <div class="nav-tab" onclick="showTab('signals')">Signals</div>
+  <div class="nav-tab" onclick="showTab('supplychain')">Supply Chain</div>
+  <div class="nav-tab" onclick="showTab('market')">Market Data</div>
+  <div class="nav-tab" onclick="showTab('roadmap')">Technology Roadmap</div>
+  <div class="nav-tab" onclick="showTab('openq')">Open Questions</div>
+</div>
+
+<div class="main">
+
+<!-- ═══════════════ OVERVIEW ═══════════════ -->
+<div id="tab-overview" class="section active">
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-label">Combined Hyperscaler Capex</div><div class="stat-value">$705–725B</div><div class="stat-sub">CY2026 · Amazon + Microsoft + Google + Meta</div></div>
+    <div class="stat-card"><div class="stat-label">NVIDIA Q1 FY2026 DC Revenue</div><div class="stat-value">$39.1B</div><div class="stat-sub">+73% YoY · Blackwell > Hopper first time</div></div>
+    <div class="stat-card"><div class="stat-label">HBM Supply Status</div><div class="stat-value">SOLD OUT</div><div class="stat-sub red">All CY2026 committed · 2027 "more severe"</div></div>
+    <div class="stat-card"><div class="stat-label">TSMC Q1 2026 Revenue</div><div class="stat-value">$35.8B</div><div class="stat-sub">+35.1% YoY · HPC = 61% of revenue</div></div>
+    <div class="stat-card"><div class="stat-label">Broadcom AI TAM (FY2027)</div><div class="stat-value">$60–90B</div><div class="stat-sub">Raised from initial estimate · XPU + networking</div></div>
+    <div class="stat-card"><div class="stat-label">AMD MI450 Commitments</div><div class="stat-value">12 GW</div><div class="stat-sub">6 GW Meta + 6 GW OpenAI · largest disclosed</div></div>
+    <div class="stat-card"><div class="stat-label">HBM3E Price Premium</div><div class="stat-value">3–5×</div><div class="stat-sub">$15–18/GB vs DDR5 $3–5/GB</div></div>
+    <div class="stat-card"><div class="stat-label">TSMC Capex CY2026</div><div class="stat-value">$52–56B</div><div class="stat-sub yellow">Record · N2 + CoWoS expansion</div></div>
+    <div class="stat-card"><div class="stat-label">Segments Active</div><div class="stat-value">10 / 10</div><div class="stat-sub">All segments populated · Cycle 2</div></div>
+    <div class="stat-card"><div class="stat-label">Marvell FY2026 AI Guidance</div><div class="stat-value">>$8B</div><div class="stat-sub">3 hyperscaler XPU programs in production</div></div>
+    <div class="stat-card"><div class="stat-label">CoreWeave Backlog</div><div class="stat-value">$15.1B</div><div class="stat-sub">OpenAI $11.9B · Microsoft 35% of revenue</div></div>
+    <div class="stat-card"><div class="stat-label">ABF Substrate Status</div><div class="stat-value">FULL</div><div class="stat-sub red">Ibiden + Unimicron fully allocated through 2025</div></div>
+  </div>
+
+  <div class="section-title">Key Structural Findings</div>
+  <div class="section-sub">Cumulative insights across 3 intelligence cycles</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Finding</th><th>Evidence</th><th>Risk Level</th></tr></thead>
+      <tbody>
+        <tr><td class="td-company">TSMC is single point of dependency across 9 of 10 AI supply chain segments</td><td class="td-signal">NVIDIA, AMD, Google, Amazon, Meta, Marvell, Broadcom, Kioxia controllers all at TSMC</td><td><span class="tag tag-high">CRITICAL</span></td></tr>
+        <tr><td class="td-company">All CY2026 HBM supply committed across 3 suppliers</td><td class="td-signal">SK Hynix, Samsung, Micron all confirmed in Q1 2026 earnings calls</td><td><span class="tag tag-high">HIGH</span></td></tr>
+        <tr><td class="td-company">CoWoS packaging is the tightest AI supply chain constraint</td><td class="td-signal">NVIDIA 10-K confirms CoWoS dependency; TSMC does not disclose capacity</td><td><span class="tag tag-high">HIGH</span></td></tr>
+        <tr><td class="td-company">ABF substrate new capacity not online until FY2027</td><td class="td-signal">Ibiden Ogaki approved FY2027; Unimicron Phase 2 Q4 2025 qualification only</td><td><span class="tag tag-high">HIGH</span></td></tr>
+        <tr><td class="td-company">Power transformer lead times 52–65 weeks; primary DC activation constraint</td><td class="td-signal">S&P Global 2025-Q4; Vertiv Q1 2025 earnings; DLC improving but transformer not</td><td><span class="tag tag-medium">MEDIUM</span></td></tr>
+        <tr><td class="td-company">Ethereum (Broadcom/Arista) winning AI cluster fabric vs InfiniBand</td><td class="td-signal">Broadcom TAM $60–90B; Arista AI "material"; Microsoft Spectrum-X deployment</td><td><span class="tag tag-medium">MEDIUM</span></td></tr>
+        <tr><td class="td-company">Wolfspeed Chapter 11 created SiC supply qualification wave at Infineon, onsemi</td><td class="td-signal">Infineon + onsemi Q1 2025 earnings both cite expanded qualification pipeline</td><td><span class="tag tag-medium">MEDIUM</span></td></tr>
+        <tr><td class="td-company">Intel effectively excluded from AI GPU market</td><td class="td-signal">Gaudi revenue not separately disclosed; Falcon Shores discrete cancelled</td><td><span class="tag tag-low">LOW RISK</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════ COMPANIES ═══════════════ -->
+<div id="tab-companies" class="section">
+  <input class="search-bar" type="text" id="company-search" placeholder="Search companies..." onkeyup="filterCompanies()">
+  <div class="filter-row" id="seg-filters">
+    <span class="filter-btn active" onclick="filterSeg(this,'all')">All</span>
+    <span class="filter-btn" onclick="filterSeg(this,'dram')">DRAM</span>
+    <span class="filter-btn" onclick="filterSeg(this,'storage')">Storage</span>
+    <span class="filter-btn" onclick="filterSeg(this,'foundry')">Foundry</span>
+    <span class="filter-btn" onclick="filterSeg(this,'chip_maker')">Chip Maker</span>
+    <span class="filter-btn" onclick="filterSeg(this,'asic')">ASIC</span>
+    <span class="filter-btn" onclick="filterSeg(this,'network')">Network</span>
+    <span class="filter-btn" onclick="filterSeg(this,'end_market')">End Market</span>
+    <span class="filter-btn" onclick="filterSeg(this,'dc_infra')">DC Infra</span>
+    <span class="filter-btn" onclick="filterSeg(this,'power')">Power</span>
+    <span class="filter-btn" onclick="filterSeg(this,'substrate')">Substrate</span>
+  </div>
+  <div class="table-wrap">
+    <table id="company-table">
+      <thead><tr>
+        <th onclick="sortTable('company-table',0)">Company ↕</th>
+        <th>Segment</th>
+        <th onclick="sortTable('company-table',2)">Latest Revenue / Metric ↕</th>
+        <th>Key AI Signal</th>
+        <th>Source Date</th>
+        <th>Status</th>
+      </tr></thead>
+      <tbody>
+        <tr data-seg="dram"><td class="td-company">SK Hynix</td><td><span class="tag tag-dram">dram</span><span class="tag tag-storage">storage</span></td><td>Q1 2026: KRW 52.58T</td><td class="td-signal">HBM4 mass production; 3-year demand exceeds supply; HBM4E samples H2 2026</td><td class="td-muted">2026-04-23</td><td><span class="tag tag-high">CRITICAL</span></td></tr>
+        <tr data-seg="dram"><td class="td-company">Samsung Electronics (DS)</td><td><span class="tag tag-dram">dram</span><span class="tag tag-storage">storage</span><span class="tag tag-foundry">foundry</span></td><td>Q1 2026 DS OP: KRW 53.7T</td><td class="td-signal">All CY2026 HBM sold out; 2027 shortage "more severe"; KV-SSD new category; AMD MI455X HBM4 partner</td><td class="td-muted">2026-04-30</td><td><span class="tag tag-high">CRITICAL</span></td></tr>
+        <tr data-seg="dram"><td class="td-company">Micron Technology</td><td><span class="tag tag-dram">dram</span><span class="tag tag-storage">storage</span></td><td>FQ2 2026: DRAM $18.8B; GM 74.9%</td><td class="td-signal">Entire CY2026 HBM committed; HBM4 36GB 12-high in volume (Vera Rubin)</td><td class="td-muted">2026-03-18</td><td><span class="tag tag-high">HIGH</span></td></tr>
+        <tr data-seg="storage"><td class="td-company">Kioxia</td><td><span class="tag tag-storage">storage</span></td><td>FY2025 est: ¥2T+; IPO Dec 2024</td><td class="td-signal">BiCS 9 (300+ layer) production ramp; CD8P Gen5 NVMe qualified at hyperscalers</td><td class="td-muted">2025-04-25</td><td><span class="tag tag-medium">MEDIUM</span></td></tr>
+        <tr data-seg="foundry"><td class="td-company">TSMC</td><td><span class="tag tag-foundry">foundry</span></td><td>Q1 2026: $35.8B (+35.1% YoY)</td><td class="td-signal">HPC=61% revenue; $52–56B CY2026 capex record; CoWoS = binding AI constraint; N2 production</td><td class="td-muted">2026-04-17</td><td><span class="tag tag-high">CRITICAL</span></td></tr>
+        <tr data-seg="foundry"><td class="td-company">Samsung Foundry</td><td><span class="tag tag-foundry">foundry</span></td><td>~13% foundry share</td><td class="td-signal">3nm yield issues; no major AI GPU customer confirmed; Qualcomm/Exynos primary customers</td><td class="td-muted">2025</td><td><span class="tag tag-low">LOW</span></td></tr>
+        <tr data-seg="foundry"><td class="td-company">Intel Foundry</td><td><span class="tag tag-foundry">foundry</span><span class="tag tag-chip_maker">chip_maker</span></td><td>Q1 2025: ~$4.7B foundry rev</td><td class="td-signal">18A customer sampling; no volume AI win confirmed; glass core substrate with Google</td><td class="td-muted">2025-04-25</td><td><span class="tag tag-low">LOW</span></td></tr>
+        <tr data-seg="chip_maker"><td class="td-company">NVIDIA</td><td><span class="tag tag-chip_maker">chip_maker</span><span class="tag tag-network">network</span></td><td>Q1 FY2026 DC: $39.1B (+73% YoY)</td><td class="td-signal">Blackwell > Hopper first time; $45B Q2 guidance; demand > supply; networking $4.6B; Vera Rubin H2 FY2027</td><td class="td-muted">2025-05-28</td><td><span class="tag tag-high">CRITICAL</span></td></tr>
+        <tr data-seg="chip_maker"><td class="td-company">AMD</td><td><span class="tag tag-chip_maker">chip_maker</span></td><td>Q1 2026 DC: $5.8B (+57% YoY)</td><td class="td-signal">6 GW Meta + 6 GW OpenAI (MI450); Samsung HBM4 for MI455X; ROCm 6.0 production ready</td><td class="td-muted">2026-04-29</td><td><span class="tag tag-high">HIGH</span></td></tr>
+        <tr data-seg="chip_maker"><td class="td-company">Intel</td><td><span class="tag tag-chip_maker">chip_maker</span></td><td>Q1 2025: $12.7B (-1% YoY)</td><td class="td-signal">Gaudi revenue not disclosed; Falcon Shores discrete cancelled; effectively excluded from AI GPU market</td><td class="td-muted">2025-04-25</td><td><span class="tag tag-low">LOW</span></td></tr>
+        <tr data-seg="asic"><td class="td-company">Google / Alphabet</td><td><span class="tag tag-asic">asic</span><span class="tag tag-end_market">end_market</span></td><td>Q1 2026 capex: $35.7B (+107% YoY)</td><td class="td-signal">TPU 8t + TPU 8i in production; Cloud backlog $462B; guiding 2027 growth; $190B CY2026</td><td class="td-muted">2026-04-29</td><td><span class="tag tag-high">HIGH</span></td></tr>
+        <tr data-seg="asic"><td class="td-company">Amazon / AWS</td><td><span class="tag tag-asic">asic</span><span class="tag tag-end_market">end_market</span></td><td>Q1 2026 capex: $43.2B</td><td class="td-signal">Trainium3 shipping; 100K+ Trainium2 cluster (Project Rainier); $225B+ AWS commitments; $200B CY2026</td><td class="td-muted">2026-05-01</td><td><span class="tag tag-high">HIGH</span></td></tr>
+        <tr data-seg="asic"><td class="td-company">Meta</td><td><span class="tag tag-asic">asic</span><span class="tag tag-end_market">end_market</span></td><td>Q1 2026 capex: $19.8B</td><td class="td-signal">MTIA Gen 2 (2nm/Broadcom) in production; $125–145B CY2026; +$10B raise; agentic AI driving demand</td><td class="td-muted">2026-04-29</td><td><span class="tag tag-high">HIGH</span></td></tr>
+        <tr data-seg="asic"><td class="td-company">Microsoft</td><td><span class="tag tag-asic">asic</span><span class="tag tag-end_market">end_market</span></td><td>Q1 capex: $31.9B; CY2026: $190B</td><td class="td-signal">Maia 200 deployed (+30% tokens/dollar); constrained through 2026; +1 GW/quarter; Spectrum-X</td><td class="td-muted">2026-04-29</td><td><span class="tag tag-high">HIGH</span></td></tr>
+        <tr data-seg="network"><td class="td-company">Marvell Technology</td><td><span class="tag tag-network">network</span><span class="tag tag-asic">asic</span></td><td>Q4 FY2025: AI $1.08B/Q</td><td class="td-signal">3 hyperscaler XPU programs in production; FY2026 AI guidance >$8B; DC = 75% of revenue</td><td class="td-muted">2025-03-06</td><td><span class="tag tag-high">HIGH</span></td></tr>
+        <tr data-seg="network"><td class="td-company">Broadcom</td><td><span class="tag tag-network">network</span><span class="tag tag-asic">asic</span></td><td>Q2 FY2025: AI $4.4B/Q</td><td class="td-signal">TAM raised $60–90B; 3 XPU in production + 2 qualifying; Tomahawk 5 at hyperscalers; Meta MTIA partner</td><td class="td-muted">2025-06-05</td><td><span class="tag tag-high">CRITICAL</span></td></tr>
+        <tr data-seg="network"><td class="td-company">Arista Networks</td><td><span class="tag tag-network">network</span></td><td>Q1 2025: $1.93B (+24.4% YoY)</td><td class="td-signal">AI cluster fabric "material"; 7800R4 ramping; Microsoft + Meta primary customers</td><td class="td-muted">2025-05-07</td><td><span class="tag tag-high">HIGH</span></td></tr>
+        <tr data-seg="end_market"><td class="td-company">CoreWeave</td><td><span class="tag tag-end_market">end_market</span></td><td>FY2024: $1.92B (+737%); backlog $15.1B</td><td class="td-signal">NVIDIA preferred partner; OpenAI $11.9B commitment; Microsoft 35% of revenue; IPO Mar 2025</td><td class="td-muted">2025-03-28</td><td><span class="tag tag-high">HIGH</span></td></tr>
+        <tr data-seg="dc_infra"><td class="td-company">Vertiv</td><td><span class="tag tag-dc_infra">dc_infra</span><span class="tag tag-power">power</span></td><td>Q1 2025 orders: $3.3B (+30%); backlog $8.0B</td><td class="td-signal">DLC lead times improving: 40–52wk → 28–36wk; liquid cooling now 15%+ of revenue</td><td class="td-muted">2025-04-23</td><td><span class="tag tag-medium">MEDIUM</span></td></tr>
+        <tr data-seg="power"><td class="td-company">Monolithic Power Systems (MPS)</td><td><span class="tag tag-power">power</span></td><td>Q1 2025: $577.4M (+9% YoY)</td><td class="td-signal">NVIDIA Blackwell VRM design wins confirmed; 4–6× content vs standard server</td><td class="td-muted">2025-04-30</td><td><span class="tag tag-high">HIGH</span></td></tr>
+        <tr data-seg="power"><td class="td-company">Renesas Electronics</td><td><span class="tag tag-power">power</span></td><td>Q1 2025: ¥382.6B (+2% YoY)</td><td class="td-signal">Blackwell VRM wins; AI server fastest-growing end market; Transphorm GaN acquisition</td><td class="td-muted">2025-04-25</td><td><span class="tag tag-high">HIGH</span></td></tr>
+        <tr data-seg="power"><td class="td-company">Infineon Technologies</td><td><span class="tag tag-power">power</span></td><td>Q2 FY2025: €3.71B; PSS €1.32B</td><td class="td-signal">CoolSiC gaining post-Wolfspeed; Villach 200mm SiC ramp; data center growing vs auto softness</td><td class="td-muted">2025-05-07</td><td><span class="tag tag-medium">MEDIUM</span></td></tr>
+        <tr data-seg="power"><td class="td-company">ON Semiconductor (onsemi)</td><td><span class="tag tag-power">power</span></td><td>Q1 2025: $1.455B</td><td class="td-signal">Data center power "fastest-growing sub-segment"; EliteSiC taking Wolfspeed share; Hudson Sevier SiC</td><td class="td-muted">2025-04-28</td><td><span class="tag tag-medium">MEDIUM</span></td></tr>
+        <tr data-seg="substrate"><td class="td-company">Ibiden</td><td><span class="tag tag-substrate">substrate</span></td><td>Q3 FY2025: Electronics ¥108.2B (record)</td><td class="td-signal">AI = 60%+ of electronics revenue; Ogaki at full capacity; FY2027 new lines approved</td><td class="td-muted">2025-03-01</td><td><span class="tag tag-high">CRITICAL</span></td></tr>
+        <tr data-seg="substrate"><td class="td-company">Unimicron Technology</td><td><span class="tag tag-substrate">substrate</span></td><td>Q1 2025: NT$30.8B (+18% YoY)</td><td class="td-signal">AI substrate fully allocated through 2025; 20–24wk lead times; Hsinchu Phase 2 Q4 2025</td><td class="td-muted">2025-04-25</td><td><span class="tag tag-high">HIGH</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════ SIGNALS ═══════════════ -->
+<div id="tab-signals" class="section">
+  <div class="section-title">16 Cross-Segment Signals — All Cycles</div>
+  <div class="section-sub">Each signal spans multiple supply chain layers; sorted by cycle, newest first</div>
+  <div class="signal-grid">
+
+    <div class="signal-card"><div class="signal-header"><div class="signal-num c3">16</div><div class="signal-title">Vertiv DLC Lead Times Improving; Cooling Constraint Easing</div></div><div class="signal-body">DLC lead times fell from 40–52wk to 28–36wk as Vertiv added capacity. Cooling is easing, but power transformers (52–65wk) remain the binding DC activation constraint.</div><div class="signal-footer"><span class="tag tag-dc_infra">dc_infra</span><span class="tag tag-power">power</span><span class="tag tag-end_market">end_market</span><span class="tag tag-medium">MEDIUM</span></div></div>
+
+    <div class="signal-card"><div class="signal-header"><div class="signal-num c3">15</div><div class="signal-title">Intel Excluded From AI GPU Market; Only Major Semi Not in AI Revenue Wave</div></div><div class="signal-body">Intel Gaudi revenue not separately disclosed. Falcon Shores discrete cancelled. Intel Foundry has no confirmed volume AI design win. Intel 18A customer sampling only.</div><div class="signal-footer"><span class="tag tag-chip_maker">chip_maker</span><span class="tag tag-foundry">foundry</span><span class="tag tag-low">LOW RISK</span></div></div>
+
+    <div class="signal-card"><div class="signal-header"><div class="signal-num c3">14</div><div class="signal-title">CoreWeave $15.1B Backlog Confirms Neo-Cloud as Structural Demand Layer</div></div><div class="signal-body">CoreWeave S-1: $15.1B committed backlog, OpenAI $11.9B, Microsoft 35% of revenue. Microsoft using CoreWeave as Azure overflow — implies Azure AI demand exceeds self-build pace.</div><div class="signal-footer"><span class="tag tag-end_market">end_market</span><span class="tag tag-chip_maker">chip_maker</span><span class="tag tag-high">HIGH</span></div></div>
+
+    <div class="signal-card"><div class="signal-header"><div class="signal-num c3">13</div><div class="signal-title">NVIDIA Q1 FY2026: Blackwell > Hopper First Time; Demand Still Exceeds Supply</div></div><div class="signal-body">$39.1B DC revenue (+73% YoY). Blackwell exceeded Hopper in revenue for the first time. "Demand for Blackwell continues to exceed our ability to supply." Q2 FY2026 guided $45B.</div><div class="signal-footer"><span class="tag tag-chip_maker">chip_maker</span><span class="tag tag-foundry">foundry</span><span class="tag tag-dram">dram</span><span class="tag tag-high">HIGH</span></div></div>
+
+    <div class="signal-card"><div class="signal-header"><div class="signal-num c2">12</div><div class="signal-title">TSMC = Single Point of Dependency Across 9 of 10 Segments</div></div><div class="signal-body">NVIDIA, AMD, Google, Amazon, Meta, Microsoft, Marvell, Broadcom, Kioxia — all manufactured at TSMC. Any disruption propagates through every segment simultaneously.</div><div class="signal-footer"><span class="tag tag-foundry">foundry</span><span class="tag tag-high">CRITICAL</span></div></div>
+
+    <div class="signal-card"><div class="signal-header"><div class="signal-num c2">11</div><div class="signal-title">ABF Substrate Fully Allocated; No New Capacity Until FY2027</div></div><div class="signal-body">Ibiden Ogaki at full capacity; new lines approved for FY2027. Unimicron fully allocated through end-2025. ABF is upstream dependency of CoWoS — structural floor on packaging capacity.</div><div class="signal-footer"><span class="tag tag-substrate">substrate</span><span class="tag tag-foundry">foundry</span><span class="tag tag-high">HIGH</span></div></div>
+
+    <div class="signal-card"><div class="signal-header"><div class="signal-num c2">10</div><div class="signal-title">Power Semi Content 4–6× Per AI Server; VRM Wins on Critical Path</div></div><div class="signal-body">MPS (Blackwell VRM confirmed), onsemi (DC power "fastest-growing"), Infineon (CoolSiC post-Wolfspeed). GB200 NVL72 rack: $500–800 power semi content vs $15–25 standard server.</div><div class="signal-footer"><span class="tag tag-power">power</span><span class="tag tag-chip_maker">chip_maker</span><span class="tag tag-dc_infra">dc_infra</span><span class="tag tag-high">HIGH</span></div></div>
+
+    <div class="signal-card"><div class="signal-header"><div class="signal-num c2">9</div><div class="signal-title">Ethernet Winning AI Cluster Fabric; Broadcom TAM Raised to $60–90B</div></div><div class="signal-body">Broadcom Tomahawk 5 at multiple hyperscalers; Arista AI "material" revenue; NVIDIA Spectrum-X at Microsoft Azure. Broadcom raised AI semiconductor SAM to $60–90B by FY2027.</div><div class="signal-footer"><span class="tag tag-network">network</span><span class="tag tag-chip_maker">chip_maker</span><span class="tag tag-high">HIGH</span></div></div>
+
+    <div class="signal-card"><div class="signal-header"><div class="signal-num c2">8</div><div class="signal-title">Marvell + Broadcom Divide Hyperscaler ASIC Market; $5.5B/Q Combined</div></div><div class="signal-body">Marvell: 3 XPU programs in production; AI $1.08B/Q. Broadcom: 3 production + 2 qualifying; AI $4.4B/Q. Every major hyperscaler ASIC uses either Marvell or Broadcom as design partner.</div><div class="signal-footer"><span class="tag tag-network">network</span><span class="tag tag-asic">asic</span><span class="tag tag-foundry">foundry</span><span class="tag tag-high">CRITICAL</span></div></div>
+
+    <div class="signal-card"><div class="signal-header"><div class="signal-num">7</div><div class="signal-title">Agentic AI → Inference + KV-SSD New Demand Shape</div></div><div class="signal-body">Samsung "agentic AI drove growth in HBM, server DRAM, server SSD." NVIDIA CEO: "agentic AI inflection point has arrived." Microsoft: "workloads are continuous, not batch." KV-SSD = new storage category.</div><div class="signal-footer"><span class="tag tag-dram">dram</span><span class="tag tag-storage">storage</span><span class="tag tag-asic">asic</span><span class="tag tag-chip_maker">chip_maker</span><span class="tag tag-high">HIGH</span></div></div>
+
+    <div class="signal-card"><div class="signal-header"><div class="signal-num">6</div><div class="signal-title">AMD: 6 GW Each from Meta + OpenAI — Largest Disclosed AI Chip Commitments by Watt</div></div><div class="signal-body">Meta: 6 GW MI450 (public Q1 2026 earnings). OpenAI: 6 GW MI450 (AMD 10-K FY2025, October 2025). Largest publicly disclosed AI chip purchase agreements by wattage outside NVIDIA.</div><div class="signal-footer"><span class="tag tag-chip_maker">chip_maker</span><span class="tag tag-end_market">end_market</span><span class="tag tag-design-win">design-win</span><span class="tag tag-high">HIGH</span></div></div>
+
+    <div class="signal-card"><div class="signal-header"><div class="signal-num">5</div><div class="signal-title">HBM4 Mass Production Begun; HBM4E + Vera Rubin Define 2027 Challenge</div></div><div class="signal-body">SK Hynix: HBM4 in mass production. Micron: HBM4 in volume shipments. Samsung: HBM4E samples Q2 2026. NVIDIA Vera Rubin (HBM4) production H2 FY2027. 2027 shortage forecast worse than 2026.</div><div class="signal-footer"><span class="tag tag-dram">dram</span><span class="tag tag-chip_maker">chip_maker</span><span class="tag tag-foundry">foundry</span><span class="tag tag-high">HIGH</span></div></div>
+
+    <div class="signal-card"><div class="signal-header"><div class="signal-num">4</div><div class="signal-title">CoWoS Dependency Confirmed in NVIDIA 10-K; Bottleneck Persists</div></div><div class="signal-body">NVIDIA 10-K: "We utilize CoWoS technology for semiconductor packaging." TSMC confirms CoWoS as production service. Both NVIDIA and AMD depend on same TSMC CoWoS line.</div><div class="signal-footer"><span class="tag tag-foundry">foundry</span><span class="tag tag-chip_maker">chip_maker</span><span class="tag tag-asic">asic</span><span class="tag tag-high">CRITICAL</span></div></div>
+
+    <div class="signal-card"><div class="signal-header"><div class="signal-num">3</div><div class="signal-title">$705–725B Combined Hyperscaler CY2026 Capex; AI Shows No Deceleration</div></div><div class="signal-body">Amazon ~$200B, Microsoft ~$190B, Alphabet ~$190B, Meta $125–145B. Alphabet Q1 +107% YoY. All four raised guidance during Q1 2026 earnings. Q1 combined actual: $130.6B.</div><div class="signal-footer"><span class="tag tag-end_market">end_market</span><span class="tag tag-dc_infra">dc_infra</span><span class="tag tag-capex">capex</span><span class="tag tag-high">CRITICAL</span></div></div>
+
+    <div class="signal-card"><div class="signal-header"><div class="signal-num">2</div><div class="signal-title">Component Pricing Closed Loop: Memory ASP → Hyperscaler Capex Raises</div></div><div class="signal-body">Microsoft +$25B, Meta +$10B capex raises both cite "higher component pricing." Matches Samsung +90–95% QoQ DRAM ASP and Micron 74.9% record gross margin. Supply-demand imbalance → ASP → capex.</div><div class="signal-footer"><span class="tag tag-dram">dram</span><span class="tag tag-end_market">end_market</span><span class="tag tag-pricing">pricing</span><span class="tag tag-high">HIGH</span></div></div>
+
+    <div class="signal-card"><div class="signal-header"><div class="signal-num">1</div><div class="signal-title">All CY2026 HBM Supply Committed Across All 3 Suppliers; 2027 "More Severe"</div></div><div class="signal-body">Micron: "Entire calendar 2026 HBM supply fully committed." Samsung: "All HBM capacity for 2026 sold out; 2027 more severe." SK Hynix: "3-year demand exceeds supply — structural, not temporary."</div><div class="signal-footer"><span class="tag tag-dram">dram</span><span class="tag tag-chip_maker">chip_maker</span><span class="tag tag-foundry">foundry</span><span class="tag tag-supply">supply</span><span class="tag tag-high">CRITICAL</span></div></div>
+
+  </div>
+</div>
+
+<!-- ═══════════════ SUPPLY CHAIN ═══════════════ -->
+<div id="tab-supplychain" class="section">
+  <div class="section-title">AI Supply Chain — End-to-End Flow</div>
+  <div class="section-sub">Raw material → packaging → system · Red = constrained · Green = healthy supply</div>
+  <div class="sc-flow">
+    <div class="sc-layer">
+      <div class="sc-header">📦 Raw Materials</div>
+      <div class="sc-companies">
+        <div class="sc-company sc-alert"><div class="sc-company-name">Ajinomoto</div><div class="sc-company-detail">ABF film · sole supplier · 24–36mo expansion</div></div>
+        <div class="sc-company sc-alert"><div class="sc-company-name">SiC Substrates</div><div class="sc-company-detail">Wolfspeed Ch.11 · Infineon SiCrystal · ON Semi Hudson Sevier</div></div>
+        <div class="sc-company"><div class="sc-company-name">ASML EUV</div><div class="sc-company-detail">Sole EUV supplier · 12–18mo lead time · NXE:3600D</div></div>
+      </div>
+    </div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-layer">
+      <div class="sc-header">🏭 Wafer Fab</div>
+      <div class="sc-companies">
+        <div class="sc-company sc-alert"><div class="sc-company-name">TSMC</div><div class="sc-company-detail">N3/N2/CoWoS · 9/10 segments · $52–56B capex · SINGLE POINT OF RISK</div></div>
+        <div class="sc-company"><div class="sc-company-name">Samsung Foundry</div><div class="sc-company-detail">3nm yield issues · no major AI win</div></div>
+        <div class="sc-company"><div class="sc-company-name">Micron / SK Hynix / Samsung</div><div class="sc-company-detail">DRAM + NAND wafer fabs</div></div>
+      </div>
+    </div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-layer">
+      <div class="sc-header">🔲 Substrate</div>
+      <div class="sc-companies">
+        <div class="sc-company sc-alert"><div class="sc-company-name">Ibiden</div><div class="sc-company-detail">NVIDIA primary · AI=60%+ · Ogaki FULL · FY2027 new lines</div></div>
+        <div class="sc-company sc-alert"><div class="sc-company-name">Unimicron</div><div class="sc-company-detail">AMD + TSMC CoWoS · fully allocated · 20–24wk lead time</div></div>
+        <div class="sc-company"><div class="sc-company-name">Shinko / AT&S</div><div class="sc-company-detail">Intel captive / European · growing AI</div></div>
+      </div>
+    </div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-layer">
+      <div class="sc-header">📦 Advanced Packaging</div>
+      <div class="sc-companies">
+        <div class="sc-company sc-alert"><div class="sc-company-name">TSMC CoWoS</div><div class="sc-company-detail">GPU + HBM integration · demand > capacity 20–30% · NO ALTERNATIVE</div></div>
+        <div class="sc-company"><div class="sc-company-name">HBM Assembly</div><div class="sc-company-detail">SK Hynix Singapore · Micron Singapore · Samsung Korea</div></div>
+        <div class="sc-company"><div class="sc-company-name">ASE / Amkor</div><div class="sc-company-detail">OSAT · HBM assembly · CoW packaging</div></div>
+      </div>
+    </div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-layer">
+      <div class="sc-header">⚡ AI Chip</div>
+      <div class="sc-companies">
+        <div class="sc-company sc-strong"><div class="sc-company-name">NVIDIA (GPU)</div><div class="sc-company-detail">B200/GB200 · $39.1B Q1 FY2026 · demand > supply</div></div>
+        <div class="sc-company sc-strong"><div class="sc-company-name">AMD (GPU)</div><div class="sc-company-detail">MI450 · $5.8B Q1 2026 · 12 GW committed</div></div>
+        <div class="sc-company"><div class="sc-company-name">Google / AWS / Meta / Microsoft (ASIC)</div><div class="sc-company-detail">TPU 8 / Trainium3 / MTIA Gen2 / Maia 200</div></div>
+        <div class="sc-company"><div class="sc-company-name">Marvell / Broadcom (XPU)</div><div class="sc-company-detail">6 hyperscaler programs · $5.5B/Q combined</div></div>
+      </div>
+    </div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-layer">
+      <div class="sc-header">🖥 AI Server / System</div>
+      <div class="sc-companies">
+        <div class="sc-company sc-alert"><div class="sc-company-name">Power (VRM)</div><div class="sc-company-detail">MPS + Renesas · Blackwell design wins · critical path</div></div>
+        <div class="sc-company"><div class="sc-company-name">Networking</div><div class="sc-company-detail">NVIDIA NDR / Spectrum-X · Broadcom Tomahawk 5 · Arista 7800R4</div></div>
+        <div class="sc-company"><div class="sc-company-name">ODM / Server</div><div class="sc-company-detail">Wiwynn · Foxconn · Supermicro · Quanta</div></div>
+      </div>
+    </div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-layer">
+      <div class="sc-header">🏢 Data Center</div>
+      <div class="sc-companies">
+        <div class="sc-company sc-alert"><div class="sc-company-name">Power Transformer</div><div class="sc-company-detail">52–65wk lead time · primary DC activation bottleneck</div></div>
+        <div class="sc-company sc-strong"><div class="sc-company-name">Liquid Cooling (Vertiv)</div><div class="sc-company-detail">28–36wk (improving) · DLC = 15%+ of Vertiv rev</div></div>
+        <div class="sc-company"><div class="sc-company-name">SiC UPS (Infineon, ON Semi)</div><div class="sc-company-detail">1200V UPS · gaining post-Wolfspeed</div></div>
+      </div>
+    </div>
+    <div class="sc-arrow">→</div>
+    <div class="sc-layer">
+      <div class="sc-header">☁️ AI Compute</div>
+      <div class="sc-companies">
+        <div class="sc-company sc-strong"><div class="sc-company-name">Hyperscalers</div><div class="sc-company-detail">Amazon $200B · Microsoft $190B · Google $190B · Meta $125–145B</div></div>
+        <div class="sc-company"><div class="sc-company-name">Neo-Cloud</div><div class="sc-company-detail">CoreWeave $15.1B backlog · NVIDIA preferred · OpenAI partner</div></div>
+        <div class="sc-company"><div class="sc-company-name">Sovereign AI</div><div class="sc-company-detail">HUMAIN / UAE G42 / Japan SoftBank · $10–20B+</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ MARKET DATA ═══════════════ -->
+<div id="tab-market" class="section">
+  <div class="price-section">
+    <div class="price-card">
+      <div class="price-card-title">Memory Pricing</div>
+      <div class="price-row"><span class="price-product">HBM3E</span><span><span class="price-value">$15–18/GB</span><span class="price-dir">↑ structural</span></span></div>
+      <div class="price-row"><span class="price-product">DDR5 Server (contract)</span><span><span class="price-value yellow">$3–5/GB</span><span class="price-dir">+90–95% QoQ Q1'26</span></span></div>
+      <div class="price-row"><span class="price-product">DDR5 Spot (2023 trough)</span><span><span class="price-value red">$3.50/8Gb</span><span class="price-dir">vs $7.50 peak</span></span></div>
+      <div class="price-row"><span class="price-product">HBM vs DDR5 Premium</span><span><span class="price-value">3–5×</span></span></div>
+    </div>
+    <div class="price-card">
+      <div class="price-card-title">NAND / SSD Pricing</div>
+      <div class="price-row"><span class="price-product">Enterprise NVMe Gen4 SSD (4TB)</span><span><span class="price-value yellow">$0.08–0.10/GB</span><span class="price-dir">+55–75% QoQ</span></span></div>
+      <div class="price-row"><span class="price-product">Enterprise NVMe Gen5 SSD</span><span><span class="price-value">$0.10–0.13/GB</span><span class="price-dir">premium</span></span></div>
+      <div class="price-row"><span class="price-product">QLC NAND Wafer (2025)</span><span><span class="price-value">$2.20–2.60/128Gb</span></span></div>
+      <div class="price-row"><span class="price-product">QLC NAND Wafer (2023 trough)</span><span><span class="price-value red">$1.50–1.80/128Gb</span><span class="price-dir">below cash cost</span></span></div>
+    </div>
+    <div class="price-card">
+      <div class="price-card-title">AI Accelerator Pricing (Est.)</div>
+      <div class="price-row"><span class="price-product">NVIDIA H100 SXM5</span><span><span class="price-value">$30–35K</span></span></div>
+      <div class="price-row"><span class="price-product">NVIDIA B200 SXM6</span><span><span class="price-value">$35–40K</span></span></div>
+      <div class="price-row"><span class="price-product">NVIDIA GB200 NVL72 Rack</span><span><span class="price-value">$3–4M</span></span></div>
+      <div class="price-row"><span class="price-product">AMD MI300X</span><span><span class="price-value">$15–20K</span></span></div>
+      <div class="price-row"><span class="price-product">H100 Cloud Rental</span><span><span class="price-value">$2.00–3.50/hr</span></span></div>
+    </div>
+    <div class="price-card">
+      <div class="price-card-title">Hyperscaler Capex CY2026</div>
+      <div class="price-row"><span class="price-product">Amazon</span><span><span class="price-value">~$200B</span></span></div>
+      <div class="price-row"><span class="price-product">Microsoft</span><span><span class="price-value">~$190B</span></span></div>
+      <div class="price-row"><span class="price-product">Alphabet / Google</span><span><span class="price-value">Up to $190B</span></span></div>
+      <div class="price-row"><span class="price-product">Meta</span><span><span class="price-value">$125–145B</span></span></div>
+      <div class="price-row"><span class="price-product"><strong>Total</strong></span><span><span class="price-value">$705–725B</span></span></div>
+    </div>
+  </div>
+
+  <div class="section-title">Supply Lead Times</div>
+  <div class="section-sub" style="margin-bottom:14px">As of Q1 2025. Red = binding constraint · Yellow = watch · Green = normal</div>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Component</th><th>Lead Time</th><th>Trend</th><th>Binding?</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td class="td-company">HBM (all grades)</td><td>4–6 quarters ahead</td><td>Structural allocation</td><td><span class="tag tag-high">YES — CRITICAL</span></td><td class="td-muted">SK Hynix / Micron Q1 2026</td></tr>
+        <tr><td class="td-company">TSMC CoWoS</td><td>Demand > capacity 20–30%</td><td>No near-term relief</td><td><span class="tag tag-high">YES — CRITICAL</span></td><td class="td-muted">TSMC Q1 2026; NVIDIA 10-K</td></tr>
+        <tr><td class="td-company">ABF Substrate (AI grade)</td><td>20–24 weeks</td><td>Fully allocated</td><td><span class="tag tag-high">YES — CRITICAL</span></td><td class="td-muted">Ibiden Q3 FY2025; Unimicron Q1 2025</td></tr>
+        <tr><td class="td-company">Power Transformers</td><td>52–65 weeks</td><td>No improvement</td><td><span class="tag tag-high">YES</span></td><td class="td-muted">S&P Global, 2025-Q4</td></tr>
+        <tr><td class="td-company">Direct Liquid Cooling Units</td><td>28–36 weeks</td><td>↓ Improving (was 40–52wk)</td><td><span class="tag tag-medium">EASING</span></td><td class="td-muted">Vertiv Q1 2025</td></tr>
+        <tr><td class="td-company">NVIDIA InfiniBand NDR</td><td>12–16 weeks</td><td>↓ Improving (was 20–24wk)</td><td><span class="tag tag-medium">EASING</span></td><td class="td-muted">NVIDIA Q3 FY2025</td></tr>
+        <tr><td class="td-company">Enterprise SSD (Gen5 NVMe)</td><td>8–12 weeks</td><td>Normal</td><td><span class="tag tag-low">NO</span></td><td class="td-muted">Industry</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section-title">Market Share Summary</div>
+  <div style="display:grid; grid-template-columns: repeat(auto-fill, minmax(320px,1fr)); gap:14px; margin-top:14px;">
+    <div class="table-wrap"><table><thead><tr><th colspan="3">HBM Market Share (2026)</th></tr><tr><th>Supplier</th><th>Share</th><th>Key Customer</th></tr></thead><tbody>
+      <tr><td class="td-company">SK Hynix</td><td>~57%</td><td>NVIDIA (primary)</td></tr>
+      <tr><td class="td-company">Samsung</td><td>~35%</td><td>AMD MI455X (HBM4)</td></tr>
+      <tr><td class="td-company">Micron</td><td>~8%</td><td>Vera Rubin (HBM4)</td></tr>
+    </tbody></table></div>
+    <div class="table-wrap"><table><thead><tr><th colspan="3">Foundry Revenue Share</th></tr><tr><th>Foundry</th><th>Share</th><th>AI Node</th></tr></thead><tbody>
+      <tr><td class="td-company">TSMC</td><td>~64%</td><td>N3/N2/CoWoS</td></tr>
+      <tr><td class="td-company">Samsung Foundry</td><td>~13%</td><td>3nm (yield issues)</td></tr>
+      <tr><td class="td-company">GlobalFoundries</td><td>~6%</td><td>Mature nodes</td></tr>
+      <tr><td class="td-company">Intel Foundry</td><td>~4%</td><td>18A (sampling)</td></tr>
+    </tbody></table></div>
+    <div class="table-wrap"><table><thead><tr><th colspan="3">NAND Bit Share (2026)</th></tr><tr><th>Supplier</th><th>Bit Share</th><th>Note</th></tr></thead><tbody>
+      <tr><td class="td-company">Samsung</td><td>~31%</td><td>Vertical integration</td></tr>
+      <tr><td class="td-company">Kioxia</td><td>~19%</td><td>WD joint fab; IPO 2024</td></tr>
+      <tr><td class="td-company">SK Hynix / Solidigm</td><td>~19%</td><td>Enterprise focus</td></tr>
+      <tr><td class="td-company">Micron</td><td>~14%</td><td>Gen5 NVMe growing</td></tr>
+      <tr><td class="td-company">YMTC</td><td>~9%</td><td>China-domestic only</td></tr>
+    </tbody></table></div>
+    <div class="table-wrap"><table><thead><tr><th colspan="3">ABF Substrate Share</th></tr><tr><th>Supplier</th><th>Share</th><th>AI Customer</th></tr></thead><tbody>
+      <tr><td class="td-company">Unimicron</td><td>~25%</td><td>AMD + TSMC CoWoS</td></tr>
+      <tr><td class="td-company">Ibiden</td><td>~20%</td><td>NVIDIA primary</td></tr>
+      <tr><td class="td-company">Shinko Electric</td><td>~15%</td><td>Intel captive</td></tr>
+      <tr><td class="td-company">AT&S</td><td>~10%</td><td>TSMC + Intel</td></tr>
+    </tbody></table></div>
+  </div>
+</div>
+
+<!-- ═══════════════ ROADMAP ═══════════════ -->
+<div id="tab-roadmap" class="section">
+  <div class="section-title">Technology Roadmap — All Segments</div>
+  <div class="section-sub">Reverse chronological; sourced from Tier A earnings calls and official filings only</div>
+
+  <div class="roadmap">
+    <div class="roadmap-year"><div class="year-label">2027+</div><div class="roadmap-items">
+      <div class="roadmap-item hbm"><div class="ri-title">HBM4E Mass Production — All 3 Suppliers</div><div class="ri-detail">SK Hynix 1Cnm · Samsung · Micron · defines 2027 HBM supply challenge</div></div>
+      <div class="roadmap-item nvidia"><div class="ri-title">NVIDIA Vera Rubin — Production H2 FY2027</div><div class="ri-detail">HBM4 confirmed · "10× lower inference token cost vs Blackwell" · AWS/Google/Azure/Oracle first</div></div>
+      <div class="roadmap-item amd"><div class="ri-title">AMD MI455X — Samsung HBM4</div><div class="ri-detail">CDNA next-gen · HBM4 from Samsung · differentiated from MI450</div></div>
+      <div class="roadmap-item tsmc"><div class="ri-title">TSMC A16 — Backside Power Delivery Production</div><div class="ri-detail">Nanosheet + Super Power Rail · 10–15% speed gain over N2</div></div>
+      <div class="roadmap-item other"><div class="ri-title">Glass Core Substrate — Intel + Google Commercial Launch</div><div class="ri-detail">2× finer routing than ABF · better thermal stability · 2027–2028</div></div>
+      <div class="roadmap-item other"><div class="ri-title">Ibiden New ABF Capacity Online (FY2027)</div><div class="ri-detail">First new high-density lines since current crunch · Ogaki facility</div></div>
+    </div></div>
+
+    <div class="roadmap-year"><div class="year-label">2026</div><div class="roadmap-items">
+      <div class="roadmap-item hbm"><div class="ri-title">HBM4 in Volume Production — All 3 Suppliers</div><div class="ri-detail">SK Hynix mass production Q1 · Micron 36GB 12-high shipping · Samsung HBM4E samples Q2</div></div>
+      <div class="roadmap-item tsmc"><div class="ri-title">TSMC N2 Volume Production</div><div class="ri-detail">Nanosheet transistor · ~20% speed gain over N3 · AI customer mix not disclosed</div></div>
+      <div class="roadmap-item nvidia"><div class="ri-title">NVIDIA GB200 NVL72 at Scale — Rack Revenue Dominant</div><div class="ri-detail">Blackwell > Hopper revenue confirmed Q1 FY2026 · $39.1B DC quarterly run-rate</div></div>
+      <div class="roadmap-item amd"><div class="ri-title">AMD MI450 Production — 12 GW Committed</div><div class="ri-detail">Meta 6 GW + OpenAI 6 GW · CDNA4 · SK Hynix HBM3E</div></div>
+      <div class="roadmap-item other"><div class="ri-title">DDR6 Specification Finalized</div><div class="ri-detail">JEDEC · AI server deployments expected 2027</div></div>
+      <div class="roadmap-item other"><div class="ri-title">PCIe Gen5 NVMe — AI Inference Baseline</div><div class="ri-detail">14 GB/s read · model weight loading -45% vs Gen4 · Kioxia CD8P qualifying</div></div>
+    </div></div>
+
+    <div class="roadmap-year"><div class="year-label">2025</div><div class="roadmap-items">
+      <div class="roadmap-item hbm"><div class="ri-title">HBM3E — Dominant Volume; All CY2026 Committed</div><div class="ri-detail">SK Hynix primary to NVIDIA · Micron + Samsung qualifying · no spot market</div></div>
+      <div class="roadmap-item tsmc"><div class="ri-title">TSMC N3 High-Volume; Arizona N4 Production</div><div class="ri-detail">Apple / NVIDIA Blackwell / Google TPU 8 on N3 · Arizona = US production start</div></div>
+      <div class="roadmap-item nvidia"><div class="ri-title">NVIDIA Blackwell B200 / GB200 NVL72 Volume</div><div class="ri-detail">TSMC N4P/N3 · HBM3E · CoWoS-L · 120kW/rack · $3–4M per rack</div></div>
+      <div class="roadmap-item other"><div class="ri-title">Meta MTIA Gen 2 (2nm/Broadcom) in Production</div><div class="ri-detail">Inference-only · TSMC N2 · Broadcom design partner · confirmed Q1 2026</div></div>
+      <div class="roadmap-item other"><div class="ri-title">Kioxia IPO (Tokyo, Dec 2024) + BiCS 9 Ramp</div><div class="ri-detail">Independent capex · 300+ layer QLC · Gen5 NVMe qualification</div></div>
+      <div class="roadmap-item other"><div class="ri-title">Ultra Ethernet Consortium 1.0 Spec Release</div><div class="ri-detail">Broadcom / AMD / Intel / Google / Meta · <5μs latency · sampling 2025</div></div>
+    </div></div>
+
+    <div class="roadmap-year"><div class="year-label">2024</div><div class="roadmap-items">
+      <div class="roadmap-item nvidia"><div class="ri-title">NVIDIA H200 — HBM3E Upgrade; SK Hynix Sole Initial Supplier</div><div class="ri-detail">141GB HBM3E · 4.8 TB/s · TSMC N4 · first HBM3E GPU</div></div>
+      <div class="roadmap-item amd"><div class="ri-title">AMD MI300X — 192GB HBM3; 8 Hyperscaler Deployments</div><div class="ri-detail">CDNA3 · inference leader on memory capacity · Azure / Meta / Oracle / Google</div></div>
+      <div class="roadmap-item other"><div class="ri-title">Wolfspeed Chapter 11 — SiC Supply Disruption</div><div class="ri-detail">Oct 2024 · Infineon + onsemi gaining market share · AI UPS qualification wave</div></div>
+      <div class="roadmap-item other"><div class="ri-title">CoreWeave IPO Preparation; S-1 Filed</div><div class="ri-detail">$15.1B backlog · $11.9B OpenAI · NVIDIA preferred partner · March 2025 IPO</div></div>
+    </div></div>
+
+    <div class="roadmap-year"><div class="year-label">2022–2023</div><div class="roadmap-items">
+      <div class="roadmap-item nvidia"><div class="ri-title">NVIDIA H100 — First Transformer-Native GPU</div><div class="ri-detail">TSMC N4 · HBM3 · Transformer Engine FP8 · $30–35K list · CUDA moat solidified</div></div>
+      <div class="roadmap-item hbm"><div class="ri-title">HBM3 First Deployment (SK Hynix → NVIDIA H100)</div><div class="ri-detail">819 GB/s per stack · 2.3× HBM2e · SK Hynix sole supplier</div></div>
+      <div class="roadmap-item tsmc"><div class="ri-title">CoWoS-L Enables HBM3 + GPU Integration at Scale</div><div class="ri-detail">Silicon interposer · GPU + multiple HBM stacks · >100mm² package · required for H100</div></div>
+      <div class="roadmap-item other"><div class="ri-title">DRAM/NAND Downcycle — 50–60% Price Decline</div><div class="ri-detail">2023 trough · all suppliers post losses · capex cuts · recovery 2024–2025</div></div>
+    </div></div>
+  </div>
+</div>
+
+<!-- ═══════════════ OPEN QUESTIONS ═══════════════ -->
+<div id="tab-openq" class="section">
+  <div class="section-title">Open Questions — All Segments</div>
+  <div class="section-sub">Unresolved gaps as of Cycle 3 (2026-05-12). Prioritized by importance.</div>
+
+  <div class="section-title" style="font-size:12px;margin-top:16px;color:var(--red)">🔴 Critical — Required for Next Cycle</div>
+  <ul class="oq-list" style="margin-top:8px;margin-bottom:16px;">
+    <li class="oq-item"><span class="oq-seg"><span class="tag tag-foundry">foundry</span></span>TSMC CoWoS capacity figures — demand > capacity confirmed but no unit data in any formal filing. Need Q1 2026 earnings Q&A transcript or analyst day.</li>
+    <li class="oq-item"><span class="oq-seg"><span class="tag tag-dram">dram</span></span>Vera Rubin HBM type and capacity per chip — HBM4 confirmed but stack count, GB per stack, and total bandwidth not yet publicly disclosed.</li>
+    <li class="oq-item"><span class="oq-seg"><span class="tag tag-chip_maker">chip_maker</span></span>AMD MI450 custom specs for Meta vs OpenAI — same chip or differentiated designs? Both confirmed 6 GW each but chip-level specs differ potentially.</li>
+    <li class="oq-item"><span class="oq-seg"><span class="tag tag-substrate">substrate</span></span>Ibiden FY2027 new capacity — exact quarterly timeline, unit count, and which customers allocated. "FY2027" stated but no further granularity.</li>
+  </ul>
+
+  <div class="section-title" style="font-size:12px;color:var(--yellow)">🟡 High — Needed for Full Picture</div>
+  <ul class="oq-list" style="margin-top:8px;margin-bottom:16px;">
+    <li class="oq-item"><span class="oq-seg"><span class="tag tag-network">network</span></span>Ultra Ethernet 1.0 production deployments — which hyperscalers deploying at scale in 2026? Spec released 2025-Q2 but adoption not confirmed at volume.</li>
+    <li class="oq-item"><span class="oq-seg"><span class="tag tag-power">power</span></span>Wolfspeed SiC gap absorption — Infineon vs onsemi split not quantified. Both cite "expanded qualification" but no market share data.</li>
+    <li class="oq-item"><span class="oq-seg"><span class="tag tag-power">power</span></span>MPS vs Renesas VRM revenue split on NVIDIA GB200 board — both confirmed design wins, but exact share not disclosed by either company.</li>
+    <li class="oq-item"><span class="oq-seg"><span class="tag tag-end_market">end_market</span></span>CoreWeave GPU fleet composition in 2025 — H100/H200/B200 ratio? S-1 shows scale but not generation breakdown.</li>
+    <li class="oq-item"><span class="oq-seg"><span class="tag tag-chip_maker">chip_maker</span></span>Intel 18A volume AI customer — Microsoft cited as evaluating but no confirmation. Critical for foundry competition analysis.</li>
+    <li class="oq-item"><span class="oq-seg"><span class="tag tag-asic">asic</span></span>MTIA Gen 3 roadmap — no public disclosure as of 2026-05-12. Meta stated "MTIA Gen 2 in production" but no Gen 3 timeline.</li>
+    <li class="oq-item"><span class="oq-seg"><span class="tag tag-asic">asic</span></span>Microsoft Maia 200 TSMC node — deployed on Azure confirmed but process node (N3? N5?) not publicly confirmed.</li>
+    <li class="oq-item"><span class="oq-seg"><span class="tag tag-network">network</span></span>NVIDIA Spectrum-X traction — how many hyperscalers deploying at scale vs InfiniBand? Microsoft confirmed but others not.</li>
+  </ul>
+
+  <div class="section-title" style="font-size:12px;color:var(--muted)">⚪ Medium — Background Research</div>
+  <ul class="oq-list" style="margin-top:8px;">
+    <li class="oq-item"><span class="oq-seg"><span class="tag tag-storage">storage</span></span>CXL storage — which hyperscalers deploying in production AI clusters in 2026? Multiple companies in qualification.</li>
+    <li class="oq-item"><span class="oq-seg"><span class="tag tag-storage">storage</span></span>Key Value SSD market size — any analyst TAM estimate for 2027? Samsung introduced category Q1 2026.</li>
+    <li class="oq-item"><span class="oq-seg"><span class="tag tag-dc_infra">dc_infra</span></span>SMR commercial timeline — is 2028–2030 realistic given NRC licensing backlog? Microsoft and Google evaluating.</li>
+    <li class="oq-item"><span class="oq-seg"><span class="tag tag-substrate">substrate</span></span>Unimicron Hsinchu Phase 2 Q4 2025 qualification — confirmed on schedule or delayed?</li>
+    <li class="oq-item"><span class="oq-seg"><span class="tag tag-end_market">end_market</span></span>Saudi Arabia HUMAIN chip types and delivery volumes — NVIDIA primary confirmed but volume not public.</li>
+  </ul>
+</div>
+
+</div><!-- /main -->
+
+<div class="footer">AI Supply Chain Intelligence Database · 10 Segments · 23 Companies · 16 Signals · 3 Cycles · Last Updated 2026-05-12</div>
+
+<script>
+function showTab(name) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.target.classList.add('active');
+}
+
+let currentSeg = 'all';
+function filterSeg(btn, seg) {
+  currentSeg = seg;
+  document.querySelectorAll('#seg-filters .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filterCompanies();
+}
+
+function filterCompanies() {
+  const q = document.getElementById('company-search').value.toLowerCase();
+  document.querySelectorAll('#company-table tbody tr').forEach(row => {
+    const text = row.textContent.toLowerCase();
+    const seg = row.dataset.seg || '';
+    const segMatch = currentSeg === 'all' || seg.includes(currentSeg);
+    const textMatch = !q || text.includes(q);
+    row.style.display = (segMatch && textMatch) ? '' : 'none';
+  });
+}
+
+function sortTable(tableId, col) {
+  const table = document.getElementById(tableId);
+  const tbody = table.querySelector('tbody');
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+  const asc = table.dataset.sortCol == col && table.dataset.sortDir === 'asc';
+  rows.sort((a, b) => {
+    const av = a.cells[col]?.textContent.trim() || '';
+    const bv = b.cells[col]?.textContent.trim() || '';
+    return asc ? bv.localeCompare(av, undefined, {numeric:true}) : av.localeCompare(bv, undefined, {numeric:true});
+  });
+  rows.forEach(r => tbody.appendChild(r));
+  table.dataset.sortCol = col;
+  table.dataset.sortDir = asc ? 'desc' : 'asc';
+}
+</script>
+</body>
+</html>
