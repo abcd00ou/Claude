@@ -17,16 +17,16 @@ cross-cutting signals that no single section agent can see alone.
 
 | Agent | Folder | Last Refresh |
 |---|---|---|
-| DRAM Expert | `section/dram/` | — |
-| Storage Expert | `section/storage/` | — |
-| DC Infrastructure Expert | `section/dc_infra/` | — |
-| ASIC Expert | `section/asic/` | — |
-| Chip Maker Expert | `section/chip_maker/` | — |
-| Foundry & Packaging Expert | `section/foundry/` | — |
+| DRAM Expert | `section/dram/` | 2026-04-30 (Samsung Q1 2026) |
+| Storage Expert | `section/storage/` | 2026-04-30 (Samsung Q1 2026) |
+| DC Infrastructure Expert | `section/dc_infra/` | 2026-04-29 (Hyperscaler Q1 2026) |
+| ASIC Expert | `section/asic/` | 2026-04-29 (Hyperscaler Q1 2026) |
+| Chip Maker Expert | `section/chip_maker/` | 2026-05-05 (AMD Q1 2026) |
+| Foundry & Packaging Expert | `section/foundry/` | 2026-04-16 (TSMC Q1 2026) |
 | Network Expert | `section/network/` | — |
 | Power Semiconductor Expert | `section/power/` | — |
 | PCB & Substrate Expert | `section/substrate/` | — |
-| End Market Expert | `section/end_market/` | — |
+| End Market Expert | `section/end_market/` | 2026-04-29 (Hyperscaler Q1 2026) |
 | Crawler Agent | `data/crawler/` | — |
 | Analysis Agent | `data/analysis.md` | — |
 | DBA Agent | `data/dba.md` | — |
@@ -73,10 +73,13 @@ cross-cutting signals that no single section agent can see alone.
 
 ## Cross-Segment Synthesis
 
-### Update: 2026-05-12 — Initial baseline
+### Update: 2026-05-12 — Cycle 1: Q1 2026 earnings
 
-> Baseline entry. Section agents not yet populated.
-> Synthesis will be added here as agents are built out.
+> Full synthesis in `synthesis/2026-05-12.md`.
+> 7 cross-segment signals identified. Key: all CY2026 HBM supply committed across 3 suppliers;
+> component pricing inflating hyperscaler capex ($25B+ confirmed); combined 4-hyperscaler
+> 2026 capex ~$705–725B; Samsung warns 2027 shortage "more severe than 2026";
+> AMD 6 GW commitments from Meta + OpenAI; MTIA Gen 2 (2nm/Broadcom) in production.
 
 ---
 
