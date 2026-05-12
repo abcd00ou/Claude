@@ -73,6 +73,14 @@ cross-cutting signals that no single section agent can see alone.
 
 ## Cross-Segment Synthesis
 
+### Update: 2026-05-12 — Cycle 3: Gap company coverage; NVIDIA Q1 FY2026; market thematic files
+
+> Full synthesis in `synthesis/2026-05-12_cycle3.md`.
+> 4 new cross-segment signals (Signals 13–16). Key: NVIDIA Q1 FY2026 DC revenue $39.1B —
+> Blackwell exceeded Hopper for first time; demand still exceeds supply. CoreWeave S-1 confirmed
+> $15.1B backlog, $11.9B OpenAI commitment — neo-cloud is structural layer. Intel excluded from
+> AI GPU market. Vertiv DLC lead times improving. Cumulative 16 signals across 3 cycles.
+
 ### Update: 2026-05-12 — Cycle 2: Network / Power / Substrate segments completed; full 10-segment coverage
 
 > Full synthesis in `synthesis/2026-05-12_cycle2.md`.
