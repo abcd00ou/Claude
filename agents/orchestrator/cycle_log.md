@@ -4,6 +4,36 @@ Running log of all completed intelligence cycles. Updated at end of each cycle.
 
 ---
 
+
+## Cycle 6 — 2026-05-13
+
+**Status:** Complete  
+**Synthesis:** `synthesis/2026-05-13_cycle6.md`  
+**Type:** Research Cycle (official + high-quality public sources)  
+**Update logs created:** 9 sections (chip_maker, network, asic, end_market, dc_infra, power, foundry, dram, substrate)  
+**Data agent outputs:** `data/crawler/signals/2026-05-13.md`; `data/analysis/reports/2026-05-13_cycle6_analysis.md`  
+**Signals generated:** 6 new cross-segment signals (Signals 27–32)
+
+**Key findings:**
+- Rubin moved from roadmap to 2026 deployment: NVIDIA states the platform is in full production with partner products available in H2 2026.
+- NVLink Fusion reframes custom ASICs as NVIDIA-compatible heterogeneous infrastructure, especially after the Marvell partnership.
+- Trainium3 and Ironwood are production-grade inference custom silicon platforms with explicit high-HBM system designs.
+- Hyperscaler capex is still capacity-constrained; Microsoft says Azure demand exceeds available capacity despite Q3 FY2026 capex of $31.9B.
+- Grid equipment remains a physical critical path, with DOE/NREL transformer constraints and Wood Mackenzie power-transformer lead-time benchmarks.
+- Amkor Arizona is strategically important U.S. advanced packaging capacity, but early-2028 production timing means it does not relieve 2026 pressure.
+
+**Open flags carried to Cycle 7:**
+- Samsung NVIDIA HBM3E/HBM4 qualification result.
+- Vera Rubin exact volume ramp by cloud provider and quarter.
+- AWS Trainium4 + NVLink Fusion technical details.
+- Google Ironwood process node and supply-chain partners.
+- First named Ultra Ethernet 1.0 hyperscaler production deployment.
+- U.S. transformer capacity additions and qualified shipment timing.
+- Amkor CoWoS-class qualification evidence.
+- Wolfspeed post-restructuring SiC share split versus Infineon/onsemi.
+
+---
+
 ## Cycle 5 — 2026-05-12
 
 **Status:** Complete  

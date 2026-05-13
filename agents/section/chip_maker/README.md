@@ -2,7 +2,7 @@
 
 **Segment:** GPU / xPU Merchant Silicon  
 **Sales Lens:** GPU allocation dynamics, competitive positioning, pricing & margin trends  
-**Last Updated:** 2026-05-12
+**Last Updated:** 2026-05-13
 
 ---
 
@@ -260,9 +260,72 @@ The AI accelerator market is dominated by NVIDIA with approximately 70–85% mar
 
 ---
 
+## 2026-Q2 Updates (2026-05-13)
+
+### 2026-05-20 — NVIDIA Q1 FY2027 Earnings Scheduled; DC Guidance $78B (±2%)
+
+> NVIDIA Q1 FY2027 earnings are scheduled for 2026-05-20. The company guided Q1 FY2027 revenue at approximately $78 billion (±2%), representing ~77% year-over-year growth and exceeding prior consensus by over $5 billion. NVIDIA enters the quarter with a $51.1B net cash position and 71.1% full-year gross margin. China data center revenue explicitly excluded from the guidance.
+
+**Source:** NVIDIA Q1 FY2027 Earnings Preview, IG International, 2026-05-13, https://www.ig.com/en/news-and-trade-ideas/nvidia-q1-fy-2027-earnings-preview-260513; MarketBeat NVDA Q1 2027 Earnings Report, 2026-05-20, https://www.marketbeat.com/earnings/reports/2026-5-20-nvidia-co-stock/
+
+#segment:chip_maker #source-tier:B #signal-type:demand #company:nvidia #date:2026-05-13 #importance:high #confidence:high
+
+---
+
+### 2026-Q1 — NVIDIA Blackwell Sold Out Through Mid-Year; $1 Trillion Order Backlog
+
+> NVIDIA Blackwell GPU systems are completely sold out through mid-2026. Disclosed backlog: $1 trillion in orders for Blackwell and Vera Rubin platforms through 2027 from Meta, Anthropic, OpenAI, AWS, Google Cloud, Microsoft Azure, and Oracle. Data center segment generated $39.1 billion in Q1 FY2027 (calendar Q1 2026), up 69% YoY.
+
+**Source:** NVIDIA Q1 FY2027 Earnings Preview, TIKR, 2026-05, https://www.tikr.com/blog/nvidia-stock-pulls-back-before-may-20-earnings-heres-what-the-1-trillion-demand-story-still-needs-to-prove; NVIDIA Newsroom FY2026 Annual Results, 2026-02-26, https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-fourth-quarter-and-fiscal-2026
+
+#segment:chip_maker #source-tier:B #signal-type:supply #company:nvidia #date:2026-Q1 #importance:high #confidence:high
+
+---
+
+### 2026-H2 — NVIDIA Vera Rubin NVL144: Volume Production H2 2026; Foxconn EVT Underway
+
+> NVIDIA Vera Rubin NVL144 rack packs 8 exaflops of AI performance and 100TB of fast memory. Foxconn has begun engineering validation testing (EVT) for the NVL144 MGX liquid-cooled rack. Mass production planned for the latter half of 2026. Vera Rubin promises 10x reduction in inference token cost versus Blackwell.
+
+**Source:** TechPowerUp, "NVIDIA Vera Rubin NVL144 Servers Set for 2026 Volume Production," 2026, https://www.techpowerup.com/342049/nvidia-vera-rubin-nvl144-servers-set-for-2026-volume-production
+
+#segment:chip_maker #source-tier:B #signal-type:roadmap #company:nvidia #date:2026 #importance:high #confidence:high #cross-ref:foundry
+
+---
+
+### 2026-02-06 — AMD MI450 Shipment Ramp: Small Q3, Sharp Q4 2026
+
+> AMD MI450 AI accelerator remains on schedule for volume production in H2 2026. Ramp weighted toward Q4, with small shipments beginning in Q3 2026. AMD guided a "2H26 turning point" in overall AI GPU revenue trajectory.
+
+**Source:** Digitimes, "AMD flags 2H26 turning point as MI450 shipments stay on track," 2026-02-06, https://www.digitimes.com/news/a20260206PD230/amd-shipments-2026-cpu-data-center.html
+
+#segment:chip_maker #source-tier:B #signal-type:supply #company:amd #date:2026-02-06 #importance:high #confidence:high
+
+---
+
+### 2026-Q2 — AMD MI450: TSMC 2nm, 432GB HBM4, 19.6 TB/s Bandwidth
+
+> AMD MI450 manufactured on TSMC 2nm process node. Each GPU features 432GB HBM4 (vs. 288GB HBM3e on MI350), with memory bandwidth of 19.6 TB/s (vs. 8 TB/s on MI350), a 145% improvement. Meta deal: $60B over five years for up to 6GW of MI450 GPUs, with a performance-based warrant for 160 million AMD shares (~10% of company) vesting at 1GW–6GW shipment milestones.
+
+**Source:** AMD MI400 Series Coverage, Tech-Insider.org, 2026, https://tech-insider.org/amd-mi400-series-ai-gpu-data-center-2026/; Digitimes AMD MI450 coverage, 2026-02-06
+
+#segment:chip_maker #source-tier:B #signal-type:roadmap #company:amd #company:meta #date:2026-Q2 #importance:high #confidence:medium #cross-ref:end_market
+
+---
+
+### 2026 — Intel Ends Gaudi Line; Gaudi 3 Is Final Standalone Accelerator
+
+> Intel's Gaudi product line is officially being retired. Gaudi 3, unveiled in 2024, is the final entry in Intel's standalone AI chip series. No Gaudi 4 planned. Intel's next AI platform, codenamed Jaguar Shores, is a rack-scale system integrating compute, networking, and memory — not a discrete accelerator — targeting 2026 launch. Jaguar Shores will use HBM4 memory (SK Hynix). Intel's strategic pivot is away from competing directly with NVIDIA/AMD in the discrete accelerator market.
+
+**Source:** PC Outlet, "Intel Ends Gaudi Line: What Jaguar Shores Means for the Future of AI Hardware," 2026, https://pcoutlet.com/software/ai/intel-ends-gaudi-line-what-jaguar-shores-means-for-the-future-of-ai-hardware; Tom's Hardware, "Jaguar Shores is the successor to Intel's Falcon Shores AI accelerators," 2026, https://www.tomshardware.com/tech-industry/artificial-intelligence/jaguar-shores-is-the-successor-to-intels-falcon-shores-ai-accelerators-gaudi-asics-and-xe-hpc-gpus-united-in-a-single-lineup
+
+#segment:chip_maker #source-tier:B #signal-type:roadmap #company:intel #date:2026 #importance:high #confidence:high
+
+---
+
 ## Open Questions
 
 - [ ] Vera Rubin (R100) detailed spec — TSMC N2? CoWoS-L next-gen? HBM4 configuration?
 - [ ] AMD MI450 custom specs for Meta vs. OpenAI — same chip or differentiated?
-- [ ] Intel Gaudi 3 / Falcon Shores — any remaining hyperscaler evaluation?
+- [ ] Intel Jaguar Shores — any hyperscaler evaluation or LOI disclosed?
+- [ ] NVIDIA Q1 FY2027 actual results — confirm $78B guidance hit (earnings 2026-05-20)
 - [ ] NVIDIA exclusion of China DC guidance — how large is the China revenue gap?

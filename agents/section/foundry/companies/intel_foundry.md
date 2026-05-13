@@ -74,6 +74,14 @@ Intel Foundry is vertically integrated — Intel designs, manufactures, and pack
 
 ## Updates
 
+### Update: 2026-03-17 — 18A yields 55–65%; industry standard not expected until end-2027; Panther Lake shipping Q1 2026
+
+> Intel 18A entered high-volume manufacturing in October 2025, but yields remain below profitable levels and will not reach desired cost thresholds until end of 2026 at the earliest. Yield estimates are between 55% and 65%; chip production only becomes profitable when the yield reaches the usual 70–80%. Intel Core Ultra Series 3 (Panther Lake) began shipping January 27, 2026 — the first Intel processors built entirely on the 18A process node; Panther Lake is the primary confirmed 18A commercial product. CFO David Zinsner stated Intel is reconsidering offering 18A to external foundry customers alongside 14A. The 18A-P PDK has been delivered to select customers for evaluation. Apple received Intel's 18A-P process PDK 0.9.1GA and is running internal simulations, with formal qualification expected when PDK 1.0 arrives, targeting entry-level M-series at an estimated 15–20M units/year. Tom's Hardware analysis states industry-standard yield levels not expected until 2027.
+
+**Source:** WinBuzzer, "Intel's 18A and 14A Bets Face Make-or-Break Year," 2026-03-17, https://winbuzzer.com/2026/03/17/intels-18a-14a-roadmap-2026-foundry-panther-lake-xcxwbn/; Tom's Hardware, "Intel's pivotal 18A process is making steady progress, but still lags behind — yields only set to reach industry standard levels in 2027," https://www.tomshardware.com/pc-components/cpus/intels-pivotal-18a-process-is-making-steady-progress-but-still-lags-behind-yields-only-set-to-reach-industry-standard-levels-in-2027; Intel Newsroom, "Intel Unveils Panther Lake Architecture," 2026-01-09, https://newsroom.intel.com/client-computing/intel-unveils-panther-lake-architecture-first-ai-pc-platform-built-on-18a
+
+#segment:foundry #source-tier:A #signal-type:yield #company:intel_foundry #date:2026-03-17 #importance:high #confidence:medium #cross-ref:chip_maker
+
 ### Update: 2025-04-25 — Q1 2025: Revenue $12.7B; Intel Foundry loss -$2.3B; 18A sampling only
 
 > Intel Q1 2025 earnings (April 25, 2025): total revenue $12.7B (-1% YoY). Intel Foundry revenue ~$4.7B with operating loss of approximately -$2.3B. CEO Pat Gelsinger confirmed 18A customer sampling is progressing. Gaudi AI accelerator revenue was not separately disclosed. Falcon Shores discrete GPU was cancelled. No external AI GPU design win at Intel Foundry was announced.

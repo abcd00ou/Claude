@@ -82,6 +82,14 @@ TSMC is a pure-play foundry — it manufactures chips for customers but does not
 
 ## Updates
 
+### Update: 2026-04-16 — Q1 2026 earnings: N2 HVM confirmed; CoWoS at 75K–80K wafers/month; 2026 target 120K–130K
+
+> N2 has already entered high-volume manufacturing in the fourth quarter of 2025 with good yield, and N2 is ramping successfully in multi-phases at both Hsinchu and Kaohsiung site, supported by strong demand from both smartphone and HPC AI applications. With the strategy of continuous enhancement, such as N2P and A16, TSMC expects the N2 family to be another large and long-lasting node. Regarding CoWoS advanced packaging, the company is building a CoPoS pilot line and expects production a couple of years later; today, the main approach remains large-sized CoWoS, and together with System on Wafer technology, TSMC provides customers the best options for their products in the market. TSMC targets monthly CoWoS output of 120,000–130,000 wafers by end-2026, up from 75,000–80,000 at end-2025. NVIDIA holds over 60% of total CoWoS capacity allocation for 2025–2026. TSMC's Chiayi AP7 complex is scheduled to become the world's largest advanced packaging hub, with multiple phases online through 2027.
+
+**Source:** TSMC Q1 2026 Earnings Call Transcript, Investing.com / Insider Monkey, 2026-04-16, https://www.insidermonkey.com/blog/taiwan-semiconductor-manufacturing-company-limited-nysetsm-q1-2026-earnings-call-transcript-1740195/; DigiTimes, "TSMC expands CoWoS capacity with Nvidia booking over half for 2026–27," 2025-12-10, https://www.digitimes.com/news/a20251210PD218/tsmc-cowos-capacity-nvidia-equipment.html
+
+#segment:foundry #source-tier:A #signal-type:capacity #company:tsmc #date:2026-04-16 #importance:high #confidence:high #cross-ref:chip_maker #cross-ref:substrate
+
 ### Update: 2026-04-16 — Q1 2026: revenue +35% YoY; HPC = 61% of revenue; advanced nodes 74% of wafer mix
 
 > Q1 2026 consolidated revenue NT$1,134.10B (~US$35.8B), +35.1% YoY. Net income NT$572.48B. Q2 2026 guidance: US$39.0B–$40.2B. Full-year 2026 revenue expected to increase "above 30% in US dollar terms." HPC accounted for 61% of Q1 2026 revenue. 3nm = 25%, 5nm = 36%, 7nm = 13%; advanced technologies (7nm+) = 74% of total wafer revenue.

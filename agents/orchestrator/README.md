@@ -1,7 +1,7 @@
 # Orchestrator Agent
 
 **Role:** Cross-segment synthesis and agent coordination  
-**Last Updated:** 2026-05-12
+**Last Updated:** 2026-05-13
 
 ---
 
@@ -17,18 +17,18 @@ cross-cutting signals that no single section agent can see alone.
 
 | Agent | Folder | Last Refresh |
 |---|---|---|
-| DRAM Expert | `section/dram/` | 2026-04-30 (Samsung Q1 2026) |
+| DRAM Expert | `section/dram/` | 2026-05-13 (Samsung Q1 2026 memory / HBM4 base-die — Cycle 6) |
 | Storage Expert | `section/storage/` | 2026-04-30 (Samsung Q1 2026) |
-| DC Infrastructure Expert | `section/dc_infra/` | 2026-04-29 (Hyperscaler Q1 2026) |
-| ASIC Expert | `section/asic/` | 2026-04-29 (Hyperscaler Q1 2026) |
-| Chip Maker Expert | `section/chip_maker/` | 2026-05-05 (AMD Q1 2026) |
-| Foundry & Packaging Expert | `section/foundry/` | 2026-05-12 (Samsung Foundry, Intel Foundry, packaging.md — Cycle 4) |
-| Network Expert | `section/network/` | 2026-05-12 (NVIDIA Networking, network roadmap, Q2 2025 update — Cycle 4) |
-| Power Semiconductor Expert | `section/power/` | 2025-05-07 (Infineon Q2 FY2025, MPS Q1 2025, onsemi Q1 2025) |
-| PCB & Substrate Expert | `section/substrate/` | 2026-05-12 (AT&S, Shinko Electric — Cycle 4) |
-| End Market Expert | `section/end_market/` | 2026-04-29 (Hyperscaler Q1 2026) |
-| Crawler Agent | `data/crawler/` | — |
-| Analysis Agent | `data/analysis.md` | — |
+| DC Infrastructure Expert | `section/dc_infra/` | 2026-05-13 (Microsoft Q3 FY2026 capex — Cycle 6) |
+| ASIC Expert | `section/asic/` | 2026-05-13 (Trainium3 + Ironwood GA — Cycle 6) |
+| Chip Maker Expert | `section/chip_maker/` | 2026-05-13 (NVIDIA Rubin production — Cycle 6) |
+| Foundry & Packaging Expert | `section/foundry/` | 2026-05-13 (Samsung 2nm / Amkor Arizona — Cycle 6) |
+| Network Expert | `section/network/` | 2026-05-13 (NVLink Fusion + UEC 1.0 — Cycle 6) |
+| Power Semiconductor Expert | `section/power/` | 2026-05-13 (DOE/NREL/WoodMac transformer constraints — Cycle 6) |
+| PCB & Substrate Expert | `section/substrate/` | 2026-05-13 (Amkor Arizona packaging campus — Cycle 6) |
+| End Market Expert | `section/end_market/` | 2026-05-13 (Microsoft/Meta/Amazon AI capex — Cycle 6) |
+| Crawler Agent | `data/crawler/` | 2026-05-13 (Cycle 6 extracted signals) |
+| Analysis Agent | `data/analysis/` | 2026-05-13 (Cycle 6 analysis report) |
 | DBA Agent | `data/dba.md` | — |
 
 ---
@@ -49,9 +49,9 @@ cross-cutting signals that no single section agent can see alone.
 | VRM, GaN, SiC, data center power | `power.md` |
 | ABF substrate, PCB supply | `substrate.md` |
 | AWS/Azure/GCP/Meta AI investment, CSP capex | `end_market.md` |
-| What sources to watch, crawl frequency | `data/crawler.md` |
-| Demand models, gap analysis, trend method | `data/analysis.md` |
-| File structure, tagging, versioning | `data/dba.md` |
+| What sources to watch, crawl frequency | `data/crawler/` |
+| Demand models, gap analysis, trend method | `data/analysis/` |
+| File structure, tagging, versioning | `data/dba/` |
 
 ### Cross-segment synthesis triggers
 
@@ -72,6 +72,24 @@ cross-cutting signals that no single section agent can see alone.
 ---
 
 ## Cross-Segment Synthesis
+
+
+### Update: 2026-05-13 — Cycle 6: Rubin deployment, NVLink Fusion, custom inference silicon, grid bottlenecks
+
+> Full synthesis in `synthesis/2026-05-13_cycle6.md`.
+> 6 new cross-segment signals (Signals 27–32). Key: Rubin is now a 2026 deployment event;
+> NVLink Fusion turns custom ASICs into NVIDIA-compatible infrastructure; Trainium3 and
+> Ironwood confirm inference-specific custom silicon is production grade; grid equipment remains
+> the physical critical path; U.S. advanced packaging capacity is coming but not early enough to
+> relieve 2026 CoWoS-class pressure. Cumulative 32 signals across 6 cycles.
+
+### Update: 2026-05-12 — Cycle 5: Full-section update logs; Rubin, HBM, transformer, ASIC refresh
+
+> Full synthesis in `synthesis/2026-05-12_cycle5.md`.
+> 5 new cross-segment signals (Signals 22–26). Key: Samsung HBM share collapsed to 17%;
+> Vera Rubin HBM4 load expands HBM TAM; Samsung SF2P 2nm yield became a credible second-source
+> watch item; power transformer lead times reached critical-path status; Google Ironwood and
+> Amazon Trainium3 confirmed the production custom-ASIC wave. Cumulative 26 signals across 5 cycles.
 
 ### Update: 2026-05-12 — Cycle 4: Foundry, storage, network, substrate, ASIC gap coverage; packaging deep-dive
 
@@ -123,10 +141,14 @@ Do not create the folder until it has been confirmed as a recurring, substantial
 
 ## Open Flags
 
-- [x] All 10 section agents now active (Cycle 2 complete)
-- [ ] Crawler source registry needs to be defined
-- [ ] Analysis frameworks need baseline demand model for 2025–2026
-- [ ] Network: Ultra Ethernet 1.0 production deployment — which hyperscalers in 2026?
-- [ ] Power: Wolfspeed SiC gap absorption — Infineon vs onsemi split not quantified
-- [ ] Substrate: Ibiden FY2027 new capacity — exact timeline and units needed
-- [ ] TSMC single-point-of-dependency risk: no formal risk model yet; flag for analysis agent
+- [x] All 10 section agents active (Cycle 2 complete)
+- [x] Crawler signal log created for Cycle 6: `data/crawler/signals/2026-05-13.md`
+- [x] Analysis report created for Cycle 6: `data/analysis/reports/2026-05-13_cycle6_analysis.md`
+- [ ] Samsung NVIDIA HBM3E / HBM4 qualification status — official confirmation still needed.
+- [ ] Vera Rubin NVL72 exact volume ramp by cloud provider and quarter in H2 2026.
+- [ ] AWS Trainium4 + NVLink Fusion technical disclosure and production timing.
+- [ ] Google Ironwood process node and external supply-chain partners remain undisclosed in official Google materials.
+- [ ] UEC 1.0 first named hyperscaler production deployment.
+- [ ] Power transformer manufacturing capacity response: vendors, qualified shipment timing, and policy support.
+- [ ] Amkor Arizona exact packaging technology mix and CoWoS-class qualification evidence.
+- [ ] Wolfspeed post-restructuring SiC customer retention and share split versus Infineon/onsemi.

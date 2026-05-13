@@ -73,6 +73,24 @@ Samsung Foundry competes directly with TSMC for leading-edge logic orders. Its p
 
 ## Updates
 
+### Update: 2026-04-14 — SF2 2nm yield ~55%, below mass-production threshold; Qualcomm selects TSMC N2P
+
+> Samsung Foundry's 2nm yields remain in the mid-50% range (~55%), falling short of the roughly 60% threshold typically required for stable mass production. Post-backend processing reduces effective yield to approximately 40%. Qualcomm selected TSMC's 2nm (N2P) process for full production of its next-generation flagship Snapdragon 8 Elite 6th Gen rather than Samsung, though Samsung continues supplying 2nm prototypes for validation. Tesla has a secured order for autonomous driving chips (AI5, AI6) on Samsung 2nm. DeepX plans to mass-produce its DX-M2 chip on Samsung 2nm in 2027.
+
+**Source:** TrendForce, "Samsung 2nm Yields Reportedly at ~55%, Below Mass Production Threshold; Qualcomm May Opt for TSMC," 2026-04-14, https://www.trendforce.com/news/2026/04/14/news-samsung-2nm-yields-reportedly-at-55-below-mass-production-threshold-qualcomm-may-opt-for-tsmc/
+
+#segment:foundry #source-tier:B #signal-type:yield #company:samsung_foundry #date:2026-04-14 #importance:high #confidence:medium #cross-ref:chip_maker
+
+### Update: 2026-01-30 — SF2P (performance-optimized 2nm) reaches 70% yield milestone
+
+> Samsung confirmed that its performance-optimized 2nm node, known as SF2P, has successfully hit the 70% yield threshold required for stable mass production. Qualcomm and AMD were reportedly in final negotiations to shift significant portions of their 2nm roadmap to Samsung Foundry as of late January 2026.
+
+**Source:** TokenRing / FinancialContent, "Samsung Hits 70% Yield on 2nm GAA (SF2P): A Turning Point for the AI Chip Supply Chain," 2026-01-30, https://markets.financialcontent.com/stocks/article/tokenring-2026-1-30-samsung-hits-70-yield-on-2nm-gaa-sf2p-a-turning-point-for-the-ai-chip-supply-chain
+
+Note: The January SF2P 70% claim and the April ~55% report conflict. April TrendForce data is more recent and is from a higher-consistency industry source. Both are recorded; analyst reconciliation needed. #confidence:low for January figure.
+
+#segment:foundry #source-tier:B #signal-type:yield #company:samsung_foundry #date:2026-01-30 #importance:medium #confidence:low #cross-ref:chip_maker
+
 ### Update: 2025-04-30 — Q1 2026: DS Division OP KRW 53.7T; foundry yield gap ongoing
 
 > Samsung Electronics Q1 2026 earnings disclosed DS (Device Solutions) operating profit of KRW 53.7T, with the foundry segment still reporting losses. Samsung noted that 2027 HBM shortage will be "more severe than 2026." No AI GPU foundry win was disclosed. SF3E yield gap versus TSMC N3 remains unquantified in official filings.
