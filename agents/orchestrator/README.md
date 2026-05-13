@@ -1,7 +1,7 @@
 # Orchestrator Agent
 
 **Role:** Cross-segment synthesis and agent coordination  
-**Last Updated:** 2026-05-13
+**Last Updated:** 2026-05-13 (Cycle 7)
 
 ---
 
@@ -17,18 +17,18 @@ cross-cutting signals that no single section agent can see alone.
 
 | Agent | Folder | Last Refresh |
 |---|---|---|
-| DRAM Expert | `section/dram/` | 2026-05-13 (Samsung Q1 2026 memory / HBM4 base-die — Cycle 6) |
+| DRAM Expert | `section/dram/` | 2026-05-13 (Samsung HBM3E qual + SK Hynix HBM4 ramp delay — Cycle 7) |
 | Storage Expert | `section/storage/` | 2026-04-30 (Samsung Q1 2026) |
-| DC Infrastructure Expert | `section/dc_infra/` | 2026-05-13 (Microsoft Q3 FY2026 capex — Cycle 6) |
-| ASIC Expert | `section/asic/` | 2026-05-13 (Trainium3 + Ironwood GA — Cycle 6) |
-| Chip Maker Expert | `section/chip_maker/` | 2026-05-13 (NVIDIA Rubin production — Cycle 6) |
-| Foundry & Packaging Expert | `section/foundry/` | 2026-05-13 (Samsung 2nm / Amkor Arizona — Cycle 6) |
-| Network Expert | `section/network/` | 2026-05-13 (NVLink Fusion + UEC 1.0 — Cycle 6) |
-| Power Semiconductor Expert | `section/power/` | 2026-05-13 (DOE/NREL/WoodMac transformer constraints — Cycle 6) |
-| PCB & Substrate Expert | `section/substrate/` | 2026-05-13 (Amkor Arizona packaging campus — Cycle 6) |
-| End Market Expert | `section/end_market/` | 2026-05-13 (Microsoft/Meta/Amazon AI capex — Cycle 6) |
-| Crawler Agent | `data/crawler/` | 2026-05-13 (Cycle 6 extracted signals) |
-| Analysis Agent | `data/analysis/` | 2026-05-13 (Cycle 6 analysis report) |
+| DC Infrastructure Expert | `section/dc_infra/` | 2026-05-13 (Transformer crisis + grid interconnection — Cycle 7) |
+| ASIC Expert | `section/asic/` | 2026-05-13 (Trainium4 + MTIA-N2 + xAI Colossus — Cycle 7) |
+| Chip Maker Expert | `section/chip_maker/` | 2026-05-13 (GB300 shipping + first NVL72 cluster — Cycle 7) |
+| Foundry & Packaging Expert | `section/foundry/` | 2026-05-13 (Ironwood N3P + CoWoS OSAT overflow + Powertech — Cycle 7) |
+| Network Expert | `section/network/` | 2026-05-13 (Ethernet > IB + Oracle UE1.0 + NVIDIA $2B Marvell — Cycle 7) |
+| Power Semiconductor Expert | `section/power/` | 2026-05-13 (Wolfspeed Ch.11 + transformer 4yr lead times + GaN GTC2026 — Cycle 7) |
+| PCB & Substrate Expert | `section/substrate/` | 2026-05-13 (Amkor-TSMC MOU + ASE CoWoP + Powertech glass — Cycle 7) |
+| End Market Expert | `section/end_market/` | 2026-05-13 (Meta-AMD $60B + $830B total CSP capex — Cycle 7) |
+| Crawler Agent | `data/crawler/` | 2026-05-13 (Cycle 7 extracted signals — 19 new signals) |
+| Analysis Agent | `data/analysis/` | 2026-05-13 (Cycle 7 analysis report) |
 | DBA Agent | `data/dba.md` | — |
 
 ---
@@ -73,6 +73,11 @@ cross-cutting signals that no single section agent can see alone.
 
 ## Cross-Segment Synthesis
 
+
+### Update: 2026-05-13 — Cycle 7: HBM duopoly confirmed, GB300+Rubin dual ramp, Ethernet overtakes IB, $830B CSP capex
+
+> Full synthesis in `synthesis/2026-05-13_cycle7.md`.
+> 7 new cross-segment signals (Signals 33–39). Key: Samsung HBM3E qualification closes the open flag — HBM4 for Vera Rubin is a SK Hynix/Samsung duopoly, Micron excluded. GB300 and Vera Rubin are running simultaneously in H2 2026, creating unprecedented dual-platform pressure. Ethernet overtook InfiniBand (>2/3 of AI cluster switch sales in FY2025) but NVIDIA repositions above the fabric layer via NVLink Fusion ($2B Marvell investment). U.S. transformer lead times now up to 4 years — power infrastructure is the single longest lead-time constraint. Meta-AMD 6 GW deal (~$60B) is the most credible NVIDIA diversification to date. Total 2026 AI infrastructure capex by top-9 CSPs: $830B. Cumulative 39 signals across 7 cycles.
 
 ### Update: 2026-05-13 — Cycle 6: Rubin deployment, NVLink Fusion, custom inference silicon, grid bottlenecks
 

@@ -5,6 +5,35 @@ Running log of all completed intelligence cycles. Updated at end of each cycle.
 ---
 
 
+## Cycle 7 — 2026-05-13
+
+**Status:** Complete  
+**Synthesis:** `synthesis/2026-05-13_cycle7.md`  
+**Type:** Research Cycle (9-agent parallel extensive research mode)  
+**Update logs updated:** All 9 sections (dram, chip_maker, power, foundry, network, asic, end_market, dc_infra, substrate)  
+**Data agent outputs:** `data/crawler/signals/2026-05-13_cycle7.md`; `data/analysis/reports/2026-05-13_cycle7_analysis.md`  
+**Signals generated:** 7 new cross-segment signals (Signals 33–39)
+
+**Key findings:**
+- Samsung HBM3E NVIDIA qualification closed (Sept 2025); Samsung ~30% and SK Hynix ~70% confirmed as sole Vera Rubin HBM4 suppliers; Micron excluded from Rubin.
+- NVIDIA GB300 shipping since January 2026 (ahead of schedule); Microsoft deployed first large-scale GB300 NVL72 cluster (4,608 GPUs, 92.1 ExaFLOPS) in February 2026. GB300 and Vera Rubin NVL72 both ramping simultaneously in H2 2026.
+- Ethernet overtook InfiniBand — >2/3 of AI cluster switch sales in FY2025 (Dell'Oro Group). Oracle is first confirmed UE 1.0 production deployment. NVIDIA invested $2B in Marvell to embed NVLink Fusion inside custom ASIC designs.
+- U.S. power transformer lead times extended to 4 years in some segments (pv magazine, May 11, 2026); up to 50% of 2026 U.S. data center builds delayed. No new U.S. transformer plant comes online before 2027. Grid interconnection queues: 5-7 years in some U.S. regions.
+- Meta-AMD strategic partnership: 6 GW of AMD MI450 GPUs (~$60B over 5 years); Meta takes 10% AMD equity stake. Meta MTIA next-gen on TSMC N2 — first AI accelerator on 2nm.
+- Wolfspeed emerged from Chapter 11 (Sept 2025); $4.6B debt eliminated; Mohawk Valley fab production continuing.
+- TrendForce: Top-9 CSP 2026 capex = $830B. US Big 4 alone: ~$695-755B.
+
+**Open flags carried to Cycle 8:**
+- Vera Rubin NVL72 exact Q3 vs Q4 2026 availability by cloud provider
+- Google TPU 8th gen (Sunfish/Zebrafish) TSMC N2 qualification timeline
+- AMD MI450 volume ramp confirmation and initial Meta deployment
+- First AWS/Google/Microsoft confirmed production UE 1.0 deployment
+- Wolfspeed Mohawk Valley market share trajectory
+- Meta MTIA 450 (TSMC N2) tape-out status
+- FERC/utility regulatory reforms for AI datacenter grid interconnection
+
+---
+
 ## Cycle 6 — 2026-05-13
 
 **Status:** Complete  
