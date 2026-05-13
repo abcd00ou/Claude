@@ -4,7 +4,7 @@
 **Role in AI SCM:** Leading provider of liquid cooling, UPS, and power distribution for AI data centers  
 **HQ:** Columbus, Ohio, USA  
 **Ticker:** NYSE:VRT  
-**Last Updated:** 2026-05-01
+**Last Updated:** 2026-05-13
 
 ---
 
@@ -32,9 +32,12 @@ Vertiv is the leading supplier of critical data center infrastructure: liquid co
 
 | Metric | Value | Period | Source |
 |---|---|---|---|
+| Revenue | $2,650M (+30% YoY) | Q1 2026 | Vertiv Q1 2026 Earnings, 2026-05-01 |
+| Backlog | $12.45B (+80.8% YoY) | 2026-03-31 | Vertiv Q1 2026 Earnings, 2026-05-01 |
+| Adj. Operating Margin | 20.8% (+430 bps YoY) | Q1 2026 | Vertiv Q1 2026 Earnings, 2026-05-01 |
+| FY2026 Revenue Guidance | $13.5–14.0B (~30% organic) | FY2026 | Vertiv Q1 2026 Earnings, 2026-05-01 |
 | Revenue | $2.356B (+9% YoY) | Q1 2025 | Vertiv Q1 2025 Earnings, 2025-04-23 |
-| Orders | $3.3B (+30% YoY) | Q1 2025 | Vertiv Q1 2025 Earnings, 2025-04-23 |
-| Backlog | $8.0B | End of Q1 2025 | Vertiv Q1 2025 Earnings, 2025-04-23 |
+| Backlog | $8.0B | 2025-03-31 | Vertiv Q1 2025 Earnings, 2025-04-23 |
 | FY2025 Revenue Guidance | ~$9.3B | FY2025 | Vertiv Q1 2025 Earnings, 2025-04-23 |
 
 ---
@@ -58,13 +61,13 @@ Vertiv designs and manufactures power and cooling equipment. It is not semicondu
 
 ## Updates
 
-### Update: 2026-05-01 — Q1 2026: Backlog $12.45B (+81% YoY); Earnings +83%; FY2026 Guidance $13.25–13.75B
+### Update: 2026-05-01 — Q1 2026: Revenue $2.65B (+30% YoY); Backlog $12.45B (+81% YoY); Adjusted EPS +83%; FY2026 Guidance Raised to $13.5–14.0B
 
-> Vertiv Q1 2026 earnings (reported May 1, 2026): earnings rose 83% year-over-year. Order backlog as of March 31, 2026: $12.45B (+80.8% YoY), with a 12–18 month conversion horizon. FY2025 revenue approximately $10.2B; adjusted operating margins expanded 430 basis points to 20.8%; free cash flow $1.8B. FY2026 revenue guidance raised to $13.25–13.75B (27–29% organic growth, some sources citing ~30%). AI clusters hitting 120–300 kW per rack are driving DLC into mandatory territory, with liquid cooling now dominating new AI data center deployments.
+> Vertiv Q1 2026 net sales: $2,650M, +$614M / +30% YoY (23% organic, 4% acquisition, 3% FX). Adjusted diluted EPS +83% YoY; diluted EPS +136% YoY. Backlog as of 2026-03-31: $12.45B, +80.8% YoY, with 12–18 month revenue conversion horizon. Adjusted operating margins expanded 430 bps to 20.8%. Operating cash flow $767M; adjusted free cash flow $653M (+147% YoY). FY2026 net sales guidance raised to $13.5–14.0B (implying ~30% organic growth). Liquid cooling described as "default for new AI data center designs." Management cited $15B backlog figure as the broader pipeline including near-term pipeline.
 
-**Source:** Motley Fool, 2026-05-01; Seeking Alpha; SimplyWallSt; FinancialContent
+**Source:** Vertiv Q1 2026 Earnings Press Release, Vertiv Investor Relations, 2026-05-01, https://investors.vertiv.com/news/news-details/2026/Vertiv-Reports-Strong-First-Quarter-with-Diluted-EPS-Growth-of-136-Adjusted-Diluted-EPS-Growth-of-83-Raises-Full-Year-Guidance/default.aspx; corroborated by Motley Fool 2026-05-01, Seeking Alpha
 
-#segment:dc_infra #source-tier:B #signal-type:demand #company:vertiv #date:2026-05-01 #importance:high #confidence:high
+#segment:dc_infra #source-tier:A #signal-type:demand #company:vertiv #date:2026-05-01 #importance:high #confidence:high
 
 ---
 
