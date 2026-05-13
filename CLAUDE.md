@@ -72,7 +72,9 @@ supply/demand balance, key players, pricing trends, technology roadmap, and sale
 | Network Expert | `agents/section/network.md` | InfiniBand, Ethernet, Spectrum-X, AI cluster interconnects |
 | Power Semiconductor Expert | `agents/section/power.md` | VRM, GaN, SiC — AI data center power chain |
 | PCB & Substrate Expert | `agents/section/substrate.md` | ABF substrates, HDI PCB, supply constraints |
-| End Market Expert | `agents/section/end_market.md` | Hyperscalers (AWS, Azure, GCP, Meta), CSP AI capex trends |
+| End Market Expert | `agents/section/end_market.md` | Hyperscalers (AWS, Azure, GCP, Meta, xAI), CSP AI capex trends |
+| Equipment Expert | `agents/section/equipment/` | ASML, AMAT, Lam, KLA, TEL — fab equipment gating AI chip capacity |
+| Photonics Expert | `agents/section/photonics/` | Optical interconnects, CPO, 800G/1.6T transceivers (Coherent, Lumentum, Fabrinet) |
 
 **Each section MD file structure:**
 ```

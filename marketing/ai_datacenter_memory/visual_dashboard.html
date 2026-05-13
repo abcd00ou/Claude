@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Datacenter Memory Revenue Dashboard</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17202a;
+      --muted: #64707d;
+      --line: #d9e0e7;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --navy: #19324d;
+      --teal: #1f7a7a;
+      --green: #3b7d4f;
+      --red: #b94545;
+      --amber: #b7791f;
+      --violet: #6f5ca8;
+      --steel: #55718d;
+      --shadow: 0 10px 26px rgba(35, 50, 70, 0.10);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+    button, select { font: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    .topbar-inner {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 14px 22px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.2;
+      font-weight: 780;
+      color: var(--navy);
+    }
+    .subtitle {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .filters {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    select, .mini-button {
+      height: 34px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 0 10px;
+    }
+    .mini-button {
+      cursor: pointer;
+      font-weight: 650;
+    }
+    main {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 18px 22px 42px;
+    }
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(170px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .kpi {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      box-shadow: var(--shadow);
+      min-height: 92px;
+    }
+    .kpi-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 680;
+      text-transform: uppercase;
+    }
+    .kpi-value {
+      font-size: 28px;
+      line-height: 1.1;
+      margin-top: 8px;
+      font-weight: 800;
+    }
+    .kpi-note {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 6px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(380px, 0.65fr);
+      gap: 16px;
+      align-items: start;
+    }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+    }
+    .section-head {
+      padding: 13px 15px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    h2 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 15px;
+      font-weight: 780;
+    }
+    .section-note {
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .chart-wrap { padding: 14px 15px 16px; }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 136px 1fr 44px;
+      gap: 10px;
+      align-items: center;
+      min-height: 30px;
+      margin: 5px 0;
+    }
+    .bar-label {
+      font-size: 12px;
+      color: var(--ink);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .bar-track {
+      height: 18px;
+      background: #edf1f5;
+      border-radius: 5px;
+      overflow: hidden;
+      border: 1px solid #dfe6ec;
+    }
+    .bar {
+      height: 100%;
+      border-radius: 4px;
+      min-width: 3px;
+    }
+    .bar-value {
+      color: var(--muted);
+      font-size: 12px;
+      text-align: right;
+    }
+    .account-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(240px, 1fr));
+      gap: 10px;
+      padding: 14px;
+    }
+    .account-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fff;
+      min-height: 160px;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 8px;
+    }
+    .account-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: start;
+      font-weight: 760;
+      color: var(--navy);
+    }
+    .rank {
+      min-width: 28px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      background: #e9eef4;
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .tag {
+      border-radius: 5px;
+      border: 1px solid var(--line);
+      padding: 3px 6px;
+      font-size: 11px;
+      color: var(--ink);
+      background: #f8fafc;
+      max-width: 100%;
+    }
+    .tag.motion-attack { color: #8f2f2f; background: #fff0f0; border-color: #f0cbcb; }
+    .tag.motion-expand { color: #29653a; background: #edf8f0; border-color: #cae8d2; }
+    .tag.motion-defend { color: #7b5619; background: #fff6df; border-color: #edd89d; }
+    .tag.motion-watch { color: #515e6c; background: #f1f4f7; border-color: #d7dfe7; }
+    .signal {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    .action {
+      border-top: 1px solid var(--line);
+      padding-top: 8px;
+      font-size: 12px;
+      line-height: 1.35;
+    }
+    .matrix {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    .matrix th {
+      text-align: left;
+      color: var(--muted);
+      font-size: 11px;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--line);
+      padding: 9px 10px;
+      background: #f8fafc;
+    }
+    .matrix td {
+      padding: 9px 10px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+    .matrix tr:last-child td { border-bottom: 0; }
+    .priority {
+      width: 28px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      background: var(--navy);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 800;
+    }
+    .timeline {
+      padding: 14px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+    .day {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      min-height: 122px;
+      background: #fff;
+    }
+    .day-title {
+      font-size: 12px;
+      color: var(--muted);
+      text-transform: uppercase;
+      font-weight: 750;
+    }
+    .day-item {
+      margin-top: 8px;
+      font-size: 12px;
+      line-height: 1.35;
+      color: var(--ink);
+    }
+    .heatmap {
+      display: grid;
+      grid-template-columns: 120px repeat(5, 1fr);
+      gap: 6px;
+      padding: 14px;
+      align-items: stretch;
+    }
+    .heat-label, .heat-cell {
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      padding: 7px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+    .heat-label { color: var(--navy); font-weight: 740; background: #f4f7fa; }
+    .heat-cell {
+      justify-content: center;
+      border: 1px solid var(--line);
+      color: #fff;
+      font-weight: 750;
+    }
+    .level-0 { background: #dfe6ec; color: #53606c; }
+    .level-1 { background: #86a7bd; }
+    .level-2 { background: #3f7d8e; }
+    .level-3 { background: #1f7a7a; }
+    .level-4 { background: #b7791f; }
+    .empty {
+      padding: 24px;
+      color: var(--muted);
+      text-align: center;
+    }
+    @media (max-width: 1100px) {
+      .grid, .topbar-inner { grid-template-columns: 1fr; }
+      .filters { justify-content: flex-start; }
+      .kpis { grid-template-columns: repeat(2, minmax(160px, 1fr)); }
+      .account-grid { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: 1fr; }
+      .heatmap { grid-template-columns: 105px repeat(5, minmax(62px, 1fr)); overflow-x: auto; }
+    }
+    @media (max-width: 640px) {
+      main { padding: 12px; }
+      .topbar-inner { padding: 12px; }
+      .kpis { grid-template-columns: 1fr; }
+      h1 { font-size: 19px; }
+      .section-head { align-items: start; flex-direction: column; }
+      .section-note { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div>
+        <h1>AI Datacenter Memory Revenue Dashboard</h1>
+        <div class="subtitle">Revenue OS visualization for HBM, DDR5/MRDIMM, enterprise SSD, KV SSD, and CXL actions</div>
+      </div>
+      <div class="filters" aria-label="dashboard filters">
+        <select id="motionFilter" title="Filter by revenue motion">
+          <option value="All">All motions</option>
+          <option value="Attack">Attack</option>
+          <option value="Defend">Defend</option>
+          <option value="Expand">Expand</option>
+          <option value="Watch">Watch</option>
+        </select>
+        <select id="groupFilter" title="Filter by buying group">
+          <option value="All">All groups</option>
+        </select>
+        <select id="windowFilter" title="Filter by decision window">
+          <option value="All">All windows</option>
+          <option value="0-90 days">0-90 days</option>
+          <option value="0-180 days">0-180 days</option>
+          <option value="3-6 months">3-6 months</option>
+          <option value="3-9 months">3-9 months</option>
+          <option value="6-18 months">6-18 months</option>
+        </select>
+        <button class="mini-button" id="resetFilters">Reset</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="kpis">
+      <div class="kpi">
+        <div class="kpi-label">Filtered Accounts</div>
+        <div class="kpi-value" id="kpiAccounts">20</div>
+        <div class="kpi-note">Top account board</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">0-90 Day Actions</div>
+        <div class="kpi-value" id="kpiUrgent">0</div>
+        <div class="kpi-note">Immediate commercial work</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Attack Motions</div>
+        <div class="kpi-value" id="kpiAttack">0</div>
+        <div class="kpi-note">Displacement or new design-in</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">Products Covered</div>
+        <div class="kpi-value" id="kpiProducts">5</div>
+        <div class="kpi-note">HBM, DDR5, SSD, KV SSD, CXL</div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div>
+        <section>
+          <div class="section-head">
+            <h2>Priority Account Board</h2>
+            <div class="section-note">Filterable account actions ranked by revenue urgency</div>
+          </div>
+          <div class="account-grid" id="accountGrid"></div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <h2>Active Action Tracker</h2>
+            <div class="section-note">First execution wave</div>
+          </div>
+          <table class="matrix" id="actionsTable">
+            <thead>
+              <tr>
+                <th>ID</th><th>Priority</th><th>Account</th><th>Motion</th><th>Product</th><th>Status</th><th>Next Step</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <h2>Weekly Launch Sequence</h2>
+            <div class="section-note">Campaign launch rhythm</div>
+          </div>
+          <div class="timeline" id="timeline"></div>
+        </section>
+      </div>
+
+      <aside>
+        <section>
+          <div class="section-head">
+            <h2>Revenue Motions</h2>
+            <div class="section-note">Account count</div>
+          </div>
+          <div class="chart-wrap" id="motionChart"></div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <h2>Buying Groups</h2>
+            <div class="section-note">Coverage mix</div>
+          </div>
+          <div class="chart-wrap" id="groupChart"></div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <h2>Money Signals</h2>
+            <div class="section-note">Signal to product/action</div>
+          </div>
+          <table class="matrix" id="signalsTable">
+            <thead><tr><th>Signal</th><th>Product</th><th>Action</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </section>
+      </aside>
+    </div>
+
+    <section>
+      <div class="section-head">
+        <h2>Product-To-Account Coverage Heatmap</h2>
+        <div class="section-note">Higher score means stronger fit in the current execution wave</div>
+      </div>
+      <div class="heatmap" id="heatmap"></div>
+    </section>
+  </main>
+
+  <script>
+    const accounts = [
+      {rank:1, account:"Microsoft / Azure", group:"Hyperscaler", signal:"Q3 FY2026 capex $31.9B; Azure demand exceeds capacity", platform:"NVIDIA Rubin/Blackwell, Maia, Azure AI inference", products:["HBM4","DDR5/MRDIMM","enterprise SSD","CXL"], risk:"Capacity and component pricing pressure", window:"0-90 days", motion:"Expand", action:"Build Azure AI memory bottleneck brief: HBM allocation + DDR5 + AI SSD bundle"},
+      {rank:2, account:"Amazon / AWS", group:"Hyperscaler", signal:"AWS landed 2.1M+ AI chips; Trainium3 GA", platform:"Trainium3, Trainium4 watch, NVIDIA instances", products:["HBM3e/HBM4","DDR5","QLC/KV SSD"], risk:"Custom ASIC HBM load and AI storage growth", window:"0-90 days", motion:"Expand", action:"Create Trainium memory attach map and storage TCO pitch"},
+      {rank:3, account:"Google / GCP", group:"Hyperscaler", signal:"Ironwood GA; TPU pods scale to 9,216 chips", platform:"TPU Ironwood, inference-heavy AI", products:["HBM3E/HBM4","DDR5","AI SSD","CXL"], risk:"Process node and supply-chain partners undisclosed", window:"0-90 days", motion:"Attack", action:"Prepare TPU memory roadmap alignment brief and CXL expansion thesis"},
+      {rank:4, account:"Meta", group:"Hyperscaler", signal:"2026 capex $115-135B; MTIA Gen 2 production", platform:"MTIA inference, NVIDIA GPU fleet", products:["HBM","DDR5","enterprise SSD","KV SSD"], risk:"Higher component pricing cited", window:"0-90 days", motion:"Expand", action:"Launch agentic AI memory/storage pitch around continuous inference"},
+      {rank:5, account:"NVIDIA", group:"Accelerator Vendor", signal:"Rubin in full production; NVL72 H2 2026 partner availability", platform:"Rubin NVL72, Blackwell, NVLink Fusion", products:["HBM4/HBM4E","base die","validation support"], risk:"HBM and CoWoS-class bottleneck", window:"0-180 days", motion:"Defend/Attack", action:"Build HBM4/HBM4E qualification proof pack and roadmap lock-in narrative"},
+      {rank:6, account:"AMD", group:"Accelerator Vendor", signal:"MI450/MI455 watch; HBM4 collaboration signals", platform:"Instinct MI series, EPYC AI servers", products:["HBM4","DDR5/MRDIMM","CXL"], risk:"Needs credible NVIDIA alternative supply story", window:"0-180 days", motion:"Attack", action:"Create AMD memory co-marketing plan for open ecosystem AI infrastructure"},
+      {rank:7, account:"Oracle Cloud", group:"Hyperscaler / Cloud", signal:"Named Rubin deployment partner", platform:"NVIDIA GPU cloud, sovereign AI", products:["HBM4","DDR5","enterprise SSD"], risk:"Rapid cloud capacity build", window:"0-180 days", motion:"Expand", action:"Account brief for GPU-cloud memory bundle and LTA timing"},
+      {rank:8, account:"CoreWeave", group:"Neo-cloud", signal:"Structural AI compute layer; NVIDIA-heavy", platform:"GPU cloud, OpenAI/Microsoft workloads", products:["HBM4","DDR5","enterprise SSD"], risk:"Funding/capacity execution risk", window:"0-180 days", motion:"Expand", action:"Build neo-cloud storage and DDR5 attach play"},
+      {rank:9, account:"Lambda", group:"Neo-cloud", signal:"Named Rubin partner", platform:"GPU cloud, developer AI workloads", products:["HBM4","DDR5","enterprise SSD"], risk:"Differentiation versus larger neo-clouds", window:"3-6 months", motion:"Attack", action:"Low-friction qualification kit for AI server memory/storage"},
+      {rank:10, account:"Nebius", group:"Neo-cloud", signal:"Named Rubin partner", platform:"European AI cloud", products:["HBM4","DDR5","enterprise SSD"], risk:"Regional supply and sovereign demand", window:"3-6 months", motion:"Attack", action:"Sovereign AI memory availability pitch"},
+      {rank:11, account:"Nscale", group:"Neo-cloud", signal:"Named Rubin partner", platform:"AI cloud scale-out", products:["HBM4","DDR5","enterprise SSD"], risk:"Build-out execution risk", window:"3-6 months", motion:"Watch/Attack", action:"Monitor Rubin deployment timing; prepare account starter kit"},
+      {rank:12, account:"Dell", group:"AI Server OEM", signal:"Enterprise AI server channel", platform:"NVIDIA/AMD AI servers", products:["DDR5/MRDIMM","enterprise SSD","CXL"], risk:"OEM qualification cycles", window:"0-180 days", motion:"Expand", action:"Server platform attach-rate battlecard"},
+      {rank:13, account:"HPE", group:"AI Server OEM", signal:"Enterprise and sovereign AI", platform:"AI servers, liquid-cooled racks", products:["DDR5/MRDIMM","enterprise SSD","CXL"], risk:"Enterprise qualification timing", window:"0-180 days", motion:"Expand", action:"Enterprise AI proof sheet: reliability + memory density"},
+      {rank:14, account:"Supermicro", group:"AI Server OEM/ODM", signal:"Fast AI server ramp", platform:"NVIDIA/AMD rack systems", products:["DDR5","enterprise SSD","CXL"], risk:"Component availability", window:"0-90 days", motion:"Attack", action:"Fast-qualification SKU list for AI server BOMs"},
+      {rank:15, account:"Quanta", group:"ODM", signal:"Hyperscaler server build", platform:"Cloud AI servers", products:["DDR5","enterprise SSD"], risk:"Hyperscaler-driven BOM control", window:"3-6 months", motion:"Expand", action:"ODM design-in checklist and proof pack"},
+      {rank:16, account:"Wiwynn", group:"ODM", signal:"Hyperscaler AI server build", platform:"Cloud AI servers", products:["DDR5","enterprise SSD"], risk:"Customer-directed component list", window:"3-6 months", motion:"Expand", action:"Attach plan by hyperscaler end customer"},
+      {rank:17, account:"Foxconn", group:"ODM", signal:"AI server manufacturing scale", platform:"Cloud and sovereign AI servers", products:["DDR5","enterprise SSD","CXL"], risk:"Scale and qualification complexity", window:"3-6 months", motion:"Watch/Attack", action:"Map AI server platforms to memory BOM decisions"},
+      {rank:18, account:"Broadcom", group:"ASIC / Network Vendor", signal:"Custom ASIC and networking supplier", platform:"Hyperscaler ASIC, Ethernet fabrics", products:["HBM","DDR5","CXL","SSD"], risk:"Customer-specific ASIC programs", window:"3-9 months", motion:"Attack", action:"Custom ASIC memory roadmap session"},
+      {rank:19, account:"Marvell", group:"ASIC / Network Vendor", signal:"NVLink Fusion partnership with NVIDIA", platform:"Custom XPUs, scale-up networking", products:["HBM","DDR5","CXL"], risk:"Competes and partners in custom ASIC stack", window:"3-9 months", motion:"Attack", action:"NVLink Fusion memory attach narrative"},
+      {rank:20, account:"Sovereign AI Programs", group:"Enterprise / Public Sector", signal:"Saudi/UAE/Japan programs, regional AI infrastructure", platform:"NVIDIA GPU clusters, local clouds", products:["HBM indirectly","DDR5","enterprise SSD","CXL"], risk:"Procurement opacity, localization rules", window:"6-18 months", motion:"Watch/Expand", action:"Regional partner brief: availability, reliability, local support"}
+    ];
+
+    const actions = [
+      {id:"ACT-001", priority:1, account:"Microsoft / Azure", motion:"Expand", product:"HBM4 + DDR5/MRDIMM + enterprise SSD", status:"Draft", next:"Review with Azure account lead"},
+      {id:"ACT-002", priority:2, account:"AWS", motion:"Expand", product:"HBM3e/HBM4 + AI SSD", status:"Draft", next:"Validate Trainium memory assumptions"},
+      {id:"ACT-003", priority:3, account:"Google / GCP", motion:"Attack", product:"HBM + CXL + AI SSD", status:"Draft", next:"Confirm GCP account owner"},
+      {id:"ACT-004", priority:4, account:"Meta", motion:"Expand", product:"HBM + DDR5 + KV SSD", status:"Draft", next:"Align with Meta sales team"},
+      {id:"ACT-005", priority:5, account:"NVIDIA", motion:"Defend/Attack", product:"HBM4/HBM4E", status:"Draft", next:"Review latest QVL status"},
+      {id:"ACT-006", priority:6, account:"AMD", motion:"Attack", product:"HBM4 + DDR5/MRDIMM + CXL", status:"Planned", next:"Draft AMD account brief"},
+      {id:"ACT-007", priority:7, account:"Supermicro", motion:"Attack", product:"DDR5/MRDIMM + enterprise SSD", status:"Draft", next:"Map current AI server BOMs"},
+      {id:"ACT-008", priority:8, account:"Dell/HPE", motion:"Expand", product:"DDR5/MRDIMM + enterprise SSD + CXL", status:"Planned", next:"Create OEM joint battlecard"},
+      {id:"ACT-009", priority:9, account:"CoreWeave", motion:"Expand", product:"DDR5 + enterprise SSD", status:"Planned", next:"Validate active GPU platform mix"},
+      {id:"ACT-010", priority:10, account:"Oracle Cloud", motion:"Expand", product:"HBM4 + DDR5 + enterprise SSD", status:"Planned", next:"Confirm Rubin deployment timing"}
+    ];
+
+    const signals = [
+      {signal:"Rubin in full production", product:"HBM4, DDR5, enterprise SSD", action:"Build Rubin memory readiness campaign"},
+      {signal:"NVLink Fusion + Marvell", product:"HBM, CXL, DDR5", action:"Position as heterogeneous AI factory partner"},
+      {signal:"Trainium3 and Ironwood GA", product:"HBM3e/HBM4, AI SSD, DDR5", action:"Build custom ASIC memory attach plays"},
+      {signal:"Microsoft capex and capacity constrained", product:"HBM, DDR5/MRDIMM, enterprise SSD", action:"Push allocation + server attach package"},
+      {signal:"Grid/transformer bottleneck", product:"Memory availability messaging", action:"Emphasize qualified supply and power/TB proof"},
+      {signal:"Amkor Arizona early-2028 timing", product:"HBM package timing", action:"Do not assume 2026 U.S. packaging relief"}
+    ];
+
+    const timeline = [
+      {day:"Wed", title:"AI Memory Bottleneck", accounts:"Microsoft, Meta", exit:"Sales lead confirms customer pain"},
+      {day:"Thu", title:"Custom ASIC Memory Attach", accounts:"AWS, Google", exit:"FAE confirms proof path"},
+      {day:"Fri", title:"Rubin HBM4 Readiness", accounts:"NVIDIA, Oracle, CoreWeave", exit:"Product line validates claims"},
+      {day:"Mon", title:"Enterprise AI Server Attach", accounts:"Supermicro, Dell, HPE", exit:"Target platform selected"},
+      {day:"Tue", title:"Open Ecosystem Co-Marketing", accounts:"AMD, Marvell", exit:"Executive sponsor confirmed"}
+    ];
+
+    const motionColors = {
+      Attack: "var(--red)",
+      Expand: "var(--green)",
+      Defend: "var(--amber)",
+      Watch: "var(--steel)"
+    };
+
+    function primaryMotion(motion) {
+      if (motion.includes("Attack")) return "Attack";
+      if (motion.includes("Expand")) return "Expand";
+      if (motion.includes("Defend")) return "Defend";
+      return "Watch";
+    }
+
+    function filteredAccounts() {
+      const motion = document.getElementById("motionFilter").value;
+      const group = document.getElementById("groupFilter").value;
+      const windowValue = document.getElementById("windowFilter").value;
+      return accounts.filter(a => {
+        const motionOk = motion === "All" || a.motion.includes(motion);
+        const groupOk = group === "All" || a.group === group;
+        const windowOk = windowValue === "All" || a.window === windowValue;
+        return motionOk && groupOk && windowOk;
+      });
+    }
+
+    function countBy(items, fn) {
+      return items.reduce((acc, item) => {
+        const key = fn(item);
+        acc[key] = (acc[key] || 0) + 1;
+        return acc;
+      }, {});
+    }
+
+    function drawBarChart(el, counts, colors) {
+      const entries = Object.entries(counts).sort((a,b) => b[1] - a[1]);
+      const max = Math.max(1, ...entries.map(e => e[1]));
+      el.innerHTML = entries.map(([label, value]) => {
+        const color = colors[label] || "var(--teal)";
+        const width = Math.max(4, value / max * 100);
+        return `<div class="bar-row">
+          <div class="bar-label" title="${label}">${label}</div>
+          <div class="bar-track"><div class="bar" style="width:${width}%;background:${color}"></div></div>
+          <div class="bar-value">${value}</div>
+        </div>`;
+      }).join("");
+    }
+
+    function tagClass(motion) {
+      const m = primaryMotion(motion).toLowerCase();
+      return `tag motion-${m}`;
+    }
+
+    function renderAccounts() {
+      const data = filteredAccounts();
+      const grid = document.getElementById("accountGrid");
+      if (!data.length) {
+        grid.innerHTML = `<div class="empty">No accounts match the current filters.</div>`;
+      } else {
+        grid.innerHTML = data.map(a => `<article class="account-card">
+          <div class="account-title"><span>${a.account}</span><span class="rank">${a.rank}</span></div>
+          <div class="tags">
+            <span class="${tagClass(a.motion)}">${a.motion}</span>
+            <span class="tag">${a.window}</span>
+            <span class="tag">${a.group}</span>
+          </div>
+          <div class="signal"><strong>Signal:</strong> ${a.signal}<br><strong>Fit:</strong> ${a.products.join(", ")}</div>
+          <div class="action"><strong>Next:</strong> ${a.action}</div>
+        </article>`).join("");
+      }
+      document.getElementById("kpiAccounts").textContent = data.length;
+      document.getElementById("kpiUrgent").textContent = data.filter(a => a.window === "0-90 days").length;
+      document.getElementById("kpiAttack").textContent = data.filter(a => a.motion.includes("Attack")).length;
+      document.getElementById("kpiProducts").textContent = 5;
+      drawBarChart(document.getElementById("motionChart"), countBy(data, a => primaryMotion(a.motion)), motionColors);
+      drawBarChart(document.getElementById("groupChart"), countBy(data, a => a.group), {
+        "Hyperscaler": "var(--navy)",
+        "Hyperscaler / Cloud": "var(--teal)",
+        "Neo-cloud": "var(--green)",
+        "AI Server OEM": "var(--amber)",
+        "AI Server OEM/ODM": "var(--amber)",
+        "ODM": "var(--steel)",
+        "Accelerator Vendor": "var(--red)",
+        "ASIC / Network Vendor": "var(--violet)",
+        "Enterprise / Public Sector": "var(--teal)"
+      });
+    }
+
+    function renderActions() {
+      const tbody = document.querySelector("#actionsTable tbody");
+      tbody.innerHTML = actions.map(a => `<tr>
+        <td>${a.id}</td>
+        <td><span class="priority">${a.priority}</span></td>
+        <td>${a.account}</td>
+        <td><span class="${tagClass(a.motion)}">${a.motion}</span></td>
+        <td>${a.product}</td>
+        <td>${a.status}</td>
+        <td>${a.next}</td>
+      </tr>`).join("");
+    }
+
+    function renderSignals() {
+      const tbody = document.querySelector("#signalsTable tbody");
+      tbody.innerHTML = signals.map(s => `<tr><td>${s.signal}</td><td>${s.product}</td><td>${s.action}</td></tr>`).join("");
+    }
+
+    function renderTimeline() {
+      document.getElementById("timeline").innerHTML = timeline.map(t => `<div class="day">
+        <div class="day-title">${t.day}</div>
+        <div class="day-item"><strong>${t.title}</strong></div>
+        <div class="day-item">${t.accounts}</div>
+        <div class="day-item"><span class="tag">${t.exit}</span></div>
+      </div>`).join("");
+    }
+
+    function productScore(account, product) {
+      const joined = account.products.join(" ").toLowerCase();
+      const p = product.toLowerCase();
+      if (p === "hbm") return joined.includes("hbm") ? (account.rank <= 6 ? 4 : 3) : joined.includes("indirect") ? 1 : 0;
+      if (p === "ddr5") return joined.includes("ddr5") || joined.includes("mrdimm") ? (account.rank <= 10 ? 3 : 2) : 0;
+      if (p === "ssd") return joined.includes("ssd") || joined.includes("qlc") ? (account.rank <= 10 ? 3 : 2) : 0;
+      if (p === "kv ssd") return joined.includes("kv") ? 4 : joined.includes("ssd") ? 1 : 0;
+      if (p === "cxl") return joined.includes("cxl") ? 3 : 0;
+      return 0;
+    }
+
+    function renderHeatmap() {
+      const products = ["HBM", "DDR5", "SSD", "KV SSD", "CXL"];
+      const focus = accounts.slice(0, 10);
+      const cells = [`<div></div>`, ...products.map(p => `<div class="heat-label">${p}</div>`)];
+      focus.forEach(a => {
+        cells.push(`<div class="heat-label">${a.account}</div>`);
+        products.forEach(p => {
+          const score = productScore(a, p);
+          const label = score === 0 ? "-" : score;
+          cells.push(`<div class="heat-cell level-${score}">${label}</div>`);
+        });
+      });
+      document.getElementById("heatmap").innerHTML = cells.join("");
+    }
+
+    function populateFilters() {
+      const groupSelect = document.getElementById("groupFilter");
+      [...new Set(accounts.map(a => a.group))].sort().forEach(group => {
+        const option = document.createElement("option");
+        option.value = group;
+        option.textContent = group;
+        groupSelect.appendChild(option);
+      });
+      ["motionFilter","groupFilter","windowFilter"].forEach(id => {
+        document.getElementById(id).addEventListener("change", renderAccounts);
+      });
+      document.getElementById("resetFilters").addEventListener("click", () => {
+        document.getElementById("motionFilter").value = "All";
+        document.getElementById("groupFilter").value = "All";
+        document.getElementById("windowFilter").value = "All";
+        renderAccounts();
+      });
+    }
+
+    populateFilters();
+    renderAccounts();
+    renderActions();
+    renderSignals();
+    renderTimeline();
+    renderHeatmap();
+  </script>
+</body>
+</html>
