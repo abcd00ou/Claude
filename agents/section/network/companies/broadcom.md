@@ -31,6 +31,13 @@ Broadcom is the world's largest networking semiconductor company and the leading
 | Q2 FY2025 (ended May 2025) | $15.04B | $4.4B | Q2 FY2025 Earnings Call |
 | Q1 FY2025 (ended Feb 2025) | $14.92B | $4.1B | Q1 FY2025 Earnings Call |
 | Q4 FY2024 (ended Oct 2024) | $14.05B | $3.8B | Q4 FY2024 Earnings Call |
+| Total Revenue | $23.89B | FY2020 | MacroTrends |
+| Total Revenue | $27.45B | FY2021 | MacroTrends |
+| Total Revenue | $33.20B | FY2022 | MacroTrends |
+| Total Revenue | $35.82B; semi ~$27.9B, infra software ~$7.9B | FY2023 | MacroTrends |
+| Total Revenue | $51.574B (+44% YoY); AI revenue $12.2B (+220% YoY) | FY2024 | Broadcom FY2024 PR |
+| Total Revenue | $63.887B (+24% YoY); AI semiconductor revenue growing | FY2025 | Broadcom FY2025 PR |
+| AI Semiconductor Revenue | $8.4B (+106% YoY) | Q1 FY2026 | Broadcom Q1 FY2026 PR |
 
 ---
 
@@ -52,6 +59,36 @@ Broadcom is fabless; all advanced silicon at TSMC (Tomahawk 5 at N5; XPU at N3/N
 ---
 
 ## Updates
+
+### Update: 2022-08-16 — Tomahawk 5 ships: first 51.2 Tbps switch chip; 5nm, 256 ports × 200GbE
+
+> Broadcom shipped Tomahawk 5 (BCM78900) on August 16, 2022 — the industry's first 51.2 Tbps switch chip. Tomahawk 5 is manufactured on 5nm process with 256 ports at 200GbE, enabling 400GbE and 800GbE Ethernet for AI cluster back-end networking. Broadcom Tomahawk series has been the dominant AI cluster networking chip, deployed across NVIDIA-based training clusters at hyperscalers.
+
+**Source:** Broadcom Ships Tomahawk 5, Broadcom Investor Relations, 2022-08-16
+
+#segment:network #source-tier:A #signal-type:roadmap #company:broadcom #date:2022-08-16 #importance:high #confidence:high
+
+---
+
+### Update: 2023-11-22 — VMware acquisition closes at $69B; software revenue transforms revenue mix
+
+> Broadcom completed the acquisition of VMware on November 22, 2023 at an enterprise value of $69B ($61B cash+stock + ~$8B assumed debt). The acquisition was originally announced in May 2022 and faced an extended regulatory review. VMware contributes recurring infrastructure software revenue (virtualization, cloud management, networking security), transforming Broadcom from a chip-heavy to a software+chip business. FY2024 revenue: $51.574B (+44% YoY), with approximately $21B attributed to VMware contribution.
+
+**Source:** Broadcom-VMware Close, BusinessWire via Broadcom PR, 2023-11-22; Broadcom FY2024 Earnings
+
+#segment:network #source-tier:A #signal-type:corporate #company:broadcom #date:2023-11-22 #importance:high #confidence:high
+
+---
+
+### Update: 2025-06-03 — Tomahawk 6 ships: world's first 102.4 Tbps switch; 3nm chiplet TSMC
+
+> Broadcom shipped Tomahawk 6 on June 3, 2025 — the world's first 102.4 Tbps switch chip (doubling Tomahawk 5). Built on TSMC 3nm chiplet architecture with up to 64 ports at 1.6T Ethernet. Tomahawk 6-Davisson (CPO variant) was announced October 8, 2025 as the industry's first 102.4 Tbps co-packaged optics switch. Broadcom AI switch backlog exceeded $10B in Q1 FY2026. AI semiconductor revenue: $8.4B (+106% YoY) in Q1 FY2026; guided at $10.7B (+140% YoY) for Q2 FY2026.
+
+**Source:** Broadcom Ships Tomahawk 6, Broadcom Investor Relations, 2025-06-03; Broadcom Q1 FY2026 PR
+
+#segment:network #source-tier:A #signal-type:roadmap #company:broadcom #date:2025-06-03 #importance:high #confidence:high
+
+---
 
 ### Update: 2025-06-05 — Q2 FY2025: AI Revenue $4.4B (+46% YoY); TAM Raised to $60–90B
 

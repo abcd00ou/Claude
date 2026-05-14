@@ -40,6 +40,17 @@ AMD is the most credible alternative to NVIDIA in AI accelerators. Its Instinct 
 | Data Center Revenue | $5.8B (+57% YoY) | Q1 2026 | AMD Q1 2026 Earnings Press Release, 2026-05-05 |
 | Q2 2026 Revenue Guidance | ~$11.2B ±$300M (+46% YoY est.) | Q2 2026 | AMD Q1 2026 Earnings Press Release, 2026-05-05 |
 | Q2 2026 Non-GAAP Gross Margin | ~56% | Q2 2026 | AMD Q1 2026 Earnings Press Release, 2026-05-05 |
+| Total Revenue | $34.64B (+34% YoY) | FY2025 | AMD Q4 FY2025 PR |
+| Data Center Revenue | $16.6B (+32% YoY) | FY2025 | AMD Q4 FY2025 PR |
+| Total Revenue | $25.78B | FY2024 | AMD 10-K FY2024 |
+| Data Center Revenue | $12.6B (~2× YoY) | FY2024 | AMD 10-K FY2024 |
+| Total Revenue | $22.68B (-4% YoY) | FY2023 | AMD Q4 FY2023 PR |
+| Data Center Revenue | $6.50B (+7% YoY) | FY2023 | AMD Q4 FY2023 PR |
+| Total Revenue | $23.60B | FY2022 | AMD SEC 10-K |
+| Data Center Revenue | $6.04B | FY2022 | AMD SEC 10-K |
+| Total Revenue | $16.43B | FY2021 | AMD SEC filing |
+| Data Center Revenue (approx) | ~$4.1B | FY2021 | AMD earnings |
+| Total Revenue | $9.76B | FY2020 | AMD SEC filing |
 
 ---
 
@@ -67,6 +78,46 @@ AMD designs chips and sources manufacturing from TSMC. Its Instinct GPUs use HBM
 ---
 
 ## Updates
+
+### Update: 2026-02 — Meta commits to deploy up to 6 GW of AMD GPUs; 160M share warrant issued
+
+> AMD and Meta Platforms amended a master purchase agreement in February 2026 under which Meta committed to deploy up to 6 gigawatts of AMD GPU-based AI infrastructure, with the first 1 GW powered by MI450-based Helios systems with 6th Gen EPYC CPUs. AMD issued Meta a warrant to purchase up to 160 million shares at $0.01/share, vesting based on AMD Instinct GPU purchase milestones and AMD stock price targets, exercisable through February 23, 2031. AMD Q1 CY2026 Data Center revenue: $5.8B (+57% YoY); total revenue $10.30B (+38% YoY).
+
+**Source:** AMD Reports First Quarter 2026 Financial Results, AMD Investor Relations, 2026-04; AMD Q1 2026 Press Release
+
+#segment:chip_maker #source-tier:A #signal-type:design-win #company:amd #date:2026-02 #importance:high #confidence:high
+
+---
+
+### Update: 2023-12 — MI300X (CDNA3) launches; 192GB HBM3 sets new AI memory benchmark
+
+> AMD launched the Instinct MI300X GPU accelerator in December 2023 at the CDNA3 architecture event. The MI300X features 192GB HBM3 memory — the largest memory capacity of any AI GPU at launch — with 5.3 TB/s bandwidth and peak 1.3 PFLOPS FP8 performance on a single chip. Design wins followed at Meta Platforms, Microsoft Azure (for inferencing), and Oracle Cloud. MI300X became AMD's first meaningful AI accelerator revenue generator, contributing to FY2024 Data Center revenue of $12.6B (nearly double FY2023). AMD FY2024 total revenue: $25.78B.
+
+**Source:** AMD Instinct MI300X Launch, AMD IR, 2023-12; AMD Q4 FY2024 Press Release, 2024
+
+#segment:chip_maker #source-tier:A #signal-type:product-launch #company:amd #date:2023-12 #importance:high #confidence:high
+
+---
+
+### Update: 2022-05 — Pensando acquisition closes at $1.9B; AMD adds DPU/SmartNIC capability
+
+> AMD closed the acquisition of Pensando Systems for approximately $1.9 billion in May 2022. Pensando provides DPU (Data Processing Unit) and SmartNIC technology for data center networking offload. The Pensando Elba chip became AMD's Pensando DPU lineup, enabling programmable networking acceleration for cloud providers. This acquisition was later used as the basis for the AMD Pensando product line serving hyperscalers.
+
+**Source:** AMD $1.9B Acquisition of Pensando Closes, Data Center Dynamics, 2022-05
+
+#segment:chip_maker #source-tier:A #signal-type:acquisition #company:amd #date:2022-05 #importance:high #confidence:high
+
+---
+
+### Update: 2022-02-14 — Xilinx acquisition closes at ~$49B; AMD adds FPGAs and adaptive SoCs
+
+> AMD completed acquisition of Xilinx Corporation on February 14, 2022 for approximately $49 billion in an all-stock transaction. Xilinx added FPGAs and adaptive SoCs to AMD's portfolio, enabling AMD to serve AI inference at the edge and in data centers via FPGA-based acceleration. FY2022 Data Center segment revenue: $6.04B (includes first full year of Xilinx contribution). AMD FY2022 total revenue: $23.60B.
+
+**Source:** AMD Xilinx Acquisition Complete, AMD Corporate Press Release, 2022-02-14
+
+#segment:chip_maker #source-tier:A #signal-type:acquisition #company:amd #date:2022-02-14 #importance:high #confidence:high
+
+---
 
 ### Update: 2026-05-05 — Q1 2026: DC revenue $5.8B (+57% YoY); Q2 guided $11.2B total; MI450 demand exceeding expectations
 

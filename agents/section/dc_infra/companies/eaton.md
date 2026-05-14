@@ -42,6 +42,13 @@ Eaton is a global power management company supplying critical electrical infrast
 | Electrical Segment Backlog | +48% YoY | Q1 2026 | Eaton Q1 2026 Earnings, 2026-05-05 |
 | Data Center Orders Growth | ~+240% YoY | Q1 2026 | Eaton Q1 2026 Earnings, 2026-05-05 |
 | Boyd Thermal FY2026 Revenue (projected) | ~$1.4B (for Eaton's ownership period) | FY2026 | Eaton Q1 2026 Earnings, 2026-05-05 |
+| Total Revenue | $17.86B | FY2020 | MacroTrends/Eaton IR |
+| Total Revenue | $19.63B | FY2021 | Eaton IR |
+| Total Revenue | $20.75B | FY2022 | Eaton IR |
+| Total Revenue | $23.20B | FY2023 | Eaton IR |
+| Total Revenue | $24.88B | FY2024 | Eaton IR |
+| Total Revenue | $27.4B (+10% YoY, record) | FY2025 | Eaton Q4 2025 PR |
+| Q1 2026 Revenue | $7.5B (+17% YoY, record quarter); backlog $14.5B (+44% YoY) | Q1 2026 | Eaton Q1 2026 PR |
 
 ---
 
@@ -68,6 +75,36 @@ Eaton manufactures electrical infrastructure equipment. Key raw material inputs 
 ---
 
 ## Updates
+
+### Update: 2021-03-17 — Tripp Lite acquisition closes at $1.65B; UPS/power quality expansion
+
+> Eaton Corporation completed the acquisition of Tripp Lite (Trippe Manufacturing Co.) for $1.65B (approximately 12× 2020 EBITDA) on March 17, 2021. Tripp Lite manufactures UPS systems, PDUs, and power conditioning equipment for IT and data center applications, primarily in North America. The acquisition expanded Eaton's data center power quality portfolio and customer reach in the U.S. market.
+
+**Source:** Eaton Completes Acquisition of Tripp Lite, Eaton Press Release, 2021-03-17
+
+#segment:dc_infra #source-tier:A #signal-type:corporate #company:eaton #date:2021-03-17 #importance:high #confidence:high
+
+---
+
+### Update: 2026-03-12 — Boyd Thermal acquisition closes at $9.5B; creates "grid-to-chip" liquid cooling
+
+> Eaton completed the acquisition of Boyd Thermal, the liquid cooling business of Boyd Corporation (owned by Goldman Sachs Asset Management), for $9.5B (approximately 22.5× estimated 2026 adjusted EBITDA) on approximately March 12, 2026. Boyd Thermal creates "grid-to-chip" liquid cooling solutions for data centers, complementing Eaton's existing power infrastructure. Q1 2026 results: revenue $7.5B (+17% YoY), record quarter; Electrical Americas data center orders +240% YoY; backlog $14.5B (+44% YoY).
+
+**Source:** Eaton Completes Acquisition of Boyd Thermal, Eaton Press Release, 2026-03; Eaton Q1 2026 PR, 2026-05-05
+
+#segment:dc_infra #source-tier:A #signal-type:corporate #company:eaton #date:2026-03-12 #importance:high #confidence:high
+
+---
+
+### Update: 2026-Q1 — 32 GW AI datacenter under construction in U.S.; solid-state transformer pilots with hyperscalers
+
+> Eaton estimates 32 GW of total U.S. data center capacity is under construction as of Q1 2026, of which 70% is AI-related. Eaton also estimates total U.S. data center backlog at 228 GW (~12 years at 2025 build rates). Solid-state transformers (SSTs) — Eaton's key technology for AI datacenter power — had "more than a handful" of pilots including hyperscaler customers; commercial orders expected H2 2026; shipments beginning late 2027 or early 2028.
+
+**Source:** Eaton Q1 2026 Earnings Call Transcript, The Motley Fool, 2026-05-05; Eaton Q1 2026 PR
+
+#segment:dc_infra #source-tier:A #signal-type:demand #company:eaton #date:2026-05-05 #importance:high #confidence:high
+
+---
 
 ### Update: 2026-05-05 — Q1 2026: Record $7.5B Revenue; Data Center Orders +240%; 32 GW AI DC Under Construction in U.S.
 

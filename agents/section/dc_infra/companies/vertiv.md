@@ -39,6 +39,14 @@ Vertiv is the leading supplier of critical data center infrastructure: liquid co
 | Revenue | $2.356B (+9% YoY) | Q1 2025 | Vertiv Q1 2025 Earnings, 2025-04-23 |
 | Backlog | $8.0B | 2025-03-31 | Vertiv Q1 2025 Earnings, 2025-04-23 |
 | FY2025 Revenue Guidance | ~$9.3B | FY2025 | Vertiv Q1 2025 Earnings, 2025-04-23 |
+| Total Revenue | $4.37B | FY2020 | MacroTrends/Vertiv IR |
+| Total Revenue | $5.0B (+14.4% YoY) | FY2021 | MacroTrends |
+| Total Revenue | $5.7B (+13.9% YoY) | FY2022 | MacroTrends |
+| Total Revenue | $6.863B (+20.6% YoY) | FY2023 | Vertiv IR |
+| Total Revenue | $8.012B (+16.7% YoY) | FY2024 | Vertiv IR |
+| Total Revenue | $10.23B (+27.7% YoY) | FY2025 | Vertiv Q4 2025 PR |
+| Q1 2026 Revenue | $2,650M (+30% YoY); FY2026 guided $13.5B–$14.0B | Q1 2026 | Vertiv Q1 2026 PR |
+| Q1 2026 Backlog | $12.45B (+81% YoY) | Q1 2026 | Vertiv Q1 2026 PR |
 
 ---
 
@@ -60,6 +68,36 @@ Vertiv designs and manufactures power and cooling equipment. It is not semicondu
 ---
 
 ## Updates
+
+### Update: 2020-02-07 — Vertiv IPO via SPAC merger; NYSE:VRT begins trading
+
+> Vertiv Holdings completed a SPAC merger with GS Acquisition Holdings Corp (co-sponsored by Goldman Sachs affiliate and David M. Cote, former Honeywell CEO) on February 7, 2020 and began trading on NYSE as VRT. Enterprise value at merger: approximately $5.3B. Vertiv had been a Platinum Equity portfolio company since its 2016 carve-out from Emerson Electric for $4B. David Cote became Executive Chairman; CEO Rob Johnson continued. FY2020 revenue: $4.37B.
+
+**Source:** Vertiv IPO/SPAC Merger Close, BusinessWire, 2020-02-07
+
+#segment:dc_infra #source-tier:A #signal-type:corporate #company:vertiv #date:2020-02-07 #importance:high #confidence:high
+
+---
+
+### Update: 2023-01-01 — Giordano Albertazzi becomes CEO; turnaround phase begins
+
+> Giordano Albertazzi was appointed CEO of Vertiv Holdings effective January 1, 2023, following Rob Johnson's transition out in October 2022. Albertazzi, previously COO and credited with turning around Vertiv's EMEA region, led the company through its AI-driven demand surge. Under Albertazzi, backlog expanded from $5.5B (Q4 2023) to $15B (Q4 2025), and FY2025 revenue reached $10.23B (+27.7% YoY) with organic growth of +26%.
+
+**Source:** Vertiv CEO Succession, Vertiv Investor Relations, 2022-10; DCD, 2023-01
+
+#segment:dc_infra #source-tier:A #signal-type:corporate #company:vertiv #date:2023-01-01 #importance:high #confidence:high
+
+---
+
+### Update: 2025 — Reference architecture co-developed with NVIDIA for GB200 NVL72; liquid cooling becomes default
+
+> Vertiv co-developed with NVIDIA a complete power and cooling reference architecture for the NVIDIA GB200 NVL72 liquid-cooled rack-scale platform, supporting up to 132 kW per rack in a hybrid liquid + air design. CEO Albertazzi stated: "Liquid cooling is now the default for new AI data center designs." Q4 2025 organic orders grew +252% YoY; Q4 2025 backlog ~$15B (+109% YoY). FY2026 guidance raised to $13.5B–$14.0B net sales with 29-31% organic growth.
+
+**Source:** Vertiv-NVIDIA GB200 NVL72 Reference Architecture, Vertiv Newsroom, 2025; Vertiv Q4 2025 PR, Vertiv Investor Relations, 2026
+
+#segment:dc_infra #source-tier:A #signal-type:design-win #company:vertiv #date:2025 #importance:high #confidence:high
+
+---
 
 ### Update: 2026-05-01 — Q1 2026: Revenue $2.65B (+30% YoY); Backlog $12.45B (+81% YoY); Adjusted EPS +83%; FY2026 Guidance Raised to $13.5–14.0B
 

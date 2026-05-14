@@ -74,6 +74,36 @@ Intel Foundry is vertically integrated — Intel designs, manufactures, and pack
 
 ## Updates
 
+### Update: 2021-03-23 — IDM 2.0 announced; Intel Foundry Services established
+
+> Intel CEO Pat Gelsinger announced the IDM 2.0 strategy at the "Intel Unleashed" event on March 23, 2021. Intel Foundry Services (IFS) was established to open Intel fabs to external foundry customers. Key commitments: two new fabs in Arizona ($20B), new fab in Ohio ($20B+), and up to €80B in European manufacturing investment over the following decade. Intel 18A (2nm-class backside power delivery) was targeted as the competitive parity process with TSMC N2 by 2025.
+
+**Source:** Intel IDM 2.0 Press Release, Intel Corp., 2021-03-23
+
+#segment:foundry #source-tier:A #signal-type:roadmap #company:intel_foundry #date:2021-03-23 #importance:high #confidence:high
+
+---
+
+### Update: 2024-12 / 2025-03 — Gelsinger retires; Lip-Bu Tan appointed CEO; foundry spun off
+
+> Pat Gelsinger retired as CEO on December 1, 2024 after the board presented an ultimatum over IDM 2.0 progress. Intel had posted a $16.6B quarterly net loss in Q2 2024. Lip-Bu Tan, former CEO of Cadence Design Systems, was appointed CEO on March 18, 2025. The foundry business was restructured into Intel Foundry as a wholly-owned independent subsidiary with separate reporting in 2025. Microsoft and Amazon (AWS) were confirmed as anchor external customers for Intel 18A.
+
+**Source:** Intel CEO News, Intel Newsroom, 2024-12-01; Intel Appoints Lip-Bu Tan, 2025-03-18
+
+#segment:foundry #source-tier:A #signal-type:roadmap #company:intel_foundry #date:2025-03-18 #importance:high #confidence:high
+
+---
+
+### Update: 2025 — Intel 18A enters HVM; Panther Lake (Core Ultra Series 3) is first 18A product
+
+> Intel 18A process technology entered high-volume manufacturing in late 2025, with yields rising approximately 7-8% per month and reaching 55-65% (below the mature threshold of 80-90%). Intel Panther Lake (Core Ultra Series 3) was launched at CES 2026 as the first Intel 18A product, claiming 27-hour battery life and NPU 50 TOPS. Apple qualified Intel 18A node in December 2025; Apple and Google are exploring Intel 18A-P and Intel's EMIB advanced packaging for future products.
+
+**Source:** TrendForce Intel 18A, 2025-11-21; Intel Panther Lake CES 2026; FinancialContent, 2025-12-29
+
+#segment:foundry #source-tier:A #signal-type:yield #company:intel_foundry #date:2025-12-31 #importance:high #confidence:high
+
+---
+
 ### Update: 2026-03-17 — 18A yields 55–65%; industry standard not expected until end-2027; Panther Lake shipping Q1 2026
 
 > Intel 18A entered high-volume manufacturing in October 2025, but yields remain below profitable levels and will not reach desired cost thresholds until end of 2026 at the earliest. Yield estimates are between 55% and 65%; chip production only becomes profitable when the yield reaches the usual 70–80%. Intel Core Ultra Series 3 (Panther Lake) began shipping January 27, 2026 — the first Intel processors built entirely on the 18A process node; Panther Lake is the primary confirmed 18A commercial product. CFO David Zinsner stated Intel is reconsidering offering 18A to external foundry customers alongside 14A. The 18A-P PDK has been delivered to select customers for evaluation. Apple received Intel's 18A-P process PDK 0.9.1GA and is running internal simulations, with formal qualification expected when PDK 1.0 arrives, targeting entry-level M-series at an estimated 15–20M units/year. Tom's Hardware analysis states industry-standard yield levels not expected until 2027.

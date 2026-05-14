@@ -38,6 +38,9 @@ NVIDIA's networking business (built on the 2020 acquisition of Mellanox Technolo
 | Networking Revenue (est.) | ~$4.6B | Q1 FY2026 (Apr 2025) | NVIDIA Q1 FY2026 Earnings, 2025-05-28 |
 | Data Center Total Revenue | $39.1B | Q1 FY2026 | NVIDIA Q1 FY2026 Earnings, 2025-05-28 |
 | Mellanox Acquisition Price | $6.9B | 2020-04-27 | NVIDIA Press Release, 2020-04-27 |
+| Networking Revenue | >$8B annualized run rate (Spectrum-X) | Q1 FY2026 (ended Apr 2025) | NVIDIA Q1 FY2026 PR |
+| Networking Revenue | >$10B annualized run rate | Q2 FY2026 (ended Aug 2025) | NVIDIA Q2 FY2026 PR |
+| Q4 FY2026 DC Networking Revenue | $11.0B (+263% YoY, +34% QoQ) | Q4 FY2026 (ended Jan 2026) | NVIDIA Q4 FY2026 CFO Commentary |
 
 ---
 
@@ -76,6 +79,36 @@ NVIDIA networking silicon (ConnectX NICs, Quantum switches) is fabbed at TSMC. T
 ---
 
 ## Updates
+
+### Update: 2020-04-27 — Mellanox acquisition closes at $6.9B; NVIDIA owns InfiniBand + Ethernet
+
+> NVIDIA completed acquisition of Mellanox Technologies for $6.9 billion on April 27, 2020, bringing ownership of HDR InfiniBand (200G), ConnectX NICs, Quantum switch family, and the ConnectX Ethernet portfolio. Mellanox had ~$1.3B in annual revenue at time of acquisition. China regulatory approval (requiring NVIDIA to pledge continued local sales) was the last gating item. The acquisition made NVIDIA the owner of both AI compute (GPUs) and AI cluster networking.
+
+**Source:** NVIDIA Completes Acquisition of Mellanox, NVIDIA Newsroom, 2020-04-27
+
+#segment:network #source-tier:A #signal-type:corporate #company:nvidia_networking #date:2020-04-27 #importance:high #confidence:high
+
+---
+
+### Update: 2023-05 — Spectrum-X announced at Computex; Ethernet purpose-built for AI workloads
+
+> NVIDIA introduced Spectrum-X at Computex May 2023 — an accelerated Ethernet platform purpose-built for AI workloads, combining the Spectrum-4 switch chip with BlueField-3 DPU NICs and adaptive routing technology to reduce AI job completion time over standard Ethernet. Spectrum-X addressed the primary limitation of Ethernet for AI training: network unpredictability and head-of-line blocking. Initial deployments at Microsoft Azure, xAI, Meta, and Google Cloud followed in 2024.
+
+**Source:** NVIDIA Introduces Spectrum-X, Neowin, 2023-05; NVIDIA Newsroom, 2023-11
+
+#segment:network #source-tier:A #signal-type:roadmap #company:nvidia_networking #date:2023-05 #importance:high #confidence:high
+
+---
+
+### Update: 2025-03-18 — Spectrum-X and Quantum-X Photonics CPO switches announced; 100-400 Tb/s
+
+> At GTC March 2025, NVIDIA announced Spectrum-X Photonics and Quantum-X Photonics co-packaged optics switches: 100 Tb/s configuration (128 × 800G ports) and 400 Tb/s configuration (512 × 800G ports), delivering 3.5× power efficiency improvement vs. pluggable optics. Partners: TSMC, Coherent, Corning, Foxconn, Lumentum. InfiniBand Photonics (Quantum-X) expected early 2026; Ethernet Photonics (Spectrum-X) expected H2 2026. Spectrum-X annualizing at >$8B run rate by Q1 FY2026.
+
+**Source:** NVIDIA Announces Spectrum-X Photonics CPO Networking Switches, NVIDIA Investor Relations, 2025-03-18
+
+#segment:network #source-tier:A #signal-type:roadmap #company:nvidia_networking #date:2025-03-18 #importance:high #confidence:high
+
+---
 
 ### Update: 2025-05-28 — Q1 FY2026: Networking ~$4.6B; lead times improving to 12–16 weeks
 

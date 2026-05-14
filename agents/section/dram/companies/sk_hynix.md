@@ -35,6 +35,11 @@ SK Hynix is the leading supplier of HBM (High Bandwidth Memory), holding approxi
 
 | Metric | Value | Period | Source |
 |---|---|---|---|
+| Total Revenue | ~$33.9B (44.62T KRW) | FY2022 | SK Hynix Q4 FY2024 IR |
+| Total Revenue | ~$25.3B (32.77T KRW) — memory downcycle | FY2023 | SK Hynix Q4 FY2024 IR |
+| Total Revenue | ~$47.9B (66.19T KRW) +102% YoY (record) | FY2024 | SK Hynix Q4 FY2024 IR |
+| Total Revenue | ~$68.3B (97.15T KRW); HBM revenue >2× YoY | FY2025 | SK Hynix FY2025 IR |
+| Q1 2026 Revenue | 52.58T KRW (~$35.5B) +198% YoY; Op. margin 72% (record) | Q1 2026 | SK Hynix Q1 2026 IR |
 | Revenue | KRW 52.58T (~$38B) | Q1 2026 | SK hynix IR press release, 2026-04-22 |
 | Operating Profit | KRW 37.61T | Q1 2026 | SK hynix IR press release, 2026-04-22 |
 | Operating Margin | 72% | Q1 2026 | SK hynix IR press release, 2026-04-22 |
@@ -77,6 +82,66 @@ SK Hynix supplies HBM directly to NVIDIA (primary) and AMD. It sells server DRAM
 ---
 
 ## Updates
+
+### Update: 2020-07-02 — HBM2E mass production begins; first supplier for NVIDIA A100
+
+> SK Hynix commenced mass production of HBM2E (High Bandwidth Memory 2E) on July 2, 2020. The HBM2E features an 8-die stack, 16GB capacity per stack, and 460 GB/s bandwidth — the first industry-standard HBM for AI accelerators at the time. SK Hynix supplied HBM2E for NVIDIA A100 and subsequently established itself as the leading HBM supplier. The HBM market would grow from a niche product in 2020 to the most strategically critical memory product by 2024.
+
+**Source:** SK Hynix Starts Mass Production of HBM2E, SK Hynix Newsroom, 2020-07-02
+
+#segment:dram #source-tier:A #signal-type:supply #company:sk_hynix #date:2020-07-02 #importance:high #confidence:high
+
+---
+
+### Update: 2022-06 — HBM3 mass production begins; first in industry; supplies NVIDIA H100
+
+> SK Hynix commenced mass production of HBM3 in June 2022 — the first company in the industry to do so. HBM3 delivers 819 GB/s bandwidth per stack (vs. HBM2E's 460 GB/s). SK Hynix supplied HBM3 for NVIDIA H100, cementing its position as the primary HBM supplier for NVIDIA's flagship AI accelerators.
+
+**Source:** SK Hynix Kicks Off HBM3 Mass Production, Tom's Hardware, 2022-06
+
+#segment:dram #source-tier:A #signal-type:supply #company:sk_hynix #date:2022-06 #importance:high #confidence:high
+
+---
+
+### Update: 2024-Q1 — HBM3E volume production begins; supplies NVIDIA H200; 8-high first, then 12-high
+
+> SK Hynix began volume production of HBM3E (HBM 3rd-generation with Extended specification) in Q1 2024, becoming the world's first to do so. The 8-high (24GB) variant shipped first for NVIDIA H200; the 12-high (36GB, 9.6 Gbps, 1.22 TB/s bandwidth) variant commenced mass production in Q4 2024. The 12-high HBM3E uses Advanced MR-MUF (Mass Reflow Molded Underfill) process for 10% better heat dissipation. HBM products exceeded 40% of SK Hynix's total DRAM revenue in Q4 2024.
+
+**Source:** SK Hynix Begins Volume Production of HBM3E, PR Newswire, 2024-Q1; SK Hynix 12-Layer HBM3E, SK Hynix Newsroom, 2024-Q4
+
+#segment:dram #source-tier:A #signal-type:supply #company:sk_hynix #date:2024-Q1 #importance:high #confidence:high
+
+---
+
+### Update: 2025-09-12 — HBM4 development completed; world's first; 2,048 I/O; 40% power efficiency gain
+
+> SK Hynix completed development of HBM4 on September 12, 2025 — the world's first. HBM4 features 2,048 I/O terminals (2× prior generation), delivering approximately 2× the bandwidth of HBM3E with 40%+ improvement in power efficiency. A 12-layer configuration was developed for NVIDIA Vera Rubin. Mass production readiness was declared; SK Hynix secured approximately 70% of NVIDIA's Vera Rubin HBM4 allocation (per UBS estimates). FY2025 revenue: 97.15T KRW (~$68.3B); operating profit: 47.21T KRW (49% margin).
+
+**Source:** SK Hynix Completes World's First HBM4 Development, SK Hynix Newsroom, 2025-09-12; TrendForce, 2025-09-12
+
+#segment:dram #source-tier:A #signal-type:roadmap #company:sk_hynix #date:2025-09-12 #importance:high #confidence:high
+
+---
+
+### Update: 2025-10 — M15X fab cleanroom completed ahead of schedule; $15B HBM expansion investment
+
+> SK Hynix's M15X fab in Cheongju Technopolis completed cleanroom construction ahead of schedule in October 2025. Equipment installation accelerated in December 2025. First cleanroom trial operations were targeted for May 2026, with full mass production approximately 6 months later (~November 2026) and full capacity of ~50,000 12-inch wafers/month by mid-2027. Total M15X investment: ~$15B (20T KRW). An additional $13B advanced packaging fab in Cheongju was announced in January 2026 to boost HBM output by 2027.
+
+**Source:** SK Hynix M15X cleanroom, DigiTimes, 2025-10-28; Seoul Economic Daily, 2025-12-25; Korea Times, 2026-01
+
+#segment:dram #source-tier:A #signal-type:supply #company:sk_hynix #date:2025-10 #importance:high #confidence:high
+
+---
+
+### Update: 2026-Q1 — Q1 2026 record: 72% operating margin, revenue +198% YoY
+
+> SK Hynix reported Q1 2026 revenue of 52.58T KRW (~$35.5B), up 198% YoY — exceeding the company's entire FY2023 revenue in a single quarter. Operating profit: 37.61T KRW, exceeding all of FY2024 operating profit in one quarter. Operating margin: 72% (all-time record). Net profit: 40.35T KRW (77% net margin). HBM4 volume shipments for NVIDIA Vera Rubin drove the step-change in profitability.
+
+**Source:** SK Hynix Q1 2026 Business Results, SK Hynix Newsroom, 2026-04-23
+
+#segment:dram #source-tier:A #signal-type:financial #company:sk_hynix #date:2026-Q1 #importance:high #confidence:high
+
+---
 
 ### Update: 2025-09 — World's First HBM4 Mass Production Qualification; 62% HBM Market Share in Q2 2025
 

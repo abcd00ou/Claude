@@ -35,6 +35,16 @@ NVIDIA is the dominant supplier of AI accelerators, with FY2026 Data Center reve
 
 | Metric | Value | Period | Source |
 |---|---|---|---|
+| Total Revenue | $16.68B | FY2021 (ended Jan 2021) | NVIDIA Q4 FY2021 Press Release |
+| Data Center Revenue | $6.04B | FY2021 | NVIDIA Q4 FY2021 Press Release |
+| Total Revenue | $26.97B | FY2022 (ended Jan 2022) | NVIDIA Q4 FY2022 SEC Filing |
+| Data Center Revenue | $10.61B (+58% YoY) | FY2022 | NVIDIA Q4 FY2022 SEC Filing |
+| Total Revenue | $26.97B (flat) | FY2023 (ended Jan 2023) | NVIDIA Q4 FY2023 Press Release |
+| Data Center Revenue | $15.01B (+41% YoY) | FY2023 | NVIDIA Q4 FY2023 Press Release |
+| Total Revenue | $60.92B (+126% YoY) | FY2024 (ended Jan 2024) | NVIDIA Q4 FY2024 Investor Relations |
+| Data Center Revenue | $47.53B (78% of total) | FY2024 | NVIDIA Q4 FY2024 Investor Relations |
+| Total Revenue | $130.50B (+114% YoY) | FY2025 (ended Jan 2025) | NVIDIA Q4 FY2025 Press Release |
+| Data Center Revenue | $115.2B | FY2025 | NVIDIA Q4 FY2025 Press Release |
 | Total Revenue | $215.9B (+65% YoY) | FY2026 (ended Jan 2026) | NVIDIA 10-K FY2026, 2026-02-25 |
 | Data Center Revenue | $193.7B (+68% YoY) | FY2026 | NVIDIA 10-K FY2026, 2026-02-25 |
 | Q4 FY2026 Data Center Revenue | $62.3B (+22% QoQ, +75% YoY) | Q4 FY2026 | NVIDIA Q4 FY2026 Press Release, 2026-02-25 |
@@ -67,6 +77,86 @@ NVIDIA designs GPUs and sources manufacturing from TSMC (confirmed in 10-K: uses
 ---
 
 ## Updates
+
+### Update: 2020-04-27 — Mellanox acquisition closes at $6.9B; NVIDIA enters networking
+
+> NVIDIA completed the acquisition of Mellanox Technologies for $6.9 billion (approximately $125 per share) on April 27, 2020. Mellanox provides InfiniBand and high-speed Ethernet interconnect technology. The acquisition gave NVIDIA ownership of NDR InfiniBand (400G), ConnectX NICs, and the Quantum switch family — becoming the technology foundation for AI cluster networking. CEO Jensen Huang called the acquisition a "homerun deal." China regulatory approval was the final gating item.
+
+**Source:** NVIDIA Completes Acquisition of Mellanox, NVIDIA Newsroom, 2020-04-27
+
+#segment:chip_maker #source-tier:A #signal-type:supply #company:nvidia #date:2020-04-27 #importance:high #confidence:high
+
+---
+
+### Update: 2020-05-14 — A100 GPU announced (Ampere architecture); first AI-class GPU for DGX A100
+
+> NVIDIA announced the A100 GPU at GTC May 2020. Built on TSMC 7nm (Samsung 8nm for some variants), A100 features 40GB (later 80GB) HBM2e, 6,912 CUDA cores, and the first Tensor Core third-generation supporting TF32 and BF16 precision. The DGX A100 system (8× A100 SXM, NVLink interconnect) became the standard AI training cluster of 2020-2022. Data center revenue in FY2021 (ended Jan 2021) was $6.04B.
+
+**Source:** NVIDIA Newsroom GTC 2020; NVIDIA Q4 FY2021 Press Release, 2021-02-24
+
+#segment:chip_maker #source-tier:A #signal-type:roadmap #company:nvidia #date:2020-05-14 #importance:high #confidence:high
+
+---
+
+### Update: 2022-03-22 — H100 GPU announced (Hopper architecture); first PCIe Gen5/SXM5 AI chip
+
+> NVIDIA announced the H100 GPU at GTC March 2022. Built on TSMC 4nm (N4), H100 features 80GB HBM2e (SXM5), 4th-gen Tensor Cores, NVLink 4.0 (900 GB/s bidirectional), and the Transformer Engine — dedicated for large language model training. H100 became the dominant AI training GPU of 2023-2024. NVIDIA FY2022 total revenue: $26.97B; Data Center revenue: $10.61B (+58% YoY).
+
+**Source:** NVIDIA Announces Hopper GPU Architecture, NVIDIA Newsroom, 2022-03-22; NVIDIA Q4 FY2022 SEC Filing, 2022
+
+#segment:chip_maker #source-tier:A #signal-type:roadmap #company:nvidia #date:2022-03-22 #importance:high #confidence:high
+
+---
+
+### Update: 2022-10-07 — BIS export controls ban A100/H100 to China; NVIDIA develops A800/H800
+
+> The U.S. Bureau of Industry and Security imposed export controls on October 7, 2022, prohibiting sale of NVIDIA A100 and H100 GPUs to China and Russia without a license. NVIDIA responded by developing China-compliant variants: A800 (A100 equivalent with reduced NVLink bandwidth) and H800 (H100 equivalent with reduced chip-to-chip interconnect). Both chips were later banned in October 2023 when BIS tightened rules, prompting NVIDIA to develop H20 and L20 as compliant alternatives for China. NVIDIA FY2023 total revenue: $26.97B (flat YoY); Data Center: $15.01B (+41%).
+
+**Source:** BIS Export Controls Rule, 2022-10-07; CNBC, Reuters, 2022-10-07
+
+#segment:chip_maker #source-tier:A #signal-type:geopolitical #company:nvidia #date:2022-10-07 #importance:high #confidence:high
+
+---
+
+### Update: 2023-11 — H200 announced with 141GB HBM3E; 4.89 TB/s bandwidth
+
+> At SC23 (November 2023), NVIDIA announced the H200 GPU — a Hopper-architecture upgrade featuring 141GB HBM3E (vs. H100's 80GB HBM2e) and approximately 4.89 TB/s memory bandwidth. SK Hynix supplied the first HBM3E in volume. H200 became the primary AI inference chip for hyperscalers in 2024. NVIDIA FY2024 revenue: $60.92B (+126% YoY); Data Center: $47.53B (78% of total).
+
+**Source:** NVIDIA SC23 Announcement, 2023-11; NVIDIA Q4 FY2024 Investor Relations, 2024
+
+#segment:chip_maker #source-tier:A #signal-type:roadmap #company:nvidia #date:2023-11 #importance:high #confidence:high
+
+---
+
+### Update: 2024-03-18 — B200/GB200 announced (Blackwell architecture); GB200 NVL72 rack-scale design
+
+> At GTC March 2024, NVIDIA announced the Blackwell B200 GPU and GB200 "Grace Blackwell" superchip (Blackwell GPU + Grace ARM CPU). The GB200 NVL72 rack system contains 72 B200 GPUs connected via NVLink 5 with 1.8 exaflops compute. Blackwell uses TSMC 4NP (custom 4nm) with a two-die 208B transistor design connected by NVLink-C2C. GB200 NVL72 began customer shipments in December 2024. NVIDIA FY2025 total revenue: $130.5B (+114% YoY); Data Center: $115.2B.
+
+**Source:** NVIDIA GTC 2024 Announcement, 2024-03-18; NVIDIA Q4 FY2025 Press Release, 2025
+
+#segment:chip_maker #source-tier:A #signal-type:roadmap #company:nvidia #date:2024-03-18 #importance:high #confidence:high
+
+---
+
+### Update: 2025-09 — Samsung clears NVIDIA HBM3E qualification after 18-month delay
+
+> Samsung cleared NVIDIA's 12-layer HBM3E validation in mid-to-late September 2025 after approximately 18 months of failed qualification attempts. Samsung had been unable to meet NVIDIA's performance and thermal requirements for the 12-high (36GB) HBM3E stack. The fix involved redesigning the DRAM core. Prior to qualification, Samsung was not a meaningful supplier for H100 or H200 HBM. Following clearance, Samsung began HBM3E shipments to NVIDIA for Blackwell products and sold out its 2026 HBM allocation.
+
+**Source:** Samsung 12H HBM3E Clears NVIDIA Tests, TrendForce, 2025-09-22; Tom's Hardware, 2025-09
+
+#segment:chip_maker #source-tier:A #signal-type:supply #company:nvidia #date:2025-09 #importance:high #confidence:high
+
+---
+
+### Update: 2026-03 — Samsung and SK Hynix both tapped as HBM4 suppliers for Vera Rubin
+
+> Samsung began world-first HBM4 mass production in the third week of February 2026. Samsung and SK Hynix were both confirmed as NVIDIA Vera Rubin HBM4 suppliers as of March 2026. SK Hynix holds approximately 70% of NVIDIA's Vera Rubin HBM4 orders (per UBS estimates); Samsung approximately 30%. Micron was also confirmed as a HBM4 supplier. SK Hynix completed world-first HBM4 development on September 12, 2025 and declared mass production readiness.
+
+**Source:** Samsung, SK Hynix Reportedly Tapped as NVIDIA Rubin HBM4 Suppliers, TrendForce, 2026-03-09; SK Hynix HBM4 Development Completion, SK Hynix Newsroom, 2025-09-12
+
+#segment:chip_maker #source-tier:A #signal-type:supply #company:nvidia #date:2026-03 #importance:high #confidence:high
+
+---
 
 ### Update: 2026-02-25 — Q4 FY2026: DC revenue $62.3B (record); FY2026 DC total $193.7B; Q1 FY2027 guided $78B
 

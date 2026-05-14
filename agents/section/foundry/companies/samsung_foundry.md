@@ -73,6 +73,46 @@ Samsung Foundry competes directly with TSMC for leading-edge logic orders. Its p
 
 ## Updates
 
+### Update: 2021-2022 — SF4 (4nm GAA predecessor) launches; yield challenges vs. TSMC N4
+
+> Samsung Foundry entered mass production on SF4 (4nm FinFET, non-GAA) in 2021. The process faced significant yield challenges compared to TSMC's N4 node, damaging Samsung's foundry reputation — described internally as Samsung's "dark age" generation. NVIDIA evaluated Samsung SF4 for H100 but H100 was ultimately manufactured on TSMC N4. Qualcomm briefly used Samsung SF4 for Snapdragon 8 Gen 1 before switching back to TSMC for Gen 2.
+
+**Source:** WCCFTech 4nm yield reporting, 2022-2023; NamuWiki Samsung Foundry process history
+
+#segment:foundry #source-tier:B #signal-type:yield #company:samsung_foundry #date:2022-01-01 #importance:high #confidence:high
+
+---
+
+### Update: 2023 — SF3E GAA (3nm) mass production begins; initial yields reportedly ~20%
+
+> Samsung Foundry began mass production on SF3E, its first gate-all-around (GAA) 3nm process, in 2023. Initial production yields were reportedly approximately 20%, far below the ~60-70% threshold needed for volume production economics. Samsung claimed 25% better power efficiency and 45% transistor density vs. 5nm. Apple and NVIDIA were not in the initial customer list; Samsung's own Exynos chips were primary customers.
+
+**Source:** SmBom Samsung 3nm yield, 2023; TrendForce industry analysis
+
+#segment:foundry #source-tier:B #signal-type:yield #company:samsung_foundry #date:2023-01-01 #importance:high #confidence:medium
+
+---
+
+### Update: 2025-11 — SF2 (2nm GAA) yields at 55-60%; below mass production threshold
+
+> Samsung Foundry's SF2 (2nm GAA) process yields were reported at 55-60% as of November 2025 — below the approximately 60% threshold required for mass production economics. SF2 delivers 12% better performance and 25% greater power efficiency vs. SF3 (official Samsung specification claim). Qualcomm was evaluating whether to use Samsung SF2 or TSMC N2P for the Snapdragon 8 Elite Gen 6.
+
+**Source:** Samsung Reportedly Hits 55-60% 2nm Yields, TrendForce, 2025-11-25
+
+#segment:foundry #source-tier:B #signal-type:yield #company:samsung_foundry #date:2025-11-25 #importance:high #confidence:medium
+
+---
+
+### Update: 2026-02 — SF2P reaches 70% yield milestone; SF4 surpasses 80% yield
+
+> Samsung's SF2P (second-generation 2nm) process reportedly reached a 70% yield milestone in February 2026 — the first time Samsung achieved mass-production-level stability on a 2nm process. Separately, SF4 (4nm) surpassed the 80% yield barrier in April 2026, officially entering "mature process" stage. Despite SF2P yield progress, Qualcomm reportedly selected TSMC N2P for full production of Snapdragon 8 Elite Gen 6 (as of April 2026).
+
+**Source:** FinancialContent, 2026-02-05; Seoul Economic Daily, 2026-04-29; TrendForce, 2026-04-14
+
+#segment:foundry #source-tier:B #signal-type:yield #company:samsung_foundry #date:2026-02-05 #importance:high #confidence:medium
+
+---
+
 ### Update: 2026-04-14 — SF2 2nm yield ~55%, below mass-production threshold; Qualcomm selects TSMC N2P
 
 > Samsung Foundry's 2nm yields remain in the mid-50% range (~55%), falling short of the roughly 60% threshold typically required for stable mass production. Post-backend processing reduces effective yield to approximately 40%. Qualcomm selected TSMC's 2nm (N2P) process for full production of its next-generation flagship Snapdragon 8 Elite 6th Gen rather than Samsung, though Samsung continues supplying 2nm prototypes for validation. Tesla has a secured order for autonomous driving chips (AI5, AI6) on Samsung 2nm. DeepX plans to mass-produce its DX-M2 chip on Samsung 2nm in 2027.

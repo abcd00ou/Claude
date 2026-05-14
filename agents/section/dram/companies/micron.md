@@ -35,6 +35,12 @@ Micron Technology is the only US-headquartered manufacturer of DRAM and NAND fla
 
 | Metric | Value | Period | Source |
 |---|---|---|---|
+| Total Revenue | ~$30.8B | FY2022 (ended Aug 2022) | MacroTrends/Micron IR |
+| Total Revenue | $15.54B (-49.5% YoY) — memory downcycle | FY2023 (ended Aug 2023) | Micron IR, 2023-09 |
+| Total Revenue | $25.11B (+61.6% YoY) | FY2024 (ended Aug 2024) | Micron IR |
+| Total Revenue | $37.38B (+48.9% YoY) | FY2025 (ended Aug 2025) | Micron IR |
+| Q2 FY2026 Revenue | $23.86B (+196% YoY, +75% QoQ) — 4th consecutive quarterly record | Q2 FY2026 (ended Feb 2026) | Micron IR, 2026-03 |
+| DRAM Revenue | $18.8B (+207% YoY) — 79% of Q2 FY2026 total | Q2 FY2026 | Micron Q2 FY2026 Earnings |
 | Revenue | $23.86B | FQ2 2026 (Dec 2025–Feb 2026) | Micron Q2 FY2026 Earnings Release, 2026-03-18 |
 | GAAP Net Income | $13.79B | FQ2 2026 | Micron Q2 FY2026 Earnings Release, 2026-03-18 |
 | EPS (diluted) | $12.07 | FQ2 2026 | Micron Q2 FY2026 Earnings Release, 2026-03-18 |
@@ -83,6 +89,46 @@ Micron manufactures DRAM at fabs in Boise (USA), Hiroshima (Japan), and Taiwan. 
 ---
 
 ## Updates
+
+### Update: 2024-02 — HBM3E volume production begins; 30% lower power vs. competitors; supplies NVIDIA H200
+
+> Micron commenced volume production of HBM3E in February 2024, becoming only the second company (after SK Hynix) to achieve HBM3E volume production. The Micron HBM3E 8-high (24GB) features >1.2 TB/s bandwidth and 30% lower power consumption vs. competing products — a key differentiator for AI datacenter power budgets. Micron began shipping HBM3E to NVIDIA H200 GPUs in Q2 2024. The 12-high (36GB, 9.2+ Gbps) variant was production-ready by Q3 2024 for NVIDIA Blackwell products.
+
+**Source:** Micron Commences Volume Production of HBM3E, Micron Investor Relations, 2024-02
+
+#segment:dram #source-tier:A #signal-type:supply #company:micron #date:2024-02 #importance:high #confidence:high
+
+---
+
+### Update: 2024-04-18 — CHIPS Act award: up to $6.14B for Idaho and New York DRAM fabs
+
+> The U.S. Department of Commerce finalized a CHIPS Act direct funding award of up to $6.14B for Micron's domestic DRAM manufacturing expansion in April 2024. Planned facilities include a new fab in Boise, Idaho (construction started 2023, operational 2025-2026) and a fab in Clay, New York (later postponed to 2030 with $1.2B shifted to Idaho). Micron's total U.S. investment commitment is $50B over the investment period. A second Boise fab was announced in June 2025.
+
+**Source:** Micron $6.1B CHIPS Act Award, The Register, 2024-04-18
+
+#segment:dram #source-tier:A #signal-type:supply #company:micron #date:2024-04-18 #importance:high #confidence:high
+
+---
+
+### Update: 2025 — 1γ (1-gamma) EUV DRAM node enters mass production at Taichung; world's first EUV DRAM
+
+> Micron began mass production of its 1γ (1-gamma) DRAM process node in 2025 at its Taichung, Taiwan facility — the world's first EUV-based DRAM production process (sixth-generation 10nm-class). 1γ delivers 20% power reduction and 15% performance improvement vs. 1β, with 35% better bit density. HBM4E will use the 1γ node. Micron also signed a letter of intent in January 2026 to acquire a Powerchip (PSMC) fab in Tongluo, Taiwan for $1.8B, with meaningful DRAM output expected from H2 2027.
+
+**Source:** Micron 1-Gamma DRAM Technology, Micron Website; Micron Acquiring Taiwan DRAM Fab, Blocks and Files, 2026-01-19
+
+#segment:dram #source-tier:A #signal-type:roadmap #company:micron #date:2025 #importance:high #confidence:high
+
+---
+
+### Update: 2025-12 — 2026 HBM supply fully booked; capex raised to $20B; HBM4 ramp for Q1 CY2026
+
+> Micron announced in December 2025 that its entire 2026 HBM supply was already fully booked by customers. Capex guidance was raised to $20B. HBM4 (36GB 12-high, designed for NVIDIA Vera Rubin) volume shipments began in Q1 CY2026, with Micron also sampling HBM4 16-high (48GB) configuration. HBM4E will use the 1γ EUV node. Micron Q2 FY2026 revenue: $23.86B (+196% YoY); DRAM revenue $18.8B (+207% YoY), the fourth consecutive quarterly revenue record.
+
+**Source:** Micron Hikes Capex to $20B, TrendForce, 2025-12-18; Micron Q2 FY2026 Earnings, Micron IR, 2026-03
+
+#segment:dram #source-tier:A #signal-type:supply #company:micron #date:2025-12 #importance:high #confidence:high
+
+---
 
 ### Update: 2026-03-18 — Entire CY2026 HBM supply fully committed; record financials
 

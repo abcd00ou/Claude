@@ -34,6 +34,12 @@ TSMC is the world's largest dedicated semiconductor foundry and the single most 
 
 | Metric | Value | Period | Source |
 |---|---|---|---|
+| Total Revenue | NT$1,339B / $45.5B | 2020 | TSMC Annual Report |
+| Total Revenue | NT$1,587B / $56.8B (+24.9% YoY) | 2021 | TSMC Annual Report |
+| Total Revenue | NT$2,264B / $75.9B (+42.6% YoY) | 2022 | TSMC Annual Report 2022 |
+| Total Revenue | NT$2,162B / $69.3B (-8.8% YoY) | 2023 | TSMC Annual Report 2023 |
+| Total Revenue | NT$2,894B / $90.1B (+30.0% YoY) | 2024 | TSMC Annual Report 2024 |
+| Total Revenue | NT$3,809B / $122.4B (+35.9% YoY) | 2025 | TSMC 20-F Filing 2025 |
 | Revenue | NT$1,134.10B (~US$35.8B) | Q1 2026 | TSMC Q1 2026 6-K, 2026-04-16 |
 | Revenue YoY Growth | +35.1% | Q1 2026 | TSMC Q1 2026 6-K, 2026-04-16 |
 | Net Income | NT$572.48B | Q1 2026 | TSMC Q1 2026 6-K, 2026-04-16 |
@@ -81,6 +87,76 @@ TSMC is a pure-play foundry — it manufactures chips for customers but does not
 ---
 
 ## Updates
+
+### Update: 2020-05 — Arizona Fab 21 announced; $12B initial investment; construction begins 2021
+
+> TSMC announced plans in May 2020 to build a semiconductor fabrication facility in Phoenix, Arizona (Fab 21), committing $12B in initial investment. Construction began in April 2021. The facility initially targets N4P/5nm-class production. The Arizona investment is part of TSMC's geographic diversification strategy in response to U.S. CHIPS Act incentives and geopolitical risk. Total committed U.S. investment later expanded to over $65B across three phases.
+
+**Source:** TSMC Arizona Announcement, TSMC Newsroom, 2020-05
+
+#segment:foundry #source-tier:A #signal-type:capex #company:tsmc #date:2020-05 #importance:high #confidence:high
+
+---
+
+### Update: 2022-05 — N3 (3nm) HVM begins; capex record $36.3B; HPC surpasses smartphones in revenue
+
+> TSMC entered high-volume manufacturing on N3 (3nm) in December 2022, with N3E enhanced variant following in 2023. In Q1 2022, HPC (High Performance Computing) revenue surpassed smartphone revenue for the first time in TSMC history. FY2022 capex: $36.3B (record). Apple was largest customer at ~25% of revenue in 2022-2023; NVIDIA grew to ~11% revenue share in FY2023.
+
+**Source:** TSMC 2022 Annual Report; Counterpoint Research, 2022
+
+#segment:foundry #source-tier:A #signal-type:capacity #company:tsmc #date:2022-05 #importance:high #confidence:high
+
+---
+
+### Update: 2023-08 — ESMC JV established in Germany: TSMC 70%, Bosch/Infineon/NXP 10% each
+
+> TSMC established the European Semiconductor Manufacturing Company (ESMC) joint venture in August 2023 with partners Bosch (10%), Infineon (10%), and NXP (10%), retaining 70% ownership. ESMC will build a €10B+ fab in Dresden, Germany using 28/22nm and 16/12nm FinFET processes targeting automotive and industrial chips. Groundbreaking occurred September 2024; production target 2027.
+
+**Source:** TSMC ESMC JV Press Release, TSMC Newsroom, 2023-08; ESMC Groundbreaking, 2024-09
+
+#segment:foundry #source-tier:A #signal-type:supply #company:tsmc #date:2023-08 #importance:high #confidence:high
+
+---
+
+### Update: 2024-04 — Japan JASM Fab 1 enters mass production; Sony/Denso/Toyota joint investors
+
+> TSMC's Japan subsidiary JASM (Japan Advanced Semiconductor Manufacturing) Fab 1 in Kumamoto entered mass production in Q4 2024 using 22/28nm and 12/16nm processes. Partners: Sony (~6%), Denso (~5.5%), Toyota (~2%). The Japan government contributed approximately ¥476B (~$3.2B) in subsidies. A second JASM fab began construction, targeting operation by end-2027.
+
+**Source:** TSMC JASM Fab 1 Production Start, TSMC Press Release, 2024-04; Japan JASM Partners
+
+#segment:foundry #source-tier:A #signal-type:capacity #company:tsmc #date:2024-04 #importance:high #confidence:high
+
+---
+
+### Update: 2024-11 — CHIPS Act $6.6B grant finalized for Arizona Fab 21; total U.S. plan $165B
+
+> The U.S. Department of Commerce finalized a $6.6B direct grant plus $5B loan guarantees to TSMC under the CHIPS and Science Act in November 2024. Fab 21 Phase 1 (N4P/5nm) production yield reached 92% by late 2024; Apple received "tens of millions" of Fab 21 chips in 2025. Total three-phase U.S. investment plan announced at $165B, with Phase 3 (A16 backside power delivery) announced. TSMC FY2024 capex: $29.2B.
+
+**Source:** U.S. DOC CHIPS Act TSMC Grant, Tom's Hardware, 2024-11; TSMC Arizona Wikipedia; NIST CHIPS page
+
+#segment:foundry #source-tier:A #signal-type:capex #company:tsmc #date:2024-11 #importance:high #confidence:high
+
+---
+
+### Update: 2025 — NVIDIA overtakes Apple as TSMC's largest customer; N2 HVM starts Q4 2025
+
+> N2 (2nm GAA) process entered high-volume manufacturing in Q4 2025. First N2 customers include Apple, AMD, NVIDIA, and MediaTek; Intel was not in the initial N2 customer list. NVIDIA overtook Apple as TSMC's largest single customer in 2025, with NVIDIA projected to account for ~$33B (~22%) and Apple ~$27B (~18%) of TSMC 2026 revenue. TSMC FY2025 revenue: NT$3,809B / $122.4B (+35.9% YoY). Capex FY2025: $40.9B; FY2026 guided $52-56B.
+
+**Source:** CNBC, 2026-01-26; DigiTimes, 2025-10-15; TSMC 20-F Filing 2025; TSMC Q4 2025 Earnings
+
+#segment:foundry #source-tier:A #signal-type:demand #company:tsmc #date:2025-12-31 #importance:high #confidence:high
+
+---
+
+### Update: 2026-Q1 — CoWoS capacity targets 130K WPM by end-2026; NVIDIA holds ~60% allocation
+
+> TSMC CoWoS advanced packaging capacity grew from ~10,000 WPM (end-2022) to ~35,000-40,000 WPM (end-2024) to target 75,000 WPM (2025) and 130,000 WPM (end-2026). NVIDIA secured approximately 60% of TSMC's total CoWoS allocation for 2026, equating to ~595,000 annual wafers. TSMC outsources 240,000-270,000 CoWoS wafers annually to OSAT partners (Amkor ~180-190K WPY; SPIL/ASE ~60-80K WPY). HPC applications reached 61% of Q1 2026 TSMC revenue.
+
+**Source:** TrendForce, 2026-01-02; FinancialContent, 2026-02-05; Nomad Semi CoWoS analysis; TSMC Q1 2026 Earnings
+
+#segment:foundry #source-tier:A #signal-type:capacity #company:tsmc #date:2026-03-31 #importance:high #confidence:high
+
+---
 
 ### Update: 2026-04-16 — Q1 2026 earnings: N2 HVM confirmed; CoWoS at 75K–80K wafers/month; 2026 target 120K–130K
 

@@ -79,6 +79,36 @@ Samsung Memory sells HBM to AI accelerator OEMs (NVIDIA, AMD, and its own Exynos
 
 ## Updates
 
+### Update: 2023 — DS division records 14.87T KRW operating loss; HBM3E qualification fails for NVIDIA
+
+> Samsung Electronics' Device Solutions (DS) division recorded an annual operating loss of 14.87T KRW in FY2023, the largest in company history for that segment, driven by the memory downcycle. Meanwhile, Samsung was unable to qualify its HBM3E chips for NVIDIA's H100/H200 supply — failing NVIDIA's performance and thermal requirements for the 12-high HBM3E configuration. Samsung's HBM market share fell as SK Hynix dominated NVIDIA supply.
+
+**Source:** Samsung DS Division Financials FY2023; TrendForce Samsung HBM3E, 2024-12
+
+#segment:dram #source-tier:A #signal-type:financial #company:samsung #date:2023 #importance:high #confidence:high
+
+---
+
+### Update: 2025-09 — Samsung clears NVIDIA 12H HBM3E qualification after 18-month delay
+
+> Samsung Electronics cleared NVIDIA's 12-layer (12-high) HBM3E validation in mid-to-late September 2025, after approximately 18 months of failed qualification attempts — two failed tests in 2024 and a failed retest in June 2025. The fix involved redesigning the DRAM core under leadership of VP Jun Young-hyun. Following clearance, Samsung began HBM3E shipments to NVIDIA for Blackwell products and sold out its entire 2026 HBM allocation. Samsung DS division revenue rebounded strongly in H2 2025.
+
+**Source:** Samsung 12H HBM3E Clears NVIDIA Tests, TrendForce, 2025-09-22; KED Global, 2025-09-19
+
+#segment:dram #source-tier:A #signal-type:supply #company:samsung #date:2025-09 #importance:high #confidence:high
+
+---
+
+### Update: 2026-02 — Samsung begins world's first HBM4 mass production; ~30% of Vera Rubin allocation
+
+> Samsung began the world's first HBM4 mass production in the third week of February 2026 and began shipments to NVIDIA for the Vera Rubin platform. Samsung holds approximately 30% of NVIDIA's Vera Rubin HBM4 allocation (SK Hynix ~70%). Samsung expects HBM sales to more than triple in 2026. Samsung Q1 2026 company results: total revenue 133.9T KRW (+69% YoY) — company record; semiconductor operating profit up 48× YoY; memory revenue 74.8T KRW (+292% YoY).
+
+**Source:** Samsung HBM4 Mass Production, KED Global, 2026-02-08; Samsung Q1 2026 Earnings, Samsung Global Newsroom, 2026-04-30
+
+#segment:dram #source-tier:A #signal-type:supply #company:samsung #date:2026-02 #importance:high #confidence:high
+
+---
+
 ### Update: 2025-Q2 — Samsung HBM Market Share Collapsed to 17%; Micron Overtook Samsung at #2 (21%)
 
 > TrendForce Q2 2025 HBM market share data: SK Hynix 62%, Micron 21%, Samsung 17%. This represents a dramatic reversal from Samsung's historical #2 position. Samsung's share collapse is attributed to failure to pass NVIDIA's initial HBM3E qualification in 2024. Samsung is working to re-qualify with NVIDIA; multi-year supply contracts signed with other customers. HBM3E contract prices raised approximately 20% for 2026 delivery by Samsung and SK Hynix. Samsung's re-qualification efforts for NVIDIA HBM3E Blackwell are ongoing.
