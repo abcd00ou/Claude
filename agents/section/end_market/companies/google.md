@@ -74,6 +74,16 @@ Google designs TPUs in-house and manufactures them at TSMC. TPUs co-package with
 
 ---
 
+### Update: 2026-04-29 — Q1 2026: $35.7B single-quarter capex; Ironwood TPU GA at Cloud Next; 4.3M TPUs projected for 2026; Anthropic 1M TPU / 1GW agreement
+
+> Google Q1 2026 capex: $35.7B in a single quarter (+107% YoY from $17.2B in Q1 2025). Full-year 2026 guidance: $180–190B vs. $91.4B in 2025 — nearly doubling in a single year. Allocation approximately 60% to servers, 40% to datacenters and networking. Google Cloud Ironwood TPU reached general availability at Google Cloud Next 2026. Deployment projections: 4.3M Ironwood TPU units in 2026; 10M in 2027; 35M+ in 2028. Anthropic agreement: up to 1M TPU chips + 1GW capacity in 2026 (first 400K units valued at approximately $10B in racks, procured via Broadcom).
+
+**Source:** Alphabet Q1 2026 Earnings, April 29 2026; HeyGoTrade; The Next Web; Google Cloud Blog (Cloud Next 2026)
+
+#segment:end_market #source-tier:A #signal-type:capex #company:google #date:2026-04-29 #importance:high #confidence:medium #cross-ref:dc_infra #cross-ref:asic
+
+---
+
 ### Update: 2026-04-29 — TPU 8t and 8i announced; TPU offered in customer data centers
 
 > CEO Sundar Pichai: "TPU 8t provides high-performance model training with three times the processing power of Ironwood." "TPU 8i delivers cost-effective, low-latency inference, with 80% better performance per dollar than the prior generation." Google "will begin to deliver TPUs to a select group of customers in their own data centers in a hardware configuration to expand our addressable market opportunity."

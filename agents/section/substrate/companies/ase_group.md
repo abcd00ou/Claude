@@ -36,6 +36,9 @@ ASE Group is the world's largest outsourced semiconductor assembly and test (OSA
 | Zhunan facility acquisition | NT$2.8B (~$88M) | 2026-01 | TrendForce, 2026-01-14 |
 | New plants breaking ground worldwide | 6 plants | 2026 | TrendForce, 2026-04-20 |
 | SPIL CoWoS wafers received from TSMC | ~60,000–80,000 wafers/year | 2026 | Digitimes, 2026-01-05 |
+| 2026 capex | $7B (raised from $5.5B in 2025) | 2026 | Digitimes, 2026-02 |
+| LEAP advanced packaging revenue target | $3.2B (2× 2025) | 2026 | Digitimes, 2026-02 |
+| CoWoP for AMD Venice — revenue target | $300–400M | H2 2026 | TrendForce, Dec 2025 |
 
 ---
 
@@ -56,6 +59,8 @@ ASE is positioned at the back-end of the AI chip supply chain: receives processe
 |---|---|---|---|
 | CoWoP capacity ramp — 20,000–25,000 WPM target | End-2026 | In progress (tripling current output) | TrendForce, 2026-04-20 |
 | CoWoP NVIDIA co-development (via SPIL) | Ongoing | In development | TrendForce, 2026-04-20 |
+| CoWoP for AMD Venice CPUs — full-process packaging | H2 2026 | Starting H2 2026 | TrendForce, Dec 2025 |
+| 310mm panel-level packaging (PLP) automated line | 2026 | Announced 2026-02-25 | Digitimes, Feb 2026 |
 | NT$2.8B Zhunan facility integration | 2026 | In progress | TrendForce, 2026-01-14 |
 | 6 new global plants groundbreaking | 2026 | Announced | TrendForce, 2026-04-20 |
 
@@ -72,6 +77,16 @@ ASE is positioned at the back-end of the AI chip supply chain: receives processe
 ---
 
 ## Updates
+
+### Update: 2026-05 — 2026 capex raised to $7B; 310mm panel-level packaging line announced Feb 2026; CoWoP for AMD Venice CPUs H2 2026; LEAP target $3.2B
+
+> ASE Group raised 2026 capex to $7B (from $5.5B in 2025). LEAP advanced packaging sales projected to double to $3.2B in 2026. On February 25, 2026, ASE announced a fully automated 310mm panel-level packaging (PLP) line targeted for 2026. CoWoP for AMD Venice CPUs: full-process packaging starting H2 2026, targeting $300–400M revenue in 2026. CoWoP capacity targeting 20,000–25,000 wafers/month by end-2026.
+
+**Source:** Digitimes Feb 2026; TrendForce Dec 2025
+
+#segment:substrate #source-tier:B #signal-type:capacity #company:ase #date:2026-05 #importance:high #confidence:medium #cross-ref:chip_maker
+
+---
 
 ### Update: 2026-04-20 — CoWoP capacity targeting 20K–25K wafers/month by end-2026; six new plants announced; packaging race intensifies
 

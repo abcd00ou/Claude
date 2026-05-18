@@ -59,7 +59,12 @@ Wolfspeed is vertically integrated: boule growth → 200mm wafer slicing and epi
 | 200mm Mohawk Valley revenue ramp | $97M in Q1 FY2026 | In production | Wolfspeed Q2 FY2026 earnings |
 | Durham 150mm shutdown / consolidation into Mohawk Valley | Completed ahead of schedule | Complete | Wolfspeed restructuring 2025-09 |
 | Mohawk Valley scale to full capacity | Ongoing through 2026–2027 | In progress | Wolfspeed IR |
-| 800V AI datacenter SiC power devices | Targeting AI datacenter PSU and SST designs | Sampling / roadmap | Infineon/NVIDIA 800V architecture context |
+| TOLT package portfolio launch (Gen 4 MOSFET, 650V, top-side cooling) | Post-restructuring / 2025–2026 | Launched | Wolfspeed newsroom |
+| Mohawk Valley 800V architecture qualification | 2025–2026 | Qualified | Wolfspeed newsroom |
+| First commercially available 10 kV SiC MOSFET launch | 2026-03-05 | Launched | Wolfspeed newsroom; Semiconductor Today Mar 2026 |
+| First-ever single-crystal 300mm SiC wafer produced | 2026-01 | Milestone achieved | Wolfspeed newsroom; Semiconductor Today Jan 2026 |
+| 800V AI datacenter SiC devices (AI server PSU / SST) | Targeting 2028–2030 ramp | Sampling / roadmap | 800V SiC TAM $9–21B cumulative 2026–2030 |
+| 300mm SiC commercial production | TBD — no timeline announced | Roadmap | Wolfspeed newsroom Jan 2026 |
 
 ---
 
@@ -87,9 +92,31 @@ Wolfspeed is vertically integrated: boule growth → 200mm wafer slicing and epi
 
 ---
 
+### Update: 2026-03-05 — Wolfspeed launches industry-first commercially available 10 kV SiC MOSFET; TOLT portfolio targets AI datacenter rack power
+
+> On March 5, 2026, Wolfspeed launched the industry's first commercially available 10 kV silicon carbide MOSFET. Key specifications: 99% efficiency, 30% lower system cost versus incumbent solutions, 300% higher power density. Target markets: utility grid, industrial, and AI datacenter power conversion. Wolfspeed also introduced the TOLT (top-of-line transformer) package portfolio post-restructuring: Gen 4 MOSFET-based, 650V, targeting AI datacenter rack power supplies with higher power density and top-side cooling optimized for high-density AI server configurations. Mohawk Valley fab is qualified for 800V architecture, aligned with NVIDIA's 800V HVDC AI datacenter power standard. 800V AI datacenter SiC TAM estimated at $9–21B cumulatively 2026–2030, heavily back-loaded to 2028–2030. No named hyperscaler or datacenter power supplier orders publicly disclosed post-restructuring.
+
+**Source:** Wolfspeed newsroom, March 5, 2026; Semiconductor Today, March 2026; Wolfspeed TOLT product launch materials
+
+#segment:power #source-tier:A #signal-type:roadmap #company:wolfspeed #date:2026-03-05 #importance:high #confidence:high #cross-ref:dc_infra
+
+---
+
+### Update: 2026-01 — Wolfspeed produces industry-first single-crystal 300mm SiC wafer; AI ecosystem partners being engaged for next-gen packaging
+
+> In January 2026, Wolfspeed produced the first-ever single-crystal 300mm silicon carbide wafer — an industry milestone with no prior public demonstration by any manufacturer. 300mm SiC wafers (versus the current 200mm production standard at Mohawk Valley) would enable substantial die cost reduction and throughput improvement. Wolfspeed is engaging AI ecosystem partners for next-generation packaging development around this milestone. No commercial production timeline for 300mm SiC has been publicly announced. This achievement positions Wolfspeed as the substrate technology frontier leader in SiC, even as its current 200mm Mohawk Valley fab remains the only operating 200mm SiC volume production site globally.
+
+**Source:** Wolfspeed newsroom, January 2026; Semiconductor Today, January 2026
+
+#segment:power #source-tier:A #signal-type:roadmap #company:wolfspeed #date:2026-01 #importance:high #confidence:high #cross-ref:dc_infra
+
+---
+
 ## Open Questions
 
-- [ ] Has Wolfspeed secured design wins for 800V AI datacenter power delivery (SiC in AI server PSU or solid-state transformer)?
+- [ ] Has Wolfspeed secured design wins for 800V AI datacenter power delivery (SiC in AI server PSU or solid-state transformer)? (No public confirmation as of Q2 2026)
 - [ ] What is the current Mohawk Valley utilization rate and full-year FY2026 revenue trajectory?
 - [ ] Has any hyperscaler or AI datacenter power supplier placed a volume SiC order with post-restructured Wolfspeed?
 - [ ] Will Wolfspeed pursue external wafer customer expansion to offset EV demand softness?
+- [ ] What is the commercial production timeline for 300mm SiC wafers?
+- [ ] Which AI ecosystem partners are engaged for next-gen packaging around the 300mm SiC wafer milestone?

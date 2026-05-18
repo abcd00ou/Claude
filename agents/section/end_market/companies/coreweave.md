@@ -81,8 +81,18 @@ CoreWeave is a pure compute infrastructure company — it does not design chips 
 
 ---
 
+### Update: 2026-03-30 — Post-IPO: NVIDIA $2B investment + $6.3B take-or-pay; $8.5B DDTL 4.0 closed (Moody's A3); $19.2B Meta backing; FY2026 guidance $12–13B revenue
+
+> NVIDIA invested $2B in CoreWeave at $87.20/share (January 2026) and signed a $6.3B take-or-pay capacity backstop through April 2032. March 30, 2026: CoreWeave closed an $8.5B DDTL 4.0 financing facility — the first investment-grade GPU-backed financing, rated Moody's A3, backed by an expanded $19.2B Meta agreement (up from a prior $14.2B commitment). April 2026: Multi-year Anthropic agreement signed, adding a new anchor customer. FY2026 revenue guidance: $12–13B; Q2 2026 guidance: $2.45–2.60B; exit ARR $18–19B; FY2026 capex $31–35B.
+
+**Source:** TechCrunch, January 26 2026; BusinessWire, March 30 2026, https://www.businesswire.com/news/home/20260330673736/en/CoreWeave-Closes-8.5-Billion-Delayed-Draw-Term-Loan-4.0; NVIDIA Newsroom
+
+#segment:end_market #source-tier:A #signal-type:capex #company:coreweave #date:2026-03-30 #importance:high #confidence:high #cross-ref:chip_maker #cross-ref:dc_infra
+
+---
+
 ## Open Questions
 
-- [ ] CoreWeave GPU fleet composition in 2025 — what ratio of H100/H200/B200?
-- [ ] Microsoft dependency risk — 35% customer concentration; is it declining?
-- [ ] CoreWeave balance sheet: can $1.5B IPO proceeds fund continued GPU purchases at this scale?
+- [ ] CoreWeave GPU fleet composition in 2026 — what ratio of H100/H200/B200/GB200?
+- [ ] Microsoft dependency risk — 35% customer concentration; is it declining vs. Meta/Anthropic growth?
+- [ ] CoreWeave profitability path: FY2026 capex $31–35B vs. $12–13B revenue guidance — debt coverage sustainability?

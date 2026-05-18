@@ -4,7 +4,7 @@
 **Role in AI SCM:** World's largest HBM supplier; second-largest DRAM maker; primary memory partner for NVIDIA  
 **HQ:** Icheon, South Korea  
 **Ticker:** KRX:000660  
-**Last Updated:** 2026-04-23
+**Last Updated:** 2026-05-15
 
 ---
 
@@ -40,7 +40,7 @@ SK Hynix is the leading supplier of HBM (High Bandwidth Memory), holding approxi
 | Total Revenue | ~$47.9B (66.19T KRW) +102% YoY (record) | FY2024 | SK Hynix Q4 FY2024 IR |
 | Total Revenue | ~$68.3B (97.15T KRW); HBM revenue >2× YoY | FY2025 | SK Hynix FY2025 IR |
 | Q1 2026 Revenue | 52.58T KRW (~$35.5B) +198% YoY; Op. margin 72% (record) | Q1 2026 | SK Hynix Q1 2026 IR |
-| Revenue | KRW 52.58T (~$38B) | Q1 2026 | SK hynix IR press release, 2026-04-22 |
+| Revenue | KRW 52.58T (~$35.6B) +198% YoY +60% QoQ | Q1 2026 | SK hynix IR press release, 2026-04-22 |
 | Operating Profit | KRW 37.61T | Q1 2026 | SK hynix IR press release, 2026-04-22 |
 | Operating Margin | 72% | Q1 2026 | SK hynix IR press release, 2026-04-22 |
 | Net Profit | KRW 40.35T (net margin 77%) | Q1 2026 | SK hynix IR press release, 2026-04-22 |
@@ -204,8 +204,18 @@ SK Hynix supplies HBM directly to NVIDIA (primary) and AMD. It sells server DRAM
 
 ---
 
+### Update: 2026-05-15 (Cycle 8) — Q1 2026 record results confirmed; HBM4 mass production via TSMC; 66-70% NVIDIA Vera Rubin allocation; 16-Hi HBM4 at CES 2026; 3-year forward capacity committed
+
+> SK Hynix Q1 2026 confirmed as best quarter in company history: revenue KRW 52.58T (~$35.6B), +198% YoY, +60% QoQ; operating profit KRW 37.61T (~$25.4B), +405% YoY; operating margin 72% (all-time record); net profit KRW 40.35T (record ~77% net margin). HBM4 mass production via TSMC partnership began February 2026 — SK Hynix provides the DRAM dies; TSMC manufactures the logic base die on its advanced node. SK Hynix holds approximately 66–70% of NVIDIA's HBM4 supply allocation for the Vera Rubin (R100) platform. HBM3E prices were raised approximately 20% for 2026 contract pricing, an agreement reached jointly with Samsung in Q4 2025. SK Hynix showcased the world's first 16-Hi HBM4 (48GB capacity) at CES 2026. Cumulative hyperscaler forward HBM commitments now exceed 3 years of SK Hynix's total HBM supply capacity.
+
+**Source:** SK Hynix Q1 2026 IR, PR Newswire April 22 2026; Digitimes April 23 2026; CNBC April 23 2026; TrendForce Jan 2026
+
+#segment:dram #source-tier:A #signal-type:earnings #company:sk_hynix #date:2026-05-15 #importance:high #confidence:high #cross-ref:chip_maker #cross-ref:end_market
+
+---
+
 ## Open Questions
 
-- [ ] What share of HBM4 production is committed to NVIDIA vs. other customers?
+- [x] ~~What share of HBM4 production is committed to NVIDIA vs. other customers?~~ — Resolved: ~66–70% of NVIDIA Vera Rubin HBM4 allocation; cumulative hyperscaler commitments exceed 3 years of forward supply capacity (Cycle 8, May 2026)
 - [ ] 1Cnm node specifics for HBM4E — DRAM cell size reduction vs 1Bnm?
 - [ ] PQC21 (321-layer QLC) customer wins — which hyperscalers?

@@ -134,8 +134,18 @@ Broadcom is fabless; all advanced silicon at TSMC (Tomahawk 5 at N5; XPU at N3/N
 
 ---
 
+### Update: 2026-03-12 — Tomahawk 6 volume production shipping; Jericho4 shipping since August 2025
+
+> Broadcom Tomahawk 6 (102.4 Tbps, TSMC N3 chiplet) entered volume production shipping on March 12, 2026 per Broadcom IR announcement. Initial engineering samples had shipped in October 2025 (Edgecore/Accton demonstrated at OCP Global Summit). Tomahawk 6 doubles Tomahawk 5 bandwidth (51.2 Tbps → 102.4 Tbps) with up to 64 ports at 1.6 Tbps Ethernet. Jericho4 (distributed AI routing across data centers) began shipping in August 2025. Broadcom AI switch backlog exceeded $10B in Q1 FY2026. Q1 FY2026 AI semiconductor revenue: $8.4B (+106% YoY); Q2 FY2026 AI guidance: $10.7B (+27% sequential).
+
+**Source:** Broadcom IR, 2026-03-12; Data Center Dynamics; Broadcom Q1 FY2026 PR
+
+#segment:network #source-tier:A #signal-type:roadmap #company:broadcom #date:2026-03-12 #importance:high #confidence:high #cross-ref:chip_maker
+
+---
+
 ## Open Questions
 
 - [ ] Which two additional hyperscalers are qualifying Broadcom XPU design services?
-- [ ] Tomahawk 6 tape-out timeline and first customer production?
+- [x] Tomahawk 6 tape-out timeline and first customer production? — Volume shipping began March 12, 2026; initial samples October 2025
 - [ ] Meta MTIA Gen 2 revenue contribution — how large as % of XPU revenue?

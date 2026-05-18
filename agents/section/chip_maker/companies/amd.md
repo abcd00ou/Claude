@@ -150,6 +150,16 @@ AMD designs chips and sources manufacturing from TSMC. Its Instinct GPUs use HBM
 
 ---
 
+### Update: 2026-05-05 — Q1 2026 earnings: $10.3B total (+38% YoY), DC $5.8B (+57% YoY); MI450 sampling; Oracle 50K cluster, OpenAI & Meta 6 GW deals confirmed
+
+> AMD Q1 2026 results: total revenue $10.3B (+38% YoY), Data Center $5.8B (+57% YoY). Q2 2026 guidance ~$11.2B (±$300M). MI450 sampling has started with lead customers; customer forecasts described as "exceeding initial expectations." Key customer wins disclosed this cycle: Oracle committed to a 50,000-GPU MI450 cluster for Q3 2026; OpenAI signed a 6 GW strategic partnership for MI450 (first 1 GW deployment H2 2026); Meta committed to a 6 GW custom MI450 deal (AMD issued Meta a warrant for up to 160M shares at $0.01/share vesting at 1 GW–6 GW shipment milestones, first 1 GW H2 2026). AMD GPU market share estimated ~5–7% vs. NVIDIA ~80%.
+
+**Source:** AMD Q1 2026 Earnings Press Release, AMD IR (ir.amd.com), 2026-05-05; CNBC, DataCenterDynamics, Tom's Hardware, 2026-05-05
+
+#segment:chip_maker #source-tier:A #signal-type:earnings #company:amd #date:2026-05-05 #importance:high #confidence:high #cross-ref:end_market #cross-ref:dram #cross-ref:foundry
+
+---
+
 ## Open Questions
 
 - [ ] MI450 custom specs for Meta vs. OpenAI — same chip or differentiated designs?

@@ -34,8 +34,12 @@ Hitachi Energy is a leading global supplier of power transformers, high-voltage 
 
 | Metric | Value | Period | Source |
 |---|---|---|---|
-| Virginia transformer facility investment | $457M | 2026 announcement | Manufacturing Dive |
-| Total U.S. grid manufacturing investment (Hitachi) | ~$1B | 2026 announcement | Manufacturing Dive |
+| Virginia transformer facility investment | $457M | Sep 2025 announcement | Hitachi Energy press release |
+| Tennessee transformer component expansion | $106M | Aug 2025 announcement | Hitachi Energy press release |
+| Global transformer shortage relief commitment | $250M additional | Mar 2025 | Hitachi Energy press release |
+| Total U.S. transformer-related investment committed | ~$1.5B+ | 2025–2026 | Hitachi Energy press releases |
+| Total U.S. grid manufacturing investment (Hitachi) | ~$1B+ | Sep 2025 announcement | Manufacturing Dive |
+| Global LPT order backlog | Record levels | Q2 2026 | Hitachi Energy / industry reports |
 | Hitachi Energy FY2025 orders | >$20B (estimated) | FY2025 | Hitachi Ltd annual report |
 
 ---
@@ -55,10 +59,13 @@ Hitachi Energy produces large power transformers that are required for all utili
 
 | Milestone | Timeline | Status | Source |
 |---|---|---|---|
-| South Boston, VA transformer plant — $457M investment announced | 2026 | Announced | Manufacturing Dive |
+| South Boston, VA transformer plant — $457M investment announced | Sep 2025 | Announced | Hitachi Energy press release / Manufacturing Dive |
+| Alamo, TN transformer component manufacturing expansion — $106M | Aug 2025 | Announced | Hitachi Energy press release |
+| Global transformer shortage relief — $250M additional | Mar 2025 | Committed | Hitachi Energy press release |
+| Total U.S. transformer-related investment | ~$1.5B+ committed | 2025–2026 | Hitachi Energy press releases |
 | South Boston, VA facility production start | 2028 | Planned | Manufacturing Dive |
 | Projected nation's largest LPT plant upon completion | 2028 | Planned | Manufacturing Dive |
-| Total ~$1B U.S. grid manufacturing investment | 2026–2028 | Underway | Manufacturing Dive |
+| Global LPT lead times | Up to 3 years (record backlog) | Q2 2026 | Industry reports |
 
 ---
 
@@ -96,8 +103,19 @@ Hitachi Energy produces large power transformers that are required for all utili
 
 ---
 
+### Update: 2025-09-04 — Hitachi Energy $457M Virginia factory + $106M Tennessee expansion + $250M global relief; total U.S. investment ~$1.5B+; record LPT backlog; lead times up to 3 years
+
+> Hitachi Energy announced a $457M large power transformer (LPT) factory in South Boston, Virginia on September 4, 2025 — described as the largest LPT manufacturing site in the U.S. upon completion (targeted 2028). Part of a broader $1B+ U.S. grid manufacturing investment announced September 2025. August 2025: $106M expansion of transformer component manufacturing in Alamo, Tennessee. March 2025: $250M additional committed for global transformer shortage relief. Total Hitachi Energy U.S. transformer-related investment: ~$1.5B+ committed across these announcements. Global LPT order backlog at record levels; lead times up to 3 years for large transformers as of 2025–2026. All factory announcements explicitly linked to AI datacenter grid infrastructure demand. No specific named hyperscaler orders publicly confirmed. Critical constraint: specialized labor requires multiyear apprenticeships — capital deployment does not translate directly to near-term capacity.
+
+**Source:** Hitachi Energy press releases, September 2025; Manufacturing Dive, https://www.manufacturingdive.com/news/hitachi-unveils-1b-grid-manufacturing-investment-including-virginia-transformer/759512/; Utility Dive; Power Magazine
+
+#segment:dc_infra #source-tier:A #signal-type:supply #company:hitachi_energy #date:2025-09-04 #importance:high #confidence:high #cross-ref:power #cross-ref:end_market
+
+---
+
 ## Open Questions
 
-- [ ] Has any hyperscaler (Microsoft, Amazon, Google, Meta) placed a direct large-scale transformer order with Hitachi Energy for AI campus buildout?
-- [ ] What is Hitachi Energy's current order backlog for large power transformers?
+- [ ] Has any hyperscaler (Microsoft, Amazon, Google, Meta) placed a direct large-scale transformer order with Hitachi Energy for AI campus buildout? (No public confirmation as of Q2 2026)
+- [x] What is Hitachi Energy's current order backlog for large power transformers? — Global LPT backlog at record levels as of 2025–2026; specific MVA figures not publicly disclosed
 - [ ] What is the Virginia plant's planned production capacity in MVA/year when at full production?
+- [ ] What is the Alamo, Tennessee facility's production capacity and product mix post-expansion?

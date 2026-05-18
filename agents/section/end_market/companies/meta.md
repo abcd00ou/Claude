@@ -76,8 +76,19 @@ Meta is a direct NVIDIA customer (training), AMD customer (training), and operat
 
 ---
 
+### Update: 2026-04-29 — Q1 2026: capex raised to $125–145B; Oklahoma / El Paso / Beloit DCs; $107B contractual commitment step-up; Meta Compute division formed January 2026
+
+> Meta Q1 2026 revenue: $56.3B (+33% YoY). Q1 2026 actual capex: $19.84B. FY2026 capex guidance raised to $125–145B (up from prior $60–65B range — more than doubling year-over-year). New datacenter activity: groundbreaking in Oklahoma; 12 additional buildings filed at El Paso TX campus; signed agreement in Beloit WI. $107B step-up in contractual commitments recorded in Q1 alone. Meta Compute division formed January 2026, targeting tens of GW of AI compute capacity within the decade. Custom silicon rollout: 1GW+ Broadcom ASIC (MTIA) + AMD MI-series + NVIDIA Blackwell systems deployed concurrently. $107B in new contractual commitments in a single quarter indicates sustained procurement pipeline through 2027–2028.
+
+**Source:** Meta Q1 2026 Earnings Call, April 29 2026; CNBC; Fortune
+
+#segment:end_market #source-tier:A #signal-type:capex #company:meta #date:2026-04-29 #importance:high #confidence:high #cross-ref:dc_infra #cross-ref:asic
+
+---
+
 ## Open Questions
 
 - [ ] MTIA Gen 2 chip count in the "1+ GW rollout" — unit volume?
 - [ ] MTIA Gen 3 roadmap — any public disclosure?
 - [ ] Broadcom's role: design services only, or IP licensing too?
+- [ ] Meta Compute division organizational structure — separate P&L or internal cost center?

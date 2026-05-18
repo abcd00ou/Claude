@@ -196,8 +196,18 @@ TSMC is a pure-play foundry — it manufactures chips for customers but does not
 
 ---
 
+### Update: 2026-05 (Cycle 8) — Q1 2026 record earnings; CoWoS 2026 targets confirmed; N2 volume production underway; Arizona Fab 21 Phase 2 complete
+
+> Q1 2026 headline financials: Revenue $35.9B USD (+35.1% YoY, +6.4% QoQ). Net profit $18.2B (+58% YoY). Gross margin 66.2% (vs 62.3% prior year). Operating margin 58.1%. HPC/AI = 61% of total revenue — a record high, growing 20% QoQ. N3 = 25% of wafer revenue; N4/N5 = 36%; advanced nodes (N10 and below) = 74% combined. Full-year 2026 revenue growth guidance raised to above 30% YoY (reaffirmed at Q1 call). Full-year 2026 CapEx: $52–56B, with 10%+ allocated to advanced packaging. CoWoS described as "extremely tight." End-2026 CoWoS target: 115,000–140,000 wpm (most-cited ~130,000 wpm vs ~35,000 wpm in late-2024 baseline). End-2027 projected ~170,000 wpm. Chiayi AP7 complex is primary expansion site. NVIDIA, Google, Amazon, MediaTek orders fully booked at the 140K wpm level. OSAT outsourcing unchanged: Amkor ~180–190K wafers/year; ASE/SPIL ~60–80K wafers/year. N2 (2nm) volume production began Q4 2025 at Fab 22 (Kaohsiung); Apple reserved 50%+ of initial N2 capacity (A20 Pro, M6 MacBook); AMD EPYC Venice on N2 in 2026; NVIDIA AI GPUs on N2 not until H2 2027. N2P and A16 (backside power delivery) both targeting volume production H2 2026. Arizona Fab 21: N4 HVM confirmed profitable; Phase 2 (N3) construction completed April 2026, commercial production H2 2027; CHIPS Act $6.6B grant finalized.
+
+**Source:** TSMC Q1 2026 IR, 2026-04-16; CNBC 2026-04-16; Tom's Hardware; Technetbooks Feb 2026; SemiWiki; NIST CHIPS; Manufacturing Dive; TokenRing Jan 2026; AtlasPCB; GlobalSemiResearch Substack
+
+#segment:foundry #source-tier:A #signal-type:earnings #signal-type:capacity #signal-type:roadmap #company:tsmc #date:2026-04-16 #importance:high #confidence:high #cross-ref:chip_maker #cross-ref:substrate #cross-ref:dram
+
+---
+
 ## Open Questions
 
 - [ ] CoWoS-L capacity in wafer-equivalents per month — no public filing disclosure; seek earnings call Q&A
 - [ ] N2 utilization rate and AI customer mix for N2 — not in filed documents
-- [ ] TSMC Arizona (N4 production): capacity and AI customer allocation?
+- [x] TSMC Arizona (N4 production): capacity and AI customer allocation? — N4 HVM confirmed profitable; Apple and NVIDIA Blackwell confirmed customers (Arizona Technology Council, April 2026)

@@ -112,6 +112,16 @@ Arista is fabless for switching ASICs, sourcing exclusively from Broadcom (Tomah
 
 ---
 
+### Update: 2025-10-29 / 2026-Q1 — R4 Series announced (Meta co-developed 7700R4 DES); GA Q1 2026; HyperPort 3.2 Tbps introduced
+
+> Arista announced the R4 Series on October 29, 2025. The 7700R4 DES (Distributed Ethernet Switching) was co-developed with Meta for AI cluster back-end fabric. The R4 family reached general availability in Q1 2026. Key technical introduction: HyperPort at 3.2 Tbps per port for AI cluster spine connectivity. Arista 800GbE port shipments tripled sequentially in Q2 2025, reflecting strong pull from hyperscaler AI buildouts ahead of R4 GA.
+
+**Source:** Arista press release, 2025-10-29
+
+#segment:network #source-tier:A #signal-type:roadmap #signal-type:design-win #company:arista #date:2025-10-29 #importance:high #confidence:high #cross-ref:end_market
+
+---
+
 ## Open Questions
 
 - [ ] Arista revenue split between AI cluster fabric vs traditional data center networking?

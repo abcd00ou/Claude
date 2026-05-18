@@ -38,6 +38,9 @@ Amkor Technology is the second-largest OSAT globally by revenue and the leading 
 | Phase 1 production start | Early 2028 | Targeted | Amkor IR, 2025-10-06 |
 | Cleanroom footprint (total) | 750,000+ sq ft | Upon completion of both phases | Amkor IR, 2025-10-06 |
 | Advanced packaging revenue growth (FY2026) | ~3× YoY | 2026 | Digitimes, 2026-04-28 |
+| Q1 2026 revenue growth | +27% YoY | Q1 2026 | Digitimes, 2026-03 |
+| FY2026 capex | $2.5–3B | 2026 | Amkor IR, 2026-05 |
+| CHIPS Act direct funding (preliminary MoT) | Up to $900M (~$407M disclosed in Q2 2025 10-Q) | 2026-05 | Amkor IR; NIST CHIPS |
 
 ---
 
@@ -78,6 +81,16 @@ Amkor sits at the back-end of the AI chip supply chain: receives CoWoS-processed
 
 ## Updates
 
+### Update: 2026-05 — CHIPS Act $900M preliminary MoT signed; Apple and NVIDIA confirmed as Arizona lead customers; HDFO tripling in 2026; capex $2.5–3B
+
+> Amkor signed a Preliminary Memorandum of Terms with the U.S. Department of Commerce for up to $900M in direct CHIPS Act funding for its Peoria, Arizona facility (~$407M disclosed in Q2 2025 10-Q). Apple and NVIDIA confirmed as lead customers: Apple silicon from TSMC Arizona fabs to be packaged at Amkor Arizona; NVIDIA AI chip 2.5D/CoWoS-class packaging also planned. No additional hyperscaler customer qualifications beyond Apple and NVIDIA confirmed as of May 2026. Q1 2026 revenue surge of 27% driven by advanced packaging. Amkor plans to triple 2.5D and HDFO packaging revenue in 2026; 2026 capex $2.5–3B prioritized for HDFO and 2.5D in Korea and Taiwan. Two CPU HDFO programs in final qualification, targeted for HVM H2 2026.
+
+**Source:** Amkor IR (CHIPS Act MoT); NIST CHIPS listing; Tom's Hardware; Digitimes March 2026
+
+#segment:substrate #source-tier:A #signal-type:supply #company:amkor #date:2026-05 #importance:high #confidence:high #cross-ref:foundry #cross-ref:chip_maker
+
+---
+
 ### Update: 2026-Q1 — Amkor-TSMC formal MOU for CoWoS and InFO in Arizona; receives ~180K–190K CoWoS wafers/year; advanced packaging to triple
 
 > Amkor and TSMC signed an MOU to collaborate on advanced packaging in Arizona, jointly defining packaging technologies including TSMC's InFO and CoWoS to address common customers' needs. TSMC is outsourcing 240,000–270,000 CoWoS wafers annually to OSAT partners in 2026; Amkor receives the largest share (~180,000–190,000 wafers/year), with SPIL (ASE Group) receiving ~60,000–80,000 wafers/year. Amkor has two newly qualified HDFO (High-Density Fan-Out) programs for AI data centers expected to ramp in late 2026. Amkor Q1 2026 strong results; advanced packaging revenue expected to triple year-over-year in 2026.
@@ -101,6 +114,6 @@ Amkor sits at the back-end of the AI chip supply chain: receives CoWoS-processed
 ## Open Questions
 
 - [ ] What specific NVIDIA or AMD products will be packaged in the Arizona facility starting 2028?
-- [ ] Has Amkor received U.S. CHIPS Act direct funding for the Arizona campus?
+- [x] **RESOLVED (2026-05):** Has Amkor received U.S. CHIPS Act direct funding for the Arizona campus? — Yes: Preliminary Memorandum of Terms signed with U.S. Department of Commerce for up to $900M direct funding; ~$407M disclosed in Q2 2025 10-Q.
 - [ ] What is the per-wafer packaging price for CoWoS outsourcing vs. TSMC in-house pricing?
 - [ ] What is Amkor's FY2026 total revenue and advanced packaging revenue as reported?

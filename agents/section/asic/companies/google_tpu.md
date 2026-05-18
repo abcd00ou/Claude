@@ -4,7 +4,7 @@
 **Role in AI SCM:** World's largest captive AI accelerator fleet; TPU v5 + TPU 8 generation in production; ~2M+ chips deployed  
 **HQ:** United States (Mountain View, CA)  
 **Ticker:** NASDAQ:GOOGL (Alphabet)  
-**Last Updated:** 2026-04-29
+**Last Updated:** 2026-05-18
 
 ---
 
@@ -24,7 +24,9 @@ Google's Tensor Processing Unit (TPU) program is the world's largest and longest
 | TPU v5p (2024) | Large model training (Gemini Ultra) | In production; 459 TFLOPS BF16; 96GB HBM2e |
 | TPU 8t (training, 2025) | Frontier model training | In production; TSMC N3 generation |
 | TPU 8i (inference, 2025) | High-throughput AI inference | In production; Google Cloud offering |
-| Google Ironwood (announced 2025) | Next-gen inference at scale | Announced; cloud availability TBD |
+| Google Ironwood / TPU v7 (2025–2026) | Inference at scale; superpod 9,216 chips = 42.5 ExaFLOPS | GA on Google Cloud (US/EU/APAC); TSMC N3P; 2 chiplets/chip; 192 GB HBM3E (2×96 GB); 7.37 TB/s; CoWoS via MediaTek; ~1M chips planned 2026 |
+| TPU 8t "Sunfish" (training, ~2027) | Frontier model training (next gen) | Announced; targeting TSMC N2; late 2027 |
+| TPU 8i "Zebrafish" (inference, ~2027) | High-throughput inference (next gen) | Announced; targeting TSMC N2; late 2027 |
 
 **Source:** Google Cloud Next 2025; Google Q1 2026 Earnings, 2026-04-29; Google I/O 2024
 
@@ -61,7 +63,9 @@ Google designs TPUs internally (Google DeepMind + Google Brain hardware teams). 
 | TPU v5p (training; 96GB HBM2e) | 2024 | Volume production | Google I/O 2024 |
 | TPU 8t (training, TSMC N3) | 2025 | In production | Google Q1 2026 Earnings, 2026-04-29 |
 | TPU 8i (inference, TSMC N3) | 2025 | In production | Google Q1 2026 Earnings, 2026-04-29 |
-| Google Ironwood (next-gen inference) | 2025–2026 | Announced; timeline TBD | Google Cloud Next 2025 |
+| Google Ironwood / TPU v7 (TSMC N3P, CoWoS) | 2025–2026 | GA (US/EU/APAC); ~1M chips planned 2026 | Google Cloud Next 2026; ServeTheHome; Jon Peddie Research |
+| TPU 8t "Sunfish" (training, TSMC N2) | Late 2027 | Announced | Google Cloud Next 2026 |
+| TPU 8i "Zebrafish" (inference, TSMC N2) | Late 2027 | Announced | Google Cloud Next 2026 |
 
 ---
 
@@ -76,6 +80,16 @@ Google designs TPUs internally (Google DeepMind + Google Brain hardware teams). 
 ---
 
 ## Updates
+
+### Update: 2026-05 — Google Cloud Next 2026: Ironwood (TPU v7) confirmed TSMC N3P, CoWoS via MediaTek, 2-chiplet architecture; ~1M chips 2026; Anthropic 1M TPU / 1GW allocation; next gen "Sunfish"/"Zebrafish" on TSMC N2
+
+> Google Cloud Next 2026 confirmed full Ironwood (TPU v7) specifications and general availability across US, EU, and APAC regions. Process node: TSMC N3P (3nm). Packaging: CoWoS via MediaTek-TSMC partnership — MediaTek acts as volume production coordinator. Architecture: 2 chiplets per chip, each with 1 TensorCore + 2 SparseCores. Memory: HBM3E, 192 GB per chip (two chiplets × 96 GB each), 7.37 TB/s bandwidth — 4.5× Trillium (TPU v6e). Superpod: 9,216 chips = 42.5 ExaFLOPS aggregate. ~1 million Ironwood chips planned for deployment in 2026 (400K first phase via Google Cloud); up to 1 GW of Ironwood capacity accessible through Google Cloud in 2026. Anthropic allocated up to 1M TPU chips + 1 GW capacity in 2026. Next-generation confirmed: TPU 8t "Sunfish" (training) and TPU 8i "Zebrafish" (inference) — both targeting TSMC N2, late 2027.
+
+**Source:** Google Cloud Blog; ServeTheHome; Jon Peddie Research; Google Cloud TPU docs; The Next Web, 2026-05
+
+#segment:asic #source-tier:A #signal-type:supply #company:google_tpu #date:2026-05 #importance:high #confidence:high #cross-ref:foundry #cross-ref:dram #cross-ref:end_market
+
+---
 
 ### Update: 2026-04-29 — Q1 2026: Cloud backlog $462B; TPU 8t + TPU 8i in production; Ironwood announced
 
@@ -108,7 +122,9 @@ Google designs TPUs internally (Google DeepMind + Google Brain hardware teams). 
 ## Open Questions
 
 - [x] Google Ironwood specs — **resolved**: 4,614 FP8 TFLOPS, 192 GB HBM3E, 7.37 TB/s, 9,216-chip pod = 42.5 ExaFLOPS (GA November 2025)
-- [ ] TPU 8t/8i (current gen): TSMC node not confirmed — N3B, N3E, or N3P?
-- [ ] TPU 8t "Sunfish" / TPU 8i "Zebrafish" (next gen, TSMC N2): exact timeline for late 2027?
+- [x] Google Ironwood process node — **resolved**: TSMC N3P (confirmed Google Cloud Next 2026)
+- [x] Google Ironwood packaging — **resolved**: CoWoS via MediaTek-TSMC partnership; MediaTek coordinates volume production (confirmed Google Cloud Next 2026)
+- [x] TPU 8t "Sunfish" / TPU 8i "Zebrafish" (next gen) node — **resolved**: TSMC N2 confirmed; late 2027 target (Google Cloud Next 2026)
+- [ ] TPU 8t/8i (current in-production gen): TSMC node not confirmed — N3B, N3E, or N3P?
 - [ ] TPU fleet total deployed chip count — 2M estimate from analysts; has Google disclosed?
 - [ ] How does Google's TPU capex split between internal use vs cloud customer-facing capacity?

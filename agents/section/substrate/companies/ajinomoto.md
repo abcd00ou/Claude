@@ -75,6 +75,16 @@ Ajinomoto supplies ABF film to all major substrate manufacturers: Ibiden, Unimic
 
 ## Updates
 
+### Update: 2026-05-13 — 30% ABF film price hike to substrate makers effective Q3 2026; structural shortage widens to 42% by 2028; $166M capacity plan deemed insufficient
+
+> Ajinomoto informed IC substrate makers of a 30% ABF film price increase effective Q3 2026. Standard ABF substrate prices projected to rise 5–10% in H2 2026; spot prices already up 30%+. Supply-demand shortfall projected at ~10% in H2 2026, widening to 21% in 2027 and 42% in 2028. Ajinomoto plans JPY 25 billion (~$166M USD) investment by 2030 to increase ABF capacity by 50% — analysts note this is insufficient to meet structural demand. Ajinomoto holds >95% market share for CPU/GPU ABF materials.
+
+**Source:** Digitimes May 13 2026; WCCFTech; Semiconductor Insight
+
+#segment:substrate #source-tier:B #signal-type:supply #company:ajinomoto #date:2026-05-13 #importance:critical #confidence:medium #cross-ref:chip_maker
+
+---
+
 ### Update: 2026-05-08 — ABF segment operating margin exceeds 50%; land acquired for third plant (production 2032); ABF price +5–10% H2 2026
 
 > Ajinomoto reported FY2026 electronic materials segment operating profit of ¥54.6B (+35% YoY), sales of ¥100.7B (+31% YoY), operating margin exceeding 50%. Ajinomoto holds greater than 95% global ABF market share. Ajinomoto Fine-Techno (AFT) acquired land (¥1.2B) at Kani City, Gifu Prefecture for a third ABF production plant; construction begins 2028, production scheduled for 2032. ABF price increases of 5–10% expected in H2 2026.

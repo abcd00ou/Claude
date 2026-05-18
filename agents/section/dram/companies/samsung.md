@@ -4,7 +4,7 @@
 **Role in AI SCM:** Second-largest HBM supplier; largest DRAM and NAND manufacturer by revenue; also operates a semiconductor foundry  
 **HQ:** Suwon, South Korea  
 **Ticker:** KRX:005930  
-**Last Updated:** 2026-04-30
+**Last Updated:** 2026-05-15
 
 ---
 
@@ -172,8 +172,18 @@ Samsung Memory sells HBM to AI accelerator OEMs (NVIDIA, AMD, and its own Exynos
 
 ---
 
+### Update: 2026-05-15 (Cycle 8) — HBM3E NVIDIA qualification September 2025 (full core redesign); world's first commercial HBM4 shipped February 12 2026; 2026 HBM3E fully sold out; 30%+ HBM4 market share target; 50% HBM capacity increase planned
+
+> Samsung passed NVIDIA's 12-Hi HBM3E qualification in September 2025 following a full core redesign led by VP Jun Young-hyun — the fix was required after two failed qualification tests in 2024 and a failed retest in June 2025. Volume HBM3E shipments to NVIDIA began Q3 2025. Samsung's entire 2026 HBM3E supply is sold out. Samsung supplies over 60% of Google TPU HBM3E demand (TrendForce Dec 2025), making Google the primary HBM customer during the period when NVIDIA qualification was pending. On February 12, 2026, Samsung shipped the world's first commercial HBM4 to an unnamed customer (widely reported as NVIDIA for Vera Rubin): 12-Hi HBM4 on Samsung's 1c process node, 3.3 TB/s bandwidth, 13 Gbps I/O (vs. Samsung's previously stated 11.7 Gbps spec and JEDEC's ~8 Gbps standard), and 40% better power efficiency versus HBM3E. Samsung targets 30%+ HBM4 market share in 2026 and plans approximately 50% HBM capacity increase through 2026. 2026 HBM market share estimate: Samsung 35–40% (HBM3E), 20–25% of NVIDIA HBM4 Vera Rubin allocation (TrendForce; Counterpoint Research).
+
+**Source:** Samsung Semiconductor Newsroom Feb 12 2026; Bloomberg Feb 12 2026; TrendForce Feb 2026 and Dec 2025; KED Global Oct 2025 and Sept 2025
+
+#segment:dram #source-tier:A #signal-type:supply #company:samsung #date:2026-05-15 #importance:high #confidence:high #cross-ref:chip_maker #cross-ref:end_market
+
+---
+
 ## Open Questions
 
 - [ ] Which customers are signed under multi-year supply contracts — NVIDIA? Hyperscalers?
-- [ ] Samsung HBM market share figure — company has not disclosed; ~35–40% is analyst estimate
+- [x] ~~Samsung HBM market share figure — company has not disclosed; ~35–40% is analyst estimate~~ — Resolved: TrendForce/Counterpoint 2026 estimates: 35–40% HBM3E share; 20–25% of NVIDIA HBM4 Vera Rubin allocation (Cycle 8, May 2026)
 - [ ] Samsung Foundry AI chip wins — any confirmed post-Q1 2026?

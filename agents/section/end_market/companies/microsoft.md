@@ -77,6 +77,16 @@ Microsoft is a direct customer of NVIDIA (Blackwell GPU fleet), AMD (CPUs and so
 
 ---
 
+### Update: 2026-04-29 — Q3 FY2026: first GB300 NVL72 supercluster (4,608 GPUs / 92.1 ExaFLOPS); Azure AI ARR $37B +123% YoY; Azure +40% CC (5th consecutive quarter of acceleration)
+
+> Microsoft launched the first GB300 NVL72 supercluster: 4,608 GB300 GPUs delivering 92.1 ExaFLOPS FP4, deployed for OpenAI training workloads (announced at NVIDIA GTC March 2026). Azure grew 40% constant currency in Q3 FY2026 — 5th consecutive quarter of acceleration. Annualized Azure AI revenue reached $37B (+123% YoY). CY2026 capex guidance ~$190B exceeded analyst consensus of $154.6B by ~$35B. Fairwater superfactories in Wisconsin and Atlanta designated for Vera Rubin architecture.
+
+**Source:** Microsoft Q3 FY2026 Earnings Call, April 29 2026; NVIDIA Blog (GTC 2026); Data Center Dynamics
+
+#segment:end_market #source-tier:A #signal-type:roadmap #company:microsoft #date:2026-04-29 #importance:high #confidence:high #cross-ref:chip_maker #cross-ref:dc_infra
+
+---
+
 ### Update: 2026-04-29 — Maia 200 deployed: "over 30% improved tokens per dollar vs latest silicon"
 
 > CEO Satya Nadella: "Our Maia 200 AI accelerator — which offers over 30% improved tokens per dollar, compared to the latest silicon in our fleet." Fairwater datacenter in Wisconsin came online six weeks ahead of schedule, housing hundreds of thousands of NVIDIA Blackwell GPUs.

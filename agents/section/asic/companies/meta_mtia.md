@@ -4,7 +4,7 @@
 **Role in AI SCM:** Meta's in-house custom AI accelerator family for ranking, recommendation, training, and generative AI inference; multi-generational TSMC-manufactured chip co-developed with Broadcom.  
 **HQ:** Menlo Park, CA, USA (parent: Meta Platforms)  
 **Ticker:** NASDAQ:META (parent)  
-**Last Updated:** 2026-05-13
+**Last Updated:** 2026-05-18
 
 ---
 
@@ -76,6 +76,16 @@ MTIA chips are designed in-house by Meta AI Infrastructure hardware teams and ma
 
 ## Updates
 
+### Update: 2026-05 — MTIA 450 specs confirmed: 7 PFLOPS FP8, 288 GB HBM, 18.4 TB/s (2× MTIA 400); TSMC N2; FlashAttention + Softmax HW acceleration; mass deployment early 2027; drop-in chassis upgrade across 400/450/500
+
+> Meta confirmed MTIA 450 performance specifications (March 2026 roadmap; TrendForce March 2026). MTIA 450: 7 PFLOPS FP8 compute; 288 GB HBM; 18.4 TB/s bandwidth — 2× MTIA 400; 75% boost in MX4 FLOPS; hardware acceleration for FlashAttention and Softmax; targeted at GenAI inference workloads (LLM, MoE). Process node: TSMC N2 (Broadcom described MTIA 450 as "industry's first 2nm AI compute accelerator"). Mass deployment: early 2027. MTIA 400 targets 2026 deployment. All chips in the 400/450/500 family share the same chassis, rack, and network — enabling drop-in upgrades across generations without rack redesign.
+
+**Source:** Meta AI Blog; TrendForce March 2026; StorageReview; Tom's Hardware; Data Center Dynamics, 2026-03
+
+#segment:asic #source-tier:A #signal-type:roadmap #company:meta #date:2026-05 #importance:high #confidence:high #cross-ref:foundry #cross-ref:dram #cross-ref:end_market
+
+---
+
 ### Update: 2026-03 — Meta MTIA next-generation on TSMC N2 (first AI chip on 2nm); 1 GW initial deployment; Broadcom multi-gen partnership
 
 > Meta's next-generation MTIA chip will be the first AI chip manufactured on TSMC N2 (2nm process). Meta committed to deploying 1 gigawatt (1,000 MW) of MTIA chips initially, scaling to multiple gigawatts by 2027. Meta deepened its partnership with Broadcom to co-develop "multiple generations" of MTIA chips covering chip architecture co-development across the MTIA roadmap (MTIA 300/400/450/500). MTIA 450 is slated for H2 2026 targeting generative AI inference; MTIA 500 targeted for 2027. Meta Superintelligence Labs appointed a dedicated hardware leader to oversee custom chip development for AGI workloads.
@@ -98,7 +108,7 @@ MTIA chips are designed in-house by Meta AI Infrastructure hardware teams and ma
 
 ## Open Questions
 
-- [ ] What are MTIA 450 performance specs (PFLOPS, memory capacity, TDP)?
+- [x] What are MTIA 450 performance specs — **resolved**: 7 PFLOPS FP8, 288 GB HBM, 18.4 TB/s; TSMC N2; mass deployment early 2027 (TrendForce March 2026; Broadcom Q1 FY2026)
 - [ ] Which TSMC N2 fab site is allocated for MTIA 450 production?
 - [ ] What percentage of Meta's total compute hours run on MTIA vs. NVIDIA vs. AMD?
 - [ ] Will MTIA ever be offered externally via Meta AI services or chip licensing?

@@ -4,7 +4,7 @@
 **Role in AI SCM:** AWS custom AI training (Trainium) and inference (Inferentia) ASIC program; Trainium3 shipping in 2025  
 **HQ:** United States (Seattle, WA)  
 **Ticker:** NASDAQ:AMZN  
-**Last Updated:** 2026-05-01
+**Last Updated:** 2026-05-18
 
 ---
 
@@ -22,7 +22,8 @@ Amazon Web Services (AWS) designs custom AI accelerators under the Trainium (tra
 |---|---|---|
 | Trainium (1st gen, 2021) | ML training; AWS-internal initially | Legacy; succeeded by Trainium2 |
 | Trainium2 (4nm TSMC, 2024) | Large model training; 100K+ cluster | In production; customer available via AWS |
-| Trainium3 (2025) | Next-gen training; performance uplift | Early shipping; sampling to select customers |
+| Trainium3 (TSMC N3P, 2025) | Next-gen training; 2.52 PFLOPS FP8, 144 GB HBM3E, 4.4× Trn2 | GA (re:Invent 2025); ~1 GW Trn2+3 capacity at AWS by end 2026 |
+| Trainium4 (2026/2027) | Training with NVLink Fusion; FP4; ~6× vs Trn3; ~288 GB memory | Announced; late 2026/early 2027 GA |
 | Inferentia2 (4nm TSMC, 2023) | AI inference; cost-efficient | In production; AWS Bedrock; SageMaker |
 | AWS Neuron SDK | Trainium/Inferentia software stack | Open-source; supports PyTorch, JAX |
 
@@ -60,7 +61,8 @@ Trainium and Inferentia chips are designed at AWS (Annapurna Labs, Cupertino CA)
 | Inferentia2 (4nm TSMC) | 2023 | Volume production | AWS re:Invent 2022 |
 | Trainium2 (4nm TSMC) | 2024 | Volume production; 100K+ cluster | AWS re:Invent 2023 |
 | Trainium2 UltraServer (64-chip) | 2024 | Production | AWS re:Invent 2024 |
-| Trainium3 | 2025 | Early shipping (select customers) | Amazon Q1 2026 Earnings, 2026-05-01 |
+| Trainium3 (TSMC N3P, 2.52 PFLOPS FP8, 144 GB HBM3E) | 2025 | GA (re:Invent 2025); ~1 GW Trn2+3 at AWS by end 2026 | DataCenterDynamics; NextPlatform, 2025-12-03 |
+| Trainium4 (NVLink Fusion; FP4; ~6× vs Trn3; ~288 GB) | Late 2026/Early 2027 | Announced | NVIDIA Technical Blog, 2025-12-02 |
 
 ---
 
@@ -75,6 +77,16 @@ Trainium and Inferentia chips are designed at AWS (Annapurna Labs, Cupertino CA)
 ---
 
 ## Updates
+
+### Update: 2026-05 — Trainium3 GA confirmed (re:Invent 2025): TSMC 3nm, 2.52 PFLOPS FP8, 144 GB HBM3E, 4.4× Trn2, 4× energy efficiency; Trainium4 NVLink Fusion support; ~1 GW Trn2+3 capacity by end 2026; Amazon $50B OpenAI commitment
+
+> Trainium3 is generally available (announced at re:Invent 2025). Specifications: TSMC 3nm; 2.52 PFLOPS FP8 per chip; 144 GB HBM3E; 4.4× performance improvement over Trainium2; 4× energy efficiency improvement. AWS targets nearly 1 GW total Trainium2+3 capacity by end 2026. Trainium4 was revealed alongside Trainium3 at re:Invent: supports NVIDIA NVLink Fusion interconnect for heterogeneous clusters; targets late 2026/early 2027 GA; features FP4 support; ~6× performance uplift vs Trainium3; ~288 GB memory capacity. Amazon committed $50B to OpenAI, with 2 GW of Trainium silicon as part of the deal.
+
+**Source:** DataCenterDynamics; NextPlatform Dec 3 2025; Tom's Hardware, 2025-12
+
+#segment:asic #source-tier:A #signal-type:supply #company:amazon_trainium #date:2026-05 #importance:high #confidence:high #cross-ref:foundry #cross-ref:dram #cross-ref:network #cross-ref:end_market
+
+---
 
 ### Update: 2026-05-01 — Q1 2026: Capex $43.2B; Trainium3 shipping; $225B+ multi-year commitments
 

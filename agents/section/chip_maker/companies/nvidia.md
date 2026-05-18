@@ -208,8 +208,18 @@ NVIDIA designs GPUs and sources manufacturing from TSMC (confirmed in 10-K: uses
 
 ---
 
+### Update: 2026-05 — Vera Rubin NVL72 hyperscaler deployments confirmed; NVL144 disclosed; Spectrum-X >$10B run rate; Q1 FY2027 earnings May 20
+
+> Confirmed NVL72 early deployments: Microsoft was first to power on an NVL72 system (GTC 2026, March); AWS committed 1M+ NVIDIA GPUs including Vera Rubin H2 2026; Google Cloud and OCI confirmed as first cloud providers for NVL72 instances in H2 2026; CoreWeave and xAI committed as early adopters. NVL144 (Vera Rubin Ultra) specs disclosed: 144 GPUs, 600 kW/rack, 15 EFLOPS FP4, availability H2 2027. Spectrum-X Ethernet networking crossed $10B annualized run rate and is growing faster than InfiniBand. NVIDIA Q1 FY2027 earnings scheduled May 20, 2026; sell-side consensus: ~$78.8B total / $72.8B Data Center; buy-side whisper ~$79–80B.
+
+**Source:** NVIDIA Newsroom, DataCenterDynamics, S&P Global, Motley Fool, 247WallSt, 2026-05
+
+#segment:chip_maker #source-tier:A #signal-type:demand #company:nvidia #date:2026-05 #importance:high #confidence:high #cross-ref:network #cross-ref:end_market #cross-ref:dram
+
+---
+
 ## Open Questions
 
 - [x] Vera Rubin HBM type and capacity per chip — **resolved**: 288 GB HBM4, 22 TB/s (CES 2026, Jan 2026)
-- [ ] NVIDIA Networking ($11B Q4 FY2026, +263% YoY) — what drives the networking spike?
+- [x] NVIDIA Networking ($11B Q4 FY2026, +263% YoY) — **resolved**: Spectrum-X Ethernet crossed $10B annualized run rate, growing faster than InfiniBand (May 2026)
 - [ ] Samsung HBM3E qualification status for Blackwell — any public update post Q4 FY2026?

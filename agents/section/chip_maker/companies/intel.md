@@ -4,15 +4,15 @@
 **Role in AI SCM:** Declining AI GPU position; Gaudi 3 limited traction; Intel Foundry pursuing 18A for AI customers  
 **HQ:** Santa Clara, California, USA  
 **Ticker:** NASDAQ:INTC  
-**Last Updated:** 2025-04-25
+**Last Updated:** 2026-04-23
 
 ---
 
 ## Company Overview
 
-Intel occupies a weakened position in AI accelerators. Gaudi 3 has not achieved meaningful hyperscaler adoption. Falcon Shores (next-gen xPU) was restructured in 2024, with the discrete GPU version cancelled in favor of an OAM module approach. Intel Foundry pursues external AI customers for 18A but has no confirmed high-volume AI design wins as of mid-2025.
+Intel occupies a weakened position in AI accelerators. Gaudi 3 has not achieved meaningful hyperscaler adoption. Falcon Shores was cancelled and replaced by Jaguar Shores as the next-gen AI platform on Intel 18A. Intel Foundry secured its first confirmed external AI design wins in 2026: AWS (custom AI Fabric chips) and Microsoft (Maia 2/Maia 3) both confirmed on Intel 18A. Intel Q1 2026: total revenue $13.6B; DC&AI $5.1B (+22% YoY); Foundry revenue $5.421B with -$2.437B operating loss improving QoQ. Foundry breakeven targeted for 2027.
 
-**Source:** Intel Q1 2025 Earnings Call, Intel Investor Relations, 2025-04-25; Intel FY2024 10-K, SEC EDGAR, 2025-02
+**Source:** Intel Q1 2026 Earnings Press Release, Intel IR, 2026-04-23; FinancialContent/MarketMinute, 2026-04-08
 
 ---
 
@@ -32,6 +32,10 @@ Intel occupies a weakened position in AI accelerators. Gaudi 3 has not achieved 
 
 | Metric | Value | Period | Source |
 |---|---|---|---|
+| Total Revenue | $13.6B | Q1 2026 | Intel Q1 2026 Earnings, 2026-04-23 |
+| Data Center & AI Revenue | $5.1B (+22% YoY) | Q1 2026 | Intel Q1 2026 Earnings, 2026-04-23 |
+| Intel Foundry Revenue | $5.421B | Q1 2026 | Intel Q1 2026 Earnings, 2026-04-23 |
+| Intel Foundry Operating Loss | -$2.437B (improving QoQ) | Q1 2026 | Intel Q1 2026 Earnings, 2026-04-23 |
 | Total Revenue | $12.7B (-1% YoY) | Q1 2025 | Intel Q1 2025 Earnings, 2025-04-25 |
 | Intel Products (CCG+DCAI+NEX) | ~$11.8B | Q1 2025 | Intel Q1 2025 Earnings, 2025-04-25 |
 | Intel Foundry Revenue | ~$4.7B | Q1 2025 | Intel Q1 2025 Earnings, 2025-04-25 |
@@ -143,8 +147,18 @@ Intel is an IDM (integrated device manufacturer) — it designs and manufactures
 
 ---
 
+### Update: 2026-04-08/23 — AWS confirmed as Intel 18A external customer (multi-billion AI Fabric deal); Microsoft Maia 2/3 confirmed; Q1 2026: $13.6B revenue, Foundry -$2.437B loss; breakeven 2027 reaffirmed
+
+> AWS confirmed as an Intel 18A external foundry customer for custom AI Fabric chips under a multi-billion dollar deal (April 8, 2026). Microsoft Maia 2 and Maia 3 were also confirmed on Intel 18A. Panther Lake (Intel's own first 18A product) is yielding 60–65%, targeting 70% yield by end-of-year maturity. Intel Q1 2026 financials: total revenue $13.6B; Data Center & AI segment $5.1B (+22% YoY); Intel Foundry revenue $5.421B with -$2.437B operating loss (improving QoQ). CFO reaffirmed Intel Foundry breakeven target for 2027.
+
+**Source:** Intel Q1 2026 Earnings Press Release, Intel IR, 2026-04-23; FinancialContent/MarketMinute, 2026-04-08
+
+#segment:chip_maker #source-tier:A #signal-type:design-win #company:intel #date:2026-04-23 #importance:high #confidence:high #cross-ref:foundry #cross-ref:end_market
+
+---
+
 ## Open Questions
 
 - [ ] Gaudi 3 actual revenue — no disclosure; estimated <$500M in FY2024 by industry analysts
-- [ ] Intel 18A volume customer — Microsoft cited as evaluating; no confirmation
+- [x] Intel 18A volume customer — **resolved**: AWS confirmed multi-billion AI Fabric deal (April 2026); Microsoft Maia 2/Maia 3 also confirmed
 - [ ] Falcon Shores OAM: any hyperscaler design win or only internal Intel use?
