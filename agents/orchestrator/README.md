@@ -1,7 +1,7 @@
 # Orchestrator Agent
 
 **Role:** Cross-segment synthesis and agent coordination  
-**Last Updated:** 2026-05-13 (Cycle 7)
+**Last Updated:** 2026-06-08 (Cycle 9)
 
 ---
 
@@ -17,17 +17,17 @@ cross-cutting signals that no single section agent can see alone.
 
 | Agent | Folder | Last Refresh |
 |---|---|---|
-| DRAM Expert | `section/dram/` | 2026-05-13 (Samsung HBM3E qual + SK Hynix HBM4 ramp delay — Cycle 7) |
-| Storage Expert | `section/storage/` | 2026-04-30 (Samsung Q1 2026) |
-| DC Infrastructure Expert | `section/dc_infra/` | 2026-05-13 (Transformer crisis + grid interconnection — Cycle 7) |
-| ASIC Expert | `section/asic/` | 2026-05-13 (Trainium4 + MTIA-N2 + xAI Colossus — Cycle 7) |
-| Chip Maker Expert | `section/chip_maker/` | 2026-05-13 (GB300 shipping + first NVL72 cluster — Cycle 7) |
-| Foundry & Packaging Expert | `section/foundry/` | 2026-05-13 (Ironwood N3P + CoWoS OSAT overflow + Powertech — Cycle 7) |
-| Network Expert | `section/network/` | 2026-05-13 (Ethernet > IB + Oracle UE1.0 + NVIDIA $2B Marvell — Cycle 7) |
-| Power Semiconductor Expert | `section/power/` | 2026-05-13 (Wolfspeed Ch.11 + transformer 4yr lead times + GaN GTC2026 — Cycle 7) |
-| PCB & Substrate Expert | `section/substrate/` | 2026-05-13 (Amkor-TSMC MOU + ASE CoWoP + Powertech glass — Cycle 7) |
-| End Market Expert | `section/end_market/` | 2026-05-13 (Meta-AMD $60B + $830B total CSP capex — Cycle 7) |
-| Crawler Agent | `data/crawler/` | 2026-05-13 (Cycle 7 extracted signals — 19 new signals) |
+| DRAM Expert | `section/dram/` | 2026-06-08 (Samsung HBM4E samples; all 3 vendors NVIDIA-certified; HBM4 $500/stack — Cycle 9) |
+| Storage Expert | `section/storage/` | 2026-06-08 (NAND Q2 +70-75% QoQ; Kioxia sold out; Pure Storage $1.05B — Cycle 9) |
+| DC Infrastructure Expert | `section/dc_infra/` | 2026-06-08 (7 GW delayed; 2,600 GW grid queue; 9.8 GW nuclear deals — Cycle 9) |
+| ASIC Expert | `section/asic/` | 2026-06-08 (Broadcom Meta extension; Trainium3 Uber/Decart; OpenAI tape-out slip — Cycle 9) |
+| Chip Maker Expert | `section/chip_maker/` | 2026-06-08 (All 3 HBM4 vendors certified June 5 for Vera Rubin — Cycle 9) |
+| Foundry & Packaging Expert | `section/foundry/` | 2026-06-08 (SoIC-X 6μm HVM; AP7 equipment move-in; ABF 42% deficit by 2028 — Cycle 9) |
+| Network Expert | `section/network/` | 2026-06-08 (Ethernet 67%; 200G EML shortage; Oracle ZettaScale; MRC protocol — Cycle 9) |
+| Power Semiconductor Expert | `section/power/` | 2026-06-08 (onsemi 2x YoY; STMicro $1B target; MPS $6B LT; Infineon MGX — Cycle 9) |
+| PCB & Substrate Expert | `section/substrate/` | 2026-06-08 (Ajinomoto 30% hike; ABF 10% deficit H2 2026; Unimicron 90% util — Cycle 9) |
+| End Market Expert | `section/end_market/` | 2026-06-08 (Big-4 $695-715B; xAI $20B Series E; 9.8 GW nuclear PPAs — Cycle 9) |
+| Crawler Agent | `data/crawler/` | 2026-06-08 (Cycle 9 extracted signals — 24 new signals) |
 | Analysis Agent | `data/analysis/` | 2026-05-13 (Cycle 7 analysis report) |
 | DBA Agent | `data/dba.md` | — |
 

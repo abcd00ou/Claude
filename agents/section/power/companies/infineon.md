@@ -2,7 +2,7 @@
 
 **Segment:** power  
 **Company Slug:** infineon  
-**Last Updated:** 2025-05-07
+**Last Updated:** 2026-06-08
 
 ---
 
@@ -52,6 +52,16 @@ Infineon manufactures SiC at its Villach (Austria) facility — the world's larg
 
 ## Updates
 
+### Update: 2026-06-08 — Joins NVIDIA MGX AI Factory Ecosystem; HV GaN IBC Reference Designs; FY2026 DC Target €1.5B
+
+> Infineon joined NVIDIA's MGX AI Factory Ecosystem in June 2026 to co-develop next-generation rack-level power delivery architecture for AI data centers (Power Semiconductors Weekly, 2026-03). Launched two new High-Voltage Intermediate Bus Converter (HV IBC) reference designs using 650V CoolGaN switches for ±400V and 800V DC distribution rails (Electronic Design, 2026). Published whitepaper integrating Si, SiC, and GaN across the AI data center power tree. Texas Instruments (competitor) unveiled 800 VDC GaN architecture for NVIDIA AI DCs at GTC 2026 achieving 97.6% efficiency and 2,000 W/in³ — competitive benchmark for Infineon CoolGaN. Infineon Q1 FY2026 revenue: €3.662B; AI data center power revenue target raised to ~€1.5B for FY2026 and ~€2.5B for FY2027 (Infineon Q1 FY2026 Press Release, 2026-02-04).
+
+**Source:** Power Semiconductors Weekly, 2026-03; Electronic Design, 2026; Infineon Q1 FY2026 Press Release, Infineon Investor Relations, 2026-02-04
+
+#segment:power #source-tier:A #signal-type:demand #company:infineon #date:2026-06-08 #importance:high #confidence:high
+
+---
+
 ### Update: 2025-05-07 — Q2 FY2025: Revenue €3.71B; Data Center Power Growing Despite Auto Softness
 
 > "Q2 revenue was €3.71 billion. While automotive end markets face near-term inventory corrections, data center power — driven by AI infrastructure build-out — is growing and partially offsetting the automotive softness."
@@ -90,3 +100,21 @@ Infineon manufactures SiC at its Villach (Austria) facility — the world's larg
 - [ ] Infineon data center power revenue as % of total — not separately disclosed
 - [ ] CoolGaN adoption in AI server PSU — design win count vs MPS GaN?
 - [ ] Wolfspeed SiC substrate supply gap — how much is Infineon absorbing vs ON Semi?
+
+---
+
+## Investment & M&A
+
+| Date | Event | Amount | Counter-party | AI Relevance | Source |
+|---|---|---|---|---|---|
+| Apr 2020 | Acquisition of Cypress Semiconductor (closed) | $9.4B | Cypress Semiconductor | Added MCU + automotive AI / ADAS compute; PSOC platform complements power ICs in AI server management | Infineon IR, 2020-04-16 |
+
+**Annual Revenue (EUR, fiscal year ends September):**
+
+| Fiscal Year | Revenue (EUR) | Source |
+|---|---|---|
+| FY2020 (ended Sep 2020) | €8.6B | Infineon FY2020 Annual Results |
+| FY2021 (ended Sep 2021) | €11.1B | Infineon FY2021 Annual Results |
+| FY2022 (ended Sep 2022) | €14.2B | Infineon FY2022 Annual Results |
+| FY2023 (ended Sep 2023) | €16.3B | Infineon FY2023 Annual Results |
+| FY2024 (ended Sep 2024) | €14.5B | Infineon FY2024 Annual Results |
