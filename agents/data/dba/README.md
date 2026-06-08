@@ -1,7 +1,7 @@
 # DBA Agent
 
 **Role:** Knowledge schema design, source standards, tagging, versioning, routing rules  
-**Last Updated:** 2026-05-12
+**Last Updated:** 2026-06-08
 
 ---
 
@@ -128,6 +128,9 @@ roadmap     — product announcement, technology milestone, process node transit
 geopolitical — export control, trade restriction, foreign investment review, sanctions
 capex       — investment guidance, fab expansion, equipment order
 design-win  — customer qualification, first silicon, volume commitment
+earnings    — quarterly/annual financial results, revenue guidance, segment commentary
+market-size — TAM estimates, market share data, competitive position metrics
+policy      — legislation, regulation, government incentives, permitting (e.g., DATA Act, IRA, CHIPS Act)
 ```
 
 **#importance:**
@@ -316,9 +319,11 @@ When new information about a company arrives from a reliable source:
 
 **Company file naming:** `<company_slug>.md` in `snake_case`
 ```
-sk_hynix.md   nvidia.md   tsmc.md   samsung.md   micron.md
-amd.md        google.md   microsoft.md   amazon.md   meta.md
-broadcom.md   marvell.md  ibiden.md  infineon.md  on_semi.md
+sk_hynix.md     nvidia.md       tsmc.md         samsung.md      micron.md
+amd.md          google.md       microsoft.md    amazon.md       meta.md
+broadcom.md     marvell.md      ibiden.md       infineon.md     on_semi.md
+pure_storage.md kioxia.md       xai.md          coreweave.md    stmicro.md
+caterpillar.md  cummins.md      wolfspeed.md    texas_instruments.md
 ```
 
 ---
@@ -357,4 +362,5 @@ broadcom.md   marvell.md  ibiden.md  infineon.md  on_semi.md
 
 | Date | Change |
 |---|---|
+| 2026-06-08 | Added `earnings`, `market-size`, `policy` to `#signal-type` definitions; added 9 company slugs to naming examples (pure_storage, kioxia, xai, coreweave, stmicro, caterpillar, cummins, wolfspeed, texas_instruments); expanded DC Infra and Power Semis company coverage in company_master.md |
 | 2026-05-12 | Initial schema created |

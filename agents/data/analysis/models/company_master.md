@@ -1,6 +1,6 @@
 # Company Master Database — AI Supply Chain
 
-**Last Updated:** 2026-05-12 (Cycle 4)  
+**Last Updated:** 2026-06-08 (Cycle 9)  
 **Coverage:** All companies tracked across 10 segment agents  
 **Source rule:** All figures sourced from Tier A/B; see individual company files for full citations
 
@@ -10,9 +10,9 @@
 
 | Company | Role | HBM Share | Latest Revenue | Key AI Signal | Last Sourced |
 |---|---|---|---|---|---|
-| SK Hynix | HBM leader; NVIDIA primary | ~57% | Q1 2026: KRW 52.58T total | 3-year demand exceeds supply; HBM4 mass production | 2026-04-23 |
-| Samsung | HBM #2; AMD MI455X HBM4 partner | ~35% | Q1 2026 DS OP: KRW 53.7T | 2027 shortage "more severe than 2026"; multi-year contracts through 2028 | 2026-04-30 |
-| Micron | HBM #3; HBM4 for Vera Rubin | ~8% | FQ2 2026: DRAM $18.8B; GM 74.9% record | Entire CY2026 HBM committed; HBM4 36GB 12-high in volume | 2026-03-18 |
+| SK Hynix | HBM leader; NVIDIA primary | ~60–62% (HBM4) | Q1 2026: KRW 52.58T; OP 72% margin (record) | NVIDIA-certified HBM4 June 5, 2026; 70% yield on 12-Hi; ramp delayed to Q3 2026 | 2026-06-05 |
+| Samsung | HBM #2; first HBM4 commercial ship | ~mid-20% (HBM4) | Q1 2026 DS: all-time record rev/profit | HBM4 commercial Feb 2026; HBM4E samples May 29 (16 Gbps / 3.6 TB/s); NVIDIA-certified | 2026-05-29 |
+| Micron | HBM #3; NVIDIA-certified June 5 | ~20% (HBM4) | FQ2 2026: $23.86B (+196% YoY); record | Entire CY2026 HBM4 sold out; ramp Q2 2026 at 15K wafers/mo | 2026-06-05 |
 
 ---
 
@@ -20,11 +20,12 @@
 
 | Company | Role | NAND Bit Share | Latest Revenue | Key AI Signal | Last Sourced |
 |---|---|---|---|---|---|
-| Samsung | NAND leader; KV-SSD creator | ~31% | Q1 2026: NAND rev growing | KV-SSD new category; enterprise SSD +55–75% QoQ | 2026-04-30 |
-| SK Hynix / Solidigm | NAND #3; enterprise SSD focus | ~19% | Integrated FY2023 | Solidigm enterprise SSD qualification at hyperscalers | 2024 |
-| Micron | NAND #4; Gen5 NVMe | ~14% | FQ2 2026: NAND $5.06B | QLC mix improving; Gen5 NVMe qualifying at hyperscalers | 2026-03-18 |
-| Kioxia | NAND #2; WD joint fab; IPO Dec 2024 | ~19% | FY2025 est: ¥2T+ | BiCS 9 (300+ layer) production ramp; CD8P Gen5 qualified | 2025-04-25 |
-| SanDisk (WD spin-off) | NAND #5 (post-spin); Kioxia JV partner | ~13–15% | Q2 FY2025: Flash ~$2.5B | Spin-off complete Feb 2025; Kioxia JV continues; enterprise SSD primary growth | 2025-02-19 |
+| Samsung | NAND leader; KV-SSD creator | ~31% | Q1 2026: all-time record NAND rev | Q2 2026 NAND prices +70–75% QoQ (second wave hike); PCIe Gen6 SSDs launched | 2026-04-30 |
+| SK Hynix / Solidigm | NAND #3; enterprise SSD focus | ~19% | Solidigm 30.2% enterprise SSD Q4 2025 | 321-layer QLC NAND shipping H2 2026; enterprise SSD market share leader | 2026-06-08 |
+| Micron | NAND #4; 245TB 6600 ION | ~14% | FQ2 2026: $23.86B total (+196%) | Demand "significantly in excess of supply"; 6600 ION 245TB SSD shipping May 2026 | 2026-05 |
+| Kioxia | NAND #2; BiCS10 sampling | ~19% | 2026 profit surged 17x YoY | Entire 2026 NAND sold out; BiCS10 (332-layer) sampling summer 2026; capacity doubling by 2029 | 2026-05-24 |
+| SanDisk (WD spin-off) | NAND #5 (post-spin) | ~13–15% | Q1 2026: DC business +200% QoQ | Q1 2026 data center revenue +200%+ QoQ; combined Micron+SanDisk enterprise SSD +96.7% seq. | 2026-Q1 |
+| Pure Storage | All-flash enterprise storage | N/A | FY27 Q1: $1.053B (+35% YoY) | FY2027 guidance $4.41–4.51B; product rev +55% YoY; CoreWeave partnership | 2026-05-27 |
 
 ---
 
@@ -32,9 +33,11 @@
 
 | Company | Role | Foundry Share | Latest Revenue | Key AI Signal | Last Sourced |
 |---|---|---|---|---|---|
-| TSMC | Sole leading-edge AI chip fab | ~64% | Q1 2026: $35.8B (+35.1% YoY) | HPC=61% revenue; $52–56B CY2026 capex (record); CoWoS = binding constraint | 2026-04-17 |
-| Samsung Foundry | #2 foundry; 3nm yield gap; no AI GPU customer | ~13% | DS OP: KRW 53.7T (total div.) | SF3E yield ~35–60% vs TSMC ~70%+; SF2 targeting 2025; no NVIDIA/AMD/Google win | 2025-04-30 |
-| Intel Foundry | #3; 18A sampling; -$2.3B operating loss | ~4% | Q1 2025: ~$4.7B revenue | 18A customer sampling (Microsoft); no volume AI GPU win; Falcon Shores cancelled | 2025-04-25 |
+| TSMC | Sole leading-edge AI chip fab | ~64% | Q1 2026: $35.9B (+35.1% YoY); GM 66.2% | SoIC-X 6μm HVM; AP7 Chiayi equipment move-in 2026; CoWoS 127–130K WPM end-2026 | 2026-06-08 |
+| Samsung Foundry | #2 foundry; SF2 yield improving | ~13% | Q1 2026: DS record revenue | SF2 yield ~55%; 2nd gen 2nm ramp H2 2026; HBM4 base-die supply increasing | 2026-04-30 |
+| Intel Foundry | #3; 18A in HVM; AWS design win | ~4% | Q1 2026: $5.421B; -$2.437B op. loss | AWS confirmed as 18A external customer (multi-billion AI Fabric chips); 18A yield 55–65% | 2026-04-23 |
+| Amkor | TSMC overflow OSAT; Arizona | N/A | Q1 2026: +27% rev; $2.5–3B capex | ~80K CoWoS wafers from TSMC; advanced packaging to triple YoY; Apple+NVIDIA customers | 2026-05 |
+| ASE Group | World's largest OSAT | N/A | 2026 capex raised to $7B | CoWoP 20–25K WPM end-2026; 310mm panel-level packaging line announced | 2026-05 |
 
 ---
 
@@ -42,9 +45,9 @@
 
 | Company | Role | DC GPU Share | Latest Revenue | Key AI Signal | Last Sourced |
 |---|---|---|---|---|---|
-| NVIDIA | Dominant AI GPU; CUDA moat | ~75–85% | Q1 FY2026: DC $39.1B (+73% YoY) | Blackwell > Hopper first time; $45B Q2 FY2026 guidance; demand > supply | 2025-05-28 |
-| AMD | #2 AI GPU; ROCm improving | ~10–15% | Q1 2026: DC $5.8B (+57% YoY) | 6 GW each from Meta + OpenAI (MI450); Samsung HBM4 for MI455X | 2026-04-29 |
-| Intel | Gaudi; limited traction | <2% | Q1 2025: $12.7B total; Gaudi undisclosed | Gaudi revenue not disclosed; Falcon Shores discrete cancelled | 2025-04-25 |
+| NVIDIA | Dominant AI GPU; CUDA moat | ~75–85% | Q1 FY2027 (Apr 2026): DC guidance ~$72B+ | GB300 +129% YoY; 60K racks FY2026; all 3 HBM4 vendors certified June 5, 2026 | 2026-06-08 |
+| AMD | #2 AI GPU; ROCm improving | ~10–15% | Q1 2026: DC $5.8B (+57% YoY) | MI450 sampling; 6 GW Meta + OpenAI commits; ramp Q3 small / Q4 volume | 2026-05-05 |
+| Intel | Jaguar Shores rack-scale; no Gaudi 4 | <2% | Q1 2026: $13.6B; DC&AI $5.1B (+22%) | AWS 18A multi-billion deal; foundry breakeven target 2027 | 2026-04-23 |
 
 ---
 
@@ -52,12 +55,12 @@
 
 | Company | Role | Programs | Key Signal | Last Sourced |
 |---|---|---|---|---|
-| Google | TPU fleet (~2M+ chips); TSMC N3 | TPU 8t (training) + TPU 8i (inference) in production; Ironwood announced | Cloud backlog $462B; Alphabet capex $35.7B (+107% YoY) | 2026-04-29 |
-| Amazon AWS | Trainium + Inferentia; TSMC N4/N3 | Trainium3 early shipping; Trainium2 100K+ cluster; Inferentia2 production | $225B+ multi-year AWS commitments; Anthropic confirmed Trainium2 customer | 2026-05-01 |
-| Meta | MTIA Gen 2 (inference); 2nm/Broadcom | MTIA Gen 2 in production | MI450 for training; MTIA for inference | 2026-04-29 |
-| Microsoft | Maia 200 | In production on Azure | 30%+ improved tokens/dollar vs latest silicon | 2026-04-29 |
-| Marvell | Custom XPU design partner | 3 hyperscaler programs (production) | AI rev $1.08B/Q; FY2026 guidance >$8B | 2025-03-06 |
-| Broadcom | Custom XPU + switch ASIC | 3 production + 2 qualifying | AI rev $4.4B/Q; TAM raised to $60–90B | 2025-06-05 |
+| Google | Ironwood TPU v7 GA; 4.3M chips 2026 | TSMC N3P; 42.5 exaFLOPS per 9,216-chip superpod; next-gen "Sunfish"/"Zebrafish" on N2 2027 | Cloud backlog $462B; $35.7B Q1 capex; 44% lower TCO vs GB200 | 2026-06-08 |
+| Amazon AWS | Trainium3 GA; Trainium4 development | Trn3: Uber + Decart design wins; Trn4: NVLink Fusion integration + 2nm + 6x FP4 | $225B 2026 capex; $200B full-year guide; 2.1M+ AI chips in 12 months | 2026-06-08 |
+| Meta | MTIA 400 in DC deployment; 450/500 roadmap | MTIA 400 (6 PFLOPS / 288GB / 1,200W); 450 mass deploy early 2027; Broadcom extended through 2029 | $125–145B 2026 capex; 1 GW MTIA deployment committed | 2026-06-08 |
+| Microsoft | Maia 200 in production | Maia 2 and 3 on Intel 18A confirmed | ~$190B 2026 capex; Azure AI ARR $37B (+123% YoY) | 2026-04-29 |
+| Marvell | Custom XPU + optical/networking | Google, Amazon, Microsoft confirmed; record design-win bookings FY2026 | $2.5B+ FY2026 AI revenue; $15B FY2028 target | 2026-06-08 |
+| Broadcom | Custom XPU + switch ASIC | 5 confirmed customers: Google, Meta, OpenAI, Anthropic, Apple; Meta extended 2029 | AI rev +106% YoY; OpenAI $10B chip (tape-out Q3 2026); $73B committed backlog | 2026-06-08 |
 
 ---
 
@@ -65,11 +68,11 @@
 
 | Company | Role | Technology | Key AI Signal | Last Sourced |
 |---|---|---|---|---|
-| NVIDIA (networking) | InfiniBand + Spectrum-X | NDR 400G / XDR 800G / Spectrum-X | Networking rev $4.6B/Q; NDR lead times 12–16wk (improved); XDR 800G sampling | 2025-05-28 |
-| Broadcom | Switch ASIC (Tomahawk 5) | Ethernet 51.2 Tb/s | Tomahawk 5 at multiple hyperscalers; Jericho3-AI; AI TAM raised $60–90B | 2025-06-05 |
-| Marvell | Switch ASIC + DPU | Teralynx; Alaska 800G | AI networking growing; DC = 75% of revenue | 2025-03-06 |
-| Arista | AI cluster switches | EOS + 7800R4 | Revenue $1.93B; AI fabric "material"; Microsoft + Meta | 2025-05-07 |
-| Ultra Ethernet Consortium | Open standard (UEC 1.0) | Ethernet AI-optimized | Spec ratified 2024; no hyperscaler production deployment as of Q1 2025 | 2024 |
+| NVIDIA (networking) | InfiniBand + Spectrum-X | Spectrum-X Photonics 400 Tb/s; deployed at Meta + Oracle | Spectrum-X >$10B ARR; commercial availability H2 2026; Ethernet ~67% share vs IB | 2026-06-08 |
+| Broadcom | Switch ASIC (Tomahawk 6) | 100 Tbps Tomahawk 6 in volume production | AI rev +106% YoY Q1 FY2026; Tomahawk 6 entered volume production March 2026 | 2026-03-12 |
+| Marvell | Switch ASIC + custom silicon | NVLink Fusion ecosystem; $2B NVIDIA investment | $15B FY2028 revenue target; Google + Amazon + Microsoft confirmed customers | 2026-06-08 |
+| Arista | AI cluster switches | Q1 2026: $2.709B (+35% YoY); FY2026 $11.5B target | AI fabric target raised to $3.5B; Cisco AI revenue guidance $4B; orders $9B | 2026-05-05 |
+| Coherent / Lumentum / Fabrinet | 800G/1.6T optical transceivers | 200G EML laser shortage = primary bottleneck | $26B optical market 2026; 800G+ units 24M→63M; Fabrinet +50% capacity | 2026-06-08 |
 
 ---
 
@@ -77,11 +80,12 @@
 
 | Company | CY2026 Capex | Q1 2026 Capex | AI Program | Key Signal | Last Sourced |
 |---|---|---|---|---|---|
-| Amazon (AWS) | ~$200B | $43.2B | Trainium, Inferentia, Bedrock | $225B+ multi-year commitments; Trainium3 shipping | 2026-05-01 |
-| Microsoft (Azure) | ~$190B | $31.9B | Maia 200, OpenAI partner | Constrained through 2026; +1 GW/quarter | 2026-04-29 |
-| Alphabet (Google) | Up to $190B | $35.7B (+107% YoY) | TPU 8, Gemini | Cloud backlog $462B; guiding 2027 growth | 2026-04-29 |
-| Meta | $125–145B | $19.8B | MTIA Gen 2, Llama | +$10B raise; higher component pricing cited | 2026-04-29 |
-| CoreWeave | — | — | NVIDIA GPU rental | $15.1B backlog; $11.9B OpenAI; IPO Mar 2025 | 2025-03-28 |
+| Amazon (AWS) | ~$200B | $44.2B (+77% YoY) | Trainium3, Inferentia, Bedrock | Backlog $364B incl. $225B Trainium commitments; AWS Q1 $37.6B (+28%) | 2026-04-29 |
+| Microsoft (Azure) | ~$190B | $37.5B (FY Q2) | Maia, OpenAI partner, GB300 NVL72 | Azure AI ARR $37B +123%; first GB300 NVL72 cluster (4,608 GPUs) | 2026-04-29 |
+| Alphabet (Google) | $180–190B | $35.7B | Ironwood TPU v7, Gemini | Cloud backlog $462B; Q1 2026 Cloud $20B (+63% YoY); 2027 "significantly increases" | 2026-04-29 |
+| Meta | $125–145B | $19.84B | MTIA 400, AMD MI450, Llama | +$10B raise; stock fell 6%+; 8,000 layoffs announced alongside; DC in OK/TX/WI | 2026-04-29 |
+| xAI | ~$30B annualized | $7.7B Q1 | Colossus 2 = 555K GPUs / 2 GW | $20B Series E closed; implied valuation >$200B; QIA + Fidelity + MGX investors | 2026-06-08 |
+| CoreWeave | — | — | NVIDIA GPU rental | FY2026 rev guidance $12–13B; Meta $19.2B agreement; $8.5B DDTL facility | 2026-03-30 |
 
 ---
 
@@ -89,7 +93,11 @@
 
 | Company | Role | Key Metric | Key AI Signal | Last Sourced |
 |---|---|---|---|---|
-| Vertiv | Power + Cooling (DLC, UPS) | Q1 2025 orders $3.3B (+30%); backlog $8.0B | DLC lead times: 40–52wk → 28–36wk; liquid cooling now 15%+ of revenue | 2025-04-23 |
+| Vertiv | Power + Cooling (DLC, UPS) | Q1 2026: $2.65B (+30% YoY); backlog $12.45B (+81%) | Liquid cooling "default for new AI DC"; FY2026 guidance $13.5–14B | 2026-05-01 |
+| Eaton | Power mgmt; transformers; switchgear | Q1 2026: $7.5B (+17% YoY); DC orders +240% YoY | 32 GW US DC under construction; 70% AI; $228 GW total pipeline; Boyd Thermal acquired | 2026-05-05 |
+| Schneider Electric | PDU, UPS, cooling | Q1 2026: €9.77B (+11.2% organic); Systems +16% | PDU lead times 12–18 months; 10–20% cost inflation from tariffs | 2026-04-24 |
+| Caterpillar | Generators (AI DC power) | Power gen retail sales +44% YoY 2026 | Trades as AI infrastructure proxy; high-output diesel generators 72–104wk lead | 2026 |
+| Cummins | Generators; high-HP engines | $150M Fridley MN expansion announced | QSK95 +30% output capacity; 18-month lead times on high-HP units | 2026-02 |
 
 ---
 
@@ -97,10 +105,13 @@
 
 | Company | Technology | Key Market | Key AI Signal | Last Sourced |
 |---|---|---|---|---|
-| MPS | VRM (multi-phase controller) | GPU board VRM | NVIDIA Blackwell VRM design wins; 4–6× content vs standard server | 2025-04-30 |
-| Renesas | VRM + GaN (Transphorm) | GPU board VRM | Blackwell VRM wins; revenue ramp H2 2025 | 2025-04-25 |
-| Infineon | SiC (CoolSiC) + GaN | UPS + AC/DC PSU | CoolSiC gaining post-Wolfspeed; Villach 200mm SiC ramp | 2025-05-07 |
-| ON Semiconductor | SiC (EliteSiC) | UPS + high-voltage | Data center power fastest-growing sub-segment; Hudson Sevier SiC | 2025-04-28 |
+| MPS | VRM (multi-phase controller) | GPU board VRM | Q1 2026 Enterprise Data $262.8M +97.7% YoY; sold-out; LT target raised to $6B | 2026-06-08 |
+| Renesas | VRM + GaN (Transphorm) | GPU board VRM | Blackwell VRM wins; acquired Wolfspeed equity via CFIUS-cleared deal | 2026-01-29 |
+| Infineon | SiC (CoolSiC) + GaN (CoolGaN) | UPS + AC/DC PSU; 800V rail | Joined NVIDIA MGX AI Factory Ecosystem June 2026; €1.5B FY2026 DC target | 2026-06-08 |
+| ON Semiconductor | SiC (EliteSiC) | UPS + 800V DC architecture | Q1 2026 AI DC +30% QoQ / 2x YoY; FY2026 expected to double again (~$500M) | 2026-06-08 |
+| STMicroelectronics | SiC + photonics | AI DC power + optical | 2026 DC target raised to ~$1B; 2027 target ~$2B; multi-year multi-billion AWS deal | 2026-06-08 |
+| Wolfspeed | SiC (post-Ch.11); 300mm R&D | Grid + DC UPS | +30% QoQ AI DC SiC revenue FQ3 2026; 10 kV SiC MOSFET launched; 300mm wafer milestone | 2026-05 |
+| Texas Instruments | GaN + analog DC power | Server PSU 800V stage | 800 VDC GaN architecture at GTC 2026; 97.6% efficiency / 2,000 W/in³ | 2026-03 |
 
 ---
 
