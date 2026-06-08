@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI 데이터센터 메모리 매출 대시보드</title>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #667380;
+      --line: #d9e1e8;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --navy: #17324d;
+      --teal: #1f7a7a;
+      --green: #397a4f;
+      --red: #b54545;
+      --amber: #b7791f;
+      --violet: #6e5ba8;
+      --steel: #55718d;
+      --shadow: 0 10px 26px rgba(35, 50, 70, 0.10);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
+      letter-spacing: 0;
+    }
+    button, select { font: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    .topbar-inner {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 14px 22px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.25;
+      font-weight: 800;
+      color: var(--navy);
+    }
+    .subtitle {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .filters {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    select, .mini-button {
+      height: 34px;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      border-radius: 6px;
+      padding: 0 10px;
+    }
+    .mini-button {
+      cursor: pointer;
+      font-weight: 700;
+    }
+    main {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 18px 22px 42px;
+    }
+    .kpis {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(170px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .kpi {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px;
+      box-shadow: var(--shadow);
+      min-height: 92px;
+    }
+    .kpi-label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 760;
+    }
+    .kpi-value {
+      font-size: 28px;
+      line-height: 1.1;
+      margin-top: 8px;
+      font-weight: 850;
+    }
+    .kpi-note {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 6px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(380px, 0.65fr);
+      gap: 16px;
+      align-items: start;
+    }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+    }
+    .section-head {
+      padding: 13px 15px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    h2 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 15px;
+      font-weight: 820;
+    }
+    .section-note {
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .chart-wrap { padding: 14px 15px 16px; }
+    .bar-row {
+      display: grid;
+      grid-template-columns: 138px 1fr 42px;
+      gap: 10px;
+      align-items: center;
+      min-height: 30px;
+      margin: 5px 0;
+    }
+    .bar-label {
+      font-size: 12px;
+      color: var(--ink);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .bar-track {
+      height: 18px;
+      background: #edf1f5;
+      border-radius: 5px;
+      overflow: hidden;
+      border: 1px solid #dfe6ec;
+    }
+    .bar {
+      height: 100%;
+      border-radius: 4px;
+      min-width: 3px;
+    }
+    .bar-value {
+      color: var(--muted);
+      font-size: 12px;
+      text-align: right;
+    }
+    .account-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(240px, 1fr));
+      gap: 10px;
+      padding: 14px;
+    }
+    .account-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fff;
+      min-height: 166px;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 8px;
+    }
+    .account-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: start;
+      font-weight: 820;
+      color: var(--navy);
+    }
+    .rank {
+      min-width: 28px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+      background: #e9eef4;
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 850;
+    }
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+    }
+    .tag {
+      border-radius: 5px;
+      border: 1px solid var(--line);
+      padding: 3px 6px;
+      font-size: 11px;
+      color: var(--ink);
+      background: #f8fafc;
+      max-width: 100%;
+    }
+    .tag.motion-attack { color: #8f2f2f; background: #fff0f0; border-color: #f0cbcb; }
+    .tag.motion-expand { color: #29653a; background: #edf8f0; border-color: #cae8d2; }
+    .tag.motion-defend { color: #7b5619; background: #fff6df; border-color: #edd89d; }
+    .tag.motion-watch { color: #515e6c; background: #f1f4f7; border-color: #d7dfe7; }
+    .signal {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .action {
+      border-top: 1px solid var(--line);
+      padding-top: 8px;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+    .matrix {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    .matrix th {
+      text-align: left;
+      color: var(--muted);
+      font-size: 11px;
+      border-bottom: 1px solid var(--line);
+      padding: 9px 10px;
+      background: #f8fafc;
+      white-space: nowrap;
+    }
+    .matrix td {
+      padding: 9px 10px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      line-height: 1.45;
+    }
+    .matrix tr:last-child td { border-bottom: 0; }
+    .priority {
+      width: 28px;
+      height: 24px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      background: var(--navy);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 850;
+    }
+    .timeline {
+      padding: 14px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+    .day {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      min-height: 126px;
+      background: #fff;
+    }
+    .day-title {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 800;
+    }
+    .day-item {
+      margin-top: 8px;
+      font-size: 12px;
+      line-height: 1.45;
+      color: var(--ink);
+    }
+    .heatmap {
+      display: grid;
+      grid-template-columns: 120px repeat(5, 1fr);
+      gap: 6px;
+      padding: 14px;
+      align-items: stretch;
+    }
+    .heat-label, .heat-cell {
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      padding: 7px;
+      border-radius: 6px;
+      font-size: 12px;
+    }
+    .heat-label { color: var(--navy); font-weight: 780; background: #f4f7fa; }
+    .heat-cell {
+      justify-content: center;
+      border: 1px solid var(--line);
+      color: #fff;
+      font-weight: 800;
+    }
+    .level-0 { background: #dfe6ec; color: #53606c; }
+    .level-1 { background: #86a7bd; }
+    .level-2 { background: #3f7d8e; }
+    .level-3 { background: #1f7a7a; }
+    .level-4 { background: #b7791f; }
+    .empty {
+      padding: 24px;
+      color: var(--muted);
+      text-align: center;
+    }
+    @media (max-width: 1100px) {
+      .grid, .topbar-inner { grid-template-columns: 1fr; }
+      .filters { justify-content: flex-start; }
+      .kpis { grid-template-columns: repeat(2, minmax(160px, 1fr)); }
+      .account-grid { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: 1fr; }
+      .heatmap { grid-template-columns: 105px repeat(5, minmax(62px, 1fr)); overflow-x: auto; }
+    }
+    @media (max-width: 640px) {
+      main { padding: 12px; }
+      .topbar-inner { padding: 12px; }
+      .kpis { grid-template-columns: 1fr; }
+      h1 { font-size: 19px; }
+      .section-head { align-items: start; flex-direction: column; }
+      .section-note { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div>
+        <h1>AI 데이터센터 메모리 매출 대시보드</h1>
+        <div class="subtitle">HBM, DDR5/MRDIMM, 엔터프라이즈 SSD, KV SSD, CXL 기반 매출 실행 현황</div>
+      </div>
+      <div class="filters" aria-label="대시보드 필터">
+        <select id="motionFilter" title="매출 모션 필터">
+          <option value="전체">전체 모션</option>
+          <option value="공격">공격</option>
+          <option value="방어">방어</option>
+          <option value="확장">확장</option>
+          <option value="관찰">관찰</option>
+        </select>
+        <select id="groupFilter" title="고객군 필터">
+          <option value="전체">전체 고객군</option>
+        </select>
+        <select id="windowFilter" title="의사결정 시점 필터">
+          <option value="전체">전체 시점</option>
+          <option value="0-90일">0-90일</option>
+          <option value="0-180일">0-180일</option>
+          <option value="3-6개월">3-6개월</option>
+          <option value="3-9개월">3-9개월</option>
+          <option value="6-18개월">6-18개월</option>
+        </select>
+        <button class="mini-button" id="resetFilters">초기화</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="kpis">
+      <div class="kpi">
+        <div class="kpi-label">필터 적용 계정</div>
+        <div class="kpi-value" id="kpiAccounts">20</div>
+        <div class="kpi-note">Top 20 계정 보드</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">0-90일 즉시 액션</div>
+        <div class="kpi-value" id="kpiUrgent">0</div>
+        <div class="kpi-note">이번 분기 안에 움직일 일</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">공격 모션</div>
+        <div class="kpi-value" id="kpiAttack">0</div>
+        <div class="kpi-note">신규 진입 / 대체 / 설계 채택</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">제품 축</div>
+        <div class="kpi-value" id="kpiProducts">5</div>
+        <div class="kpi-note">HBM, DDR5, SSD, KV SSD, CXL</div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div>
+        <section>
+          <div class="section-head">
+            <h2>우선순위 계정 보드</h2>
+            <div class="section-note">매출 긴급도 기준으로 정렬된 계정 액션</div>
+          </div>
+          <div class="account-grid" id="accountGrid"></div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <h2>실행 액션 트래커</h2>
+            <div class="section-note">첫 번째 실행 웨이브</div>
+          </div>
+          <table class="matrix" id="actionsTable">
+            <thead>
+              <tr>
+                <th>ID</th><th>우선</th><th>계정</th><th>모션</th><th>제품</th><th>상태</th><th>다음 단계</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <h2>주간 캠페인 실행 순서</h2>
+            <div class="section-note">이번 주 런치 리듬</div>
+          </div>
+          <div class="timeline" id="timeline"></div>
+        </section>
+      </div>
+
+      <aside>
+        <section>
+          <div class="section-head">
+            <h2>매출 모션 분포</h2>
+            <div class="section-note">계정 수</div>
+          </div>
+          <div class="chart-wrap" id="motionChart"></div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <h2>고객군 분포</h2>
+            <div class="section-note">커버리지 믹스</div>
+          </div>
+          <div class="chart-wrap" id="groupChart"></div>
+        </section>
+
+        <section>
+          <div class="section-head">
+            <h2>머니 시그널</h2>
+            <div class="section-note">신호 → 제품 → 액션</div>
+          </div>
+          <table class="matrix" id="signalsTable">
+            <thead><tr><th>신호</th><th>제품</th><th>실행</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </section>
+      </aside>
+    </div>
+
+    <section>
+      <div class="section-head">
+        <h2>제품별 계정 커버리지 히트맵</h2>
+        <div class="section-note">점수가 높을수록 현재 실행 웨이브에서 적합도가 높음</div>
+      </div>
+      <div class="heatmap" id="heatmap"></div>
+    </section>
+  </main>
+
+  <script>
+    const accounts = [
+      {rank:1, account:"Microsoft / Azure", group:"하이퍼스케일러", signal:"FY2026 Q3 capex $31.9B; Azure 수요가 가용 용량 초과", platform:"NVIDIA Rubin/Blackwell, Maia, Azure AI 추론", products:["HBM4","DDR5/MRDIMM","엔터프라이즈 SSD","CXL"], risk:"용량 부족과 부품 가격 압력", window:"0-90일", motion:"확장", action:"Azure AI 메모리 병목 브리프 작성: HBM allocation + DDR5 + AI SSD 번들"},
+      {rank:2, account:"Amazon / AWS", group:"하이퍼스케일러", signal:"AI 칩 210만 개 이상 확보; Trainium3 GA", platform:"Trainium3, Trainium4 관찰, NVIDIA 인스턴스", products:["HBM3e/HBM4","DDR5","QLC/KV SSD"], risk:"커스텀 ASIC의 HBM 부하와 AI 스토리지 성장", window:"0-90일", motion:"확장", action:"Trainium 메모리 attach map과 스토리지 TCO 피치 작성"},
+      {rank:3, account:"Google / GCP", group:"하이퍼스케일러", signal:"Ironwood GA; TPU pod 9,216칩 규모", platform:"TPU Ironwood, 추론 중심 AI", products:["HBM3E/HBM4","DDR5","AI SSD","CXL"], risk:"공정 노드와 공급망 파트너 비공개", window:"0-90일", motion:"공격", action:"TPU 메모리 로드맵 정렬 브리프와 CXL 확장 논리 준비"},
+      {rank:4, account:"Meta", group:"하이퍼스케일러", signal:"2026 capex $115-135B; MTIA Gen 2 production", platform:"MTIA 추론, NVIDIA GPU fleet", products:["HBM","DDR5","엔터프라이즈 SSD","KV SSD"], risk:"높은 부품 가격 언급", window:"0-90일", motion:"확장", action:"Agentic AI 연속 추론용 메모리/스토리지 피치 런치"},
+      {rank:5, account:"NVIDIA", group:"가속기 벤더", signal:"Rubin full production; NVL72 H2 2026 파트너 출시", platform:"Rubin NVL72, Blackwell, NVLink Fusion", products:["HBM4/HBM4E","base die","validation support"], risk:"HBM 및 CoWoS급 패키징 병목", window:"0-180일", motion:"방어/공격", action:"HBM4/HBM4E qualification proof pack과 roadmap lock-in narrative 구축"},
+      {rank:6, account:"AMD", group:"가속기 벤더", signal:"MI450/MI455 관찰; HBM4 협력 시그널", platform:"Instinct MI series, EPYC AI server", products:["HBM4","DDR5/MRDIMM","CXL"], risk:"NVIDIA 대안으로서 공급 신뢰성 증명 필요", window:"0-180일", motion:"공격", action:"Open ecosystem AI infrastructure용 메모리 co-marketing plan 작성"},
+      {rank:7, account:"Oracle Cloud", group:"하이퍼스케일러 / 클라우드", signal:"Rubin deployment partner로 언급", platform:"NVIDIA GPU cloud, sovereign AI", products:["HBM4","DDR5","엔터프라이즈 SSD"], risk:"빠른 클라우드 용량 증설", window:"0-180일", motion:"확장", action:"GPU cloud 메모리 번들 및 LTA timing account brief"},
+      {rank:8, account:"CoreWeave", group:"네오클라우드", signal:"구조적 AI compute layer; NVIDIA-heavy", platform:"GPU cloud, OpenAI/Microsoft workload", products:["HBM4","DDR5","엔터프라이즈 SSD"], risk:"자금 조달과 용량 실행 리스크", window:"0-180일", motion:"확장", action:"Neo-cloud 스토리지와 DDR5 attach play 구축"},
+      {rank:9, account:"Lambda", group:"네오클라우드", signal:"Rubin partner로 언급", platform:"GPU cloud, developer AI workload", products:["HBM4","DDR5","엔터프라이즈 SSD"], risk:"대형 neo-cloud 대비 차별화 필요", window:"3-6개월", motion:"공격", action:"AI server memory/storage용 low-friction qualification kit"},
+      {rank:10, account:"Nebius", group:"네오클라우드", signal:"Rubin partner로 언급", platform:"European AI cloud", products:["HBM4","DDR5","엔터프라이즈 SSD"], risk:"지역 공급과 sovereign demand", window:"3-6개월", motion:"공격", action:"Sovereign AI memory availability pitch"},
+      {rank:11, account:"Nscale", group:"네오클라우드", signal:"Rubin partner로 언급", platform:"AI cloud scale-out", products:["HBM4","DDR5","엔터프라이즈 SSD"], risk:"빌드아웃 실행 리스크", window:"3-6개월", motion:"관찰/공격", action:"Rubin deployment timing 모니터링; account starter kit 준비"},
+      {rank:12, account:"Dell", group:"AI 서버 OEM", signal:"Enterprise AI server channel", platform:"NVIDIA/AMD AI server", products:["DDR5/MRDIMM","엔터프라이즈 SSD","CXL"], risk:"OEM qualification cycle", window:"0-180일", motion:"확장", action:"Server platform attach-rate battlecard"},
+      {rank:13, account:"HPE", group:"AI 서버 OEM", signal:"Enterprise and sovereign AI", platform:"AI server, liquid-cooled rack", products:["DDR5/MRDIMM","엔터프라이즈 SSD","CXL"], risk:"Enterprise qualification timing", window:"0-180일", motion:"확장", action:"Enterprise AI proof sheet: reliability + memory density"},
+      {rank:14, account:"Supermicro", group:"AI 서버 OEM/ODM", signal:"빠른 AI server ramp", platform:"NVIDIA/AMD rack system", products:["DDR5","엔터프라이즈 SSD","CXL"], risk:"부품 가용성", window:"0-90일", motion:"공격", action:"AI server BOM용 fast-qualification SKU list"},
+      {rank:15, account:"Quanta", group:"ODM", signal:"Hyperscaler server build", platform:"Cloud AI server", products:["DDR5","엔터프라이즈 SSD"], risk:"Hyperscaler-driven BOM control", window:"3-6개월", motion:"확장", action:"ODM design-in checklist and proof pack"},
+      {rank:16, account:"Wiwynn", group:"ODM", signal:"Hyperscaler AI server build", platform:"Cloud AI server", products:["DDR5","엔터프라이즈 SSD"], risk:"Customer-directed component list", window:"3-6개월", motion:"확장", action:"Hyperscaler end customer별 attach plan"},
+      {rank:17, account:"Foxconn", group:"ODM", signal:"AI server manufacturing scale", platform:"Cloud and sovereign AI server", products:["DDR5","엔터프라이즈 SSD","CXL"], risk:"Scale and qualification complexity", window:"3-6개월", motion:"관찰/공격", action:"AI server platform별 memory BOM decision mapping"},
+      {rank:18, account:"Broadcom", group:"ASIC / 네트워크 벤더", signal:"Custom ASIC and networking supplier", platform:"Hyperscaler ASIC, Ethernet fabric", products:["HBM","DDR5","CXL","SSD"], risk:"Customer-specific ASIC program", window:"3-9개월", motion:"공격", action:"Custom ASIC memory roadmap session"},
+      {rank:19, account:"Marvell", group:"ASIC / 네트워크 벤더", signal:"NVIDIA NVLink Fusion partnership", platform:"Custom XPU, scale-up networking", products:["HBM","DDR5","CXL"], risk:"Custom ASIC stack에서 경쟁과 협력 동시 존재", window:"3-9개월", motion:"공격", action:"NVLink Fusion memory attach narrative"},
+      {rank:20, account:"Sovereign AI Programs", group:"엔터프라이즈 / 공공", signal:"Saudi/UAE/Japan regional AI infrastructure", platform:"NVIDIA GPU cluster, local cloud", products:["HBM 간접","DDR5","엔터프라이즈 SSD","CXL"], risk:"조달 불투명성과 localization rule", window:"6-18개월", motion:"관찰/확장", action:"Regional partner brief: availability, reliability, local support"}
+    ];
+
+    const actions = [
+      {id:"ACT-001", priority:1, account:"Microsoft / Azure", motion:"확장", product:"HBM4 + DDR5/MRDIMM + 엔터프라이즈 SSD", status:"초안", next:"Azure account lead와 리뷰"},
+      {id:"ACT-002", priority:2, account:"AWS", motion:"확장", product:"HBM3e/HBM4 + AI SSD", status:"초안", next:"Trainium memory assumption 검증"},
+      {id:"ACT-003", priority:3, account:"Google / GCP", motion:"공격", product:"HBM + CXL + AI SSD", status:"초안", next:"GCP account owner 확인"},
+      {id:"ACT-004", priority:4, account:"Meta", motion:"확장", product:"HBM + DDR5 + KV SSD", status:"초안", next:"Meta sales team과 정렬"},
+      {id:"ACT-005", priority:5, account:"NVIDIA", motion:"방어/공격", product:"HBM4/HBM4E", status:"초안", next:"최신 QVL status 리뷰"},
+      {id:"ACT-006", priority:6, account:"AMD", motion:"공격", product:"HBM4 + DDR5/MRDIMM + CXL", status:"계획", next:"AMD account brief 작성"},
+      {id:"ACT-007", priority:7, account:"Supermicro", motion:"공격", product:"DDR5/MRDIMM + 엔터프라이즈 SSD", status:"초안", next:"현재 AI server BOM mapping"},
+      {id:"ACT-008", priority:8, account:"Dell/HPE", motion:"확장", product:"DDR5/MRDIMM + 엔터프라이즈 SSD + CXL", status:"계획", next:"OEM joint battlecard 작성"},
+      {id:"ACT-009", priority:9, account:"CoreWeave", motion:"확장", product:"DDR5 + 엔터프라이즈 SSD", status:"계획", next:"Active GPU platform mix 검증"},
+      {id:"ACT-010", priority:10, account:"Oracle Cloud", motion:"확장", product:"HBM4 + DDR5 + 엔터프라이즈 SSD", status:"계획", next:"Rubin deployment timing 확인"}
+    ];
+
+    const signals = [
+      {signal:"Rubin full production", product:"HBM4, DDR5, 엔터프라이즈 SSD", action:"Rubin memory readiness campaign 구축"},
+      {signal:"NVLink Fusion + Marvell", product:"HBM, CXL, DDR5", action:"Heterogeneous AI factory partner로 포지셔닝"},
+      {signal:"Trainium3 / Ironwood GA", product:"HBM3e/HBM4, AI SSD, DDR5", action:"Custom ASIC memory attach play 구축"},
+      {signal:"Microsoft capex와 capacity constraint", product:"HBM, DDR5/MRDIMM, 엔터프라이즈 SSD", action:"Allocation + server attach package 추진"},
+      {signal:"Grid / transformer 병목", product:"Memory availability messaging", action:"Qualified supply와 power/TB proof 강조"},
+      {signal:"Amkor Arizona early-2028", product:"HBM package timing", action:"2026년 미국 packaging relief로 메시징하지 않기"}
+    ];
+
+    const timeline = [
+      {day:"수", title:"AI 메모리 병목 Executive Brief", accounts:"Microsoft, Meta", exit:"Sales lead가 customer pain 확인"},
+      {day:"목", title:"Custom ASIC Memory Attach", accounts:"AWS, Google", exit:"FAE가 technical proof path 확인"},
+      {day:"금", title:"Rubin HBM4 Readiness", accounts:"NVIDIA, Oracle, CoreWeave", exit:"Product line이 claim 검증"},
+      {day:"월", title:"Enterprise AI Server Attach", accounts:"Supermicro, Dell, HPE", exit:"Target platform 선정"},
+      {day:"화", title:"Open Ecosystem Co-Marketing", accounts:"AMD, Marvell", exit:"Executive sponsor 확인"}
+    ];
+
+    const motionColors = { 공격:"var(--red)", 확장:"var(--green)", 방어:"var(--amber)", 관찰:"var(--steel)" };
+    const groupColors = {
+      "하이퍼스케일러": "var(--navy)",
+      "하이퍼스케일러 / 클라우드": "var(--teal)",
+      "네오클라우드": "var(--green)",
+      "AI 서버 OEM": "var(--amber)",
+      "AI 서버 OEM/ODM": "var(--amber)",
+      "ODM": "var(--steel)",
+      "가속기 벤더": "var(--red)",
+      "ASIC / 네트워크 벤더": "var(--violet)",
+      "엔터프라이즈 / 공공": "var(--teal)"
+    };
+
+    function primaryMotion(motion) {
+      if (motion.includes("공격")) return "공격";
+      if (motion.includes("확장")) return "확장";
+      if (motion.includes("방어")) return "방어";
+      return "관찰";
+    }
+    function filteredAccounts() {
+      const motion = document.getElementById("motionFilter").value;
+      const group = document.getElementById("groupFilter").value;
+      const windowValue = document.getElementById("windowFilter").value;
+      return accounts.filter(a => {
+        const motionOk = motion === "전체" || a.motion.includes(motion);
+        const groupOk = group === "전체" || a.group === group;
+        const windowOk = windowValue === "전체" || a.window === windowValue;
+        return motionOk && groupOk && windowOk;
+      });
+    }
+    function countBy(items, fn) {
+      return items.reduce((acc, item) => {
+        const key = fn(item);
+        acc[key] = (acc[key] || 0) + 1;
+        return acc;
+      }, {});
+    }
+    function drawBarChart(el, counts, colors) {
+      const entries = Object.entries(counts).sort((a,b) => b[1] - a[1]);
+      const max = Math.max(1, ...entries.map(e => e[1]));
+      el.innerHTML = entries.map(([label, value]) => {
+        const color = colors[label] || "var(--teal)";
+        const width = Math.max(4, value / max * 100);
+        return `<div class="bar-row">
+          <div class="bar-label" title="${label}">${label}</div>
+          <div class="bar-track"><div class="bar" style="width:${width}%;background:${color}"></div></div>
+          <div class="bar-value">${value}</div>
+        </div>`;
+      }).join("");
+    }
+    function tagClass(motion) {
+      const m = primaryMotion(motion);
+      const map = { 공격:"attack", 확장:"expand", 방어:"defend", 관찰:"watch" };
+      return `tag motion-${map[m]}`;
+    }
+    function renderAccounts() {
+      const data = filteredAccounts();
+      const grid = document.getElementById("accountGrid");
+      if (!data.length) {
+        grid.innerHTML = `<div class="empty">현재 필터에 맞는 계정이 없습니다.</div>`;
+      } else {
+        grid.innerHTML = data.map(a => `<article class="account-card">
+          <div class="account-title"><span>${a.account}</span><span class="rank">${a.rank}</span></div>
+          <div class="tags">
+            <span class="${tagClass(a.motion)}">${a.motion}</span>
+            <span class="tag">${a.window}</span>
+            <span class="tag">${a.group}</span>
+          </div>
+          <div class="signal"><strong>신호:</strong> ${a.signal}<br><strong>제품 적합도:</strong> ${a.products.join(", ")}</div>
+          <div class="action"><strong>다음 액션:</strong> ${a.action}</div>
+        </article>`).join("");
+      }
+      document.getElementById("kpiAccounts").textContent = data.length;
+      document.getElementById("kpiUrgent").textContent = data.filter(a => a.window === "0-90일").length;
+      document.getElementById("kpiAttack").textContent = data.filter(a => a.motion.includes("공격")).length;
+      document.getElementById("kpiProducts").textContent = 5;
+      drawBarChart(document.getElementById("motionChart"), countBy(data, a => primaryMotion(a.motion)), motionColors);
+      drawBarChart(document.getElementById("groupChart"), countBy(data, a => a.group), groupColors);
+    }
+    function renderActions() {
+      const tbody = document.querySelector("#actionsTable tbody");
+      tbody.innerHTML = actions.map(a => `<tr>
+        <td>${a.id}</td>
+        <td><span class="priority">${a.priority}</span></td>
+        <td>${a.account}</td>
+        <td><span class="${tagClass(a.motion)}">${a.motion}</span></td>
+        <td>${a.product}</td>
+        <td>${a.status}</td>
+        <td>${a.next}</td>
+      </tr>`).join("");
+    }
+    function renderSignals() {
+      const tbody = document.querySelector("#signalsTable tbody");
+      tbody.innerHTML = signals.map(s => `<tr><td>${s.signal}</td><td>${s.product}</td><td>${s.action}</td></tr>`).join("");
+    }
+    function renderTimeline() {
+      document.getElementById("timeline").innerHTML = timeline.map(t => `<div class="day">
+        <div class="day-title">${t.day}</div>
+        <div class="day-item"><strong>${t.title}</strong></div>
+        <div class="day-item">${t.accounts}</div>
+        <div class="day-item"><span class="tag">${t.exit}</span></div>
+      </div>`).join("");
+    }
+    function productScore(account, product) {
+      const joined = account.products.join(" ").toLowerCase();
+      const p = product.toLowerCase();
+      if (p === "hbm") return joined.includes("hbm") ? (account.rank <= 6 ? 4 : 3) : joined.includes("간접") ? 1 : 0;
+      if (p === "ddr5") return joined.includes("ddr5") || joined.includes("mrdimm") ? (account.rank <= 10 ? 3 : 2) : 0;
+      if (p === "ssd") return joined.includes("ssd") || joined.includes("qlc") ? (account.rank <= 10 ? 3 : 2) : 0;
+      if (p === "kv ssd") return joined.includes("kv") ? 4 : joined.includes("ssd") ? 1 : 0;
+      if (p === "cxl") return joined.includes("cxl") ? 3 : 0;
+      return 0;
+    }
+    function renderHeatmap() {
+      const products = ["HBM", "DDR5", "SSD", "KV SSD", "CXL"];
+      const focus = accounts.slice(0, 10);
+      const cells = [`<div></div>`, ...products.map(p => `<div class="heat-label">${p}</div>`)];
+      focus.forEach(a => {
+        cells.push(`<div class="heat-label">${a.account}</div>`);
+        products.forEach(p => {
+          const score = productScore(a, p);
+          const label = score === 0 ? "-" : score;
+          cells.push(`<div class="heat-cell level-${score}">${label}</div>`);
+        });
+      });
+      document.getElementById("heatmap").innerHTML = cells.join("");
+    }
+    function populateFilters() {
+      const groupSelect = document.getElementById("groupFilter");
+      [...new Set(accounts.map(a => a.group))].sort().forEach(group => {
+        const option = document.createElement("option");
+        option.value = group;
+        option.textContent = group;
+        groupSelect.appendChild(option);
+      });
+      ["motionFilter","groupFilter","windowFilter"].forEach(id => {
+        document.getElementById(id).addEventListener("change", renderAccounts);
+      });
+      document.getElementById("resetFilters").addEventListener("click", () => {
+        document.getElementById("motionFilter").value = "전체";
+        document.getElementById("groupFilter").value = "전체";
+        document.getElementById("windowFilter").value = "전체";
+        renderAccounts();
+      });
+    }
+    populateFilters();
+    renderAccounts();
+    renderActions();
+    renderSignals();
+    renderTimeline();
+    renderHeatmap();
+  </script>
+</body>
+</html>
