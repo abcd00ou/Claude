@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SanDisk B2C — Financial Report 2024–2026</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --ink: #17202a;
+      --muted: #64707d;
+      --line: #d9e0e7;
+      --bg: #f6f8fb;
+      --panel: #ffffff;
+      --navy: #19324d;
+      --red: #cc3333;
+      --green: #2e7d52;
+      --amber: #b7791f;
+      --blue: #1a6fa8;
+      --violet: #6f5ca8;
+      --teal: #1f7a7a;
+      --shadow: 0 6px 20px rgba(30,45,65,.09);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Inter, "Segoe UI", system-ui, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    /* ── topbar ── */
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(255,255,255,.96);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+    .topbar-inner {
+      max-width: 1440px; margin: 0 auto;
+      padding: 14px 24px;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    }
+    .topbar h1 { font-size: 20px; font-weight: 760; color: var(--navy); }
+    .topbar .sub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .badge {
+      display: inline-block; padding: 3px 9px; border-radius: 20px;
+      font-size: 11px; font-weight: 660; letter-spacing: .3px;
+    }
+    .badge-cycle { background: #e8f0fe; color: #1a50a8; }
+    .badge-note  { background: #fef3c7; color: #92400e; }
+
+    /* ── layout ── */
+    .page { max-width: 1440px; margin: 0 auto; padding: 24px; }
+
+    /* ── section headers ── */
+    .section-hdr {
+      font-size: 11px; font-weight: 720; letter-spacing: 1.2px;
+      text-transform: uppercase; color: var(--muted);
+      border-bottom: 1px solid var(--line); padding-bottom: 6px;
+      margin: 32px 0 16px;
+    }
+    .section-hdr:first-child { margin-top: 0; }
+
+    /* ── KPI row ── */
+    .kpi-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    .kpi {
+      background: var(--panel); border-radius: 10px;
+      padding: 18px 20px; box-shadow: var(--shadow);
+    }
+    .kpi-label { font-size: 11px; font-weight: 660; color: var(--muted); text-transform: uppercase; letter-spacing: .8px; }
+    .kpi-val   { font-size: 26px; font-weight: 760; color: var(--navy); margin: 4px 0 2px; }
+    .kpi-sub   { font-size: 12px; color: var(--muted); }
+    .up   { color: var(--green); }
+    .down { color: var(--red);   }
+    .flat { color: var(--amber); }
+
+    /* ── chart panels ── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+    .grid-half-two { display: grid; grid-template-columns: 3fr 2fr; gap: 16px; }
+
+    .panel {
+      background: var(--panel); border-radius: 10px;
+      padding: 20px 22px; box-shadow: var(--shadow);
+    }
+    .panel-title {
+      font-size: 13px; font-weight: 680; color: var(--navy);
+      margin-bottom: 4px;
+    }
+    .panel-sub { font-size: 11px; color: var(--muted); margin-bottom: 14px; }
+    .chart-wrap { position: relative; }
+
+    /* ── table ── */
+    .tbl-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+    th {
+      text-align: left; padding: 8px 10px;
+      background: #f0f4f8; color: var(--muted);
+      font-size: 11px; font-weight: 680; text-transform: uppercase; letter-spacing: .6px;
+      border-bottom: 1px solid var(--line);
+    }
+    td { padding: 8px 10px; border-bottom: 1px solid var(--line); color: var(--ink); }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #f9fafc; }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .pill {
+      display: inline-block; padding: 2px 7px; border-radius: 12px;
+      font-size: 11px; font-weight: 640;
+    }
+    .pill-g { background: #dcfce7; color: #166534; }
+    .pill-r { background: #fee2e2; color: #991b1b; }
+    .pill-a { background: #fef9c3; color: #92400e; }
+
+    /* ── footer ── */
+    .footer {
+      margin-top: 40px; padding: 16px 0;
+      border-top: 1px solid var(--line);
+      font-size: 11px; color: var(--muted);
+      text-align: center; line-height: 1.8;
+    }
+    @media (max-width: 900px) {
+      .kpi-row { grid-template-columns: repeat(2, 1fr); }
+      .grid-2, .grid-3, .grid-half-two { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div>
+      <div class="topbar h1">SanDisk B2C — Financial Report</div>
+      <div class="sub">Revenue · Margins · Product Mix · NAND Cost · Forward Projections</div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+      <span class="badge badge-cycle">Cycle 9 · Jun 2026</span>
+      <span class="badge badge-note">Simulated — based on WD/SanDisk public reports + market estimates</span>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- ══ KPI ══════════════════════════════════════════════════════════ -->
+  <div class="section-hdr">Key Performance Indicators — FY2024 Actuals vs FY2025E</div>
+  <div class="kpi-row">
+    <div class="kpi">
+      <div class="kpi-label">FY2024 Revenue</div>
+      <div class="kpi-val">$3.23B</div>
+      <div class="kpi-sub up">▲ +8.0% vs FY2023 ($2.99B)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">FY2025E Revenue</div>
+      <div class="kpi-val">$3.58B</div>
+      <div class="kpi-sub up">▲ +10.9% YoY</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">FY2026E Revenue</div>
+      <div class="kpi-val">$3.76B</div>
+      <div class="kpi-sub up">▲ +4.8% YoY</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Blended GM% FY2024</div>
+      <div class="kpi-val">47.6%</div>
+      <div class="kpi-sub up">▲ +10.4pp vs FY2023 (37.2%)</div>
+    </div>
+    <div class="kpi">
+      <div class="kpi-label">Blended GM% FY2025E</div>
+      <div class="kpi-val">55.1%</div>
+      <div class="kpi-sub up">▲ +7.5pp YoY — NAND cost tailwind</div>
+    </div>
+  </div>
+
+  <!-- ══ Annual Revenue ══════════════════════════════════════════════ -->
+  <div class="section-hdr">Annual Revenue by Category (USD M)</div>
+  <div class="grid-half-two">
+    <div class="panel">
+      <div class="panel-title">Revenue by Category — 2022–2026E</div>
+      <div class="panel-sub">Stacked bar · External SSD / Internal SSD / MicroSD</div>
+      <div class="chart-wrap"><canvas id="annualRevChart" height="220"></canvas></div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">Category Mix Shift 2022 → 2026E</div>
+      <div class="panel-sub">Revenue share % per category</div>
+      <div class="chart-wrap"><canvas id="mixChart" height="220"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ══ Quarterly Trend ════════════════════════════════════════════ -->
+  <div class="section-hdr">Quarterly Revenue — 2024 Q1 through 2026 Q4 (USD M)</div>
+  <div class="panel">
+    <div class="panel-title">Quarterly Revenue — Line by Category + Total</div>
+    <div class="panel-sub">Actuals through 2025Q1 · Estimates 2025Q2+ · Cycle 9 data as of Jun 2026</div>
+    <div class="chart-wrap"><canvas id="qtrChart" height="160"></canvas></div>
+  </div>
+
+  <!-- ══ Gross Margin ═══════════════════════════════════════════════ -->
+  <div class="section-hdr">Gross Margin Trend</div>
+  <div class="grid-2">
+    <div class="panel">
+      <div class="panel-title">Blended GM% — 2022–2026E</div>
+      <div class="panel-sub">NAND cost cycle drives significant margin swing</div>
+      <div class="chart-wrap"><canvas id="gmAnnualChart" height="220"></canvas></div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">GM% by Category — 2024 vs 2025E vs 2026E</div>
+      <div class="panel-sub">MicroSD consistently highest margin; Internal SSD most cyclical</div>
+      <div class="chart-wrap"><canvas id="gmCatChart" height="220"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ══ NAND Cost ══════════════════════════════════════════════════ -->
+  <div class="section-hdr">NAND Cost Trend vs Gross Margin Correlation</div>
+  <div class="grid-2">
+    <div class="panel">
+      <div class="panel-title">NAND Spot Price ($/GB) — 2023 H1 → 2025 Q2E</div>
+      <div class="panel-sub">Recovery from 2023 trough; Q2 2026 structural deficit signals +70–75% QoQ</div>
+      <div class="chart-wrap"><canvas id="nandPriceChart" height="220"></canvas></div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">NAND Cost vs Blended GM% — Inverse Relationship</div>
+      <div class="panel-sub">Lower input cost → higher GM%; 2025E peak margin driven by cost trough lag</div>
+      <div class="chart-wrap"><canvas id="costGmChart" height="220"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ══ SKU Table ══════════════════════════════════════════════════ -->
+  <div class="section-hdr">SKU-Level Revenue & Margin — FY2024</div>
+  <div class="panel">
+    <div class="panel-title">Top SKUs by Revenue — FY2024 (USD M)</div>
+    <div class="panel-sub">Source: internal_sales.json · WD/SanDisk public reports + channel estimates</div>
+    <div class="tbl-wrap">
+      <table id="skuTable">
+        <thead>
+          <tr>
+            <th>SKU</th>
+            <th>Category</th>
+            <th class="num">Revenue (USD M)</th>
+            <th class="num">Units (K)</th>
+            <th class="num">ASP (USD)</th>
+            <th class="num">GM%</th>
+            <th>Margin Tier</th>
+          </tr>
+        </thead>
+        <tbody id="skuTbody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ══ Channel Mix ════════════════════════════════════════════════ -->
+  <div class="section-hdr">Channel Mix — FY2024</div>
+  <div class="grid-3">
+    <div class="panel">
+      <div class="panel-title">External SSD Channel Mix</div>
+      <div class="panel-sub">E-commerce dominant; B2B growing</div>
+      <div class="chart-wrap"><canvas id="chExtChart" height="200"></canvas></div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">Internal SSD Channel Mix</div>
+      <div class="panel-sub">Highest B2B exposure (system builders)</div>
+      <div class="chart-wrap"><canvas id="chIntChart" height="200"></canvas></div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">MicroSD Channel Mix</div>
+      <div class="panel-sub">Retail majority — impulse + accessory purchase</div>
+      <div class="chart-wrap"><canvas id="chMsdChart" height="200"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ══ Forward Projections ════════════════════════════════════════ -->
+  <div class="section-hdr">Forward Projections — 2024 to 2030 (USD M)</div>
+  <div class="grid-2">
+    <div class="panel">
+      <div class="panel-title">Revenue Forecast — 2024–2030</div>
+      <div class="panel-sub">Total B2C revenue · Base case from simulation engine</div>
+      <div class="chart-wrap"><canvas id="fwdRevChart" height="220"></canvas></div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">Gross Margin % Forecast — 2024–2030</div>
+      <div class="panel-sub">Blended margin · NAND cycle + premium mix shift</div>
+      <div class="chart-wrap"><canvas id="fwdGmChart" height="220"></canvas></div>
+    </div>
+  </div>
+
+  <!-- ══ Market Share ═══════════════════════════════════════════════ -->
+  <div class="section-hdr">Competitive Market Share — FY2024</div>
+  <div class="grid-3">
+    <div class="panel">
+      <div class="panel-title">External SSD Market Share</div>
+      <div class="panel-sub">SanDisk/WD #2 at 22%; Samsung #1 at 33%</div>
+      <div class="chart-wrap"><canvas id="msExtChart" height="200"></canvas></div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">Internal SSD (Consumer) Market Share</div>
+      <div class="panel-sub">SanDisk/WD 17%; Samsung 28%</div>
+      <div class="chart-wrap"><canvas id="msIntChart" height="200"></canvas></div>
+    </div>
+    <div class="panel">
+      <div class="panel-title">MicroSD Market Share</div>
+      <div class="panel-sub">SanDisk #1 at 32%; strong brand loyalty</div>
+      <div class="chart-wrap"><canvas id="msMsdChart" height="200"></canvas></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    SanDisk B2C Financial Report · Cycle 9 · Generated 2026-06-09<br>
+    Data: WD/SanDisk FY2024 10-K (Flash segment), TrendForce, IDC, channel tracking estimates · Simulated internal data<br>
+    This report is for internal marketing use only and does not constitute financial guidance.
+  </div>
+</div>
+
+<script>
+// ── Color palette ───────────────────────────────────────────────────────────
+const C = {
+  ext:    '#1a6fa8',
+  int:    '#2e7d52',
+  msd:    '#6f5ca8',
+  total:  '#19324d',
+  blnd:   '#cc3333',
+  nand:   '#b7791f',
+  line:   '#d9e0e7',
+};
+
+const FONT = { family: "Inter, 'Segoe UI', system-ui, sans-serif", size: 12 };
+
+Chart.defaults.font        = FONT;
+Chart.defaults.color       = '#64707d';
+Chart.defaults.borderColor = '#e8ecf0';
+
+function mkChart(id, cfg) {
+  return new Chart(document.getElementById(id).getContext('2d'), cfg);
+}
+
+// ── Data ─────────────────────────────────────────────────────────────────────
+
+const annualYears = ['2022','2023','2024','2025E','2026E'];
+const annualExt   = [1120,  890,   950,   1044,   1117 ];
+const annualInt   = [920,   720,   760,   875,    974  ];
+const annualMsd   = [1650,  1380,  1520,  1663,   1664 ];
+const annualTotal = [3690,  2990,  3230,  3582,   3755 ];
+
+const qLabels = ['24Q1','24Q2','24Q3','24Q4','25Q1','25Q2','25Q3','25Q4','26Q1','26Q2','26Q3','26Q4'];
+const qExt    = [208,   220,   248,   274,   228,   232,   266,   317,   213,   241,   282,   366  ];
+const qInt    = [165,   175,   198,   222,   176,   189,   218,   275,   179,   215,   241,   320  ];
+const qMsd    = [330,   352,   408,   430,   352,   376,   422,   513,   340,   379,   403,   527  ];
+const qTotal  = [703,   747,   854,   926,   756,   797,   906,  1105,   732,   835,   926,  1213  ];
+
+const gmYears  = ['2022','2023','2024','2025E','2026E'];
+const gmBlend  = [43.0,  37.2,  47.6,  55.1,   47.4 ];
+const gmExt    = [38.5,  32.1,  44.8,  51.5,   43.6 ];
+const gmInt    = [31.2,  24.6,  38.5,  44.7,   37.7 ];
+const gmMsd    = [54.8,  48.2,  57.3,  63.7,   56.3 ];
+
+const nandPeriods = ['23H1','23H2','24Q1','24Q2','24Q3','24Q4','25Q1E','25Q2E'];
+const nandPrice   = [0.050, 0.038, 0.048, 0.058, 0.068, 0.075,  0.080,  0.082];
+
+const skuData = [
+  { sku:'SD Extreme 1TB',     cat:'External SSD',  rev:215, units:2500, asp:86.0,  gm:45.2 },
+  { sku:'SD Extreme 2TB',     cat:'External SSD',  rev:198, units:1280, asp:154.7, gm:46.1 },
+  { sku:'SD Extreme Pro 2TB', cat:'External SSD',  rev:175, units: 850, asp:205.9, gm:53.2 },
+  { sku:'WD Black SN850X 1TB',cat:'Internal NVMe', rev:188, units:2200, asp:85.5,  gm:40.1 },
+  { sku:'WD Black SN850X 2TB',cat:'Internal NVMe', rev:160, units:1100, asp:145.5, gm:42.3 },
+  { sku:'SD Extreme Pro 1TB', cat:'External SSD',  rev:148, units:1240, asp:119.4, gm:52.1 },
+  { sku:'SD Extreme Micro 1TB',cat:'MicroSD',      rev:140, units: 590, asp:237.3, gm:61.4 },
+  { sku:'SD Extreme Micro 512GB',cat:'MicroSD',    rev:128, units:1980, asp:64.6,  gm:59.8 },
+  { sku:'SD Extreme Micro 256GB',cat:'MicroSD',    rev:112, units:2900, asp:38.6,  gm:55.3 },
+  { sku:'WD My Passport 2TB', cat:'External HDD',  rev: 95, units:1100, asp:86.4,  gm:38.7 },
+];
+
+const fwdYears = ['2024','2025E','2026E','2027E','2028E','2029E','2030E'];
+const fwdRev   = [3230,  3582,   3755,   4177,   4541,   4965,   5557  ];
+const fwdGm    = [47.6,  55.1,   47.4,   51.0,   53.5,   55.0,   56.5  ];
+
+// market share
+const msExt  = { labels:['Samsung','WD/SanDisk','Seagate','Crucial','ADATA','Lexar','Others'],
+                 data:[33,22,13,7,6,4,15] };
+const msInt  = { labels:['Samsung','WD/SanDisk','SK Hynix','Kingston','Crucial','Seagate','ADATA','Others'],
+                 data:[28,17,12,11,11,6,5,10] };
+const msMsd  = { labels:['SanDisk','Samsung','Lexar','Kingston','Transcend','ADATA','PNY','Others'],
+                 data:[32,23,11,9,6,4,3,12] };
+
+// channel
+const chExt  = { labels:['E-Commerce','Retail','B2B'], data:[52,38,10] };
+const chInt  = { labels:['E-Commerce','Retail','B2B'], data:[58,27,15] };
+const chMsd  = { labels:['E-Commerce','Retail','B2B'], data:[42,48,10] };
+
+// ── Annual Revenue (stacked bar) ──────────────────────────────────────────
+mkChart('annualRevChart', {
+  type: 'bar',
+  data: {
+    labels: annualYears,
+    datasets: [
+      { label:'External SSD', data:annualExt, backgroundColor:C.ext, borderRadius:3 },
+      { label:'Internal SSD', data:annualInt, backgroundColor:C.int, borderRadius:3 },
+      { label:'MicroSD',      data:annualMsd, backgroundColor:C.msd, borderRadius:3 },
+    ]
+  },
+  options: {
+    responsive:true,
+    plugins: {
+      legend:{ position:'bottom', labels:{boxWidth:12,padding:14} },
+      tooltip: { callbacks: { label: ctx => ` ${ctx.dataset.label}: $${ctx.parsed.y.toLocaleString()}M` } }
+    },
+    scales: {
+      x: { stacked:true, grid:{display:false} },
+      y: { stacked:true, ticks:{ callback: v=>'$'+v.toLocaleString()+'M' } }
+    }
+  }
+});
+
+// ── Category Mix (stacked 100%) ───────────────────────────────────────────
+const mixExt = annualYears.map((_,i) => +(annualExt[i]/annualTotal[i]*100).toFixed(1));
+const mixInt = annualYears.map((_,i) => +(annualInt[i]/annualTotal[i]*100).toFixed(1));
+const mixMsd = annualYears.map((_,i) => +(annualMsd[i]/annualTotal[i]*100).toFixed(1));
+mkChart('mixChart', {
+  type:'bar',
+  data:{
+    labels:annualYears,
+    datasets:[
+      { label:'External SSD', data:mixExt, backgroundColor:C.ext, borderRadius:3 },
+      { label:'Internal SSD', data:mixInt, backgroundColor:C.int, borderRadius:3 },
+      { label:'MicroSD',      data:mixMsd, backgroundColor:C.msd, borderRadius:3 },
+    ]
+  },
+  options:{
+    responsive:true,
+    plugins:{ legend:{position:'bottom',labels:{boxWidth:12,padding:14}},
+      tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${ctx.parsed.y}%`}} },
+    scales:{
+      x:{stacked:true,grid:{display:false}},
+      y:{stacked:true,max:100,ticks:{callback:v=>v+'%'}}
+    }
+  }
+});
+
+// ── Quarterly Revenue ─────────────────────────────────────────────────────
+mkChart('qtrChart',{
+  type:'line',
+  data:{
+    labels:qLabels,
+    datasets:[
+      { label:'Total',       data:qTotal, borderColor:C.total, borderWidth:2.5, tension:.35, pointRadius:4, fill:false },
+      { label:'External SSD',data:qExt,   borderColor:C.ext,   borderWidth:1.5, tension:.35, pointRadius:3, fill:false, borderDash:[4,2] },
+      { label:'Internal SSD',data:qInt,   borderColor:C.int,   borderWidth:1.5, tension:.35, pointRadius:3, fill:false, borderDash:[4,2] },
+      { label:'MicroSD',     data:qMsd,   borderColor:C.msd,   borderWidth:1.5, tension:.35, pointRadius:3, fill:false, borderDash:[4,2] },
+    ]
+  },
+  options:{
+    responsive:true,
+    plugins:{
+      legend:{position:'bottom',labels:{boxWidth:12,padding:14}},
+      tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: $${ctx.parsed.y.toLocaleString()}M`}}
+    },
+    scales:{
+      x:{grid:{color:'#eef1f5'}},
+      y:{ticks:{callback:v=>'$'+v+'M'}}
+    }
+  }
+});
+
+// ── GM Annual (line) ──────────────────────────────────────────────────────
+mkChart('gmAnnualChart',{
+  type:'line',
+  data:{
+    labels:gmYears,
+    datasets:[
+      { label:'Blended GM%', data:gmBlend, borderColor:C.blnd, backgroundColor:'rgba(204,51,51,.08)', fill:true, tension:.3, borderWidth:2.5, pointRadius:5 },
+    ]
+  },
+  options:{
+    responsive:true,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>` Blended GM: ${ctx.parsed.y}%`}}},
+    scales:{
+      x:{grid:{display:false}},
+      y:{min:30,max:65,ticks:{callback:v=>v+'%'}}
+    }
+  }
+});
+
+// ── GM by Category (grouped bar) ─────────────────────────────────────────
+mkChart('gmCatChart',{
+  type:'bar',
+  data:{
+    labels:['External SSD','Internal SSD','MicroSD'],
+    datasets:[
+      { label:'2024',  data:[44.8,38.5,57.3], backgroundColor:'#b0c4de', borderRadius:3 },
+      { label:'2025E', data:[51.5,44.7,63.7], backgroundColor:C.blue,    borderRadius:3 },
+      { label:'2026E', data:[43.6,37.7,56.3], backgroundColor:'#7fb3d3', borderRadius:3 },
+    ]
+  },
+  options:{
+    responsive:true,
+    plugins:{legend:{position:'bottom',labels:{boxWidth:12,padding:14}},
+      tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${ctx.parsed.y}%`}}},
+    scales:{
+      x:{grid:{display:false}},
+      y:{min:20,max:75,ticks:{callback:v=>v+'%'}}
+    }
+  }
+});
+
+// ── NAND Price ────────────────────────────────────────────────────────────
+mkChart('nandPriceChart',{
+  type:'line',
+  data:{
+    labels:nandPeriods,
+    datasets:[{
+      label:'NAND $/GB',data:nandPrice,
+      borderColor:C.nand,backgroundColor:'rgba(183,121,31,.08)',fill:true,
+      tension:.3,borderWidth:2.5,pointRadius:5
+    }]
+  },
+  options:{
+    responsive:true,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>` $${ctx.parsed.y.toFixed(3)}/GB`}}},
+    scales:{
+      x:{grid:{display:false}},
+      y:{ticks:{callback:v=>'$'+v.toFixed(3)}}
+    }
+  }
+});
+
+// ── Cost vs GM scatter ────────────────────────────────────────────────────
+mkChart('costGmChart',{
+  type:'scatter',
+  data:{
+    datasets:[{
+      label:'Year (NAND$/GB vs GM%)',
+      data:[
+        {x:0.050,y:43.0,label:'2022'},
+        {x:0.038,y:37.2,label:'2023'},
+        {x:0.068,y:47.6,label:'2024'},
+        {x:0.080,y:55.1,label:'2025E'},
+        {x:0.090,y:47.4,label:'2026E'},
+      ],
+      backgroundColor:C.blue,pointRadius:8,pointHoverRadius:10
+    }]
+  },
+  options:{
+    responsive:true,
+    plugins:{
+      legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>{
+        const pt = ctx.raw;
+        return ` ${pt.label}: NAND $${pt.x}/GB · GM ${pt.y}%`;
+      }}}
+    },
+    scales:{
+      x:{title:{display:true,text:'NAND Cost ($/GB)'},ticks:{callback:v=>'$'+v.toFixed(3)}},
+      y:{title:{display:true,text:'Blended GM%'},ticks:{callback:v=>v+'%'},min:30,max:60}
+    }
+  }
+});
+
+// ── SKU Table ─────────────────────────────────────────────────────────────
+const tbody = document.getElementById('skuTbody');
+skuData.sort((a,b)=>b.rev-a.rev).forEach(s=>{
+  const tier = s.gm >= 58 ? ['pill-g','High (≥58%)']
+             : s.gm >= 45 ? ['pill-a','Mid (45–57%)']
+             :               ['pill-r','Low (<45%)'];
+  tbody.innerHTML += `
+    <tr>
+      <td><strong>${s.sku}</strong></td>
+      <td>${s.cat}</td>
+      <td class="num">$${s.rev.toLocaleString()}M</td>
+      <td class="num">${s.units.toLocaleString()}K</td>
+      <td class="num">$${s.asp.toFixed(1)}</td>
+      <td class="num">${s.gm.toFixed(1)}%</td>
+      <td><span class="pill ${tier[0]}">${tier[1]}</span></td>
+    </tr>`;
+});
+
+// ── Channel doughnut helper ───────────────────────────────────────────────
+function doughnut(id, d) {
+  mkChart(id, {
+    type:'doughnut',
+    data:{labels:d.labels, datasets:[{data:d.data,
+      backgroundColor:['#1a6fa8','#2e7d52','#cc3333','#6f5ca8','#b7791f','#1f7a7a','#888','#aaa'],
+      borderWidth:2, borderColor:'#fff'
+    }]},
+    options:{
+      responsive:true,
+      plugins:{legend:{position:'bottom',labels:{boxWidth:12,padding:10,font:{size:11}}},
+        tooltip:{callbacks:{label:ctx=>` ${ctx.label}: ${ctx.parsed}%`}}}
+    }
+  });
+}
+doughnut('chExtChart', chExt);
+doughnut('chIntChart', chInt);
+doughnut('chMsdChart', chMsd);
+
+// ── Forward Revenue ───────────────────────────────────────────────────────
+mkChart('fwdRevChart',{
+  type:'line',
+  data:{
+    labels:fwdYears,
+    datasets:[{
+      label:'Total B2C Revenue',data:fwdRev,
+      borderColor:C.total,backgroundColor:'rgba(25,50,77,.06)',fill:true,
+      tension:.3,borderWidth:2.5,pointRadius:5
+    }]
+  },
+  options:{
+    responsive:true,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>` $${ctx.parsed.y.toLocaleString()}M`}}},
+    scales:{
+      x:{grid:{display:false}},
+      y:{ticks:{callback:v=>'$'+v.toLocaleString()+'M'}}
+    }
+  }
+});
+
+// ── Forward GM ────────────────────────────────────────────────────────────
+mkChart('fwdGmChart',{
+  type:'line',
+  data:{
+    labels:fwdYears,
+    datasets:[{
+      label:'Blended GM%',data:fwdGm,
+      borderColor:C.blnd,backgroundColor:'rgba(204,51,51,.07)',fill:true,
+      tension:.3,borderWidth:2.5,pointRadius:5
+    }]
+  },
+  options:{
+    responsive:true,
+    plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>` GM: ${ctx.parsed.y}%`}}},
+    scales:{
+      x:{grid:{display:false}},
+      y:{min:40,max:60,ticks:{callback:v=>v+'%'}}
+    }
+  }
+});
+
+// ── Market share doughnuts ────────────────────────────────────────────────
+doughnut('msExtChart', msExt);
+doughnut('msIntChart', msInt);
+doughnut('msMsdChart', msMsd);
+</script>
+</body>
+</html>
