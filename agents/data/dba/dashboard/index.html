@@ -144,7 +144,7 @@
 </div>
 
 <script>
-const DATA = window.DASHBOARD_DATA;
+let DATA = window.DASHBOARD_DATA;   // static fallback; replaced by live DB data when served
 const SEG_LABELS = {
   dram:'DRAM', storage:'Storage', foundry:'Foundry', chip_maker:'Chip Maker',
   asic:'ASIC', network:'Network', end_market:'End Market', dc_infra:'DC Infra',
@@ -413,18 +413,42 @@ function buildCharts(c){
   }
 }
 
-// ── init ──
-renderSegFilter(); renderSectionSelect(); renderCompanySelect(); renderList();
-document.getElementById('search').oninput = renderList;
-// Section dropdown → filter companies (does not auto-open a company)
-document.getElementById('selSection').onchange = (e)=>{
-  activeSeg = e.target.value || null;
-  document.getElementById('search').value='';
-  renderSegFilter(); renderCompanySelect(); renderList();
-};
-// Company dropdown → open that company
-document.getElementById('selCompany').onchange = (e)=>{
-  if(e.target.value) selectCompany(e.target.value);
-};
-// auto-select NVIDIA as default
-selectCompany('nvidia');
+// ── wire controls ──
+function wireControls(){
+  document.getElementById('search').oninput = renderList;
+  document.getElementById('selSection').onchange = (e)=>{
+    activeSeg = e.target.value || null;
+    document.getElementById('search').value='';
+    renderSegFilter(); renderCompanySelect(); renderList();
+  };
+  document.getElementById('selCompany').onchange = (e)=>{
+    if(e.target.value) selectCompany(e.target.value);
+  };
+}
+// ── render once data is ready ──
+function boot(){
+  renderSegFilter(); renderSectionSelect(); renderCompanySelect(); renderList();
+  wireControls();
+  const first = DATA.companies.find(c=>c.slug==='nvidia') || DATA.companies[0];
+  if(first) selectCompany(first.slug);
+}
+// ── init: try LIVE database via /api/data, fall back to static snapshot ──
+(async function init(){
+  const badge = document.querySelector('.sb-head .sub');
+  try {
+    const res = await fetch('api/data', {cache:'no-store'});
+    if(res.ok){
+      DATA = await res.json();
+      if(badge) badge.innerHTML = '🟢 Live — connected to database';
+    } else { throw new Error('no api'); }
+  } catch(e){
+    DATA = window.DASHBOARD_DATA;
+    if(badge) badge.innerHTML = '⚪ Static snapshot — run serve.py for live data';
+  }
+  if(!DATA || !DATA.companies){
+    document.getElementById('main').innerHTML =
+      '<div class="empty">⚠️ No data loaded. Run <code>python3 serve.py</code> or <code>export_dashboard_data.py</code>.</div>';
+    return;
+  }
+  boot();
+})();
