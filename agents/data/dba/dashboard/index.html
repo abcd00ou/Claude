@@ -27,6 +27,16 @@
     .search-box input{width:100%;height:36px;border:1px solid rgba(255,255,255,.2);
       background:rgba(255,255,255,.08);color:#fff;border-radius:7px;padding:0 12px;font-size:13px;}
     .search-box input::placeholder{color:#8aa0b6;}
+    .sel-label{display:block;font-size:10px;font-weight:680;letter-spacing:.6px;
+      text-transform:uppercase;color:#9fb3c8;margin-bottom:5px;}
+    .sel{width:100%;height:36px;border:1px solid rgba(255,255,255,.2);
+      background:rgba(255,255,255,.08);color:#fff;border-radius:7px;padding:0 10px;
+      font-size:13px;cursor:pointer;appearance:none;
+      background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%239fb3c8' stroke-width='1.5' fill='none'/></svg>");
+      background-repeat:no-repeat;background-position:right 10px center;}
+    .sel option{background:var(--navy);color:#fff;}
+    .sel-divider{font-size:10px;color:#7a90a6;text-align:center;margin:12px 0 8px;
+      text-transform:uppercase;letter-spacing:.8px;}
     .seg-filter{display:flex;flex-wrap:wrap;gap:5px;padding:0 16px 12px;}
     .seg-chip{font-size:10px;padding:3px 8px;border-radius:12px;cursor:pointer;
       background:rgba(255,255,255,.08);color:#b8c8d8;border:1px solid transparent;}
@@ -113,6 +123,11 @@
       <div class="sub">Company financial &amp; supply-chain dashboard</div>
     </div>
     <div class="search-box">
+      <label class="sel-label">Section</label>
+      <select id="selSection" class="sel"></select>
+      <label class="sel-label" style="margin-top:10px;">Company</label>
+      <select id="selCompany" class="sel"></select>
+      <div class="sel-divider">or browse</div>
       <input id="search" type="text" placeholder="Search company or ticker…" autocomplete="off"/>
     </div>
     <div class="seg-filter" id="segFilter"></div>
@@ -148,17 +163,38 @@ function renderSegFilter(){
   el.innerHTML = `<span class="seg-chip ${!activeSeg?'active':''}" data-seg="">All</span>` +
     allSegments().map(s=>`<span class="seg-chip ${activeSeg===s?'active':''}" data-seg="${s}">${SEG_LABELS[s]||s}</span>`).join('');
   el.querySelectorAll('.seg-chip').forEach(ch=>ch.onclick=()=>{
-    activeSeg = ch.dataset.seg||null; renderList(); renderSegFilter();
+    activeSeg = ch.dataset.seg||null;
+    document.getElementById('search').value='';
+    syncSelects(); renderList(); renderSegFilter();
   });
 }
-function renderList(){
+function filteredCompanies(){
   const q = document.getElementById('search').value.toLowerCase();
-  const el = document.getElementById('coList');
-  const list = DATA.companies.filter(c=>{
+  return DATA.companies.filter(c=>{
     const matchSeg = !activeSeg || c.segments.includes(activeSeg);
     const matchQ = !q || c.name.toLowerCase().includes(q) || c.ticker.toLowerCase().includes(q);
     return matchSeg && matchQ;
   });
+}
+// ── dropdown selects ──
+function renderSectionSelect(){
+  const sel = document.getElementById('selSection');
+  sel.innerHTML = `<option value="">All sections</option>` +
+    allSegments().map(s=>`<option value="${s}">${SEG_LABELS[s]||s}</option>`).join('');
+  sel.value = activeSeg||'';
+}
+function renderCompanySelect(){
+  const sel = document.getElementById('selCompany');
+  const list = DATA.companies.filter(c=>!activeSeg || c.segments.includes(activeSeg))
+                             .sort((a,b)=>a.name.localeCompare(b.name));
+  sel.innerHTML = `<option value="">Select company…</option>` +
+    list.map(c=>`<option value="${c.slug}">${c.name} (${c.ticker.split(':')[1]})</option>`).join('');
+  sel.value = activeSlug && list.some(c=>c.slug===activeSlug) ? activeSlug : '';
+}
+function syncSelects(){ renderSectionSelect(); renderCompanySelect(); }
+function renderList(){
+  const el = document.getElementById('coList');
+  const list = filteredCompanies();
   el.innerHTML = list.map(c=>`
     <div class="co-item ${activeSlug===c.slug?'active':''}" data-slug="${c.slug}">
       <span class="nm">${c.name}</span><span class="tk">${c.ticker.split(':')[1]}</span>
@@ -177,7 +213,7 @@ function destroyCharts(){ charts.forEach(c=>c.destroy()); charts=[]; }
 
 // ── main render ──
 function selectCompany(slug){
-  activeSlug = slug; renderList();
+  activeSlug = slug; renderList(); syncSelects();
   const c = DATA.companies.find(x=>x.slug===slug);
   const main = document.getElementById('main');
   destroyCharts();
@@ -378,7 +414,17 @@ function buildCharts(c){
 }
 
 // ── init ──
-renderSegFilter(); renderList();
+renderSegFilter(); renderSectionSelect(); renderCompanySelect(); renderList();
 document.getElementById('search').oninput = renderList;
+// Section dropdown → filter companies (does not auto-open a company)
+document.getElementById('selSection').onchange = (e)=>{
+  activeSeg = e.target.value || null;
+  document.getElementById('search').value='';
+  renderSegFilter(); renderCompanySelect(); renderList();
+};
+// Company dropdown → open that company
+document.getElementById('selCompany').onchange = (e)=>{
+  if(e.target.value) selectCompany(e.target.value);
+};
 // auto-select NVIDIA as default
 selectCompany('nvidia');
