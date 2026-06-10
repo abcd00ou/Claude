@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI SCM Company Intelligence Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <script src="dashboard_data.js"></script>
+  <style>
+    :root {
+      --ink:#17202a; --muted:#64707d; --line:#dde3ea; --bg:#f4f6f9;
+      --panel:#fff; --navy:#19324d; --blue:#1a6fa8; --green:#2e7d52;
+      --red:#cc3333; --amber:#b7791f; --violet:#6f5ca8; --teal:#1f7a7a;
+      --shadow:0 6px 20px rgba(30,45,65,.08);
+    }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{background:var(--bg);color:var(--ink);
+      font-family:Inter,"Segoe UI",system-ui,sans-serif;font-size:14px;line-height:1.5;}
+
+    /* ── layout: sidebar + main ── */
+    .app{display:grid;grid-template-columns:300px 1fr;min-height:100vh;}
+    .sidebar{background:var(--navy);color:#e8eef4;padding:0;position:sticky;top:0;height:100vh;overflow-y:auto;}
+    .sb-head{padding:20px 20px 14px;border-bottom:1px solid rgba(255,255,255,.12);}
+    .sb-head h1{font-size:16px;font-weight:740;color:#fff;}
+    .sb-head .sub{font-size:11px;color:#9fb3c8;margin-top:3px;}
+    .search-box{padding:14px 16px;position:sticky;top:0;background:var(--navy);z-index:5;}
+    .search-box input{width:100%;height:36px;border:1px solid rgba(255,255,255,.2);
+      background:rgba(255,255,255,.08);color:#fff;border-radius:7px;padding:0 12px;font-size:13px;}
+    .search-box input::placeholder{color:#8aa0b6;}
+    .seg-filter{display:flex;flex-wrap:wrap;gap:5px;padding:0 16px 12px;}
+    .seg-chip{font-size:10px;padding:3px 8px;border-radius:12px;cursor:pointer;
+      background:rgba(255,255,255,.08);color:#b8c8d8;border:1px solid transparent;}
+    .seg-chip.active{background:var(--blue);color:#fff;}
+    .co-list{padding:4px 10px 30px;}
+    .co-item{padding:9px 12px;border-radius:7px;cursor:pointer;margin-bottom:2px;
+      display:flex;justify-content:space-between;align-items:center;gap:8px;}
+    .co-item:hover{background:rgba(255,255,255,.07);}
+    .co-item.active{background:var(--blue);}
+    .co-item .nm{font-size:13px;font-weight:600;color:#fff;}
+    .co-item .tk{font-size:10px;color:#9fb3c8;font-variant-numeric:tabular-nums;}
+    .co-item.active .tk{color:#d6e6f5;}
+
+    /* ── main ── */
+    .main{padding:26px 30px;overflow-x:hidden;}
+    .empty{display:flex;align-items:center;justify-content:center;height:70vh;
+      color:var(--muted);font-size:15px;flex-direction:column;gap:8px;}
+
+    .hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;
+      border-bottom:1px solid var(--line);padding-bottom:18px;margin-bottom:22px;}
+    .hdr h2{font-size:26px;font-weight:760;color:var(--navy);}
+    .hdr .meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+    .tag{font-size:11px;padding:3px 10px;border-radius:14px;font-weight:620;}
+    .tag-tk{background:#eef4fb;color:#1a50a8;font-variant-numeric:tabular-nums;}
+    .tag-seg{background:#e8f3ee;color:#1d6b42;}
+    .tag-hq{background:#f3eefa;color:#5a3fa0;}
+    .price-now{text-align:right;}
+    .price-now .px{font-size:28px;font-weight:760;color:var(--navy);font-variant-numeric:tabular-nums;}
+    .price-now .chg{font-size:13px;font-weight:640;}
+    .up{color:var(--green);} .down{color:var(--red);}
+
+    .section-hdr{font-size:11px;font-weight:720;letter-spacing:1px;text-transform:uppercase;
+      color:var(--muted);margin:26px 0 13px;}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+    .panel{background:var(--panel);border-radius:11px;padding:18px 20px;box-shadow:var(--shadow);}
+    .panel-title{font-size:13px;font-weight:680;color:var(--navy);margin-bottom:2px;}
+    .panel-sub{font-size:11px;color:var(--muted);margin-bottom:14px;}
+    .chart-wrap{position:relative;}
+
+    /* KPI cards */
+    .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+    .kpi{background:var(--panel);border-radius:10px;padding:14px 16px;box-shadow:var(--shadow);}
+    .kpi .lbl{font-size:10px;font-weight:660;color:var(--muted);text-transform:uppercase;letter-spacing:.6px;}
+    .kpi .val{font-size:20px;font-weight:740;color:var(--navy);margin-top:3px;font-variant-numeric:tabular-nums;}
+    .kpi .sub{font-size:11px;color:var(--muted);margin-top:1px;}
+
+    /* SCM cards */
+    .scm-card{border-left:3px solid var(--blue);padding:12px 16px;margin-bottom:10px;
+      background:#fafcfe;border-radius:0 8px 8px 0;}
+    .scm-card .seg{font-size:11px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;}
+    .scm-card .role{font-size:13px;font-weight:600;color:var(--ink);margin:3px 0;}
+    .scm-card .row{font-size:12px;color:var(--muted);margin-top:3px;}
+    .scm-card .row b{color:var(--ink);font-weight:600;}
+    .scm-card .signal{font-size:12px;color:var(--ink);margin-top:5px;line-height:1.45;}
+
+    /* table */
+    .tbl-wrap{overflow-x:auto;}
+    table{width:100%;border-collapse:collapse;font-size:12px;}
+    th{text-align:left;padding:7px 9px;background:#f0f4f8;color:var(--muted);
+      font-size:10px;font-weight:680;text-transform:uppercase;letter-spacing:.5px;
+      border-bottom:1px solid var(--line);position:sticky;top:0;}
+    td{padding:7px 9px;border-bottom:1px solid var(--line);}
+    tr:hover td{background:#f9fafc;}
+    .num{text-align:right;font-variant-numeric:tabular-nums;}
+    .citation{font-size:10px;color:#9aa6b2;font-style:italic;}
+
+    .quote-card{background:#fffdf6;border:1px solid #f0e6c8;border-radius:8px;padding:12px 15px;margin-bottom:10px;}
+    .quote-card .q{font-size:13px;font-style:italic;color:var(--ink);line-height:1.5;}
+    .quote-card .attr{font-size:11px;color:var(--muted);margin-top:6px;}
+
+    .footer{margin-top:34px;padding-top:14px;border-top:1px solid var(--line);
+      font-size:10.5px;color:var(--muted);text-align:center;line-height:1.7;}
+    @media(max-width:1000px){.app{grid-template-columns:1fr;}.sidebar{height:auto;position:relative;}
+      .grid-2,.grid-3{grid-template-columns:1fr;}.kpis{grid-template-columns:repeat(2,1fr);}}
+  </style>
+</head>
+<body>
+<div class="app">
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sb-head">
+      <h1>AI SCM Intelligence</h1>
+      <div class="sub">Company financial &amp; supply-chain dashboard</div>
+    </div>
+    <div class="search-box">
+      <input id="search" type="text" placeholder="Search company or ticker…" autocomplete="off"/>
+    </div>
+    <div class="seg-filter" id="segFilter"></div>
+    <div class="co-list" id="coList"></div>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main" id="main">
+    <div class="empty">
+      <div style="font-size:34px;">📊</div>
+      <div>Select a company from the left to view its dashboard</div>
+    </div>
+  </main>
+</div>
+
+<script>
+const DATA = window.DASHBOARD_DATA;
+const SEG_LABELS = {
+  dram:'DRAM', storage:'Storage', foundry:'Foundry', chip_maker:'Chip Maker',
+  asic:'ASIC', network:'Network', end_market:'End Market', dc_infra:'DC Infra',
+  power:'Power', substrate:'Substrate'
+};
+let activeSeg = null, activeSlug = null, charts = [];
+
+// ── sidebar build ──
+function allSegments(){
+  const s = new Set();
+  DATA.companies.forEach(c=>c.segments.forEach(x=>s.add(x)));
+  return [...s].sort();
+}
+function renderSegFilter(){
+  const el = document.getElementById('segFilter');
+  el.innerHTML = `<span class="seg-chip ${!activeSeg?'active':''}" data-seg="">All</span>` +
+    allSegments().map(s=>`<span class="seg-chip ${activeSeg===s?'active':''}" data-seg="${s}">${SEG_LABELS[s]||s}</span>`).join('');
+  el.querySelectorAll('.seg-chip').forEach(ch=>ch.onclick=()=>{
+    activeSeg = ch.dataset.seg||null; renderList(); renderSegFilter();
+  });
+}
+function renderList(){
+  const q = document.getElementById('search').value.toLowerCase();
+  const el = document.getElementById('coList');
+  const list = DATA.companies.filter(c=>{
+    const matchSeg = !activeSeg || c.segments.includes(activeSeg);
+    const matchQ = !q || c.name.toLowerCase().includes(q) || c.ticker.toLowerCase().includes(q);
+    return matchSeg && matchQ;
+  });
+  el.innerHTML = list.map(c=>`
+    <div class="co-item ${activeSlug===c.slug?'active':''}" data-slug="${c.slug}">
+      <span class="nm">${c.name}</span><span class="tk">${c.ticker.split(':')[1]}</span>
+    </div>`).join('') || '<div style="padding:14px;color:#8aa0b6;font-size:12px;">No matches</div>';
+  el.querySelectorAll('.co-item').forEach(it=>it.onclick=()=>selectCompany(it.dataset.slug));
+}
+
+// ── helpers ──
+function fmtMoney(v,ccy){
+  if(v==null) return '—';
+  const sym = {USD:'$',KRW:'₩',JPY:'¥',EUR:'€',TWD:'NT$'}[ccy]||'';
+  return sym + Number(v).toLocaleString(undefined,{maximumFractionDigits:2});
+}
+function fmtM(v){ return v==null?'—':'$'+Number(v).toLocaleString()+'M'; }
+function destroyCharts(){ charts.forEach(c=>c.destroy()); charts=[]; }
+
+// ── main render ──
+function selectCompany(slug){
+  activeSlug = slug; renderList();
+  const c = DATA.companies.find(x=>x.slug===slug);
+  const main = document.getElementById('main');
+  destroyCharts();
+
+  const px = c.prices;
+  const last = px.length?px[px.length-1]:null;
+  const prev = px.length>1?px[px.length-2]:null;
+  let chgHtml='';
+  if(last&&prev){
+    const d = last.close_usd-prev.close_usd, pct = d/prev.close_usd*100;
+    const cls = d>=0?'up':'down', arr = d>=0?'▲':'▼';
+    chgHtml=`<div class="chg ${cls}">${arr} ${fmtMoney(Math.abs(d),c.currency)} (${pct>=0?'+':''}${pct.toFixed(2)}%)</div>`;
+  }
+
+  // 52d range (window of data)
+  const closes = px.map(p=>p.close_usd).filter(v=>v!=null);
+  const hi = closes.length?Math.max(...closes):null, lo = closes.length?Math.min(...closes):null;
+  const vols = px.map(p=>p.volume).filter(v=>v);
+  const avgVol = vols.length?Math.round(vols.reduce((a,b)=>a+b,0)/vols.length):null;
+
+  // latest financial
+  const fin = c.financials;
+  const latestFin = fin.length?fin[fin.length-1]:null;
+
+  main.innerHTML = `
+    <div class="hdr">
+      <div>
+        <h2>${c.name}</h2>
+        <div class="meta">
+          <span class="tag tag-tk">${c.ticker}</span>
+          ${c.segments.map(s=>`<span class="tag tag-seg">${SEG_LABELS[s]||s}</span>`).join('')}
+          <span class="tag tag-hq">HQ ${c.hq_country}</span>
+          <span class="tag tag-hq">FY end ${c.fiscal_year_end}</span>
+        </div>
+      </div>
+      <div class="price-now">
+        <div class="px">${last?fmtMoney(last.close_usd,c.currency):'—'}</div>
+        ${chgHtml}
+        <div class="panel-sub" style="margin:4px 0 0;">${last?('as of '+last.price_date):''}</div>
+      </div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="lbl">Range (window)</div>
+        <div class="val">${lo!=null?fmtMoney(lo,c.currency):'—'} – ${hi!=null?fmtMoney(hi,c.currency):'—'}</div>
+        <div class="sub">${px.length} trading days</div></div>
+      <div class="kpi"><div class="lbl">Avg Volume</div>
+        <div class="val">${avgVol?avgVol.toLocaleString():'—'}</div>
+        <div class="sub">shares/day</div></div>
+      <div class="kpi"><div class="lbl">Latest AI/DC Rev</div>
+        <div class="val">${latestFin&&latestFin.revenue_ai_dc_usd_m!=null?fmtM(latestFin.revenue_ai_dc_usd_m):'—'}</div>
+        <div class="sub">${latestFin?latestFin.calendar_quarter:''}</div></div>
+      <div class="kpi"><div class="lbl">Latest Capex</div>
+        <div class="val">${latestFin&&latestFin.capex_usd_m!=null?fmtM(latestFin.capex_usd_m):'—'}</div>
+        <div class="sub">${latestFin?latestFin.calendar_quarter:''}</div></div>
+    </div>
+
+    <!-- SCM -->
+    <div class="section-hdr">AI Supply-Chain Position</div>
+    <div class="panel">
+      ${c.scm.length? c.scm.map(s=>`
+        <div class="scm-card">
+          <div class="seg">${SEG_LABELS[s.segment]||s.segment}</div>
+          ${s.role?`<div class="role">${s.role}</div>`:''}
+          ${s.share?`<div class="row"><b>Share/Metric:</b> ${s.share}</div>`:''}
+          ${s.revenue?`<div class="row"><b>Latest Revenue:</b> ${s.revenue}</div>`:''}
+          ${s.signal?`<div class="signal">📡 ${s.signal}</div>`:''}
+          ${s.sourced?`<div class="citation">Last sourced: ${s.sourced}</div>`:''}
+        </div>`).join('') : '<div class="panel-sub">No SCM intelligence on file.</div>'}
+    </div>
+
+    <!-- Stock price -->
+    <div class="section-hdr">Stock Price</div>
+    <div class="grid-2">
+      <div class="panel">
+        <div class="panel-title">Close Price (${c.currency})</div>
+        <div class="panel-sub">Daily close · ${px.length} trading days</div>
+        <div class="chart-wrap"><canvas id="priceChart" height="210"></canvas></div>
+      </div>
+      <div class="panel">
+        <div class="panel-title">Trading Volume</div>
+        <div class="panel-sub">Daily share volume</div>
+        <div class="chart-wrap"><canvas id="volChart" height="210"></canvas></div>
+      </div>
+    </div>
+
+    <!-- Financials -->
+    <div class="section-hdr">Quarterly Financials <span style="font-weight:500;text-transform:none;letter-spacing:0;">— Tier A (SEC 10-Q/10-K + IR)</span></div>
+    ${fin.length?`
+    <div class="grid-2">
+      <div class="panel">
+        <div class="panel-title">Revenue &amp; AI/DC Revenue</div>
+        <div class="panel-sub">USD millions · by calendar quarter</div>
+        <div class="chart-wrap"><canvas id="revChart" height="210"></canvas></div>
+      </div>
+      <div class="panel">
+        <div class="panel-title">Capex &amp; Margin</div>
+        <div class="panel-sub">Capex (USD M, bars) · Gross margin % (line)</div>
+        <div class="chart-wrap"><canvas id="capexChart" height="210"></canvas></div>
+      </div>
+    </div>
+    <div class="panel" style="margin-top:16px;">
+      <div class="panel-title">Financial Data Table</div>
+      <div class="panel-sub">Every row sourced — DBA Tier A compliance</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr>
+            <th>Quarter</th><th>Period End</th><th class="num">Revenue</th>
+            <th class="num">AI/DC Rev</th><th class="num">YoY%</th><th class="num">GM%</th>
+            <th class="num">Op Inc</th><th class="num">Capex</th><th>Source</th>
+          </tr></thead>
+          <tbody>
+          ${fin.slice().reverse().map(f=>`
+            <tr>
+              <td><b>${f.calendar_quarter||'—'}</b></td>
+              <td>${f.period_end_date||'—'}</td>
+              <td class="num">${fmtM(f.revenue_usd_m)}</td>
+              <td class="num">${fmtM(f.revenue_ai_dc_usd_m)}</td>
+              <td class="num">${f.revenue_yoy_pct!=null?'+'+f.revenue_yoy_pct+'%':'—'}</td>
+              <td class="num">${f.gross_margin_pct!=null?f.gross_margin_pct+'%':'—'}</td>
+              <td class="num">${fmtM(f.operating_income_usd_m)}</td>
+              <td class="num">${fmtM(f.capex_usd_m)}</td>
+              <td class="citation">${f.source_doc||''}</td>
+            </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>`:'<div class="panel"><div class="panel-sub">No quarterly financials on file for this ticker yet.</div></div>'}
+
+    ${c.commentary.length?`
+    <div class="section-hdr">Earnings Commentary</div>
+    <div class="panel">
+      ${c.commentary.map(q=>`
+        <div class="quote-card">
+          <div class="q">“${q.quote}”</div>
+          <div class="attr">— ${q.speaker}, ${q.calendar_quarter} · <span class="citation">${q.source_doc}</span></div>
+        </div>`).join('')}
+    </div>`:''}
+
+    <div class="footer">
+      Data: financials.db (SEC 10-Q/10-K + IR, Tier A) · stock_prices via yfinance (Tier B) ·
+      intelligence.db AI SCM (Cycle 9)<br>
+      Generated ${DATA.generated_at} · Internal use only — not financial guidance.
+    </div>
+  `;
+
+  buildCharts(c);
+  window.scrollTo(0,0);
+}
+
+// ── charts ──
+const FONT={family:"Inter,'Segoe UI',system-ui,sans-serif",size:11};
+Chart.defaults.font=FONT; Chart.defaults.color='#64707d'; Chart.defaults.borderColor='#eef1f5';
+
+function buildCharts(c){
+  const px=c.prices;
+  const labels=px.map(p=>p.price_date);
+  // price line
+  if(document.getElementById('priceChart')){
+    charts.push(new Chart(priceChart,{type:'line',data:{labels,datasets:[{
+      label:'Close',data:px.map(p=>p.close_usd),borderColor:'#1a6fa8',
+      backgroundColor:'rgba(26,111,168,.08)',fill:true,tension:.2,borderWidth:2,pointRadius:0
+    }]},options:{responsive:true,plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>' '+fmtMoney(ctx.parsed.y,c.currency)}}},
+      scales:{x:{ticks:{maxTicksLimit:8}},y:{ticks:{callback:v=>fmtMoney(v,c.currency)}}}}}));
+  }
+  // volume
+  if(document.getElementById('volChart')){
+    charts.push(new Chart(volChart,{type:'bar',data:{labels,datasets:[{
+      label:'Volume',data:px.map(p=>p.volume),backgroundColor:'rgba(111,92,168,.55)'
+    }]},options:{responsive:true,plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>' '+Number(ctx.parsed.y).toLocaleString()}}},
+      scales:{x:{ticks:{maxTicksLimit:8}},y:{ticks:{callback:v=>v>=1e6?(v/1e6).toFixed(0)+'M':v}}}}}));
+  }
+  // revenue
+  const fin=c.financials;
+  if(fin.length && document.getElementById('revChart')){
+    const fl=fin.map(f=>f.calendar_quarter||f.period_end_date);
+    charts.push(new Chart(revChart,{type:'bar',data:{labels:fl,datasets:[
+      {label:'Total Revenue',data:fin.map(f=>f.revenue_usd_m),backgroundColor:'#19324d',borderRadius:3},
+      {label:'AI/DC Revenue',data:fin.map(f=>f.revenue_ai_dc_usd_m),backgroundColor:'#1a6fa8',borderRadius:3},
+    ]},options:{responsive:true,plugins:{legend:{position:'bottom',labels:{boxWidth:11,padding:10}},
+      tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${fmtM(ctx.parsed.y)}`}}},
+      scales:{y:{ticks:{callback:v=>'$'+v.toLocaleString()+'M'}}}}}));
+  }
+  // capex + margin
+  if(fin.length && document.getElementById('capexChart')){
+    const fl=fin.map(f=>f.calendar_quarter||f.period_end_date);
+    charts.push(new Chart(capexChart,{data:{labels:fl,datasets:[
+      {type:'bar',label:'Capex',data:fin.map(f=>f.capex_usd_m),backgroundColor:'#2e7d52',borderRadius:3,yAxisID:'y'},
+      {type:'line',label:'Gross Margin %',data:fin.map(f=>f.gross_margin_pct),borderColor:'#cc3333',
+       borderWidth:2,pointRadius:4,tension:.3,yAxisID:'y1'},
+    ]},options:{responsive:true,plugins:{legend:{position:'bottom',labels:{boxWidth:11,padding:10}},
+      tooltip:{callbacks:{label:ctx=>ctx.dataset.label==='Capex'?` Capex: ${fmtM(ctx.parsed.y)}`:` GM: ${ctx.parsed.y}%`}}},
+      scales:{y:{position:'left',ticks:{callback:v=>'$'+v.toLocaleString()+'M'}},
+        y1:{position:'right',grid:{display:false},ticks:{callback:v=>v+'%'},min:0,max:100}}}}));
+  }
+}
+
+// ── init ──
+renderSegFilter(); renderList();
+document.getElementById('search').oninput = renderList;
+// auto-select NVIDIA as default
+selectCompany('nvidia');
