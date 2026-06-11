@@ -331,23 +331,26 @@ function selectCompany(slug){
       <div class="tbl-wrap">
         <table>
           <thead><tr>
-            <th>FY</th><th>Period End</th><th class="num">Revenue</th>
-            <th class="num">Gross Profit</th><th class="num">GM%</th>
-            <th class="num">Op Income</th><th class="num">Net Income</th>
-            <th class="num">Dil. EPS</th><th>Source</th>
+            <th>FY</th><th class="num">Revenue</th><th class="num">Gross Profit</th>
+            <th class="num">GM%</th><th class="num">Op Income</th><th class="num">Net Income</th>
+            <th class="num">EPS</th><th class="num">Capex</th><th class="num">FCF</th>
+            <th class="num">Inventory</th><th class="num">Total Debt</th><th class="num">Equity</th>
           </tr></thead>
           <tbody>
           ${c.annual.slice().reverse().map(a=>`
             <tr>
-              <td><b>FY${a.fiscal_year}</b></td>
-              <td>${a.period_end_date||'—'}</td>
+              <td><b>FY${a.fiscal_year}</b><div class="citation">${a.period_end_date||''}</div></td>
               <td class="num">${fmtM(a.revenue_usd_m)}</td>
               <td class="num">${fmtM(a.gross_profit_usd_m)}</td>
               <td class="num">${a.gross_margin_pct!=null?a.gross_margin_pct+'%':'—'}</td>
               <td class="num">${fmtM(a.operating_income_usd_m)}</td>
               <td class="num">${fmtM(a.net_income_usd_m)}</td>
               <td class="num">${a.eps_diluted!=null?'$'+a.eps_diluted.toFixed(2):'—'}</td>
-              <td class="citation">${a.source_doc||''}</td>
+              <td class="num">${fmtM(a.capex_usd_m)}</td>
+              <td class="num">${fmtM(a.fcf_usd_m)}</td>
+              <td class="num">${fmtM(a.inventory_usd_m)}</td>
+              <td class="num">${fmtM(a.total_debt_usd_m)}</td>
+              <td class="num">${fmtM(a.stockholders_equity_usd_m)}</td>
             </tr>`).join('')}
           </tbody>
         </table>
@@ -359,42 +362,59 @@ function selectCompany(slug){
     ${fin.length?`
     <div class="grid-2">
       <div class="panel">
-        <div class="panel-title">Revenue &amp; AI/DC Revenue</div>
-        <div class="panel-sub">USD millions · by calendar quarter</div>
+        <div class="panel-title">Revenue, Net Income &amp; Margin</div>
+        <div class="panel-sub">Revenue + net income (bars, USD M) · gross margin % (line)</div>
         <div class="chart-wrap"><canvas id="revChart" height="210"></canvas></div>
       </div>
       <div class="panel">
-        <div class="panel-title">Capex &amp; Margin</div>
-        <div class="panel-sub">Capex (USD M, bars) · Gross margin % (line)</div>
+        <div class="panel-title">Cash Flow — Capex, FCF &amp; Operating</div>
+        <div class="panel-sub">USD millions · by calendar quarter</div>
         <div class="chart-wrap"><canvas id="capexChart" height="210"></canvas></div>
       </div>
     </div>
+    <div class="grid-2" style="margin-top:16px;">
+      <div class="panel">
+        <div class="panel-title">Balance Sheet — Inventory, Debt &amp; Equity</div>
+        <div class="panel-sub">USD millions · period end</div>
+        <div class="chart-wrap"><canvas id="bsChart" height="210"></canvas></div>
+      </div>
+      <div class="panel">
+        <div class="panel-title">Total Assets &amp; Receivables</div>
+        <div class="panel-sub">USD millions · period end</div>
+        <div class="chart-wrap"><canvas id="assetsChart" height="210"></canvas></div>
+      </div>
+    </div>
     <div class="panel" style="margin-top:16px;">
-      <div class="panel-title">Financial Data Table</div>
-      <div class="panel-sub">Every row sourced — DBA Tier A compliance</div>
+      <div class="panel-title">Quarterly Financial Data Table</div>
+      <div class="panel-sub">Revenue · profit · margin · capex · cash flow · balance sheet — every row sourced</div>
       <div class="tbl-wrap">
         <table>
           <thead><tr>
-            <th>Quarter</th><th>Period End</th><th class="num">Revenue</th>
-            <th class="num">AI/DC Rev</th><th class="num">YoY%</th><th class="num">GM%</th>
-            <th class="num">Op Inc</th><th class="num">Capex</th><th>Source</th>
+            <th>Quarter</th><th class="num">Revenue</th><th class="num">Gross Profit</th>
+            <th class="num">GM%</th><th class="num">Op Inc</th><th class="num">Net Inc</th>
+            <th class="num">Capex</th><th class="num">FCF</th><th class="num">Inventory</th>
+            <th class="num">Total Debt</th><th class="num">Equity</th><th class="num">Assets</th>
           </tr></thead>
           <tbody>
           ${fin.slice().reverse().map(f=>`
             <tr>
-              <td><b>${f.calendar_quarter||'—'}</b></td>
-              <td>${f.period_end_date||'—'}</td>
+              <td><b>${f.calendar_quarter||'—'}</b><div class="citation">${f.period_end_date||''}</div></td>
               <td class="num">${fmtM(f.revenue_usd_m)}</td>
-              <td class="num">${fmtM(f.revenue_ai_dc_usd_m)}</td>
-              <td class="num">${f.revenue_yoy_pct!=null?'+'+f.revenue_yoy_pct+'%':'—'}</td>
+              <td class="num">${fmtM(f.gross_profit_usd_m)}</td>
               <td class="num">${f.gross_margin_pct!=null?f.gross_margin_pct+'%':'—'}</td>
               <td class="num">${fmtM(f.operating_income_usd_m)}</td>
+              <td class="num">${fmtM(f.net_income_usd_m)}</td>
               <td class="num">${fmtM(f.capex_usd_m)}</td>
-              <td class="citation">${f.source_doc||''}</td>
+              <td class="num">${fmtM(f.fcf_usd_m)}</td>
+              <td class="num">${fmtM(f.inventory_usd_m)}</td>
+              <td class="num">${fmtM(f.total_debt_usd_m)}</td>
+              <td class="num">${fmtM(f.stockholders_equity_usd_m)}</td>
+              <td class="num">${fmtM(f.total_assets_usd_m)}</td>
             </tr>`).join('')}
           </tbody>
         </table>
       </div>
+      <div class="panel-sub" style="margin-top:8px;">Source: ${fin[fin.length-1].source_doc||''}</div>
     </div>`:'<div class="panel"><div class="panel-sub">No quarterly financials on file for this ticker yet.</div></div>'}
 
     ${c.commentary.length?`
@@ -464,28 +484,49 @@ function buildCharts(c){
       tooltip:{callbacks:{label:ctx=>` GM: ${ctx.parsed.y}%`}}},
       scales:{y:{ticks:{callback:v=>v+'%'},min:0,max:100}}}}));
   }
-  // revenue
+  // revenue + net income (bars) + gross margin (line)
   const fin=c.financials;
+  const fl=fin.map(f=>f.calendar_quarter||f.period_end_date);
   if(fin.length && document.getElementById('revChart')){
-    const fl=fin.map(f=>f.calendar_quarter||f.period_end_date);
-    charts.push(new Chart(revChart,{type:'bar',data:{labels:fl,datasets:[
-      {label:'Total Revenue',data:fin.map(f=>f.revenue_usd_m),backgroundColor:'#19324d',borderRadius:3},
-      {label:'AI/DC Revenue',data:fin.map(f=>f.revenue_ai_dc_usd_m),backgroundColor:'#1a6fa8',borderRadius:3},
+    charts.push(new Chart(revChart,{data:{labels:fl,datasets:[
+      {type:'bar',label:'Revenue',data:fin.map(f=>f.revenue_usd_m),backgroundColor:'#19324d',borderRadius:3,yAxisID:'y'},
+      {type:'bar',label:'Net Income',data:fin.map(f=>f.net_income_usd_m),backgroundColor:'#2e7d52',borderRadius:3,yAxisID:'y'},
+      {type:'line',label:'Gross Margin %',data:fin.map(f=>f.gross_margin_pct),borderColor:'#cc3333',
+       borderWidth:2,pointRadius:3,tension:.3,yAxisID:'y1'},
+    ]},options:{responsive:true,plugins:{legend:{position:'bottom',labels:{boxWidth:11,padding:10}},
+      tooltip:{callbacks:{label:ctx=>ctx.dataset.label==='Gross Margin %'?` GM: ${ctx.parsed.y}%`:` ${ctx.dataset.label}: ${fmtM(ctx.parsed.y)}`}}},
+      scales:{y:{position:'left',ticks:{callback:v=>'$'+v.toLocaleString()+'M'}},
+        y1:{position:'right',grid:{display:false},ticks:{callback:v=>v+'%'},min:0,max:100}}}}));
+  }
+  // cash flow: capex, FCF, operating cash flow
+  if(fin.length && document.getElementById('capexChart')){
+    charts.push(new Chart(capexChart,{type:'bar',data:{labels:fl,datasets:[
+      {label:'Capex',data:fin.map(f=>f.capex_usd_m),backgroundColor:'#b7791f',borderRadius:3},
+      {label:'Free Cash Flow',data:fin.map(f=>f.fcf_usd_m),backgroundColor:'#2e7d52',borderRadius:3},
+      {label:'Operating CF',data:fin.map(f=>f.operating_cash_flow_usd_m),backgroundColor:'#1a6fa8',borderRadius:3},
     ]},options:{responsive:true,plugins:{legend:{position:'bottom',labels:{boxWidth:11,padding:10}},
       tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${fmtM(ctx.parsed.y)}`}}},
       scales:{y:{ticks:{callback:v=>'$'+v.toLocaleString()+'M'}}}}}));
   }
-  // capex + margin
-  if(fin.length && document.getElementById('capexChart')){
-    const fl=fin.map(f=>f.calendar_quarter||f.period_end_date);
-    charts.push(new Chart(capexChart,{data:{labels:fl,datasets:[
-      {type:'bar',label:'Capex',data:fin.map(f=>f.capex_usd_m),backgroundColor:'#2e7d52',borderRadius:3,yAxisID:'y'},
-      {type:'line',label:'Gross Margin %',data:fin.map(f=>f.gross_margin_pct),borderColor:'#cc3333',
-       borderWidth:2,pointRadius:4,tension:.3,yAxisID:'y1'},
+  // balance sheet: inventory, debt, equity
+  if(fin.length && document.getElementById('bsChart')){
+    charts.push(new Chart(bsChart,{type:'bar',data:{labels:fl,datasets:[
+      {label:'Inventory',data:fin.map(f=>f.inventory_usd_m),backgroundColor:'#6f5ca8',borderRadius:3},
+      {label:'Total Debt',data:fin.map(f=>f.total_debt_usd_m),backgroundColor:'#cc3333',borderRadius:3},
+      {label:'Equity',data:fin.map(f=>f.stockholders_equity_usd_m),backgroundColor:'#2e7d52',borderRadius:3},
     ]},options:{responsive:true,plugins:{legend:{position:'bottom',labels:{boxWidth:11,padding:10}},
-      tooltip:{callbacks:{label:ctx=>ctx.dataset.label==='Capex'?` Capex: ${fmtM(ctx.parsed.y)}`:` GM: ${ctx.parsed.y}%`}}},
-      scales:{y:{position:'left',ticks:{callback:v=>'$'+v.toLocaleString()+'M'}},
-        y1:{position:'right',grid:{display:false},ticks:{callback:v=>v+'%'},min:0,max:100}}}}));
+      tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${fmtM(ctx.parsed.y)}`}}},
+      scales:{y:{ticks:{callback:v=>'$'+v.toLocaleString()+'M'}}}}}));
+  }
+  // total assets (bar) + receivables (line)
+  if(fin.length && document.getElementById('assetsChart')){
+    charts.push(new Chart(assetsChart,{data:{labels:fl,datasets:[
+      {type:'bar',label:'Total Assets',data:fin.map(f=>f.total_assets_usd_m),backgroundColor:'#19324d',borderRadius:3},
+      {type:'line',label:'Receivables',data:fin.map(f=>f.receivables_usd_m),borderColor:'#b7791f',
+       borderWidth:2,pointRadius:3,tension:.3},
+    ]},options:{responsive:true,plugins:{legend:{position:'bottom',labels:{boxWidth:11,padding:10}},
+      tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${fmtM(ctx.parsed.y)}`}}},
+      scales:{y:{ticks:{callback:v=>'$'+v.toLocaleString()+'M'}}}}}));
   }
 }
 

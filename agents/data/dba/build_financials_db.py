@@ -250,6 +250,12 @@ def build_schema(cur):
         cash_usd_m                REAL,
         capex_usd_m               REAL,
         fcf_usd_m                 REAL,
+        operating_cash_flow_usd_m REAL,
+        inventory_usd_m           REAL,
+        receivables_usd_m         REAL,
+        total_assets_usd_m        REAL,
+        total_debt_usd_m          REAL,
+        stockholders_equity_usd_m REAL,
         revenue_guidance_low_usd_m  REAL,
         revenue_guidance_high_usd_m REAL,
         source_tier               TEXT,
@@ -309,6 +315,15 @@ def build_schema(cur):
         operating_income_usd_m REAL,
         net_income_usd_m       REAL,
         eps_diluted            REAL,
+        capex_usd_m            REAL,
+        fcf_usd_m              REAL,
+        operating_cash_flow_usd_m REAL,
+        cash_usd_m             REAL,
+        inventory_usd_m        REAL,
+        receivables_usd_m      REAL,
+        total_assets_usd_m     REAL,
+        total_debt_usd_m       REAL,
+        stockholders_equity_usd_m REAL,
         source_tier            TEXT DEFAULT 'B',
         source_doc             TEXT,
         source_date            TEXT,
@@ -437,8 +452,64 @@ def seed_prices(cur):
     print(f"  stock_prices: {inserted} rows total")
 
 
+# ── statement field readers ──────────────────────────────────────────────────
+def _cell(df, name, col):
+    """Safe read of df.loc[name].iloc[col] → float or None (NaN-guarded)."""
+    try:
+        if df is not None and not df.empty and name in df.index and col < df.shape[1]:
+            v = float(df.loc[name].iloc[col])
+            return v if v == v else None
+    except Exception:
+        return None
+    return None
+
+
+def _M(v):
+    return v / 1e6 if v is not None else None
+
+
+def _extract_period(inc, bal, cfl, col, pend):
+    """Build a dict of all financial fields for one period column.
+    inc/bal/cfl are the income/balance/cashflow DataFrames; pend is the period date."""
+    rev = _cell(inc, "Total Revenue", col)
+    gp  = _cell(inc, "Gross Profit", col)
+    op  = _cell(inc, "Operating Income", col)
+    ni  = _cell(inc, "Net Income", col)
+    eps = _cell(inc, "Diluted EPS", col)
+    gm  = round(gp/rev*100, 1) if (gp and rev) else None
+    # cash flow (match by same period end date when possible)
+    bcol = _match_col(bal, pend)
+    ccol = _match_col(cfl, pend)
+    capex = _cell(cfl, "Capital Expenditure", ccol)
+    fcf   = _cell(cfl, "Free Cash Flow", ccol)
+    ocf   = _cell(cfl, "Operating Cash Flow", ccol)
+    inv   = _cell(bal, "Inventory", bcol)
+    recv  = _cell(bal, "Receivables", bcol)
+    ta    = _cell(bal, "Total Assets", bcol)
+    debt  = _cell(bal, "Total Debt", bcol)
+    eq    = _cell(bal, "Stockholders Equity", bcol)
+    cash  = _cell(bal, "Cash And Cash Equivalents", bcol)
+    return dict(rev=_M(rev), gp=_M(gp), gm=gm, op=_M(op), ni=_M(ni), eps=eps,
+                capex=_M(abs(capex)) if capex is not None else None,
+                fcf=_M(fcf), ocf=_M(ocf), cash=_M(cash), inv=_M(inv),
+                recv=_M(recv), ta=_M(ta), debt=_M(debt), eq=_M(eq))
+
+
+def _match_col(df, pend):
+    """Find the column index in df whose period end date == pend (within 5 days)."""
+    if df is None or df.empty:
+        return None
+    for i, c in enumerate(df.columns):
+        try:
+            if abs((c.date() - pend).days) <= 5:
+                return i
+        except Exception:
+            continue
+    return None
+
+
 def seed_yf_financials(cur):
-    """Pull quarterly income statements from yfinance for ALL companies (Tier B).
+    """Pull quarterly income + balance sheet + cash flow from yfinance (Tier B).
     INSERT OR IGNORE preserves curated Tier-A rows; Tier-B rows are refreshed each run."""
     try:
         import yfinance as yf
@@ -448,51 +519,43 @@ def seed_yf_financials(cur):
         print("  quarterly_financials (yf): SKIPPED (yfinance not installed)")
         return
     today = date.today().isoformat()
-    # idempotent: clear prior auto-pulled rows, keep curated Tier-A
     cur.execute("DELETE FROM quarterly_financials WHERE source_tier='B'")
     inserted = 0
     for ticker, yf_sym in YF_SYMBOLS.items():
         try:
-            df = yf.Ticker(yf_sym).quarterly_income_stmt
-            if df is None or df.empty:
+            t = yf.Ticker(yf_sym)
+            inc = t.quarterly_income_stmt
+            bal = t.quarterly_balance_sheet
+            cfl = t.quarterly_cashflow
+            if inc is None or inc.empty:
                 print(f"    {ticker} ({yf_sym}): no income stmt")
                 continue
-            def row(name, col):
-                try:
-                    if name in df.index:
-                        v = df.loc[name].iloc[col]
-                        fv = float(v)
-                        return fv if fv == fv else None  # NaN guard
-                except Exception:
-                    return None
-                return None
             cnt = 0
-            for col, period in enumerate(df.columns):
-                if col >= 8:  # last 8 quarters
+            for col, period in enumerate(inc.columns):
+                if col >= 8:
                     break
                 pend = period.date()
                 cy, cq = pend.year, (pend.month - 1)//3 + 1
-                rev = row("Total Revenue", col)
-                gp  = row("Gross Profit", col)
-                op  = row("Operating Income", col)
-                ni  = row("Net Income", col)
-                eps = row("Diluted EPS", col)
-                gm  = round(gp/rev*100, 1) if (gp and rev) else None
-                if rev is None and ni is None:
+                f = _extract_period(inc, bal, cfl, col, pend)
+                if f["rev"] is None and f["ni"] is None:
                     continue
                 cur.execute("""
                     INSERT OR IGNORE INTO quarterly_financials
                         (ticker, fiscal_year, fiscal_quarter, period_end_date, calendar_quarter,
                          revenue_usd_m, gross_profit_usd_m, gross_margin_pct,
                          operating_income_usd_m, net_income_usd_m, eps_diluted,
+                         cash_usd_m, capex_usd_m, fcf_usd_m, operating_cash_flow_usd_m,
+                         inventory_usd_m, receivables_usd_m, total_assets_usd_m,
+                         total_debt_usd_m, stockholders_equity_usd_m,
                          source_tier, source_doc, source_date, signal_type,
                          importance, confidence, notes)
-                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
                 """, (
                     ticker, cy, cq, pend.isoformat(), f"{cy}-Q{cq}",
-                    rev/1e6 if rev else None, gp/1e6 if gp else None, gm,
-                    op/1e6 if op else None, ni/1e6 if ni else None, eps,
-                    "B", f"Yahoo Finance quarterly income statement, {yf_sym}, retrieved {today}",
+                    f["rev"], f["gp"], f["gm"], f["op"], f["ni"], f["eps"],
+                    f["cash"], f["capex"], f["fcf"], f["ocf"],
+                    f["inv"], f["recv"], f["ta"], f["debt"], f["eq"],
+                    "B", f"Yahoo Finance quarterly statements (income+balance+cashflow), {yf_sym}, retrieved {today}",
                     today, "earnings", "medium", "medium",
                     "Yahoo-aggregated from filings; verify against 10-Q for Tier-A use",
                 ))
@@ -519,41 +582,36 @@ def seed_yf_annual_financials(cur):
     inserted = 0
     for ticker, yf_sym in YF_SYMBOLS.items():
         try:
-            df = yf.Ticker(yf_sym).income_stmt   # annual
-            if df is None or df.empty:
+            t = yf.Ticker(yf_sym)
+            inc = t.income_stmt        # annual
+            bal = t.balance_sheet
+            cfl = t.cashflow
+            if inc is None or inc.empty:
                 print(f"    {ticker} ({yf_sym}): no annual income stmt")
                 continue
-            def row(name, col):
-                try:
-                    if name in df.index:
-                        v = float(df.loc[name].iloc[col])
-                        return v if v == v else None
-                except Exception:
-                    return None
-                return None
             cnt = 0
-            for col, period in enumerate(df.columns):
+            for col, period in enumerate(inc.columns):
                 fy = period.year
-                rev = row("Total Revenue", col)
-                gp  = row("Gross Profit", col)
-                op  = row("Operating Income", col)
-                ni  = row("Net Income", col)
-                eps = row("Diluted EPS", col)
-                gm  = round(gp/rev*100, 1) if (gp and rev) else None
-                if rev is None and ni is None:
+                pend = period.date()
+                f = _extract_period(inc, bal, cfl, col, pend)
+                if f["rev"] is None and f["ni"] is None:
                     continue
                 cur.execute("""
                     INSERT OR IGNORE INTO annual_financials
                         (ticker, fiscal_year, period_end_date, revenue_usd_m,
                          gross_profit_usd_m, gross_margin_pct, operating_income_usd_m,
-                         net_income_usd_m, eps_diluted, source_tier, source_doc,
+                         net_income_usd_m, eps_diluted, capex_usd_m, fcf_usd_m,
+                         operating_cash_flow_usd_m, cash_usd_m, inventory_usd_m,
+                         receivables_usd_m, total_assets_usd_m, total_debt_usd_m,
+                         stockholders_equity_usd_m, source_tier, source_doc,
                          source_date, notes)
-                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)
+                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
                 """, (
-                    ticker, fy, period.date().isoformat(),
-                    rev/1e6 if rev else None, gp/1e6 if gp else None, gm,
-                    op/1e6 if op else None, ni/1e6 if ni else None, eps,
-                    "B", f"Yahoo Finance annual income statement, {yf_sym}, retrieved {today}",
+                    ticker, fy, pend.isoformat(),
+                    f["rev"], f["gp"], f["gm"], f["op"], f["ni"], f["eps"],
+                    f["capex"], f["fcf"], f["ocf"], f["cash"], f["inv"],
+                    f["recv"], f["ta"], f["debt"], f["eq"],
+                    "B", f"Yahoo Finance annual statements (income+balance+cashflow), {yf_sym}, retrieved {today}",
                     today, "Yahoo-aggregated from 10-K; verify for Tier-A use",
                 ))
                 cnt += 1

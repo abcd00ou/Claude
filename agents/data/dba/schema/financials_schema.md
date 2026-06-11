@@ -85,11 +85,17 @@ One row per company per fiscal quarter. Source = SEC 10-Q/10-K/20-F (Tier A).
 | `net_income_usd_m` | REAL | Net income/loss (USD millions) |
 | `eps_diluted` | REAL | Diluted EPS (USD) |
 | `cash_usd_m` | REAL | Cash + short-term investments (USD millions) |
-| `capex_usd_m` | REAL | Capital expenditures (USD millions) |
-| `fcf_usd_m` | REAL | Free cash flow (USD millions; NULL if not stated) |
+| `capex_usd_m` | REAL | Capital expenditures (USD millions; abs value of cash-flow capex) |
+| `fcf_usd_m` | REAL | Free cash flow (USD millions) |
+| `operating_cash_flow_usd_m` | REAL | Cash from operations (USD millions) |
+| `inventory_usd_m` | REAL | Inventories (balance sheet, USD millions) |
+| `receivables_usd_m` | REAL | Accounts receivable (USD millions) |
+| `total_assets_usd_m` | REAL | Total assets (USD millions) |
+| `total_debt_usd_m` | REAL | Total debt (USD millions) |
+| `stockholders_equity_usd_m` | REAL | Total stockholders' equity (USD millions) |
 | `revenue_guidance_low_usd_m` | REAL | Next-quarter revenue guidance, low end |
 | `revenue_guidance_high_usd_m` | REAL | Next-quarter revenue guidance, high end |
-| `source_tier` | TEXT | Must be 'A' for 10-Q/10-K/20-F |
+| `source_tier` | TEXT | 'A' for curated 10-Q/10-K rows; 'B' for Yahoo-pulled rows |
 | `source_doc` | TEXT | Full citation: "Form 10-Q Q1 FY2027, NVIDIA Corporation, 2026-05-28, SEC EDGAR" |
 | `source_date` | TEXT | YYYY-MM-DD — filing date |
 | `source_url` | TEXT | SEC EDGAR URL or official IR page |
@@ -119,12 +125,24 @@ filing-derived) covering FY2021+. Provides the pre-2025 historical baseline.
 | `operating_income_usd_m` | REAL | Operating income/loss (USD millions) |
 | `net_income_usd_m` | REAL | Net income/loss (USD millions) |
 | `eps_diluted` | REAL | Diluted EPS (USD) |
+| `capex_usd_m` | REAL | Capital expenditures (USD millions) |
+| `fcf_usd_m` | REAL | Free cash flow (USD millions) |
+| `operating_cash_flow_usd_m` | REAL | Cash from operations (USD millions) |
+| `cash_usd_m` | REAL | Cash & equivalents (USD millions) |
+| `inventory_usd_m` | REAL | Inventories (USD millions) |
+| `receivables_usd_m` | REAL | Accounts receivable (USD millions) |
+| `total_assets_usd_m` | REAL | Total assets (USD millions) |
+| `total_debt_usd_m` | REAL | Total debt (USD millions) |
+| `stockholders_equity_usd_m` | REAL | Total stockholders' equity (USD millions) |
 | `source_tier` | TEXT | 'B' (Yahoo, filing-derived) |
-| `source_doc` | TEXT | "Yahoo Finance annual income statement, [SYM], retrieved YYYY-MM-DD" |
+| `source_doc` | TEXT | "Yahoo Finance annual statements, [SYM], retrieved YYYY-MM-DD" |
 | `source_date` | TEXT | YYYY-MM-DD — retrieval date |
 | `notes` | TEXT | "Yahoo-aggregated from 10-K; verify for Tier-A use" |
 
 **Unique constraint:** `(ticker, fiscal_year)`
+
+**Data composition:** income statement (`income_stmt`), balance sheet
+(`balance_sheet`), and cash flow (`cashflow`) merged by period end date.
 
 ---
 
@@ -186,5 +204,6 @@ Verbatim key quotes from earnings calls. Source = official IR transcript (Tier A
 
 | Date | Change |
 |---|---|
+| 2026-06-11 | Expanded both financial tables with balance-sheet + cash-flow columns (inventory, receivables, total assets, total debt, equity, capex, FCF, operating cash flow) — pulled from Yahoo income_stmt + balance_sheet + cashflow, merged by period |
 | 2026-06-11 | Added Historical Coverage Requirement (baseline 2020); added `annual_financials` table (FY2021+); `stock_prices` now full daily history from 2020-01-01 (was 90-day window) |
 | 2026-06-10 | Initial schema — 4 tables: companies, quarterly_financials, stock_prices, earnings_commentary |

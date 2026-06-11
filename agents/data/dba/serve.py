@@ -57,15 +57,20 @@ def build_payload() -> dict:
         ticker = c["ticker"]
         qfin = rows(fin, """
             SELECT calendar_quarter, period_end_date, fiscal_year, fiscal_quarter,
-                   revenue_usd_m, revenue_ai_dc_usd_m, revenue_yoy_pct, gross_margin_pct,
-                   operating_income_usd_m, net_income_usd_m, capex_usd_m,
+                   revenue_usd_m, revenue_ai_dc_usd_m, revenue_yoy_pct,
+                   gross_profit_usd_m, gross_margin_pct, operating_income_usd_m, net_income_usd_m,
+                   eps_diluted, capex_usd_m, fcf_usd_m, operating_cash_flow_usd_m,
+                   cash_usd_m, inventory_usd_m, receivables_usd_m, total_assets_usd_m,
+                   total_debt_usd_m, stockholders_equity_usd_m,
                    revenue_guidance_low_usd_m, revenue_guidance_high_usd_m,
                    source_doc, source_date, importance, notes
             FROM quarterly_financials WHERE ticker=? ORDER BY period_end_date""", (ticker,))
         afin = rows(fin, """
             SELECT fiscal_year, period_end_date, revenue_usd_m, gross_profit_usd_m,
-                   gross_margin_pct, operating_income_usd_m, net_income_usd_m,
-                   eps_diluted, source_doc
+                   gross_margin_pct, operating_income_usd_m, net_income_usd_m, eps_diluted,
+                   capex_usd_m, fcf_usd_m, operating_cash_flow_usd_m, cash_usd_m,
+                   inventory_usd_m, receivables_usd_m, total_assets_usd_m,
+                   total_debt_usd_m, stockholders_equity_usd_m, source_doc
             FROM annual_financials WHERE ticker=? ORDER BY fiscal_year""", (ticker,))
         prices = rows(fin, """
             SELECT price_date, close_usd, volume, currency
