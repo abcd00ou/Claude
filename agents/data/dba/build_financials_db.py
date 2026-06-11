@@ -30,6 +30,8 @@ DB_PATH = HERE / "financials.db"
 PULL_PRICES     = "--prices" in sys.argv or "--all" in sys.argv
 PULL_FINANCIALS = "--financials" in sys.argv or "--all" in sys.argv
 
+HISTORY_START = "2020-01-01"   # baseline per financials_schema.md Historical Coverage
+
 
 def conn() -> sqlite3.Connection:
     c = sqlite3.connect(DB_PATH)
@@ -296,7 +298,27 @@ def build_schema(cur):
         confidence       TEXT DEFAULT 'high'
     );
 
+    CREATE TABLE IF NOT EXISTS annual_financials (
+        id                     INTEGER PRIMARY KEY AUTOINCREMENT,
+        ticker                 TEXT NOT NULL REFERENCES companies(ticker),
+        fiscal_year            INTEGER NOT NULL,
+        period_end_date        TEXT,
+        revenue_usd_m          REAL,
+        gross_profit_usd_m     REAL,
+        gross_margin_pct       REAL,
+        operating_income_usd_m REAL,
+        net_income_usd_m       REAL,
+        eps_diluted            REAL,
+        source_tier            TEXT DEFAULT 'B',
+        source_doc             TEXT,
+        source_date            TEXT,
+        notes                  TEXT,
+        created_at             TEXT DEFAULT (datetime('now')),
+        UNIQUE(ticker, fiscal_year)
+    );
+
     CREATE INDEX IF NOT EXISTS idx_qfin_ticker  ON quarterly_financials(ticker, calendar_quarter);
+    CREATE INDEX IF NOT EXISTS idx_afin_ticker  ON annual_financials(ticker, fiscal_year);
     CREATE INDEX IF NOT EXISTS idx_price_ticker ON stock_prices(ticker, price_date DESC);
     """)
 
@@ -378,7 +400,7 @@ def seed_prices(cur):
         print("  stock_prices: SKIPPED (yfinance not installed)")
         return
     today = date.today().isoformat()
-    start = (date.today() - timedelta(days=90)).isoformat()
+    start = HISTORY_START   # full daily history from 2020-01-01 baseline
     inserted = 0
     for ticker, yf_sym in YF_SYMBOLS.items():
         ccy = _ticker_ccy(ticker)
@@ -482,6 +504,66 @@ def seed_yf_financials(cur):
     print(f"  quarterly_financials (yf, Tier B): {inserted} rows total")
 
 
+def seed_yf_annual_financials(cur):
+    """Pull annual income statements from yfinance for ALL companies (Tier B, FY2021+).
+    This provides the pre-2025 historical baseline per the Historical Coverage rule."""
+    try:
+        import yfinance as yf
+        import warnings
+        warnings.filterwarnings("ignore")
+    except ImportError:
+        print("  annual_financials: SKIPPED (yfinance not installed)")
+        return
+    today = date.today().isoformat()
+    cur.execute("DELETE FROM annual_financials WHERE source_tier='B'")  # idempotent
+    inserted = 0
+    for ticker, yf_sym in YF_SYMBOLS.items():
+        try:
+            df = yf.Ticker(yf_sym).income_stmt   # annual
+            if df is None or df.empty:
+                print(f"    {ticker} ({yf_sym}): no annual income stmt")
+                continue
+            def row(name, col):
+                try:
+                    if name in df.index:
+                        v = float(df.loc[name].iloc[col])
+                        return v if v == v else None
+                except Exception:
+                    return None
+                return None
+            cnt = 0
+            for col, period in enumerate(df.columns):
+                fy = period.year
+                rev = row("Total Revenue", col)
+                gp  = row("Gross Profit", col)
+                op  = row("Operating Income", col)
+                ni  = row("Net Income", col)
+                eps = row("Diluted EPS", col)
+                gm  = round(gp/rev*100, 1) if (gp and rev) else None
+                if rev is None and ni is None:
+                    continue
+                cur.execute("""
+                    INSERT OR IGNORE INTO annual_financials
+                        (ticker, fiscal_year, period_end_date, revenue_usd_m,
+                         gross_profit_usd_m, gross_margin_pct, operating_income_usd_m,
+                         net_income_usd_m, eps_diluted, source_tier, source_doc,
+                         source_date, notes)
+                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)
+                """, (
+                    ticker, fy, period.date().isoformat(),
+                    rev/1e6 if rev else None, gp/1e6 if gp else None, gm,
+                    op/1e6 if op else None, ni/1e6 if ni else None, eps,
+                    "B", f"Yahoo Finance annual income statement, {yf_sym}, retrieved {today}",
+                    today, "Yahoo-aggregated from 10-K; verify for Tier-A use",
+                ))
+                cnt += 1
+            inserted += cnt
+            print(f"    {ticker} ({yf_sym}): {cnt} fiscal years")
+        except Exception as e:
+            print(f"    {ticker} ({yf_sym}): ERROR {e}")
+    print(f"  annual_financials (yf, Tier B): {inserted} rows total")
+
+
 if __name__ == "__main__":
     db = conn()
     cur = db.cursor()
@@ -491,15 +573,17 @@ if __name__ == "__main__":
     seed_financials(cur)
     seed_commentary(cur)
     if PULL_PRICES:
-        print("  pulling stock prices (90d) via yfinance…")
+        print(f"  pulling stock prices (from {HISTORY_START}) via yfinance…")
         seed_prices(cur)
     else:
         print("  stock_prices: SKIPPED (run with --prices to pull)")
     if PULL_FINANCIALS:
         print("  pulling quarterly income statements via yfinance…")
         seed_yf_financials(cur)
+        print("  pulling annual income statements (FY2021+) via yfinance…")
+        seed_yf_annual_financials(cur)
     else:
-        print("  quarterly_financials (yf): SKIPPED (run with --financials to pull)")
+        print("  quarterly/annual_financials (yf): SKIPPED (run with --financials to pull)")
     db.commit()
     db.close()
     print(f"\n✅ {DB_PATH}")

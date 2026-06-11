@@ -111,9 +111,15 @@ def main():
             FROM quarterly_financials WHERE ticker=? ORDER BY period_end_date
         """, (ticker,))
 
+        afin = rows(fin, """
+            SELECT fiscal_year, period_end_date, revenue_usd_m, gross_profit_usd_m,
+                   gross_margin_pct, operating_income_usd_m, net_income_usd_m,
+                   eps_diluted, source_doc
+            FROM annual_financials WHERE ticker=? ORDER BY fiscal_year
+        """, (ticker,))
+
         prices = rows(fin, """
-            SELECT price_date, open_usd, high_usd, low_usd, close_usd,
-                   adj_close_usd, volume, currency
+            SELECT price_date, close_usd, volume, currency
             FROM stock_prices WHERE ticker=? ORDER BY price_date
         """, (ticker,))
 
@@ -134,6 +140,7 @@ def main():
             "currency": prices[-1]["currency"] if prices else "USD",
             "scm": scm_by_slug.get(slug, []),
             "financials": qfin,
+            "annual": afin,
             "prices": prices,
             "commentary": commentary,
         })

@@ -1,16 +1,35 @@
 # Financials DB Schema — AI Supply Chain Companies
 
 **File:** `agents/data/dba/financials.db`  
-**Last Updated:** 2026-06-10  
+**Last Updated:** 2026-06-11  
 **Governed by:** DBA Agent (`agents/data/dba/README.md`)
 
 ---
 
 ## Purpose
 
-Structured SQLite database for quarterly financial data (10-K/10-Q) and
+Structured SQLite database for quarterly/annual financial data (10-K/10-Q) and
 stock prices across AI supply chain companies. All rows must comply with
 DBA source quality standards.
+
+---
+
+## Historical Coverage Requirement
+
+**Baseline start year: 2020.** All time-series data must extend back to at least
+2020-01-01 where the source provides it.
+
+| Table | Required history | Source reality |
+|---|---|---|
+| `stock_prices` | Daily OHLCV from **2020-01-01** to present | Full — Yahoo Finance provides 2020+ daily |
+| `annual_financials` | Full-year P&L from **FY2021** (5 fiscal years) | Yahoo `income_stmt` returns 5 annual periods |
+| `quarterly_financials` | Most recent **5 quarters** + curated Tier-A | Yahoo `quarterly_income_stmt` caps at ~5 quarters; deeper quarterly requires SEC EDGAR XBRL parsing (future work) |
+
+**Note:** Yahoo's free tier limits quarterly statements to ~5 trailing quarters.
+To obtain quarterly history before 2025, parse SEC EDGAR XBRL company facts
+(`https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json`) — tracked as future work.
+Annual financials (FY2021+) and full daily stock prices (2020+) are the current
+historical baseline.
 
 ---
 
@@ -84,6 +103,31 @@ One row per company per fiscal quarter. Source = SEC 10-Q/10-K/20-F (Tier A).
 
 ---
 
+### 2b. `annual_financials`
+One row per company per fiscal year. Source = Yahoo `income_stmt` (Tier B,
+filing-derived) covering FY2021+. Provides the pre-2025 historical baseline.
+
+| Column | Type | Description |
+|---|---|---|
+| `id` | INTEGER PK | Auto-increment |
+| `ticker` | TEXT FK | References `companies.ticker` |
+| `fiscal_year` | INTEGER | Fiscal year (period end year) |
+| `period_end_date` | TEXT | YYYY-MM-DD — fiscal year end |
+| `revenue_usd_m` | REAL | Total revenue (USD millions) |
+| `gross_profit_usd_m` | REAL | Gross profit (USD millions) |
+| `gross_margin_pct` | REAL | Gross margin % |
+| `operating_income_usd_m` | REAL | Operating income/loss (USD millions) |
+| `net_income_usd_m` | REAL | Net income/loss (USD millions) |
+| `eps_diluted` | REAL | Diluted EPS (USD) |
+| `source_tier` | TEXT | 'B' (Yahoo, filing-derived) |
+| `source_doc` | TEXT | "Yahoo Finance annual income statement, [SYM], retrieved YYYY-MM-DD" |
+| `source_date` | TEXT | YYYY-MM-DD — retrieval date |
+| `notes` | TEXT | "Yahoo-aggregated from 10-K; verify for Tier-A use" |
+
+**Unique constraint:** `(ticker, fiscal_year)`
+
+---
+
 ### 3. `stock_prices`
 Daily OHLCV. Source = exchange data or Yahoo Finance API (Tier A/B).
 
@@ -142,4 +186,5 @@ Verbatim key quotes from earnings calls. Source = official IR transcript (Tier A
 
 | Date | Change |
 |---|---|
+| 2026-06-11 | Added Historical Coverage Requirement (baseline 2020); added `annual_financials` table (FY2021+); `stock_prices` now full daily history from 2020-01-01 (was 90-day window) |
 | 2026-06-10 | Initial schema — 4 tables: companies, quarterly_financials, stock_prices, earnings_commentary |

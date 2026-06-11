@@ -62,8 +62,13 @@ def build_payload() -> dict:
                    revenue_guidance_low_usd_m, revenue_guidance_high_usd_m,
                    source_doc, source_date, importance, notes
             FROM quarterly_financials WHERE ticker=? ORDER BY period_end_date""", (ticker,))
+        afin = rows(fin, """
+            SELECT fiscal_year, period_end_date, revenue_usd_m, gross_profit_usd_m,
+                   gross_margin_pct, operating_income_usd_m, net_income_usd_m,
+                   eps_diluted, source_doc
+            FROM annual_financials WHERE ticker=? ORDER BY fiscal_year""", (ticker,))
         prices = rows(fin, """
-            SELECT price_date, open_usd, high_usd, low_usd, close_usd, adj_close_usd, volume, currency
+            SELECT price_date, close_usd, volume, currency
             FROM stock_prices WHERE ticker=? ORDER BY price_date""", (ticker,))
         commentary = rows(fin, """
             SELECT earnings_date, calendar_quarter, quote, speaker, signal_type, segment, source_doc
@@ -74,7 +79,7 @@ def build_payload() -> dict:
             "hq_country": c["hq_country"], "fiscal_year_end": c["fiscal_year_end"],
             "currency": prices[-1]["currency"] if prices else "USD",
             "scm": scm_by_slug.get(c["slug"], []),
-            "financials": qfin, "prices": prices, "commentary": commentary,
+            "financials": qfin, "annual": afin, "prices": prices, "commentary": commentary,
         })
     fin.close(); intel.close()
     return out

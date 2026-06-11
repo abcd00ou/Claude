@@ -301,7 +301,7 @@ function selectCompany(slug){
     <div class="grid-2">
       <div class="panel">
         <div class="panel-title">Close Price (${c.currency})</div>
-        <div class="panel-sub">Daily close · ${px.length} trading days</div>
+        <div class="panel-sub">Daily close · ${px.length?(px[0].price_date+' → '+px[px.length-1].price_date):''} (${px.length} days)</div>
         <div class="chart-wrap"><canvas id="priceChart" height="210"></canvas></div>
       </div>
       <div class="panel">
@@ -310,6 +310,49 @@ function selectCompany(slug){
         <div class="chart-wrap"><canvas id="volChart" height="210"></canvas></div>
       </div>
     </div>
+
+    <!-- Annual Financials (history) -->
+    ${c.annual && c.annual.length?`
+    <div class="section-hdr">Annual Financials <span style="font-weight:500;text-transform:none;letter-spacing:0;">— FY${c.annual[0].fiscal_year}–FY${c.annual[c.annual.length-1].fiscal_year} · Tier B (Yahoo, filing-derived)</span></div>
+    <div class="grid-2">
+      <div class="panel">
+        <div class="panel-title">Annual Revenue &amp; Net Income</div>
+        <div class="panel-sub">USD millions · full fiscal year</div>
+        <div class="chart-wrap"><canvas id="annRevChart" height="210"></canvas></div>
+      </div>
+      <div class="panel">
+        <div class="panel-title">Annual Gross Margin %</div>
+        <div class="panel-sub">Gross profit ÷ revenue</div>
+        <div class="chart-wrap"><canvas id="annGmChart" height="210"></canvas></div>
+      </div>
+    </div>
+    <div class="panel" style="margin-top:16px;">
+      <div class="panel-title">Annual Data Table</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr>
+            <th>FY</th><th>Period End</th><th class="num">Revenue</th>
+            <th class="num">Gross Profit</th><th class="num">GM%</th>
+            <th class="num">Op Income</th><th class="num">Net Income</th>
+            <th class="num">Dil. EPS</th><th>Source</th>
+          </tr></thead>
+          <tbody>
+          ${c.annual.slice().reverse().map(a=>`
+            <tr>
+              <td><b>FY${a.fiscal_year}</b></td>
+              <td>${a.period_end_date||'—'}</td>
+              <td class="num">${fmtM(a.revenue_usd_m)}</td>
+              <td class="num">${fmtM(a.gross_profit_usd_m)}</td>
+              <td class="num">${a.gross_margin_pct!=null?a.gross_margin_pct+'%':'—'}</td>
+              <td class="num">${fmtM(a.operating_income_usd_m)}</td>
+              <td class="num">${fmtM(a.net_income_usd_m)}</td>
+              <td class="num">${a.eps_diluted!=null?'$'+a.eps_diluted.toFixed(2):'—'}</td>
+              <td class="citation">${a.source_doc||''}</td>
+            </tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>`:''}
 
     <!-- Financials -->
     <div class="section-hdr">Quarterly Financials <span style="font-weight:500;text-transform:none;letter-spacing:0;">— Tier A (SEC 10-Q/10-K + IR)</span></div>
@@ -400,6 +443,26 @@ function buildCharts(c){
     }]},options:{responsive:true,plugins:{legend:{display:false},
       tooltip:{callbacks:{label:ctx=>' '+Number(ctx.parsed.y).toLocaleString()}}},
       scales:{x:{ticks:{maxTicksLimit:8}},y:{ticks:{callback:v=>v>=1e6?(v/1e6).toFixed(0)+'M':v}}}}}));
+  }
+  // annual revenue + net income (history)
+  const ann=c.annual||[];
+  if(ann.length && document.getElementById('annRevChart')){
+    const al=ann.map(a=>'FY'+a.fiscal_year);
+    charts.push(new Chart(annRevChart,{type:'bar',data:{labels:al,datasets:[
+      {label:'Revenue',data:ann.map(a=>a.revenue_usd_m),backgroundColor:'#19324d',borderRadius:3},
+      {label:'Net Income',data:ann.map(a=>a.net_income_usd_m),backgroundColor:'#2e7d52',borderRadius:3},
+    ]},options:{responsive:true,plugins:{legend:{position:'bottom',labels:{boxWidth:11,padding:10}},
+      tooltip:{callbacks:{label:ctx=>` ${ctx.dataset.label}: ${fmtM(ctx.parsed.y)}`}}},
+      scales:{y:{ticks:{callback:v=>'$'+v.toLocaleString()+'M'}}}}}));
+  }
+  if(ann.length && document.getElementById('annGmChart')){
+    const al=ann.map(a=>'FY'+a.fiscal_year);
+    charts.push(new Chart(annGmChart,{type:'line',data:{labels:al,datasets:[
+      {label:'Gross Margin %',data:ann.map(a=>a.gross_margin_pct),borderColor:'#cc3333',
+       backgroundColor:'rgba(204,51,51,.08)',fill:true,borderWidth:2,pointRadius:4,tension:.3},
+    ]},options:{responsive:true,plugins:{legend:{display:false},
+      tooltip:{callbacks:{label:ctx=>` GM: ${ctx.parsed.y}%`}}},
+      scales:{y:{ticks:{callback:v=>v+'%'},min:0,max:100}}}}));
   }
   // revenue
   const fin=c.financials;
