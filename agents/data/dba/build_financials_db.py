@@ -14,8 +14,10 @@ Seeded from:
   - agents/data/analysis/models/market_data.md     (capex/revenue, Tier A)
   - yfinance live API                              (stock prices)
 
-Run: python3 build_financials_db.py            (financials + registry, no network)
-     python3 build_financials_db.py --prices   (also pull stock prices via yfinance)
+Run: python3 build_financials_db.py              (registry + curated Tier-A financials, no network)
+     python3 build_financials_db.py --prices     (also pull daily stock prices via yfinance)
+     python3 build_financials_db.py --financials  (also pull quarterly income statements, Tier B)
+     python3 build_financials_db.py --all         (prices + financials)
 """
 import sqlite3
 import sys
@@ -25,7 +27,8 @@ from pathlib import Path
 HERE   = Path(__file__).parent
 DB_PATH = HERE / "financials.db"
 
-PULL_PRICES = "--prices" in sys.argv
+PULL_PRICES     = "--prices" in sys.argv or "--all" in sys.argv
+PULL_FINANCIALS = "--financials" in sys.argv or "--all" in sys.argv
 
 
 def conn() -> sqlite3.Connection:
@@ -412,6 +415,73 @@ def seed_prices(cur):
     print(f"  stock_prices: {inserted} rows total")
 
 
+def seed_yf_financials(cur):
+    """Pull quarterly income statements from yfinance for ALL companies (Tier B).
+    INSERT OR IGNORE preserves curated Tier-A rows; Tier-B rows are refreshed each run."""
+    try:
+        import yfinance as yf
+        import warnings
+        warnings.filterwarnings("ignore")
+    except ImportError:
+        print("  quarterly_financials (yf): SKIPPED (yfinance not installed)")
+        return
+    today = date.today().isoformat()
+    # idempotent: clear prior auto-pulled rows, keep curated Tier-A
+    cur.execute("DELETE FROM quarterly_financials WHERE source_tier='B'")
+    inserted = 0
+    for ticker, yf_sym in YF_SYMBOLS.items():
+        try:
+            df = yf.Ticker(yf_sym).quarterly_income_stmt
+            if df is None or df.empty:
+                print(f"    {ticker} ({yf_sym}): no income stmt")
+                continue
+            def row(name, col):
+                try:
+                    if name in df.index:
+                        v = df.loc[name].iloc[col]
+                        fv = float(v)
+                        return fv if fv == fv else None  # NaN guard
+                except Exception:
+                    return None
+                return None
+            cnt = 0
+            for col, period in enumerate(df.columns):
+                if col >= 8:  # last 8 quarters
+                    break
+                pend = period.date()
+                cy, cq = pend.year, (pend.month - 1)//3 + 1
+                rev = row("Total Revenue", col)
+                gp  = row("Gross Profit", col)
+                op  = row("Operating Income", col)
+                ni  = row("Net Income", col)
+                eps = row("Diluted EPS", col)
+                gm  = round(gp/rev*100, 1) if (gp and rev) else None
+                if rev is None and ni is None:
+                    continue
+                cur.execute("""
+                    INSERT OR IGNORE INTO quarterly_financials
+                        (ticker, fiscal_year, fiscal_quarter, period_end_date, calendar_quarter,
+                         revenue_usd_m, gross_profit_usd_m, gross_margin_pct,
+                         operating_income_usd_m, net_income_usd_m, eps_diluted,
+                         source_tier, source_doc, source_date, signal_type,
+                         importance, confidence, notes)
+                    VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                """, (
+                    ticker, cy, cq, pend.isoformat(), f"{cy}-Q{cq}",
+                    rev/1e6 if rev else None, gp/1e6 if gp else None, gm,
+                    op/1e6 if op else None, ni/1e6 if ni else None, eps,
+                    "B", f"Yahoo Finance quarterly income statement, {yf_sym}, retrieved {today}",
+                    today, "earnings", "medium", "medium",
+                    "Yahoo-aggregated from filings; verify against 10-Q for Tier-A use",
+                ))
+                cnt += 1
+            inserted += cnt
+            print(f"    {ticker} ({yf_sym}): {cnt} quarters")
+        except Exception as e:
+            print(f"    {ticker} ({yf_sym}): ERROR {e}")
+    print(f"  quarterly_financials (yf, Tier B): {inserted} rows total")
+
+
 if __name__ == "__main__":
     db = conn()
     cur = db.cursor()
@@ -425,6 +495,11 @@ if __name__ == "__main__":
         seed_prices(cur)
     else:
         print("  stock_prices: SKIPPED (run with --prices to pull)")
+    if PULL_FINANCIALS:
+        print("  pulling quarterly income statements via yfinance…")
+        seed_yf_financials(cur)
+    else:
+        print("  quarterly_financials (yf): SKIPPED (run with --financials to pull)")
     db.commit()
     db.close()
     print(f"\n✅ {DB_PATH}")

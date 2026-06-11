@@ -4,7 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>AI SCM Company Intelligence Dashboard</title>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <meta http-equiv="Cache-Control" content="no-store" />
+  <!-- Chart.js bundled locally (offline-safe); CDN as fallback if local missing -->
+  <script src="chart.umd.min.js"></script>
+  <script>if(typeof Chart==='undefined'){document.write('<script src=\"https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js\"><\/script>');}</script>
   <script src="dashboard_data.js"></script>
   <style>
     :root {
@@ -365,10 +368,12 @@ function selectCompany(slug){
 }
 
 // ── charts ──
+const HAS_CHART = (typeof Chart !== 'undefined');
 const FONT={family:"Inter,'Segoe UI',system-ui,sans-serif",size:11};
-Chart.defaults.font=FONT; Chart.defaults.color='#64707d'; Chart.defaults.borderColor='#eef1f5';
+if(HAS_CHART){ Chart.defaults.font=FONT; Chart.defaults.color='#64707d'; Chart.defaults.borderColor='#eef1f5'; }
 
 function buildCharts(c){
+  if(!HAS_CHART) return;   // tables/data still render even without the charting lib
   const px=c.prices;
   const labels=px.map(p=>p.price_date);
   // price line
