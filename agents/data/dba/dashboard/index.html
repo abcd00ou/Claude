@@ -147,6 +147,14 @@
 </div>
 
 <script>
+// surface any uncaught error into the page instead of failing silently to blank
+window.onerror = function(msg, src, line, col, err){
+  var m = document.getElementById('main');
+  if(m){ m.innerHTML = '<div class="empty"><div style="font-size:30px;">⚠️</div>'+
+    '<div>Dashboard error — '+msg+'</div>'+
+    '<div style="font-size:11px;color:#9aa6b2;">'+(src||'')+':'+line+':'+col+'</div></div>'; }
+  return false;
+};
 let DATA = window.DASHBOARD_DATA;   // static fallback; replaced by live DB data when served
 const SEG_LABELS = {
   dram:'DRAM', storage:'Storage', foundry:'Foundry', chip_maker:'Chip Maker',
@@ -431,29 +439,47 @@ function wireControls(){
   };
 }
 // ── render once data is ready ──
-function boot(){
+function boot(keepSelection){
   renderSegFilter(); renderSectionSelect(); renderCompanySelect(); renderList();
   wireControls();
-  const first = DATA.companies.find(c=>c.slug==='nvidia') || DATA.companies[0];
+  const want = (keepSelection && activeSlug) ? activeSlug : 'nvidia';
+  const first = DATA.companies.find(c=>c.slug===want) || DATA.companies[0];
   if(first) selectCompany(first.slug);
 }
-// ── init: try LIVE database via /api/data, fall back to static snapshot ──
-(async function init(){
-  const badge = document.querySelector('.sb-head .sub');
-  try {
-    const res = await fetch('api/data', {cache:'no-store'});
-    if(res.ok){
-      DATA = await res.json();
-      if(badge) badge.innerHTML = '🟢 Live — connected to database';
-    } else { throw new Error('no api'); }
-  } catch(e){
+function setBadge(txt){
+  const b = document.querySelector('.sb-head .sub');
+  if(b) b.innerHTML = txt;
+}
+// ── init: render STATIC data immediately (never blank), then upgrade to LIVE ──
+(function init(){
+  // 1) Render instantly from the bundled static snapshot — no network wait.
+  if(window.DASHBOARD_DATA && window.DASHBOARD_DATA.companies){
     DATA = window.DASHBOARD_DATA;
-    if(badge) badge.innerHTML = '⚪ Static snapshot — run serve.py for live data';
-  }
-  if(!DATA || !DATA.companies){
+    setBadge('⚪ Static snapshot — checking for live database…');
+    boot(false);
+  } else {
     document.getElementById('main').innerHTML =
-      '<div class="empty">⚠️ No data loaded. Run <code>python3 serve.py</code> or <code>export_dashboard_data.py</code>.</div>';
-    return;
+      '<div class="empty">⚠️ dashboard_data.js not loaded. Run <code>python3 export_dashboard_data.py</code>.</div>';
   }
-  boot();
+  // 2) In the background, try the live DB. If it answers, swap in fresh data.
+  if(location.protocol === 'http:' || location.protocol === 'https:'){
+    const ctrl = new AbortController();
+    const t = setTimeout(()=>ctrl.abort(), 4000);   // never hang
+    fetch('api/data', {cache:'no-store', signal:ctrl.signal})
+      .then(r => r.ok ? r.json() : Promise.reject())
+      .then(live => {
+        clearTimeout(t);
+        if(live && live.companies){
+          DATA = live;
+          setBadge('🟢 Live — connected to database');
+          boot(true);   // re-render, keeping current selection
+        }
+      })
+      .catch(()=>{ clearTimeout(t); setBadge('⚪ Static snapshot — run serve.py for live data'); });
+  } else {
+    setBadge('⚪ Static snapshot — open via serve.py for live data');
+  }
 })();
+</script>
+</body>
+</html>
