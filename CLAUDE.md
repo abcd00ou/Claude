@@ -61,20 +61,36 @@ Coordinates all section expert agents and data expert agents. Responsibilities:
 Each section agent owns a domain. It maintains a structured MD knowledge base covering:
 supply/demand balance, key players, pricing trends, technology roadmap, and sales signals.
 
-| Agent | File | Coverage |
+The section taxonomy follows `agents/data/dba/company_universe.csv` (18 sections,
+136 tracked public companies — source: company_master.xlsx). The same section
+slugs are the canonical `#segment` tag values and the `financials.db` segment keys.
+
+| Agent (slug) | Folder | Coverage |
 |---|---|---|
-| DRAM Expert | `agents/section/dram.md` | HBM, DDR5, LPDDR5X — memory for AI training/inference |
-| NAND / Storage Expert | `agents/section/storage.md` | QLC NAND, enterprise SSD, AI storage tiers |
-| DC Infrastructure Expert | `agents/section/dc_infra.md` | Power, cooling, rack density, hyperscaler capex |
-| ASIC Expert | `agents/section/asic.md` | Custom AI accelerators (TPU, Trainium, Inferentia, Marvell, etc.) |
-| Chip Maker Expert | `agents/section/chip_maker.md` | NVIDIA, AMD, Intel — GPU/xPU supply chain |
-| Foundry & Packaging Expert | `agents/section/foundry.md` | TSMC, Samsung, CoWoS, SoIC, advanced packaging |
-| Network Expert | `agents/section/network.md` | InfiniBand, Ethernet, Spectrum-X, AI cluster interconnects |
-| Power Semiconductor Expert | `agents/section/power.md` | VRM, GaN, SiC — AI data center power chain |
-| PCB & Substrate Expert | `agents/section/substrate.md` | ABF substrates, HDI PCB, supply constraints |
-| End Market Expert | `agents/section/end_market.md` | Hyperscalers (AWS, Azure, GCP, Meta, xAI), CSP AI capex trends |
-| Equipment Expert | `agents/section/equipment/` | ASML, AMAT, Lam, KLA, TEL — fab equipment gating AI chip capacity |
-| Photonics Expert | `agents/section/photonics/` | Optical interconnects, CPO, 800G/1.6T transceivers (Coherent, Lumentum, Fabrinet) |
+| AI Chip (`ai_chip`) | `agents/section/ai_chip/` | NVIDIA, AMD, Qualcomm, Marvell, Alchip — GPU/xPU accelerators (incl. former chip_maker + asic) |
+| AI Platforms (`ai_platforms`) | `agents/section/ai_platforms/` | Palantir, Salesforce, ServiceNow, Snowflake, Datadog — enterprise AI software |
+| AI Software (`ai_software`) | `agents/section/ai_software/` | Meta, Baidu — AI model/app builders |
+| Components (`components`) | `agents/section/components/` | ABF substrate, PCB, passives, VRM/power semis, MPS, Analog Devices (incl. former substrate + power) |
+| Cooling (`cooling`) | `agents/section/cooling/` | Vertiv DLC, Alfa Laval, Trane, Carrier, Modine — thermal management |
+| CPU (`cpu`) | `agents/section/cpu/` | ARM, Intel — host CPUs & IP cores |
+| DRAM (`dram`) | `agents/section/dram/` | HBM, DDR5, LPDDR5X — Samsung, SK hynix, Micron |
+| Energy (`energy`) | `agents/section/energy/` | Power & grid: Vertiv, Eaton, Schneider, GE Vernova, NextEra, Constellation (incl. former dc_infra) |
+| Foundry (`foundry`) | `agents/section/foundry/` | TSMC, SMIC — leading-edge fabrication |
+| HW Equipment (`hw_equipment`) | `agents/section/hw_equipment/` | ASML, AMAT, Lam, KLA, TEL, Advantest — fab equipment |
+| Hyperscalers (`hyperscalers`) | `agents/section/hyperscalers/` | Google, Microsoft, Amazon, Oracle, Alibaba, Tencent — CSP capex & custom silicon |
+| Materials (`materials`) | `agents/section/materials/` | Linde, Air Liquide, Shin-Etsu, Entegris, Corning — gases, wafers, chemicals |
+| NAND (`nand`) | `agents/section/nand/` | Kioxia, Seagate, WD — NAND & enterprise SSD (former storage) |
+| Neocloud (`neocloud`) | `agents/section/neocloud/` | CoreWeave, Nebius, IREN — GPU-cloud specialists |
+| OSAT / Packaging (`osat_packaging`) | `agents/section/osat_packaging/` | ASE, Amkor, JCET, Tongfu — assembly & advanced packaging |
+| Server Networking (`server_networking`) | `agents/section/server_networking/` | Broadcom, Arista, Astera, Coherent, Lumentum, Fabrinet — switch ASIC + optics (incl. former network + photonics) |
+| Server OEM/EMS/ODM (`server_oem_ems_odm`) | `agents/section/server_oem_ems_odm/` | Foxconn, Dell, HPE, SMCI, Quanta, Wiwynn, Celestica — AI server/rack builders |
+| SW Equipment (`sw_equipment`) | `agents/section/sw_equipment/` | Synopsys — EDA & design software |
+
+**Reconciliation note (2026-06-15):** the prior 12-folder taxonomy was reconciled
+to these 18 sections. Renamed: storage→nand, chip_maker→ai_chip, network→server_networking,
+end_market→hyperscalers, dc_infra→energy, equipment→hw_equipment, substrate→components.
+Merged: photonics→server_networking, asic→ai_chip, power→components (the merged
+folder's original README is kept as `_merged_<name>_README.md` in the target).
 
 **Each section MD file structure:**
 ```
@@ -133,21 +149,29 @@ Claude/
 │   │   ├── README.md                    ← Orchestrator: routing logic + cross-segment synthesis
 │   │   └── synthesis/                   ← Weekly/monthly synthesis reports (YYYY-MM-DD.md)
 │   │
-│   ├── section/                         ← One folder per semiconductor segment
+│   ├── section/                         ← One folder per AI-SCM section (18 total)
 │   │   ├── dram/
 │   │   │   ├── README.md                ← Main agent (market overview, signals, roadmap)
 │   │   │   ├── companies/               ← Per-company deep dives (sk_hynix.md, samsung.md, micron.md)
 │   │   │   ├── market/                  ← Pricing trends, supply/demand data (pricing.md, roadmap.md)
 │   │   │   └── updates/                 ← Dated update logs (2026-Q2.md, 2026-05.md)
-│   │   ├── storage/         (same structure)
-│   │   ├── dc_infra/        (same structure)
-│   │   ├── asic/            (same structure)
-│   │   ├── chip_maker/      (same structure)
-│   │   ├── foundry/         (same structure)
-│   │   ├── network/         (same structure)
-│   │   ├── power/           (same structure)
-│   │   ├── substrate/       (same structure)
-│   │   └── end_market/      (same structure)
+│   │   ├── nand/                  (same structure)
+│   │   ├── foundry/               (same structure)
+│   │   ├── ai_chip/               (same structure)
+│   │   ├── cpu/                   (same structure)
+│   │   ├── hyperscalers/          (same structure)
+│   │   ├── neocloud/              (same structure)
+│   │   ├── ai_platforms/          (same structure)
+│   │   ├── ai_software/           (same structure)
+│   │   ├── server_networking/     (same structure)
+│   │   ├── server_oem_ems_odm/    (same structure)
+│   │   ├── components/            (same structure)
+│   │   ├── osat_packaging/        (same structure)
+│   │   ├── hw_equipment/          (same structure)
+│   │   ├── sw_equipment/          (same structure)
+│   │   ├── materials/             (same structure)
+│   │   ├── energy/                (same structure)
+│   │   └── cooling/               (same structure)
 │   │
 │   └── data/                            ← Data pipeline expert agents
 │       ├── crawler/
@@ -293,7 +317,7 @@ When new information about a company is found from a reliable source:
 3. **If the file does not exist** — create it using the company file template in  
    `agents/data/dba/schema/company_template.md`
 4. **If the company spans multiple segments** — create a file in each relevant segment's  
-   `companies/` folder (e.g., Samsung appears in `dram/`, `storage/`, `foundry/`)
+   `companies/` folder (e.g., Samsung appears in `dram/`, `nand/`, `foundry/`)
 5. **Always also check** `company_intel/` at the project root — if a file exists there, add  
    the same update there too so both knowledge layers stay in sync
 

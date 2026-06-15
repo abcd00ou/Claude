@@ -15,21 +15,32 @@ cross-cutting signals that no single section agent can see alone.
 
 ## Agent Registry
 
-| Agent | Folder | Last Refresh |
+Taxonomy reconciled 2026-06-15 to the 18 sections in `agents/data/dba/company_universe.csv`.
+Refresh notes below carry over the last Cycle-9 state from the pre-reconciliation folders.
+
+| Agent | Folder | Last Refresh / Status |
 |---|---|---|
 | DRAM Expert | `section/dram/` | 2026-06-08 (Samsung HBM4E samples; all 3 vendors NVIDIA-certified; HBM4 $500/stack — Cycle 9) |
-| Storage Expert | `section/storage/` | 2026-06-08 (NAND Q2 +70-75% QoQ; Kioxia sold out; Pure Storage $1.05B — Cycle 9) |
-| DC Infrastructure Expert | `section/dc_infra/` | 2026-06-08 (7 GW delayed; 2,600 GW grid queue; 9.8 GW nuclear deals — Cycle 9) |
-| ASIC Expert | `section/asic/` | 2026-06-08 (Broadcom Meta extension; Trainium3 Uber/Decart; OpenAI tape-out slip — Cycle 9) |
-| Chip Maker Expert | `section/chip_maker/` | 2026-06-08 (All 3 HBM4 vendors certified June 5 for Vera Rubin — Cycle 9) |
-| Foundry & Packaging Expert | `section/foundry/` | 2026-06-08 (SoIC-X 6μm HVM; AP7 equipment move-in; ABF 42% deficit by 2028 — Cycle 9) |
-| Network Expert | `section/network/` | 2026-06-08 (Ethernet 67%; 200G EML shortage; Oracle ZettaScale; MRC protocol — Cycle 9) |
-| Power Semiconductor Expert | `section/power/` | 2026-06-08 (onsemi 2x YoY; STMicro $1B target; MPS $6B LT; Infineon MGX — Cycle 9) |
-| PCB & Substrate Expert | `section/substrate/` | 2026-06-08 (Ajinomoto 30% hike; ABF 10% deficit H2 2026; Unimicron 90% util — Cycle 9) |
-| End Market Expert | `section/end_market/` | 2026-06-08 (Big-4 $695-715B; xAI $20B Series E; 9.8 GW nuclear PPAs — Cycle 9) |
+| NAND Expert | `section/nand/` | 2026-06-08 (was Storage; NAND Q2 +70-75% QoQ; Kioxia sold out; Pure Storage $1.05B — Cycle 9) |
+| AI Chip Expert | `section/ai_chip/` | 2026-06-08 (merged chip_maker + asic; all 3 HBM4 vendors certified; Broadcom/Trainium — Cycle 9) |
+| CPU Expert | `section/cpu/` | stub 2026-06-15 (ARM, Intel) |
+| Foundry Expert | `section/foundry/` | 2026-06-08 (SoIC-X 6μm HVM; AP7 equipment move-in; ABF 42% deficit by 2028 — Cycle 9) |
+| Server Networking Expert | `section/server_networking/` | 2026-06-08 (merged network + photonics; Ethernet 67%; 200G EML shortage — Cycle 9) |
+| Components Expert | `section/components/` | 2026-06-08 (merged substrate + power; Ajinomoto 30% hike; onsemi 2x; MPS $6B LT — Cycle 9) |
+| OSAT / Packaging Expert | `section/osat_packaging/` | stub 2026-06-15 (ASE, Amkor, JCET, Tongfu) |
+| HW Equipment Expert | `section/hw_equipment/` | 2026-06-08 (was Equipment; ASML, AMAT, Lam, KLA, TEL) |
+| SW Equipment Expert | `section/sw_equipment/` | stub 2026-06-15 (Synopsys) |
+| Materials Expert | `section/materials/` | stub 2026-06-15 (Linde, Air Liquide, Shin-Etsu, Entegris) |
+| Energy Expert | `section/energy/` | 2026-06-08 (was DC Infra; 7 GW delayed; 2,600 GW grid queue; nuclear PPAs — Cycle 9) |
+| Cooling Expert | `section/cooling/` | stub 2026-06-15 (Vertiv DLC, Alfa Laval, Trane, Carrier, Modine) |
+| Hyperscalers Expert | `section/hyperscalers/` | 2026-06-08 (was End Market; Big-4 $695-715B; xAI $20B Series E — Cycle 9) |
+| Neocloud Expert | `section/neocloud/` | stub 2026-06-15 (CoreWeave, Nebius, IREN) |
+| AI Platforms Expert | `section/ai_platforms/` | stub 2026-06-15 (Palantir, Salesforce, Snowflake, Datadog) |
+| AI Software Expert | `section/ai_software/` | stub 2026-06-15 (Meta, Baidu) |
+| Server OEM/EMS/ODM Expert | `section/server_oem_ems_odm/` | stub 2026-06-15 (Foxconn, Dell, HPE, SMCI, Quanta) |
 | Crawler Agent | `data/crawler/` | 2026-06-08 (Cycle 9 extracted signals — 24 new signals) |
 | Analysis Agent | `data/analysis/` | 2026-05-13 (Cycle 7 analysis report) |
-| DBA Agent | `data/dba.md` | — |
+| DBA Agent | `data/dba/` | 2026-06-15 (financials.db 136 companies / 18 sections; company_universe.csv) |
 
 ---
 
