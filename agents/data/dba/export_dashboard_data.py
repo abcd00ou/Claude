@@ -123,10 +123,19 @@ def main():
             FROM annual_financials WHERE ticker=? ORDER BY fiscal_year
         """, (ticker,))
 
-        prices = rows(fin, """
+        # Static export: keep the last ~1yr daily, downsample older history to
+        # weekly (every 5th trading day) so the bundled file stays light.
+        # The live server (serve.py) always serves full daily history.
+        all_px = rows(fin, """
             SELECT price_date, close_usd, volume, currency
             FROM stock_prices WHERE ticker=? ORDER BY price_date
         """, (ticker,))
+        if len(all_px) > 260:
+            recent = all_px[-260:]
+            older  = all_px[:-260][::5]   # weekly sample of the older tail
+            prices = older + recent
+        else:
+            prices = all_px
 
         commentary = rows(fin, """
             SELECT earnings_date, calendar_quarter, quote, speaker,

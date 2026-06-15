@@ -157,9 +157,16 @@ window.onerror = function(msg, src, line, col, err){
 };
 let DATA = window.DASHBOARD_DATA;   // static fallback; replaced by live DB data when served
 const SEG_LABELS = {
-  dram:'DRAM', storage:'Storage', foundry:'Foundry', chip_maker:'Chip Maker',
-  asic:'ASIC', network:'Network', end_market:'End Market', dc_infra:'DC Infra',
-  power:'Power', substrate:'Substrate'
+  // legacy segments (kept for back-compat)
+  storage:'Storage', chip_maker:'Chip Maker', asic:'ASIC', network:'Network',
+  end_market:'End Market', dc_infra:'DC Infra', power:'Power', substrate:'Substrate',
+  // company_universe.csv sections
+  ai_chip:'AI Chip', ai_platforms:'AI Platforms', ai_software:'AI Software',
+  components:'Components', cooling:'Cooling', cpu:'CPU', dram:'DRAM', energy:'Energy',
+  foundry:'Foundry', hw_equipment:'HW Equipment', hyperscalers:'Hyperscalers',
+  materials:'Materials', nand:'NAND', neocloud:'Neocloud', osat_packaging:'OSAT / Packaging',
+  server_networking:'Server Networking', server_oem_ems_odm:'Server OEM/EMS/ODM',
+  sw_equipment:'SW Equipment'
 };
 let activeSeg = null, activeSlug = null, charts = [];
 

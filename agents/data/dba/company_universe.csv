@@ -1,0 +1,137 @@
+section,company_name,ticker,country
+ai_chip,AMD,AMD,United States
+ai_chip,Alchip Technologies,3661.TW,Taiwan
+ai_chip,Marvell Technology,MRVL,United States
+ai_chip,NVIDIA,NVDA,United States
+ai_chip,Qualcomm,QCOM,United States
+ai_platforms,Adobe,ADBE,United States
+ai_platforms,Cloudflare,NET,United States
+ai_platforms,Datadog,DDOG,United States
+ai_platforms,IBM,IBM,United States
+ai_platforms,MongoDB,MDB,United States
+ai_platforms,Palantir,PLTR,United States
+ai_platforms,Salesforce,CRM,United States
+ai_platforms,ServiceNow,NOW,United States
+ai_platforms,Snowflake,SNOW,United States
+ai_software,Baidu,BIDU,China
+ai_software,Meta Platforms,META,United States
+components,AT&S,ATS.VI,Austria
+components,Amphenol,APH,United States
+components,Analog Devices,ADI,United States
+components,Ibiden,4062.T,Japan
+components,LG Innotek,011070.KS,South Korea
+components,Monolithic Power Systems,MPWR,United States
+components,Murata Manufacturing,6981.T,Japan
+components,Nan Ya PCB,8046.TW,Taiwan
+components,Rambus,RMBS,United States
+components,Samsung Electro-Mechanics,009150.KS,South Korea
+components,Silicon Motion,SIMO,United States
+components,TE Connectivity,TEL,United States
+components,Unimicron,3037.TW,Taiwan
+components,Yageo,2327.TW,Taiwan
+cooling,Alfa Laval,ALFA.ST,Sweden
+cooling,Carrier Global,CARR,United States
+cooling,Modine Manufacturing,MOD,United States
+cooling,Trane Technologies,TT,United States
+cpu,ARM Holdings,ARM,United Kingdom
+cpu,Intel,INTC,United States
+dram,Micron Technology,MU,United States
+dram,SK hynix,000660.KS,South Korea
+dram,Samsung Electronics,005930.KS,South Korea
+energy,ABB,ABBN.SW,Switzerland
+energy,Bloom Energy,BE,United States
+energy,Brookfield Renewable,BEPC,Canada
+energy,Constellation Energy,CEG,United States
+energy,Delta Electronics,2308.TW,Taiwan
+energy,Dominion Energy,D,United States
+energy,Eaton,ETN,Ireland
+energy,Equinix,EQIX,United States
+energy,GE Vernova,GEV,United States
+energy,Hitachi,6501.T,Japan
+energy,Iberdrola,IBE.MC,Spain
+energy,NextEra Energy,NEE,United States
+energy,RWE,RWE.DE,Germany
+energy,Schneider Electric,SU.PA,France
+energy,Siemens Energy,ENR.DE,Germany
+energy,Southern Company,SO,United States
+energy,Vertiv,VRT,United States
+energy,Vistra,VST,United States
+foundry,SMIC,0981.HK,China
+foundry,TSMC,TSM,Taiwan
+hw_equipment,ASM International,ASM.AS,Netherlands
+hw_equipment,ASML,ASML,Netherlands
+hw_equipment,Advantest,6857.T,Japan
+hw_equipment,Applied Materials,AMAT,United States
+hw_equipment,BE Semiconductor Industries,BESI.AS,Netherlands
+hw_equipment,Disco,6146.T,Japan
+hw_equipment,FormFactor,FORM,United States
+hw_equipment,KLA,KLAC,United States
+hw_equipment,Lam Research,LRCX,United States
+hw_equipment,Lasertec,6920.T,Japan
+hw_equipment,MKS Instruments,MKSI,United States
+hw_equipment,Onto Innovation,ONTO,United States
+hw_equipment,Screen Holdings,7735.T,Japan
+hw_equipment,Tokyo Electron,8035.T,Japan
+hyperscalers,Alibaba Group,BABA,China
+hyperscalers,Amazon,AMZN,United States
+hyperscalers,Google,GOOGL,United States
+hyperscalers,Microsoft,MSFT,United States
+hyperscalers,Oracle,ORCL,United States
+hyperscalers,TCEHY,TCEHY,China
+materials,Air Liquide,AI.PA,France
+materials,Corning,GLW,United States
+materials,Entegris,ENTG,United States
+materials,Linde,LIN,United Kingdom
+materials,Merck KGaA,MRK.DE,Germany
+materials,Shin-Etsu Chemical,4063.T,Japan
+materials,Stella Chemifa,4109.T,Japan
+materials,Tokyo Ohka Kogyo,4186.T,Japan
+nand,Kioxia Holdings,285A.T,Japan
+nand,Seagate Technology,STX,United States
+nand,Western Digital,WDC,United States
+neocloud,CRWV,CRWV,United States
+neocloud,IREN,IREN,Canada
+neocloud,Nebius Group,NBIS,Netherlands
+osat_packaging,ASX,ASX,Taiwan
+osat_packaging,Amkor Technology,AMKR,United States
+osat_packaging,Hana Micron,067310.KQ,South Korea
+osat_packaging,JCET Group,600584.SS,China
+osat_packaging,King Yuan Electronics,2449.TW,Taiwan
+osat_packaging,Tongfu Microelectronics,002156.SZ,China
+server_networking,Accton Technology,2345.TW,Taiwan
+server_networking,Applied Optoelectronics,AAOI,United States
+server_networking,Arista Networks,ANET,United States
+server_networking,Astera Labs,ALAB,United States
+server_networking,Broadcom,AVGO,United States
+server_networking,Cisco,CSCO,United States
+server_networking,Coherent Corp,COHR,United States
+server_networking,Credo Technology,CRDO,United States
+server_networking,Fabrinet,FN,Thailand
+server_networking,Juniper Networks,JNPR,United States
+server_networking,Lumentum,LITE,United States
+server_networking,MACOM Technology,MTSI,United States
+server_networking,Nokia,NOK,Finland
+server_networking,Semtech,SMTC,United States
+server_networking,Zhongji Innolight,300308.SZ,China
+server_oem_ems_odm,ASUSTeK Computer,2357.TW,Taiwan
+server_oem_ems_odm,Celestica,CLS,Canada
+server_oem_ems_odm,Compal Electronics,2324.TW,Taiwan
+server_oem_ems_odm,Dell Technologies,DELL,United States
+server_oem_ems_odm,Flex Ltd,FLEX,Singapore
+server_oem_ems_odm,GIGABYTE,2376.TW,Taiwan
+server_oem_ems_odm,Hewlett Packard Enterprise,HPE,United States
+server_oem_ems_odm,Hon Hai Precision Industry (Foxconn),2317.TW,Taiwan
+server_oem_ems_odm,Inspur Electronic Information,000977.SZ,China
+server_oem_ems_odm,Inventec,2356.TW,Taiwan
+server_oem_ems_odm,Lenovo,0992.HK,China
+server_oem_ems_odm,Luxshare Precision,002475.SZ,China
+server_oem_ems_odm,MiTAC Holdings,3706.TW,Taiwan
+server_oem_ems_odm,NEC,6701.T,Japan
+server_oem_ems_odm,Pure Storage,PSTG,United States
+server_oem_ems_odm,Quanta Computer,2382.TW,Taiwan
+server_oem_ems_odm,Sanmina,SANM,United States
+server_oem_ems_odm,Super Micro Computer,SMCI,United States
+server_oem_ems_odm,Unisplendour,000938.SZ,China
+server_oem_ems_odm,Wistron,3231.TW,Taiwan
+server_oem_ems_odm,Wiwynn,6669.TW,Taiwan
+sw_equipment,Synopsys,SNPS,United States
