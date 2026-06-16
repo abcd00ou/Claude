@@ -16,20 +16,24 @@ DBA source quality standards.
 
 ## Historical Coverage Requirement
 
-**Baseline start year: 2020.** All time-series data must extend back to at least
-2020-01-01 where the source provides it.
+**Baseline start year: 2016.** All time-series data must extend back to at least
+2016-01-01 where the source provides it.
 
 | Table | Required history | Source reality |
 |---|---|---|
-| `stock_prices` | Daily OHLCV from **2020-01-01** to present | Full — Yahoo Finance provides 2020+ daily |
-| `annual_financials` | Full-year P&L from **FY2021** (5 fiscal years) | Yahoo `income_stmt` returns 5 annual periods |
-| `quarterly_financials` | Most recent **5 quarters** + curated Tier-A | Yahoo `quarterly_income_stmt` caps at ~5 quarters; deeper quarterly requires SEC EDGAR XBRL parsing (future work) |
+| `stock_prices` | Daily OHLCV from **2016-01-01** to present | Full — Yahoo Finance provides 2016+ daily for all 136 |
+| `annual_financials` | Full-year P&L from **FY2016** | **SEC EDGAR XBRL** (Tier A) for US filers back to FY2016; Yahoo `income_stmt` (Tier B) fills foreign/non-filers (recent ~5 yrs) |
+| `quarterly_financials` | Discrete quarters from **2016** where filed | SEC EDGAR XBRL discrete-quarter facts (Tier A) for US filers; Yahoo (Tier B) + curated rows fill the rest |
 
-**Note:** Yahoo's free tier limits quarterly statements to ~5 trailing quarters.
-To obtain quarterly history before 2025, parse SEC EDGAR XBRL company facts
-(`https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json`) — tracked as future work.
-Annual financials (FY2021+) and full daily stock prices (2020+) are the current
-historical baseline.
+**Source precedence (built in this order, first writer wins):**
+1. Curated Tier-A rows (hand-entered from IR/10-Q, with AI/DC revenue + guidance)
+2. **SEC EDGAR XBRL** companyfacts (`edgar_financials.py`) — Tier A, deep history FY2016+
+   (`https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json`)
+3. Yahoo Finance (`yfinance`) — Tier B, fills foreign companies & any gaps
+
+EDGAR covers US-SEC filers (incl. foreign 20-F filers like TSM, ASX, ASML).
+Pure foreign listings (Samsung .KS, SK hynix, most .T/.TW/.DE) stay on Yahoo (recent years).
+Quarterly EDGAR uses discrete ~3-month facts only (YTD cumulative facts are skipped).
 
 ---
 
@@ -54,11 +58,11 @@ Master registry of all AI SCM companies tracked.
 
 | Column | Type | Description |
 |---|---|---|
-| `ticker` | TEXT PK | `EXCHANGE:TICKER` — e.g., `NASDAQ:NVDA`, `NYSE:TSM`, `KRX:000660` |
-| `slug` | TEXT UNIQUE | snake_case cross-ref slug — matches `company_master.md` |
+| `ticker` | TEXT PK | Yahoo symbol — e.g., `NVDA`, `TSM`, `005930.KS`, `2330.TW` |
+| `slug` | TEXT UNIQUE | snake_case cross-ref slug |
 | `name` | TEXT | Full legal company name |
-| `exchange` | TEXT | NYSE \| NASDAQ \| KRX \| TYO \| ETR \| EPA \| Private |
-| `segments` | TEXT | Comma-separated: dram, storage, foundry, chip_maker, asic, network, end_market, dc_infra, power, substrate |
+| `exchange` | TEXT | Derived from ticker suffix (US/KRX/TYO/TPE/HKEX/XETRA/EPA/…) |
+| `segments` | TEXT | One of the 20 sections in `company_universe.csv` (ai_chip, dram, energy, server_oem, …) |
 | `hq_country` | TEXT | ISO 3166-1 alpha-2 |
 | `is_public` | INTEGER | 1 = public, 0 = private |
 | `fiscal_year_end` | TEXT | MM-DD (e.g., "01-26" for NVIDIA Jan fiscal year end) |
@@ -110,8 +114,8 @@ One row per company per fiscal quarter. Source = SEC 10-Q/10-K/20-F (Tier A).
 ---
 
 ### 2b. `annual_financials`
-One row per company per fiscal year. Source = Yahoo `income_stmt` (Tier B,
-filing-derived) covering FY2021+. Provides the pre-2025 historical baseline.
+One row per company per fiscal year, **FY2016+**. Primary source = SEC EDGAR XBRL
+(Tier A) for US filers; Yahoo `income_stmt` (Tier B) fills foreign/non-filers.
 
 | Column | Type | Description |
 |---|---|---|
@@ -204,6 +208,7 @@ Verbatim key quotes from earnings calls. Source = official IR transcript (Tier A
 
 | Date | Change |
 |---|---|
+| 2026-06-16 | History baseline 2016: stock prices 2016+ (323K rows); added SEC EDGAR XBRL puller (edgar_financials.py) for deep Tier-A annual+quarterly financials FY2016+ (72 US filers, 608 annual + 1929 quarterly); annual_financials now FY2016-2027 |
 | 2026-06-11 | Expanded both financial tables with balance-sheet + cash-flow columns (inventory, receivables, total assets, total debt, equity, capex, FCF, operating cash flow) — pulled from Yahoo income_stmt + balance_sheet + cashflow, merged by period |
 | 2026-06-11 | Added Historical Coverage Requirement (baseline 2020); added `annual_financials` table (FY2021+); `stock_prices` now full daily history from 2020-01-01 (was 90-day window) |
 | 2026-06-10 | Initial schema — 4 tables: companies, quarterly_financials, stock_prices, earnings_commentary |

@@ -30,7 +30,8 @@ DB_PATH = HERE / "financials.db"
 PULL_PRICES     = "--prices" in sys.argv or "--all" in sys.argv
 PULL_FINANCIALS = "--financials" in sys.argv or "--all" in sys.argv
 
-HISTORY_START = "2020-01-01"   # baseline per financials_schema.md Historical Coverage
+HISTORY_START = "2016-01-01"   # baseline per financials_schema.md Historical Coverage
+EDGAR_SINCE   = 2016           # earliest fiscal year to pull from SEC EDGAR
 
 
 def conn() -> sqlite3.Connection:
@@ -616,6 +617,73 @@ def seed_yf_annual_financials(cur):
     print(f"  annual_financials (yf, Tier B): {inserted} rows total")
 
 
+def seed_edgar_financials(cur):
+    """Pull deep history (FY2016+) from SEC EDGAR XBRL for US-SEC filers (Tier A).
+    INSERT OR IGNORE so curated rows win; EDGAR fills depth + supersedes nothing
+    already present. Run BEFORE yfinance so EDGAR Tier-A wins over yfinance Tier-B."""
+    import time as _t
+    try:
+        import edgar_financials as ef
+    except ImportError:
+        print("  EDGAR: SKIPPED (edgar_financials.py missing)")
+        return
+    today = date.today().isoformat()
+    cur.execute("DELETE FROM annual_financials   WHERE source_doc LIKE '%SEC EDGAR XBRL%'")
+    cur.execute("DELETE FROM quarterly_financials WHERE source_doc LIKE '%SEC EDGAR XBRL%'")
+    try:
+        cmap = ef.cik_map()
+    except Exception as e:
+        print(f"  EDGAR: cannot reach SEC ({e}) — SKIPPED")
+        return
+    a_tot = q_tot = hit = 0
+    for ticker in YF_SYMBOLS:
+        if ticker.upper() not in cmap:   # foreign / non-SEC filer
+            continue
+        try:
+            arows, qrows = ef.pull(ticker, since=EDGAR_SINCE)
+        except Exception as e:
+            print(f"    {ticker}: EDGAR ERROR {e}")
+            continue
+        if not arows and not qrows:
+            continue
+        hit += 1
+        src = f"SEC EDGAR XBRL companyfacts, {ticker}, retrieved {today}"
+        for r in arows:
+            cur.execute("""
+                INSERT OR IGNORE INTO annual_financials
+                    (ticker, fiscal_year, period_end_date, revenue_usd_m, gross_profit_usd_m,
+                     gross_margin_pct, operating_income_usd_m, net_income_usd_m, eps_diluted,
+                     capex_usd_m, fcf_usd_m, operating_cash_flow_usd_m, cash_usd_m,
+                     inventory_usd_m, receivables_usd_m, total_assets_usd_m, total_debt_usd_m,
+                     stockholders_equity_usd_m, source_tier, source_doc, source_date, notes)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+            """, (ticker, r["fiscal_year"], r["period_end"], r["revenue"], r["gross_profit"],
+                  r["gm"], r["op"], r["ni"], r["eps"], r["capex"], r["fcf"], r["ocf"],
+                  r["cash"], r["inv"], r["recv"], r["ta"], r["debt"], r["eq"],
+                  "A", src, today, "SEC 10-K/20-F XBRL facts"))
+            a_tot += 1
+        for r in qrows:
+            cur.execute("""
+                INSERT OR IGNORE INTO quarterly_financials
+                    (ticker, fiscal_year, fiscal_quarter, period_end_date, calendar_quarter,
+                     revenue_usd_m, gross_profit_usd_m, gross_margin_pct, operating_income_usd_m,
+                     net_income_usd_m, eps_diluted, capex_usd_m, fcf_usd_m, operating_cash_flow_usd_m,
+                     cash_usd_m, inventory_usd_m, receivables_usd_m, total_assets_usd_m,
+                     total_debt_usd_m, stockholders_equity_usd_m, source_tier, source_doc,
+                     source_date, signal_type, importance, confidence, notes)
+                VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+            """, (ticker, r["fiscal_year"], r["fiscal_quarter"], r["period_end"],
+                  f"{r['fiscal_year']}-Q{r['fiscal_quarter']}",
+                  r["revenue"], r["gross_profit"], r["gm"], r["op"], r["ni"], r["eps"],
+                  r["capex"], r["fcf"], r["ocf"], r["cash"], r["inv"], r["recv"], r["ta"],
+                  r["debt"], r["eq"], "A", src, today, "earnings", "medium", "high",
+                  "SEC 10-Q XBRL facts (discrete quarter)"))
+            q_tot += 1
+        print(f"    {ticker}: {len(arows)} FY + {len(qrows)} Q (EDGAR)")
+        _t.sleep(0.12)   # be polite to SEC (<10 req/s)
+    print(f"  EDGAR (Tier A): {hit} filers · {a_tot} annual + {q_tot} quarterly rows")
+
+
 if __name__ == "__main__":
     db = conn()
     cur = db.cursor()
@@ -630,12 +698,15 @@ if __name__ == "__main__":
     else:
         print("  stock_prices: SKIPPED (run with --prices to pull)")
     if PULL_FINANCIALS:
+        print(f"  pulling deep financials (FY{EDGAR_SINCE}+) from SEC EDGAR…")
+        seed_edgar_financials(cur)          # Tier A, deep history — runs first (wins)
+        db.commit()
         print("  pulling quarterly income statements via yfinance…")
-        seed_yf_financials(cur)
-        print("  pulling annual income statements (FY2021+) via yfinance…")
+        seed_yf_financials(cur)             # Tier B fallback (foreign/non-filers)
+        print("  pulling annual income statements via yfinance…")
         seed_yf_annual_financials(cur)
     else:
-        print("  quarterly/annual_financials (yf): SKIPPED (run with --financials to pull)")
+        print("  quarterly/annual_financials: SKIPPED (run with --financials to pull)")
     db.commit()
     db.close()
     print(f"\n✅ {DB_PATH}")
