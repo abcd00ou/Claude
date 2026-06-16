@@ -98,6 +98,11 @@ osat_packaging,Hana Micron,067310.KQ,South Korea
 osat_packaging,JCET Group,600584.SS,China
 osat_packaging,King Yuan Electronics,2449.TW,Taiwan
 osat_packaging,Tongfu Microelectronics,002156.SZ,China
+server_ems,Celestica,CLS,Canada
+server_ems,Flex Ltd,FLEX,Singapore
+server_ems,Hon Hai Precision Industry (Foxconn),2317.TW,Taiwan
+server_ems,Luxshare Precision,002475.SZ,China
+server_ems,Sanmina,SANM,United States
 server_networking,Accton Technology,2345.TW,Taiwan
 server_networking,Applied Optoelectronics,AAOI,United States
 server_networking,Arista Networks,ANET,United States
@@ -113,25 +118,20 @@ server_networking,MACOM Technology,MTSI,United States
 server_networking,Nokia,NOK,Finland
 server_networking,Semtech,SMTC,United States
 server_networking,Zhongji Innolight,300308.SZ,China
-server_oem_ems_odm,ASUSTeK Computer,2357.TW,Taiwan
-server_oem_ems_odm,Celestica,CLS,Canada
-server_oem_ems_odm,Compal Electronics,2324.TW,Taiwan
-server_oem_ems_odm,Dell Technologies,DELL,United States
-server_oem_ems_odm,Flex Ltd,FLEX,Singapore
-server_oem_ems_odm,GIGABYTE,2376.TW,Taiwan
-server_oem_ems_odm,Hewlett Packard Enterprise,HPE,United States
-server_oem_ems_odm,Hon Hai Precision Industry (Foxconn),2317.TW,Taiwan
-server_oem_ems_odm,Inspur Electronic Information,000977.SZ,China
-server_oem_ems_odm,Inventec,2356.TW,Taiwan
-server_oem_ems_odm,Lenovo,0992.HK,China
-server_oem_ems_odm,Luxshare Precision,002475.SZ,China
-server_oem_ems_odm,MiTAC Holdings,3706.TW,Taiwan
-server_oem_ems_odm,NEC,6701.T,Japan
-server_oem_ems_odm,Pure Storage,PSTG,United States
-server_oem_ems_odm,Quanta Computer,2382.TW,Taiwan
-server_oem_ems_odm,Sanmina,SANM,United States
-server_oem_ems_odm,Super Micro Computer,SMCI,United States
-server_oem_ems_odm,Unisplendour,000938.SZ,China
-server_oem_ems_odm,Wistron,3231.TW,Taiwan
-server_oem_ems_odm,Wiwynn,6669.TW,Taiwan
+server_odm,Compal Electronics,2324.TW,Taiwan
+server_odm,GIGABYTE,2376.TW,Taiwan
+server_odm,Inventec,2356.TW,Taiwan
+server_odm,MiTAC Holdings,3706.TW,Taiwan
+server_odm,Quanta Computer,2382.TW,Taiwan
+server_odm,Wistron,3231.TW,Taiwan
+server_odm,Wiwynn,6669.TW,Taiwan
+server_oem,ASUSTeK Computer,2357.TW,Taiwan
+server_oem,Dell Technologies,DELL,United States
+server_oem,Hewlett Packard Enterprise,HPE,United States
+server_oem,Inspur Electronic Information,000977.SZ,China
+server_oem,Lenovo,0992.HK,China
+server_oem,NEC,6701.T,Japan
+server_oem,Pure Storage,PSTG,United States
+server_oem,Super Micro Computer,SMCI,United States
+server_oem,Unisplendour,000938.SZ,China
 sw_equipment,Synopsys,SNPS,United States

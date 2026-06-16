@@ -37,10 +37,12 @@ Refresh notes below carry over the last Cycle-9 state from the pre-reconciliatio
 | Neocloud Expert | `section/neocloud/` | stub 2026-06-15 (CoreWeave, Nebius, IREN) |
 | AI Platforms Expert | `section/ai_platforms/` | stub 2026-06-15 (Palantir, Salesforce, Snowflake, Datadog) |
 | AI Software Expert | `section/ai_software/` | stub 2026-06-15 (Meta, Baidu) |
-| Server OEM/EMS/ODM Expert | `section/server_oem_ems_odm/` | stub 2026-06-15 (Foxconn, Dell, HPE, SMCI, Quanta) |
+| Server OEM Expert | `section/server_oem/` | 2026-06-16 (Dell, HPE, Lenovo, NEC, SMCI, Inspur, Unisplendour, Pure Storage, ASUSTeK) |
+| Server EMS Expert | `section/server_ems/` | 2026-06-16 (Foxconn, Flex, Celestica, Sanmina, Luxshare) |
+| Server ODM Expert | `section/server_odm/` | 2026-06-16 (Quanta, Wiwynn, Wistron, Inventec, Compal, MiTAC, GIGABYTE) |
 | Crawler Agent | `data/crawler/` | 2026-06-08 (Cycle 9 extracted signals — 24 new signals) |
 | Analysis Agent | `data/analysis/` | 2026-05-13 (Cycle 7 analysis report) |
-| DBA Agent | `data/dba/` | 2026-06-15 (financials.db 136 companies / 18 sections; company_universe.csv) |
+| DBA Agent | `data/dba/` | 2026-06-16 (financials.db 136 companies / 20 sections; server OEM/EMS/ODM split) |
 
 ---
 

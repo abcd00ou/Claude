@@ -109,11 +109,11 @@ Every update entry must carry inline tags on its own line after the source citat
 
 ### Tag Value Definitions
 
-**#segment:** (18 canonical sections — match `agents/data/dba/company_universe.csv`)
+**#segment:** (20 canonical sections — match `agents/data/dba/company_universe.csv`)
 ```
 ai_chip | ai_platforms | ai_software | components | cooling | cpu | dram | energy |
 foundry | hw_equipment | hyperscalers | materials | nand | neocloud | osat_packaging |
-server_networking | server_oem_ems_odm | sw_equipment
+server_networking | server_oem | server_ems | server_odm | sw_equipment
 ```
 _Legacy slugs (pre-2026-06-15), now mapped: storage→nand, chip_maker/asic→ai_chip,
 network/photonics→server_networking, end_market→hyperscalers, dc_infra→energy,

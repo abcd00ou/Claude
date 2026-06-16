@@ -61,7 +61,7 @@ Coordinates all section expert agents and data expert agents. Responsibilities:
 Each section agent owns a domain. It maintains a structured MD knowledge base covering:
 supply/demand balance, key players, pricing trends, technology roadmap, and sales signals.
 
-The section taxonomy follows `agents/data/dba/company_universe.csv` (18 sections,
+The section taxonomy follows `agents/data/dba/company_universe.csv` (20 sections,
 136 tracked public companies — source: company_master.xlsx). The same section
 slugs are the canonical `#segment` tag values and the `financials.db` segment keys.
 
@@ -83,7 +83,9 @@ slugs are the canonical `#segment` tag values and the `financials.db` segment ke
 | Neocloud (`neocloud`) | `agents/section/neocloud/` | CoreWeave, Nebius, IREN — GPU-cloud specialists |
 | OSAT / Packaging (`osat_packaging`) | `agents/section/osat_packaging/` | ASE, Amkor, JCET, Tongfu — assembly & advanced packaging |
 | Server Networking (`server_networking`) | `agents/section/server_networking/` | Broadcom, Arista, Astera, Coherent, Lumentum, Fabrinet — switch ASIC + optics (incl. former network + photonics) |
-| Server OEM/EMS/ODM (`server_oem_ems_odm`) | `agents/section/server_oem_ems_odm/` | Foxconn, Dell, HPE, SMCI, Quanta, Wiwynn, Celestica — AI server/rack builders |
+| Server OEM (`server_oem`) | `agents/section/server_oem/` | Dell, HPE, Lenovo, NEC, Super Micro, Inspur, Unisplendour, Pure Storage, ASUSTeK — branded server vendors |
+| Server EMS (`server_ems`) | `agents/section/server_ems/` | Foxconn, Flex, Celestica, Sanmina, Luxshare — contract electronics manufacturing |
+| Server ODM (`server_odm`) | `agents/section/server_odm/` | Quanta, Wiwynn, Wistron, Inventec, Compal, MiTAC, GIGABYTE — design-and-build manufacturers |
 | SW Equipment (`sw_equipment`) | `agents/section/sw_equipment/` | Synopsys — EDA & design software |
 
 **Reconciliation note (2026-06-15):** the prior 12-folder taxonomy was reconciled
@@ -149,7 +151,7 @@ Claude/
 │   │   ├── README.md                    ← Orchestrator: routing logic + cross-segment synthesis
 │   │   └── synthesis/                   ← Weekly/monthly synthesis reports (YYYY-MM-DD.md)
 │   │
-│   ├── section/                         ← One folder per AI-SCM section (18 total)
+│   ├── section/                         ← One folder per AI-SCM section (20 total)
 │   │   ├── dram/
 │   │   │   ├── README.md                ← Main agent (market overview, signals, roadmap)
 │   │   │   ├── companies/               ← Per-company deep dives (sk_hynix.md, samsung.md, micron.md)
@@ -164,7 +166,9 @@ Claude/
 │   │   ├── ai_platforms/          (same structure)
 │   │   ├── ai_software/           (same structure)
 │   │   ├── server_networking/     (same structure)
-│   │   ├── server_oem_ems_odm/    (same structure)
+│   │   ├── server_oem/            (same structure)
+│   │   ├── server_ems/            (same structure)
+│   │   ├── server_odm/            (same structure)
 │   │   ├── components/            (same structure)
 │   │   ├── osat_packaging/        (same structure)
 │   │   ├── hw_equipment/          (same structure)
