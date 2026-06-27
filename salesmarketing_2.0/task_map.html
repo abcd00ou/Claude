@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Task Map — Sales / Marketing / Product Planning</title>
+<style>
+  :root{
+    --mkt:#2563eb; --mkt-bg:#dbeafe;
+    --sal:#16a34a; --sal-bg:#dcfce7;
+    --pln:#9333ea; --pln-bg:#f3e8ff;
+    --deliv:#d97706; --deliv-bg:#fef3c7;
+    --src:#64748b; --src-bg:#f1f5f9;
+    --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --card:#ffffff; --bg:#f8fafc;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.5}
+  header{padding:28px 32px 18px;border-bottom:1px solid var(--line);background:var(--card)}
+  h1{margin:0 0 4px;font-size:22px}
+  .sub{color:var(--muted);font-size:14px}
+  main{max-width:1180px;margin:0 auto;padding:24px 32px 64px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:18px 0;
+    box-shadow:0 1px 2px rgba(15,23,42,.04)}
+  h2{font-size:16px;margin:0 0 14px;display:flex;align-items:center;gap:8px}
+  h2 .n{display:inline-flex;width:22px;height:22px;border-radius:6px;background:var(--ink);color:#fff;
+    align-items:center;justify-content:center;font-size:12px;font-weight:700}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;margin:0}
+  .chip{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;
+    padding:5px 10px;border-radius:999px;border:1px solid transparent}
+  .dot{width:10px;height:10px;border-radius:50%}
+  .mkt{background:var(--mkt-bg);color:#1e3a8a;border-color:var(--mkt)} .mkt .dot{background:var(--mkt)}
+  .sal{background:var(--sal-bg);color:#14532d;border-color:var(--sal)} .sal .dot{background:var(--sal)}
+  .pln{background:var(--pln-bg);color:#581c87;border-color:var(--pln)} .pln .dot{background:var(--pln)}
+  .deliv{background:var(--deliv-bg);color:#7c2d12;border-color:var(--deliv)} .deliv .dot{background:var(--deliv)}
+  .src{background:var(--src-bg);color:#0f172a;border-color:var(--src)} .src .dot{background:var(--src)}
+  .mermaid{width:100%;overflow:auto;text-align:center}
+  .fallback{font-size:12.5px;color:var(--muted);margin-top:8px}
+  /* timeline lanes */
+  .lanes{display:grid;gap:10px}
+  .lane{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center;
+    padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff}
+  .lane .when{font-weight:700;font-size:13px}
+  .lane .when small{display:block;font-weight:500;color:var(--muted);font-size:11px}
+  .lane .tasks{display:flex;flex-wrap:wrap;gap:6px}
+  .tag{font-size:11.5px;font-weight:600;padding:3px 8px;border-radius:6px;border:1px solid}
+  .tag.mkt{border-color:var(--mkt);color:#1e3a8a;background:var(--mkt-bg)}
+  .tag.sal{border-color:var(--sal);color:#14532d;background:var(--sal-bg)}
+  .tag.pln{border-color:var(--pln);color:#581c87;background:var(--pln-bg)}
+  .tag.deliv{border-color:var(--deliv);color:#7c2d12;background:var(--deliv-bg)}
+  /* table */
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{font-size:11.5px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted)}
+  td.id{font-weight:700;white-space:nowrap}
+  .pill{display:inline-block;font-size:11px;font-weight:600;padding:1px 7px;border-radius:5px}
+  .pill.mkt{background:var(--mkt-bg);color:#1e3a8a}
+  .pill.sal{background:var(--sal-bg);color:#14532d}
+  .pill.pln{background:var(--pln-bg);color:#581c87}
+  .gate{color:#b91c1c;font-weight:700}
+  ol{margin:6px 0 0;padding-left:20px} ol li{margin:4px 0}
+  .note{font-size:12.5px;color:var(--muted);margin-top:12px}
+  .conv{border:1px dashed var(--deliv);background:#fffbeb;border-radius:10px;padding:14px 16px;font-size:13.5px}
+  .conv b{color:#7c2d12}
+</style>
+</head>
+<body>
+<header>
+  <h1>Task Map — Sales / Marketing / Product Planning</h1>
+  <div class="sub">salesmarketing 2.0 · all tasks organically connected · relations · timeline · convergence</div>
+</header>
+<main>
+
+  <section>
+    <h2><span class="n">L</span> Legend</h2>
+    <div class="legend">
+      <span class="chip src"><span class="dot"></span> Public sources</span>
+      <span class="chip mkt"><span class="dot"></span> Marketing</span>
+      <span class="chip sal"><span class="dot"></span> Sales</span>
+      <span class="chip pln"><span class="dot"></span> Product Planning</span>
+      <span class="chip deliv"><span class="dot"></span> Leader deliverable (PPT)</span>
+    </div>
+    <p class="note"><span class="gate">*</span> internal-data-gated task — v1 emits the public half only; internal facts ride as <em>unverified-needs-human</em> and surface in the leader's gap report. <code>PP-T*</code> = Price &amp; Promotion (Marketing); Product Planning is always spelled out.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">1</span> Dependency graph — what feeds what</h2>
+    <pre class="mermaid">
+flowchart LR
+  SRC([Public sources])
+
+  MIT1[MI-T1 forecast inputs]
+  MIT2[MI-T2 capex watch]
+  MIT3[MI-T3 demand digest]
+  PPT1[PP-T1 ASP index]
+  PPT2[PP-T2 promo watch]
+  PPT3[PP-T3 pricing brief]
+  SMT1[SM-T1 capacity]
+  SMT2[SM-T2 inventory]
+  MLEAD{{Marketing Leader}}
+  DMKTU[D-MKT-UPDATE]
+  DMKTP[D-MKT-PRICE]
+  DMKTT[D-MKT-TALK]
+
+  ALT1[AL-T1 demand ctx]
+  ALT2["AL-T2 alloc brief *"]
+  CRMT1[CRM-T1 news watch]
+  CRMT2[CRM-T2 cust brief]
+  CRMT3[CRM-T3 sentiment]
+  SLEAD{{Sales Leader}}
+  DSALC[D-SAL-CUST customer deck]
+  DSALQ[D-SAL-QBR]
+  DSALW[D-SAL-WL]
+
+  CTT1[CT-T1 design-win]
+  CTT2[CT-T2 standards]
+  CTT3[CT-T3 tech brief]
+  BET1[BE-T1 TAM-SAM]
+  BET2["BE-T2 biz-case *"]
+  PLEAD{{Planning Leader}}
+  DPLNR[D-PLN-ROADMAP]
+  DPLNC[D-PLN-CTREVIEW]
+  DPLNF[D-PLN-CONF]
+
+  SRC --> MIT1 & MIT2 & PPT1 & PPT2 & SMT1 & SMT2 & ALT1 & CRMT1 & CTT1 & CTT2 & BET1
+  MIT1 --> MIT3
+  MIT2 --> MIT3
+  PPT1 --> PPT3
+  PPT2 --> PPT3
+  ALT1 --> ALT2
+  CRMT1 --> CRMT2
+  CRMT1 --> CRMT3
+  CTT1 --> CTT3
+  CTT2 --> CTT3
+  BET1 --> BET2
+  MIT1 -.dedup.- SMT1
+  MIT3 --> MLEAD
+  PPT3 --> MLEAD
+  SMT1 --> MLEAD
+  SMT2 --> MLEAD
+  MLEAD --> DMKTU & DMKTP & DMKTT
+  ALT2 --> SLEAD
+  CRMT2 --> SLEAD
+  CRMT3 --> SLEAD
+  SLEAD --> DSALC & DSALQ & DSALW
+  CTT3 --> PLEAD
+  BET1 --> PLEAD
+  BET2 --> PLEAD
+  PLEAD --> DPLNR & DPLNC & DPLNF
+  MIT3 -.cross-team.-> DSALC
+  PPT3 -.cross-team.-> DSALC
+  CTT3 -.cross-team.-> DSALC
+
+  classDef mkt fill:#dbeafe,stroke:#2563eb,color:#1e3a8a;
+  classDef sal fill:#dcfce7,stroke:#16a34a,color:#14532d;
+  classDef pln fill:#f3e8ff,stroke:#9333ea,color:#581c87;
+  classDef deliv fill:#fef3c7,stroke:#d97706,color:#7c2d12;
+  classDef src fill:#f1f5f9,stroke:#64748b,color:#0f172a;
+  class MIT1,MIT2,MIT3,PPT1,PPT2,PPT3,SMT1,SMT2,MLEAD mkt;
+  class ALT1,ALT2,CRMT1,CRMT2,CRMT3,SLEAD sal;
+  class CTT1,CTT2,CTT3,BET1,BET2,PLEAD pln;
+  class DMKTU,DMKTP,DMKTT,DSALC,DSALQ,DSALW,DPLNR,DPLNC,DPLNF deliv;
+  class SRC src;
+    </pre>
+    <p class="fallback">Diagram renders with internet (Mermaid). The tables below carry the same information offline.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">2</span> Convergence — the customer-meeting deck</h2>
+    <div class="conv">
+      <b>D-SAL-CUST</b> is where all three teams meet. The Sales leader reads cross-team packs
+      (read-only; each worker stays the single writer):
+      <br><br>
+      <span class="tag sal">CRM-T2</span> understand your business &nbsp;+&nbsp;
+      <span class="tag mkt">MI-T3</span> <span class="tag mkt">PP-T3</span> <span class="tag mkt">SM</span> market context &nbsp;+&nbsp;
+      <span class="tag pln">CT-T3</span> roadmap fit &nbsp;→&nbsp;
+      <span class="tag deliv">D-SAL-CUST</span> → gap report → human leader clears every gap
+      <br><br>
+      <b>Hard rule:</b> no <em>needs-human</em> fact reaches a customer slide. Every number traces to a verified/reconciled source.
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">3</span> Timeline — when each task fires</h2>
+    <div class="lanes">
+      <div class="lane"><div class="when">Weekly<small>schedule</small></div>
+        <div class="tasks">
+          <span class="tag mkt">PP-T1</span><span class="tag mkt">PP-T2</span><span class="tag mkt">MI-T3</span>
+          <span class="tag sal">CRM-T1</span><span class="tag sal">CRM-T3</span></div></div>
+      <div class="lane"><div class="when">Monthly<small>schedule</small></div>
+        <div class="tasks"><span class="tag mkt">SM-T2</span></div></div>
+      <div class="lane"><div class="when">Quarterly<small>forecast cycle</small></div>
+        <div class="tasks"><span class="tag mkt">MI-T1</span><span class="tag mkt">SM-T1</span>
+          <span class="tag sal">AL-T1</span><span class="tag deliv">D-SAL-QBR</span></div></div>
+      <div class="lane"><div class="when">Event-driven<small>earnings / announcements</small></div>
+        <div class="tasks"><span class="tag mkt">MI-T2</span><span class="tag sal">CRM-T1</span>
+          <span class="tag pln">CT-T1</span><span class="tag pln">CT-T2</span></div></div>
+      <div class="lane"><div class="when">Meeting-driven<small>calendar date</small></div>
+        <div class="tasks"><span class="tag sal">CRM-T2</span><span class="tag deliv">D-SAL-CUST</span>
+          <span class="tag deliv">D-MKT-TALK</span><span class="tag deliv">D-PLN-CONF</span></div></div>
+      <div class="lane"><div class="when">On-demand<small>leader request</small></div>
+        <div class="tasks"><span class="tag mkt">PP-T3</span><span class="tag mkt">MI-T3</span>
+          <span class="tag sal">AL-T2</span><span class="tag pln">BE-T2</span><span class="tag deliv">all D-* decks</span></div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2><span class="n">4</span> Per-task table — consumes → produces → feeds</h2>
+    <table>
+      <thead><tr><th>Task</th><th>Team</th><th>Cadence</th><th>Consumes</th><th>Produces</th><th>Feeds</th></tr></thead>
+      <tbody>
+        <tr><td class="id">MI-T1</td><td><span class="pill mkt">Mktg</span></td><td>quarterly</td><td>sources</td><td>demand/supply records</td><td>MI-T3, Mktg leader, D-SAL-CUST</td></tr>
+        <tr><td class="id">MI-T2</td><td><span class="pill mkt">Mktg</span></td><td>event</td><td>sources</td><td>capex records</td><td>MI-T3</td></tr>
+        <tr><td class="id">MI-T3</td><td><span class="pill mkt">Mktg</span></td><td>weekly</td><td>MI-T1/T2</td><td>demand digest</td><td>Mktg leader, Sales leader</td></tr>
+        <tr><td class="id">PP-T1</td><td><span class="pill mkt">Mktg</span></td><td>weekly</td><td>sources</td><td>ASP/index records</td><td>PP-T3, Mktg leader</td></tr>
+        <tr><td class="id">PP-T2</td><td><span class="pill mkt">Mktg</span></td><td>weekly</td><td>sources</td><td>promo records</td><td>PP-T3</td></tr>
+        <tr><td class="id">PP-T3</td><td><span class="pill mkt">Mktg</span></td><td>on-demand</td><td>PP-T1/T2</td><td>pricing brief</td><td>D-MKT-PRICE, D-SAL-CUST</td></tr>
+        <tr><td class="id">SM-T1</td><td><span class="pill mkt">Mktg</span></td><td>quarterly</td><td>sources</td><td>capacity records</td><td>Mktg leader (dedup MI-T1)</td></tr>
+        <tr><td class="id">SM-T2</td><td><span class="pill mkt">Mktg</span></td><td>monthly</td><td>sources</td><td>inventory records</td><td>Mktg leader</td></tr>
+        <tr><td class="id">AL-T1</td><td><span class="pill sal">Sales</span></td><td>quarterly</td><td>sources</td><td>demand-context records</td><td>AL-T2, Sales leader</td></tr>
+        <tr><td class="id">AL-T2 <span class="gate">*</span></td><td><span class="pill sal">Sales</span></td><td>on-demand</td><td>AL-T1 + internal</td><td>alloc brief</td><td>Sales leader</td></tr>
+        <tr><td class="id">CRM-T1</td><td><span class="pill sal">Sales</span></td><td>weekly/event</td><td>sources</td><td>account-news records</td><td>CRM-T2, CRM-T3</td></tr>
+        <tr><td class="id">CRM-T2</td><td><span class="pill sal">Sales</span></td><td>meeting</td><td>CRM-T1</td><td>per-customer brief</td><td>D-SAL-CUST</td></tr>
+        <tr><td class="id">CRM-T3</td><td><span class="pill sal">Sales</span></td><td>weekly</td><td>CRM-T1</td><td>sentiment digest</td><td>Sales leader</td></tr>
+        <tr><td class="id">CT-T1</td><td><span class="pill pln">Plan</span></td><td>event</td><td>sources</td><td>design-win records</td><td>CT-T3, Plan leader</td></tr>
+        <tr><td class="id">CT-T2</td><td><span class="pill pln">Plan</span></td><td>event</td><td>sources</td><td>standards records</td><td>CT-T3</td></tr>
+        <tr><td class="id">CT-T3</td><td><span class="pill pln">Plan</span></td><td>on-demand</td><td>CT-T1/T2</td><td>tech brief</td><td>D-PLN-ROADMAP, D-SAL-CUST</td></tr>
+        <tr><td class="id">BE-T1</td><td><span class="pill pln">Plan</span></td><td>quarterly</td><td>sources</td><td>TAM/SAM records</td><td>Plan leader</td></tr>
+        <tr><td class="id">BE-T2 <span class="gate">*</span></td><td><span class="pill pln">Plan</span></td><td>on-demand</td><td>BE-T1 + internal</td><td>business-case pack</td><td>D-PLN-ROADMAP</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2><span class="n">5</span> Coordination rules — what keeps it organic</h2>
+    <ol>
+      <li><b>One writer per record.</b> A <code>(entity, period, metric)</code> fact is owned by exactly one task (e.g. supply = MI-T1 <em>or</em> SM-T1). No double-write.</li>
+      <li><b>Leaders are read-only</b> across all packs, own-team and cross-team.</li>
+      <li><b>Same contract everywhere.</b> Every task emits the shared canonical record + trust model — that's what makes cross-team pulls clean instead of glue code.</li>
+      <li><b>Trust travels with the fact.</b> A record's status / source / quote ride into every downstream brief and deliverable, so a customer slide always traces to its source.</li>
+      <li><b>Internal-gated tasks</b> (<span class="gate">*</span>) emit only their public half in v1; internal facts ride as <em>unverified-needs-human</em> and surface in the gap report.</li>
+    </ol>
+    <p class="note">Source of truth: <code>TASK_MAP.md</code>. Product Planning tasks (CT-T*, BE-T*) are mapped for full connectivity; the <code>teams/product_planning/</code> folder is the remaining detail step.</p>
+  </section>
+
+</main>
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'neutral', flowchart: { curve: 'basis', useMaxWidth: true } });
+</script>
+</body>
+</html>
