@@ -306,6 +306,9 @@ file that is grounded exclusively in **verified foundational academic sources**.
 ## Work Rules
 
 - **No Python code.** All knowledge, frameworks, and agent logic lives in `.md` files.
+  **Carve-out (2026-06-27, approved via /office-hours → ceo → eng):** `salesmarketing_2.0/app/`
+  is a Next.js human-in-the-loop web app (TypeScript) — the only sanctioned production code in
+  this repo. No other directory may add code under this carve-out; everything else stays `.md`.
 - **Always date-stamp entries** inside MD files using `YYYY-MM-DD`.
 - **After every completed task: `git commit` and `git push`.**
 - Section expert agents write within their own folder; the orchestrator synthesizes across them.

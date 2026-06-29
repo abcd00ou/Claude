@@ -50,12 +50,12 @@ deliverables build on meeting/on-demand against the latest packs.
 
 The orchestrator turns a request into a run plan. Worked example:
 
-> **Request:** "Customer-meeting deck for HYPER-A, 2026-07-10, PPT."
+> **Request:** "Customer-meeting deck for Microsoft, 2026-07-10, PPT."
 
 ```
-  1. audience = HYPER-A (customer) · format = PPT · template = customer_meeting (Sales leader)
+  1. audience = Microsoft (customer) · format = PPT · template = customer_meeting (Sales leader)
   2. needed packs:
-       CRM-T2  (HYPER-A pre-meeting brief)         ── own team, meeting-driven → RUN NOW
+       CRM-T2  (Microsoft pre-meeting brief)         ── own team, meeting-driven → RUN NOW
        MI-T3 · PP-T3 · SM   (market context)       ── cross-team Marketing → pull latest
        CT-T3   (roadmap fit)                        ── cross-team Planning → pull latest
   3. freshness check: any pack stale vs 07-10? → refresh its cadence task or flag stale-source
@@ -89,7 +89,7 @@ A run registry (shape; actual store is app-layer):
 |---|---|---|---|---|
 | MI-T1 | 2026-06-01 | packs/mi_2026Q2 | fresh (≤quarter) | ok |
 | PP-T1 | 2026-06-23 | packs/price_wk25 | fresh (≤week) | ok |
-| CRM-T2:HYPER-A | — | — | missing | run-on-meeting |
+| CRM-T2:Microsoft | — | — | missing | run-on-meeting |
 
 Freshness windows match each task's cadence (week/month/quarter). Stale = older than its window
 relative to the request/meeting date.

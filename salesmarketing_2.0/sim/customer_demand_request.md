@@ -10,7 +10,7 @@ side the allocator weighs against `capacity.md`. All entities/numbers fictional.
 | Field | Type | Meaning |
 |---|---|---|
 | `request_id` | string | unique id |
-| `customer` | enum | HYPER-A · GPU-D · MOBILE-B · SERVER-C · AUTO-E |
+| `customer` | enum | Microsoft · NVIDIA · Apple · Dell · Bosch |
 | `period_needed` | quarter | when |
 | `family` | enum | product family |
 | `sku` | string | requested SKU |
@@ -23,13 +23,15 @@ side the allocator weighs against `capacity.md`. All entities/numbers fictional.
 
 | request_id | customer | period_needed | family | sku | requested_kunits | priority | application | status |
 |---|---|---|---|---|---|---|---|---|
-| REQ-0001 | GPU-D | 2026Q2 | HBM3E | HBM3E-12hi | 180 | P1 | AI training | committed |
-| REQ-0002 | HYPER-A | 2026Q2 | HBM3E | HBM3E-12hi | 140 | P1 | AI inference | partial |
-| REQ-0003 | HYPER-A | 2026Q2 | DDR5 | DDR5-6400 24Gb | 900 | P2 | AI server DRAM | open |
-| REQ-0004 | MOBILE-B | 2026Q3 | LPDDR5X | LPDDR5X-9600 | 1200 | P1 | flagship phone | open |
-| REQ-0005 | SERVER-C | 2026Q2 | DDR5 | DDR5-5600 16Gb | 1500 | P2 | general server | committed |
-| REQ-0006 | AUTO-E | 2026Q3 | LPDDR5 | LPDDR5-6400 | 300 | P3 | ADAS | open |
-| REQ-0007 | GPU-D | 2026Q4 | HBM4 | HBM4-48GB | 90 | P1 | next-gen accelerator | open |
+| REQ-0001 | NVIDIA | 2026Q2 | HBM3E | HBM3E-12hi | 180 | P1 | AI training | committed |
+| REQ-0002 | Microsoft | 2026Q2 | HBM3E | HBM3E-12hi | 140 | P1 | AI inference | partial |
+| REQ-0003 | Microsoft | 2026Q2 | DDR5 | DDR5-6400 24Gb | 900 | P2 | AI server DRAM | open |
+| REQ-0004 | Apple | 2026Q3 | LPDDR5X | LPDDR5X-9600 | 1200 | P1 | flagship phone | open |
+| REQ-0005 | Dell | 2026Q2 | DDR5 | DDR5-5600 16Gb | 1500 | P2 | general server | committed |
+| REQ-0006 | Bosch | 2026Q3 | LPDDR5 | LPDDR5-6400 | 300 | P3 | ADAS | open |
+| REQ-0007 | NVIDIA | 2026Q4 | HBM4 | HBM4-48GB | 90 | P1 | next-gen accelerator | open |
+| REQ-0008 | AMD | 2026Q3 | HBM3E | HBM3E-12hi | 120 | P1 | AI accelerator (Instinct) | partial |
+| REQ-0009 | Google | 2026Q3 | HBM3E | HBM3E-12hi | 100 | P2 | custom AI silicon (TPU) | open |
 
 ## Notes
 

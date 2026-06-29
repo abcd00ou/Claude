@@ -35,9 +35,9 @@ illustrative — for simulation only, not a real SK hynix roadmap.
 
 | Customer ask (from tech demand) | Roadmap part | Fit |
 |---|---|---|
-| GPU-D HBM4 48GB @ 2026Q4 | HBM4-48GB (sampling, MP 2026Q4) | tight — qual timing risk `#importance:high` |
-| MOBILE-B LPDDR6 @ 2027Q2 | LPDDR6-10667 (roadmap, MP 2027Q2) | on track |
-| SERVER-C DDR5-6400 MRDIMM @ 2026Q3 | DDR5-6400 MRDIMM (production) | met |
+| NVIDIA HBM4 48GB @ 2026Q4 | HBM4-48GB (sampling, MP 2026Q4) | tight — qual timing risk `#importance:high` |
+| Apple LPDDR6 @ 2027Q2 | LPDDR6-10667 (roadmap, MP 2027Q2) | on track |
+| Dell DDR5-6400 MRDIMM @ 2026Q3 | DDR5-6400 MRDIMM (production) | met |
 
 ## Notes
 

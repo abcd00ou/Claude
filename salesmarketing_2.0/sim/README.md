@@ -47,15 +47,20 @@ Each sample row is a flat record. The shared [envelope](../_shared/record_schema
 columns below are the role payload. Sample tables keep only the payload + key envelope fields
 for readability; a real generator would emit the full envelope.
 
-## Fictional entities (used across all datasets)
+## Tracked customers (real names, simulated figures)
 
-| Code | Type | Application |
-|---|---|---|
-| HYPER-A | hyperscaler | AI datacenter |
-| GPU-D | accelerator maker | AI training/inference |
-| MOBILE-B | handset OEM | flagship mobile |
-| SERVER-C | server OEM | general server |
-| AUTO-E | automotive tier-1 | ADAS / IVI |
+Customer **names are real**; the demand / allocation / CRM **figures attached to them are
+simulated/illustrative** (`source = SIMULATION`), never actual SK hynix account data.
+
+| Customer | Type | Memory products | Application |
+|---|---|---|---|
+| NVIDIA | AI accelerator | HBM3E, HBM4 | AI training/inference (Blackwell, Rubin) |
+| AMD | AI accelerator | HBM3E, HBM4 | AI accelerators (Instinct) |
+| Microsoft | hyperscaler | HBM, server DDR5 | AI datacenter (Maia, Azure) |
+| Google / Broadcom | hyperscaler + ASIC | HBM, DDR5 | custom AI silicon (TPU) |
+| Apple | handset / PC OEM | LPDDR5X, LPDDR6 | flagship mobile & Mac |
+| Dell | server OEM | DDR5 RDIMM/MRDIMM | general & AI servers |
+| Bosch | automotive tier-1 | LPDDR5 (auto-grade) | ADAS / IVI |
 
 ## Period convention
 
