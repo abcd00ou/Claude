@@ -1,0 +1,1113 @@
+{
+  "panel": {
+    "Microsoft": {
+      "ticker": "MSFT",
+      "sector": "Hyperscaler"
+    },
+    "Vertiv": {
+      "ticker": "VRT",
+      "sector": "Power"
+    },
+    "Eaton": {
+      "ticker": "ETN",
+      "sector": "Power"
+    },
+    "Modine": {
+      "ticker": "MOD",
+      "sector": "Cooling"
+    },
+    "Applied Mat": {
+      "ticker": "AMAT",
+      "sector": "FabEquip"
+    },
+    "Lam Research": {
+      "ticker": "LRCX",
+      "sector": "FabEquip"
+    },
+    "NVIDIA": {
+      "ticker": "NVDA",
+      "sector": "AI Chip"
+    },
+    "AMD": {
+      "ticker": "AMD",
+      "sector": "AI Chip"
+    },
+    "Broadcom": {
+      "ticker": "AVGO",
+      "sector": "AI Chip"
+    },
+    "Marvell": {
+      "ticker": "MRVL",
+      "sector": "AI Chip"
+    },
+    "Micron": {
+      "ticker": "MU",
+      "sector": "DRAM"
+    },
+    "Amkor": {
+      "ticker": "AMKR",
+      "sector": "Packaging"
+    },
+    "Arista": {
+      "ticker": "ANET",
+      "sector": "Networking"
+    },
+    "Super Micro": {
+      "ticker": "SMCI",
+      "sector": "Server OEM"
+    },
+    "Dell": {
+      "ticker": "DELL",
+      "sector": "Server OEM"
+    }
+  },
+  "company_phase": [
+    {
+      "company": "AMD",
+      "phase_score": -1.218,
+      "rank": 1,
+      "sector": "AI Chip"
+    },
+    {
+      "company": "Applied Mat",
+      "phase_score": -0.978,
+      "rank": 2,
+      "sector": "FabEquip"
+    },
+    {
+      "company": "Amkor",
+      "phase_score": -0.645,
+      "rank": 3,
+      "sector": "Packaging"
+    },
+    {
+      "company": "Broadcom",
+      "phase_score": -0.486,
+      "rank": 4,
+      "sector": "AI Chip"
+    },
+    {
+      "company": "Super Micro",
+      "phase_score": -0.408,
+      "rank": 5,
+      "sector": "Server OEM"
+    },
+    {
+      "company": "NVIDIA",
+      "phase_score": -0.362,
+      "rank": 6,
+      "sector": "AI Chip"
+    },
+    {
+      "company": "Micron",
+      "phase_score": -0.293,
+      "rank": 7,
+      "sector": "DRAM"
+    },
+    {
+      "company": "Microsoft",
+      "phase_score": -0.108,
+      "rank": 8,
+      "sector": "Hyperscaler"
+    },
+    {
+      "company": "Lam Research",
+      "phase_score": -0.029,
+      "rank": 9,
+      "sector": "FabEquip"
+    },
+    {
+      "company": "Vertiv",
+      "phase_score": 0.0,
+      "rank": 10,
+      "sector": "Power"
+    },
+    {
+      "company": "Eaton",
+      "phase_score": 0.362,
+      "rank": 11,
+      "sector": "Power"
+    },
+    {
+      "company": "Arista",
+      "phase_score": 0.421,
+      "rank": 12,
+      "sector": "Networking"
+    },
+    {
+      "company": "Dell",
+      "phase_score": 0.526,
+      "rank": 13,
+      "sector": "Server OEM"
+    },
+    {
+      "company": "Modine",
+      "phase_score": 1.313,
+      "rank": 14,
+      "sector": "Cooling"
+    },
+    {
+      "company": "Marvell",
+      "phase_score": 2.047,
+      "rank": 15,
+      "sector": "AI Chip"
+    }
+  ],
+  "output2_sector_phase": [
+    {
+      "section": "Packaging",
+      "phase_score": -0.466,
+      "rank": 1
+    },
+    {
+      "section": "Server OEM",
+      "phase_score": -0.411,
+      "rank": 2
+    },
+    {
+      "section": "FabEquip",
+      "phase_score": -0.315,
+      "rank": 3
+    },
+    {
+      "section": "AI Chip",
+      "phase_score": -0.136,
+      "rank": 4
+    },
+    {
+      "section": "Hyperscaler",
+      "phase_score": -0.098,
+      "rank": 5
+    },
+    {
+      "section": "Networking",
+      "phase_score": -0.074,
+      "rank": 6
+    },
+    {
+      "section": "DRAM",
+      "phase_score": -0.035,
+      "rank": 7
+    },
+    {
+      "section": "Power",
+      "phase_score": 0.088,
+      "rank": 8
+    },
+    {
+      "section": "Cooling",
+      "phase_score": 1.473,
+      "rank": 9
+    }
+  ],
+  "output3_leadlag_network": [
+    {
+      "from_leader": "Broadcom",
+      "to_follower": "Micron",
+      "sector_from": "AI Chip",
+      "sector_to": "DRAM",
+      "lead_quarters": 1.0,
+      "peak_corr": 0.846,
+      "granger_p_fwd": 0.038,
+      "granger_p_rev": 0.929,
+      "score": 1.096
+    },
+    {
+      "from_leader": "NVIDIA",
+      "to_follower": "Micron",
+      "sector_from": "AI Chip",
+      "sector_to": "DRAM",
+      "lead_quarters": 1.0,
+      "peak_corr": 0.795,
+      "granger_p_fwd": 0.032,
+      "granger_p_rev": 0.951,
+      "score": 1.045
+    },
+    {
+      "from_leader": "Applied Mat",
+      "to_follower": "Lam Research",
+      "sector_from": "FabEquip",
+      "sector_to": "FabEquip",
+      "lead_quarters": 1.0,
+      "peak_corr": 0.855,
+      "granger_p_fwd": 0.0,
+      "granger_p_rev": 0.154,
+      "score": 1.005
+    },
+    {
+      "from_leader": "Applied Mat",
+      "to_follower": "Marvell",
+      "sector_from": "FabEquip",
+      "sector_to": "AI Chip",
+      "lead_quarters": 4.0,
+      "peak_corr": 0.905,
+      "granger_p_fwd": NaN,
+      "granger_p_rev": NaN,
+      "score": 1.005
+    },
+    {
+      "from_leader": "Super Micro",
+      "to_follower": "Micron",
+      "sector_from": "Server OEM",
+      "sector_to": "DRAM",
+      "lead_quarters": 1.0,
+      "peak_corr": 0.752,
+      "granger_p_fwd": 0.05,
+      "granger_p_rev": 0.287,
+      "score": 1.002
+    },
+    {
+      "from_leader": "Arista",
+      "to_follower": "Modine",
+      "sector_from": "Networking",
+      "sector_to": "Cooling",
+      "lead_quarters": 2.0,
+      "peak_corr": 0.652,
+      "granger_p_fwd": 0.001,
+      "granger_p_rev": 0.199,
+      "score": 0.902
+    },
+    {
+      "from_leader": "AMD",
+      "to_follower": "Lam Research",
+      "sector_from": "AI Chip",
+      "sector_to": "FabEquip",
+      "lead_quarters": 1.0,
+      "peak_corr": 0.644,
+      "granger_p_fwd": 0.018,
+      "granger_p_rev": 0.09,
+      "score": 0.894
+    },
+    {
+      "from_leader": "Micron",
+      "to_follower": "Modine",
+      "sector_from": "DRAM",
+      "sector_to": "Cooling",
+      "lead_quarters": 2.0,
+      "peak_corr": 0.626,
+      "granger_p_fwd": 0.006,
+      "granger_p_rev": 0.08,
+      "score": 0.876
+    },
+    {
+      "from_leader": "Broadcom",
+      "to_follower": "Arista",
+      "sector_from": "AI Chip",
+      "sector_to": "Networking",
+      "lead_quarters": 2.0,
+      "peak_corr": 0.613,
+      "granger_p_fwd": 0.016,
+      "granger_p_rev": 0.864,
+      "score": 0.863
+    },
+    {
+      "from_leader": "Broadcom",
+      "to_follower": "Microsoft",
+      "sector_from": "AI Chip",
+      "sector_to": "Hyperscaler",
+      "lead_quarters": 1.0,
+      "peak_corr": 0.611,
+      "granger_p_fwd": 0.004,
+      "granger_p_rev": 0.036,
+      "score": 0.861
+    },
+    {
+      "from_leader": "Micron",
+      "to_follower": "Marvell",
+      "sector_from": "DRAM",
+      "sector_to": "AI Chip",
+      "lead_quarters": 4.0,
+      "peak_corr": 0.756,
+      "granger_p_fwd": NaN,
+      "granger_p_rev": NaN,
+      "score": 0.856
+    },
+    {
+      "from_leader": "Broadcom",
+      "to_follower": "Eaton",
+      "sector_from": "AI Chip",
+      "sector_to": "Power",
+      "lead_quarters": 1.0,
+      "peak_corr": 0.575,
+      "granger_p_fwd": 0.085,
+      "granger_p_rev": 0.387,
+      "score": 0.825
+    },
+    {
+      "from_leader": "Amkor",
+      "to_follower": "Applied Mat",
+      "sector_from": "Packaging",
+      "sector_to": "FabEquip",
+      "lead_quarters": 1.0,
+      "peak_corr": 0.574,
+      "granger_p_fwd": 0.019,
+      "granger_p_rev": 0.6,
+      "score": 0.824
+    },
+    {
+      "from_leader": "AMD",
+      "to_follower": "Marvell",
+      "sector_from": "AI Chip",
+      "sector_to": "AI Chip",
+      "lead_quarters": 3.0,
+      "peak_corr": 0.797,
+      "granger_p_fwd": NaN,
+      "granger_p_rev": NaN,
+      "score": 0.797
+    },
+    {
+      "from_leader": "Lam Research",
+      "to_follower": "Marvell",
+      "sector_from": "FabEquip",
+      "sector_to": "AI Chip",
+      "lead_quarters": 3.0,
+      "peak_corr": 0.678,
+      "granger_p_fwd": NaN,
+      "granger_p_rev": NaN,
+      "score": 0.778
+    },
+    {
+      "from_leader": "Lam Research",
+      "to_follower": "Dell",
+      "sector_from": "FabEquip",
+      "sector_to": "Server OEM",
+      "lead_quarters": 1.0,
+      "peak_corr": 0.524,
+      "granger_p_fwd": 0.072,
+      "granger_p_rev": 0.663,
+      "score": 0.774
+    },
+    {
+      "from_leader": "Applied Mat",
+      "to_follower": "Arista",
+      "sector_from": "FabEquip",
+      "sector_to": "Networking",
+      "lead_quarters": 2.0,
+      "peak_corr": 0.517,
+      "granger_p_fwd": 0.026,
+      "granger_p_rev": 0.061,
+      "score": 0.767
+    },
+    {
+      "from_leader": "Applied Mat",
+      "to_follower": "Dell",
+      "sector_from": "FabEquip",
+      "sector_to": "Server OEM",
+      "lead_quarters": 3.0,
+      "peak_corr": 0.505,
+      "granger_p_fwd": 0.014,
+      "granger_p_rev": 0.17,
+      "score": 0.755
+    },
+    {
+      "from_leader": "Amkor",
+      "to_follower": "Marvell",
+      "sector_from": "Packaging",
+      "sector_to": "AI Chip",
+      "lead_quarters": 4.0,
+      "peak_corr": 0.654,
+      "granger_p_fwd": NaN,
+      "granger_p_rev": NaN,
+      "score": 0.754
+    },
+    {
+      "from_leader": "Amkor",
+      "to_follower": "Lam Research",
+      "sector_from": "Packaging",
+      "sector_to": "FabEquip",
+      "lead_quarters": 2.0,
+      "peak_corr": 0.503,
+      "granger_p_fwd": 0.012,
+      "granger_p_rev": 0.772,
+      "score": 0.753
+    },
+    {
+      "from_leader": "Micron",
+      "to_follower": "Arista",
+      "sector_from": "DRAM",
+      "sector_to": "Networking",
+      "lead_quarters": 1.0,
+      "peak_corr": 0.464,
+      "granger_p_fwd": 0.046,
+      "granger_p_rev": 0.326,
+      "score": 0.714
+    },
+    {
+      "from_leader": "Applied Mat",
+      "to_follower": "Modine",
+      "sector_from": "FabEquip",
+      "sector_to": "Cooling",
+      "lead_quarters": 4.0,
+      "peak_corr": 0.595,
+      "granger_p_fwd": 0.001,
+      "granger_p_rev": 0.0,
+      "score": 0.695
+    },
+    {
+      "from_leader": "Amkor",
+      "to_follower": "Arista",
+      "sector_from": "Packaging",
+      "sector_to": "Networking",
+      "lead_quarters": 2.0,
+      "peak_corr": 0.425,
+      "granger_p_fwd": 0.004,
+      "granger_p_rev": 0.017,
+      "score": 0.675
+    },
+    {
+      "from_leader": "Eaton",
+      "to_follower": "Modine",
+      "sector_from": "Power",
+      "sector_to": "Cooling",
+      "lead_quarters": 2.0,
+      "peak_corr": 0.495,
+      "granger_p_fwd": 0.003,
+      "granger_p_rev": 0.179,
+      "score": 0.645
+    },
+    {
+      "from_leader": "AMD",
+      "to_follower": "Arista",
+      "sector_from": "AI Chip",
+      "sector_to": "Networking",
+      "lead_quarters": 3.0,
+      "peak_corr": 0.512,
+      "granger_p_fwd": 0.006,
+      "granger_p_rev": 0.0,
+      "score": 0.612
+    },
+    {
+      "from_leader": "Lam Research",
+      "to_follower": "Modine",
+      "sector_from": "FabEquip",
+      "sector_to": "Cooling",
+      "lead_quarters": 1.0,
+      "peak_corr": 0.485,
+      "granger_p_fwd": 0.039,
+      "granger_p_rev": 0.013,
+      "score": 0.585
+    },
+    {
+      "from_leader": "Broadcom",
+      "to_follower": "Modine",
+      "sector_from": "AI Chip",
+      "sector_to": "Cooling",
+      "lead_quarters": 3.0,
+      "peak_corr": 0.474,
+      "granger_p_fwd": 0.476,
+      "granger_p_rev": 0.796,
+      "score": 0.574
+    },
+    {
+      "from_leader": "Micron",
+      "to_follower": "Lam Research",
+      "sector_from": "DRAM",
+      "sector_to": "FabEquip",
+      "lead_quarters": 1.0,
+      "peak_corr": 0.471,
+      "granger_p_fwd": 0.193,
+      "granger_p_rev": 0.004,
+      "score": 0.571
+    },
+    {
+      "from_leader": "Super Micro",
+      "to_follower": "Arista",
+      "sector_from": "Server OEM",
+      "sector_to": "Networking",
+      "lead_quarters": 2.0,
+      "peak_corr": 0.446,
+      "granger_p_fwd": 0.22,
+      "granger_p_rev": 0.175,
+      "score": 0.546
+    },
+    {
+      "from_leader": "Amkor",
+      "to_follower": "Modine",
+      "sector_from": "Packaging",
+      "sector_to": "Cooling",
+      "lead_quarters": 4.0,
+      "peak_corr": 0.444,
+      "granger_p_fwd": 0.351,
+      "granger_p_rev": 0.007,
+      "score": 0.544
+    },
+    {
+      "from_leader": "Arista",
+      "to_follower": "Dell",
+      "sector_from": "Networking",
+      "sector_to": "Server OEM",
+      "lead_quarters": 2.0,
+      "peak_corr": 0.44,
+      "granger_p_fwd": 0.103,
+      "granger_p_rev": 0.011,
+      "score": 0.54
+    },
+    {
+      "from_leader": "Super Micro",
+      "to_follower": "Eaton",
+      "sector_from": "Server OEM",
+      "sector_to": "Power",
+      "lead_quarters": 2.0,
+      "peak_corr": 0.436,
+      "granger_p_fwd": 0.154,
+      "granger_p_rev": 0.53,
+      "score": 0.536
+    }
+  ],
+  "output4_congestion": [
+    {
+      "company": "Microsoft",
+      "status": "Healthy",
+      "recent_OC_days": 95.5,
+      "OC_yoy_recent": 0.06,
+      "congested_Q_of_last4": 0,
+      "driver": "-",
+      "internal_congestion": false
+    },
+    {
+      "company": "Vertiv",
+      "status": "insufficient data"
+    },
+    {
+      "company": "Eaton",
+      "status": "insufficient data"
+    },
+    {
+      "company": "Modine",
+      "status": "Healthy",
+      "recent_OC_days": 137.4,
+      "OC_yoy_recent": -0.045,
+      "congested_Q_of_last4": 0,
+      "driver": "-",
+      "internal_congestion": false
+    },
+    {
+      "company": "Applied Mat",
+      "status": "Healthy",
+      "recent_OC_days": 222.3,
+      "OC_yoy_recent": 0.041,
+      "congested_Q_of_last4": 0,
+      "driver": "-",
+      "internal_congestion": false
+    },
+    {
+      "company": "Lam Research",
+      "status": "Healthy",
+      "recent_OC_days": 228.7,
+      "OC_yoy_recent": -0.099,
+      "congested_Q_of_last4": 0,
+      "driver": "-",
+      "internal_congestion": false
+    },
+    {
+      "company": "NVIDIA",
+      "status": "Congestion Warning",
+      "recent_OC_days": 163.0,
+      "OC_yoy_recent": -0.055,
+      "congested_Q_of_last4": 2,
+      "driver": "Receivables build-up (DSO)",
+      "internal_congestion": true
+    },
+    {
+      "company": "AMD",
+      "status": "Congestion Warning",
+      "recent_OC_days": 210.1,
+      "OC_yoy_recent": -0.021,
+      "congested_Q_of_last4": 1,
+      "driver": "Inventory build-up (DIO)",
+      "internal_congestion": true
+    },
+    {
+      "company": "Broadcom",
+      "status": "Congestion Warning",
+      "recent_OC_days": 86.5,
+      "OC_yoy_recent": 0.304,
+      "congested_Q_of_last4": 2,
+      "driver": "Receivables build-up (DSO)",
+      "internal_congestion": true
+    },
+    {
+      "company": "Marvell",
+      "status": "Congestion Warning",
+      "recent_OC_days": 239.6,
+      "OC_yoy_recent": 0.496,
+      "congested_Q_of_last4": 3,
+      "driver": "Receivables build-up (DSO)",
+      "internal_congestion": true
+    },
+    {
+      "company": "Micron",
+      "status": "Healthy",
+      "recent_OC_days": 217.3,
+      "OC_yoy_recent": -0.15,
+      "congested_Q_of_last4": 0,
+      "driver": "-",
+      "internal_congestion": false
+    },
+    {
+      "company": "Amkor",
+      "status": "Congestion Warning",
+      "recent_OC_days": 127.9,
+      "OC_yoy_recent": 0.348,
+      "congested_Q_of_last4": 1,
+      "driver": "Inventory build-up (DIO)",
+      "internal_congestion": true
+    },
+    {
+      "company": "Arista",
+      "status": "Healthy",
+      "recent_OC_days": 291.1,
+      "OC_yoy_recent": -0.225,
+      "congested_Q_of_last4": 0,
+      "driver": "-",
+      "internal_congestion": false
+    },
+    {
+      "company": "Super Micro",
+      "status": "Healthy",
+      "recent_OC_days": 146.4,
+      "OC_yoy_recent": -0.215,
+      "congested_Q_of_last4": 0,
+      "driver": "-",
+      "internal_congestion": false
+    },
+    {
+      "company": "Dell",
+      "status": "Congestion Warning",
+      "recent_OC_days": 120.3,
+      "OC_yoy_recent": 0.323,
+      "congested_Q_of_last4": 4,
+      "driver": "Inventory build-up (DIO)",
+      "internal_congestion": true
+    }
+  ],
+  "output5_transmission": [
+    {
+      "upstream": "Broadcom",
+      "downstream": "Micron",
+      "lag_q": 1,
+      "transmission_beta": 0.906,
+      "recent_gap_z": 0.72,
+      "blocked_Q_of_last4": 1,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "NVIDIA",
+      "downstream": "Micron",
+      "lag_q": 1,
+      "transmission_beta": 0.785,
+      "recent_gap_z": -0.32,
+      "blocked_Q_of_last4": 0,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Applied Mat",
+      "downstream": "Lam Research",
+      "lag_q": 1,
+      "transmission_beta": 0.88,
+      "recent_gap_z": 0.56,
+      "blocked_Q_of_last4": 1,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Applied Mat",
+      "downstream": "Marvell",
+      "lag_q": 4,
+      "transmission_beta": 1.017,
+      "recent_gap_z": 0.14,
+      "blocked_Q_of_last4": 0,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Super Micro",
+      "downstream": "Micron",
+      "lag_q": 1,
+      "transmission_beta": 0.759,
+      "recent_gap_z": 0.0,
+      "blocked_Q_of_last4": 0,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Arista",
+      "downstream": "Modine",
+      "lag_q": 2,
+      "transmission_beta": 0.675,
+      "recent_gap_z": 0.15,
+      "blocked_Q_of_last4": 0,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "AMD",
+      "downstream": "Lam Research",
+      "lag_q": 1,
+      "transmission_beta": 0.678,
+      "recent_gap_z": -0.83,
+      "blocked_Q_of_last4": 2,
+      "status": "TRANSMISSION BREAK",
+      "transmission_block": true
+    },
+    {
+      "upstream": "Micron",
+      "downstream": "Modine",
+      "lag_q": 2,
+      "transmission_beta": 1.235,
+      "recent_gap_z": -1.4,
+      "blocked_Q_of_last4": 1,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Broadcom",
+      "downstream": "Arista",
+      "lag_q": 2,
+      "transmission_beta": 1.075,
+      "recent_gap_z": 0.06,
+      "blocked_Q_of_last4": 1,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Broadcom",
+      "downstream": "Microsoft",
+      "lag_q": 1,
+      "transmission_beta": 0.789,
+      "recent_gap_z": -1.15,
+      "blocked_Q_of_last4": 2,
+      "status": "TRANSMISSION BREAK",
+      "transmission_block": true
+    },
+    {
+      "upstream": "Micron",
+      "downstream": "Marvell",
+      "lag_q": 4,
+      "transmission_beta": 1.78,
+      "recent_gap_z": -0.67,
+      "blocked_Q_of_last4": 0,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Broadcom",
+      "downstream": "Eaton",
+      "lag_q": 1,
+      "transmission_beta": 0.621,
+      "recent_gap_z": -0.7,
+      "blocked_Q_of_last4": 0,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Amkor",
+      "downstream": "Applied Mat",
+      "lag_q": 1,
+      "transmission_beta": 0.583,
+      "recent_gap_z": -0.32,
+      "blocked_Q_of_last4": 1,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "AMD",
+      "downstream": "Marvell",
+      "lag_q": 3,
+      "transmission_beta": 0.695,
+      "recent_gap_z": -1.21,
+      "blocked_Q_of_last4": 1,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Lam Research",
+      "downstream": "Marvell",
+      "lag_q": 3,
+      "transmission_beta": 0.63,
+      "recent_gap_z": -1.39,
+      "blocked_Q_of_last4": 1,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Lam Research",
+      "downstream": "Dell",
+      "lag_q": 1,
+      "transmission_beta": 0.519,
+      "recent_gap_z": -0.06,
+      "blocked_Q_of_last4": 0,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Applied Mat",
+      "downstream": "Arista",
+      "lag_q": 2,
+      "transmission_beta": 0.515,
+      "recent_gap_z": 1.91,
+      "blocked_Q_of_last4": 0,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Applied Mat",
+      "downstream": "Dell",
+      "lag_q": 3,
+      "transmission_beta": 0.569,
+      "recent_gap_z": 0.3,
+      "blocked_Q_of_last4": 1,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Amkor",
+      "downstream": "Marvell",
+      "lag_q": 4,
+      "transmission_beta": 0.582,
+      "recent_gap_z": -0.01,
+      "blocked_Q_of_last4": 0,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Amkor",
+      "downstream": "Lam Research",
+      "lag_q": 2,
+      "transmission_beta": 0.526,
+      "recent_gap_z": -0.44,
+      "blocked_Q_of_last4": 1,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Micron",
+      "downstream": "Arista",
+      "lag_q": 1,
+      "transmission_beta": 0.67,
+      "recent_gap_z": -0.37,
+      "blocked_Q_of_last4": 0,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Applied Mat",
+      "downstream": "Modine",
+      "lag_q": 4,
+      "transmission_beta": 0.584,
+      "recent_gap_z": 0.29,
+      "blocked_Q_of_last4": 0,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Amkor",
+      "downstream": "Arista",
+      "lag_q": 2,
+      "transmission_beta": 0.43,
+      "recent_gap_z": 1.08,
+      "blocked_Q_of_last4": 0,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Eaton",
+      "downstream": "Modine",
+      "lag_q": 2,
+      "transmission_beta": 0.695,
+      "recent_gap_z": -0.67,
+      "blocked_Q_of_last4": 1,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "AMD",
+      "downstream": "Arista",
+      "lag_q": 3,
+      "transmission_beta": 0.525,
+      "recent_gap_z": 1.86,
+      "blocked_Q_of_last4": 0,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Lam Research",
+      "downstream": "Modine",
+      "lag_q": 1,
+      "transmission_beta": 0.461,
+      "recent_gap_z": -0.06,
+      "blocked_Q_of_last4": 0,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Broadcom",
+      "downstream": "Modine",
+      "lag_q": 3,
+      "transmission_beta": 0.577,
+      "recent_gap_z": -1.13,
+      "blocked_Q_of_last4": 1,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Micron",
+      "downstream": "Lam Research",
+      "lag_q": 1,
+      "transmission_beta": 0.704,
+      "recent_gap_z": -1.89,
+      "blocked_Q_of_last4": 3,
+      "status": "TRANSMISSION BREAK",
+      "transmission_block": true
+    },
+    {
+      "upstream": "Super Micro",
+      "downstream": "Arista",
+      "lag_q": 2,
+      "transmission_beta": 1.981,
+      "recent_gap_z": 0.54,
+      "blocked_Q_of_last4": 0,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Amkor",
+      "downstream": "Modine",
+      "lag_q": 4,
+      "transmission_beta": 0.444,
+      "recent_gap_z": 0.72,
+      "blocked_Q_of_last4": 0,
+      "status": "Normal transmission",
+      "transmission_block": false
+    },
+    {
+      "upstream": "Arista",
+      "downstream": "Dell",
+      "lag_q": 2,
+      "transmission_beta": 0.479,
+      "recent_gap_z": -0.08,
+      "blocked_Q_of_last4": 2,
+      "status": "TRANSMISSION BREAK",
+      "transmission_block": true
+    },
+    {
+      "upstream": "Super Micro",
+      "downstream": "Eaton",
+      "lag_q": 2,
+      "transmission_beta": 1.969,
+      "recent_gap_z": 0.78,
+      "blocked_Q_of_last4": 0,
+      "status": "Normal transmission",
+      "transmission_block": false
+    }
+  ],
+  "output6_blockage_matrix": [
+    {
+      "company": "Microsoft",
+      "internal_congestion_A": false,
+      "transmission_block_B": true,
+      "diagnosis": "Transmission bottleneck",
+      "prescription": "Re-interpret upstream demand"
+    },
+    {
+      "company": "Vertiv",
+      "internal_congestion_A": false,
+      "transmission_block_B": false,
+      "diagnosis": "Healthy",
+      "prescription": "-"
+    },
+    {
+      "company": "Eaton",
+      "internal_congestion_A": false,
+      "transmission_block_B": false,
+      "diagnosis": "Healthy",
+      "prescription": "-"
+    },
+    {
+      "company": "Modine",
+      "internal_congestion_A": false,
+      "transmission_block_B": false,
+      "diagnosis": "Healthy",
+      "prescription": "-"
+    },
+    {
+      "company": "Applied Mat",
+      "internal_congestion_A": false,
+      "transmission_block_B": false,
+      "diagnosis": "Healthy",
+      "prescription": "-"
+    },
+    {
+      "company": "Lam Research",
+      "internal_congestion_A": false,
+      "transmission_block_B": true,
+      "diagnosis": "Transmission bottleneck",
+      "prescription": "Re-interpret upstream demand"
+    },
+    {
+      "company": "NVIDIA",
+      "internal_congestion_A": true,
+      "transmission_block_B": false,
+      "diagnosis": "Internal bottleneck",
+      "prescription": "Production / collection management"
+    },
+    {
+      "company": "AMD",
+      "internal_congestion_A": true,
+      "transmission_block_B": false,
+      "diagnosis": "Internal bottleneck",
+      "prescription": "Production / collection management"
+    },
+    {
+      "company": "Broadcom",
+      "internal_congestion_A": true,
+      "transmission_block_B": false,
+      "diagnosis": "Internal bottleneck",
+      "prescription": "Production / collection management"
+    },
+    {
+      "company": "Marvell",
+      "internal_congestion_A": true,
+      "transmission_block_B": false,
+      "diagnosis": "Internal bottleneck",
+      "prescription": "Production / collection management"
+    },
+    {
+      "company": "Micron",
+      "internal_congestion_A": false,
+      "transmission_block_B": false,
+      "diagnosis": "Healthy",
+      "prescription": "-"
+    },
+    {
+      "company": "Amkor",
+      "internal_congestion_A": true,
+      "transmission_block_B": false,
+      "diagnosis": "Internal bottleneck",
+      "prescription": "Production / collection management"
+    },
+    {
+      "company": "Arista",
+      "internal_congestion_A": false,
+      "transmission_block_B": false,
+      "diagnosis": "Healthy",
+      "prescription": "-"
+    },
+    {
+      "company": "Super Micro",
+      "internal_congestion_A": false,
+      "transmission_block_B": false,
+      "diagnosis": "Healthy",
+      "prescription": "-"
+    },
+    {
+      "company": "Dell",
+      "internal_congestion_A": true,
+      "transmission_block_B": true,
+      "diagnosis": "Compound bottleneck",
+      "prescription": "Demand-supply realignment"
+    }
+  ]
+}
