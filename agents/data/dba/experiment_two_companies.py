@@ -166,7 +166,6 @@ def make_figure(res, out_png):
         f"signal = revenue YoY (z-scored)   |   {s['verdict']}",
         fontsize=12, fontweight="bold",
     )
-    x = np.arange(len(res["sigA"].dropna().index.union(res["sigB"].dropna().index)))
 
     # (1) YoY time-series overlay
     a = ax[0, 0]
