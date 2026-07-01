@@ -89,7 +89,6 @@ def granger_p(leader: pd.Series, follower: pd.Series, lag: int = 1) -> float:
     H0: past `leader` adds nothing beyond past `follower`. Lower p = more causal.
     numpy OLS; returns p-value (or nan if too few points).
     """
-    from math import isnan
     df = pd.concat(
         {"y": follower, "y_l": follower.shift(lag), "x_l": leader.shift(lag)}, axis=1
     ).dropna()
