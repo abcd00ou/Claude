@@ -1,7 +1,147 @@
-import type { ReportContent, TeamId } from "./types";
+import type { EmailBlock, ReportContent, TaskUpdate, TeamId } from "./types";
 
 // 데모 전용 구조화 콘텐츠 (실제 2026 신호 + 시뮬레이션 내부 데이터). DEMO_SEED=1 일 때만 활성화.
 // emailBlocks 는 CEO에게 보내는 자연스러운 아침 보고처럼 작성됨.
+
+// 데모 모드 재생성: Anthropic 크레딧이 없을 때 "다시 생성"이 실제로 데이터를 갱신하고
+// 보고서를 재작성하도록 한다. 원칙: 출처가 표기된 REAL(공개) 수치는 그대로 둔다(사실 왜곡
+// 방지). 변하는 것은 SIM(내부 추정) 수치 — 새 크롤링/추정처럼 매번 소폭 갱신되고, 데이터
+// 갱신 시각이 다시 찍히며, 도입부는 리더 코멘트를 반영해 다시 쓰인다.
+// 크레딧이 있으면 실제 경로(lib/anthropic.ts)가 코멘트를 프롬프트에 넣어 진짜로 재작성한다.
+
+function nowKstStamp(): string {
+  // KST = UTC+9
+  const d = new Date(Date.now() + 9 * 3600 * 1000);
+  const p = (n: number) => String(n).padStart(2, "0");
+  return `${d.getUTCFullYear()}-${p(d.getUTCMonth() + 1)}-${p(d.getUTCDate())} ${p(d.getUTCHours())}:${p(d.getUTCMinutes())} KST`;
+}
+
+// 호출 시각 기반 결정적(deterministic) 흔들림 — REAL이 아닌 SIM 수치에만 적용.
+function jitter(value: number, seed: number): number {
+  const wave = Math.sin(seed * 0.7 + value) * 0.06; // ±6%
+  const out = value * (1 + wave);
+  // 정수였던 값은 정수로, 소수였던 값은 소수 한 자리로 유지
+  return Number.isInteger(value) ? Math.round(out) : Math.round(out * 10) / 10;
+}
+
+function jitterNumericString(s: string, seed: number): string {
+  // "180", "1,500" 같은 순수 숫자 셀만 흔든다. 범위/기호가 섞인 셀(예 "+58~63%")은 그대로.
+  const cleaned = s.replace(/,/g, "");
+  if (!/^\d+$/.test(cleaned)) return s;
+  const n = jitter(Number(cleaned), seed);
+  return n.toLocaleString("en-US");
+}
+
+const TABLE_IS_SIM = (title?: string) => !!title && /추정|내부/.test(title);
+
+const isNumericCell = (s: string) => /^\d+$/.test(s.replace(/,/g, ""));
+
+// 회사명 별칭(오타/약어/한글 포함) → 표의 첫 열과 매칭하기 위한 정규화 키워드.
+const COMPANY_ALIASES: Record<string, string[]> = {
+  nvidia: ["nvidia", "nvdia", "nvida", "nvda", "엔비디아"],
+  amd: ["amd", "에이엠디"],
+  microsoft: ["microsoft", "msft", " ms ", "마이크로소프트"],
+  dell: ["dell", "델"],
+  samsung: ["samsung", "삼성"],
+  micron: ["micron", "마이크론"],
+};
+
+// 리더 코멘트에서 "<회사> ... <숫자>[k]" 형태의 데이터 수정 지시를 추출한다.
+// 예: "nvidia request changed 200k" → { company: "nvidia", value: 200 }
+interface Directive { company: string; value: number; }
+function parseDirectives(feedback: string): Directive[] {
+  const lc = ` ${feedback.toLowerCase()} `;
+  const out: Directive[] = [];
+  for (const [canon, names] of Object.entries(COMPANY_ALIASES)) {
+    const hit = names.find((n) => lc.includes(n));
+    if (!hit) continue;
+    const idx = lc.indexOf(hit);
+    // 회사명 뒤에서 가장 가까운 숫자(+선택적 k)를 찾는다.
+    const after = feedback.slice(Math.max(0, idx - 1));
+    const m = after.match(/(\d[\d,]*)\s*([kK])?/);
+    if (m) out.push({ company: canon, value: Number(m[1].replace(/,/g, "")) });
+  }
+  return out;
+}
+
+// 표의 한 행이 특정 회사 행인지(첫 열 기준).
+function rowMatchesCompany(row: string[], canon: string): boolean {
+  const first = (row[0] || "").toLowerCase();
+  return (COMPANY_ALIASES[canon] || [canon]).some((n) => first.includes(n.trim())) || first.includes(canon);
+}
+
+export function regenerateDemo(
+  base: ReportContent,
+  opts: { feedback?: string; requestDataUpdate?: boolean },
+): ReportContent {
+  const seed = Math.floor(Date.now() / 1000) % 997;
+  const stamp = nowKstStamp();
+  const directives = opts.feedback ? parseDirectives(opts.feedback) : [];
+  const applied: string[] = [];
+
+  // 1) 데이터 갱신.
+  //    - 지시(directive)가 있으면: 해당 회사 행의 수량 셀을 정확히 그 값으로 바꾸고, 다른 셀은
+  //      흔들지 않는다(리더가 요청한 변화만 보이도록).
+  //    - 지시가 없으면: SIM(내부 추정) 수치를 새 크롤링처럼 소폭 재산출.
+  const emailBlocks: EmailBlock[] = base.emailBlocks.map((b) => {
+    if (b.type === "chart") {
+      if (directives.length > 0) return b;
+      return {
+        ...b,
+        bars: b.bars.map((bar) => (bar.tag === "SIM" ? { ...bar, value: jitter(bar.value, seed) } : bar)),
+      };
+    }
+    if (b.type === "table" && TABLE_IS_SIM(b.title)) {
+      if (directives.length > 0) {
+        const rows = b.rows.map((r) => {
+          const d = directives.find((dir) => rowMatchesCompany(r, dir.company));
+          if (!d) return r;
+          const cellIdx = r.findIndex(isNumericCell);
+          if (cellIdx === -1) return r;
+          const next = [...r];
+          next[cellIdx] = d.value.toLocaleString("en-US");
+          applied.push(`${r[0]} ${d.value.toLocaleString("en-US")}`);
+          return next;
+        });
+        return { ...b, rows };
+      }
+      return { ...b, rows: b.rows.map((r) => r.map((cell) => jitterNumericString(cell, seed))) };
+    }
+    return b;
+  });
+
+  // 2) 도입부 재작성 — 리더 코멘트/데이터 갱신 요청을 리더의 목소리로 반영(배너 X).
+  const openings: string[] = [];
+  if (applied.length > 0) {
+    openings.push(`안녕하세요. 말씀 주신 대로 할당 수치를 수정했습니다 (${applied.join(", ")}).`);
+  } else if (opts.feedback) {
+    openings.push(`안녕하세요. 말씀 주신 “${opts.feedback}” 의견을 반영해 다시 정리했습니다.`);
+  } else if (opts.requestDataUpdate) {
+    openings.push(`안녕하세요. 최신 데이터로 다시 크롤링해 수치를 갱신했습니다.`);
+  } else {
+    openings.push(`안녕하세요. 데이터를 다시 갱신했습니다.`);
+  }
+  openings.push(`(데이터 갱신: ${stamp}${applied.length > 0 ? "" : " · 내부 추정치는 이번 갱신 기준으로 재산출"})`);
+  // 첫 블록이 인사 텍스트면 교체, 아니면 앞에 삽입.
+  if (emailBlocks[0]?.type === "text") {
+    emailBlocks[0] = { type: "text", text: openings.join(" ") };
+  } else {
+    emailBlocks.unshift({ type: "text", text: openings.join(" ") });
+  }
+
+  // 3) 스캔 패널 상단에 갱신 로그 한 줄.
+  const refreshUpdate: TaskUpdate = {
+    category: "데이터 갱신",
+    tag: "SIM",
+    headline: applied.length > 0 ? "리더 지시로 할당 수치 수정" : opts.feedback ? "리더 코멘트 반영해 재생성" : "데이터 갱신 후 재생성",
+    detail: applied.length > 0
+      ? `수정: ${applied.join(", ")} · 갱신 ${stamp}`
+      : `${opts.feedback ? `요청: ${opts.feedback} · ` : ""}내부 추정치 재산출, 갱신 ${stamp}`,
+    source: "",
+  };
+
+  return { taskUpdates: [refreshUpdate, ...base.taskUpdates], emailBlocks };
+}
 
 export const DEMO_CONTENT: Record<TeamId, ReportContent> = {
   sales: {
