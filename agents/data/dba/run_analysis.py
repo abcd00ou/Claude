@@ -9,15 +9,15 @@ Run:  python3 run_analysis.py
 """
 from __future__ import annotations
 import json
-import sqlite3
 from pathlib import Path
 import numpy as np
 import pandas as pd
 
 import leadlag as ll
+import panel as P                       # single data-access layer (panel_long)
 
 HERE = Path(__file__).parent
-DB = HERE / "financials.db"
+DB = P.DB_DEFAULT
 
 # --- Company panel: representative, well-covered nodes across the AI supply chain ---
 # stage = qualitative upstream(low)->downstream(high) prior for the physical build-out.
@@ -41,22 +41,16 @@ PANEL = {
 }
 
 
-def load_panel(con):
-    q = """
-      SELECT ticker, calendar_quarter,
-             revenue_usd_m, gross_profit_usd_m, inventory_usd_m,
-             receivables_usd_m, capex_usd_m
-      FROM quarterly_financials
-      WHERE ticker IN (%s) AND calendar_quarter IS NOT NULL
-    """ % ",".join("?" * len(PANEL))
-    df = pd.read_sql_query(q, con, params=list(PANEL))
-    # order quarters chronologically
-    def qkey(s):
-        y, qq = s.split("-Q")
-        return int(y) * 4 + int(qq)
-    df["qkey"] = df["calendar_quarter"].map(qkey)
+def load_panel(db):
+    """Wide-per-ticker frame [ticker, calendar_quarter, <items>] from panel_long."""
+    items = ["revenue", "gross_profit", "inventory", "receivables", "capex"]
+    long = P.load_long(db, tickers=list(PANEL), items=items)
+    df = (long.pivot_table(index=["ticker", "quarter"], columns="item",
+                           values="value", aggfunc="last")
+              .reset_index().rename(columns={"quarter": "calendar_quarter"}))
+    df["qkey"] = df["calendar_quarter"].map(P.qkey)
     df = df.sort_values(["ticker", "qkey"])
-    df["cogs"] = df["revenue_usd_m"] - df["gross_profit_usd_m"]
+    df["cogs"] = df["revenue"] - df["gross_profit"]
     return df
 
 
@@ -66,14 +60,12 @@ def series_for(df, ticker, col):
 
 
 def main():
-    con = sqlite3.connect(DB)
-    df = load_panel(con)
-    con.close()
+    df = load_panel(DB)
 
     # ---- revenue-YoY signal per company (the lead-lag backbone) ----
     signals, sectors, stage = {}, {}, {}
     for tk, (disp, sec, st) in PANEL.items():
-        rev = series_for(df, tk, "revenue_usd_m")
+        rev = series_for(df, tk, "revenue")
         if rev.dropna().shape[0] < 12:
             continue
         signals[disp] = ll.zscore(ll.yoy(rev))
@@ -91,7 +83,7 @@ def main():
     # ---- Output ②: sector phase order (aggregate revenue by sector, then YoY) ----
     sec_rev = {}
     for tk, (disp, sec, st) in PANEL.items():
-        rev = series_for(df, tk, "revenue_usd_m")
+        rev = series_for(df, tk, "revenue")
         if disp not in signals:
             continue
         sec_rev.setdefault(sec, []).append(rev)
@@ -104,11 +96,9 @@ def main():
     # ---- Output ④: working-capital congestion per company ----
     congestion, cong_details = {}, {}
     for tk, (disp, sec, st) in PANEL.items():
-        panel = df[df.ticker == tk].set_index("calendar_quarter")[
-            ["revenue_usd_m", "cogs", "inventory_usd_m", "receivables_usd_m"]
-        ].rename(columns={"revenue_usd_m": "revenue", "inventory_usd_m": "inventory",
-                          "receivables_usd_m": "receivables"})
-        summ, detail = ll.working_capital_congestion(panel, disp)
+        wc = df[df.ticker == tk].set_index("calendar_quarter")[
+            ["revenue", "cogs", "inventory", "receivables"]]
+        summ, detail = ll.working_capital_congestion(wc, disp)
         congestion[disp] = summ
         cong_details[disp] = detail
 

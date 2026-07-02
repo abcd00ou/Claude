@@ -1,7 +1,7 @@
 # Financials DB Schema — AI Supply Chain Companies
 
 **File:** `agents/data/dba/financials.db`  
-**Last Updated:** 2026-06-11  
+**Last Updated:** 2026-07-02  
 **Governed by:** DBA Agent (`agents/data/dba/README.md`)
 
 ---
@@ -204,10 +204,42 @@ Verbatim key quotes from earnings calls. Source = official IR transcript (Tier A
 
 ---
 
+## `panel_long` — canonical long-format analysis table
+
+Derived, analysis-ready table rebuilt from `quarterly_financials` + `stock_prices` +
+`companies` by `build_panel_long.py`. **All lead-lag / analysis code reads only from
+this table, via the `panel.py` preprocessing module** (no analysis script queries the
+source tables directly). Matches the Scope Document's "company × item × quarter" panel.
+
+| Column | Type | Description |
+|---|---|---|
+| `ticker` | TEXT | Company ticker |
+| `companyname` | TEXT | Company display name |
+| `date` | TEXT | **Normalized calendar quarter-end** (Q1→`YYYY-03-31` … Q4→`YYYY-12-31`), so every company shares one quarterly grid |
+| `item` | TEXT | Metric — clean name (see below) |
+| `value` | REAL | Metric value |
+| `section` | TEXT | Segment (from `companies.segments`) |
+
+**Items** (18): `revenue`, `revenue_ai_dc`, `revenue_yoy`, `gross_profit`, `gross_margin`,
+`operating_income`, `net_income`, `eps`, `cash`, `capex`, `fcf`, `operating_cash_flow`,
+`inventory`, `receivables`, `total_assets`, `total_debt`, `stockholders_equity`,
+`stock_price`. Derived on the fly by `panel.py` (not stored): `cogs = revenue − gross_profit`.
+
+Notes: `stock_price` = as-of close at each quarter's real `period_end_date`, stored under
+the normalized quarter-end date. Duplicate `(ticker, calendar_quarter)` source rows
+(fiscal/calendar restatements — MSFT/MU/NVDA/PSTG 2026-Q1) are coalesced (last non-null
+per field). Rebuild: `python3 build_panel_long.py`.
+
+**Preprocessing API (`panel.py`):** `load_long()`, `get_series(src, ticker, item)`,
+`to_wide(item)`, `build_dataset(tickers, items)`, `companies()`.
+
+---
+
 ## Schema Changelog
 
 | Date | Change |
 |---|---|
+| 2026-07-02 | Added derived `panel_long` long-format table (ticker, companyname, date, item, value, section) + `build_panel_long.py` builder and `panel.py` preprocessing layer; all analysis code (leadlag/run_analysis/experiment/pair) refactored to read only from panel_long |
 | 2026-06-16 | History baseline 2016: stock prices 2016+ (323K rows); added SEC EDGAR XBRL puller (edgar_financials.py) for deep Tier-A annual+quarterly financials FY2016+ (72 US filers, 608 annual + 1929 quarterly); annual_financials now FY2016-2027 |
 | 2026-06-11 | Expanded both financial tables with balance-sheet + cash-flow columns (inventory, receivables, total assets, total debt, equity, capex, FCF, operating cash flow) — pulled from Yahoo income_stmt + balance_sheet + cashflow, merged by period |
 | 2026-06-11 | Added Historical Coverage Requirement (baseline 2020); added `annual_financials` table (FY2021+); `stock_prices` now full daily history from 2020-01-01 (was 90-day window) |

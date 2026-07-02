@@ -16,62 +16,31 @@ and does NOT force matplotlib's Agg backend, so it renders inline in Jupyter.
 """
 from __future__ import annotations
 from dataclasses import dataclass, field
-from pathlib import Path
-import sqlite3
 
 import numpy as np
 import pandas as pd
 
 import leadlag as ll
+import panel as P                       # <-- single data-access layer (panel_long)
 
-DB_DEFAULT = Path(__file__).parent / "financials.db"
+DB_DEFAULT = P.DB_DEFAULT
 
-# Variables that exist in quarterly_financials and are meaningful to lead-lag.
-AVAILABLE_VARS = {
-    "revenue_usd_m": "Revenue",
-    "revenue_yoy_pct": "Revenue YoY %",
-    "gross_profit_usd_m": "Gross profit",
-    "gross_margin_pct": "Gross margin %",
-    "operating_income_usd_m": "Operating income",
-    "net_income_usd_m": "Net income",
-    "capex_usd_m": "Capex",
-    "fcf_usd_m": "Free cash flow",
-    "operating_cash_flow_usd_m": "Operating cash flow",
-    "inventory_usd_m": "Inventory",
-    "receivables_usd_m": "Receivables",
-    "cash_usd_m": "Cash",
-    "total_debt_usd_m": "Total debt",
+# Human labels for the items in the long table (item name = what you pass in).
+_LABELS = {
+    "revenue": "Revenue", "revenue_ai_dc": "Revenue (AI/DC)", "revenue_yoy": "Revenue YoY %",
+    "gross_profit": "Gross profit", "gross_margin": "Gross margin %", "cogs": "COGS",
+    "operating_income": "Operating income", "net_income": "Net income", "eps": "EPS",
+    "capex": "Capex", "fcf": "Free cash flow", "operating_cash_flow": "Operating cash flow",
+    "inventory": "Inventory", "receivables": "Receivables", "cash": "Cash",
+    "total_assets": "Total assets", "total_debt": "Total debt",
+    "stockholders_equity": "Stockholders' equity", "stock_price": "Stock price",
 }
+AVAILABLE_VARS = {it: _LABELS.get(it, it) for it in P.AVAILABLE_ITEMS}
 
 
 # --------------------------------------------------------------------------- #
-def qkey(s: str) -> int:
-    y, q = s.split("-Q")
-    return int(y) * 4 + int(q)
-
-
 def list_companies(db=DB_DEFAULT) -> pd.DataFrame:
-    con = sqlite3.connect(db)
-    df = pd.read_sql_query(
-        "SELECT c.ticker, c.name, c.segments, COUNT(q.id) AS quarters "
-        "FROM companies c LEFT JOIN quarterly_financials q ON q.ticker=c.ticker "
-        "GROUP BY c.ticker HAVING quarters>0 ORDER BY c.segments, quarters DESC", con)
-    con.close()
-    return df
-
-
-def _company_name(con, ticker):
-    r = con.execute("SELECT name FROM companies WHERE ticker=?", [ticker]).fetchone()
-    return r[0] if r else ticker
-
-
-def _load(con, ticker, var):
-    df = pd.read_sql_query(
-        f"SELECT calendar_quarter cq, {var} v FROM quarterly_financials "
-        f"WHERE ticker=? AND calendar_quarter IS NOT NULL AND {var} IS NOT NULL",
-        con, params=[ticker])
-    df = df.drop_duplicates("cq").sort_values("cq", key=lambda s: s.map(qkey))
-    return df.set_index("cq")["v"]
+    return P.companies(db).rename(columns={"section": "segments", "revenue_quarters": "quarters"})
 
 
 def _corr_p(r, n):
@@ -196,11 +165,12 @@ def _thin(ax_):
 
 
 # --------------------------------------------------------------------------- #
-def leadlag_experiment(x_company, x_var="revenue_usd_m",
+def leadlag_experiment(x_company, x_var="revenue",
                        y_company=None, y_var=None,
                        max_lag=4, transform="yoy_z", db=DB_DEFAULT) -> Result:
     """
     X = candidate leader (x_company, x_var); Y = candidate follower (y_company, y_var).
+    Reads exclusively from the long table `panel_long` via panel.py.
     transform: 'yoy_z' (YoY growth, z-scored — default, kills seasonality/units)
                'level_z' (z-scored levels), 'yoy' (raw YoY, no z-score).
     """
@@ -210,10 +180,9 @@ def leadlag_experiment(x_company, x_var="revenue_usd_m",
         if v not in AVAILABLE_VARS:
             raise ValueError(f"unknown variable {v!r}. options: {list(AVAILABLE_VARS)}")
 
-    con = sqlite3.connect(db)
-    x_name, y_name = _company_name(con, x_company), _company_name(con, y_company)
-    raw_x, raw_y = _load(con, x_company, x_var), _load(con, y_company, y_var)
-    con.close()
+    long = P.load_long(db, tickers=sorted({x_company, y_company}))
+    x_name, y_name = P.company_name(long, x_company), P.company_name(long, y_company)
+    raw_x, raw_y = P.get_series(long, x_company, x_var), P.get_series(long, y_company, y_var)
     if raw_x.empty or raw_y.empty:
         raise ValueError("no data for one of the (company, variable) pairs.")
 

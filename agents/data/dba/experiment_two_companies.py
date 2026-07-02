@@ -17,7 +17,6 @@ Outputs (written next to this file):
 """
 from __future__ import annotations
 import argparse
-import sqlite3
 from pathlib import Path
 
 import numpy as np
@@ -27,34 +26,15 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 import leadlag as ll
+import panel as P                       # single data-access layer (panel_long)
 
 HERE = Path(__file__).parent
-DB = HERE / "financials.db"
+DB = P.DB_DEFAULT
 
 
 # --------------------------------------------------------------------------- #
 # helpers
 # --------------------------------------------------------------------------- #
-def qkey(s: str) -> int:
-    y, q = s.split("-Q")
-    return int(y) * 4 + int(q)
-
-
-def load_series(con, ticker, col="revenue_usd_m"):
-    df = pd.read_sql_query(
-        "SELECT calendar_quarter cq, %s v FROM quarterly_financials "
-        "WHERE ticker=? AND calendar_quarter IS NOT NULL AND %s IS NOT NULL" % (col, col),
-        con, params=[ticker],
-    )
-    df = df.drop_duplicates("cq").sort_values("cq", key=lambda s: s.map(qkey))
-    return df.set_index("cq")["v"]
-
-
-def company_name(con, ticker):
-    r = con.execute("SELECT name FROM companies WHERE ticker=?", [ticker]).fetchone()
-    return r[0] if r else ticker
-
-
 def corr_pvalue(r, n):
     """Two-sided p-value for a Pearson r (t-test; t^2 ~ F(1, n-2))."""
     if n < 4 or abs(r) >= 1:
@@ -66,11 +46,11 @@ def corr_pvalue(r, n):
 # --------------------------------------------------------------------------- #
 # experiment
 # --------------------------------------------------------------------------- #
-def run(tickA, tickB, max_lag=4, signal_col="revenue_usd_m"):
-    con = sqlite3.connect(DB)
-    nameA, nameB = company_name(con, tickA), company_name(con, tickB)
-    rawA, rawB = load_series(con, tickA, signal_col), load_series(con, tickB, signal_col)
-    con.close()
+def run(tickA, tickB, max_lag=4, signal_col="revenue"):
+    long = P.load_long(DB, tickers=sorted({tickA, tickB}))
+    nameA, nameB = P.company_name(long, tickA), P.company_name(long, tickB)
+    rawA = P.get_series(long, tickA, signal_col)
+    rawB = P.get_series(long, tickB, signal_col)
 
     # signal = YoY growth, z-scored (seasonality + unit neutral)
     sigA, sigB = ll.zscore(ll.yoy(rawA)), ll.zscore(ll.yoy(rawB))
@@ -236,7 +216,8 @@ def main():
     ap.add_argument("tickerA", nargs="?", default="NVDA")
     ap.add_argument("tickerB", nargs="?", default="MU")
     ap.add_argument("--lag", type=int, default=4, help="max lag in quarters")
-    ap.add_argument("--signal", default="revenue_usd_m")
+    ap.add_argument("--signal", default="revenue",
+                    help="panel_long item: revenue, stock_price, capex, inventory, ...")
     args = ap.parse_args()
 
     res = run(args.tickerA, args.tickerB, max_lag=args.lag, signal_col=args.signal)

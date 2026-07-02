@@ -1,10 +1,10 @@
 # Lead-Lag Experiment — Applied Materials (AMAT) vs Lam Research (LRCX)
 
-**Signal:** revenue_usd_m (YoY, z-scored)  |  **Date:** 2026-07-02
+**Signal:** revenue (YoY, z-scored)  |  **Date:** 2026-07-02
 
 | statistic | value |
 |---|---|
-| signal | revenue_usd_m |
+| signal | revenue |
 | quarters available | 33 (AMAT) / 34 (LRCX) |
 | contemporaneous corr (k=0) | 0.684 |
 | best lag k* | 1  (Applied Materials leads Lam Research by 1 quarter(s)) |

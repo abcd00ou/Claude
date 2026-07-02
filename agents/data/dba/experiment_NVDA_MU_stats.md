@@ -1,10 +1,10 @@
 # Lead-Lag Experiment — NVIDIA (NVDA) vs Micron Technology (MU)
 
-**Signal:** revenue_usd_m (YoY, z-scored)  |  **Date:** 2026-07-02
+**Signal:** revenue (YoY, z-scored)  |  **Date:** 2026-07-02
 
 | statistic | value |
 |---|---|
-| signal | revenue_usd_m |
+| signal | revenue |
 | quarters available | 32 (NVDA) / 32 (MU) |
 | contemporaneous corr (k=0) | 0.669 |
 | best lag k* | 1  (NVIDIA leads Micron Technology by 1 quarter(s)) |
