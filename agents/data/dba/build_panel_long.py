@@ -50,6 +50,7 @@ ITEM_MAP = {
     "operating_cash_flow_usd_m": "operating_cash_flow",
     "inventory_usd_m": "inventory",
     "receivables_usd_m": "receivables",
+    "accounts_payable_usd_m": "accounts_payable",
     "total_assets_usd_m": "total_assets",
     "total_debt_usd_m": "total_debt",
     "stockholders_equity_usd_m": "stockholders_equity",

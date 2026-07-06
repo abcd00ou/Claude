@@ -37,13 +37,16 @@ CONCEPTS = {
     "cash": ["CashAndCashEquivalentsAtCarryingValue"],
     "inventory": ["InventoryNet"],
     "receivables": ["AccountsReceivableNetCurrent", "ReceivablesNetCurrent"],
+    "payables": ["AccountsPayableCurrent", "AccountsPayableTradeCurrent",
+                 "AccountsPayableAndAccruedLiabilitiesCurrent"],
     "total_assets": ["Assets"],
     "equity": ["StockholdersEquity",
                "StockholdersEquityIncludingPortionAttributableToNoncontrollingInterest"],
     "lt_debt": ["LongTermDebtNoncurrent", "LongTermDebt"],
     "st_debt": ["LongTermDebtCurrent", "DebtCurrent"],
 }
-INSTANT = {"cash", "inventory", "receivables", "total_assets", "equity", "lt_debt", "st_debt"}
+INSTANT = {"cash", "inventory", "receivables", "payables",
+           "total_assets", "equity", "lt_debt", "st_debt"}
 
 
 def _get(url, tries=3):
@@ -141,7 +144,7 @@ def pull(ticker, since=2016):
             op=_M(g("operating_income")), ni=_M(g("net_income")), eps=g("eps_diluted"),
             capex=_M(abs(capex)) if capex is not None else None,
             fcf=_M(fcf), ocf=_M(ocf), cash=_M(g("cash")), inv=_M(g("inventory")),
-            recv=_M(g("receivables")), ta=_M(g("total_assets")),
+            recv=_M(g("receivables")), payables=_M(g("payables")), ta=_M(g("total_assets")),
             debt=_M(debt), eq=_M(g("equity")), period_end=end,
         )
 

@@ -26,8 +26,8 @@ DB_DEFAULT = Path(__file__).parent / "financials.db"
 STORED_ITEMS = [
     "revenue", "revenue_ai_dc", "revenue_yoy", "gross_profit", "gross_margin",
     "operating_income", "net_income", "eps", "cash", "capex", "fcf",
-    "operating_cash_flow", "inventory", "receivables", "total_assets",
-    "total_debt", "stockholders_equity", "stock_price",
+    "operating_cash_flow", "inventory", "receivables", "accounts_payable",
+    "total_assets", "total_debt", "stockholders_equity", "stock_price",
 ]
 # items computed on the fly from stored ones
 DERIVED_ITEMS = {"cogs": ("revenue", "gross_profit")}  # cogs = revenue - gross_profit
