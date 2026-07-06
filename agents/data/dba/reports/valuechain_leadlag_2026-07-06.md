@@ -8,9 +8,9 @@
 
 - 분석 대상 엣지: **23개** × 재무관점 **3종** = 69 케이스
 
-- 데이터 부족(foundry·ODM 등)으로 분석 불가: **30 케이스**
+- 데이터 부족(foundry·ODM 등)으로 분석 불가: **28 케이스**
 
-- '고객 선행' 가설이 통계적으로 지지된 케이스(유의, lead>0): **9건**
+- '고객 선행' 가설이 통계적으로 지지된 케이스(유의, lead>0): **5건**
 
 
 ## 1. 섹션 구성 (집계에 쓰인 회사)
@@ -33,22 +33,22 @@
 
 | 고객(X) | 공급사(Y) | best lag(분기) | 리더 | corr | p | Granger C→S | β | 판정 |
 |---|---|---|---|---|---|---|---|---|
-| Hyperscaler | AI Chip | **+2** | Hyperscaler | 0.392 | 0.0354 | 0.3266 | 0.332 | 고객 선행 (가설지지) |
-| Server OEM | AI Chip | **+1** | Server OEM | 0.513 | 0.0038 | 0.0019 | 0.519 | 고객 선행 (가설지지) |
-| Server OEM | CPU | +0 | — | 0.335 | 0.0819 | 0.9289 | 0.324 | 동시(리드 없음) |
-| Hyperscaler | CPU | +1 | Hyperscaler | 0.375 | 0.0538 | 0.2113 | 1.29 | 고객 선행(약함) |
-| AI Chip | DRAM | **+1** | AI Chip | 0.63 | 0.0004 | 0.3503 | 0.64 | 고객 선행 (가설지지) |
-| Hyperscaler | DRAM | **+1** | Hyperscaler | 0.478 | 0.0117 | 0.4652 | 1.628 | 고객 선행 (가설지지) |
-| Hyperscaler | NAND | +3 | Hyperscaler | 0.224 | 0.2606 | 0.8126 | 0.785 | 고객 선행(약함) |
+| Hyperscaler | AI Chip | **+1** | Hyperscaler | 0.437 | 0.0158 | 0.2649 | 0.383 | 고객 선행 (가설지지) |
+| Server OEM | AI Chip | **+2** | Server OEM | 0.596 | 0.0007 | 0.0007 | 0.602 | 고객 선행 (가설지지) |
+| Server OEM | CPU | +0 | — | 0.337 | 0.0791 | 0.9598 | 0.327 | 동시(리드 없음) |
+| Hyperscaler | CPU | **-2** | CPU | 0.654 | 0.0003 | 0.8499 | 0.213 | 공급사 선행 (역방향) |
+| AI Chip | DRAM | **+0** | — | 0.633 | 0.0002 | 0.2313 | 0.653 | 동시(리드 없음) |
+| Hyperscaler | DRAM | +1 | Hyperscaler | 0.217 | 0.2669 | 0.6528 | 0.055 | 고객 선행(약함) |
+| Hyperscaler | NAND | +2 | Hyperscaler | 0.328 | 0.0888 | 0.3561 | 0.976 | 고객 선행(약함) |
 | Server OEM | NAND | +4 | Server OEM | 0.06 | 0.7707 | 0.6994 | 0.091 | 고객 선행(약함) |
 | AI Chip | NAND | — | — | — | — | — | — | 양(+)의 상관 피크 없음 |
 | Foundry | HW Equipment | — | — | — | — | — | — | Foundry 데이터 부족(<12분기) |
-| DRAM | HW Equipment | -3 | HW Equipment | 0.179 | 0.392 | 0.3222 | 0.169 | 공급사 선행(약함) |
+| DRAM | HW Equipment | -3 | HW Equipment | 0.297 | 0.1401 | 0.3718 | 0.283 | 공급사 선행(약함) |
 | CPU | HW Equipment | +4 | CPU | 0.267 | 0.1875 | 0.7695 | 0.005 | 고객 선행(약함) |
-| AI Chip | OSAT/Packaging | -1 | OSAT/Packaging | 0.224 | 0.2607 | 0.6242 | 0.219 | 공급사 선행(약함) |
-| CPU | OSAT/Packaging | +3 | CPU | 0.358 | 0.0793 | 0.4208 | 0.337 | 고객 선행(약함) |
-| Hyperscaler | Server Networking | **+2** | Hyperscaler | 0.757 | 0.0 | 0.0064 | 0.538 | 고객 선행 (가설지지) |
-| Server OEM | Server Networking | +1 | Server OEM | 0.206 | 0.2745 | 0.1779 | 0.197 | 고객 선행(약함) |
+| AI Chip | OSAT/Packaging | -1 | OSAT/Packaging | 0.182 | 0.3625 | 0.6242 | 0.179 | 공급사 선행(약함) |
+| CPU | OSAT/Packaging | +3 | CPU | 0.358 | 0.0793 | 0.4208 | 0.336 | 고객 선행(약함) |
+| Hyperscaler | Server Networking | **+1** | Hyperscaler | 0.801 | 0.0 | 0.0055 | 0.487 | 고객 선행 (가설지지) |
+| Server OEM | Server Networking | -1 | Server Networking | 0.206 | 0.2751 | 0.1845 | 0.334 | 공급사 선행(약함) |
 | AI Chip | Foundry | — | — | — | — | — | — | Foundry 데이터 부족(<12분기) |
 | CPU | Foundry | — | — | — | — | — | — | Foundry 데이터 부족(<12분기) |
 | Server Networking | Foundry | — | — | — | — | — | — | Foundry 데이터 부족(<12분기) |
@@ -61,22 +61,22 @@
 
 | 고객(X) | 공급사(Y) | best lag(분기) | 리더 | corr | p | Granger C→S | β | 판정 |
 |---|---|---|---|---|---|---|---|---|
-| Hyperscaler | AI Chip | **+0** | — | 0.709 | 0.0 | 0.0755 | 0.681 | 동시(리드 없음) |
-| Server OEM | AI Chip | +2 | Server OEM | 0.071 | 0.7141 | 0.6227 | 0.07 | 고객 선행(약함) |
-| Server OEM | CPU | +4 | Server OEM | 0.29 | 0.1695 | 0.5595 | 0.278 | 고객 선행(약함) |
-| Hyperscaler | CPU | +4 | Hyperscaler | 0.191 | 0.3702 | 0.4722 | 1.405 | 고객 선행(약함) |
-| AI Chip | DRAM | **+1** | AI Chip | 0.456 | 0.0169 | 0.7892 | 0.453 | 고객 선행 (가설지지) |
-| Hyperscaler | DRAM | **+1** | Hyperscaler | 0.721 | 0.0 | 0.0409 | 0.701 | 고객 선행 (가설지지) |
+| Hyperscaler | AI Chip | **+0** | — | 0.659 | 0.0001 | 0.9291 | 0.636 | 동시(리드 없음) |
+| Server OEM | AI Chip | +2 | Server OEM | 0.123 | 0.5242 | 0.4577 | 0.121 | 고객 선행(약함) |
+| Server OEM | CPU | +4 | Server OEM | 0.299 | 0.1562 | 0.6288 | 0.286 | 고객 선행(약함) |
+| Hyperscaler | CPU | +4 | Hyperscaler | 0.2 | 0.349 | 0.4929 | 1.465 | 고객 선행(약함) |
+| AI Chip | DRAM | **+0** | — | 0.501 | 0.0056 | 0.4029 | 0.508 | 동시(리드 없음) |
+| Hyperscaler | DRAM | **+0** | — | 0.653 | 0.0002 | 0.0218 | 0.651 | 동시(리드 없음) |
 | Hyperscaler | NAND | +4 | Hyperscaler | 0.227 | 0.2645 | 0.8935 | 1.759 | 고객 선행(약함) |
 | Server OEM | NAND | **+4** | Server OEM | 0.439 | 0.0248 | 0.7764 | 0.427 | 고객 선행 (가설지지) |
-| AI Chip | NAND | +1 | AI Chip | 0.018 | 0.925 | 0.8926 | 0.019 | 고객 선행(약함) |
+| AI Chip | NAND | +2 | AI Chip | 0.014 | 0.9435 | 0.9013 | 0.014 | 고객 선행(약함) |
 | Foundry | HW Equipment | — | — | — | — | — | — | Foundry 데이터 부족(<12분기) |
-| DRAM | HW Equipment | -3 | HW Equipment | 0.0 | 0.9985 | 0.0744 | 0.0 | 공급사 선행(약함) |
-| CPU | HW Equipment | +3 | CPU | 0.262 | 0.1873 | 0.854 | 0.007 | 고객 선행(약함) |
-| AI Chip | OSAT/Packaging | -2 | OSAT/Packaging | 0.305 | 0.1301 | 0.7598 | 0.308 | 공급사 선행(약함) |
-| CPU | OSAT/Packaging | +0 | — | 0.371 | 0.057 | 0.2495 | 0.373 | 동시(리드 없음) |
-| Hyperscaler | Server Networking | **+0** | — | 0.435 | 0.0184 | 0.0903 | 0.21 | 동시(리드 없음) |
-| Server OEM | Server Networking | +3 | Server OEM | 0.301 | 0.12 | 0.1233 | 0.299 | 고객 선행(약함) |
+| DRAM | HW Equipment | -3 | HW Equipment | 0.178 | 0.3831 | 0.0701 | 0.156 | 공급사 선행(약함) |
+| CPU | HW Equipment | +3 | CPU | 0.262 | 0.1873 | 0.9286 | 0.007 | 고객 선행(약함) |
+| AI Chip | OSAT/Packaging | -2 | OSAT/Packaging | 0.345 | 0.0843 | 0.7598 | 0.348 | 공급사 선행(약함) |
+| CPU | OSAT/Packaging | +0 | — | 0.371 | 0.0516 | 0.2465 | 0.371 | 동시(리드 없음) |
+| Hyperscaler | Server Networking | **+0** | — | 0.434 | 0.0186 | 0.0598 | 0.21 | 동시(리드 없음) |
+| Server OEM | Server Networking | +3 | Server OEM | 0.298 | 0.1241 | 0.1222 | 0.296 | 고객 선행(약함) |
 | AI Chip | Foundry | — | — | — | — | — | — | Foundry 데이터 부족(<12분기) |
 | CPU | Foundry | — | — | — | — | — | — | Foundry 데이터 부족(<12분기) |
 | Server Networking | Foundry | — | — | — | — | — | — | Foundry 데이터 부족(<12분기) |
@@ -89,26 +89,26 @@
 
 | 고객(X) | 공급사(Y) | best lag(분기) | 리더 | corr | p | Granger C→S | β | 판정 |
 |---|---|---|---|---|---|---|---|---|
-| Hyperscaler | AI Chip | **+0** | — | 0.667 | 0.0001 | 0.4135 | 0.641 | 동시(리드 없음) |
-| Server OEM | AI Chip | +0 | — | 0.577 | 0.1342 | nan | 0.811 | 동시(리드 없음) |
+| Hyperscaler | AI Chip | **+0** | — | 0.636 | 0.0002 | 0.6947 | 0.614 | 동시(리드 없음) |
+| Server OEM | AI Chip | +0 | — | 0.485 | 0.2227 | nan | 0.69 | 동시(리드 없음) |
 | Server OEM | CPU | — | — | — | — | — | — | 양(+)의 상관 피크 없음 |
-| Hyperscaler | CPU | -1 | CPU | 0.207 | 0.2996 | 0.6457 | 0.205 | 공급사 선행(약함) |
+| Hyperscaler | CPU | -1 | CPU | 0.233 | 0.243 | 0.9901 | 0.23 | 공급사 선행(약함) |
 | AI Chip | DRAM | — | — | — | — | — | — | 양(+)의 상관 피크 없음 |
-| Hyperscaler | DRAM | **+1** | Hyperscaler | 0.782 | 0.0 | 0.3206 | 0.809 | 고객 선행 (가설지지) |
-| Hyperscaler | NAND | +1 | Hyperscaler | 0.363 | 0.0526 | 0.2709 | 0.387 | 고객 선행(약함) |
+| Hyperscaler | DRAM | **+0** | — | 0.85 | 0.0 | 0.0698 | 0.862 | 동시(리드 없음) |
+| Hyperscaler | NAND | **+1** | Hyperscaler | 0.393 | 0.0352 | 0.2292 | 0.417 | 고객 선행 (가설지지) |
 | Server OEM | NAND | — | — | — | — | — | — | 양(+)의 상관 피크 없음 |
-| AI Chip | NAND | -4 | NAND | 0.215 | 0.6099 | nan | 0.236 | 공급사 선행(약함) |
+| AI Chip | NAND | -4 | NAND | 0.191 | 0.6502 | nan | 0.211 | 공급사 선행(약함) |
 | Foundry | HW Equipment | — | — | — | — | — | — | Foundry 데이터 부족(<12분기) |
 | DRAM | HW Equipment | -3 | HW Equipment | 0.312 | 0.4526 | nan | 20.386 | 공급사 선행(약함) |
-| CPU | HW Equipment | — | — | — | — | — | — | CPU 데이터 부족(<12분기) |
-| AI Chip | OSAT/Packaging | **-1** | OSAT/Packaging | 0.709 | 0.0488 | nan | 0.813 | 공급사 선행 (역방향) |
-| CPU | OSAT/Packaging | — | — | — | — | — | — | CPU 데이터 부족(<12분기) |
-| Hyperscaler | Server Networking | **+0** | — | 0.637 | 0.0002 | 0.0581 | 0.308 | 동시(리드 없음) |
-| Server OEM | Server Networking | **+0** | — | 0.911 | 0.0016 | nan | 0.419 | 동시(리드 없음) |
+| CPU | HW Equipment | +2 | CPU | 0.482 | 0.2263 | nan | 0.01 | 고객 선행(약함) |
+| AI Chip | OSAT/Packaging | **-1** | OSAT/Packaging | 0.719 | 0.0442 | nan | 0.824 | 공급사 선행 (역방향) |
+| CPU | OSAT/Packaging | -4 | OSAT/Packaging | 0.297 | 0.4749 | nan | 0.235 | 공급사 선행(약함) |
+| Hyperscaler | Server Networking | **+0** | — | 0.674 | 0.0001 | 0.0453 | 0.326 | 동시(리드 없음) |
+| Server OEM | Server Networking | **+0** | — | 0.908 | 0.0018 | nan | 0.423 | 동시(리드 없음) |
 | AI Chip | Foundry | — | — | — | — | — | — | Foundry 데이터 부족(<12분기) |
-| CPU | Foundry | — | — | — | — | — | — | CPU 데이터 부족(<12분기) |
+| CPU | Foundry | — | — | — | — | — | — | Foundry 데이터 부족(<12분기) |
 | Server Networking | Foundry | — | — | — | — | — | — | Foundry 데이터 부족(<12분기) |
-| CPU | Server ODM | — | — | — | — | — | — | CPU 데이터 부족(<12분기) |
+| CPU | Server ODM | — | — | — | — | — | — | Server ODM 데이터 부족(<12분기) |
 | DRAM | Server ODM | — | — | — | — | — | — | Server ODM 데이터 부족(<12분기) |
 | NAND | Server ODM | — | — | — | — | — | — | Server ODM 데이터 부족(<12분기) |
 | AI Chip | Server ODM | — | — | — | — | — | — | Server ODM 데이터 부족(<12분기) |

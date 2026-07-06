@@ -133,6 +133,8 @@ def main():
         "output6_blockage_matrix": matrix,
     }
     (HERE / "leadlag_results.json").write_text(json.dumps(out, indent=2, default=str))
+    _write_md(comp_phase, phase, net, congestion, trans, matrix,
+              HERE / "reports" / "company_section_leadlag_2026-07-06.md")
 
     # ---- console summary ----
     pd.set_option("display.width", 160, "display.max_columns", 20)
@@ -152,6 +154,33 @@ def main():
     print("\n===== OUTPUT ⑥ INTEGRATED BLOCKAGE MATRIX =====")
     print(pd.DataFrame(matrix).to_string(index=False))
     print("\n[written] leadlag_results.json")
+
+
+def _df_md(df, cols=None):
+    d = df[cols] if cols else df
+    head = "| " + " | ".join(map(str, d.columns)) + " |"
+    sep = "|" + "---|" * len(d.columns)
+    rows = ["| " + " | ".join(str(v) for v in r) + " |" for r in d.itertuples(index=False)]
+    return "\n".join([head, sep, *rows])
+
+
+def _write_md(comp_phase, phase, net, congestion, trans, matrix, path):
+    import pandas as pd
+    Path(path).parent.mkdir(exist_ok=True)
+    L = ["# 기업·섹션 Lead-Lag 분석 (기업/섹션 위상 · 네트워크 · 병목)\n",
+         "**분석일:** 2026-07-06 · **데이터:** `panel_long` · **엔진:** `run_analysis.py` + `leadlag.py`\n",
+         "매출 YoY(z-score) 시차상관 기반. phase_score 음수=상류(선행), 양수=하류(후행).\n",
+         "\n## 1. 기업 위상 (선행 ↔ 후행)\n",
+         _df_md(comp_phase.round(3), ["company", "sector", "phase_score", "rank"]),
+         "\n## 2. 섹션 위상 순서\n", _df_md(phase.round(3)),
+         "\n## 3. Lead-Lag 네트워크 (상위 엣지)\n",
+         _df_md(net.round(3).head(15), ["from_leader", "to_follower", "lead_quarters",
+                                        "peak_corr", "granger_p_fwd", "score"]),
+         "\n## 4. 운전자본 병목 (OC=DIO+DSO)\n",
+         _df_md(pd.DataFrame([c for c in congestion.values()])),
+         "\n## 5. 통합 병목 매트릭스\n", _df_md(pd.DataFrame(matrix)),
+         "\n## 6. 한계\n- 표본 ~40분기, 상관 1차·Granger 2차. 섹션 위상은 구성사 얇으면 노이즈.\n"]
+    Path(path).write_text("\n".join(L))
 
 
 if __name__ == "__main__":
