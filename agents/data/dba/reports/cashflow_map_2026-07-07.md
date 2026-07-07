@@ -5,30 +5,30 @@
 고객→공급사 현금 전이 시차. 각 엣지는 구매(COGS→매출)·투자(capex→매출)·수요(매출→매출) 채널 중 데이터가 가장 유의한 것으로 시차를 확정.
 
 
-- 엣지 24 · 분석가능 16 · **유의 14**
+- 엣지 24 · 분석가능 16 · **유의 15**
 
 
 ## 엣지별 현금흐름 시차 (분석 변수 명시)
 
 | 고객 | 공급사 | 채널 | 분석변수 (X→Y) | 시차(분기) | r | p | 유의 |
 |---|---|---|---|---|---|---|---|
-| Hyperscaler | AI Chip | 투자흐름 | `CAPEX_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.698 | 0.0 | ✅ |
-| Server OEM | AI Chip | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.721 | 0.0 | ✅ |
-| Server OEM | CPU | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.491 | 0.0037 | ✅ |
+| Hyperscaler | AI Chip | 투자(YoY) | `CAPEX[growth_yoy]→REVENUE[growth_yoy]` | **+0** | 0.8 | 0.0 | ✅ |
+| Server OEM | AI Chip | 수요(YoY) | `REVENUE_GROWTH_YOY→REVENUE_GROWTH_YOY` | **+0** | 0.822 | 0.0 | ✅ |
+| Server OEM | CPU | 결제(QoQ) | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.491 | 0.0037 | ✅ |
 | Hyperscaler | CPU | 지급→회수 | `DPO→DSO` | **+1** | 0.673 | 0.0 | ✅ |
-| AI Chip | DRAM | 수요흐름 | `REVENUE_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.586 | 0.0004 | ✅ |
-| Hyperscaler | DRAM | 투자흐름 | `CAPEX_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.744 | 0.0 | ✅ |
-| Server OEM | DRAM | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.758 | 0.0 | ✅ |
-| Hyperscaler | NAND | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.802 | 0.0 | ✅ |
-| Server OEM | NAND | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.77 | 0.0 | ✅ |
-| AI Chip | NAND | 수요흐름 | `REVENUE_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.556 | 0.0008 | ✅ |
+| AI Chip | DRAM | 수요(YoY) | `REVENUE_GROWTH_YOY→REVENUE_GROWTH_YOY` | **+0** | 0.717 | 0.0 | ✅ |
+| Hyperscaler | DRAM | 투자(YoY) | `CAPEX[growth_yoy]→REVENUE[growth_yoy]` | **+0** | 0.746 | 0.0 | ✅ |
+| Server OEM | DRAM | 재고(YoY) | `INVENTORY_GROWTH_YOY→REVENUE_GROWTH_YOY` | **+0** | 0.821 | 0.0 | ✅ |
+| Hyperscaler | NAND | 결제(QoQ) | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.802 | 0.0 | ✅ |
+| Server OEM | NAND | 결제(QoQ) | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.77 | 0.0 | ✅ |
+| AI Chip | NAND | 결제(YoY) | `AP_GROWTH_YOY→REVENUE_GROWTH_YOY` | **+0** | 0.693 | 0.0 | ✅ |
 | Foundry | HW Equipment | — | — | — | — | — | 데이터부족 |
-| DRAM | HW Equipment | 미지급→미수 | `AP_TO_COGS→AR_TO_REVENUE` | +0 | 0.26 | 0.1446 | · |
-| CPU | HW Equipment | 수요흐름 | `REVENUE_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | +1 | 0.231 | 0.2041 | · |
-| AI Chip | OSAT/Packaging | 미지급→미수 | `AP_TO_COGS→AR_TO_REVENUE` | **+0** | 0.498 | 0.0037 | ✅ |
-| CPU | OSAT/Packaging | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+2** | 0.546 | 0.0022 | ✅ |
-| Hyperscaler | Server Networking | 수요흐름 | `REVENUE_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.789 | 0.0 | ✅ |
-| Server OEM | Server Networking | 구매흐름 | `COGS_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.829 | 0.0 | ✅ |
+| DRAM | HW Equipment | 투자(YoY) | `CAPEX[growth_yoy]→REVENUE[growth_yoy]` | +4 | 0.788 | 0.0628 | · |
+| CPU | HW Equipment | 수요(YoY) | `REVENUE_GROWTH_YOY→REVENUE_GROWTH_YOY` | **+4** | 0.472 | 0.015 | ✅ |
+| AI Chip | OSAT/Packaging | 재고(QoQ) | `INVENTORY_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+2** | 0.585 | 0.0009 | ✅ |
+| CPU | OSAT/Packaging | 현금여력 | `FCF_MARGIN→REVENUE_GROWTH_QOQ` | **+0** | 0.706 | 0.0151 | ✅ |
+| Hyperscaler | Server Networking | 수요(QoQ) | `REVENUE_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.789 | 0.0 | ✅ |
+| Server OEM | Server Networking | 구매(QoQ) | `COGS_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.829 | 0.0 | ✅ |
 | AI Chip | Foundry | — | — | — | — | — | 데이터부족 |
 | CPU | Foundry | — | — | — | — | — | 데이터부족 |
 | Server Networking | Foundry | — | — | — | — | — | 데이터부족 |
@@ -41,9 +41,9 @@
 
 - **Hyperscaler → AI Chip → DRAM**: 누적 **0분기** (Hyperscaler→AI Chip +0q, AI Chip→DRAM +0q)
 - **Hyperscaler → AI Chip → NAND**: 누적 **0분기** (Hyperscaler→AI Chip +0q, AI Chip→NAND +0q)
-- **Hyperscaler → AI Chip → OSAT/Packaging**: 누적 **0분기** (Hyperscaler→AI Chip +0q, AI Chip→OSAT/Packaging +0q)
+- **Hyperscaler → AI Chip → OSAT/Packaging**: 누적 **2분기** (Hyperscaler→AI Chip +0q, AI Chip→OSAT/Packaging +2q)
 - **Server OEM → AI Chip → DRAM**: 누적 **0분기** (Server OEM→AI Chip +0q, AI Chip→DRAM +0q)
-- **AI Chip → DRAM → HW Equipment**: 누적 **0분기** (AI Chip→DRAM +0q, DRAM→HW Equipment +0q)
+- **AI Chip → DRAM → HW Equipment**: 누적 **4분기** (AI Chip→DRAM +0q, DRAM→HW Equipment +4q)
 
 ## 해석·한계
 

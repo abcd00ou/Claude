@@ -12,23 +12,23 @@
 
 | 고객 | 공급사 | 채널 | 분석변수 (X→Y) | 시차(분기) | r | p | 유의 |
 |---|---|---|---|---|---|---|---|
-| Hyperscaler | AI Chip | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.626 | 0.0001 | ✅ |
-| Server OEM | AI Chip | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.721 | 0.0 | ✅ |
-| Server OEM | CPU | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.491 | 0.0037 | ✅ |
-| Hyperscaler | CPU | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.393 | 0.0235 | ✅ |
-| AI Chip | DRAM | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.486 | 0.0048 | ✅ |
-| Hyperscaler | DRAM | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.739 | 0.0 | ✅ |
-| Server OEM | DRAM | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.758 | 0.0 | ✅ |
-| Hyperscaler | NAND | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.802 | 0.0 | ✅ |
-| Server OEM | NAND | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.77 | 0.0 | ✅ |
-| AI Chip | NAND | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.432 | 0.0121 | ✅ |
+| Hyperscaler | AI Chip | 결제(QoQ) | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.626 | 0.0001 | ✅ |
+| Server OEM | AI Chip | 결제(QoQ) | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.721 | 0.0 | ✅ |
+| Server OEM | CPU | 결제(QoQ) | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.491 | 0.0037 | ✅ |
+| Hyperscaler | CPU | 결제(QoQ) | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.393 | 0.0235 | ✅ |
+| AI Chip | DRAM | 결제(QoQ) | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.486 | 0.0048 | ✅ |
+| Hyperscaler | DRAM | 결제(QoQ) | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.739 | 0.0 | ✅ |
+| Server OEM | DRAM | 결제(QoQ) | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.758 | 0.0 | ✅ |
+| Hyperscaler | NAND | 결제(QoQ) | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.802 | 0.0 | ✅ |
+| Server OEM | NAND | 결제(QoQ) | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.77 | 0.0 | ✅ |
+| AI Chip | NAND | 결제(QoQ) | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.432 | 0.0121 | ✅ |
 | Foundry | HW Equipment | — | — | — | — | — | 데이터부족 |
-| DRAM | HW Equipment | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | +3 | 0.146 | 0.4414 | · |
-| CPU | HW Equipment | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | +3 | 0.145 | 0.444 | · |
-| AI Chip | OSAT/Packaging | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+2** | 0.406 | 0.0291 | ✅ |
-| CPU | OSAT/Packaging | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+2** | 0.546 | 0.0022 | ✅ |
-| Hyperscaler | Server Networking | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.786 | 0.0 | ✅ |
-| Server OEM | Server Networking | 결제흐름 | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.788 | 0.0 | ✅ |
+| DRAM | HW Equipment | 결제(QoQ) | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | +3 | 0.146 | 0.4414 | · |
+| CPU | HW Equipment | 결제(QoQ) | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | +3 | 0.145 | 0.444 | · |
+| AI Chip | OSAT/Packaging | 결제(QoQ) | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+2** | 0.406 | 0.0291 | ✅ |
+| CPU | OSAT/Packaging | 결제(QoQ) | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+2** | 0.546 | 0.0022 | ✅ |
+| Hyperscaler | Server Networking | 결제(QoQ) | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.786 | 0.0 | ✅ |
+| Server OEM | Server Networking | 결제(QoQ) | `AP_GROWTH_QOQ→REVENUE_GROWTH_QOQ` | **+0** | 0.788 | 0.0 | ✅ |
 | AI Chip | Foundry | — | — | — | — | — | 데이터부족 |
 | CPU | Foundry | — | — | — | — | — | 데이터부족 |
 | Server Networking | Foundry | — | — | — | — | — | 데이터부족 |

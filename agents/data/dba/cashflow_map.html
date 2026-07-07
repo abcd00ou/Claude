@@ -21,21 +21,21 @@
 </div>
 <div class="mermaid">
 flowchart LR
-  n_Hyperscaler["Hyperscaler"] ==>|"고객capex→공급사매출 · +0q · r=0.698"| n_AIChip["AI Chip"]
-  n_ServerOEM["Server OEM"] ==>|"고객AP→공급사매출 · +0q · r=0.721"| n_AIChip["AI Chip"]
+  n_Hyperscaler["Hyperscaler"] ==>|"고객capex→공급사매출 · +0q · r=0.8"| n_AIChip["AI Chip"]
+  n_ServerOEM["Server OEM"] ==>|"고객매출→공급사매출 · +0q · r=0.822"| n_AIChip["AI Chip"]
   n_ServerOEM["Server OEM"] ==>|"고객AP→공급사매출 · +0q · r=0.491"| n_CPU["CPU"]
   n_Hyperscaler["Hyperscaler"] ==>|"고객DPO→공급사DSO · +1q · r=0.673"| n_CPU["CPU"]
-  n_AIChip["AI Chip"] ==>|"고객매출→공급사매출 · +0q · r=0.586"| n_DRAM["DRAM"]
-  n_Hyperscaler["Hyperscaler"] ==>|"고객capex→공급사매출 · +0q · r=0.744"| n_DRAM["DRAM"]
-  n_ServerOEM["Server OEM"] ==>|"고객AP→공급사매출 · +0q · r=0.758"| n_DRAM["DRAM"]
+  n_AIChip["AI Chip"] ==>|"고객매출→공급사매출 · +0q · r=0.717"| n_DRAM["DRAM"]
+  n_Hyperscaler["Hyperscaler"] ==>|"고객capex→공급사매출 · +0q · r=0.746"| n_DRAM["DRAM"]
+  n_ServerOEM["Server OEM"] ==>|"고객재고→공급사매출 · +0q · r=0.821"| n_DRAM["DRAM"]
   n_Hyperscaler["Hyperscaler"] ==>|"고객AP→공급사매출 · +0q · r=0.802"| n_NAND["NAND"]
   n_ServerOEM["Server OEM"] ==>|"고객AP→공급사매출 · +0q · r=0.77"| n_NAND["NAND"]
-  n_AIChip["AI Chip"] ==>|"고객매출→공급사매출 · +0q · r=0.556"| n_NAND["NAND"]
+  n_AIChip["AI Chip"] ==>|"고객AP→공급사매출 · +0q · r=0.693"| n_NAND["NAND"]
   n_Foundry["Foundry"] -.->|"데이터부족"| n_HWEquipment["HW Equipment"]
-  n_DRAM["DRAM"] -->|"고객AP/COGS→공급사AR/매출 · +0q · r=0.26"| n_HWEquipment["HW Equipment"]
-  n_CPU["CPU"] -->|"고객매출→공급사매출 · +1q · r=0.231"| n_HWEquipment["HW Equipment"]
-  n_AIChip["AI Chip"] ==>|"고객AP/COGS→공급사AR/매출 · +0q · r=0.498"| n_OSATPackaging["OSAT/Packaging"]
-  n_CPU["CPU"] ==>|"고객AP→공급사매출 · +2q · r=0.546"| n_OSATPackaging["OSAT/Packaging"]
+  n_DRAM["DRAM"] -->|"고객capex→공급사매출 · +4q · r=0.788"| n_HWEquipment["HW Equipment"]
+  n_CPU["CPU"] ==>|"고객매출→공급사매출 · +4q · r=0.472"| n_HWEquipment["HW Equipment"]
+  n_AIChip["AI Chip"] ==>|"고객재고→공급사매출 · +2q · r=0.585"| n_OSATPackaging["OSAT/Packaging"]
+  n_CPU["CPU"] ==>|"고객FCF마진→공급사매출 · +0q · r=0.706"| n_OSATPackaging["OSAT/Packaging"]
   n_Hyperscaler["Hyperscaler"] ==>|"고객매출→공급사매출 · +0q · r=0.789"| n_ServerNetworking["Server Networking"]
   n_ServerOEM["Server OEM"] ==>|"고객COGS→공급사매출 · +0q · r=0.829"| n_ServerNetworking["Server Networking"]
   n_AIChip["AI Chip"] -.->|"데이터부족"| n_Foundry["Foundry"]
@@ -55,8 +55,9 @@ linkStyle 6 stroke:#d62728,stroke-width:3px;
 linkStyle 7 stroke:#d62728,stroke-width:3px;
 linkStyle 8 stroke:#d62728,stroke-width:3px;
 linkStyle 9 stroke:#d62728,stroke-width:3px;
-linkStyle 13 stroke:#d62728,stroke-width:3px;
-linkStyle 14 stroke:#2ca02c,stroke-width:3px;
+linkStyle 12 stroke:#6a3d9a,stroke-width:3px;
+linkStyle 13 stroke:#2ca02c,stroke-width:3px;
+linkStyle 14 stroke:#d62728,stroke-width:3px;
 linkStyle 15 stroke:#d62728,stroke-width:3px;
 linkStyle 16 stroke:#d62728,stroke-width:3px;
 </div>
@@ -64,30 +65,30 @@ linkStyle 16 stroke:#d62728,stroke-width:3px;
 <ul>
 <li><b>Hyperscaler → AI Chip → DRAM</b> : 누적 <b>0분기</b> <span class='legs'>(Hyperscaler→AI Chip +0q , AI Chip→DRAM +0q)</span></li>
 <li><b>Hyperscaler → AI Chip → NAND</b> : 누적 <b>0분기</b> <span class='legs'>(Hyperscaler→AI Chip +0q , AI Chip→NAND +0q)</span></li>
-<li><b>Hyperscaler → AI Chip → OSAT/Packaging</b> : 누적 <b>0분기</b> <span class='legs'>(Hyperscaler→AI Chip +0q , AI Chip→OSAT/Packaging +0q)</span></li>
+<li><b>Hyperscaler → AI Chip → OSAT/Packaging</b> : 누적 <b>2분기</b> <span class='legs'>(Hyperscaler→AI Chip +0q , AI Chip→OSAT/Packaging +2q)</span></li>
 <li><b>Server OEM → AI Chip → DRAM</b> : 누적 <b>0분기</b> <span class='legs'>(Server OEM→AI Chip +0q , AI Chip→DRAM +0q)</span></li>
-<li><b>AI Chip → DRAM → HW Equipment</b> : 누적 <b>0분기</b> <span class='legs'>(AI Chip→DRAM +0q , DRAM→HW Equipment +0q)</span></li>
+<li><b>AI Chip → DRAM → HW Equipment</b> : 누적 <b>4분기</b> <span class='legs'>(AI Chip→DRAM +0q , DRAM→HW Equipment +4q)</span></li>
 </ul>
 <h2>엣지별 현금흐름 시차 (분석 변수 명시)</h2>
 <table>
 <tr><th>고객</th><th>공급사</th><th>채널</th><th>분석변수 (X→Y)</th><th>시차</th><th>r</th><th>p</th><th>유의</th></tr>
-<tr class='sig'><td>Hyperscaler</td><td>AI Chip</td><td>투자흐름</td><td class='var'>CAPEX_GROWTH_QOQ → REVENUE_GROWTH_QOQ</td><td>+0q</td><td>0.698</td><td>0.0</td><td>유의</td></tr>
-<tr class='sig'><td>Server OEM</td><td>AI Chip</td><td>결제흐름</td><td class='var'>AP_GROWTH_QOQ → REVENUE_GROWTH_QOQ</td><td>+0q</td><td>0.721</td><td>0.0</td><td>유의</td></tr>
-<tr class='sig'><td>Server OEM</td><td>CPU</td><td>결제흐름</td><td class='var'>AP_GROWTH_QOQ → REVENUE_GROWTH_QOQ</td><td>+0q</td><td>0.491</td><td>0.0037</td><td>유의</td></tr>
+<tr class='sig'><td>Hyperscaler</td><td>AI Chip</td><td>투자(YoY)</td><td class='var'>CAPEX[growth_yoy] → REVENUE[growth_yoy]</td><td>+0q</td><td>0.8</td><td>0.0</td><td>유의</td></tr>
+<tr class='sig'><td>Server OEM</td><td>AI Chip</td><td>수요(YoY)</td><td class='var'>REVENUE_GROWTH_YOY → REVENUE_GROWTH_YOY</td><td>+0q</td><td>0.822</td><td>0.0</td><td>유의</td></tr>
+<tr class='sig'><td>Server OEM</td><td>CPU</td><td>결제(QoQ)</td><td class='var'>AP_GROWTH_QOQ → REVENUE_GROWTH_QOQ</td><td>+0q</td><td>0.491</td><td>0.0037</td><td>유의</td></tr>
 <tr class='sig'><td>Hyperscaler</td><td>CPU</td><td>지급→회수</td><td class='var'>DPO → DSO</td><td>+1q</td><td>0.673</td><td>0.0</td><td>유의</td></tr>
-<tr class='sig'><td>AI Chip</td><td>DRAM</td><td>수요흐름</td><td class='var'>REVENUE_GROWTH_QOQ → REVENUE_GROWTH_QOQ</td><td>+0q</td><td>0.586</td><td>0.0004</td><td>유의</td></tr>
-<tr class='sig'><td>Hyperscaler</td><td>DRAM</td><td>투자흐름</td><td class='var'>CAPEX_GROWTH_QOQ → REVENUE_GROWTH_QOQ</td><td>+0q</td><td>0.744</td><td>0.0</td><td>유의</td></tr>
-<tr class='sig'><td>Server OEM</td><td>DRAM</td><td>결제흐름</td><td class='var'>AP_GROWTH_QOQ → REVENUE_GROWTH_QOQ</td><td>+0q</td><td>0.758</td><td>0.0</td><td>유의</td></tr>
-<tr class='sig'><td>Hyperscaler</td><td>NAND</td><td>결제흐름</td><td class='var'>AP_GROWTH_QOQ → REVENUE_GROWTH_QOQ</td><td>+0q</td><td>0.802</td><td>0.0</td><td>유의</td></tr>
-<tr class='sig'><td>Server OEM</td><td>NAND</td><td>결제흐름</td><td class='var'>AP_GROWTH_QOQ → REVENUE_GROWTH_QOQ</td><td>+0q</td><td>0.77</td><td>0.0</td><td>유의</td></tr>
-<tr class='sig'><td>AI Chip</td><td>NAND</td><td>수요흐름</td><td class='var'>REVENUE_GROWTH_QOQ → REVENUE_GROWTH_QOQ</td><td>+0q</td><td>0.556</td><td>0.0008</td><td>유의</td></tr>
+<tr class='sig'><td>AI Chip</td><td>DRAM</td><td>수요(YoY)</td><td class='var'>REVENUE_GROWTH_YOY → REVENUE_GROWTH_YOY</td><td>+0q</td><td>0.717</td><td>0.0</td><td>유의</td></tr>
+<tr class='sig'><td>Hyperscaler</td><td>DRAM</td><td>투자(YoY)</td><td class='var'>CAPEX[growth_yoy] → REVENUE[growth_yoy]</td><td>+0q</td><td>0.746</td><td>0.0</td><td>유의</td></tr>
+<tr class='sig'><td>Server OEM</td><td>DRAM</td><td>재고(YoY)</td><td class='var'>INVENTORY_GROWTH_YOY → REVENUE_GROWTH_YOY</td><td>+0q</td><td>0.821</td><td>0.0</td><td>유의</td></tr>
+<tr class='sig'><td>Hyperscaler</td><td>NAND</td><td>결제(QoQ)</td><td class='var'>AP_GROWTH_QOQ → REVENUE_GROWTH_QOQ</td><td>+0q</td><td>0.802</td><td>0.0</td><td>유의</td></tr>
+<tr class='sig'><td>Server OEM</td><td>NAND</td><td>결제(QoQ)</td><td class='var'>AP_GROWTH_QOQ → REVENUE_GROWTH_QOQ</td><td>+0q</td><td>0.77</td><td>0.0</td><td>유의</td></tr>
+<tr class='sig'><td>AI Chip</td><td>NAND</td><td>결제(YoY)</td><td class='var'>AP_GROWTH_YOY → REVENUE_GROWTH_YOY</td><td>+0q</td><td>0.693</td><td>0.0</td><td>유의</td></tr>
 <tr><td>Foundry</td><td>HW Equipment</td><td colspan=6 class='na'>데이터 부족</td></tr>
-<tr class=''><td>DRAM</td><td>HW Equipment</td><td>미지급→미수</td><td class='var'>AP_TO_COGS → AR_TO_REVENUE</td><td>+0q</td><td>0.26</td><td>0.1446</td><td>·</td></tr>
-<tr class=''><td>CPU</td><td>HW Equipment</td><td>수요흐름</td><td class='var'>REVENUE_GROWTH_QOQ → REVENUE_GROWTH_QOQ</td><td>+1q</td><td>0.231</td><td>0.2041</td><td>·</td></tr>
-<tr class='sig'><td>AI Chip</td><td>OSAT/Packaging</td><td>미지급→미수</td><td class='var'>AP_TO_COGS → AR_TO_REVENUE</td><td>+0q</td><td>0.498</td><td>0.0037</td><td>유의</td></tr>
-<tr class='sig'><td>CPU</td><td>OSAT/Packaging</td><td>결제흐름</td><td class='var'>AP_GROWTH_QOQ → REVENUE_GROWTH_QOQ</td><td>+2q</td><td>0.546</td><td>0.0022</td><td>유의</td></tr>
-<tr class='sig'><td>Hyperscaler</td><td>Server Networking</td><td>수요흐름</td><td class='var'>REVENUE_GROWTH_QOQ → REVENUE_GROWTH_QOQ</td><td>+0q</td><td>0.789</td><td>0.0</td><td>유의</td></tr>
-<tr class='sig'><td>Server OEM</td><td>Server Networking</td><td>구매흐름</td><td class='var'>COGS_GROWTH_QOQ → REVENUE_GROWTH_QOQ</td><td>+0q</td><td>0.829</td><td>0.0</td><td>유의</td></tr>
+<tr class=''><td>DRAM</td><td>HW Equipment</td><td>투자(YoY)</td><td class='var'>CAPEX[growth_yoy] → REVENUE[growth_yoy]</td><td>+4q</td><td>0.788</td><td>0.0628</td><td>·</td></tr>
+<tr class='sig'><td>CPU</td><td>HW Equipment</td><td>수요(YoY)</td><td class='var'>REVENUE_GROWTH_YOY → REVENUE_GROWTH_YOY</td><td>+4q</td><td>0.472</td><td>0.015</td><td>유의</td></tr>
+<tr class='sig'><td>AI Chip</td><td>OSAT/Packaging</td><td>재고(QoQ)</td><td class='var'>INVENTORY_GROWTH_QOQ → REVENUE_GROWTH_QOQ</td><td>+2q</td><td>0.585</td><td>0.0009</td><td>유의</td></tr>
+<tr class='sig'><td>CPU</td><td>OSAT/Packaging</td><td>현금여력</td><td class='var'>FCF_MARGIN → REVENUE_GROWTH_QOQ</td><td>+0q</td><td>0.706</td><td>0.0151</td><td>유의</td></tr>
+<tr class='sig'><td>Hyperscaler</td><td>Server Networking</td><td>수요(QoQ)</td><td class='var'>REVENUE_GROWTH_QOQ → REVENUE_GROWTH_QOQ</td><td>+0q</td><td>0.789</td><td>0.0</td><td>유의</td></tr>
+<tr class='sig'><td>Server OEM</td><td>Server Networking</td><td>구매(QoQ)</td><td class='var'>COGS_GROWTH_QOQ → REVENUE_GROWTH_QOQ</td><td>+0q</td><td>0.829</td><td>0.0</td><td>유의</td></tr>
 <tr><td>AI Chip</td><td>Foundry</td><td colspan=6 class='na'>데이터 부족</td></tr>
 <tr><td>CPU</td><td>Foundry</td><td colspan=6 class='na'>데이터 부족</td></tr>
 <tr><td>Server Networking</td><td>Foundry</td><td colspan=6 class='na'>데이터 부족</td></tr>

@@ -1,0 +1,313 @@
+customer,supplier,channel,x_var,y_var,status,lag_q,pearson,spearman,p_value,n,significant
+Hyperscaler,AI Chip,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.626,0.12,0.0001,33.0,True
+Hyperscaler,AI Chip,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.739,0.196,0.0,30.0,True
+Hyperscaler,AI Chip,지급→회수,DPO,DSO,ok,0.0,0.537,0.544,0.0015,32.0,True
+Hyperscaler,AI Chip,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,ok,0.0,0.593,0.62,0.0003,33.0,True
+Hyperscaler,AI Chip,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.197,-0.014,0.2799,32.0,False
+Hyperscaler,AI Chip,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.443,0.216,0.016,29.0,True
+Hyperscaler,AI Chip,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.698,0.464,0.0,32.0,True
+Hyperscaler,AI Chip,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],ok,0.0,0.8,0.404,0.0,29.0,True
+Hyperscaler,AI Chip,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.165,0.339,0.3681,32.0,False
+Hyperscaler,AI Chip,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.076,0.278,0.6945,29.0,False
+Hyperscaler,AI Chip,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,ok,3.0,0.121,0.091,0.5154,31.0,False
+Hyperscaler,AI Chip,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.632,0.202,0.0001,33.0,True
+Hyperscaler,AI Chip,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.487,0.176,0.0064,30.0,True
+Server OEM,AI Chip,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.721,0.358,0.0,34.0,True
+Server OEM,AI Chip,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.77,0.283,0.0,31.0,True
+Server OEM,AI Chip,지급→회수,DPO,DSO,ok,4.0,0.004,0.064,0.9842,30.0,False
+Server OEM,AI Chip,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,ok,4.0,0.169,0.271,0.3622,31.0,False
+Server OEM,AI Chip,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.643,0.013,0.0,34.0,True
+Server OEM,AI Chip,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.809,0.32,0.0,30.0,True
+Server OEM,AI Chip,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+Server OEM,AI Chip,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],ok,0.0,0.473,0.357,0.2364,8.0,False
+Server OEM,AI Chip,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.475,0.281,0.0046,34.0,True
+Server OEM,AI Chip,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.733,0.359,0.0,31.0,True
+Server OEM,AI Chip,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,ok,0.0,0.508,0.469,0.0916,12.0,False
+Server OEM,AI Chip,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.653,0.077,0.0,34.0,True
+Server OEM,AI Chip,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.822,0.434,0.0,31.0,True
+Server OEM,CPU,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.491,0.342,0.0037,33.0,True
+Server OEM,CPU,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,3.0,-0.456,-0.503,0.0221,25.0,False
+Server OEM,CPU,지급→회수,DPO,DSO,ok,1.0,-0.645,-0.421,0.0001,32.0,False
+Server OEM,CPU,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,ok,1.0,-0.494,-0.324,0.0034,33.0,False
+Server OEM,CPU,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,3.0,0.212,0.131,0.2598,30.0,False
+Server OEM,CPU,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,4.0,0.295,0.369,0.1712,23.0,False
+Server OEM,CPU,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+Server OEM,CPU,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],ok,4.0,0.399,0.314,0.4338,6.0,False
+Server OEM,CPU,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.469,0.251,0.0059,33.0,True
+Server OEM,CPU,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,3.0,-0.438,-0.471,0.0283,25.0,False
+Server OEM,CPU,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,ok,0.0,0.48,0.455,0.1351,11.0,False
+Server OEM,CPU,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,3.0,0.27,0.196,0.1497,30.0,False
+Server OEM,CPU,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,2.0,-0.284,-0.261,0.1596,26.0,False
+Hyperscaler,CPU,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.393,0.123,0.0235,33.0,True
+Hyperscaler,CPU,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,2.0,0.172,0.162,0.4,26.0,False
+Hyperscaler,CPU,지급→회수,DPO,DSO,ok,1.0,0.673,0.519,0.0,32.0,True
+Hyperscaler,CPU,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,ok,3.0,0.575,0.527,0.0007,31.0,True
+Hyperscaler,CPU,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,4.0,0.207,0.268,0.282,29.0,False
+Hyperscaler,CPU,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,4.0,0.134,0.163,0.5336,24.0,False
+Hyperscaler,CPU,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.516,0.337,0.0025,32.0,True
+Hyperscaler,CPU,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],ok,2.0,0.155,0.039,0.4493,26.0,False
+Hyperscaler,CPU,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,4.0,0.041,0.205,0.8319,29.0,False
+Hyperscaler,CPU,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.049,0.004,0.806,28.0,False
+Hyperscaler,CPU,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,ok,2.0,0.229,0.348,0.2153,31.0,False
+Hyperscaler,CPU,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.28,-0.099,0.1148,33.0,False
+Hyperscaler,CPU,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,1.0,0.252,0.19,0.2052,27.0,False
+AI Chip,DRAM,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.486,0.359,0.0048,32.0,True
+AI Chip,DRAM,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.614,0.633,0.0004,29.0,True
+AI Chip,DRAM,지급→회수,DPO,DSO,ok,0.0,0.153,0.059,0.4026,32.0,False
+AI Chip,DRAM,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,ok,0.0,0.234,0.193,0.1908,33.0,False
+AI Chip,DRAM,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.507,0.161,0.003,32.0,True
+AI Chip,DRAM,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.545,0.405,0.0022,29.0,True
+AI Chip,DRAM,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+AI Chip,DRAM,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],ok,4.0,0.26,0.029,0.6186,6.0,False
+AI Chip,DRAM,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.304,0.076,0.0905,32.0,False
+AI Chip,DRAM,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.028,-0.111,0.8868,29.0,False
+AI Chip,DRAM,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,ok,3.0,0.348,0.267,0.3589,9.0,False
+AI Chip,DRAM,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.586,0.275,0.0004,32.0,True
+AI Chip,DRAM,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.717,0.515,0.0,29.0,True
+Hyperscaler,DRAM,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.739,0.442,0.0,32.0,True
+Hyperscaler,DRAM,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.709,0.434,0.0,29.0,True
+Hyperscaler,DRAM,지급→회수,DPO,DSO,ok,0.0,0.558,0.413,0.0011,31.0,True
+Hyperscaler,DRAM,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,ok,0.0,0.449,0.407,0.0099,32.0,True
+Hyperscaler,DRAM,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.251,0.102,0.1737,31.0,False
+Hyperscaler,DRAM,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.325,0.147,0.0913,28.0,False
+Hyperscaler,DRAM,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.744,0.389,0.0,31.0,True
+Hyperscaler,DRAM,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],ok,0.0,0.746,0.589,0.0,28.0,True
+Hyperscaler,DRAM,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.233,0.237,0.2066,31.0,False
+Hyperscaler,DRAM,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.316,0.364,0.1019,28.0,False
+Hyperscaler,DRAM,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,ok,3.0,0.33,0.357,0.0803,29.0,False
+Hyperscaler,DRAM,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.642,0.22,0.0001,32.0,True
+Hyperscaler,DRAM,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.608,0.403,0.0005,29.0,True
+Server OEM,DRAM,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.758,0.467,0.0,32.0,True
+Server OEM,DRAM,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.716,0.537,0.0,29.0,True
+Server OEM,DRAM,지급→회수,DPO,DSO,ok,4.0,-0.572,-0.321,0.0015,28.0,False
+Server OEM,DRAM,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,ok,0.0,0.424,0.427,0.0138,33.0,True
+Server OEM,DRAM,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.659,0.275,0.0,32.0,True
+Server OEM,DRAM,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.683,0.328,0.0001,28.0,True
+Server OEM,DRAM,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+Server OEM,DRAM,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],ok,0.0,0.372,0.024,0.3639,8.0,False
+Server OEM,DRAM,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.664,0.604,0.0,32.0,True
+Server OEM,DRAM,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.821,0.643,0.0,29.0,True
+Server OEM,DRAM,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,ok,3.0,0.213,0.067,0.5817,9.0,False
+Server OEM,DRAM,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.656,0.38,0.0,32.0,True
+Server OEM,DRAM,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.7,0.404,0.0,29.0,True
+Hyperscaler,NAND,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.802,0.394,0.0,33.0,True
+Hyperscaler,NAND,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.527,0.466,0.0028,30.0,True
+Hyperscaler,NAND,지급→회수,DPO,DSO,ok,0.0,0.658,0.628,0.0,32.0,True
+Hyperscaler,NAND,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,ok,0.0,0.584,0.642,0.0004,33.0,True
+Hyperscaler,NAND,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.533,0.516,0.0017,32.0,True
+Hyperscaler,NAND,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.501,0.461,0.0056,29.0,True
+Hyperscaler,NAND,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.705,0.127,0.0,32.0,True
+Hyperscaler,NAND,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],ok,0.0,0.407,0.32,0.0285,29.0,True
+Hyperscaler,NAND,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.207,0.237,0.2549,32.0,False
+Hyperscaler,NAND,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.462,0.447,0.0117,29.0,True
+Hyperscaler,NAND,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,ok,1.0,0.271,0.407,0.1335,32.0,False
+Hyperscaler,NAND,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.738,0.435,0.0,33.0,True
+Hyperscaler,NAND,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,3.0,0.496,0.375,0.0085,27.0,True
+Server OEM,NAND,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.77,0.205,0.0,33.0,True
+Server OEM,NAND,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,3.0,0.358,0.319,0.0669,27.0,False
+Server OEM,NAND,지급→회수,DPO,DSO,ok,0.0,-0.411,-0.246,0.0175,33.0,False
+Server OEM,NAND,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,ok,0.0,0.121,0.057,0.497,34.0,False
+Server OEM,NAND,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.767,0.301,0.0,33.0,True
+Server OEM,NAND,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.335,0.176,0.0759,29.0,False
+Server OEM,NAND,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+Server OEM,NAND,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],ok,3.0,0.051,0.286,0.9127,7.0,False
+Server OEM,NAND,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.528,0.46,0.0016,33.0,True
+Server OEM,NAND,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.441,0.448,0.0147,30.0,True
+Server OEM,NAND,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,ok,3.0,0.382,0.491,0.2753,10.0,False
+Server OEM,NAND,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.726,0.281,0.0,33.0,True
+Server OEM,NAND,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.363,0.262,0.0489,30.0,True
+AI Chip,NAND,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.432,0.175,0.0121,33.0,True
+AI Chip,NAND,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.693,0.765,0.0,30.0,True
+AI Chip,NAND,지급→회수,DPO,DSO,ok,4.0,0.255,0.253,0.1815,29.0,False
+AI Chip,NAND,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,ok,4.0,0.154,0.192,0.4157,30.0,False
+AI Chip,NAND,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.515,0.093,0.0022,33.0,True
+AI Chip,NAND,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.581,0.592,0.0008,30.0,True
+AI Chip,NAND,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+AI Chip,NAND,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],ok,4.0,0.368,0.143,0.4725,6.0,False
+AI Chip,NAND,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.541,0.078,0.0012,33.0,True
+AI Chip,NAND,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.383,0.394,0.0368,30.0,True
+AI Chip,NAND,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,ok,3.0,0.325,0.309,0.3592,10.0,False
+AI Chip,NAND,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.556,0.035,0.0008,33.0,True
+AI Chip,NAND,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.595,0.626,0.0005,30.0,True
+Foundry,HW Equipment,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+Foundry,HW Equipment,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+Foundry,HW Equipment,지급→회수,DPO,DSO,insufficient data,,,,,,
+Foundry,HW Equipment,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,insufficient data,,,,,,
+Foundry,HW Equipment,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+Foundry,HW Equipment,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+Foundry,HW Equipment,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+Foundry,HW Equipment,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],insufficient data,,,,,,
+Foundry,HW Equipment,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+Foundry,HW Equipment,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+Foundry,HW Equipment,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+Foundry,HW Equipment,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+Foundry,HW Equipment,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+DRAM,HW Equipment,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,3.0,0.146,0.094,0.4414,30.0,False
+DRAM,HW Equipment,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.097,-0.014,0.6151,29.0,False
+DRAM,HW Equipment,지급→회수,DPO,DSO,ok,3.0,0.163,0.063,0.3903,30.0,False
+DRAM,HW Equipment,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,ok,0.0,0.26,0.268,0.1446,33.0,False
+DRAM,HW Equipment,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.251,0.431,0.1655,32.0,False
+DRAM,HW Equipment,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.004,0.449,0.9838,29.0,False
+DRAM,HW Equipment,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+DRAM,HW Equipment,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],ok,4.0,0.788,0.886,0.0628,6.0,False
+DRAM,HW Equipment,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,3.0,0.256,0.083,0.1715,30.0,False
+DRAM,HW Equipment,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.094,-0.355,0.6268,29.0,False
+DRAM,HW Equipment,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,ok,2.0,0.102,-0.055,0.7651,11.0,False
+DRAM,HW Equipment,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.226,0.319,0.2131,32.0,False
+DRAM,HW Equipment,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,4.0,-0.469,-0.351,0.0157,26.0,False
+CPU,HW Equipment,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,3.0,0.145,0.353,0.444,30.0,False
+CPU,HW Equipment,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.108,0.233,0.5837,28.0,False
+CPU,HW Equipment,지급→회수,DPO,DSO,ok,4.0,0.143,0.295,0.4583,29.0,False
+CPU,HW Equipment,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,ok,1.0,0.01,0.152,0.9577,33.0,False
+CPU,HW Equipment,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,4.0,0.102,0.223,0.5971,29.0,False
+CPU,HW Equipment,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,4.0,0.458,0.499,0.0187,26.0,True
+CPU,HW Equipment,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+CPU,HW Equipment,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],ok,1.0,0.347,0.262,0.3991,8.0,False
+CPU,HW Equipment,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.458,0.011,0.0096,31.0,True
+CPU,HW Equipment,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.257,0.586,0.1877,28.0,False
+CPU,HW Equipment,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,ok,2.0,0.44,0.155,0.1759,11.0,False
+CPU,HW Equipment,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,1.0,0.231,-0.081,0.2041,32.0,False
+CPU,HW Equipment,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,4.0,0.472,0.478,0.015,26.0,True
+AI Chip,OSAT/Packaging,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,2.0,0.406,0.314,0.0291,29.0,True
+AI Chip,OSAT/Packaging,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,2.0,0.273,-0.069,0.1779,26.0,False
+AI Chip,OSAT/Packaging,지급→회수,DPO,DSO,ok,2.0,0.363,0.382,0.0532,29.0,False
+AI Chip,OSAT/Packaging,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,ok,0.0,0.498,0.439,0.0037,32.0,True
+AI Chip,OSAT/Packaging,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.153,0.165,0.4115,31.0,False
+AI Chip,OSAT/Packaging,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.059,0.132,0.7651,28.0,False
+AI Chip,OSAT/Packaging,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+AI Chip,OSAT/Packaging,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],ok,0.0,0.652,0.69,0.0797,8.0,False
+AI Chip,OSAT/Packaging,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,2.0,0.585,0.707,0.0009,29.0,True
+AI Chip,OSAT/Packaging,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,2.0,0.327,0.261,0.1032,26.0,False
+AI Chip,OSAT/Packaging,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,ok,2.0,0.39,0.467,0.2992,9.0,False
+AI Chip,OSAT/Packaging,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.184,0.266,0.321,31.0,False
+AI Chip,OSAT/Packaging,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.029,0.154,0.8817,28.0,False
+CPU,OSAT/Packaging,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,2.0,0.546,0.557,0.0022,29.0,True
+CPU,OSAT/Packaging,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,2.0,0.23,0.159,0.2581,26.0,False
+CPU,OSAT/Packaging,지급→회수,DPO,DSO,ok,3.0,0.153,0.178,0.437,28.0,False
+CPU,OSAT/Packaging,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,ok,1.0,0.143,0.219,0.4435,31.0,False
+CPU,OSAT/Packaging,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,1.0,0.34,0.134,0.066,30.0,False
+CPU,OSAT/Packaging,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.371,0.334,0.0516,28.0,False
+CPU,OSAT/Packaging,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+CPU,OSAT/Packaging,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],ok,1.0,0.452,0.393,0.3086,7.0,False
+CPU,OSAT/Packaging,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,2.0,0.411,0.424,0.0269,29.0,True
+CPU,OSAT/Packaging,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,2.0,0.378,0.201,0.057,26.0,False
+CPU,OSAT/Packaging,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,ok,0.0,0.706,0.609,0.0151,11.0,True
+CPU,OSAT/Packaging,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,3.0,0.442,0.446,0.0185,28.0,True
+CPU,OSAT/Packaging,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,3.0,0.358,0.276,0.0793,25.0,False
+Hyperscaler,Server Networking,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.786,0.039,0.0,33.0,True
+Hyperscaler,Server Networking,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.635,-0.001,0.0002,30.0,True
+Hyperscaler,Server Networking,지급→회수,DPO,DSO,ok,4.0,0.65,0.693,0.0001,30.0,True
+Hyperscaler,Server Networking,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,ok,1.0,0.51,0.46,0.0024,33.0,True
+Hyperscaler,Server Networking,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.489,0.404,0.0045,32.0,True
+Hyperscaler,Server Networking,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.371,0.261,0.0479,29.0,True
+Hyperscaler,Server Networking,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.747,-0.105,0.0,32.0,True
+Hyperscaler,Server Networking,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],ok,0.0,0.672,-0.051,0.0001,29.0,True
+Hyperscaler,Server Networking,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,4.0,0.124,0.014,0.514,30.0,False
+Hyperscaler,Server Networking,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,1.0,-0.073,0.038,0.7063,29.0,False
+Hyperscaler,Server Networking,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,ok,1.0,0.197,0.296,0.2801,32.0,False
+Hyperscaler,Server Networking,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.789,0.242,0.0,33.0,True
+Hyperscaler,Server Networking,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.266,-0.182,0.156,30.0,False
+Server OEM,Server Networking,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.788,0.055,0.0,34.0,True
+Server OEM,Server Networking,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.641,-0.258,0.0001,31.0,True
+Server OEM,Server Networking,지급→회수,DPO,DSO,ok,3.0,0.014,-0.286,0.9392,31.0,False
+Server OEM,Server Networking,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,ok,3.0,-0.328,-0.291,0.0664,32.0,False
+Server OEM,Server Networking,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.829,0.275,0.0,34.0,True
+Server OEM,Server Networking,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.746,0.288,0.0,30.0,True
+Server OEM,Server Networking,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+Server OEM,Server Networking,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],ok,0.0,0.612,0.429,0.1068,8.0,False
+Server OEM,Server Networking,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,3.0,0.58,0.066,0.0006,31.0,True
+Server OEM,Server Networking,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.435,-0.177,0.0144,31.0,True
+Server OEM,Server Networking,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,ok,3.0,0.357,0.282,0.2816,11.0,False
+Server OEM,Server Networking,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,ok,0.0,0.796,0.225,0.0,34.0,True
+Server OEM,Server Networking,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,ok,0.0,0.656,0.108,0.0001,31.0,True
+AI Chip,Foundry,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+AI Chip,Foundry,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+AI Chip,Foundry,지급→회수,DPO,DSO,insufficient data,,,,,,
+AI Chip,Foundry,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,insufficient data,,,,,,
+AI Chip,Foundry,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+AI Chip,Foundry,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+AI Chip,Foundry,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+AI Chip,Foundry,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],insufficient data,,,,,,
+AI Chip,Foundry,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+AI Chip,Foundry,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+AI Chip,Foundry,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+AI Chip,Foundry,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+AI Chip,Foundry,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+CPU,Foundry,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+CPU,Foundry,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+CPU,Foundry,지급→회수,DPO,DSO,insufficient data,,,,,,
+CPU,Foundry,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,insufficient data,,,,,,
+CPU,Foundry,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+CPU,Foundry,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+CPU,Foundry,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+CPU,Foundry,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],insufficient data,,,,,,
+CPU,Foundry,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+CPU,Foundry,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+CPU,Foundry,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+CPU,Foundry,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+CPU,Foundry,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+Server Networking,Foundry,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+Server Networking,Foundry,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+Server Networking,Foundry,지급→회수,DPO,DSO,insufficient data,,,,,,
+Server Networking,Foundry,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,insufficient data,,,,,,
+Server Networking,Foundry,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+Server Networking,Foundry,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+Server Networking,Foundry,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+Server Networking,Foundry,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],insufficient data,,,,,,
+Server Networking,Foundry,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+Server Networking,Foundry,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+Server Networking,Foundry,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+Server Networking,Foundry,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+Server Networking,Foundry,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+CPU,Server ODM,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+CPU,Server ODM,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+CPU,Server ODM,지급→회수,DPO,DSO,insufficient data,,,,,,
+CPU,Server ODM,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,insufficient data,,,,,,
+CPU,Server ODM,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+CPU,Server ODM,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+CPU,Server ODM,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+CPU,Server ODM,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],insufficient data,,,,,,
+CPU,Server ODM,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+CPU,Server ODM,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+CPU,Server ODM,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+CPU,Server ODM,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+CPU,Server ODM,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+DRAM,Server ODM,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+DRAM,Server ODM,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+DRAM,Server ODM,지급→회수,DPO,DSO,insufficient data,,,,,,
+DRAM,Server ODM,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,insufficient data,,,,,,
+DRAM,Server ODM,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+DRAM,Server ODM,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+DRAM,Server ODM,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+DRAM,Server ODM,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],insufficient data,,,,,,
+DRAM,Server ODM,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+DRAM,Server ODM,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+DRAM,Server ODM,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+DRAM,Server ODM,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+DRAM,Server ODM,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+NAND,Server ODM,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+NAND,Server ODM,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+NAND,Server ODM,지급→회수,DPO,DSO,insufficient data,,,,,,
+NAND,Server ODM,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,insufficient data,,,,,,
+NAND,Server ODM,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+NAND,Server ODM,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+NAND,Server ODM,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+NAND,Server ODM,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],insufficient data,,,,,,
+NAND,Server ODM,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+NAND,Server ODM,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+NAND,Server ODM,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+NAND,Server ODM,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+NAND,Server ODM,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+AI Chip,Server ODM,결제(QoQ),AP_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+AI Chip,Server ODM,결제(YoY),AP_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+AI Chip,Server ODM,지급→회수,DPO,DSO,insufficient data,,,,,,
+AI Chip,Server ODM,미지급→미수,AP_TO_COGS,AR_TO_REVENUE,insufficient data,,,,,,
+AI Chip,Server ODM,구매(QoQ),COGS_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+AI Chip,Server ODM,구매(YoY),COGS_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+AI Chip,Server ODM,투자(QoQ),CAPEX_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+AI Chip,Server ODM,투자(YoY),CAPEX[growth_yoy],REVENUE[growth_yoy],insufficient data,,,,,,
+AI Chip,Server ODM,재고(QoQ),INVENTORY_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+AI Chip,Server ODM,재고(YoY),INVENTORY_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
+AI Chip,Server ODM,현금여력,FCF_MARGIN,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+AI Chip,Server ODM,수요(QoQ),REVENUE_GROWTH_QOQ,REVENUE_GROWTH_QOQ,insufficient data,,,,,,
+AI Chip,Server ODM,수요(YoY),REVENUE_GROWTH_YOY,REVENUE_GROWTH_YOY,insufficient data,,,,,,
