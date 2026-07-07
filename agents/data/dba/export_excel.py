@@ -21,12 +21,13 @@ from pathlib import Path
 import pandas as pd
 
 import panel as P
+import features as F
 
 HERE = Path(__file__).parent
 DATE = sys.argv[1] if len(sys.argv) > 1 else "2026-07-07"
 
-# item 설명 (원천/파생 구분)
-ITEM_DESC = {
+# 원천 item 설명 (파생은 features.FEATURE_REGISTRY 에서 자동)
+SOURCE_DESC = {
     "revenue": "매출 (원천)", "revenue_ai_dc": "AI/DC 매출 (원천, 일부)",
     "revenue_yoy": "매출 YoY% (원천, 일부)", "gross_profit": "매출총이익 (원천)",
     "gross_margin": "매출총이익률% (원천)", "operating_income": "영업이익 (원천)",
@@ -37,6 +38,10 @@ ITEM_DESC = {
     "total_assets": "총자산 (원천)", "total_debt": "총부채 (원천)",
     "stockholders_equity": "자기자본 (원천)", "stock_price": "분기말 주가 (원천, as-of)",
 }
+# 원천 + 파생(가이드 문서 변수) 전체 설명
+ITEM_DESC = {**SOURCE_DESC,
+             **{k: f"{v['desc']} (파생)" for k, v in F.FEATURE_REGISTRY.items()
+                if k in P.FEATURE_ITEMS}}
 
 
 def qkey(s):
@@ -77,9 +82,11 @@ def main():
                             columns="item", values="date", aggfunc="nunique")
                .fillna(0).astype(int).reset_index())
 
-    # revenue wide (기업 × 분기)
-    rev = P.to_wide("revenue")
-    rev = rev.loc[sorted(rev.index, key=qkey)].round(1).reset_index().rename(columns={"index": "quarter"})
+    # wide 예시 (기업 × 분기): 원천 revenue + 파생 CCC
+    def _wide(item):
+        d = P.to_wide(item)
+        return d.loc[sorted(d.index, key=qkey)].round(2).reset_index().rename(columns={"index": "quarter"})
+    rev, ccc = _wide("revenue"), _wide("CCC")
 
     with pd.ExcelWriter(out, engine="openpyxl") as w:
         readme.to_excel(w, sheet_name="README", index=False)
@@ -87,6 +94,7 @@ def main():
         catalog.to_excel(w, sheet_name="item_catalog", index=False)
         cov.to_excel(w, sheet_name="coverage", index=False)
         rev.to_excel(w, sheet_name="revenue_wide", index=False)
+        ccc.to_excel(w, sheet_name="CCC_wide", index=False)
         # 열 너비 살짝 정리
         for sh, widths in {"README": [16, 70], "panel_long": [10, 26, 12, 20, 16, 16],
                            "item_catalog": [22, 30, 8]}.items():

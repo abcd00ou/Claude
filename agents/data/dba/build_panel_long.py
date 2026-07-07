@@ -65,6 +65,34 @@ def quarter_to_date(cq: str) -> str:
     return f"{y}{_QEND[int(q)]}"
 
 
+def _append_features(con):
+    """
+    Compute the cash-flow-guide derived features per company (features.compute_features)
+    and append them to panel_long as ordinary items (level form). Analysis then reads
+    them straight from panel_long — no runtime recomputation needed.
+    """
+    import panel as PN
+    import features as FT
+
+    long = PN.load_long(con.execute("PRAGMA database_list").fetchone()[2])  # same DB file
+    meta = long.drop_duplicates("ticker").set_index("ticker")[["companyname", "section"]]
+    rows = []
+    for tk in long["ticker"].unique():
+        feats = FT.compute_features(long, tk)
+        if feats.empty:
+            continue
+        cm, sec = meta.loc[tk, "companyname"], meta.loc[tk, "section"]
+        for item in PN.FEATURE_ITEMS:
+            if item not in feats.columns:
+                continue
+            s = feats[item].replace([np.inf, -np.inf], np.nan).dropna()
+            for q, v in s.items():
+                rows.append((tk, cm, quarter_to_date(q), item, float(v), sec))
+    fdf = pd.DataFrame(rows, columns=["ticker", "companyname", "date", "item", "value", "section"])
+    fdf.to_sql("panel_long", con, if_exists="append", index=False)
+    return len(fdf)
+
+
 def build():
     con = sqlite3.connect(DB)
 
@@ -143,9 +171,15 @@ def build():
             section     TEXT
         )""")
     panel.to_sql("panel_long", con, if_exists="append", index=False)
+    con.commit()
+
+    # --- second pass: materialize cash-flow-guide features (level form) ---
+    fcount = _append_features(con)
+
     con.execute("CREATE INDEX ix_panel_tid ON panel_long(ticker, item, date)")
     con.execute("CREATE INDEX ix_panel_item ON panel_long(item)")
     con.commit()
+    print(f"  (+{fcount:,} derived feature rows materialized)")
 
     n = con.execute("SELECT COUNT(*) FROM panel_long").fetchone()[0]
     items = con.execute(

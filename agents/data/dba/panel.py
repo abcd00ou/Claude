@@ -31,6 +31,22 @@ STORED_ITEMS = [
 ]
 # items computed on the fly from stored ones
 DERIVED_ITEMS = {"cogs": ("revenue", "gross_profit")}  # cogs = revenue - gross_profit
+
+# Materialized cash-flow-guide features now stored directly in panel_long (level form),
+# so analysis reads them instead of recomputing. Keep in sync with features.ALL_FEATURES
+# minus the source aliases (which are the lower-case stored items above).
+FEATURE_ITEMS = [
+    "DIO", "DSO", "DPO", "CCC",
+    "REVENUE_GROWTH_QOQ", "COGS_GROWTH_QOQ", "AR_GROWTH_QOQ", "AP_GROWTH_QOQ",
+    "INVENTORY_GROWTH_QOQ", "CAPEX_GROWTH_QOQ",
+    "REVENUE_GROWTH_YOY", "COGS_GROWTH_YOY", "AR_GROWTH_YOY", "AP_GROWTH_YOY",
+    "INVENTORY_GROWTH_YOY",
+    "AR_GROWTH_MINUS_REVENUE_GROWTH", "AP_GROWTH_MINUS_COGS_GROWTH",
+    "INVENTORY_GROWTH_MINUS_REVENUE_GROWTH",
+    "AR_TO_REVENUE", "AP_TO_COGS", "OCF_MARGIN", "FCF_MARGIN", "OPERATING_MARGIN",
+    "CAPEX_TO_OCF", "CASH_CONVERSION_RATIO", "CASH_RUNWAY_QTR", "FCF_TO_OPERATING_INCOME",
+]
+STORED_ITEMS = STORED_ITEMS + FEATURE_ITEMS
 AVAILABLE_ITEMS = STORED_ITEMS + list(DERIVED_ITEMS)
 
 _MONTH_Q = {3: 1, 6: 2, 9: 3, 12: 4}

@@ -176,21 +176,37 @@ def transform_series(s, how="level", winsor=None):
     raise ValueError(f"unknown transform {how!r}")
 
 
+def _read_stored(long, ticker, name):
+    """
+    Read a feature straight from panel_long (materialized). Derived features (level
+    form) and source aliases are stored; returns None if not resolvable so the caller
+    can fall back to compute_features.
+    """
+    import panel as P
+    if name in P.FEATURE_ITEMS:                     # materialized derived feature
+        return P.get_series(long, ticker, name)
+    if name in SOURCE_ALIAS:                        # source amount (alias)
+        s = P.get_series(long, ticker, SOURCE_ALIAS[name])
+        return s.abs() if name == "CAPEX" else s
+    return None
+
+
 def get_feature(long, ticker, name, transform="auto", winsor=(0.02, 0.98)):
     """
-    Quarterly series for one feature. transform='auto' uses the registry default.
-    winsor applies only to ratio-kind features (guards CAPEX_TO_OCF etc. blowups).
-    Pass winsor=None to disable.
+    Quarterly series for one feature. Reads the MATERIALIZED value from panel_long
+    first (no recomputation); only falls back to compute_features if absent.
+    transform='auto' uses the registry default; winsor applies to ratio-kind features.
     """
     if name not in FEATURE_REGISTRY:
         raise ValueError(f"unknown feature {name!r}. see features.ALL_FEATURES")
     spec = FEATURE_REGISTRY[name]
     how = spec["default"] if transform == "auto" else transform
-    feats = compute_features(long, ticker)
-    if name not in feats.columns:
-        return pd.Series(dtype=float, name=name)
+    raw = _read_stored(long, ticker, name)
+    if raw is None or raw.dropna().empty:
+        feats = compute_features(long, ticker)     # fallback (e.g. before materialization)
+        raw = feats[name] if name in feats.columns else pd.Series(dtype=float)
     w = winsor if (spec["kind"] == "ratio" and how == "level") else None
-    out = transform_series(feats[name], how, winsor=w).dropna()
+    out = transform_series(raw, how, winsor=w).dropna()
     out.name = f"{ticker}:{name}:{how}"
     return out
 
