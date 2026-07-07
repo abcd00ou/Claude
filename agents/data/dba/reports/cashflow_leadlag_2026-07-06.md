@@ -94,7 +94,7 @@
 
 ## 2. 기업 간 (고객↔공급사 전이)
 
-- 분석 케이스 161 · 분석가능 95 · **가설지지 21건**
+- 분석 케이스 168 · 분석가능 101 · **가설지지 23건**
 
 | 고객 | 공급사 | X(선행) | Y(후행) | 기대 | lag | Pearson | p | 판정 |
 |---|---|---|---|---|---|---|---|---|
@@ -140,6 +140,13 @@
 | Hyperscaler | DRAM | Hyperscaler·FCF_MARGIN | DRAM·REVENUE_GROWTH_QOQ | + | +3 | 0.33 | 0.0803 | 방향일치·약함 (lead 3q, r=0.33) |
 | Hyperscaler | DRAM | DRAM·DIO | Hyperscaler·REVENUE_GROWTH_QOQ | - | +3 | -0.031 | 0.8694 | 방향일치·약함 (lead 3q, r=-0.031) |
 | Hyperscaler | DRAM | DRAM·INVENTORY_GROWTH_MINUS_REVENUE_GROWTH | Hyperscaler·COGS_GROWTH_QOQ | ? | +2 | -0.2 | 0.29 | 방향일치·약함 (lead 2q, r=-0.2) |
+| Server OEM | DRAM | Server OEM·COGS_GROWTH_QOQ | DRAM·REVENUE_GROWTH_QOQ | + | +0 | 0.659 | 0.0 | 가설지지 (lead 0q, r=0.659, p=0.0) |
+| Server OEM | DRAM | Server OEM·CAPEX_GROWTH_QOQ | DRAM·REVENUE_GROWTH_QOQ | + | nan | nan | nan | insufficient data |
+| Server OEM | DRAM | Server OEM·DPO | DRAM·DSO | + | +0 | -0.567 | 0.0007 | 부호불일치(기대 +, 실제 -) |
+| Server OEM | DRAM | Server OEM·AP_TO_COGS | DRAM·AR_TO_REVENUE | + | +0 | 0.424 | 0.0138 | 가설지지 (lead 0q, r=0.424, p=0.0138) |
+| Server OEM | DRAM | Server OEM·FCF_MARGIN | DRAM·REVENUE_GROWTH_QOQ | + | +3 | 0.213 | 0.5817 | 방향일치·약함 (lead 3q, r=0.213) |
+| Server OEM | DRAM | DRAM·DIO | Server OEM·REVENUE_GROWTH_QOQ | - | +3 | 0.18 | 0.3326 | 부호불일치(기대 -, 실제 +) |
+| Server OEM | DRAM | DRAM·INVENTORY_GROWTH_MINUS_REVENUE_GROWTH | Server OEM·COGS_GROWTH_QOQ | ? | +2 | -0.241 | 0.1919 | 방향일치·약함 (lead 2q, r=-0.241) |
 | Hyperscaler | NAND | Hyperscaler·COGS_GROWTH_QOQ | NAND·REVENUE_GROWTH_QOQ | + | +0 | 0.533 | 0.0017 | 가설지지 (lead 0q, r=0.533, p=0.0017) |
 | Hyperscaler | NAND | Hyperscaler·CAPEX_GROWTH_QOQ | NAND·REVENUE_GROWTH_QOQ | + | +3 | 0.165 | 0.3849 | 방향일치·약함 (lead 3q, r=0.165) |
 | Hyperscaler | NAND | Hyperscaler·DPO | NAND·DSO | + | +0 | 0.658 | 0.0 | 가설지지 (lead 0q, r=0.658, p=0.0) |

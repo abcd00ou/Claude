@@ -46,10 +46,8 @@ SECTIONS = {
     "server_odm": "Server ODM",
 }
 
-# [customer] -> [supplier]  (customer buys from supplier; demand starts at customer)
-# Parsed from the user's relationship list. The chain "oem->Hyperscaler->NAND" is
-# read as Hyperscaler->NAND (hyperscalers buy NAND SSDs); the reverse oem->hyperscaler
-# link is non-standard for [customer]->[supply] and is omitted.
+# [customer] -> [supplier]  (customer buys from supplier; demand/cash starts at customer)
+# 사용자 정의 섹터간 고객-공급사 흐름 (2026-07-07 업데이트: oem->dram 추가).
 RELATIONSHIPS = [
     ("hyperscalers", "ai_chip"),
     ("server_oem", "ai_chip"),
@@ -57,6 +55,7 @@ RELATIONSHIPS = [
     ("hyperscalers", "cpu"),
     ("ai_chip", "dram"),
     ("hyperscalers", "dram"),
+    ("server_oem", "dram"),
     ("hyperscalers", "nand"),
     ("server_oem", "nand"),
     ("ai_chip", "nand"),

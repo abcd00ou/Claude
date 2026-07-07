@@ -1,0 +1,97 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<title>AI 공급망 현금흐름 시차 맵</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+ body{font-family:-apple-system,Segoe UI,'Malgun Gothic',sans-serif;margin:32px;color:#1a1a1a}
+ h1{font-size:22px} .sub{color:#666;margin-bottom:12px}
+ .legend span{margin-right:14px;font-size:12px}
+ .mermaid{background:#fafafa;border:1px solid #eee;border-radius:8px;padding:16px;margin:14px 0}
+ table{border-collapse:collapse;width:100%;font-size:13px;margin-top:12px}
+ th,td{border:1px solid #e5e5e5;padding:6px 8px;text-align:center}
+ th{background:#f4f4f4} tr.sig{background:#eefbf0} td.na{color:#b58900}
+ ul{font-size:13px;line-height:1.7} .legs{color:#888}
+ h2{font-size:16px;margin-top:22px}
+</style></head><body>
+<h1>AI 공급망 현금흐름 Lead-Lag 시차 맵</h1>
+<div class="sub">고객→공급사 현금 전이. 굵은 화살표=유의. 채널은 데이터가 선택(구매/투자/수요흐름). 분석일 2026-07-07</div>
+<div class="legend">
+ <span>🔴 0q 즉시</span><span>🟠 1q</span><span>🟢 2q</span><span>🔵 3q</span><span>🟣 4q 지연</span>
+ <span>⋯ 데이터부족</span>
+</div>
+<div class="mermaid">
+flowchart LR
+  n_Hyperscaler["Hyperscaler"] ==>|"capex→매출 · +0q · r=0.698"| n_AIChip["AI Chip"]
+  n_ServerOEM["Server OEM"] ==>|"매출→매출 · +0q · r=0.653"| n_AIChip["AI Chip"]
+  n_ServerOEM["Server OEM"] -->|"매출→매출 · +3q · r=0.27"| n_CPU["CPU"]
+  n_Hyperscaler["Hyperscaler"] ==>|"capex→매출 · +0q · r=0.516"| n_CPU["CPU"]
+  n_AIChip["AI Chip"] ==>|"매출→매출 · +0q · r=0.586"| n_DRAM["DRAM"]
+  n_Hyperscaler["Hyperscaler"] ==>|"capex→매출 · +0q · r=0.744"| n_DRAM["DRAM"]
+  n_ServerOEM["Server OEM"] ==>|"COGS→매출 · +0q · r=0.659"| n_DRAM["DRAM"]
+  n_Hyperscaler["Hyperscaler"] ==>|"매출→매출 · +0q · r=0.738"| n_NAND["NAND"]
+  n_ServerOEM["Server OEM"] ==>|"COGS→매출 · +0q · r=0.767"| n_NAND["NAND"]
+  n_AIChip["AI Chip"] ==>|"매출→매출 · +0q · r=0.556"| n_NAND["NAND"]
+  n_Foundry["Foundry"] -.->|"데이터부족"| n_HWEquipment["HW Equipment"]
+  n_DRAM["DRAM"] -->|"COGS→매출 · +0q · r=0.251"| n_HWEquipment["HW Equipment"]
+  n_CPU["CPU"] -->|"매출→매출 · +1q · r=0.231"| n_HWEquipment["HW Equipment"]
+  n_AIChip["AI Chip"] -->|"매출→매출 · +0q · r=0.184"| n_OSATPackaging["OSAT/Packaging"]
+  n_CPU["CPU"] ==>|"매출→매출 · +3q · r=0.442"| n_OSATPackaging["OSAT/Packaging"]
+  n_Hyperscaler["Hyperscaler"] ==>|"매출→매출 · +0q · r=0.789"| n_ServerNetworking["Server Networking"]
+  n_ServerOEM["Server OEM"] ==>|"COGS→매출 · +0q · r=0.829"| n_ServerNetworking["Server Networking"]
+  n_AIChip["AI Chip"] -.->|"데이터부족"| n_Foundry["Foundry"]
+  n_CPU["CPU"] -.->|"데이터부족"| n_Foundry["Foundry"]
+  n_ServerNetworking["Server Networking"] -.->|"데이터부족"| n_Foundry["Foundry"]
+  n_CPU["CPU"] -.->|"데이터부족"| n_ServerODM["Server ODM"]
+  n_DRAM["DRAM"] -.->|"데이터부족"| n_ServerODM["Server ODM"]
+  n_NAND["NAND"] -.->|"데이터부족"| n_ServerODM["Server ODM"]
+  n_AIChip["AI Chip"] -.->|"데이터부족"| n_ServerODM["Server ODM"]
+linkStyle 0 stroke:#d62728,stroke-width:3px;
+linkStyle 1 stroke:#d62728,stroke-width:3px;
+linkStyle 3 stroke:#d62728,stroke-width:3px;
+linkStyle 4 stroke:#d62728,stroke-width:3px;
+linkStyle 5 stroke:#d62728,stroke-width:3px;
+linkStyle 6 stroke:#d62728,stroke-width:3px;
+linkStyle 7 stroke:#d62728,stroke-width:3px;
+linkStyle 8 stroke:#d62728,stroke-width:3px;
+linkStyle 9 stroke:#d62728,stroke-width:3px;
+linkStyle 14 stroke:#1f77b4,stroke-width:3px;
+linkStyle 15 stroke:#d62728,stroke-width:3px;
+linkStyle 16 stroke:#d62728,stroke-width:3px;
+</div>
+<h2>주요 현금전파 경로 (누적 시차)</h2>
+<ul>
+<li><b>Hyperscaler → AI Chip → DRAM</b> : 누적 <b>0분기</b> <span class='legs'>(Hyperscaler→AI Chip +0q , AI Chip→DRAM +0q)</span></li>
+<li><b>Hyperscaler → AI Chip → NAND</b> : 누적 <b>0분기</b> <span class='legs'>(Hyperscaler→AI Chip +0q , AI Chip→NAND +0q)</span></li>
+<li><b>Hyperscaler → AI Chip → OSAT/Packaging</b> : 누적 <b>0분기</b> <span class='legs'>(Hyperscaler→AI Chip +0q , AI Chip→OSAT/Packaging +0q)</span></li>
+<li><b>Server OEM → AI Chip → DRAM</b> : 누적 <b>0분기</b> <span class='legs'>(Server OEM→AI Chip +0q , AI Chip→DRAM +0q)</span></li>
+<li><b>AI Chip → DRAM → HW Equipment</b> : 누적 <b>0분기</b> <span class='legs'>(AI Chip→DRAM +0q , DRAM→HW Equipment +0q)</span></li>
+</ul>
+<h2>엣지별 현금흐름 시차</h2>
+<table>
+<tr><th>고객</th><th>공급사</th><th>채널</th><th>시차</th><th>r</th><th>p</th><th>유의</th></tr>
+<tr class='sig'><td>Hyperscaler</td><td>AI Chip</td><td>투자흐름</td><td>+0q</td><td>0.698</td><td>0.0</td><td>유의</td></tr>
+<tr class='sig'><td>Server OEM</td><td>AI Chip</td><td>수요흐름</td><td>+0q</td><td>0.653</td><td>0.0</td><td>유의</td></tr>
+<tr class=''><td>Server OEM</td><td>CPU</td><td>수요흐름</td><td>+3q</td><td>0.27</td><td>0.1497</td><td>·</td></tr>
+<tr class='sig'><td>Hyperscaler</td><td>CPU</td><td>투자흐름</td><td>+0q</td><td>0.516</td><td>0.0025</td><td>유의</td></tr>
+<tr class='sig'><td>AI Chip</td><td>DRAM</td><td>수요흐름</td><td>+0q</td><td>0.586</td><td>0.0004</td><td>유의</td></tr>
+<tr class='sig'><td>Hyperscaler</td><td>DRAM</td><td>투자흐름</td><td>+0q</td><td>0.744</td><td>0.0</td><td>유의</td></tr>
+<tr class='sig'><td>Server OEM</td><td>DRAM</td><td>구매흐름</td><td>+0q</td><td>0.659</td><td>0.0</td><td>유의</td></tr>
+<tr class='sig'><td>Hyperscaler</td><td>NAND</td><td>수요흐름</td><td>+0q</td><td>0.738</td><td>0.0</td><td>유의</td></tr>
+<tr class='sig'><td>Server OEM</td><td>NAND</td><td>구매흐름</td><td>+0q</td><td>0.767</td><td>0.0</td><td>유의</td></tr>
+<tr class='sig'><td>AI Chip</td><td>NAND</td><td>수요흐름</td><td>+0q</td><td>0.556</td><td>0.0008</td><td>유의</td></tr>
+<tr><td>Foundry</td><td>HW Equipment</td><td colspan=5 class='na'>데이터 부족</td></tr>
+<tr class=''><td>DRAM</td><td>HW Equipment</td><td>구매흐름</td><td>+0q</td><td>0.251</td><td>0.1655</td><td>·</td></tr>
+<tr class=''><td>CPU</td><td>HW Equipment</td><td>수요흐름</td><td>+1q</td><td>0.231</td><td>0.2041</td><td>·</td></tr>
+<tr class=''><td>AI Chip</td><td>OSAT/Packaging</td><td>수요흐름</td><td>+0q</td><td>0.184</td><td>0.321</td><td>·</td></tr>
+<tr class='sig'><td>CPU</td><td>OSAT/Packaging</td><td>수요흐름</td><td>+3q</td><td>0.442</td><td>0.0185</td><td>유의</td></tr>
+<tr class='sig'><td>Hyperscaler</td><td>Server Networking</td><td>수요흐름</td><td>+0q</td><td>0.789</td><td>0.0</td><td>유의</td></tr>
+<tr class='sig'><td>Server OEM</td><td>Server Networking</td><td>구매흐름</td><td>+0q</td><td>0.829</td><td>0.0</td><td>유의</td></tr>
+<tr><td>AI Chip</td><td>Foundry</td><td colspan=5 class='na'>데이터 부족</td></tr>
+<tr><td>CPU</td><td>Foundry</td><td colspan=5 class='na'>데이터 부족</td></tr>
+<tr><td>Server Networking</td><td>Foundry</td><td colspan=5 class='na'>데이터 부족</td></tr>
+<tr><td>CPU</td><td>Server ODM</td><td colspan=5 class='na'>데이터 부족</td></tr>
+<tr><td>DRAM</td><td>Server ODM</td><td colspan=5 class='na'>데이터 부족</td></tr>
+<tr><td>NAND</td><td>Server ODM</td><td colspan=5 class='na'>데이터 부족</td></tr>
+<tr><td>AI Chip</td><td>Server ODM</td><td colspan=5 class='na'>데이터 부족</td></tr>
+</table>
+<script>mermaid.initialize({startOnLoad:true,flowchart:{curve:'basis'}});</script>
+</body></html>
