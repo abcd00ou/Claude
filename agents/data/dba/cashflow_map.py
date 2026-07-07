@@ -27,10 +27,16 @@ import cashflow_leadlag as C
 HERE = Path(__file__).parent
 
 # 현금흐름 채널 후보 (고객 X → 공급사 Y, 기대부호 +, 시차 0~4분기)
+# 결제흐름(AP/DPO 계열)이 사용자가 보려는 "돈이 시차 두고 흐르는" 직접 채널.
 CASH_DRIVERS = [
-    ("COGS_GROWTH_QOQ", "REVENUE_GROWTH_QOQ", "구매흐름", "COGS→매출"),
-    ("CAPEX_GROWTH_QOQ", "REVENUE_GROWTH_QOQ", "투자흐름", "capex→매출"),
-    ("REVENUE_GROWTH_QOQ", "REVENUE_GROWTH_QOQ", "수요흐름", "매출→매출"),
+    # 결제/지급 흐름 — 고객이 아직 안 낸 돈(AP)이 공급사 매출/미수로 잡히는 시차
+    ("AP_GROWTH_QOQ", "REVENUE_GROWTH_QOQ", "결제흐름", "고객AP→공급사매출"),
+    ("DPO", "DSO", "지급→회수", "고객DPO→공급사DSO"),
+    ("AP_TO_COGS", "AR_TO_REVENUE", "미지급→미수", "고객AP/COGS→공급사AR/매출"),
+    # 구매/투자/수요 흐름
+    ("COGS_GROWTH_QOQ", "REVENUE_GROWTH_QOQ", "구매흐름", "고객COGS→공급사매출"),
+    ("CAPEX_GROWTH_QOQ", "REVENUE_GROWTH_QOQ", "투자흐름", "고객capex→공급사매출"),
+    ("REVENUE_GROWTH_QOQ", "REVENUE_GROWTH_QOQ", "수요흐름", "고객매출→공급사매출"),
 ]
 # 시각화/경로 해석용 주요 현금전파 경로
 KEY_PATHS = [
@@ -53,16 +59,16 @@ def _channel(long, cust, supp, xf, yf, lags):
     return r if r.get("status") == "ok" else None
 
 
-def edge_cashflow(long, cust, supp, lags=(0, 4)):
-    """엣지 하나: 여러 현금흐름 채널 중 가장 유의한 것을 골라 시차를 확정."""
+def edge_cashflow(long, cust, supp, drivers=CASH_DRIVERS, lags=(0, 4)):
+    """엣지 하나: 주어진 채널 중 가장 유의한 것을 골라 시차·분석변수를 확정."""
     base = dict(customer=cust, supplier=supp,
                 customer_label=V.SECTIONS.get(cust, cust),
                 supplier_label=V.SECTIONS.get(supp, supp))
     cand = []
-    for xf, yf, ch_ko, ch_short in CASH_DRIVERS:
+    for xf, yf, ch_ko, ch_short in drivers:
         r = _channel(long, cust, supp, xf, yf, lags)
         if r:
-            r["channel"], r["channel_short"] = ch_ko, ch_short
+            r.update(channel=ch_ko, channel_short=ch_short, x_var=xf, y_var=yf)
             cand.append(r)
     if not cand:
         return {**base, "status": "insufficient data", "note": "데이터 부족"}
@@ -70,17 +76,27 @@ def edge_cashflow(long, cust, supp, lags=(0, 4)):
     pool = strong or cand
     best = max(pool, key=lambda r: abs(r["pearson"]))
     return {**base, "status": "ok", "channel": best["channel"],
-            "channel_short": best["channel_short"], "lag_q": best["best_lag"],
-            "pearson": best["pearson"], "p_value": best["p_value"],
-            "granger_p": None, "n": best["n"],
+            "channel_short": best["channel_short"],
+            "x_var": best["x_var"], "y_var": best["y_var"],
+            "lag_q": best["best_lag"], "pearson": best["pearson"],
+            "p_value": best["p_value"], "granger_p": None, "n": best["n"],
             "significant": bool(best["significant"] and best["sign_match"])}
 
 
-def run_map(long, relationships=None):
+def run_map(long, relationships=None, channel=None):
+    """
+    channel=None → 각 엣지 최유의 채널 자동선택.
+    channel=(X_feat, Y_feat) → 그 채널만 고정 (예: ('AP_GROWTH_QOQ','REVENUE_GROWTH_QOQ')).
+    """
     relationships = relationships or V.RELATIONSHIPS
-    rows = [edge_cashflow(long, c, s) for c, s in relationships]
+    drivers = CASH_DRIVERS
+    if channel is not None:
+        drivers = [d for d in CASH_DRIVERS if (d[0], d[1]) == tuple(channel)]
+        if not drivers:                              # 목록에 없는 조합도 허용
+            drivers = [(channel[0], channel[1], "지정채널", f"{channel[0]}→{channel[1]}")]
+    rows = [edge_cashflow(long, c, s, drivers=drivers) for c, s in relationships]
     cols = ["customer_label", "supplier_label", "status", "channel", "channel_short",
-            "lag_q", "pearson", "p_value", "granger_p", "n", "significant"]
+            "x_var", "y_var", "lag_q", "pearson", "p_value", "granger_p", "n", "significant"]
     df = pd.DataFrame(rows)
     df["customer"] = [r["customer"] for r in rows]
     df["supplier"] = [r["supplier"] for r in rows]
@@ -128,11 +144,12 @@ def generate_html(df, path, date="2026-07-07"):
     for r in df.itertuples(index=False):
         if r.status != "ok":
             rows.append(f"<tr><td>{r.customer_label}</td><td>{r.supplier_label}</td>"
-                        f"<td colspan=5 class='na'>데이터 부족</td></tr>")
+                        f"<td colspan=6 class='na'>데이터 부족</td></tr>")
         else:
             cls = "sig" if r.significant else ""
             rows.append(f"<tr class='{cls}'><td>{r.customer_label}</td><td>{r.supplier_label}</td>"
-                        f"<td>{r.channel}</td><td>{int(r.lag_q):+d}q</td><td>{r.pearson}</td>"
+                        f"<td>{r.channel}</td><td class='var'>{r.x_var} → {r.y_var}</td>"
+                        f"<td>{int(r.lag_q):+d}q</td><td>{r.pearson}</td>"
                         f"<td>{r.p_value}</td><td>{'유의' if r.significant else '·'}</td></tr>")
     table = "\n".join(rows)
 
@@ -157,6 +174,7 @@ def generate_html(df, path, date="2026-07-07"):
  table{{border-collapse:collapse;width:100%;font-size:13px;margin-top:12px}}
  th,td{{border:1px solid #e5e5e5;padding:6px 8px;text-align:center}}
  th{{background:#f4f4f4}} tr.sig{{background:#eefbf0}} td.na{{color:#b58900}}
+ td.var{{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#333}}
  ul{{font-size:13px;line-height:1.7}} .legs{{color:#888}}
  h2{{font-size:16px;margin-top:22px}}
 </style></head><body>
@@ -174,9 +192,9 @@ def generate_html(df, path, date="2026-07-07"):
 <ul>
 {paths_html}
 </ul>
-<h2>엣지별 현금흐름 시차</h2>
+<h2>엣지별 현금흐름 시차 (분석 변수 명시)</h2>
 <table>
-<tr><th>고객</th><th>공급사</th><th>채널</th><th>시차</th><th>r</th><th>p</th><th>유의</th></tr>
+<tr><th>고객</th><th>공급사</th><th>채널</th><th>분석변수 (X→Y)</th><th>시차</th><th>r</th><th>p</th><th>유의</th></tr>
 {table}
 </table>
 <script>mermaid.initialize({{startOnLoad:true,flowchart:{{curve:'basis'}}}});</script>
@@ -192,17 +210,17 @@ def generate_md(df, path, date="2026-07-07"):
          "수요(매출→매출) 채널 중 데이터가 가장 유의한 것으로 시차를 확정.\n"]
     ok = df[df.status == "ok"]
     L.append(f"\n- 엣지 {len(df)} · 분석가능 {len(ok)} · **유의 {int(ok.significant.sum())}**\n")
-    L.append("\n## 엣지별 현금흐름 시차\n")
-    L.append("| 고객 | 공급사 | 채널 | 시차(분기) | r | p | 유의 |")
-    L.append("|---|---|---|---|---|---|---|")
+    L.append("\n## 엣지별 현금흐름 시차 (분석 변수 명시)\n")
+    L.append("| 고객 | 공급사 | 채널 | 분석변수 (X→Y) | 시차(분기) | r | p | 유의 |")
+    L.append("|---|---|---|---|---|---|---|---|")
     for r in df.itertuples(index=False):
         if r.status != "ok":
-            L.append(f"| {r.customer_label} | {r.supplier_label} | — | — | — | — | 데이터부족 |")
+            L.append(f"| {r.customer_label} | {r.supplier_label} | — | — | — | — | — | 데이터부족 |")
         else:
             star = "**" if r.significant else ""
             L.append(f"| {r.customer_label} | {r.supplier_label} | {r.channel} | "
-                     f"{star}{int(r.lag_q):+d}{star} | {r.pearson} | {r.p_value} | "
-                     f"{'✅' if r.significant else '·'} |")
+                     f"`{r.x_var}→{r.y_var}` | {star}{int(r.lag_q):+d}{star} | {r.pearson} | "
+                     f"{r.p_value} | {'✅' if r.significant else '·'} |")
     L.append("\n## 주요 현금전파 경로 (누적 시차)\n")
     for pth in KEY_PATHS:
         tot, legs = path_lag(df, pth)
