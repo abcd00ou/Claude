@@ -1,57 +1,84 @@
 """
-update_all_reports.py — regenerate every analysis report from the current panel_long.
+update_all_reports.py — 모든 분석의 리포트+HTML을 고정 이름으로 재생성 (overwrite).
 
-Runs the four analysis layers end-to-end and writes their reports/artifacts:
-  1. value-chain lead-lag      -> reports/valuechain_leadlag_<date>.md + valuechain.html
-  2. cash-flow variable-pairs  -> reports/cashflow_leadlag_<date>.md
-  3. ECM mini-GEM              -> reports/ecm_minigem_<date>.md
-(run_analysis.py handles the company/section lead-lag JSON separately.)
+CSV(panel_long.csv) 하나에서 시작해 전 분석을 돌리고, 결과를 날짜 없는 고정 파일명으로
+덮어쓴다(같은 내용이면 계속 overwrite). run_analysis(기업/섹션)는 자체 main으로 처리.
 
-Run:  python3 update_all_reports.py [YYYY-MM-DD]
+Run:  python3 update_all_reports.py
 """
 from __future__ import annotations
-import sys
 from pathlib import Path
 
 import panel as P
 import valuechain as V
 import cashflow_leadlag as C
+import cashflow_map as CM
+import pairwise_cashflow as PW
 import ecm as E
+import universal as U
+import vecm as VE
+import run_analysis as RA
 
 HERE = Path(__file__).parent
-DATE = sys.argv[1] if len(sys.argv) > 1 else "2026-07-06"
+DATE = "2026-07-09"
 CF_TICKERS = ["NVDA", "AMD", "MU", "INTC", "AMAT", "LRCX", "AMKR", "DELL", "AVGO", "STX"]
+
+
+def R(name):
+    return str(HERE / "reports" / name)
 
 
 def main():
     (HERE / "reports").mkdir(exist_ok=True)
     long = P.load_long()
-    print(f"panel_long: {long.shape}  ({long.ticker.nunique()} companies)")
+    print(f"panel_long.csv: {long.shape} ({long.ticker.nunique()} companies, {long.item.nunique()} items)")
 
-    # 1) value chain
+    # 0) 기업·섹션 lead-lag (자체 main → company_section_leadlag.md, JSON)
+    RA.main()
+
+    # 1) 밸류체인 lead-lag
     vc = V.run_matrix(long)
-    V.generate_md(vc, long, f"reports/valuechain_leadlag_{DATE}.md", date=DATE)
-    V.generate_html(vc, "valuechain.html", date=DATE)
-    ok = vc[vc.status == "ok"]
-    print(f"[valuechain]  분석가능 {len(ok)}/{len(vc)} · 고객선행&유의 "
-          f"{((ok.best_lag_q>0)&ok.significant).sum()}")
+    V.generate_md(vc, long, R("valuechain_leadlag.md"), date=DATE)
+    V.generate_html(vc, str(HERE / "valuechain.html"), date=DATE)
 
-    # 2) cash flow
+    # 2) 현금흐름 변수쌍 (내부/기업간)
     internal = C.run_internal(long, CF_TICKERS)
     cross = C.run_cross(long)
-    C.generate_md(internal, cross, f"reports/cashflow_leadlag_{DATE}.md", date=DATE)
-    io, xo = internal[internal.status == "ok"], cross[cross.status == "ok"]
-    print(f"[cashflow]    내부 가설지지 {((io.sign_match)&(io.significant)).sum()} · "
-          f"기업간 가설지지 {((xo.sign_match)&(xo.significant)).sum()}")
+    C.generate_md(internal, cross, R("cashflow_leadlag.md"), date=DATE)
 
-    # 3) ECM mini-GEM
-    E.generate_md(long, f"reports/ecm_minigem_{DATE}.md", date=DATE)
-    ecm_rev = E.run_ecm(long, x_item="revenue", y_item="revenue")
-    ecm_cap = E.run_ecm(long, x_item="capex", y_item="revenue")
-    print(f"[ecm]         오차수정 rev={int((ecm_rev.error_correcting==True).sum())} · "
-          f"capex={int((ecm_cap.error_correcting==True).sum())}")
+    # 3) ECM 2변수 (섹터 매출)
+    E.generate_md(long, R("ecm_minigem.md"), date=DATE)
 
-    print(f"\nreports 갱신 완료 (date={DATE})")
+    # 4) 현금흐름 시차 맵 (자동선택 + AP 고정 + 채널 전체)
+    auto = CM.run_map(long)
+    CM.generate_md(auto, R("cashflow_map.md"), date=DATE)
+    CM.generate_html(auto, str(HERE / "cashflow_map.html"), date=DATE)
+    ap = CM.run_map(long, channel=("AP_GROWTH_QOQ", "REVENUE_GROWTH_QOQ"))
+    CM.generate_md(ap, R("cashflow_map_AP.md"), date=DATE)
+    CM.generate_html(ap, str(HERE / "cashflow_map_AP.html"), date=DATE)
+    CM.generate_channels_report(long, R("cashflow_channels.md"), date=DATE)
+
+    # 5) 기업간 상관가중 매출합
+    cw, contribs = PW.run_corrweighted_map(long)
+    PW.generate_corrweighted_md(cw, contribs, R("cashflow_corrweighted.md"),
+                                x="AP_GROWTH_YOY", y="REVENUE_GROWTH_YOY", date=DATE)
+
+    # 6) 보편관계
+    udf, _ = U.find_universal(long)
+    udf.to_csv(HERE / "universal_channels.csv", index=False)
+    U.generate_md(udf, R("universal_relations.md"), date=DATE)
+    U.generate_html(udf, str(HERE / "universal.html"), date=DATE)
+
+    # 7) VECM mini-GEM
+    eqs, exog, _ = VE.build_system(long)
+    VE.generate_md(eqs, exog, long, R("vecm_minigem.md"), date=DATE)
+    VE.generate_html(eqs, exog, long, str(HERE / "vecm.html"), date=DATE)
+
+    print("\n[완료] 모든 리포트·HTML 고정 이름으로 overwrite:")
+    print("  reports/*.md (company_section, valuechain, cashflow_leadlag, ecm_minigem,")
+    print("               cashflow_map[_AP], cashflow_channels, cashflow_corrweighted,")
+    print("               universal_relations, vecm_minigem)")
+    print("  *.html (valuechain, cashflow_map[_AP], universal, vecm)")
 
 
 if __name__ == "__main__":

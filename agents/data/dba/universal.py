@@ -136,3 +136,40 @@ def generate_md(df, path, date="2026-07-08"):
           "- Foundry·ODM은 데이터 부족(나중에 쌓이면 자동 반영).\n"]
     Path(path).write_text("\n".join(L))
     return path
+
+
+def generate_html(df, path, date="2026-07-08"):
+    mx = max(1.0, float(df["total_sig_pairs"].max()))
+    rows = []
+    for r in df.itertuples(index=False):
+        bar = int(round((r.universality or 0) * 100))
+        rows.append(
+            f"<tr><td class='ch'>{r.channel}</td><td class='var'>{r.x}</td><td class='var'>{r.y}</td>"
+            f"<td><div class='barwrap'><div class='bar' style='width:{bar}%'></div>"
+            f"<span>{r.universality}</span></div></td>"
+            f"<td>{r.edges_ok}/{r.edges_analyzable}</td><td>{r.total_sig_pairs}/{r.total_pairs}</td>"
+            f"<td>{r.mean_corr}</td><td>{r.mean_lag}</td></tr>")
+    table = "\n".join(rows)
+    html = f"""<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<title>밸류체인 보편 현금흐름 관계</title>
+<style>
+ body{{font-family:-apple-system,'Malgun Gothic',sans-serif;margin:32px;color:#1a1a1a}}
+ h1{{font-size:21px}} .sub{{color:#666;font-size:13px;margin-bottom:14px}}
+ table{{border-collapse:collapse;width:100%;font-size:13px}}
+ th,td{{border:1px solid #e6e6e6;padding:6px 8px;text-align:center}}
+ th{{background:#f4f4f4}} td.ch{{text-align:left;font-weight:600}}
+ td.var{{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#444}}
+ .barwrap{{position:relative;background:#eef2f7;border-radius:4px;height:18px;min-width:90px}}
+ .bar{{background:#2ca02c;height:18px;border-radius:4px}}
+ .barwrap span{{position:absolute;left:6px;top:0;line-height:18px;font-size:11px;color:#123}}
+</style></head><body>
+<h1>밸류체인 보편 현금흐름 관계 (전 섹터 적용 가능성)</h1>
+<div class="sub">각 변수쌍×변환이 밸류체인 엣지에서 기업쌍 유의로 얼마나 보편적으로 성립하는지 · 분석일 {date}
+ · 보편성 1.0 = 분석가능한 모든 엣지에서 성립 → VECM 방정식 후보</div>
+<table>
+<tr><th>채널</th><th>X (고객)</th><th>Y (공급사)</th><th>보편성</th><th>성립/가능 엣지</th><th>유의쌍/전체</th><th>평균 r</th><th>평균시차</th></tr>
+{table}
+</table>
+</body></html>"""
+    Path(path).write_text(html)
+    return path

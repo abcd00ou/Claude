@@ -1,0 +1,38 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<title>밸류체인 보편 현금흐름 관계</title>
+<style>
+ body{font-family:-apple-system,'Malgun Gothic',sans-serif;margin:32px;color:#1a1a1a}
+ h1{font-size:21px} .sub{color:#666;font-size:13px;margin-bottom:14px}
+ table{border-collapse:collapse;width:100%;font-size:13px}
+ th,td{border:1px solid #e6e6e6;padding:6px 8px;text-align:center}
+ th{background:#f4f4f4} td.ch{text-align:left;font-weight:600}
+ td.var{font-family:ui-monospace,Menlo,monospace;font-size:11px;color:#444}
+ .barwrap{position:relative;background:#eef2f7;border-radius:4px;height:18px;min-width:90px}
+ .bar{background:#2ca02c;height:18px;border-radius:4px}
+ .barwrap span{position:absolute;left:6px;top:0;line-height:18px;font-size:11px;color:#123}
+</style></head><body>
+<h1>밸류체인 보편 현금흐름 관계 (전 섹터 적용 가능성)</h1>
+<div class="sub">각 변수쌍×변환이 밸류체인 엣지에서 기업쌍 유의로 얼마나 보편적으로 성립하는지 · 분석일 2026-07-09
+ · 보편성 1.0 = 분석가능한 모든 엣지에서 성립 → VECM 방정식 후보</div>
+<table>
+<tr><th>채널</th><th>X (고객)</th><th>Y (공급사)</th><th>보편성</th><th>성립/가능 엣지</th><th>유의쌍/전체</th><th>평균 r</th><th>평균시차</th></tr>
+<tr><td class='ch'>수요 매출→매출 [rolling_yoy]</td><td class='var'>REVENUE[rolling_yoy]</td><td class='var'>REVENUE[rolling_yoy]</td><td><div class='barwrap'><div class='bar' style='width:100%'></div><span>1.0</span></div></td><td>15/15</td><td>96/137</td><td>0.625</td><td>2.26</td></tr>
+<tr><td class='ch'>결제 AP→매출 [qoq]</td><td class='var'>AP[growth_qoq]</td><td class='var'>REVENUE[growth_qoq]</td><td><div class='barwrap'><div class='bar' style='width:100%'></div><span>1.0</span></div></td><td>15/15</td><td>91/147</td><td>0.577</td><td>1.39</td></tr>
+<tr><td class='ch'>결제 AP→매출 [rolling_yoy]</td><td class='var'>AP[rolling_yoy]</td><td class='var'>REVENUE[rolling_yoy]</td><td><div class='barwrap'><div class='bar' style='width:100%'></div><span>1.0</span></div></td><td>15/15</td><td>89/137</td><td>0.66</td><td>1.98</td></tr>
+<tr><td class='ch'>재고→매출 [rolling_yoy]</td><td class='var'>INVENTORY[rolling_yoy]</td><td class='var'>REVENUE[rolling_yoy]</td><td><div class='barwrap'><div class='bar' style='width:100%'></div><span>1.0</span></div></td><td>15/15</td><td>87/120</td><td>0.672</td><td>1.98</td></tr>
+<tr><td class='ch'>수요 매출→매출 [yoy]</td><td class='var'>REVENUE[growth_yoy]</td><td class='var'>REVENUE[growth_yoy]</td><td><div class='barwrap'><div class='bar' style='width:100%'></div><span>1.0</span></div></td><td>15/15</td><td>76/144</td><td>0.532</td><td>1.74</td></tr>
+<tr><td class='ch'>재고→매출 [yoy]</td><td class='var'>INVENTORY[growth_yoy]</td><td class='var'>REVENUE[growth_yoy]</td><td><div class='barwrap'><div class='bar' style='width:100%'></div><span>1.0</span></div></td><td>15/15</td><td>69/123</td><td>0.577</td><td>2.06</td></tr>
+<tr><td class='ch'>재고→매출 [qoq]</td><td class='var'>INVENTORY[growth_qoq]</td><td class='var'>REVENUE[growth_qoq]</td><td><div class='barwrap'><div class='bar' style='width:100%'></div><span>1.0</span></div></td><td>15/15</td><td>64/130</td><td>0.492</td><td>1.51</td></tr>
+<tr><td class='ch'>구매 COGS→매출 [rolling_yoy]</td><td class='var'>COGS[rolling_yoy]</td><td class='var'>REVENUE[rolling_yoy]</td><td><div class='barwrap'><div class='bar' style='width:100%'></div><span>1.0</span></div></td><td>13/13</td><td>51/69</td><td>0.652</td><td>2.43</td></tr>
+<tr><td class='ch'>미지급→미수</td><td class='var'>AP_TO_COGS[level]</td><td class='var'>AR_TO_REVENUE[level]</td><td><div class='barwrap'><div class='bar' style='width:100%'></div><span>1.0</span></div></td><td>13/13</td><td>32/70</td><td>0.517</td><td>1.34</td></tr>
+<tr><td class='ch'>투자 capex→매출 [rolling_yoy]</td><td class='var'>CAPEX[rolling_yoy]</td><td class='var'>REVENUE[rolling_yoy]</td><td><div class='barwrap'><div class='bar' style='width:100%'></div><span>1.0</span></div></td><td>5/5</td><td>28/46</td><td>0.671</td><td>1.42</td></tr>
+<tr><td class='ch'>투자 capex→매출 [yoy]</td><td class='var'>CAPEX[growth_yoy]</td><td class='var'>REVENUE[growth_yoy]</td><td><div class='barwrap'><div class='bar' style='width:100%'></div><span>1.0</span></div></td><td>5/5</td><td>23/49</td><td>0.627</td><td>0.92</td></tr>
+<tr><td class='ch'>결제 AP→매출 [yoy]</td><td class='var'>AP[growth_yoy]</td><td class='var'>REVENUE[growth_yoy]</td><td><div class='barwrap'><div class='bar' style='width:93%'></div><span>0.933</span></div></td><td>14/15</td><td>80/144</td><td>0.584</td><td>1.58</td></tr>
+<tr><td class='ch'>구매 COGS→매출 [yoy]</td><td class='var'>COGS[growth_yoy]</td><td class='var'>REVENUE[growth_yoy]</td><td><div class='barwrap'><div class='bar' style='width:92%'></div><span>0.923</span></div></td><td>12/13</td><td>38/71</td><td>0.548</td><td>1.48</td></tr>
+<tr><td class='ch'>수요 매출→매출 [qoq]</td><td class='var'>REVENUE[growth_qoq]</td><td class='var'>REVENUE[growth_qoq]</td><td><div class='barwrap'><div class='bar' style='width:87%'></div><span>0.867</span></div></td><td>13/15</td><td>104/147</td><td>0.538</td><td>0.68</td></tr>
+<tr><td class='ch'>지급→회수 DPO→DSO</td><td class='var'>DPO[level]</td><td class='var'>DSO[level]</td><td><div class='barwrap'><div class='bar' style='width:85%'></div><span>0.846</span></div></td><td>11/13</td><td>35/70</td><td>0.533</td><td>1.36</td></tr>
+<tr><td class='ch'>투자 capex→매출 [qoq]</td><td class='var'>CAPEX[growth_qoq]</td><td class='var'>REVENUE[growth_qoq]</td><td><div class='barwrap'><div class='bar' style='width:80%'></div><span>0.8</span></div></td><td>4/5</td><td>32/50</td><td>0.6</td><td>0.45</td></tr>
+<tr><td class='ch'>현금여력→매출</td><td class='var'>FCF_MARGIN[level]</td><td class='var'>REVENUE[growth_yoy]</td><td><div class='barwrap'><div class='bar' style='width:80%'></div><span>0.8</span></div></td><td>4/5</td><td>8/34</td><td>0.583</td><td>1.65</td></tr>
+<tr><td class='ch'>구매 COGS→매출 [qoq]</td><td class='var'>COGS[growth_qoq]</td><td class='var'>REVENUE[growth_qoq]</td><td><div class='barwrap'><div class='bar' style='width:69%'></div><span>0.692</span></div></td><td>9/13</td><td>43/76</td><td>0.582</td><td>0.97</td></tr>
+</table>
+</body></html>

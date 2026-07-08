@@ -155,3 +155,75 @@ def generate_md(eqs, exog, long, path, date="2026-07-08"):
           "- Foundry·ODM 데이터 부족으로 시스템 제외(데이터 쌓이면 CORE에 추가).\n"]
     Path(path).write_text("\n".join(L))
     return path
+
+
+def _nid(s):
+    return "n_" + str(s).replace(" ", "").replace("/", "")
+
+
+def generate_html(eqs, exog, long, path, shock="hyperscalers", date="2026-07-08"):
+    # mermaid 시스템 다이어그램: 고객→공급사, θ 라벨, 오차수정 굵게
+    edges = []
+    for s, eq in eqs.items():
+        for c in eq["custs"]:
+            th = round(eq["theta"][c], 2)
+            arrow = "==>" if eq["error_correcting"] else "-->"
+            edges.append(f'  {_nid(V.SECTIONS.get(c,c))}["{V.SECTIONS.get(c,c)}"] {arrow}'
+                         f'|"θ={th}"| {_nid(V.SECTIONS.get(s,s))}["{V.SECTIONS.get(s,s)}"]')
+    mer = "flowchart LR\n" + "\n".join(edges)
+
+    eqrows = []
+    for s, eq in eqs.items():
+        th = ", ".join(f"{V.SECTIONS.get(c,c)}={round(eq['theta'][c],2)}" for c in eq["custs"])
+        cls = "sig" if eq["error_correcting"] else ""
+        eqrows.append(f"<tr class='{cls}'><td>{V.SECTIONS.get(s,s)}</td><td class='var'>{th}</td>"
+                      f"<td>{eq['lam']} (t={eq['lam_t']})</td><td>{'✅' if eq['error_correcting'] else '·'}</td>"
+                      f"<td>{eq['lr_r2']}</td></tr>")
+    eqtable = "\n".join(eqrows)
+
+    irf = simulate(eqs, exog, shock, 10)
+    irows = []
+    for r in irf.itertuples(index=False):
+        w = max(1.0, abs(float(irf["longrun_response_pct"].abs().max())))
+        pct = r.longrun_response_pct
+        bw = int(round(abs(pct) / w * 100))
+        col = "#2ca02c" if pct >= 0 else "#d62728"
+        irows.append(f"<tr><td>{r.sector}</td><td><div class='barwrap'>"
+                     f"<div class='bar' style='width:{bw}%;background:{col}'></div>"
+                     f"<span>{pct}%</span></div></td>"
+                     f"<td>{r.half_life_q if r.half_life_q else '—'}</td><td>{r.role}</td></tr>")
+    itable = "\n".join(irows)
+
+    html = f"""<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<title>VECM mini-GEM</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+ body{{font-family:-apple-system,'Malgun Gothic',sans-serif;margin:32px;color:#1a1a1a}}
+ h1{{font-size:21px}} h2{{font-size:15px;margin-top:22px}} .sub{{color:#666;font-size:13px}}
+ .mermaid{{background:#fafafa;border:1px solid #eee;border-radius:8px;padding:16px;margin:12px 0}}
+ table{{border-collapse:collapse;width:100%;font-size:13px}}
+ th,td{{border:1px solid #e6e6e6;padding:6px 8px;text-align:center}}
+ th{{background:#f4f4f4}} tr.sig{{background:#eefbf0}}
+ td.var{{font-family:ui-monospace,Menlo,monospace;font-size:11px}}
+ .barwrap{{position:relative;background:#eef2f7;border-radius:4px;height:18px;min-width:80px}}
+ .bar{{height:18px;border-radius:4px}} .barwrap span{{position:absolute;left:6px;top:0;line-height:18px;font-size:11px;color:#123}}
+</style></head><body>
+<h1>VECM mini-GEM — 밸류체인 연립 ECM 시스템</h1>
+<div class="sub">공급사 매출이 고객 매출에 오차수정 · 굵은 화살표=오차수정(λ&lt;0·유의) · θ=장기탄력성 · 분석일 {date}</div>
+<div class="mermaid">
+{mer}
+</div>
+<h2>방정식 (장기 탄력성 θ · 조정속도 λ)</h2>
+<table>
+<tr><th>공급사(Y)</th><th>θ (고객별 장기탄력성)</th><th>λ (조정)</th><th>오차수정</th><th>장기R²</th></tr>
+{eqtable}
+</table>
+<h2>시나리오: {V.SECTIONS.get(shock,shock)} 매출 영구 +10% → 장기 전파</h2>
+<table>
+<tr><th>섹터</th><th>장기 매출반응</th><th>조정 반감기(분기)</th><th>역할</th></tr>
+{itable}
+</table>
+<script>mermaid.initialize({{startOnLoad:true,flowchart:{{curve:'basis'}}}});</script>
+</body></html>"""
+    Path(path).write_text(html)
+    return path

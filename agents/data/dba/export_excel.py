@@ -51,7 +51,7 @@ def qkey(s):
 def main():
     long = P.load_long()
     long = long.sort_values(["section", "ticker", "item", "date"]).reset_index(drop=True)
-    out = HERE / f"panel_long_dataset_{DATE}.xlsx"
+    out = HERE / "panel_long_dataset.xlsx"     # 고정 이름 (overwrite)
 
     # README
     readme = pd.DataFrame({

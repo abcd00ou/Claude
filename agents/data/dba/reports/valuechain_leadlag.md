@@ -1,6 +1,6 @@
 # AI 밸류체인 고객→공급사 Lead-Lag 분석 (현금흐름 관점)
 
-**분석일:** 2026-07-06  ·  **데이터:** `panel_long` (분기 재무, 2016–2027)  ·  **엔진:** `valuechain.py` + `leadlag.py`
+**분석일:** 2026-07-09  ·  **데이터:** `panel_long` (분기 재무, 2016–2027)  ·  **엔진:** `valuechain.py` + `leadlag.py`
 
 **방법:** 섹션 집계 신호(구성사 매출 합)의 YoY를 z-score → 시차상관(±4분기) + Granger 인과. 가설: **고객(customer)의 활동이 공급사(supplier) 매출을 선행**한다.
 

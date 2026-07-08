@@ -134,7 +134,7 @@ def main():
     }
     (HERE / "leadlag_results.json").write_text(json.dumps(out, indent=2, default=str))
     _write_md(comp_phase, phase, net, congestion, trans, matrix,
-              HERE / "reports" / "company_section_leadlag_2026-07-06.md")
+              HERE / "reports" / "company_section_leadlag.md")
 
     # ---- console summary ----
     pd.set_option("display.width", 160, "display.max_columns", 20)

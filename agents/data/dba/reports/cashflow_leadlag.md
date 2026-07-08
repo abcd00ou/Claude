@@ -1,6 +1,6 @@
 # 현금흐름 병목 & Lead-Lag 분석 리포트
 
-**분석일:** 2026-07-06 · **데이터:** `panel_long`(accounts_payable 포함) · **엔진:** `features.py` + `cashflow_leadlag.py` (가이드 문서 §4·§5·§9 구현)
+**분석일:** 2026-07-09 · **데이터:** `panel_long`(accounts_payable 포함) · **엔진:** `features.py` + `cashflow_leadlag.py` (가이드 문서 §4·§5·§9 구현)
 
 **판정 규칙:** 상관 부호가 기대부호와 일치 + p<0.05 → **가설지지**. 부호만 일치 → 방향일치·약함. 부호 반대 → 부호불일치.
 
