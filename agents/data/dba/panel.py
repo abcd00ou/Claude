@@ -20,7 +20,9 @@ import sqlite3
 import numpy as np
 import pandas as pd
 
-DB_DEFAULT = Path(__file__).parent / "financials.db"
+HERE = Path(__file__).parent
+DB_DEFAULT = HERE / "financials.db"
+CSV_DEFAULT = HERE / "panel_long.csv"     # 모든 분석의 시작점 (read_csv)
 
 # items physically present in panel_long
 STORED_ITEMS = [
@@ -64,25 +66,56 @@ def qkey(cq: str) -> int:
 
 
 # --------------------------------------------------------------------------- #
-def load_long(db=DB_DEFAULT, tickers=None, items=None, sections=None) -> pd.DataFrame:
-    """Return the (optionally filtered) long table with a derived 'quarter' column."""
-    con = sqlite3.connect(db)
-    where, params = [], []
-    if tickers:
-        where.append("ticker IN (%s)" % ",".join("?" * len(tickers))); params += list(tickers)
-    # only filter stored items in SQL; derived items are added afterwards
-    stored_req = [i for i in items if i in STORED_ITEMS] if items else None
-    if stored_req is not None:
-        where.append("item IN (%s)" % ",".join("?" * len(stored_req))); params += stored_req
-    if sections:
-        where.append("section IN (%s)" % ",".join("?" * len(sections))); params += list(sections)
-    sql = "SELECT ticker, companyname, date, item, value, section FROM panel_long"
-    if where:
-        sql += " WHERE " + " AND ".join(where)
-    df = pd.read_sql_query(sql, con, params=params)
-    con.close()
-    df["quarter"] = df["date"].map(date_to_quarter)
+def load_long(source=None, tickers=None, items=None, sections=None) -> pd.DataFrame:
+    """
+    분석의 시작점. 기본은 CSV(panel_long.csv)를 read_csv로 읽는다. CSV가 없으면
+    DB(financials.db)로 자동 fallback → 데이터가 나중에 갱신돼도 코드는 그대로 돈다.
+    `source`로 .csv/.db 경로를 명시할 수도 있다.
+    """
+    if source is None:
+        source = CSV_DEFAULT if Path(CSV_DEFAULT).exists() else DB_DEFAULT
+    src = str(source)
+
+    if src.endswith(".csv"):
+        if not Path(source).exists():                      # robust fallback
+            return load_long(DB_DEFAULT, tickers, items, sections)
+        df = pd.read_csv(source, dtype={"ticker": str})
+        if tickers:
+            df = df[df["ticker"].isin(list(tickers))]
+        if sections:
+            df = df[df["section"].isin(list(sections))]
+        if items:
+            need = set()
+            for it in items:
+                need.update(DERIVED_ITEMS[it] if it in DERIVED_ITEMS else [it])
+            df = df[df["item"].isin(need)]
+        df = df.reset_index(drop=True)
+    else:
+        con = sqlite3.connect(source)
+        where, params = [], []
+        if tickers:
+            where.append("ticker IN (%s)" % ",".join("?" * len(tickers))); params += list(tickers)
+        stored_req = [i for i in items if i in STORED_ITEMS] if items else None
+        if stored_req is not None:
+            where.append("item IN (%s)" % ",".join("?" * len(stored_req))); params += stored_req
+        if sections:
+            where.append("section IN (%s)" % ",".join("?" * len(sections))); params += list(sections)
+        sql = "SELECT ticker, companyname, date, item, value, section FROM panel_long"
+        if where:
+            sql += " WHERE " + " AND ".join(where)
+        df = pd.read_sql_query(sql, con, params=params)
+        con.close()
+
+    if "quarter" not in df.columns:
+        df["quarter"] = df["date"].map(date_to_quarter)
     return df
+
+
+def export_csv(path=CSV_DEFAULT, db=DB_DEFAULT) -> str:
+    """DB의 panel_long 전체를 CSV로 저장 (분석 시작점). build 후 호출."""
+    df = load_long(db)
+    df.to_csv(path, index=False)
+    return str(path)
 
 
 def _stored_series(long_or_db, ticker, item):

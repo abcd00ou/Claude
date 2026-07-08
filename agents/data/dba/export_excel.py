@@ -49,7 +49,7 @@ def qkey(s):
 
 
 def main():
-    long = P.load_long(P.DB_DEFAULT)
+    long = P.load_long()
     long = long.sort_values(["section", "ticker", "item", "date"]).reset_index(drop=True)
     out = HERE / f"panel_long_dataset_{DATE}.xlsx"
 

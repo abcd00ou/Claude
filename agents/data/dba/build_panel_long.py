@@ -187,7 +187,12 @@ def build():
     ncomp = con.execute("SELECT COUNT(DISTINCT ticker) FROM panel_long").fetchone()[0]
     con.close()
 
+    # --- CSV export (분석 시작점) ---
+    import panel as PN
+    csv_path = PN.export_csv()
+
     print(f"panel_long built: {n:,} rows, {ncomp} companies, {len(items)} items")
+    print(f"  (CSV 시작점 갱신: {Path(csv_path).name})")
     print(f"columns: ticker, companyname, date, item, value, section")
     print("rows per item:")
     for it, c in items:

@@ -23,7 +23,7 @@ import pandas as pd
 import leadlag as ll
 import panel as P                       # <-- single data-access layer (panel_long)
 
-DB_DEFAULT = P.DB_DEFAULT
+DB_DEFAULT = P.CSV_DEFAULT
 
 # Human labels for the items in the long table (item name = what you pass in).
 _LABELS = {

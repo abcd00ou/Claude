@@ -166,14 +166,25 @@ def transform_series(s, how="level", winsor=None):
         return _gq(s)
     if how == "growth_yoy":
         return _gy(s)
-    if how == "change_qoq":
+    if how in ("change_qoq", "diff"):
         return s - s.shift(1)
     if how == "change_yoy":
         return s - s.shift(4)
+    if how == "rolling_mean":                 # 4분기 이동평균 (스무딩된 레벨)
+        return s.rolling(4).mean()
+    if how == "rolling_qoq":                  # 이동평균의 QoQ (노이즈 제거된 단기 모멘텀)
+        return _gq(s.rolling(4).mean())
+    if how == "rolling_yoy":                  # 이동평균(TTM)의 YoY (구조적 성장)
+        return _gy(s.rolling(4).mean())
     if how == "zscore":
         sd = s.std(ddof=0)
         return (s - s.mean()) / sd if sd else s * 0.0
     raise ValueError(f"unknown transform {how!r}")
+
+
+# 분석에서 쓸 수 있는 해석가능 변환들 (사용자 정의)
+TRANSFORMS = ["level", "growth_qoq", "growth_yoy", "change_qoq", "change_yoy",
+              "rolling_mean", "rolling_qoq", "rolling_yoy", "zscore"]
 
 
 def _read_stored(long, ticker, name):

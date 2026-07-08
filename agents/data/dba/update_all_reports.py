@@ -25,7 +25,7 @@ CF_TICKERS = ["NVDA", "AMD", "MU", "INTC", "AMAT", "LRCX", "AMKR", "DELL", "AVGO
 
 def main():
     (HERE / "reports").mkdir(exist_ok=True)
-    long = P.load_long(P.DB_DEFAULT)
+    long = P.load_long()
     print(f"panel_long: {long.shape}  ({long.ticker.nunique()} companies)")
 
     # 1) value chain

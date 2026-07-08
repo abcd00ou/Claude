@@ -17,7 +17,7 @@ import leadlag as ll
 import panel as P                       # single data-access layer (panel_long)
 
 HERE = Path(__file__).parent
-DB = P.DB_DEFAULT
+DB = P.CSV_DEFAULT
 
 # --- Company panel: representative, well-covered nodes across the AI supply chain ---
 # stage = qualitative upstream(low)->downstream(high) prior for the physical build-out.
