@@ -207,9 +207,21 @@ def generate_html(eqs, exog, long, path, shock="hyperscalers", date="2026-07-08"
  td.var{{font-family:ui-monospace,Menlo,monospace;font-size:11px}}
  .barwrap{{position:relative;background:#eef2f7;border-radius:4px;height:18px;min-width:80px}}
  .bar{{height:18px;border-radius:4px}} .barwrap span{{position:absolute;left:6px;top:0;line-height:18px;font-size:11px;color:#123}}
+ .interp{{background:#fff8e1;border-left:4px solid #f0b400;padding:12px 16px;margin:14px 0;font-size:13px;line-height:1.75;border-radius:4px}}
+ .interp b{{color:#8a6d00}}
 </style></head><body>
 <h1>VECM mini-GEM — 밸류체인 연립 ECM 시스템</h1>
 <div class="sub">공급사 매출이 고객 매출에 오차수정 · 굵은 화살표=오차수정(λ&lt;0·유의) · θ=장기탄력성 · 분석일 {date}</div>
+<div class="interp">
+📖 <b>이 시스템 읽는 법 (mini-GEM)</b><br>
+각 공급사 섹터의 매출이 고객 섹터 매출에 맞춰 조정되는 방정식들을 <b>하나의 연결된 시스템</b>으로 엮은 것입니다
+(Oxford GEM의 국가 방정식과 같은 구조를 산업에 적용).<br>
+• 다이어그램 <b>θ = 장기 탄력성</b>: 고객 매출 1%↑ → 공급사 매출 장기 θ%↑. 굵은 화살표 = <b>오차수정</b>(λ&lt;0·유의, 장기균형으로 복원).<br>
+• 아래 <b>시나리오</b>: Hyperscaler 매출 <b>영구 +10% 충격이 밸류체인 하류로 전파</b>되는 장기 반응입니다
+(예: AI Chip +3%, Server Networking +2.7%). <b>반감기</b> = 조정 속도(작을수록 빠름).<br>
+👉 이것이 "한 곳의 충격이 공급망 전체로 어떻게 번지는가"를 보는 GEM의 핵심입니다.
+(동적 IRF는 40분기 표본에서 발산하므로 안정적인 <b>장기균형 반응</b>으로 표시합니다.)
+</div>
 <div class="mermaid">
 {mer}
 </div>

@@ -294,6 +294,8 @@ def generate_html(df, path, view=None, date="2026-07-06"):
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <style>
  body{{font-family:-apple-system,Segoe UI,Roboto,'Malgun Gothic',sans-serif;margin:32px;color:#1a1a1a}}
+ .interp{{background:#fff8e1;border-left:4px solid #f0b400;padding:12px 16px;margin:14px 0;font-size:13px;line-height:1.75;border-radius:4px}}
+ .interp b{{color:#8a6d00}}
  h1{{font-size:22px}} .sub{{color:#666;margin-bottom:20px}}
  .legend span{{margin-right:16px;font-size:13px}}
  .mermaid{{background:#fafafa;border:1px solid #eee;border-radius:8px;padding:16px;margin:16px 0}}
@@ -304,6 +306,15 @@ def generate_html(df, path, view=None, date="2026-07-06"):
 </style></head><body>
 <h1>AI 밸류체인 고객→공급사 Lead-Lag</h1>
 <div class="sub">관점: <b>{view}</b> · 분석일 {date} · 굵은 화살표(==) = 고객 선행 & 유의 · 점선 = 데이터부족</div>
+<div class="interp">
+📖 <b>이 맵 읽는 법</b><br>
+고객이 공급사로부터 구매하는 관계에서 <b>수요가 매출로 전달되는 시차</b>를 보여줍니다.
+굵은 화살표(⇒)는 고객이 통계적으로 <b>선행하며 유의</b>한 관계입니다.
+<b>lead +N</b> = 고객 활동이 공급사 매출을 N분기 선행 (0분기 = 같은 분기 즉시 전달).
+<b>r</b> = 상관계수(1에 가까울수록 강함). 점선은 데이터 부족(Foundry·ODM).<br>
+👉 예: <b>AI Chip → DRAM</b>이 선행이면, AI 칩 수요가 몇 분기 뒤 메모리 매출로 이어진다는 뜻.
+채널(매출→매출 / 매출원가→매출 / capex→매출)은 위 '관점'에서 선택됩니다.
+</div>
 <div class="legend">
  <span>➡️ <b>==&gt;</b> 고객 선행(유의)</span>
  <span>→ 약한/역방향</span>

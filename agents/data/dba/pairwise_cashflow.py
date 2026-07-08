@@ -306,6 +306,8 @@ def generate_html(df, path, channel="", weight="", date="2026-07-08"):
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <style>
  body{{font-family:-apple-system,'Malgun Gothic',sans-serif;margin:32px;color:#1a1a1a}}
+ .interp{{background:#fff8e1;border-left:4px solid #f0b400;padding:12px 16px;margin:14px 0;font-size:13px;line-height:1.75;border-radius:4px}}
+ .interp b{{color:#8a6d00}}
  h1{{font-size:21px}} .sub{{color:#666;margin-bottom:12px;font-size:13px}}
  .legend span{{margin-right:14px;font-size:12px}}
  .mermaid{{background:#fafafa;border:1px solid #eee;border-radius:8px;padding:16px;margin:14px 0}}
@@ -315,6 +317,15 @@ def generate_html(df, path, channel="", weight="", date="2026-07-08"):
 </style></head><body>
 <h1>기업간(bottom-up) 가중 현금흐름 Lead-Lag 시차 맵</h1>
 <div class="sub">채널 <b>{channel}</b> · 가중 <b>{weight}</b> · 각 섹터 엣지 = 기업쌍 lead-lag의 가중종합 · 분석일 {date}</div>
+<div class="interp">
+📖 <b>이 맵 읽는 법</b><br>
+섹터 집계 대신 <b>기업쌍(고객사 × 공급사)</b> lead-lag를 구해 가중종합한 맵입니다.
+섹터 단순합은 실제 거래관계를 뭉개므로, 기업 단위로 보고 가중치로 다시 합칩니다.<br>
+• <b>대표 기업쌍</b> = 그 섹터 관계를 실제로 이끄는 조합 (예: MSFT→AVGO, MU→LRCX).<br>
+• <b>가중시차</b> = 유의한 기업쌍들의 가중평균 시차. 굵은 화살표 = 유의 기업쌍 2개 이상.<br>
+• <b>유의쌍/전체</b> = 그 엣지에서 유의하게 나온 기업쌍 비율 (많을수록 견고).<br>
+👉 대표 기업쌍이 곧 "이 섹터 관계를 대표하는 실제 거래선"입니다(통계적 추정, 10-K로 교차확인 권장).
+</div>
 <div class="legend"><span>🔴0q</span><span>🟠1q</span><span>🟢2q</span><span>🔵3q</span><span>🟣4q</span>
  <span>굵은 화살표=유의 기업쌍 2+ · ⋯데이터부족</span></div>
 <div class="mermaid">

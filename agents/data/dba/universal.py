@@ -162,10 +162,23 @@ def generate_html(df, path, date="2026-07-08"):
  .barwrap{{position:relative;background:#eef2f7;border-radius:4px;height:18px;min-width:90px}}
  .bar{{background:#2ca02c;height:18px;border-radius:4px}}
  .barwrap span{{position:absolute;left:6px;top:0;line-height:18px;font-size:11px;color:#123}}
+ .interp{{background:#fff8e1;border-left:4px solid #f0b400;padding:12px 16px;margin:14px 0;font-size:13px;line-height:1.75;border-radius:4px}}
+ .interp b{{color:#8a6d00}}
 </style></head><body>
 <h1>밸류체인 보편 현금흐름 관계 (전 섹터 적용 가능성)</h1>
 <div class="sub">각 변수쌍×변환이 밸류체인 엣지에서 기업쌍 유의로 얼마나 보편적으로 성립하는지 · 분석일 {date}
  · 보편성 1.0 = 분석가능한 모든 엣지에서 성립 → VECM 방정식 후보</div>
+<div class="interp">
+📖 <b>이 표 읽는 법</b><br>
+"AP→매출 YoY처럼 <b>모든 섹터에 두루 적용되는 자금흐름 관계</b>가 무엇인가"를 찾은 결과입니다.<br>
+• <b>보편성</b> = (그 채널이 유의하게 성립한 엣지 수) / (분석가능 엣지 수). <b>1.0이면 전 밸류체인 공통 채널</b>.
+초록 막대가 길수록 보편적입니다.<br>
+• <b>변환</b>: <b>rolling_yoy</b>(4분기 이동평균의 YoY)가 노이즈를 제거해 상관·보편성이 가장 높습니다.
+qoq는 단기, yoy는 계절제거·구조적 신호.<br>
+• <b>평균시차</b> = 유의 기업쌍들의 평균 선행 분기(대략 2분기).<br>
+👉 상위 채널(수요 매출→매출, 결제 AP→매출, 재고→매출)이 <b>전체 공급망 자금흐름의 공통 언어</b>이며,
+아래 VECM mini-GEM의 방정식 재료가 됩니다.
+</div>
 <table>
 <tr><th>채널</th><th>X (고객)</th><th>Y (공급사)</th><th>보편성</th><th>성립/가능 엣지</th><th>유의쌍/전체</th><th>평균 r</th><th>평균시차</th></tr>
 {table}

@@ -210,6 +210,8 @@ def generate_html(df, path, date="2026-07-07"):
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
 <style>
  body{{font-family:-apple-system,Segoe UI,'Malgun Gothic',sans-serif;margin:32px;color:#1a1a1a}}
+ .interp{{background:#fff8e1;border-left:4px solid #f0b400;padding:12px 16px;margin:14px 0;font-size:13px;line-height:1.75;border-radius:4px}}
+ .interp b{{color:#8a6d00}}
  h1{{font-size:22px}} .sub{{color:#666;margin-bottom:12px}}
  .legend span{{margin-right:14px;font-size:12px}}
  .mermaid{{background:#fafafa;border:1px solid #eee;border-radius:8px;padding:16px;margin:14px 0}}
@@ -222,6 +224,15 @@ def generate_html(df, path, date="2026-07-07"):
 </style></head><body>
 <h1>AI 공급망 현금흐름 Lead-Lag 시차 맵</h1>
 <div class="sub">고객→공급사 현금 전이. 굵은 화살표=유의. 채널은 데이터가 선택(구매/투자/수요흐름). 분석일 {date}</div>
+<div class="interp">
+📖 <b>이 맵 읽는 법</b><br>
+각 화살표는 <b>돈이 고객 → 공급사로 흐르는 시차</b>입니다. 채널(구매 COGS→매출, 투자 capex→매출,
+결제 AP→매출, 재고→매출, 수요 매출→매출)은 그 엣지에서 <b>가장 유의한 것으로 자동 선택</b>됩니다.<br>
+• <b>0분기 = 즉시 전이</b> — AI 공급망은 자금 전파가 빠릅니다(대부분 같은 분기).<br>
+• <b>시차 &gt; 0</b> = 고객 활동이 그만큼 앞서 공급사 매출을 이끕니다.<br>
+• 화살표 색 = 시차(🔴0q → 🟣4q). 아래 표의 <b>'분석변수 (X→Y)'</b>에서 실제 사용된 변수를 확인하세요.<br>
+👉 대부분 0분기라는 것 자체가 "AI 공급망 현금흐름은 1분기 안에 전파된다"는 발견입니다.
+</div>
 <div class="legend">
  <span>🔴 0q 즉시</span><span>🟠 1q</span><span>🟢 2q</span><span>🔵 3q</span><span>🟣 4q 지연</span>
  <span>⋯ 데이터부족</span>
