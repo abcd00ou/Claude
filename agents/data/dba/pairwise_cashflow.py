@@ -42,6 +42,10 @@ def members(long, section, feat="REVENUE_GROWTH_QOQ", min_q=MIN_Q):
     return out
 
 
+def _vd(feat, tf):
+    return feat if tf == "auto" else f"{feat}[{tf}]"
+
+
 def company_size(long, ticker):
     """가중치용 규모 프록시 = 평균 매출(USD m)."""
     s = P.get_series(long, ticker, "revenue")
@@ -117,6 +121,65 @@ def weighted_edge(long, cust, supp, channel, weight="composite", lags=(0, 4),
             "top_pair": f"{pool.iloc[0].customer}→{pool.iloc[0].supplier}"}
 
 
+def corr_weighted_supplier(long, driver, supp_section, y_feat="REVENUE_GROWTH_YOY",
+                           ytf="auto", lags=(0, 4), min_q=MIN_Q):
+    """
+    공급사 섹터를 driver(고객 신호)와의 상관 가중으로 '매출 가중합' 신호로 만든다.
+    w_j = max(corr(driver, 공급사_j), 0). 신호 = Σ(w_j·y_j)/Σw_j.
+    반환: (가중합 신호, 기여 테이블[ticker·name·corr·w·size]).
+    """
+    mem = members(long, supp_section, y_feat, min_q)
+    sigs, contrib = {}, []
+    for j in mem:
+        sy = F.get_feature(long, j, y_feat, ytf)
+        if sy.dropna().shape[0] < MIN_N:
+            continue
+        r = C.lead_lag_scan(driver, sy, lags)
+        c = r["pearson"] if r.get("status") == "ok" else np.nan
+        sigs[j] = sy
+        contrib.append(dict(ticker=j, name=P.company_name(long, j),
+                            corr=round(c, 3) if not np.isnan(c) else None,
+                            best_lag=r.get("best_lag") if r.get("status") == "ok" else None,
+                            size=round(company_size(long, j) or 0, 0)))
+    cdf = pd.DataFrame(contrib)
+    if cdf.empty:
+        return None, cdf
+    cdf["w"] = cdf["corr"].clip(lower=0).fillna(0)
+    if cdf["w"].sum() == 0:
+        return None, cdf
+    wide = pd.DataFrame(sigs)
+    w = cdf.set_index("ticker")["w"].reindex(wide.columns).fillna(0).to_numpy()
+    wsig = (wide.to_numpy() * w).sum(axis=1) / w.sum()      # 분기별 상관가중 매출합
+    wsig = pd.Series(wsig, index=wide.index).dropna()
+    cdf["weight_share"] = (cdf["w"] / cdf["w"].sum()).round(3)
+    return wsig.loc[sorted(wsig.index, key=P.qkey)], cdf.sort_values("w", ascending=False)
+
+
+def relation_corrweighted(long, cust_ticker, supp_section,
+                          x_feat="AP_GROWTH_YOY", xtf="auto",
+                          y_feat="REVENUE_GROWTH_YOY", ytf="auto", lags=(0, 4)):
+    """
+    고객 단일기업(예: NVDA)의 X → 공급사 섹터의 '상관가중 매출합' Y 의 lead-lag.
+    사용자 방식: AP·revenue YoY 상관을 가중치로 공급사 매출을 가중합해 관계 재정리.
+    """
+    driver = F.get_feature(long, cust_ticker, x_feat, xtf)
+    base = dict(customer=cust_ticker, customer_name=P.company_name(long, cust_ticker),
+                supplier_section=supp_section, supplier_label=V.SECTIONS.get(supp_section, supp_section),
+                x_feat=_vd(x_feat, xtf), y_feat=_vd(y_feat, ytf))
+    if driver.dropna().shape[0] < MIN_N:
+        return {**base, "status": "insufficient customer data"}, pd.DataFrame()
+    wsig, cdf = corr_weighted_supplier(long, driver, supp_section, y_feat, ytf, lags)
+    if wsig is None:
+        return {**base, "status": "insufficient supplier data"}, cdf
+    r = C.lead_lag_scan(driver, wsig, lags)
+    if r.get("status") != "ok":
+        return {**base, "status": "no signal"}, cdf
+    return {**base, "status": "ok", "lag_q": r["best_lag"], "pearson": r["pearson"],
+            "spearman": r["spearman"], "p_value": r["p_value"], "n": r["n"],
+            "significant": bool(r["significant"] and r["sign_match"]),
+            "n_suppliers": int((cdf["w"] > 0).sum())}, cdf
+
+
 def _resolve(channel):
     """channel=(Xfeat,Yfeat) 또는 CASH_DRIVERS 약칭 → (xf,xtf,yf,ytf)."""
     if isinstance(channel, (tuple, list)) and len(channel) == 2:
@@ -145,6 +208,71 @@ def run_weighted_map(long, channel=("AP_GROWTH_QOQ", "REVENUE_GROWTH_QOQ"),
 
 
 # --------------------------------------------------------------------------- #
+def top_company(long, section, feat="REVENUE_GROWTH_YOY"):
+    mem = members(long, section, feat)
+    return max(mem, key=lambda t: company_size(long, t) or 0) if mem else None
+
+
+def run_corrweighted_map(long, x=("AP_GROWTH_YOY", "auto"),
+                         y=("REVENUE_GROWTH_YOY", "auto"), relationships=None):
+    """
+    각 엣지: 고객 섹터 매출 1위 기업 → 공급사 섹터 '상관가중 매출합'의 lead-lag.
+    반환: (요약 DataFrame, {엣지: 기여 테이블}).
+    """
+    relationships = relationships or V.RELATIONSHIPS
+    rows, contribs = [], {}
+    for cs, ss in relationships:
+        rep = top_company(long, cs)
+        base = dict(customer_sec=cs, customer_label=V.SECTIONS.get(cs, cs),
+                    supplier_sec=ss, supplier_label=V.SECTIONS.get(ss, ss))
+        if rep is None:
+            rows.append({**base, "status": "insufficient customer data"}); continue
+        res, cdf = relation_corrweighted(long, rep, ss, x[0], x[1], y[0], y[1])
+        contribs[(cs, ss)] = cdf
+        rows.append({**base, "customer_rep": rep, "customer_rep_name": P.company_name(long, rep),
+                     **{k: res.get(k) for k in ("status", "lag_q", "pearson", "p_value",
+                                                "n", "n_suppliers")}})
+    cols = ["customer_label", "customer_rep", "supplier_label", "status",
+            "lag_q", "pearson", "p_value", "n", "n_suppliers"]
+    df = pd.DataFrame(rows)
+    df["customer_sec"] = [r["customer_sec"] for r in rows]
+    df["supplier_sec"] = [r["supplier_sec"] for r in rows]
+    return df[[c for c in cols if c in df.columns] + ["customer_sec", "supplier_sec"]], contribs
+
+
+def generate_corrweighted_md(df, contribs, path, x="", y="", date="2026-07-08"):
+    L = [f"# 기업간 상관가중 매출합 현금흐름 Lead-Lag\n",
+         f"**분석일:** {date} · **채널:** 고객 `{x}` → 공급사 `{y}`\n",
+         "섹터 단순합 대신, 공급사 각 기업의 매출을 **고객과의 상관값으로 가중합**해 관계 재정리. "
+         "고객은 섹터 매출 1위 기업. 가중치 = max(상관, 0).\n"]
+    ok = df[df.status == "ok"]
+    L.append(f"\n- 엣지 {len(df)} · 분석가능 {len(ok)} · 유의 {int((ok.get('p_value', 1) < 0.05).sum() if len(ok) else 0)}\n")
+    L.append("\n## 섹터 엣지 (상관가중 매출합)\n")
+    L.append("| 고객(대표) | 공급사 | 시차(분기) | r | p | 공급사수 |")
+    L.append("|---|---|---|---|---|---|")
+    for r in df.itertuples(index=False):
+        if r.status != "ok":
+            L.append(f"| {r.customer_label} | {r.supplier_label} | — | — | — | {r.status} |")
+        else:
+            b = "**" if (r.p_value or 1) < 0.05 else ""
+            L.append(f"| {r.customer_label}({r.customer_rep}) | {r.supplier_label} | "
+                     f"{b}{int(r.lag_q):+d}{b} | {r.pearson} | {r.p_value} | {int(r.n_suppliers)} |")
+    L.append("\n## 엣지별 공급사 기여 (상관 가중치)\n")
+    for (cs, ss), cdf in contribs.items():
+        if cdf is None or cdf.empty or "weight_share" not in cdf:
+            continue
+        top = cdf[cdf.w > 0].head(5)
+        if top.empty:
+            continue
+        line = ", ".join(f"{t.name}({t.ticker}) r={t.corr} w={t.weight_share}"
+                         for t in top.itertuples(index=False))
+        L.append(f"- **{V.SECTIONS.get(cs,cs)}→{V.SECTIONS.get(ss,ss)}**: {line}")
+    L.append("\n## 한계\n- 공급사 상관가중합은 '통계적 거래처 비중'. 실제 매출 비중/거래는 10-K로 확인.\n"
+             "- Foundry·Server ODM(대만)은 5분기뿐이라 불가.\n")
+    Path(path).write_text("\n".join(L))
+    return path
+
+
 def generate_html(df, path, channel="", weight="", date="2026-07-08"):
     edges = []
     for i, r in enumerate(df.itertuples(index=False)):
