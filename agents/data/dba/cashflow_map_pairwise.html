@@ -1,0 +1,83 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<title>기업간 가중 현금흐름 시차 맵</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+ body{font-family:-apple-system,'Malgun Gothic',sans-serif;margin:32px;color:#1a1a1a}
+ h1{font-size:21px} .sub{color:#666;margin-bottom:12px;font-size:13px}
+ .legend span{margin-right:14px;font-size:12px}
+ .mermaid{background:#fafafa;border:1px solid #eee;border-radius:8px;padding:16px;margin:14px 0}
+ table{border-collapse:collapse;width:100%;font-size:13px}
+ th,td{border:1px solid #e5e5e5;padding:6px 8px;text-align:center}
+ th{background:#f4f4f4} tr.sig{background:#eefbf0} td.na{color:#b58900}
+</style></head><body>
+<h1>기업간(bottom-up) 가중 현금흐름 Lead-Lag 시차 맵</h1>
+<div class="sub">채널 <b>AP_GROWTH→REVENUE</b> · 가중 <b>composite</b> · 각 섹터 엣지 = 기업쌍 lead-lag의 가중종합 · 분석일 2026-07-08</div>
+<div class="legend"><span>🔴0q</span><span>🟠1q</span><span>🟢2q</span><span>🔵3q</span><span>🟣4q</span>
+ <span>굵은 화살표=유의 기업쌍 2+ · ⋯데이터부족</span></div>
+<div class="mermaid">
+flowchart LR
+  n_Hyperscaler["Hyperscaler"] ==>|"가중 0.22q · r=0.612 · 8쌍"| n_AIChip["AI Chip"]
+  n_ServerOEM["Server OEM"] ==>|"가중 1.06q · r=0.631 · 5쌍"| n_AIChip["AI Chip"]
+  n_ServerOEM["Server OEM"] -.->|"데이터부족"| n_CPU["CPU"]
+  n_Hyperscaler["Hyperscaler"] -->|"가중 2.0q · r=0.485 · 1쌍"| n_CPU["CPU"]
+  n_AIChip["AI Chip"] -->|"가중 0.0q · r=0.729 · 1쌍"| n_DRAM["DRAM"]
+  n_Hyperscaler["Hyperscaler"] ==>|"가중 0.0q · r=0.733 · 2쌍"| n_DRAM["DRAM"]
+  n_ServerOEM["Server OEM"] ==>|"가중 0.0q · r=0.688 · 2쌍"| n_DRAM["DRAM"]
+  n_Hyperscaler["Hyperscaler"] ==>|"가중 0.0q · r=0.725 · 5쌍"| n_NAND["NAND"]
+  n_ServerOEM["Server OEM"] ==>|"가중 0.87q · r=0.675 · 6쌍"| n_NAND["NAND"]
+  n_AIChip["AI Chip"] ==>|"가중 0.0q · r=0.626 · 4쌍"| n_NAND["NAND"]
+  n_Foundry["Foundry"] -.->|"데이터부족"| n_HWEquipment["HW Equipment"]
+  n_DRAM["DRAM"] ==>|"가중 2.31q · r=0.464 · 3쌍"| n_HWEquipment["HW Equipment"]
+  n_CPU["CPU"] ==>|"가중 2.29q · r=0.489 · 3쌍"| n_HWEquipment["HW Equipment"]
+  n_AIChip["AI Chip"] -->|"가중 2.0q · r=0.401 · 1쌍"| n_OSATPackaging["OSAT/Packaging"]
+  n_CPU["CPU"] -->|"가중 2.0q · r=0.546 · 1쌍"| n_OSATPackaging["OSAT/Packaging"]
+  n_Hyperscaler["Hyperscaler"] ==>|"가중 0.19q · r=0.566 · 25쌍"| n_ServerNetworking["Server Networking"]
+  n_ServerOEM["Server OEM"] ==>|"가중 0.7q · r=0.593 · 18쌍"| n_ServerNetworking["Server Networking"]
+  n_AIChip["AI Chip"] -.->|"데이터부족"| n_Foundry["Foundry"]
+  n_CPU["CPU"] -.->|"데이터부족"| n_Foundry["Foundry"]
+  n_ServerNetworking["Server Networking"] -.->|"데이터부족"| n_Foundry["Foundry"]
+  n_CPU["CPU"] -.->|"데이터부족"| n_ServerODM["Server ODM"]
+  n_DRAM["DRAM"] -.->|"데이터부족"| n_ServerODM["Server ODM"]
+  n_NAND["NAND"] -.->|"데이터부족"| n_ServerODM["Server ODM"]
+  n_AIChip["AI Chip"] -.->|"데이터부족"| n_ServerODM["Server ODM"]
+linkStyle 0 stroke:#d62728,stroke-width:3px;
+linkStyle 1 stroke:#ff7f0e,stroke-width:3px;
+linkStyle 5 stroke:#d62728,stroke-width:3px;
+linkStyle 6 stroke:#d62728,stroke-width:3px;
+linkStyle 7 stroke:#d62728,stroke-width:3px;
+linkStyle 8 stroke:#ff7f0e,stroke-width:3px;
+linkStyle 9 stroke:#d62728,stroke-width:3px;
+linkStyle 11 stroke:#2ca02c,stroke-width:3px;
+linkStyle 12 stroke:#2ca02c,stroke-width:3px;
+linkStyle 15 stroke:#d62728,stroke-width:3px;
+linkStyle 16 stroke:#ff7f0e,stroke-width:3px;
+</div>
+<h2 style="font-size:15px">섹터 엣지 (가중종합)</h2>
+<table>
+<tr><th>고객</th><th>공급사</th><th>가중시차</th><th>가중 r</th><th>유의쌍/전체</th><th>대표 기업쌍</th></tr>
+<tr class='sig'><td>Hyperscaler</td><td>AI Chip</td><td>0.22q</td><td>0.612</td><td>8/16</td><td>ORCL→NVDA</td></tr>
+<tr class='sig'><td>Server OEM</td><td>AI Chip</td><td>1.06q</td><td>0.631</td><td>5/12</td><td>SMCI→NVDA</td></tr>
+<tr><td>Server OEM</td><td>CPU</td><td colspan=5 class='na'>no significant pair</td></tr>
+<tr class=''><td>Hyperscaler</td><td>CPU</td><td>2.0q</td><td>0.485</td><td>1/4</td><td>GOOGL→INTC</td></tr>
+<tr class=''><td>AI Chip</td><td>DRAM</td><td>0.0q</td><td>0.729</td><td>1/4</td><td>NVDA→MU</td></tr>
+<tr class='sig'><td>Hyperscaler</td><td>DRAM</td><td>0.0q</td><td>0.733</td><td>2/4</td><td>ORCL→MU</td></tr>
+<tr class='sig'><td>Server OEM</td><td>DRAM</td><td>0.0q</td><td>0.688</td><td>2/3</td><td>SMCI→MU</td></tr>
+<tr class='sig'><td>Hyperscaler</td><td>NAND</td><td>0.0q</td><td>0.725</td><td>5/8</td><td>ORCL→WDC</td></tr>
+<tr class='sig'><td>Server OEM</td><td>NAND</td><td>0.87q</td><td>0.675</td><td>6/6</td><td>SMCI→WDC</td></tr>
+<tr class='sig'><td>AI Chip</td><td>NAND</td><td>0.0q</td><td>0.626</td><td>4/8</td><td>NVDA→WDC</td></tr>
+<tr><td>Foundry</td><td>HW Equipment</td><td colspan=5 class='na'>insufficient data</td></tr>
+<tr class='sig'><td>DRAM</td><td>HW Equipment</td><td>2.31q</td><td>0.464</td><td>3/6</td><td>MU→LRCX</td></tr>
+<tr class='sig'><td>CPU</td><td>HW Equipment</td><td>2.29q</td><td>0.489</td><td>3/6</td><td>INTC→KLAC</td></tr>
+<tr class=''><td>AI Chip</td><td>OSAT/Packaging</td><td>2.0q</td><td>0.401</td><td>1/4</td><td>NVDA→AMKR</td></tr>
+<tr class=''><td>CPU</td><td>OSAT/Packaging</td><td>2.0q</td><td>0.546</td><td>1/1</td><td>INTC→AMKR</td></tr>
+<tr class='sig'><td>Hyperscaler</td><td>Server Networking</td><td>0.19q</td><td>0.566</td><td>25/36</td><td>MSFT→AVGO</td></tr>
+<tr class='sig'><td>Server OEM</td><td>Server Networking</td><td>0.7q</td><td>0.593</td><td>18/27</td><td>DELL→AVGO</td></tr>
+<tr><td>AI Chip</td><td>Foundry</td><td colspan=5 class='na'>insufficient data</td></tr>
+<tr><td>CPU</td><td>Foundry</td><td colspan=5 class='na'>insufficient data</td></tr>
+<tr><td>Server Networking</td><td>Foundry</td><td colspan=5 class='na'>insufficient data</td></tr>
+<tr><td>CPU</td><td>Server ODM</td><td colspan=5 class='na'>insufficient data</td></tr>
+<tr><td>DRAM</td><td>Server ODM</td><td colspan=5 class='na'>insufficient data</td></tr>
+<tr><td>NAND</td><td>Server ODM</td><td colspan=5 class='na'>insufficient data</td></tr>
+<tr><td>AI Chip</td><td>Server ODM</td><td colspan=5 class='na'>insufficient data</td></tr>
+</table>
+</body></html>
