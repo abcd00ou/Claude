@@ -89,6 +89,130 @@ def run_hypotheses(long):
 
 
 # --------------------------------------------------------------------------- #
+# 기업(쌍)별 상세 통계 검증 — 논문 부록
+# --------------------------------------------------------------------------- #
+def _detail_internal(long, h, tickers=INT_TICKERS, lags=(0, 4), min_n=10):
+    rows = []
+    for tk in tickers:
+        xs = F.get_feature(long, tk, h["x"], h["xtf"])
+        ys = F.get_feature(long, tk, h["y"], h["ytf"])
+        if xs.dropna().shape[0] < min_n or ys.dropna().shape[0] < min_n:
+            continue
+        r = C.lead_lag_scan(xs, ys, lags, expected=h["sign"])
+        if r.get("status") != "ok" or r["n"] < min_n:
+            continue
+        rows.append(dict(hypothesis=h["id"], kind="기업내", label=h["label"],
+                         entity=P.company_name(long, tk), sector=P.section_of(long, tk),
+                         counterparty="—", lag_q=r["best_lag"], pearson=r["pearson"],
+                         spearman=r["spearman"], p_value=r["p_value"], n=r["n"],
+                         sign_expected=h["sign"], significant=bool(r["significant"] and r["sign_match"])))
+    return rows
+
+
+def _detail_cross(long, h, lags=(0, 4), min_n=10):
+    rows = []
+    for cs, ss in V.RELATIONSHIPS:
+        cs_m = PW.members(long, cs, h["x"])
+        ss_m = PW.members(long, ss, h["y"])
+        for ct in cs_m:
+            xs = F.get_feature(long, ct, h["x"], h["xtf"])
+            if xs.dropna().shape[0] < min_n:
+                continue
+            for st in ss_m:
+                if ct == st:
+                    continue
+                ys = F.get_feature(long, st, h["y"], h["ytf"])
+                if ys.dropna().shape[0] < min_n:
+                    continue
+                r = C.lead_lag_scan(xs, ys, lags, expected=h["sign"])
+                if r.get("status") != "ok" or r["n"] < min_n:
+                    continue
+                rows.append(dict(hypothesis=h["id"], kind="기업간", label=h["label"],
+                                 entity=P.company_name(long, ct), sector=V.SECTIONS.get(cs, cs),
+                                 counterparty=P.company_name(long, st),
+                                 counterparty_sector=V.SECTIONS.get(ss, ss),
+                                 lag_q=r["best_lag"], pearson=r["pearson"], spearman=r["spearman"],
+                                 p_value=r["p_value"], n=r["n"], sign_expected=h["sign"],
+                                 significant=bool(r["significant"] and r["sign_match"])))
+    return rows
+
+
+def run_detail(long):
+    """모든 가설의 기업(쌍)별 통계 검증 상세 (long DataFrame)."""
+    rows = []
+    for h in HYPOTHESES:
+        rows += (_detail_cross(long, h) if h["kind"] == "cross" else _detail_internal(long, h))
+    cols = ["hypothesis", "kind", "label", "entity", "sector", "counterparty",
+            "counterparty_sector", "lag_q", "pearson", "spearman", "p_value", "n",
+            "sign_expected", "significant"]
+    df = pd.DataFrame(rows)
+    return df[[c for c in cols if c in df.columns]] if len(df) else df
+
+
+def generate_detail_html(det, path, date="2026-07-20"):
+    """기업(쌍)별 상세 통계 — JS 필터/정렬 테이블 (논문 부록)."""
+    import json
+    recs = det.to_dict(orient="records")
+    hyps = sorted(det["hypothesis"].unique())
+    payload = json.dumps(recs, ensure_ascii=False, default=str)
+    hopts = "".join(f'<option value="{h}">{h}</option>' for h in hyps)
+    html = """<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<title>기업별 Lead-Lag 통계 검증 (부록)</title>
+<style>
+ body{font-family:-apple-system,'Malgun Gothic',sans-serif;margin:24px;color:#1a1a1a}
+ h1{font-size:20px} .sub{color:#666;font-size:13px;margin-bottom:10px}
+ .interp{background:#fff8e1;border-left:4px solid #f0b400;padding:11px 15px;margin:10px 0;font-size:13px;line-height:1.7;border-radius:4px}
+ .ctl{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:10px 0;font-size:13px}
+ table{border-collapse:collapse;width:100%;font-size:12px} th,td{border:1px solid #e6e6e6;padding:4px 7px;text-align:center}
+ th{background:#f4f4f4;cursor:pointer;position:sticky;top:0} tr.sig{background:#eefbf0}
+ td.l{text-align:left} .p0{color:#0a0;font-weight:600} .neg{color:#c00}
+ #n{color:#666}
+</style></head><body>
+<h1>기업(쌍)별 Lead-Lag 통계 검증 — 부록</h1>
+<div class="sub">각 가설 P1–P7을 개별 기업/기업쌍 단위로 검정 · 분석일 __DATE__</div>
+<div class="interp">
+📖 각 행은 <b>한 기업(기업내) 또는 한 기업쌍(기업간)</b>의 lead-lag 검정 결과입니다.
+<b>lag</b>=선행 분기, <b>r</b>=Pearson, <b>ρ</b>=Spearman(비선형/순위), <b>p</b>=유의확률,
+<b>n</b>=표본 분기수. 초록 배경 = 예측부호 일치 & p&lt;0.05 유의. 헤더 클릭 시 정렬.
+</div>
+<div class="ctl">
+ <span>가설 <select id="fh"><option value="">전체</option>__HOPTS__</select></span>
+ <span><label><input type="checkbox" id="fs"> 유의(p&lt;0.05)만</label></span>
+ <span>기업 검색 <input id="fq" placeholder="예: NVIDIA"></span>
+ <span id="n"></span>
+</div>
+<table id="t"><thead><tr>
+ <th data-k="hypothesis">가설</th><th data-k="kind">유형</th><th data-k="label" class="l">관계</th>
+ <th data-k="entity" class="l">기업(X)</th><th data-k="counterparty" class="l">상대(Y)</th>
+ <th data-k="lag_q">lag</th><th data-k="pearson">r</th><th data-k="spearman">ρ</th>
+ <th data-k="p_value">p</th><th data-k="n">n</th><th data-k="significant">유의</th>
+</tr></thead><tbody id="b"></tbody></table>
+<script>
+const D=__PAYLOAD__; let sortK='pearson', sortA=false;
+const fh=document.getElementById('fh'),fs=document.getElementById('fs'),fq=document.getElementById('fq');
+function view(){
+ let r=D.filter(d=>(!fh.value||d.hypothesis===fh.value)&&(!fs.checked||d.significant)&&
+   (!fq.value||((d.entity||'')+ (d.counterparty||'')).toLowerCase().includes(fq.value.toLowerCase())));
+ r.sort((a,b)=>{let x=a[sortK],y=b[sortK]; if(typeof x==='string'){return sortA?(''+x).localeCompare(y):(''+y).localeCompare(x);} return sortA?x-y:y-x;});
+ document.getElementById('n').textContent=r.length+' 행';
+ document.getElementById('b').innerHTML=r.map(d=>`<tr class="${d.significant?'sig':''}">
+   <td>${d.hypothesis}</td><td>${d.kind}</td><td class="l">${d.label}</td>
+   <td class="l">${d.entity}</td><td class="l">${d.counterparty||'—'}</td>
+   <td>${d.lag_q}</td><td class="${d.pearson<0?'neg':''}">${(+d.pearson).toFixed(3)}</td>
+   <td>${d.spearman==null?'':(+d.spearman).toFixed(3)}</td>
+   <td class="${d.p_value<0.05?'p0':''}">${d.p_value==null?'':(+d.p_value).toFixed(4)}</td>
+   <td>${d.n}</td><td>${d.significant?'✅':''}</td></tr>`).join('');
+}
+document.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k; if(k===sortK)sortA=!sortA; else{sortK=k;sortA=false;} view();});
+[fh,fq].forEach(e=>e.oninput=view); fs.onchange=view; view();
+</script></body></html>"""
+    html = (html.replace("__PAYLOAD__", payload).replace("__HOPTS__", hopts)
+                .replace("__DATE__", date))
+    Path(path).write_text(html)
+    return path
+
+
+# --------------------------------------------------------------------------- #
 def _mermaid_chain():
     """회계 흐름 도식 (mermaid): P1–P7 체인."""
     return """flowchart LR

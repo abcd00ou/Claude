@@ -79,6 +79,10 @@ def main():
     ac = AC.run_hypotheses(long)
     AC.generate_md(ac, long, R("accounting_leadlag.md"), date=DATE)
     AC.generate_html(ac, str(HERE / "accounting_leadlag.html"), date=DATE)
+    # 기업(쌍)별 상세 통계 검증 (부록)
+    det = AC.run_detail(long)
+    det.to_csv(HERE / "accounting_leadlag_detail.csv", index=False)
+    AC.generate_detail_html(det, str(HERE / "accounting_leadlag_detail.html"), date=DATE)
     VE.generate_simulator_html(eqs, exog, long, str(HERE / "simulator.html"), date=DATE)
 
     print("\n[완료] 모든 리포트·HTML 고정 이름으로 overwrite:")
