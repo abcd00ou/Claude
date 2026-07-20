@@ -17,6 +17,7 @@ import pairwise_cashflow as PW
 import ecm as E
 import universal as U
 import vecm as VE
+import accounting_leadlag as AC
 import run_analysis as RA
 
 HERE = Path(__file__).parent
@@ -73,6 +74,12 @@ def main():
     eqs, exog, _ = VE.build_system(long)
     VE.generate_md(eqs, exog, long, R("vecm_minigem.md"), date=DATE)
     VE.generate_html(eqs, exog, long, str(HERE / "vecm.html"), date=DATE)
+
+    # 8) 논문 산출물: 회계 lead-lag(a) + 시뮬레이터(c)  [이론/매뉴얼은 정적 md]
+    ac = AC.run_hypotheses(long)
+    AC.generate_md(ac, long, R("accounting_leadlag.md"), date=DATE)
+    AC.generate_html(ac, str(HERE / "accounting_leadlag.html"), date=DATE)
+    VE.generate_simulator_html(eqs, exog, long, str(HERE / "simulator.html"), date=DATE)
 
     print("\n[완료] 모든 리포트·HTML 고정 이름으로 overwrite:")
     print("  reports/*.md (company_section, valuechain, cashflow_leadlag, ecm_minigem,")

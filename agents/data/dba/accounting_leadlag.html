@@ -1,0 +1,51 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<title>회계지표 기업간 Lead-Lag</title>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<style>
+ body{font-family:-apple-system,'Malgun Gothic',sans-serif;margin:32px;color:#1a1a1a}
+ h1{font-size:21px} h2{font-size:15px;margin-top:22px} .sub{color:#666;font-size:13px}
+ .interp{background:#fff8e1;border-left:4px solid #f0b400;padding:12px 16px;margin:14px 0;font-size:13px;line-height:1.75;border-radius:4px}
+ .interp b{color:#8a6d00}
+ .mermaid{background:#fafafa;border:1px solid #eee;border-radius:8px;padding:16px;margin:12px 0}
+ table{border-collapse:collapse;width:100%;font-size:12.5px}
+ th,td{border:1px solid #e6e6e6;padding:5px 7px;text-align:center} th{background:#f4f4f4}
+ td.lb{text-align:left;font-weight:600} td.bs{text-align:left;color:#555;font-size:11px}
+ .barwrap{position:relative;background:#eef2f7;border-radius:4px;height:18px;min-width:80px}
+ .bar{background:#2ca02c;height:18px;border-radius:4px}
+ .barwrap span{position:absolute;left:6px;top:0;line-height:18px;font-size:11px;color:#123}
+</style></head><body>
+<h1>회계지표 기업간 Lead-Lag — 돈의 흐름 (산출물 a)</h1>
+<div class="sub">복식부기 항등식에서 연역한 가설 P1–P7의 데이터 검증 · 분석일 2026-07-09</div>
+<div class="interp">
+📖 <b>이 페이지 읽는 법</b><br>
+공급사 매출은 고객의 매입(회계상 <b>거래 항등식</b> Rev_S=Σω·Purch_C)이며, 이는 다시 매출채권→영업현금
+→잉여현금으로 이어집니다. 아래 도식이 <b>돈의 회계적 흐름</b>이고, 표의 각 가설 P1–P7이 그 화살표입니다.<br>
+• <b>지지율(support_rate)</b> = 예측한 부호·방향과 일치하며 통계적으로 유의한 관계 비율(초록 막대). 1.0=이론 완전 지지.<br>
+• <b>예측시차</b>는 회계 근거에서 나온 값, <b>실측 평균시차</b>는 데이터에서 나온 값 — 둘을 대조합니다.<br>
+👉 회계 항등식이 데이터로도 성립하는지를 보는, 논문의 핵심 실증 표입니다.
+</div>
+<h2>회계 흐름 도식</h2>
+<div class="mermaid">
+flowchart LR
+  RevC["고객 매출<br/>Rev_C"] -->|"P4 (0–2q)"| PurC["고객 매입<br/>Purch_C≈COGS"]
+  PurC -->|"P1 (0–1q)<br/>거래항등식"| RevS["공급사 매출<br/>Rev_S"]
+  RevS -->|"P2 (0q)"| ARS["공급사 매출채권<br/>AR_S"]
+  ARS -->|"P3 (+DSO)"| OCFS["공급사 영업현금<br/>OCF_S"]
+  OCFS -->|"− Capex"| FCFS["공급사 잉여현금<br/>FCF_S"]
+  APC["고객 매입채무<br/>AP_C"] -.->|"P5 거울항등식"| ARS
+  DPOC["고객 지급기간<br/>DPO_C"] -.->|"P6 (0–2q)"| DSOS["공급사 회수기간<br/>DSO_S"]
+  CCCS["공급사 CCC"] -->|"P7 (−)"| FCFS
+</div>
+<h2>가설 검증 (P1–P7)</h2>
+<table>
+<tr><th>#</th><th>유형</th><th>관계</th><th>회계 근거</th><th>예측시차</th><th>부호</th><th>지지율</th><th>유의/검정</th><th>실측시차</th><th>평균 r</th></tr>
+<tr><td><b>P1</b></td><td>기업간</td><td class='lb'>고객 매입(COGS) → 공급사 매출</td><td class='bs'>거래 항등식 Rev_S=Σω·Purch_C (정의1)</td><td>0–1</td><td>+</td><td><div class='barwrap'><div class='bar' style='width:100%'></div><span>1.0</span></div></td><td>51/69</td><td>2.43</td><td>0.652</td></tr>
+<tr><td><b>P2</b></td><td>기업내</td><td class='lb'>매출 → 매출채권</td><td class='bs'>AR 동학 (정의4)</td><td>0</td><td>+</td><td><div class='barwrap'><div class='bar' style='width:87%'></div><span>0.87</span></div></td><td>13/15</td><td>0.0</td><td>0.791</td></tr>
+<tr><td><b>P3</b></td><td>기업내</td><td class='lb'>매출 → 영업현금흐름</td><td class='bs'>OCF=NI+D&A−ΔNWC (정의5)</td><td>+DSO</td><td>+</td><td colspan=1 style='color:#b58900'>데이터부족</td><td>0/0</td><td>nan</td><td>nan</td></tr>
+<tr><td><b>P4</b></td><td>기업간</td><td class='lb'>고객 매출 → 공급사 매출</td><td class='bs'>수요→매입→매출 전파</td><td>0–2</td><td>+</td><td><div class='barwrap'><div class='bar' style='width:100%'></div><span>1.0</span></div></td><td>96/137</td><td>2.26</td><td>0.625</td></tr>
+<tr><td><b>P5</b></td><td>기업간</td><td class='lb'>고객 매입채무 → 공급사 매출채권</td><td class='bs'>거울 항등식 AP_C=AR_S (정의2)</td><td>0–1</td><td>+</td><td><div class='barwrap'><div class='bar' style='width:100%'></div><span>1.0</span></div></td><td>86/123</td><td>1.92</td><td>0.65</td></tr>
+<tr><td><b>P6</b></td><td>기업간</td><td class='lb'>고객 지급기간 → 공급사 회수기간</td><td class='bs'>현금전이 DPO_C→DSO_S (§3)</td><td>0–2</td><td>+</td><td><div class='barwrap'><div class='bar' style='width:85%'></div><span>0.846</span></div></td><td>35/70</td><td>1.36</td><td>0.533</td></tr>
+<tr><td><b>P7</b></td><td>기업내</td><td class='lb'>현금전환주기 → FCF마진</td><td class='bs'>CCC·현금전환 (정의3,5)</td><td>0–1</td><td>-</td><td><div class='barwrap'><div class='bar' style='width:50%'></div><span>0.5</span></div></td><td>2/4</td><td>0.5</td><td>0.668</td></tr>
+</table>
+<script>mermaid.initialize({startOnLoad:true,flowchart:{curve:'basis'}});</script>
+</body></html>

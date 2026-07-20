@@ -161,6 +161,121 @@ def _nid(s):
     return "n_" + str(s).replace(" ", "").replace("/", "")
 
 
+def generate_simulator_html(eqs, exog, long, path, date="2026-07-20"):
+    """(산출물 c) 인터랙티브 시뮬레이터: 충격 섹터·크기 → 전 섹터 장기추세 곡선."""
+    import json
+    sectors = list(eqs) + list(exog)
+    labels = {s: V.SECTIONS.get(s, s) for s in sectors}
+    # 각 섹터 대표기업(매출 1위) — '특정 기업' 라벨용
+    reps = {}
+    for s in sectors:
+        try:
+            import pairwise_cashflow as PW
+            r = PW.top_company(long, s)
+            reps[s] = P.company_name(long, r) if r else "—"
+        except Exception:
+            reps[s] = "—"
+    model = {
+        "sectors": sectors, "exog": list(exog), "labels": labels, "reps": reps,
+        "eqs": {s: {"custs": eq["custs"], "theta": eq["theta"], "lam": eq["lam"]}
+                for s, eq in eqs.items()},
+    }
+    mj = json.dumps(model, ensure_ascii=False)
+    opts = "\n".join(f'<option value="{s}">{labels[s]} (대표: {reps[s]})</option>' for s in exog)
+
+    html = """<!doctype html><html lang="ko"><head><meta charset="utf-8">
+<title>VECM mini-GEM 시뮬레이터</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+ body{font-family:-apple-system,'Malgun Gothic',sans-serif;margin:28px;color:#1a1a1a}
+ h1{font-size:20px} .sub{color:#666;font-size:13px;margin-bottom:12px}
+ .interp{background:#fff8e1;border-left:4px solid #f0b400;padding:12px 16px;margin:12px 0;font-size:13px;line-height:1.7;border-radius:4px}
+ .interp b{color:#8a6d00}
+ .ctl{display:flex;gap:20px;align-items:center;flex-wrap:wrap;background:#f7f8fa;border:1px solid #e6e6e6;border-radius:8px;padding:14px 16px;margin:12px 0}
+ .ctl label{font-size:13px;font-weight:600} select,input{font-size:13px}
+ #val{font-weight:700;color:#1f6feb;min-width:52px;display:inline-block}
+ canvas{max-height:440px} table{border-collapse:collapse;font-size:12.5px;margin-top:14px;width:100%}
+ th,td{border:1px solid #e6e6e6;padding:5px 8px;text-align:center} th{background:#f4f4f4}
+</style></head><body>
+<h1>VECM mini-GEM 시뮬레이터 — 충격 → 장기추세</h1>
+<div class="sub">특정 섹터(대표기업)의 매출에 영구 충격을 주면, 밸류체인 전체 매출이 장기적으로 어떻게 반응하는지 시뮬레이션 · __DATE__</div>
+<div class="interp">
+📖 <b>사용법</b> — ① <b>충격 대상</b>(최상류 고객 섹터)과 ② <b>충격 크기(%)</b>를 고르면,
+회계 공적분(거래 항등식) + 오차수정(λ)으로 추정된 시스템이 <b>분기별 장기추세</b>를 그립니다.
+곡선은 각 공급사 섹터 매출의 % 반응(장기균형으로 수렴), 반감기는 조정 속도를 반영합니다.<br>
+👉 예: <b>Hyperscaler +10%</b> → AI Chip·DRAM·NAND·Networking이 몇 분기에 걸쳐 얼마나 오르는지.
+(장기균형 comparative statics 기반 — 동적 발산 없는 안정 시뮬레이션)
+</div>
+<div class="ctl">
+ <div><label>① 충격 대상 (외생 고객)</label><br><select id="shock">__OPTS__</select></div>
+ <div><label>② 충격 크기</label><br><input id="pct" type="range" min="-20" max="30" value="10" step="1">
+   <span id="val">+10%</span></div>
+ <div><label>③ 기간(분기)</label><br><input id="hz" type="range" min="4" max="24" value="12" step="1">
+   <span id="hzv">12</span></div>
+</div>
+<canvas id="chart"></canvas>
+<table id="tbl"></table>
+<script>
+const M = __MODEL__;
+const PAL = ['#1f77b4','#d62728','#2ca02c','#9467bd','#ff7f0e','#17becf','#8c564b','#e377c2','#7f7f7f'];
+
+function simulate(shock, pct, H){
+  const ds = Math.log(1+pct/100);
+  // 1) 장기균형 (반복 수렴)
+  let dl={}; M.exog.forEach(e=>dl[e]=0); dl[shock]=ds;
+  for(let it=0; it<300; it++){
+    let nw=Object.assign({},dl);
+    for(const s in M.eqs){ nw[s]=M.eqs[s].custs.reduce((a,c)=>a+(M.eqs[s].theta[c]||0)*(dl[c]||0),0); }
+    nw[shock]=ds; dl=nw;
+  }
+  // 2) 동적 조정경로 (λ<0 → 장기균형 수렴, 안정)
+  let y={}; M.sectors.forEach(s=>y[s]=0); y[shock]=ds;
+  let paths={}; M.sectors.forEach(s=>paths[s]=[0]);
+  for(let t=1;t<=H;t++){
+    let nw=Object.assign({},y);
+    for(const s in M.eqs){ const tgt=dl[s]||0; const lam=M.eqs[s].lam;
+      nw[s]= y[s] + (lam<0? lam : -0.15)*(y[s]-tgt); }   // λ>=0 방어(안정)
+    nw[shock]=ds; y=nw;
+    M.sectors.forEach(s=>paths[s].push((Math.exp(y[s])-1)*100));
+  }
+  return {paths, longrun:dl};
+}
+
+let chart;
+function render(){
+  const shock=document.getElementById('shock').value;
+  const pct=+document.getElementById('pct').value;
+  const H=+document.getElementById('hz').value;
+  document.getElementById('val').textContent=(pct>=0?'+':'')+pct+'%';
+  document.getElementById('hzv').textContent=H;
+  const {paths,longrun}=simulate(shock,pct,H);
+  const labels=[...Array(H+1).keys()];
+  const order=M.sectors.slice().sort((a,b)=>Math.abs((longrun[b]||0))-Math.abs((longrun[a]||0)));
+  const ds=order.map((s,i)=>({label:M.labels[s]+(s===shock?' (충격)':''),
+     data:paths[s], borderColor:PAL[i%PAL.length], borderWidth:s===shock?3:2,
+     borderDash:s===shock?[6,3]:[], pointRadius:0, tension:.25}));
+  if(chart) chart.destroy();
+  chart=new Chart(document.getElementById('chart'),{type:'line',
+    data:{labels,datasets:ds},
+    options:{responsive:true,interaction:{mode:'index',intersect:false},
+      plugins:{title:{display:true,text:M.labels[shock]+' 매출 '+(pct>=0?'+':'')+pct+'% 영구충격 → 섹터별 매출 % 반응'},
+        legend:{position:'right',labels:{font:{size:11}}}},
+      scales:{x:{title:{display:true,text:'분기 후'}},y:{title:{display:true,text:'매출 반응 %'}}}}});
+  // 표
+  let h='<tr><th>섹터</th><th>대표기업</th><th>장기 반응 %</th></tr>';
+  order.forEach(s=>{h+='<tr><td>'+M.labels[s]+'</td><td>'+M.reps[s]+'</td><td>'+
+     ((Math.exp(longrun[s]||0)-1)*100).toFixed(2)+'</td></tr>';});
+  document.getElementById('tbl').innerHTML=h;
+}
+['shock','pct','hz'].forEach(id=>document.getElementById(id).addEventListener('input',render));
+render();
+</script></body></html>"""
+    html = (html.replace("__MODEL__", mj).replace("__OPTS__", opts)
+                .replace("__DATE__", date))
+    Path(path).write_text(html)
+    return path
+
+
 def generate_html(eqs, exog, long, path, shock="hyperscalers", date="2026-07-08"):
     # mermaid 시스템 다이어그램: 고객→공급사, θ 라벨, 오차수정 굵게
     edges = []
