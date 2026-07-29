@@ -2952,6 +2952,39 @@ ADBE,Adobe,2025-09-30,gross_profit,4854.0,ai_platforms,2025-Q3
 ADBE,Adobe,2025-12-31,gross_profit,5545.0,ai_platforms,2025-Q4
 ADBE,Adobe,2026-03-31,gross_profit,5092.0,ai_platforms,2026-Q1
 ADBE,Adobe,2026-06-30,gross_profit,5235.0,ai_platforms,2026-Q2
+ADBE,Adobe,2016-03-31,inventory,0.0,ai_platforms,2016-Q1
+ADBE,Adobe,2016-06-30,inventory,0.0,ai_platforms,2016-Q2
+ADBE,Adobe,2016-09-30,inventory,0.0,ai_platforms,2016-Q3
+ADBE,Adobe,2017-03-31,inventory,0.0,ai_platforms,2017-Q1
+ADBE,Adobe,2017-06-30,inventory,0.0,ai_platforms,2017-Q2
+ADBE,Adobe,2017-09-30,inventory,0.0,ai_platforms,2017-Q3
+ADBE,Adobe,2018-03-31,inventory,0.0,ai_platforms,2018-Q1
+ADBE,Adobe,2018-06-30,inventory,0.0,ai_platforms,2018-Q2
+ADBE,Adobe,2018-09-30,inventory,0.0,ai_platforms,2018-Q3
+ADBE,Adobe,2019-03-31,inventory,0.0,ai_platforms,2019-Q1
+ADBE,Adobe,2019-06-30,inventory,0.0,ai_platforms,2019-Q2
+ADBE,Adobe,2019-09-30,inventory,0.0,ai_platforms,2019-Q3
+ADBE,Adobe,2020-03-31,inventory,0.0,ai_platforms,2020-Q1
+ADBE,Adobe,2020-06-30,inventory,0.0,ai_platforms,2020-Q2
+ADBE,Adobe,2020-09-30,inventory,0.0,ai_platforms,2020-Q3
+ADBE,Adobe,2021-03-31,inventory,0.0,ai_platforms,2021-Q1
+ADBE,Adobe,2021-06-30,inventory,0.0,ai_platforms,2021-Q2
+ADBE,Adobe,2021-09-30,inventory,0.0,ai_platforms,2021-Q3
+ADBE,Adobe,2022-03-31,inventory,0.0,ai_platforms,2022-Q1
+ADBE,Adobe,2022-06-30,inventory,0.0,ai_platforms,2022-Q2
+ADBE,Adobe,2022-09-30,inventory,0.0,ai_platforms,2022-Q3
+ADBE,Adobe,2023-03-31,inventory,0.0,ai_platforms,2023-Q1
+ADBE,Adobe,2023-06-30,inventory,0.0,ai_platforms,2023-Q2
+ADBE,Adobe,2023-09-30,inventory,0.0,ai_platforms,2023-Q3
+ADBE,Adobe,2024-03-31,inventory,0.0,ai_platforms,2024-Q1
+ADBE,Adobe,2024-06-30,inventory,0.0,ai_platforms,2024-Q2
+ADBE,Adobe,2024-09-30,inventory,0.0,ai_platforms,2024-Q3
+ADBE,Adobe,2025-03-31,inventory,0.0,ai_platforms,2025-Q1
+ADBE,Adobe,2025-06-30,inventory,0.0,ai_platforms,2025-Q2
+ADBE,Adobe,2025-09-30,inventory,0.0,ai_platforms,2025-Q3
+ADBE,Adobe,2025-12-31,inventory,0.0,ai_platforms,2025-Q4
+ADBE,Adobe,2026-03-31,inventory,0.0,ai_platforms,2026-Q1
+ADBE,Adobe,2026-06-30,inventory,0.0,ai_platforms,2026-Q2
 ADBE,Adobe,2016-03-31,net_income,84.888,ai_platforms,2016-Q1
 ADBE,Adobe,2016-06-30,net_income,147.493,ai_platforms,2016-Q2
 ADBE,Adobe,2016-09-30,net_income,174.465,ai_platforms,2016-Q3
@@ -8586,6 +8619,18 @@ CEG,Constellation Energy,2025-12-31,fcf,-181.0,energy,2025-Q4
 CEG,Constellation Energy,2026-03-31,fcf,-699.0,energy,2026-Q1
 CEG,Constellation Energy,2025-12-31,gross_margin,16.3,energy,2025-Q4
 CEG,Constellation Energy,2025-12-31,gross_profit,990.0,energy,2025-Q4
+CEG,Constellation Energy,2022-03-31,inventory,0.0,energy,2022-Q1
+CEG,Constellation Energy,2022-06-30,inventory,0.0,energy,2022-Q2
+CEG,Constellation Energy,2022-09-30,inventory,0.0,energy,2022-Q3
+CEG,Constellation Energy,2023-03-31,inventory,0.0,energy,2023-Q1
+CEG,Constellation Energy,2023-06-30,inventory,0.0,energy,2023-Q2
+CEG,Constellation Energy,2023-09-30,inventory,0.0,energy,2023-Q3
+CEG,Constellation Energy,2024-03-31,inventory,0.0,energy,2024-Q1
+CEG,Constellation Energy,2024-06-30,inventory,0.0,energy,2024-Q2
+CEG,Constellation Energy,2024-09-30,inventory,0.0,energy,2024-Q3
+CEG,Constellation Energy,2025-03-31,inventory,0.0,energy,2025-Q1
+CEG,Constellation Energy,2025-06-30,inventory,0.0,energy,2025-Q2
+CEG,Constellation Energy,2025-09-30,inventory,0.0,energy,2025-Q3
 CEG,Constellation Energy,2025-12-31,inventory,1736.0,energy,2025-Q4
 CEG,Constellation Energy,2026-03-31,inventory,1736.0,energy,2026-Q1
 CEG,Constellation Energy,2022-03-31,net_income,-793.0,energy,2022-Q1
@@ -9623,6 +9668,41 @@ CRM,Salesforce,2026-03-31,gross_profit,6971.0,ai_platforms,2026-Q1
 CRM,Salesforce,2026-06-30,gross_profit,7166.0,ai_platforms,2026-Q2
 CRM,Salesforce,2026-09-30,gross_profit,7339.0,ai_platforms,2026-Q3
 CRM,Salesforce,2027-03-31,gross_profit,7564.0,ai_platforms,2027-Q1
+CRM,Salesforce,2016-03-31,inventory,0.0,ai_platforms,2016-Q1
+CRM,Salesforce,2016-06-30,inventory,0.0,ai_platforms,2016-Q2
+CRM,Salesforce,2016-09-30,inventory,0.0,ai_platforms,2016-Q3
+CRM,Salesforce,2017-03-31,inventory,0.0,ai_platforms,2017-Q1
+CRM,Salesforce,2017-06-30,inventory,0.0,ai_platforms,2017-Q2
+CRM,Salesforce,2017-09-30,inventory,0.0,ai_platforms,2017-Q3
+CRM,Salesforce,2018-03-31,inventory,0.0,ai_platforms,2018-Q1
+CRM,Salesforce,2018-06-30,inventory,0.0,ai_platforms,2018-Q2
+CRM,Salesforce,2018-09-30,inventory,0.0,ai_platforms,2018-Q3
+CRM,Salesforce,2019-03-31,inventory,0.0,ai_platforms,2019-Q1
+CRM,Salesforce,2019-06-30,inventory,0.0,ai_platforms,2019-Q2
+CRM,Salesforce,2019-09-30,inventory,0.0,ai_platforms,2019-Q3
+CRM,Salesforce,2020-03-31,inventory,0.0,ai_platforms,2020-Q1
+CRM,Salesforce,2020-06-30,inventory,0.0,ai_platforms,2020-Q2
+CRM,Salesforce,2020-09-30,inventory,0.0,ai_platforms,2020-Q3
+CRM,Salesforce,2021-03-31,inventory,0.0,ai_platforms,2021-Q1
+CRM,Salesforce,2021-06-30,inventory,0.0,ai_platforms,2021-Q2
+CRM,Salesforce,2021-09-30,inventory,0.0,ai_platforms,2021-Q3
+CRM,Salesforce,2022-03-31,inventory,0.0,ai_platforms,2022-Q1
+CRM,Salesforce,2022-06-30,inventory,0.0,ai_platforms,2022-Q2
+CRM,Salesforce,2022-09-30,inventory,0.0,ai_platforms,2022-Q3
+CRM,Salesforce,2023-03-31,inventory,0.0,ai_platforms,2023-Q1
+CRM,Salesforce,2023-06-30,inventory,0.0,ai_platforms,2023-Q2
+CRM,Salesforce,2023-09-30,inventory,0.0,ai_platforms,2023-Q3
+CRM,Salesforce,2024-03-31,inventory,0.0,ai_platforms,2024-Q1
+CRM,Salesforce,2024-06-30,inventory,0.0,ai_platforms,2024-Q2
+CRM,Salesforce,2024-09-30,inventory,0.0,ai_platforms,2024-Q3
+CRM,Salesforce,2025-03-31,inventory,0.0,ai_platforms,2025-Q1
+CRM,Salesforce,2025-06-30,inventory,0.0,ai_platforms,2025-Q2
+CRM,Salesforce,2025-09-30,inventory,0.0,ai_platforms,2025-Q3
+CRM,Salesforce,2025-12-31,inventory,0.0,ai_platforms,2025-Q4
+CRM,Salesforce,2026-03-31,inventory,0.0,ai_platforms,2026-Q1
+CRM,Salesforce,2026-06-30,inventory,0.0,ai_platforms,2026-Q2
+CRM,Salesforce,2026-09-30,inventory,0.0,ai_platforms,2026-Q3
+CRM,Salesforce,2027-03-31,inventory,0.0,ai_platforms,2027-Q1
 CRM,Salesforce,2016-03-31,net_income,-96.911,ai_platforms,2016-Q1
 CRM,Salesforce,2016-06-30,net_income,-61.088,ai_platforms,2016-Q2
 CRM,Salesforce,2016-09-30,net_income,-38.924,ai_platforms,2016-Q3
@@ -10990,6 +11070,27 @@ DDOG,Datadog,2025-06-30,gross_profit,521.78,ai_platforms,2025-Q2
 DDOG,Datadog,2025-09-30,gross_profit,552.26,ai_platforms,2025-Q3
 DDOG,Datadog,2025-12-31,gross_profit,766.3,ai_platforms,2025-Q4
 DDOG,Datadog,2026-03-31,gross_profit,603.925,ai_platforms,2026-Q1
+DDOG,Datadog,2019-09-30,inventory,0.0,ai_platforms,2019-Q3
+DDOG,Datadog,2020-03-31,inventory,0.0,ai_platforms,2020-Q1
+DDOG,Datadog,2020-06-30,inventory,0.0,ai_platforms,2020-Q2
+DDOG,Datadog,2020-09-30,inventory,0.0,ai_platforms,2020-Q3
+DDOG,Datadog,2021-03-31,inventory,0.0,ai_platforms,2021-Q1
+DDOG,Datadog,2021-06-30,inventory,0.0,ai_platforms,2021-Q2
+DDOG,Datadog,2021-09-30,inventory,0.0,ai_platforms,2021-Q3
+DDOG,Datadog,2022-03-31,inventory,0.0,ai_platforms,2022-Q1
+DDOG,Datadog,2022-06-30,inventory,0.0,ai_platforms,2022-Q2
+DDOG,Datadog,2022-09-30,inventory,0.0,ai_platforms,2022-Q3
+DDOG,Datadog,2023-03-31,inventory,0.0,ai_platforms,2023-Q1
+DDOG,Datadog,2023-06-30,inventory,0.0,ai_platforms,2023-Q2
+DDOG,Datadog,2023-09-30,inventory,0.0,ai_platforms,2023-Q3
+DDOG,Datadog,2024-03-31,inventory,0.0,ai_platforms,2024-Q1
+DDOG,Datadog,2024-06-30,inventory,0.0,ai_platforms,2024-Q2
+DDOG,Datadog,2024-09-30,inventory,0.0,ai_platforms,2024-Q3
+DDOG,Datadog,2025-03-31,inventory,0.0,ai_platforms,2025-Q1
+DDOG,Datadog,2025-06-30,inventory,0.0,ai_platforms,2025-Q2
+DDOG,Datadog,2025-09-30,inventory,0.0,ai_platforms,2025-Q3
+DDOG,Datadog,2025-12-31,inventory,0.0,ai_platforms,2025-Q4
+DDOG,Datadog,2026-03-31,inventory,0.0,ai_platforms,2026-Q1
 DDOG,Datadog,2019-09-30,net_income,-4.673,ai_platforms,2019-Q3
 DDOG,Datadog,2020-03-31,net_income,-9.491,ai_platforms,2020-Q1
 DDOG,Datadog,2020-06-30,net_income,-3.949,ai_platforms,2020-Q2
@@ -12262,6 +12363,38 @@ EQIX,Equinix,2025-12-31,fcf,-292.0,energy,2025-Q4
 EQIX,Equinix,2026-03-31,fcf,59.0,energy,2026-Q1
 EQIX,Equinix,2025-12-31,gross_margin,50.5,energy,2025-Q4
 EQIX,Equinix,2025-12-31,gross_profit,1222.0,energy,2025-Q4
+EQIX,Equinix,2016-03-31,inventory,0.0,energy,2016-Q1
+EQIX,Equinix,2016-06-30,inventory,0.0,energy,2016-Q2
+EQIX,Equinix,2016-09-30,inventory,0.0,energy,2016-Q3
+EQIX,Equinix,2017-03-31,inventory,0.0,energy,2017-Q1
+EQIX,Equinix,2017-06-30,inventory,0.0,energy,2017-Q2
+EQIX,Equinix,2017-09-30,inventory,0.0,energy,2017-Q3
+EQIX,Equinix,2018-03-31,inventory,0.0,energy,2018-Q1
+EQIX,Equinix,2018-06-30,inventory,0.0,energy,2018-Q2
+EQIX,Equinix,2018-09-30,inventory,0.0,energy,2018-Q3
+EQIX,Equinix,2019-03-31,inventory,0.0,energy,2019-Q1
+EQIX,Equinix,2019-06-30,inventory,0.0,energy,2019-Q2
+EQIX,Equinix,2019-09-30,inventory,0.0,energy,2019-Q3
+EQIX,Equinix,2020-03-31,inventory,0.0,energy,2020-Q1
+EQIX,Equinix,2020-06-30,inventory,0.0,energy,2020-Q2
+EQIX,Equinix,2020-09-30,inventory,0.0,energy,2020-Q3
+EQIX,Equinix,2021-03-31,inventory,0.0,energy,2021-Q1
+EQIX,Equinix,2021-06-30,inventory,0.0,energy,2021-Q2
+EQIX,Equinix,2021-09-30,inventory,0.0,energy,2021-Q3
+EQIX,Equinix,2022-03-31,inventory,0.0,energy,2022-Q1
+EQIX,Equinix,2022-06-30,inventory,0.0,energy,2022-Q2
+EQIX,Equinix,2022-09-30,inventory,0.0,energy,2022-Q3
+EQIX,Equinix,2023-03-31,inventory,0.0,energy,2023-Q1
+EQIX,Equinix,2023-06-30,inventory,0.0,energy,2023-Q2
+EQIX,Equinix,2023-09-30,inventory,0.0,energy,2023-Q3
+EQIX,Equinix,2024-03-31,inventory,0.0,energy,2024-Q1
+EQIX,Equinix,2024-06-30,inventory,0.0,energy,2024-Q2
+EQIX,Equinix,2024-09-30,inventory,0.0,energy,2024-Q3
+EQIX,Equinix,2025-03-31,inventory,0.0,energy,2025-Q1
+EQIX,Equinix,2025-06-30,inventory,0.0,energy,2025-Q2
+EQIX,Equinix,2025-09-30,inventory,0.0,energy,2025-Q3
+EQIX,Equinix,2025-12-31,inventory,0.0,energy,2025-Q4
+EQIX,Equinix,2026-03-31,inventory,0.0,energy,2026-Q1
 EQIX,Equinix,2016-03-31,net_income,76.452,energy,2016-Q1
 EQIX,Equinix,2016-06-30,net_income,59.459,energy,2016-Q2
 EQIX,Equinix,2016-09-30,net_income,41.132,energy,2016-Q3
@@ -15016,6 +15149,8 @@ GOOGL,Google,2025-12-31,fcf,24551.0,hyperscalers,2025-Q4
 GOOGL,Google,2026-03-31,fcf,18953.0,hyperscalers,2026-Q1
 GOOGL,Google,2025-12-31,gross_margin,59.8,hyperscalers,2025-Q4
 GOOGL,Google,2025-12-31,gross_profit,68062.0,hyperscalers,2025-Q4
+GOOGL,Google,2016-03-31,inventory,0.0,hyperscalers,2016-Q1
+GOOGL,Google,2016-06-30,inventory,0.0,hyperscalers,2016-Q2
 GOOGL,Google,2016-09-30,inventory,491.0,hyperscalers,2016-Q3
 GOOGL,Google,2017-03-31,inventory,268.0,hyperscalers,2017-Q1
 GOOGL,Google,2017-06-30,inventory,268.0,hyperscalers,2017-Q2
@@ -15038,6 +15173,14 @@ GOOGL,Google,2022-09-30,inventory,1170.0,hyperscalers,2022-Q3
 GOOGL,Google,2023-03-31,inventory,2670.0,hyperscalers,2023-Q1
 GOOGL,Google,2023-06-30,inventory,2670.0,hyperscalers,2023-Q2
 GOOGL,Google,2023-09-30,inventory,2670.0,hyperscalers,2023-Q3
+GOOGL,Google,2024-03-31,inventory,0.0,hyperscalers,2024-Q1
+GOOGL,Google,2024-06-30,inventory,0.0,hyperscalers,2024-Q2
+GOOGL,Google,2024-09-30,inventory,0.0,hyperscalers,2024-Q3
+GOOGL,Google,2025-03-31,inventory,0.0,hyperscalers,2025-Q1
+GOOGL,Google,2025-06-30,inventory,0.0,hyperscalers,2025-Q2
+GOOGL,Google,2025-09-30,inventory,0.0,hyperscalers,2025-Q3
+GOOGL,Google,2025-12-31,inventory,0.0,hyperscalers,2025-Q4
+GOOGL,Google,2026-03-31,inventory,0.0,hyperscalers,2026-Q1
 GOOGL,Google,2016-03-31,net_income,3515.0,hyperscalers,2016-Q1
 GOOGL,Google,2016-06-30,net_income,3931.0,hyperscalers,2016-Q2
 GOOGL,Google,2016-09-30,net_income,3979.0,hyperscalers,2016-Q3
@@ -18642,6 +18785,33 @@ MDB,MongoDB,2026-03-31,gross_profit,327.864,ai_platforms,2026-Q1
 MDB,MongoDB,2026-06-30,gross_profit,349.856,ai_platforms,2026-Q2
 MDB,MongoDB,2026-09-30,gross_profit,394.044,ai_platforms,2026-Q3
 MDB,MongoDB,2027-03-31,gross_profit,390.973,ai_platforms,2027-Q1
+MDB,MongoDB,2018-09-30,inventory,0.0,ai_platforms,2018-Q3
+MDB,MongoDB,2019-03-31,inventory,0.0,ai_platforms,2019-Q1
+MDB,MongoDB,2019-06-30,inventory,0.0,ai_platforms,2019-Q2
+MDB,MongoDB,2019-09-30,inventory,0.0,ai_platforms,2019-Q3
+MDB,MongoDB,2020-03-31,inventory,0.0,ai_platforms,2020-Q1
+MDB,MongoDB,2020-06-30,inventory,0.0,ai_platforms,2020-Q2
+MDB,MongoDB,2020-09-30,inventory,0.0,ai_platforms,2020-Q3
+MDB,MongoDB,2021-03-31,inventory,0.0,ai_platforms,2021-Q1
+MDB,MongoDB,2021-06-30,inventory,0.0,ai_platforms,2021-Q2
+MDB,MongoDB,2021-09-30,inventory,0.0,ai_platforms,2021-Q3
+MDB,MongoDB,2022-03-31,inventory,0.0,ai_platforms,2022-Q1
+MDB,MongoDB,2022-06-30,inventory,0.0,ai_platforms,2022-Q2
+MDB,MongoDB,2022-09-30,inventory,0.0,ai_platforms,2022-Q3
+MDB,MongoDB,2023-03-31,inventory,0.0,ai_platforms,2023-Q1
+MDB,MongoDB,2023-06-30,inventory,0.0,ai_platforms,2023-Q2
+MDB,MongoDB,2023-09-30,inventory,0.0,ai_platforms,2023-Q3
+MDB,MongoDB,2024-03-31,inventory,0.0,ai_platforms,2024-Q1
+MDB,MongoDB,2024-06-30,inventory,0.0,ai_platforms,2024-Q2
+MDB,MongoDB,2024-09-30,inventory,0.0,ai_platforms,2024-Q3
+MDB,MongoDB,2025-03-31,inventory,0.0,ai_platforms,2025-Q1
+MDB,MongoDB,2025-06-30,inventory,0.0,ai_platforms,2025-Q2
+MDB,MongoDB,2025-09-30,inventory,0.0,ai_platforms,2025-Q3
+MDB,MongoDB,2025-12-31,inventory,0.0,ai_platforms,2025-Q4
+MDB,MongoDB,2026-03-31,inventory,0.0,ai_platforms,2026-Q1
+MDB,MongoDB,2026-06-30,inventory,0.0,ai_platforms,2026-Q2
+MDB,MongoDB,2026-09-30,inventory,0.0,ai_platforms,2026-Q3
+MDB,MongoDB,2027-03-31,inventory,0.0,ai_platforms,2027-Q1
 MDB,MongoDB,2018-09-30,net_income,-19.535,ai_platforms,2018-Q3
 MDB,MongoDB,2019-03-31,net_income,-19.69,ai_platforms,2019-Q1
 MDB,MongoDB,2019-06-30,net_income,-26.079,ai_platforms,2019-Q2
@@ -18961,6 +19131,38 @@ META,Meta Platforms,2025-12-31,fcf,14831.0,ai_software,2025-Q4
 META,Meta Platforms,2026-03-31,fcf,11085.0,ai_software,2026-Q1
 META,Meta Platforms,2025-12-31,gross_margin,81.8,ai_software,2025-Q4
 META,Meta Platforms,2025-12-31,gross_profit,48987.0,ai_software,2025-Q4
+META,Meta Platforms,2016-03-31,inventory,0.0,ai_software,2016-Q1
+META,Meta Platforms,2016-06-30,inventory,0.0,ai_software,2016-Q2
+META,Meta Platforms,2016-09-30,inventory,0.0,ai_software,2016-Q3
+META,Meta Platforms,2017-03-31,inventory,0.0,ai_software,2017-Q1
+META,Meta Platforms,2017-06-30,inventory,0.0,ai_software,2017-Q2
+META,Meta Platforms,2017-09-30,inventory,0.0,ai_software,2017-Q3
+META,Meta Platforms,2018-03-31,inventory,0.0,ai_software,2018-Q1
+META,Meta Platforms,2018-06-30,inventory,0.0,ai_software,2018-Q2
+META,Meta Platforms,2018-09-30,inventory,0.0,ai_software,2018-Q3
+META,Meta Platforms,2019-03-31,inventory,0.0,ai_software,2019-Q1
+META,Meta Platforms,2019-06-30,inventory,0.0,ai_software,2019-Q2
+META,Meta Platforms,2019-09-30,inventory,0.0,ai_software,2019-Q3
+META,Meta Platforms,2020-03-31,inventory,0.0,ai_software,2020-Q1
+META,Meta Platforms,2020-06-30,inventory,0.0,ai_software,2020-Q2
+META,Meta Platforms,2020-09-30,inventory,0.0,ai_software,2020-Q3
+META,Meta Platforms,2021-03-31,inventory,0.0,ai_software,2021-Q1
+META,Meta Platforms,2021-06-30,inventory,0.0,ai_software,2021-Q2
+META,Meta Platforms,2021-09-30,inventory,0.0,ai_software,2021-Q3
+META,Meta Platforms,2022-03-31,inventory,0.0,ai_software,2022-Q1
+META,Meta Platforms,2022-06-30,inventory,0.0,ai_software,2022-Q2
+META,Meta Platforms,2022-09-30,inventory,0.0,ai_software,2022-Q3
+META,Meta Platforms,2023-03-31,inventory,0.0,ai_software,2023-Q1
+META,Meta Platforms,2023-06-30,inventory,0.0,ai_software,2023-Q2
+META,Meta Platforms,2023-09-30,inventory,0.0,ai_software,2023-Q3
+META,Meta Platforms,2024-03-31,inventory,0.0,ai_software,2024-Q1
+META,Meta Platforms,2024-06-30,inventory,0.0,ai_software,2024-Q2
+META,Meta Platforms,2024-09-30,inventory,0.0,ai_software,2024-Q3
+META,Meta Platforms,2025-03-31,inventory,0.0,ai_software,2025-Q1
+META,Meta Platforms,2025-06-30,inventory,0.0,ai_software,2025-Q2
+META,Meta Platforms,2025-09-30,inventory,0.0,ai_software,2025-Q3
+META,Meta Platforms,2025-12-31,inventory,0.0,ai_software,2025-Q4
+META,Meta Platforms,2026-03-31,inventory,0.0,ai_software,2026-Q1
 META,Meta Platforms,2016-03-31,net_income,512.0,ai_software,2016-Q1
 META,Meta Platforms,2016-06-30,net_income,719.0,ai_software,2016-Q2
 META,Meta Platforms,2016-09-30,net_income,896.0,ai_software,2016-Q3
@@ -22992,6 +23194,27 @@ NET,Cloudflare,2025-06-30,gross_profit,311.985,ai_platforms,2025-Q2
 NET,Cloudflare,2025-09-30,gross_profit,334.115,ai_platforms,2025-Q3
 NET,Cloudflare,2025-12-31,gross_profit,452.551,ai_platforms,2025-Q4
 NET,Cloudflare,2026-03-31,gross_profit,363.511,ai_platforms,2026-Q1
+NET,Cloudflare,2019-09-30,inventory,0.0,ai_platforms,2019-Q3
+NET,Cloudflare,2020-03-31,inventory,0.0,ai_platforms,2020-Q1
+NET,Cloudflare,2020-06-30,inventory,0.0,ai_platforms,2020-Q2
+NET,Cloudflare,2020-09-30,inventory,0.0,ai_platforms,2020-Q3
+NET,Cloudflare,2021-03-31,inventory,0.0,ai_platforms,2021-Q1
+NET,Cloudflare,2021-06-30,inventory,0.0,ai_platforms,2021-Q2
+NET,Cloudflare,2021-09-30,inventory,0.0,ai_platforms,2021-Q3
+NET,Cloudflare,2022-03-31,inventory,0.0,ai_platforms,2022-Q1
+NET,Cloudflare,2022-06-30,inventory,0.0,ai_platforms,2022-Q2
+NET,Cloudflare,2022-09-30,inventory,0.0,ai_platforms,2022-Q3
+NET,Cloudflare,2023-03-31,inventory,0.0,ai_platforms,2023-Q1
+NET,Cloudflare,2023-06-30,inventory,0.0,ai_platforms,2023-Q2
+NET,Cloudflare,2023-09-30,inventory,0.0,ai_platforms,2023-Q3
+NET,Cloudflare,2024-03-31,inventory,0.0,ai_platforms,2024-Q1
+NET,Cloudflare,2024-06-30,inventory,0.0,ai_platforms,2024-Q2
+NET,Cloudflare,2024-09-30,inventory,0.0,ai_platforms,2024-Q3
+NET,Cloudflare,2025-03-31,inventory,0.0,ai_platforms,2025-Q1
+NET,Cloudflare,2025-06-30,inventory,0.0,ai_platforms,2025-Q2
+NET,Cloudflare,2025-09-30,inventory,0.0,ai_platforms,2025-Q3
+NET,Cloudflare,2025-12-31,inventory,0.0,ai_platforms,2025-Q4
+NET,Cloudflare,2026-03-31,inventory,0.0,ai_platforms,2026-Q1
 NET,Cloudflare,2019-09-30,net_income,-37.989,ai_platforms,2019-Q3
 NET,Cloudflare,2020-03-31,net_income,-17.114,ai_platforms,2020-Q1
 NET,Cloudflare,2020-06-30,net_income,-19.706,ai_platforms,2020-Q2
@@ -23407,6 +23630,38 @@ NOW,ServiceNow,2025-06-30,gross_profit,2075.0,ai_platforms,2025-Q2
 NOW,ServiceNow,2025-09-30,gross_profit,2213.0,ai_platforms,2025-Q3
 NOW,ServiceNow,2025-12-31,gross_profit,2734.0,ai_platforms,2025-Q4
 NOW,ServiceNow,2026-03-31,gross_profit,2437.0,ai_platforms,2026-Q1
+NOW,ServiceNow,2016-03-31,inventory,0.0,ai_platforms,2016-Q1
+NOW,ServiceNow,2016-06-30,inventory,0.0,ai_platforms,2016-Q2
+NOW,ServiceNow,2016-09-30,inventory,0.0,ai_platforms,2016-Q3
+NOW,ServiceNow,2017-03-31,inventory,0.0,ai_platforms,2017-Q1
+NOW,ServiceNow,2017-06-30,inventory,0.0,ai_platforms,2017-Q2
+NOW,ServiceNow,2017-09-30,inventory,0.0,ai_platforms,2017-Q3
+NOW,ServiceNow,2018-03-31,inventory,0.0,ai_platforms,2018-Q1
+NOW,ServiceNow,2018-06-30,inventory,0.0,ai_platforms,2018-Q2
+NOW,ServiceNow,2018-09-30,inventory,0.0,ai_platforms,2018-Q3
+NOW,ServiceNow,2019-03-31,inventory,0.0,ai_platforms,2019-Q1
+NOW,ServiceNow,2019-06-30,inventory,0.0,ai_platforms,2019-Q2
+NOW,ServiceNow,2019-09-30,inventory,0.0,ai_platforms,2019-Q3
+NOW,ServiceNow,2020-03-31,inventory,0.0,ai_platforms,2020-Q1
+NOW,ServiceNow,2020-06-30,inventory,0.0,ai_platforms,2020-Q2
+NOW,ServiceNow,2020-09-30,inventory,0.0,ai_platforms,2020-Q3
+NOW,ServiceNow,2021-03-31,inventory,0.0,ai_platforms,2021-Q1
+NOW,ServiceNow,2021-06-30,inventory,0.0,ai_platforms,2021-Q2
+NOW,ServiceNow,2021-09-30,inventory,0.0,ai_platforms,2021-Q3
+NOW,ServiceNow,2022-03-31,inventory,0.0,ai_platforms,2022-Q1
+NOW,ServiceNow,2022-06-30,inventory,0.0,ai_platforms,2022-Q2
+NOW,ServiceNow,2022-09-30,inventory,0.0,ai_platforms,2022-Q3
+NOW,ServiceNow,2023-03-31,inventory,0.0,ai_platforms,2023-Q1
+NOW,ServiceNow,2023-06-30,inventory,0.0,ai_platforms,2023-Q2
+NOW,ServiceNow,2023-09-30,inventory,0.0,ai_platforms,2023-Q3
+NOW,ServiceNow,2024-03-31,inventory,0.0,ai_platforms,2024-Q1
+NOW,ServiceNow,2024-06-30,inventory,0.0,ai_platforms,2024-Q2
+NOW,ServiceNow,2024-09-30,inventory,0.0,ai_platforms,2024-Q3
+NOW,ServiceNow,2025-03-31,inventory,0.0,ai_platforms,2025-Q1
+NOW,ServiceNow,2025-06-30,inventory,0.0,ai_platforms,2025-Q2
+NOW,ServiceNow,2025-09-30,inventory,0.0,ai_platforms,2025-Q3
+NOW,ServiceNow,2025-12-31,inventory,0.0,ai_platforms,2025-Q4
+NOW,ServiceNow,2026-03-31,inventory,0.0,ai_platforms,2026-Q1
 NOW,ServiceNow,2016-03-31,net_income,-58.093,ai_platforms,2016-Q1
 NOW,ServiceNow,2016-06-30,net_income,-61.925,ai_platforms,2016-Q2
 NOW,ServiceNow,2016-09-30,net_income,-41.03,ai_platforms,2016-Q3
@@ -25066,6 +25321,24 @@ PLTR,Palantir,2025-06-30,gross_profit,549.572,ai_platforms,2025-Q2
 PLTR,Palantir,2025-09-30,gross_profit,578.877,ai_platforms,2025-Q3
 PLTR,Palantir,2025-12-31,gross_profit,1190.836,ai_platforms,2025-Q4
 PLTR,Palantir,2026-03-31,gross_profit,710.885,ai_platforms,2026-Q1
+PLTR,Palantir,2020-09-30,inventory,0.0,ai_platforms,2020-Q3
+PLTR,Palantir,2021-03-31,inventory,0.0,ai_platforms,2021-Q1
+PLTR,Palantir,2021-06-30,inventory,0.0,ai_platforms,2021-Q2
+PLTR,Palantir,2021-09-30,inventory,0.0,ai_platforms,2021-Q3
+PLTR,Palantir,2022-03-31,inventory,0.0,ai_platforms,2022-Q1
+PLTR,Palantir,2022-06-30,inventory,0.0,ai_platforms,2022-Q2
+PLTR,Palantir,2022-09-30,inventory,0.0,ai_platforms,2022-Q3
+PLTR,Palantir,2023-03-31,inventory,0.0,ai_platforms,2023-Q1
+PLTR,Palantir,2023-06-30,inventory,0.0,ai_platforms,2023-Q2
+PLTR,Palantir,2023-09-30,inventory,0.0,ai_platforms,2023-Q3
+PLTR,Palantir,2024-03-31,inventory,0.0,ai_platforms,2024-Q1
+PLTR,Palantir,2024-06-30,inventory,0.0,ai_platforms,2024-Q2
+PLTR,Palantir,2024-09-30,inventory,0.0,ai_platforms,2024-Q3
+PLTR,Palantir,2025-03-31,inventory,0.0,ai_platforms,2025-Q1
+PLTR,Palantir,2025-06-30,inventory,0.0,ai_platforms,2025-Q2
+PLTR,Palantir,2025-09-30,inventory,0.0,ai_platforms,2025-Q3
+PLTR,Palantir,2025-12-31,inventory,0.0,ai_platforms,2025-Q4
+PLTR,Palantir,2026-03-31,inventory,0.0,ai_platforms,2026-Q1
 PLTR,Palantir,2020-09-30,net_income,-139.86,ai_platforms,2020-Q3
 PLTR,Palantir,2021-03-31,net_income,-54.274,ai_platforms,2021-Q1
 PLTR,Palantir,2021-06-30,net_income,-110.455,ai_platforms,2021-Q2
@@ -27739,6 +28012,23 @@ SNOW,Snowflake,2026-03-31,gross_profit,556.192,ai_platforms,2026-Q1
 SNOW,Snowflake,2026-06-30,gross_profit,580.745,ai_platforms,2026-Q2
 SNOW,Snowflake,2026-09-30,gross_profit,621.2,ai_platforms,2026-Q3
 SNOW,Snowflake,2027-03-31,gross_profit,693.288,ai_platforms,2027-Q1
+SNOW,Snowflake,2021-09-30,inventory,0.0,ai_platforms,2021-Q3
+SNOW,Snowflake,2022-03-31,inventory,0.0,ai_platforms,2022-Q1
+SNOW,Snowflake,2022-06-30,inventory,0.0,ai_platforms,2022-Q2
+SNOW,Snowflake,2022-09-30,inventory,0.0,ai_platforms,2022-Q3
+SNOW,Snowflake,2023-06-30,inventory,0.0,ai_platforms,2023-Q2
+SNOW,Snowflake,2023-09-30,inventory,0.0,ai_platforms,2023-Q3
+SNOW,Snowflake,2024-03-31,inventory,0.0,ai_platforms,2024-Q1
+SNOW,Snowflake,2024-06-30,inventory,0.0,ai_platforms,2024-Q2
+SNOW,Snowflake,2024-09-30,inventory,0.0,ai_platforms,2024-Q3
+SNOW,Snowflake,2025-03-31,inventory,0.0,ai_platforms,2025-Q1
+SNOW,Snowflake,2025-06-30,inventory,0.0,ai_platforms,2025-Q2
+SNOW,Snowflake,2025-09-30,inventory,0.0,ai_platforms,2025-Q3
+SNOW,Snowflake,2025-12-31,inventory,0.0,ai_platforms,2025-Q4
+SNOW,Snowflake,2026-03-31,inventory,0.0,ai_platforms,2026-Q1
+SNOW,Snowflake,2026-06-30,inventory,0.0,ai_platforms,2026-Q2
+SNOW,Snowflake,2026-09-30,inventory,0.0,ai_platforms,2026-Q3
+SNOW,Snowflake,2027-03-31,inventory,0.0,ai_platforms,2027-Q1
 SNOW,Snowflake,2021-09-30,net_income,-88.057,ai_platforms,2021-Q3
 SNOW,Snowflake,2022-03-31,net_income,-93.644,ai_platforms,2022-Q1
 SNOW,Snowflake,2022-06-30,net_income,-77.634,ai_platforms,2022-Q2
@@ -28051,6 +28341,15 @@ SNPS,Synopsys,2025-09-30,gross_profit,1235.073,sw_equipment,2025-Q3
 SNPS,Synopsys,2025-12-31,gross_profit,1600.197,sw_equipment,2025-Q4
 SNPS,Synopsys,2026-03-31,gross_profit,1185.34,sw_equipment,2026-Q1
 SNPS,Synopsys,2026-06-30,gross_profit,1285.919,sw_equipment,2026-Q2
+SNPS,Synopsys,2016-03-31,inventory,0.0,sw_equipment,2016-Q1
+SNPS,Synopsys,2016-06-30,inventory,0.0,sw_equipment,2016-Q2
+SNPS,Synopsys,2016-09-30,inventory,0.0,sw_equipment,2016-Q3
+SNPS,Synopsys,2017-03-31,inventory,0.0,sw_equipment,2017-Q1
+SNPS,Synopsys,2017-06-30,inventory,0.0,sw_equipment,2017-Q2
+SNPS,Synopsys,2017-09-30,inventory,0.0,sw_equipment,2017-Q3
+SNPS,Synopsys,2018-03-31,inventory,0.0,sw_equipment,2018-Q1
+SNPS,Synopsys,2018-06-30,inventory,0.0,sw_equipment,2018-Q2
+SNPS,Synopsys,2018-09-30,inventory,0.0,sw_equipment,2018-Q3
 SNPS,Synopsys,2019-03-31,inventory,122.407,sw_equipment,2019-Q1
 SNPS,Synopsys,2019-06-30,inventory,122.407,sw_equipment,2019-Q2
 SNPS,Synopsys,2019-09-30,inventory,122.407,sw_equipment,2019-Q3
@@ -28469,7 +28768,38 @@ SO,Southern Company,2025-12-31,fcf,-1688.0,energy,2025-Q4
 SO,Southern Company,2026-03-31,fcf,-1187.0,energy,2026-Q1
 SO,Southern Company,2025-12-31,gross_margin,40.0,energy,2025-Q4
 SO,Southern Company,2025-12-31,gross_profit,2790.0,energy,2025-Q4
+SO,Southern Company,2016-03-31,inventory,0.0,energy,2016-Q1
+SO,Southern Company,2016-06-30,inventory,0.0,energy,2016-Q2
+SO,Southern Company,2016-09-30,inventory,0.0,energy,2016-Q3
+SO,Southern Company,2017-03-31,inventory,0.0,energy,2017-Q1
+SO,Southern Company,2017-06-30,inventory,0.0,energy,2017-Q2
+SO,Southern Company,2017-09-30,inventory,0.0,energy,2017-Q3
+SO,Southern Company,2018-03-31,inventory,0.0,energy,2018-Q1
+SO,Southern Company,2018-06-30,inventory,0.0,energy,2018-Q2
+SO,Southern Company,2018-09-30,inventory,0.0,energy,2018-Q3
+SO,Southern Company,2019-03-31,inventory,0.0,energy,2019-Q1
+SO,Southern Company,2019-06-30,inventory,0.0,energy,2019-Q2
+SO,Southern Company,2019-09-30,inventory,0.0,energy,2019-Q3
+SO,Southern Company,2020-03-31,inventory,0.0,energy,2020-Q1
+SO,Southern Company,2020-06-30,inventory,0.0,energy,2020-Q2
+SO,Southern Company,2020-09-30,inventory,0.0,energy,2020-Q3
+SO,Southern Company,2021-03-31,inventory,0.0,energy,2021-Q1
+SO,Southern Company,2021-06-30,inventory,0.0,energy,2021-Q2
+SO,Southern Company,2021-09-30,inventory,0.0,energy,2021-Q3
+SO,Southern Company,2022-03-31,inventory,0.0,energy,2022-Q1
+SO,Southern Company,2022-06-30,inventory,0.0,energy,2022-Q2
+SO,Southern Company,2022-09-30,inventory,0.0,energy,2022-Q3
+SO,Southern Company,2023-03-31,inventory,0.0,energy,2023-Q1
+SO,Southern Company,2023-06-30,inventory,0.0,energy,2023-Q2
+SO,Southern Company,2023-09-30,inventory,0.0,energy,2023-Q3
+SO,Southern Company,2024-03-31,inventory,0.0,energy,2024-Q1
+SO,Southern Company,2024-06-30,inventory,0.0,energy,2024-Q2
+SO,Southern Company,2024-09-30,inventory,0.0,energy,2024-Q3
+SO,Southern Company,2025-03-31,inventory,0.0,energy,2025-Q1
+SO,Southern Company,2025-06-30,inventory,0.0,energy,2025-Q2
+SO,Southern Company,2025-09-30,inventory,0.0,energy,2025-Q3
 SO,Southern Company,2025-12-31,inventory,3333.0,energy,2025-Q4
+SO,Southern Company,2026-03-31,inventory,0.0,energy,2026-Q1
 SO,Southern Company,2016-03-31,net_income,525.0,energy,2016-Q1
 SO,Southern Company,2016-06-30,net_income,643.0,energy,2016-Q2
 SO,Southern Company,2016-09-30,net_income,970.0,energy,2016-Q3
@@ -30515,6 +30845,7 @@ VST,Vistra,2025-03-31,inventory,970.0,energy,2025-Q1
 VST,Vistra,2025-06-30,inventory,970.0,energy,2025-Q2
 VST,Vistra,2025-09-30,inventory,970.0,energy,2025-Q3
 VST,Vistra,2025-12-31,inventory,1016.0,energy,2025-Q4
+VST,Vistra,2026-03-31,inventory,0.0,energy,2026-Q1
 VST,Vistra,2018-03-31,net_income,78.0,energy,2018-Q1
 VST,Vistra,2018-06-30,net_income,-26.0,energy,2018-Q2
 VST,Vistra,2018-09-30,net_income,273.0,energy,2018-Q3
@@ -31781,7 +32112,6 @@ WDC,Western Digital,2026-09-30,total_debt,4711.0,nand,2026-Q3
 067310.KQ,Hana Micron,2025-09-30,INVENTORY_GROWTH_QOQ,0.05341972295017583,osat_packaging,2025-Q3
 067310.KQ,Hana Micron,2025-12-31,INVENTORY_GROWTH_QOQ,-0.06805871085354653,osat_packaging,2025-Q4
 067310.KQ,Hana Micron,2026-03-31,INVENTORY_GROWTH_QOQ,0.15815063148178132,osat_packaging,2026-Q1
-067310.KQ,Hana Micron,2025-06-30,CAPEX_GROWTH_QOQ,8.337433347043465,osat_packaging,2025-Q2
 067310.KQ,Hana Micron,2025-09-30,CAPEX_GROWTH_QOQ,-0.9415336047955009,osat_packaging,2025-Q3
 067310.KQ,Hana Micron,2025-12-31,CAPEX_GROWTH_QOQ,3.128432341282024,osat_packaging,2025-Q4
 067310.KQ,Hana Micron,2026-03-31,CAPEX_GROWTH_QOQ,0.6283643641407959,osat_packaging,2026-Q1
@@ -32851,12 +33181,10 @@ WDC,Western Digital,2026-09-30,total_debt,4711.0,nand,2026-Q3
 3661.TW,Alchip Technologies,2025-03-31,AP_GROWTH_QOQ,-0.33336636867329894,ai_chip,2025-Q1
 3661.TW,Alchip Technologies,2025-06-30,AP_GROWTH_QOQ,-0.26513378743662175,ai_chip,2025-Q2
 3661.TW,Alchip Technologies,2025-09-30,AP_GROWTH_QOQ,-0.7150888628836931,ai_chip,2025-Q3
-3661.TW,Alchip Technologies,2025-12-31,AP_GROWTH_QOQ,6.792980212468812,ai_chip,2025-Q4
 3661.TW,Alchip Technologies,2025-03-31,INVENTORY_GROWTH_QOQ,-0.33556995678668433,ai_chip,2025-Q1
 3661.TW,Alchip Technologies,2025-06-30,INVENTORY_GROWTH_QOQ,-0.7102429082324857,ai_chip,2025-Q2
 3661.TW,Alchip Technologies,2025-09-30,INVENTORY_GROWTH_QOQ,-0.012792132199960116,ai_chip,2025-Q3
 3661.TW,Alchip Technologies,2025-12-31,INVENTORY_GROWTH_QOQ,3.2195314284603382,ai_chip,2025-Q4
-3661.TW,Alchip Technologies,2025-03-31,CAPEX_GROWTH_QOQ,22.904818386536707,ai_chip,2025-Q1
 3661.TW,Alchip Technologies,2025-06-30,CAPEX_GROWTH_QOQ,-0.7440866091621333,ai_chip,2025-Q2
 3661.TW,Alchip Technologies,2025-09-30,CAPEX_GROWTH_QOQ,0.6670928438758335,ai_chip,2025-Q3
 3661.TW,Alchip Technologies,2025-12-31,CAPEX_GROWTH_QOQ,-0.469848975188781,ai_chip,2025-Q4
@@ -32867,7 +33195,6 @@ WDC,Western Digital,2026-09-30,total_debt,4711.0,nand,2026-Q3
 3661.TW,Alchip Technologies,2025-03-31,AP_GROWTH_MINUS_COGS_GROWTH,-0.11534990530412059,ai_chip,2025-Q1
 3661.TW,Alchip Technologies,2025-06-30,AP_GROWTH_MINUS_COGS_GROWTH,-0.16591402781823528,ai_chip,2025-Q2
 3661.TW,Alchip Technologies,2025-09-30,AP_GROWTH_MINUS_COGS_GROWTH,-0.3667472701501646,ai_chip,2025-Q3
-3661.TW,Alchip Technologies,2025-12-31,AP_GROWTH_MINUS_COGS_GROWTH,7.215708505028059,ai_chip,2025-Q4
 3661.TW,Alchip Technologies,2025-03-31,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,-0.13769955808871515,ai_chip,2025-Q1
 3661.TW,Alchip Technologies,2025-06-30,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,-0.5823576871207011,ai_chip,2025-Q2
 3661.TW,Alchip Technologies,2025-09-30,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,0.26871900565365026,ai_chip,2025-Q3
@@ -34025,6 +34352,38 @@ ABBN.SW,ABB,2025-03-31,FCF_TO_OPERATING_INCOME,0.3898832684824903,energy,2025-Q1
 ABBN.SW,ABB,2025-06-30,FCF_TO_OPERATING_INCOME,0.5657181571815718,energy,2025-Q2
 ABBN.SW,ABB,2025-12-31,FCF_TO_OPERATING_INCOME,1.013157894736842,energy,2025-Q4
 ABBN.SW,ABB,2026-03-31,FCF_TO_OPERATING_INCOME,0.5921787709497207,energy,2026-Q1
+ADBE,Adobe,2016-06-30,DIO,0.0,ai_platforms,2016-Q2
+ADBE,Adobe,2016-09-30,DIO,0.0,ai_platforms,2016-Q3
+ADBE,Adobe,2017-03-31,DIO,0.0,ai_platforms,2017-Q1
+ADBE,Adobe,2017-06-30,DIO,0.0,ai_platforms,2017-Q2
+ADBE,Adobe,2017-09-30,DIO,0.0,ai_platforms,2017-Q3
+ADBE,Adobe,2018-03-31,DIO,0.0,ai_platforms,2018-Q1
+ADBE,Adobe,2018-06-30,DIO,0.0,ai_platforms,2018-Q2
+ADBE,Adobe,2018-09-30,DIO,0.0,ai_platforms,2018-Q3
+ADBE,Adobe,2019-03-31,DIO,0.0,ai_platforms,2019-Q1
+ADBE,Adobe,2019-06-30,DIO,0.0,ai_platforms,2019-Q2
+ADBE,Adobe,2019-09-30,DIO,0.0,ai_platforms,2019-Q3
+ADBE,Adobe,2020-03-31,DIO,0.0,ai_platforms,2020-Q1
+ADBE,Adobe,2020-06-30,DIO,0.0,ai_platforms,2020-Q2
+ADBE,Adobe,2020-09-30,DIO,0.0,ai_platforms,2020-Q3
+ADBE,Adobe,2021-03-31,DIO,0.0,ai_platforms,2021-Q1
+ADBE,Adobe,2021-06-30,DIO,0.0,ai_platforms,2021-Q2
+ADBE,Adobe,2021-09-30,DIO,0.0,ai_platforms,2021-Q3
+ADBE,Adobe,2022-03-31,DIO,0.0,ai_platforms,2022-Q1
+ADBE,Adobe,2022-06-30,DIO,0.0,ai_platforms,2022-Q2
+ADBE,Adobe,2022-09-30,DIO,0.0,ai_platforms,2022-Q3
+ADBE,Adobe,2023-03-31,DIO,0.0,ai_platforms,2023-Q1
+ADBE,Adobe,2023-06-30,DIO,0.0,ai_platforms,2023-Q2
+ADBE,Adobe,2023-09-30,DIO,0.0,ai_platforms,2023-Q3
+ADBE,Adobe,2024-03-31,DIO,0.0,ai_platforms,2024-Q1
+ADBE,Adobe,2024-06-30,DIO,0.0,ai_platforms,2024-Q2
+ADBE,Adobe,2024-09-30,DIO,0.0,ai_platforms,2024-Q3
+ADBE,Adobe,2025-03-31,DIO,0.0,ai_platforms,2025-Q1
+ADBE,Adobe,2025-06-30,DIO,0.0,ai_platforms,2025-Q2
+ADBE,Adobe,2025-09-30,DIO,0.0,ai_platforms,2025-Q3
+ADBE,Adobe,2025-12-31,DIO,0.0,ai_platforms,2025-Q4
+ADBE,Adobe,2026-03-31,DIO,0.0,ai_platforms,2026-Q1
+ADBE,Adobe,2026-06-30,DIO,0.0,ai_platforms,2026-Q2
 ADBE,Adobe,2016-06-30,DSO,52.76438100499244,ai_platforms,2016-Q2
 ADBE,Adobe,2016-09-30,DSO,50.35486849711932,ai_platforms,2016-Q3
 ADBE,Adobe,2017-03-31,DSO,49.63902769394254,ai_platforms,2017-Q1
@@ -34057,6 +34416,70 @@ ADBE,Adobe,2025-09-30,DSO,34.961168639053255,ai_platforms,2025-Q3
 ADBE,Adobe,2025-12-31,DSO,32.528253148207945,ai_platforms,2025-Q4
 ADBE,Adobe,2026-03-31,DSO,37.43262163108155,ai_platforms,2026-Q1
 ADBE,Adobe,2026-06-30,DSO,36.419206538396054,ai_platforms,2026-Q2
+ADBE,Adobe,2016-06-30,DPO,45.98004973727274,ai_platforms,2016-Q2
+ADBE,Adobe,2016-09-30,DPO,44.58079823022747,ai_platforms,2016-Q3
+ADBE,Adobe,2017-03-31,DPO,41.66361256874079,ai_platforms,2017-Q1
+ADBE,Adobe,2017-06-30,DPO,39.74777191098532,ai_platforms,2017-Q2
+ADBE,Adobe,2017-09-30,DPO,39.62580352341626,ai_platforms,2017-Q3
+ADBE,Adobe,2018-03-31,DPO,38.74771422070727,ai_platforms,2018-Q1
+ADBE,Adobe,2018-06-30,DPO,43.28351646056147,ai_platforms,2018-Q2
+ADBE,Adobe,2018-09-30,DPO,39.404623804778595,ai_platforms,2018-Q3
+ADBE,Adobe,2019-03-31,DPO,52.83154436813929,ai_platforms,2019-Q1
+ADBE,Adobe,2019-06-30,DPO,60.41018290775704,ai_platforms,2019-Q2
+ADBE,Adobe,2019-09-30,DPO,57.517775438928986,ai_platforms,2019-Q3
+ADBE,Adobe,2020-03-31,DPO,45.4248016372796,ai_platforms,2020-Q1
+ADBE,Adobe,2020-06-30,DPO,46.858108108108105,ai_platforms,2020-Q2
+ADBE,Adobe,2020-09-30,DPO,45.84435096153846,ai_platforms,2020-Q3
+ADBE,Adobe,2021-03-31,DPO,51.98423672566371,ai_platforms,2021-Q1
+ADBE,Adobe,2021-06-30,DPO,67.28313253012048,ai_platforms,2021-Q2
+ADBE,Adobe,2021-09-30,DPO,65.39227166276346,ai_platforms,2021-Q3
+ADBE,Adobe,2022-03-31,DPO,63.078859060402685,ai_platforms,2022-Q1
+ADBE,Adobe,2022-06-30,DPO,64.12162162162163,ai_platforms,2022-Q2
+ADBE,Adobe,2022-09-30,DPO,60.96359743040686,ai_platforms,2022-Q3
+ADBE,Adobe,2023-03-31,DPO,61.575927734375,ai_platforms,2023-Q1
+ADBE,Adobe,2023-06-30,DPO,64.16280148423006,ai_platforms,2023-Q2
+ADBE,Adobe,2023-09-30,DPO,63.34020146520146,ai_platforms,2023-Q3
+ADBE,Adobe,2024-03-31,DPO,55.665713028169016,ai_platforms,2024-Q1
+ADBE,Adobe,2024-06-30,DPO,50.09178321678322,ai_platforms,2024-Q2
+ADBE,Adobe,2024-09-30,DPO,49.400862068965516,ai_platforms,2024-Q3
+ADBE,Adobe,2025-03-31,DPO,52.19809322033898,ai_platforms,2025-Q1
+ADBE,Adobe,2025-06-30,DPO,55.08570234113713,ai_platforms,2025-Q2
+ADBE,Adobe,2025-09-30,DPO,59.46074007220217,ai_platforms,2025-Q3
+ADBE,Adobe,2025-12-31,DPO,54.69375963020031,ai_platforms,2025-Q4
+ADBE,Adobe,2026-03-31,DPO,61.17564308681672,ai_platforms,2026-Q1
+ADBE,Adobe,2026-06-30,DPO,59.64145768025079,ai_platforms,2026-Q2
+ADBE,Adobe,2016-06-30,CCC,6.784331267719693,ai_platforms,2016-Q2
+ADBE,Adobe,2016-09-30,CCC,5.774070266891847,ai_platforms,2016-Q3
+ADBE,Adobe,2017-03-31,CCC,7.975415125201749,ai_platforms,2017-Q1
+ADBE,Adobe,2017-06-30,CCC,14.598243772048107,ai_platforms,2017-Q2
+ADBE,Adobe,2017-09-30,CCC,12.29767647988983,ai_platforms,2017-Q3
+ADBE,Adobe,2018-03-31,CCC,16.898313911848575,ai_platforms,2018-Q1
+ADBE,Adobe,2018-06-30,CCC,19.42961249288031,ai_platforms,2018-Q2
+ADBE,Adobe,2018-09-30,CCC,20.962086061310437,ai_platforms,2018-Q3
+ADBE,Adobe,2019-03-31,CCC,2.7701791245712073,ai_platforms,2019-Q1
+ADBE,Adobe,2019-06-30,CCC,-5.72826627449416,ai_platforms,2019-Q2
+ADBE,Adobe,2019-09-30,CCC,-5.12034623972302,ai_platforms,2019-Q3
+ADBE,Adobe,2020-03-31,CCC,4.57812848575,ai_platforms,2020-Q1
+ADBE,Adobe,2020-06-30,CCC,4.187354719880233,ai_platforms,2020-Q2
+ADBE,Adobe,2020-09-30,CCC,3.580049179604792,ai_platforms,2020-Q3
+ADBE,Adobe,2021-03-31,CCC,-8.691410779368013,ai_platforms,2021-Q1
+ADBE,Adobe,2021-06-30,CCC,-26.500683681015623,ai_platforms,2021-Q2
+ADBE,Adobe,2021-09-30,CCC,-25.836457709275088,ai_platforms,2021-Q3
+ADBE,Adobe,2022-03-31,CCC,-24.802930763347625,ai_platforms,2022-Q1
+ADBE,Adobe,2022-06-30,CCC,-19.43648472462033,ai_platforms,2022-Q2
+ADBE,Adobe,2022-09-30,CCC,-17.41404215721753,ai_platforms,2022-Q3
+ADBE,Adobe,2023-03-31,CCC,-19.365844440146937,ai_platforms,2023-Q1
+ADBE,Adobe,2023-06-30,CCC,-21.20082018008049,ai_platforms,2023-Q2
+ADBE,Adobe,2023-09-30,CCC,-20.833716015167624,ai_platforms,2023-Q3
+ADBE,Adobe,2024-03-31,CCC,-13.6279847789746,ai_platforms,2024-Q1
+ADBE,Adobe,2024-06-30,CCC,-7.953078897846339,ai_platforms,2024-Q2
+ADBE,Adobe,2024-09-30,CCC,-7.899839574077987,ai_platforms,2024-Q3
+ADBE,Adobe,2025-03-31,CCC,-14.373894069431998,ai_platforms,2025-Q1
+ADBE,Adobe,2025-06-30,CCC,-19.472592527612925,ai_platforms,2025-Q2
+ADBE,Adobe,2025-09-30,CCC,-24.499571433148915,ai_platforms,2025-Q3
+ADBE,Adobe,2025-12-31,CCC,-22.165506481992367,ai_platforms,2025-Q4
+ADBE,Adobe,2026-03-31,CCC,-23.743021455735168,ai_platforms,2026-Q1
+ADBE,Adobe,2026-06-30,CCC,-23.222251141854734,ai_platforms,2026-Q2
 ADBE,Adobe,2016-06-30,REVENUE_GROWTH_QOQ,0.047762267835456784,ai_platforms,2016-Q2
 ADBE,Adobe,2016-09-30,REVENUE_GROWTH_QOQ,0.047850636488326215,ai_platforms,2016-Q3
 ADBE,Adobe,2017-03-31,REVENUE_GROWTH_QOQ,0.13595939456448192,ai_platforms,2017-Q1
@@ -35214,7 +35637,6 @@ ADI,Analog Devices,2024-03-31,FCF_TO_OPERATING_INCOME,1.0878362604127978,compone
 ADI,Analog Devices,2025-03-31,FCF_TO_OPERATING_INCOME,1.562986804650115,components,2025-Q1
 ADI,Analog Devices,2025-12-31,FCF_TO_OPERATING_INCOME,1.5717728634135657,components,2025-Q4
 ADI,Analog Devices,2026-03-31,FCF_TO_OPERATING_INCOME,1.9902404373586695,components,2026-Q1
-ALAB,Astera Labs,2024-06-30,DIO,977.6206091596263,server_networking,2024-Q2
 ALAB,Astera Labs,2024-09-30,DIO,249.1974101779441,server_networking,2024-Q3
 ALAB,Astera Labs,2025-03-31,DIO,208.3741857782604,server_networking,2025-Q1
 ALAB,Astera Labs,2025-06-30,DIO,232.0174599905861,server_networking,2025-Q2
@@ -35235,7 +35657,6 @@ ALAB,Astera Labs,2025-06-30,DPO,144.52032831254417,server_networking,2025-Q2
 ALAB,Astera Labs,2025-09-30,DPO,97.43613392042522,server_networking,2025-Q3
 ALAB,Astera Labs,2025-12-31,DPO,38.607826851670886,server_networking,2025-Q4
 ALAB,Astera Labs,2026-03-31,DPO,96.56347580625014,server_networking,2026-Q1
-ALAB,Astera Labs,2024-06-30,CCC,791.666778662689,server_networking,2024-Q2
 ALAB,Astera Labs,2024-09-30,CCC,204.25432701389047,server_networking,2024-Q3
 ALAB,Astera Labs,2025-03-31,CCC,196.5237837073424,server_networking,2025-Q1
 ALAB,Astera Labs,2025-06-30,CCC,133.5804595895579,server_networking,2025-Q2
@@ -35279,20 +35700,14 @@ ALAB,Astera Labs,2025-12-31,INVENTORY_GROWTH_QOQ,0.36478074742566235,server_netw
 ALAB,Astera Labs,2026-03-31,INVENTORY_GROWTH_QOQ,0.0,server_networking,2026-Q1
 ALAB,Astera Labs,2026-03-31,CAPEX_GROWTH_QOQ,-0.7571298624859544,server_networking,2026-Q1
 ALAB,Astera Labs,2025-06-30,REVENUE_GROWTH_YOY,3.35065670289855,server_networking,2025-Q2
-ALAB,Astera Labs,2025-09-30,REVENUE_GROWTH_YOY,9.580651197604789,server_networking,2025-Q3
-ALAB,Astera Labs,2025-12-31,REVENUE_GROWTH_YOY,6.327312608318892,server_networking,2025-Q4
 ALAB,Astera Labs,2026-03-31,REVENUE_GROWTH_YOY,1.4432559992644585,server_networking,2026-Q1
 ALAB,Astera Labs,2025-06-30,COGS_GROWTH_YOY,0.26779054154855975,server_networking,2025-Q2
-ALAB,Astera Labs,2025-09-30,COGS_GROWTH_YOY,10.20898176967541,server_networking,2025-Q3
-ALAB,Astera Labs,2025-12-31,COGS_GROWTH_YOY,6.492689561373688,server_networking,2025-Q4
 ALAB,Astera Labs,2026-03-31,COGS_GROWTH_YOY,1.7161758718957816,server_networking,2026-Q1
 ALAB,Astera Labs,2025-06-30,AR_GROWTH_YOY,3.6563887222555485,server_networking,2025-Q2
 ALAB,Astera Labs,2025-09-30,AR_GROWTH_YOY,3.6563887222555485,server_networking,2025-Q3
-ALAB,Astera Labs,2025-12-31,AR_GROWTH_YOY,8.982243551289741,server_networking,2025-Q4
 ALAB,Astera Labs,2026-03-31,AR_GROWTH_YOY,1.1437736724124603,server_networking,2026-Q1
 ALAB,Astera Labs,2025-06-30,AP_GROWTH_YOY,3.2477513018778605,server_networking,2025-Q2
 ALAB,Astera Labs,2025-09-30,AP_GROWTH_YOY,3.2477513018778605,server_networking,2025-Q3
-ALAB,Astera Labs,2025-12-31,AP_GROWTH_YOY,5.6848666561464425,server_networking,2025-Q4
 ALAB,Astera Labs,2026-03-31,AP_GROWTH_YOY,0.5737424771528346,server_networking,2026-Q1
 ALAB,Astera Labs,2025-06-30,INVENTORY_GROWTH_YOY,0.7935256277235943,server_networking,2025-Q2
 ALAB,Astera Labs,2025-09-30,INVENTORY_GROWTH_YOY,0.7935256277235943,server_networking,2025-Q3
@@ -41084,7 +41499,6 @@ BIDU,Baidu,2025-06-30,DSO,33.677952954482926,ai_software,2025-Q2
 BIDU,Baidu,2025-09-30,DSO,36.366523384872,ai_software,2025-Q3
 BIDU,Baidu,2025-12-31,DSO,40.835350488698836,ai_software,2025-Q4
 BIDU,Baidu,2026-03-31,DSO,45.13283320342946,ai_software,2026-Q1
-BIDU,Baidu,2025-03-31,REVENUE_GROWTH_QOQ,6.9035557720409155,ai_software,2025-Q1
 BIDU,Baidu,2025-06-30,REVENUE_GROWTH_QOQ,0.008042647602613195,ai_software,2025-Q2
 BIDU,Baidu,2025-09-30,REVENUE_GROWTH_QOQ,-0.04704551707272342,ai_software,2025-Q3
 BIDU,Baidu,2025-12-31,REVENUE_GROWTH_QOQ,0.050234169500224635,ai_software,2025-Q4
@@ -41093,21 +41507,16 @@ BIDU,Baidu,2025-06-30,COGS_GROWTH_QOQ,0.04975124378109452,ai_software,2025-Q2
 BIDU,Baidu,2025-09-30,COGS_GROWTH_QOQ,-0.0022879555482921976,ai_software,2025-Q3
 BIDU,Baidu,2025-12-31,COGS_GROWTH_QOQ,-0.00207480207480204,ai_software,2025-Q4
 BIDU,Baidu,2026-03-31,COGS_GROWTH_QOQ,0.07178420966241728,ai_software,2026-Q1
-BIDU,Baidu,2025-03-31,AR_GROWTH_QOQ,13.887909319899244,ai_software,2025-Q1
 BIDU,Baidu,2025-06-30,AR_GROWTH_QOQ,0.04272058201505802,ai_software,2025-Q2
 BIDU,Baidu,2025-09-30,AR_GROWTH_QOQ,0.015901346746714173,ai_software,2025-Q3
 BIDU,Baidu,2025-12-31,AR_GROWTH_QOQ,0.34012138636000633,ai_software,2025-Q4
 BIDU,Baidu,2026-03-31,AR_GROWTH_QOQ,-0.10923067755199334,ai_software,2026-Q1
-BIDU,Baidu,2025-03-31,AP_GROWTH_QOQ,6.88970288970289,ai_software,2025-Q1
 BIDU,Baidu,2025-06-30,AP_GROWTH_QOQ,-0.014495744132060895,ai_software,2025-Q2
 BIDU,Baidu,2025-09-30,AP_GROWTH_QOQ,-0.04046273031825798,ai_software,2025-Q3
-BIDU,Baidu,2025-12-31,REVENUE_GROWTH_YOY,6.973697028738432,ai_software,2025-Q4
 BIDU,Baidu,2026-03-31,REVENUE_GROWTH_YOY,-0.011617157648218912,ai_software,2026-Q1
 BIDU,Baidu,2026-03-31,COGS_GROWTH_YOY,0.1202035798021388,ai_software,2026-Q1
-BIDU,Baidu,2025-12-31,AR_GROWTH_YOY,20.134760705289672,ai_software,2025-Q4
 BIDU,Baidu,2026-03-31,AR_GROWTH_YOY,0.2645292276457152,ai_software,2026-Q1
 BIDU,Baidu,2026-03-31,AP_GROWTH_YOY,0.01828733556873874,ai_software,2026-Q1
-BIDU,Baidu,2025-03-31,AR_GROWTH_MINUS_REVENUE_GROWTH,6.984353547858328,ai_software,2025-Q1
 BIDU,Baidu,2025-06-30,AR_GROWTH_MINUS_REVENUE_GROWTH,0.03467793441244482,ai_software,2025-Q2
 BIDU,Baidu,2025-09-30,AR_GROWTH_MINUS_REVENUE_GROWTH,0.06294686381943759,ai_software,2025-Q3
 BIDU,Baidu,2025-12-31,AR_GROWTH_MINUS_REVENUE_GROWTH,0.2898872168597817,ai_software,2025-Q4
@@ -41444,6 +41853,7 @@ CARR,Carrier Global,2024-03-31,FCF_TO_OPERATING_INCOME,0.09009009009009009,cooli
 CARR,Carrier Global,2025-03-31,FCF_TO_OPERATING_INCOME,-0.16103896103896104,cooling,2025-Q1
 CARR,Carrier Global,2025-12-31,FCF_TO_OPERATING_INCOME,16.833333333333332,cooling,2025-Q4
 CARR,Carrier Global,2026-03-31,FCF_TO_OPERATING_INCOME,0.6677265500794912,cooling,2026-Q1
+CEG,Constellation Energy,2025-12-31,DIO,15.579268292682928,energy,2025-Q4
 CEG,Constellation Energy,2022-06-30,DSO,36.67138213339754,energy,2022-Q2
 CEG,Constellation Energy,2022-09-30,DSO,34.565649114843396,energy,2022-Q3
 CEG,Constellation Energy,2023-03-31,DSO,34.714496512251834,energy,2023-Q1
@@ -41457,6 +41867,8 @@ CEG,Constellation Energy,2025-06-30,DSO,64.53359055832955,energy,2025-Q2
 CEG,Constellation Energy,2025-09-30,DSO,59.571548292478525,energy,2025-Q3
 CEG,Constellation Energy,2025-12-31,DSO,55.45007408626934,energy,2025-Q4
 CEG,Constellation Energy,2026-03-31,DSO,63.752456600065514,energy,2026-Q1
+CEG,Constellation Energy,2025-12-31,DPO,34.66697214076246,energy,2025-Q4
+CEG,Constellation Energy,2025-12-31,CCC,36.362370238189804,energy,2025-Q4
 CEG,Constellation Energy,2022-06-30,REVENUE_GROWTH_QOQ,-0.2529231876236733,energy,2022-Q2
 CEG,Constellation Energy,2022-09-30,REVENUE_GROWTH_QOQ,0.060919816999759124,energy,2022-Q3
 CEG,Constellation Energy,2023-03-31,REVENUE_GROWTH_QOQ,0.2689514298683613,energy,2023-Q1
@@ -42202,11 +42614,9 @@ CRDO,Credo Technology,2023-09-30,DPO,61.03710198612861,server_networking,2023-Q3
 CRDO,Credo Technology,2024-03-31,DPO,17.712089890637504,server_networking,2024-Q1
 CRDO,Credo Technology,2024-06-30,DPO,23.648601025202904,server_networking,2024-Q2
 CRDO,Credo Technology,2024-09-30,DPO,24.844668581429787,server_networking,2024-Q3
-CRDO,Credo Technology,2025-03-31,DPO,-152.97840302873854,server_networking,2025-Q1
 CRDO,Credo Technology,2025-06-30,DPO,68.32800814823085,server_networking,2025-Q2
 CRDO,Credo Technology,2025-09-30,DPO,59.722012195121955,server_networking,2025-Q3
 CRDO,Credo Technology,2025-12-31,DPO,16.7397630024424,server_networking,2025-Q4
-CRDO,Credo Technology,2026-03-31,DPO,-145.4029356813484,server_networking,2026-Q1
 CRDO,Credo Technology,2026-06-30,DPO,193.21384133926546,server_networking,2026-Q2
 CRDO,Credo Technology,2026-09-30,DPO,104.41799453908223,server_networking,2026-Q3
 CRDO,Credo Technology,2023-03-31,CCC,445.72157772309936,server_networking,2023-Q1
@@ -42215,11 +42625,9 @@ CRDO,Credo Technology,2023-09-30,CCC,220.28511122280645,server_networking,2023-Q
 CRDO,Credo Technology,2024-03-31,CCC,237.91692457906686,server_networking,2024-Q1
 CRDO,Credo Technology,2024-06-30,CCC,243.74757530735005,server_networking,2024-Q2
 CRDO,Credo Technology,2024-09-30,CCC,246.92044195175112,server_networking,2024-Q3
-CRDO,Credo Technology,2025-03-31,CCC,524.3636954098469,server_networking,2025-Q1
 CRDO,Credo Technology,2025-06-30,CCC,187.2396351435738,server_networking,2025-Q2
 CRDO,Credo Technology,2025-09-30,CCC,158.2033969038944,server_networking,2025-Q3
 CRDO,Credo Technology,2025-12-31,CCC,127.526969200938,server_networking,2025-Q4
-CRDO,Credo Technology,2026-03-31,CCC,945.2526497910349,server_networking,2026-Q1
 CRDO,Credo Technology,2026-06-30,CCC,321.9325344360015,server_networking,2026-Q2
 CRDO,Credo Technology,2026-09-30,CCC,172.57412582327365,server_networking,2026-Q3
 CRDO,Credo Technology,2023-03-31,REVENUE_GROWTH_QOQ,-0.20315054242829544,server_networking,2023-Q1
@@ -42324,11 +42732,9 @@ CRDO,Credo Technology,2024-09-30,AP_GROWTH_YOY,-0.28514198185460116,server_netwo
 CRDO,Credo Technology,2025-03-31,AP_GROWTH_YOY,0.5808884175798279,server_networking,2025-Q1
 CRDO,Credo Technology,2025-06-30,AP_GROWTH_YOY,1.2114718971485083,server_networking,2025-Q2
 CRDO,Credo Technology,2025-09-30,AP_GROWTH_YOY,1.2114718971485083,server_networking,2025-Q3
-CRDO,Credo Technology,2025-12-31,AP_GROWTH_YOY,9.564859073677269,server_networking,2025-Q4
 CRDO,Credo Technology,2026-03-31,AP_GROWTH_YOY,3.185585451293136,server_networking,2026-Q1
 CRDO,Credo Technology,2026-06-30,AP_GROWTH_YOY,3.185585451293136,server_networking,2026-Q2
 CRDO,Credo Technology,2026-09-30,AP_GROWTH_YOY,3.185585451293136,server_networking,2026-Q3
-CRDO,Credo Technology,2024-03-31,INVENTORY_GROWTH_YOY,5.478462837837839,server_networking,2024-Q1
 CRDO,Credo Technology,2024-06-30,INVENTORY_GROWTH_YOY,0.6835424516223434,server_networking,2024-Q2
 CRDO,Credo Technology,2024-09-30,INVENTORY_GROWTH_YOY,0.6835424516223434,server_networking,2024-Q3
 CRDO,Credo Technology,2025-03-31,INVENTORY_GROWTH_YOY,-0.05231005596810179,server_networking,2025-Q1
@@ -42447,6 +42853,32 @@ CRDO,Credo Technology,2024-03-31,FCF_TO_OPERATING_INCOME,80.1697247706422,server
 CRDO,Credo Technology,2025-03-31,FCF_TO_OPERATING_INCOME,-1.340838023764853,server_networking,2025-Q1
 CRDO,Credo Technology,2025-12-31,FCF_TO_OPERATING_INCOME,0.4883115894207827,server_networking,2025-Q4
 CRDO,Credo Technology,2026-03-31,FCF_TO_OPERATING_INCOME,0.9064424607293613,server_networking,2026-Q1
+CRM,Salesforce,2019-03-31,DIO,0.0,ai_platforms,2019-Q1
+CRM,Salesforce,2019-06-30,DIO,0.0,ai_platforms,2019-Q2
+CRM,Salesforce,2019-09-30,DIO,0.0,ai_platforms,2019-Q3
+CRM,Salesforce,2020-03-31,DIO,0.0,ai_platforms,2020-Q1
+CRM,Salesforce,2020-06-30,DIO,0.0,ai_platforms,2020-Q2
+CRM,Salesforce,2020-09-30,DIO,0.0,ai_platforms,2020-Q3
+CRM,Salesforce,2021-03-31,DIO,0.0,ai_platforms,2021-Q1
+CRM,Salesforce,2021-06-30,DIO,0.0,ai_platforms,2021-Q2
+CRM,Salesforce,2021-09-30,DIO,0.0,ai_platforms,2021-Q3
+CRM,Salesforce,2022-03-31,DIO,0.0,ai_platforms,2022-Q1
+CRM,Salesforce,2022-06-30,DIO,0.0,ai_platforms,2022-Q2
+CRM,Salesforce,2022-09-30,DIO,0.0,ai_platforms,2022-Q3
+CRM,Salesforce,2023-03-31,DIO,0.0,ai_platforms,2023-Q1
+CRM,Salesforce,2023-06-30,DIO,0.0,ai_platforms,2023-Q2
+CRM,Salesforce,2023-09-30,DIO,0.0,ai_platforms,2023-Q3
+CRM,Salesforce,2024-03-31,DIO,0.0,ai_platforms,2024-Q1
+CRM,Salesforce,2024-06-30,DIO,0.0,ai_platforms,2024-Q2
+CRM,Salesforce,2024-09-30,DIO,0.0,ai_platforms,2024-Q3
+CRM,Salesforce,2025-03-31,DIO,0.0,ai_platforms,2025-Q1
+CRM,Salesforce,2025-06-30,DIO,0.0,ai_platforms,2025-Q2
+CRM,Salesforce,2025-09-30,DIO,0.0,ai_platforms,2025-Q3
+CRM,Salesforce,2025-12-31,DIO,0.0,ai_platforms,2025-Q4
+CRM,Salesforce,2026-03-31,DIO,0.0,ai_platforms,2026-Q1
+CRM,Salesforce,2026-06-30,DIO,0.0,ai_platforms,2026-Q2
+CRM,Salesforce,2026-09-30,DIO,0.0,ai_platforms,2026-Q3
+CRM,Salesforce,2027-03-31,DIO,0.0,ai_platforms,2027-Q1
 CRM,Salesforce,2019-03-31,DSO,135.47870749895702,ai_platforms,2019-Q1
 CRM,Salesforce,2019-06-30,DSO,138.84022118742723,ai_platforms,2019-Q2
 CRM,Salesforce,2019-09-30,DSO,132.46621621621622,ai_platforms,2019-Q3
@@ -42473,6 +42905,12 @@ CRM,Salesforce,2026-03-31,DSO,87.01870962443886,ai_platforms,2026-Q1
 CRM,Salesforce,2026-06-30,DSO,116.88806970509384,ai_platforms,2026-Q2
 CRM,Salesforce,2026-09-30,DSO,115.4152107157984,ai_platforms,2026-Q3
 CRM,Salesforce,2027-03-31,DSO,122.00707091260554,ai_platforms,2027-Q1
+CRM,Salesforce,2019-03-31,DPO,13.404148425499233,ai_platforms,2019-Q1
+CRM,Salesforce,2019-06-30,DPO,10.350746268656717,ai_platforms,2019-Q2
+CRM,Salesforce,2019-09-30,DPO,9.712885154061624,ai_platforms,2019-Q3
+CRM,Salesforce,2019-03-31,CCC,122.07455907345779,ai_platforms,2019-Q1
+CRM,Salesforce,2019-06-30,CCC,128.48947491877053,ai_platforms,2019-Q2
+CRM,Salesforce,2019-09-30,CCC,122.7533310621546,ai_platforms,2019-Q3
 CRM,Salesforce,2019-06-30,REVENUE_GROWTH_QOQ,0.07509386733416767,ai_platforms,2019-Q2
 CRM,Salesforce,2019-09-30,REVENUE_GROWTH_QOQ,0.04811796662786194,ai_platforms,2019-Q3
 CRM,Salesforce,2020-03-31,REVENUE_GROWTH_QOQ,0.1129211403184005,ai_platforms,2020-Q1
@@ -42937,7 +43375,6 @@ CRWV,CRWV,2025-12-31,REVENUE_GROWTH_QOQ,1.6918883928342074,neocloud,2025-Q4
 CRWV,CRWV,2026-03-31,REVENUE_GROWTH_QOQ,-0.3752799153128944,neocloud,2026-Q1
 CRWV,CRWV,2025-06-30,AR_GROWTH_QOQ,0.0,neocloud,2025-Q2
 CRWV,CRWV,2025-09-30,AR_GROWTH_QOQ,0.0,neocloud,2025-Q3
-CRWV,CRWV,2025-12-31,AR_GROWTH_QOQ,6.608168517691572,neocloud,2025-Q4
 CRWV,CRWV,2026-03-31,AR_GROWTH_QOQ,0.0,neocloud,2026-Q1
 CRWV,CRWV,2025-06-30,AP_GROWTH_QOQ,0.0,neocloud,2025-Q2
 CRWV,CRWV,2025-09-30,AP_GROWTH_QOQ,0.0,neocloud,2025-Q3
@@ -42945,11 +43382,9 @@ CRWV,CRWV,2025-12-31,AP_GROWTH_QOQ,0.869257905763142,neocloud,2025-Q4
 CRWV,CRWV,2026-03-31,AP_GROWTH_QOQ,0.0,neocloud,2026-Q1
 CRWV,CRWV,2026-03-31,CAPEX_GROWTH_QOQ,-0.6534278742024469,neocloud,2026-Q1
 CRWV,CRWV,2026-03-31,REVENUE_GROWTH_YOY,4.204468847385046,neocloud,2026-Q1
-CRWV,CRWV,2026-03-31,AR_GROWTH_YOY,6.608168517691572,neocloud,2026-Q1
 CRWV,CRWV,2026-03-31,AP_GROWTH_YOY,0.869257905763142,neocloud,2026-Q1
 CRWV,CRWV,2025-06-30,AR_GROWTH_MINUS_REVENUE_GROWTH,-1.0954134955799115,neocloud,2025-Q2
 CRWV,CRWV,2025-09-30,AR_GROWTH_MINUS_REVENUE_GROWTH,-0.47694443952641974,neocloud,2025-Q3
-CRWV,CRWV,2025-12-31,AR_GROWTH_MINUS_REVENUE_GROWTH,4.916280124857365,neocloud,2025-Q4
 CRWV,CRWV,2026-03-31,AR_GROWTH_MINUS_REVENUE_GROWTH,0.3752799153128944,neocloud,2026-Q1
 CRWV,CRWV,2025-03-31,AR_TO_REVENUE,2.207532170189311,neocloud,2025-Q1
 CRWV,CRWV,2025-06-30,AR_TO_REVENUE,1.0535067063593435,neocloud,2025-Q2
@@ -44130,6 +44565,26 @@ D,Dominion Energy,2018-03-31,FCF_TO_OPERATING_INCOME,-0.06950880444856349,energy
 D,Dominion Energy,2019-03-31,FCF_TO_OPERATING_INCOME,0.14742857142857144,energy,2019-Q1
 D,Dominion Energy,2020-03-31,FCF_TO_OPERATING_INCOME,-0.3506224066390041,energy,2020-Q1
 D,Dominion Energy,2025-12-31,FCF_TO_OPERATING_INCOME,-2.291308500477555,energy,2025-Q4
+DDOG,Datadog,2020-03-31,DIO,0.0,ai_platforms,2020-Q1
+DDOG,Datadog,2020-06-30,DIO,0.0,ai_platforms,2020-Q2
+DDOG,Datadog,2020-09-30,DIO,0.0,ai_platforms,2020-Q3
+DDOG,Datadog,2021-03-31,DIO,0.0,ai_platforms,2021-Q1
+DDOG,Datadog,2021-06-30,DIO,0.0,ai_platforms,2021-Q2
+DDOG,Datadog,2021-09-30,DIO,0.0,ai_platforms,2021-Q3
+DDOG,Datadog,2022-03-31,DIO,0.0,ai_platforms,2022-Q1
+DDOG,Datadog,2022-06-30,DIO,0.0,ai_platforms,2022-Q2
+DDOG,Datadog,2022-09-30,DIO,0.0,ai_platforms,2022-Q3
+DDOG,Datadog,2023-03-31,DIO,0.0,ai_platforms,2023-Q1
+DDOG,Datadog,2023-06-30,DIO,0.0,ai_platforms,2023-Q2
+DDOG,Datadog,2023-09-30,DIO,0.0,ai_platforms,2023-Q3
+DDOG,Datadog,2024-03-31,DIO,0.0,ai_platforms,2024-Q1
+DDOG,Datadog,2024-06-30,DIO,0.0,ai_platforms,2024-Q2
+DDOG,Datadog,2024-09-30,DIO,0.0,ai_platforms,2024-Q3
+DDOG,Datadog,2025-03-31,DIO,0.0,ai_platforms,2025-Q1
+DDOG,Datadog,2025-06-30,DIO,0.0,ai_platforms,2025-Q2
+DDOG,Datadog,2025-09-30,DIO,0.0,ai_platforms,2025-Q3
+DDOG,Datadog,2025-12-31,DIO,0.0,ai_platforms,2025-Q4
+DDOG,Datadog,2026-03-31,DIO,0.0,ai_platforms,2026-Q1
 DDOG,Datadog,2020-03-31,DSO,103.04932191291937,ai_platforms,2020-Q1
 DDOG,Datadog,2020-06-30,DSO,112.27142462329674,ai_platforms,2020-Q2
 DDOG,Datadog,2020-09-30,DSO,97.46570662605357,ai_platforms,2020-Q3
@@ -44150,6 +44605,46 @@ DDOG,Datadog,2025-06-30,DSO,84.69415361417309,ai_platforms,2025-Q2
 DDOG,Datadog,2025-09-30,DSO,79.20303116159626,ai_platforms,2025-Q3
 DDOG,Datadog,2025-12-31,DSO,64.14828264235823,ai_platforms,2025-Q4
 DDOG,Datadog,2026-03-31,DSO,88.81871320840439,ai_platforms,2026-Q1
+DDOG,Datadog,2020-03-31,DPO,67.57556068601585,ai_platforms,2020-Q1
+DDOG,Datadog,2020-06-30,DPO,67.11298741538756,ai_platforms,2020-Q2
+DDOG,Datadog,2020-09-30,DPO,60.43251276988451,ai_platforms,2020-Q3
+DDOG,Datadog,2021-03-31,DPO,63.35877015748333,ai_platforms,2021-Q1
+DDOG,Datadog,2021-06-30,DPO,67.43740910035321,ai_platforms,2021-Q2
+DDOG,Datadog,2021-09-30,DPO,57.305128884180775,ai_platforms,2021-Q3
+DDOG,Datadog,2022-03-31,DPO,45.572204602922895,ai_platforms,2022-Q1
+DDOG,Datadog,2022-06-30,DPO,40.3847332656135,ai_platforms,2022-Q2
+DDOG,Datadog,2022-09-30,DPO,36.40951651613718,ai_platforms,2022-Q3
+DDOG,Datadog,2023-03-31,DPO,29.866844833606404,ai_platforms,2023-Q1
+DDOG,Datadog,2023-06-30,DPO,26.145895636252686,ai_platforms,2023-Q2
+DDOG,Datadog,2023-09-30,DPO,22.884886590668707,ai_platforms,2023-Q3
+DDOG,Datadog,2024-03-31,DPO,50.77227665792583,ai_platforms,2024-Q1
+DDOG,Datadog,2024-06-30,DPO,78.5864933330715,ai_platforms,2024-Q2
+DDOG,Datadog,2024-09-30,DPO,77.46610013647057,ai_platforms,2024-Q3
+DDOG,Datadog,2025-03-31,DPO,80.9922693872731,ai_platforms,2025-Q1
+DDOG,Datadog,2025-06-30,DPO,79.59946031951674,ai_platforms,2025-Q2
+DDOG,Datadog,2025-09-30,DPO,71.36134723714395,ai_platforms,2025-Q3
+DDOG,Datadog,2025-12-31,DPO,62.622750061532194,ai_platforms,2025-Q4
+DDOG,Datadog,2026-03-31,DPO,86.13430830816857,ai_platforms,2026-Q1
+DDOG,Datadog,2020-03-31,CCC,35.47376122690352,ai_platforms,2020-Q1
+DDOG,Datadog,2020-06-30,CCC,45.158437207909174,ai_platforms,2020-Q2
+DDOG,Datadog,2020-09-30,CCC,37.03319385616906,ai_platforms,2020-Q3
+DDOG,Datadog,2021-03-31,CCC,29.0234423333737,ai_platforms,2021-Q1
+DDOG,Datadog,2021-06-30,CCC,39.028527747916954,ai_platforms,2021-Q2
+DDOG,Datadog,2021-09-30,CCC,39.067967931723544,ai_platforms,2021-Q3
+DDOG,Datadog,2022-03-31,CCC,53.74005269880111,ai_platforms,2022-Q1
+DDOG,Datadog,2022-06-30,CCC,64.64757258883247,ai_platforms,2022-Q2
+DDOG,Datadog,2022-09-30,CCC,54.27912771207257,ai_platforms,2022-Q3
+DDOG,Datadog,2023-03-31,CCC,54.133401358168385,ai_platforms,2023-Q1
+DDOG,Datadog,2023-06-30,CCC,63.6241548145793,ai_platforms,2023-Q2
+DDOG,Datadog,2023-09-30,CCC,60.63463827915786,ai_platforms,2023-Q3
+DDOG,Datadog,2024-03-31,CCC,35.306535147419254,ai_platforms,2024-Q1
+DDOG,Datadog,2024-06-30,CCC,12.631087536869217,ai_platforms,2024-Q2
+DDOG,Datadog,2024-09-30,CCC,7.408152424091654,ai_platforms,2024-Q3
+DDOG,Datadog,2025-03-31,CCC,1.72558025927259,ai_platforms,2025-Q1
+DDOG,Datadog,2025-06-30,CCC,5.094693294656352,ai_platforms,2025-Q2
+DDOG,Datadog,2025-09-30,CCC,7.841683924452312,ai_platforms,2025-Q3
+DDOG,Datadog,2025-12-31,CCC,1.525532580826031,ai_platforms,2025-Q4
+DDOG,Datadog,2026-03-31,CCC,2.684404900235819,ai_platforms,2026-Q1
 DDOG,Datadog,2020-03-31,REVENUE_GROWTH_QOQ,0.3715393350824294,ai_platforms,2020-Q1
 DDOG,Datadog,2020-06-30,REVENUE_GROWTH_QOQ,0.1880371163454675,ai_platforms,2020-Q2
 DDOG,Datadog,2020-09-30,REVENUE_GROWTH_QOQ,0.15190694768210333,ai_platforms,2020-Q3
@@ -45640,6 +46135,7 @@ ENTG,Entegris,2024-03-31,FCF_TO_OPERATING_INCOME,1.3277142432793705,materials,20
 ENTG,Entegris,2025-03-31,FCF_TO_OPERATING_INCOME,0.685374149659864,materials,2025-Q1
 ENTG,Entegris,2025-12-31,FCF_TO_OPERATING_INCOME,0.23529411764705882,materials,2025-Q4
 ENTG,Entegris,2026-03-31,FCF_TO_OPERATING_INCOME,0.2649223221586263,materials,2026-Q1
+EQIX,Equinix,2025-12-31,DIO,0.0,energy,2025-Q4
 EQIX,Equinix,2016-06-30,DSO,40.02769756393653,energy,2016-Q2
 EQIX,Equinix,2016-09-30,DSO,38.7996123201228,energy,2016-Q3
 EQIX,Equinix,2017-03-31,DSO,37.196366104132416,energy,2017-Q1
@@ -45671,6 +46167,8 @@ EQIX,Equinix,2025-06-30,DSO,40.10942566002779,energy,2025-Q2
 EQIX,Equinix,2025-09-30,DSO,39.344048159927304,energy,2025-Q3
 EQIX,Equinix,2025-12-31,DSO,44.72004132231405,energy,2025-Q4
 EQIX,Equinix,2026-03-31,DSO,49.705617977528085,energy,2026-Q1
+EQIX,Equinix,2025-12-31,DPO,50.27128547579299,energy,2025-Q4
+EQIX,Equinix,2025-12-31,CCC,-5.55124415347894,energy,2025-Q4
 EQIX,Equinix,2016-06-30,REVENUE_GROWTH_QOQ,0.034839716779596186,energy,2016-Q2
 EQIX,Equinix,2016-09-30,REVENUE_GROWTH_QOQ,0.03165199780042127,energy,2016-Q3
 EQIX,Equinix,2017-03-31,REVENUE_GROWTH_QOQ,0.2293850278672218,energy,2017-Q1
@@ -45763,7 +46261,6 @@ EQIX,Equinix,2025-03-31,AP_GROWTH_QOQ,0.005054759898904804,energy,2025-Q1
 EQIX,Equinix,2025-06-30,AP_GROWTH_QOQ,0.0,energy,2025-Q2
 EQIX,Equinix,2025-09-30,AP_GROWTH_QOQ,0.0,energy,2025-Q3
 EQIX,Equinix,2025-12-31,AP_GROWTH_QOQ,-0.8935456831517183,energy,2025-Q4
-EQIX,Equinix,2026-03-31,AP_GROWTH_QOQ,9.62992125984252,energy,2026-Q1
 EQIX,Equinix,2016-06-30,CAPEX_GROWTH_QOQ,0.47443378630429,energy,2016-Q2
 EQIX,Equinix,2016-09-30,CAPEX_GROWTH_QOQ,-0.02392677395162246,energy,2016-Q3
 EQIX,Equinix,2017-03-31,CAPEX_GROWTH_QOQ,-0.08491710098775263,energy,2017-Q1
@@ -49183,6 +49680,7 @@ GLW,Corning,2025-03-31,CASH_CONVERSION_RATIO,0.45933014354066987,materials,2025-
 GLW,Corning,2025-12-31,CASH_CONVERSION_RATIO,1.9481481481481482,materials,2025-Q4
 GLW,Corning,2026-03-31,CASH_CONVERSION_RATIO,0.9617834394904459,materials,2026-Q1
 GLW,Corning,2025-12-31,FCF_TO_OPERATING_INCOME,0.9226190476190477,materials,2025-Q4
+GOOGL,Google,2025-12-31,DIO,0.0,hyperscalers,2025-Q4
 GOOGL,Google,2016-06-30,DSO,59.484684379759685,hyperscalers,2016-Q2
 GOOGL,Google,2016-09-30,DSO,56.46506024096385,hyperscalers,2016-Q3
 GOOGL,Google,2017-03-31,DSO,57.86854544108209,hyperscalers,2017-Q1
@@ -49214,6 +49712,8 @@ GOOGL,Google,2025-06-30,DSO,56.359597366123054,hyperscalers,2025-Q2
 GOOGL,Google,2025-09-30,DSO,54.10822721711152,hyperscalers,2025-Q3
 GOOGL,Google,2025-12-31,DSO,46.184946279067724,hyperscalers,2025-Q4
 GOOGL,Google,2026-03-31,DSO,63.59407207926059,hyperscalers,2026-Q1
+GOOGL,Google,2025-12-31,DPO,20.124366355671114,hyperscalers,2025-Q4
+GOOGL,Google,2025-12-31,CCC,26.06057992339661,hyperscalers,2025-Q4
 GOOGL,Google,2016-06-30,REVENUE_GROWTH_QOQ,0.027175802526364645,hyperscalers,2016-Q2
 GOOGL,Google,2016-09-30,REVENUE_GROWTH_QOQ,0.05347774581147413,hyperscalers,2016-Q3
 GOOGL,Google,2017-03-31,REVENUE_GROWTH_QOQ,0.08471218206157971,hyperscalers,2017-Q1
@@ -49328,6 +49828,7 @@ GOOGL,Google,2022-09-30,INVENTORY_GROWTH_QOQ,0.0,hyperscalers,2022-Q3
 GOOGL,Google,2023-03-31,INVENTORY_GROWTH_QOQ,1.282051282051282,hyperscalers,2023-Q1
 GOOGL,Google,2023-06-30,INVENTORY_GROWTH_QOQ,0.0,hyperscalers,2023-Q2
 GOOGL,Google,2023-09-30,INVENTORY_GROWTH_QOQ,0.0,hyperscalers,2023-Q3
+GOOGL,Google,2024-03-31,INVENTORY_GROWTH_QOQ,-1.0,hyperscalers,2024-Q1
 GOOGL,Google,2016-06-30,CAPEX_GROWTH_QOQ,-0.1407584557567475,hyperscalers,2016-Q2
 GOOGL,Google,2016-09-30,CAPEX_GROWTH_QOQ,-0.052485089463220724,hyperscalers,2016-Q3
 GOOGL,Google,2017-03-31,CAPEX_GROWTH_QOQ,0.025597985732270345,hyperscalers,2017-Q1
@@ -49446,6 +49947,10 @@ GOOGL,Google,2022-09-30,INVENTORY_GROWTH_YOY,0.6071428571428572,hyperscalers,202
 GOOGL,Google,2023-03-31,INVENTORY_GROWTH_YOY,2.6675824175824174,hyperscalers,2023-Q1
 GOOGL,Google,2023-06-30,INVENTORY_GROWTH_YOY,1.282051282051282,hyperscalers,2023-Q2
 GOOGL,Google,2023-09-30,INVENTORY_GROWTH_YOY,1.282051282051282,hyperscalers,2023-Q3
+GOOGL,Google,2024-03-31,INVENTORY_GROWTH_YOY,-1.0,hyperscalers,2024-Q1
+GOOGL,Google,2024-06-30,INVENTORY_GROWTH_YOY,-1.0,hyperscalers,2024-Q2
+GOOGL,Google,2024-09-30,INVENTORY_GROWTH_YOY,-1.0,hyperscalers,2024-Q3
+GOOGL,Google,2025-03-31,INVENTORY_GROWTH_YOY,-1.0,hyperscalers,2025-Q1
 GOOGL,Google,2016-06-30,AR_GROWTH_MINUS_REVENUE_GROWTH,-0.027175802526364645,hyperscalers,2016-Q2
 GOOGL,Google,2016-09-30,AR_GROWTH_MINUS_REVENUE_GROWTH,-0.05347774581147413,hyperscalers,2016-Q3
 GOOGL,Google,2017-03-31,AR_GROWTH_MINUS_REVENUE_GROWTH,0.1386349968930758,hyperscalers,2017-Q1
@@ -49498,6 +50003,7 @@ GOOGL,Google,2022-09-30,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,-0.052327084680025
 GOOGL,Google,2023-03-31,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,1.2376242419087715,hyperscalers,2023-Q1
 GOOGL,Google,2023-06-30,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,-0.024613665436473475,hyperscalers,2023-Q2
 GOOGL,Google,2023-09-30,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,0.008509722321876967,hyperscalers,2023-Q3
+GOOGL,Google,2024-03-31,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,-1.0100590516991836,hyperscalers,2024-Q1
 GOOGL,Google,2016-03-31,AR_TO_REVENUE,0.6696025031869278,hyperscalers,2016-Q1
 GOOGL,Google,2016-06-30,AR_TO_REVENUE,0.6518869521069555,hyperscalers,2016-Q2
 GOOGL,Google,2016-09-30,AR_TO_REVENUE,0.6187951807228915,hyperscalers,2016-Q3
@@ -53581,6 +54087,32 @@ LRCX,Lam Research,2024-03-31,FCF_TO_OPERATING_INCOME,0.6181530650709137,hw_equip
 LRCX,Lam Research,2025-03-31,FCF_TO_OPERATING_INCOME,0.8544928833884475,hw_equipment,2025-Q1
 LRCX,Lam Research,2025-12-31,FCF_TO_OPERATING_INCOME,0.6734968398571872,hw_equipment,2025-Q4
 LRCX,Lam Research,2026-03-31,FCF_TO_OPERATING_INCOME,1.1532087166794418,hw_equipment,2026-Q1
+MDB,MongoDB,2019-03-31,DIO,0.0,ai_platforms,2019-Q1
+MDB,MongoDB,2019-06-30,DIO,0.0,ai_platforms,2019-Q2
+MDB,MongoDB,2019-09-30,DIO,0.0,ai_platforms,2019-Q3
+MDB,MongoDB,2020-03-31,DIO,0.0,ai_platforms,2020-Q1
+MDB,MongoDB,2020-06-30,DIO,0.0,ai_platforms,2020-Q2
+MDB,MongoDB,2020-09-30,DIO,0.0,ai_platforms,2020-Q3
+MDB,MongoDB,2021-03-31,DIO,0.0,ai_platforms,2021-Q1
+MDB,MongoDB,2021-06-30,DIO,0.0,ai_platforms,2021-Q2
+MDB,MongoDB,2021-09-30,DIO,0.0,ai_platforms,2021-Q3
+MDB,MongoDB,2022-03-31,DIO,0.0,ai_platforms,2022-Q1
+MDB,MongoDB,2022-06-30,DIO,0.0,ai_platforms,2022-Q2
+MDB,MongoDB,2022-09-30,DIO,0.0,ai_platforms,2022-Q3
+MDB,MongoDB,2023-03-31,DIO,0.0,ai_platforms,2023-Q1
+MDB,MongoDB,2023-06-30,DIO,0.0,ai_platforms,2023-Q2
+MDB,MongoDB,2023-09-30,DIO,0.0,ai_platforms,2023-Q3
+MDB,MongoDB,2024-03-31,DIO,0.0,ai_platforms,2024-Q1
+MDB,MongoDB,2024-06-30,DIO,0.0,ai_platforms,2024-Q2
+MDB,MongoDB,2024-09-30,DIO,0.0,ai_platforms,2024-Q3
+MDB,MongoDB,2025-03-31,DIO,0.0,ai_platforms,2025-Q1
+MDB,MongoDB,2025-06-30,DIO,0.0,ai_platforms,2025-Q2
+MDB,MongoDB,2025-09-30,DIO,0.0,ai_platforms,2025-Q3
+MDB,MongoDB,2025-12-31,DIO,0.0,ai_platforms,2025-Q4
+MDB,MongoDB,2026-03-31,DIO,0.0,ai_platforms,2026-Q1
+MDB,MongoDB,2026-06-30,DIO,0.0,ai_platforms,2026-Q2
+MDB,MongoDB,2026-09-30,DIO,0.0,ai_platforms,2026-Q3
+MDB,MongoDB,2027-03-31,DIO,0.0,ai_platforms,2027-Q1
 MDB,MongoDB,2019-03-31,DSO,110.17050015436864,ai_platforms,2019-Q1
 MDB,MongoDB,2019-06-30,DSO,120.14241573033708,ai_platforms,2019-Q2
 MDB,MongoDB,2019-09-30,DSO,103.09173736984188,ai_platforms,2019-Q3
@@ -53607,6 +54139,58 @@ MDB,MongoDB,2026-03-31,DSO,81.98153108014232,ai_platforms,2026-Q1
 MDB,MongoDB,2026-06-30,DSO,75.02532633771797,ai_platforms,2026-Q2
 MDB,MongoDB,2026-09-30,DSO,67.75968595041323,ai_platforms,2026-Q3
 MDB,MongoDB,2027-03-31,DSO,74.13673991009337,ai_platforms,2027-Q1
+MDB,MongoDB,2019-03-31,DPO,25.30478856397434,ai_platforms,2019-Q1
+MDB,MongoDB,2019-06-30,DPO,20.250907930899093,ai_platforms,2019-Q2
+MDB,MongoDB,2019-09-30,DPO,18.63573751241984,ai_platforms,2019-Q3
+MDB,MongoDB,2020-03-31,DPO,14.647519819623243,ai_platforms,2020-Q1
+MDB,MongoDB,2020-06-30,DPO,11.911073723778344,ai_platforms,2020-Q2
+MDB,MongoDB,2020-09-30,DPO,11.063253181664605,ai_platforms,2020-Q3
+MDB,MongoDB,2021-03-31,DPO,8.100818188272044,ai_platforms,2021-Q1
+MDB,MongoDB,2021-06-30,DPO,8.607749486788956,ai_platforms,2021-Q2
+MDB,MongoDB,2021-09-30,DPO,8.075898543071045,ai_platforms,2021-Q3
+MDB,MongoDB,2022-03-31,DPO,8.468180189505533,ai_platforms,2022-Q1
+MDB,MongoDB,2022-06-30,DPO,8.938634644478064,ai_platforms,2022-Q2
+MDB,MongoDB,2022-09-30,DPO,8.200824116243767,ai_platforms,2022-Q3
+MDB,MongoDB,2023-03-31,DPO,7.846817231514085,ai_platforms,2023-Q1
+MDB,MongoDB,2023-06-30,DPO,7.867986227801387,ai_platforms,2023-Q2
+MDB,MongoDB,2023-09-30,DPO,6.975965470904417,ai_platforms,2023-Q3
+MDB,MongoDB,2024-03-31,DPO,7.891844595026528,ai_platforms,2024-Q1
+MDB,MongoDB,2024-06-30,DPO,8.574359685988421,ai_platforms,2024-Q2
+MDB,MongoDB,2024-09-30,DPO,8.082248643915774,ai_platforms,2024-Q3
+MDB,MongoDB,2025-03-31,DPO,8.521123869921706,ai_platforms,2025-Q1
+MDB,MongoDB,2025-06-30,DPO,8.58037774001538,ai_platforms,2025-Q2
+MDB,MongoDB,2025-09-30,DPO,8.442444749574996,ai_platforms,2025-Q3
+MDB,MongoDB,2025-12-31,DPO,6.293595160093093,ai_platforms,2025-Q4
+MDB,MongoDB,2026-03-31,DPO,9.399649135675688,ai_platforms,2026-Q1
+MDB,MongoDB,2026-06-30,DPO,7.44710650043274,ai_platforms,2026-Q2
+MDB,MongoDB,2026-09-30,DPO,7.057612446520014,ai_platforms,2026-Q3
+MDB,MongoDB,2027-03-31,DPO,8.873203788890224,ai_platforms,2027-Q1
+MDB,MongoDB,2019-03-31,CCC,84.8657115903943,ai_platforms,2019-Q1
+MDB,MongoDB,2019-06-30,CCC,99.89150779943799,ai_platforms,2019-Q2
+MDB,MongoDB,2019-09-30,CCC,84.45599985742204,ai_platforms,2019-Q3
+MDB,MongoDB,2020-03-31,CCC,94.25772360366003,ai_platforms,2020-Q1
+MDB,MongoDB,2020-06-30,CCC,99.54033625089077,ai_platforms,2020-Q2
+MDB,MongoDB,2020-09-30,CCC,81.49100833236399,ai_platforms,2020-Q3
+MDB,MongoDB,2021-03-31,CCC,72.72956452529131,ai_platforms,2021-Q1
+MDB,MongoDB,2021-06-30,CCC,69.95680348801179,ai_platforms,2021-Q2
+MDB,MongoDB,2021-09-30,CCC,63.25753682393035,ai_platforms,2021-Q3
+MDB,MongoDB,2022-03-31,CCC,68.80400213369191,ai_platforms,2022-Q1
+MDB,MongoDB,2022-06-30,CCC,80.262412498658,ai_platforms,2022-Q2
+MDB,MongoDB,2022-09-30,CCC,73.61073115632192,ai_platforms,2022-Q3
+MDB,MongoDB,2023-03-31,CCC,75.18054544244873,ai_platforms,2023-Q1
+MDB,MongoDB,2023-06-30,CCC,81.83751247155006,ai_platforms,2023-Q2
+MDB,MongoDB,2023-09-30,CCC,71.60159641950207,ai_platforms,2023-Q3
+MDB,MongoDB,2024-03-31,CCC,68.92183491465478,ai_platforms,2024-Q1
+MDB,MongoDB,2024-06-30,CCC,77.12599597494815,ai_platforms,2024-Q2
+MDB,MongoDB,2024-09-30,CCC,69.92174391050976,ai_platforms,2024-Q3
+MDB,MongoDB,2025-03-31,CCC,67.14913042029227,ai_platforms,2025-Q1
+MDB,MongoDB,2025-06-30,CCC,61.52944644218765,ai_platforms,2025-Q2
+MDB,MongoDB,2025-09-30,CCC,60.186117538789624,ai_platforms,2025-Q3
+MDB,MongoDB,2025-12-31,CCC,47.59469069925319,ai_platforms,2025-Q4
+MDB,MongoDB,2026-03-31,CCC,72.58188194446663,ai_platforms,2026-Q1
+MDB,MongoDB,2026-06-30,CCC,67.57821983728523,ai_platforms,2026-Q2
+MDB,MongoDB,2026-09-30,CCC,60.70207350389322,ai_platforms,2026-Q3
+MDB,MongoDB,2027-03-31,CCC,65.26353612120315,ai_platforms,2027-Q1
 MDB,MongoDB,2019-03-31,REVENUE_GROWTH_QOQ,0.23132484318570623,ai_platforms,2019-Q1
 MDB,MongoDB,2019-06-30,REVENUE_GROWTH_QOQ,0.0991046619326954,ai_platforms,2019-Q2
 MDB,MongoDB,2019-09-30,REVENUE_GROWTH_QOQ,0.16539325842696617,ai_platforms,2019-Q3
@@ -53990,6 +54574,7 @@ MDB,MongoDB,2025-03-31,FCF_TO_OPERATING_INCOME,-0.7747530891213328,ai_platforms,
 MDB,MongoDB,2025-12-31,FCF_TO_OPERATING_INCOME,-7.698219713417282,ai_platforms,2025-Q4
 MDB,MongoDB,2026-03-31,FCF_TO_OPERATING_INCOME,-0.6423930091866457,ai_platforms,2026-Q1
 MDB,MongoDB,2027-03-31,FCF_TO_OPERATING_INCOME,-2.022594017253613,ai_platforms,2027-Q1
+META,Meta Platforms,2025-12-31,DIO,0.0,ai_software,2025-Q4
 META,Meta Platforms,2016-06-30,DSO,57.77059623948541,ai_software,2016-Q2
 META,Meta Platforms,2016-09-30,DSO,51.879304598978,ai_software,2016-Q3
 META,Meta Platforms,2017-03-31,DSO,55.54347826086957,ai_software,2017-Q1
@@ -54021,6 +54606,8 @@ META,Meta Platforms,2025-06-30,DSO,39.68934759796269,ai_software,2025-Q2
 META,Meta Platforms,2025-09-30,DSO,38.20499396388184,ai_software,2025-Q3
 META,Meta Platforms,2025-12-31,DSO,28.005140417077122,ai_software,2025-Q4
 META,Meta Platforms,2026-03-31,DSO,42.63178262513589,ai_software,2026-Q1
+META,Meta Platforms,2025-12-31,DPO,69.36623189070237,ai_software,2025-Q4
+META,Meta Platforms,2025-12-31,CCC,-41.361091473625244,ai_software,2025-Q4
 META,Meta Platforms,2016-06-30,REVENUE_GROWTH_QOQ,0.1408410951171324,ai_software,2016-Q2
 META,Meta Platforms,2016-09-30,REVENUE_GROWTH_QOQ,0.11355764473033148,ai_software,2016-Q3
 META,Meta Platforms,2017-03-31,REVENUE_GROWTH_QOQ,0.1957342812708287,ai_software,2017-Q1
@@ -54484,7 +55071,6 @@ MKSI,MKS Instruments,2016-09-30,REVENUE_GROWTH_QOQ,-0.03961168255599501,hw_equip
 MKSI,MKS Instruments,2017-03-31,REVENUE_GROWTH_QOQ,-0.12253740469684515,hw_equipment,2017-Q1
 MKSI,MKS Instruments,2017-06-30,REVENUE_GROWTH_QOQ,0.7740593746767492,hw_equipment,2017-Q2
 MKSI,MKS Instruments,2017-09-30,REVENUE_GROWTH_QOQ,0.16816679504451293,hw_equipment,2017-Q3
-MKSI,MKS Instruments,2018-03-31,REVENUE_GROWTH_QOQ,1147.4080281616139,hw_equipment,2018-Q1
 MKSI,MKS Instruments,2018-06-30,REVENUE_GROWTH_QOQ,-0.9989002546019357,hw_equipment,2018-Q2
 MKSI,MKS Instruments,2018-09-30,REVENUE_GROWTH_QOQ,0.011461091570169613,hw_equipment,2018-Q3
 MKSI,MKS Instruments,2019-03-31,REVENUE_GROWTH_QOQ,0.1398573211836296,hw_equipment,2019-Q1
@@ -54515,7 +55101,6 @@ MKSI,MKS Instruments,2016-09-30,COGS_GROWTH_QOQ,-0.03411150644468319,hw_equipmen
 MKSI,MKS Instruments,2017-03-31,COGS_GROWTH_QOQ,-0.08110127451065552,hw_equipment,2017-Q1
 MKSI,MKS Instruments,2017-06-30,COGS_GROWTH_QOQ,0.7958928976628088,hw_equipment,2017-Q2
 MKSI,MKS Instruments,2017-09-30,COGS_GROWTH_QOQ,0.11754269589571908,hw_equipment,2017-Q3
-MKSI,MKS Instruments,2018-03-31,COGS_GROWTH_QOQ,2057.402793546107,hw_equipment,2018-Q1
 MKSI,MKS Instruments,2018-06-30,COGS_GROWTH_QOQ,-0.9994022759528478,hw_equipment,2018-Q2
 MKSI,MKS Instruments,2018-09-30,COGS_GROWTH_QOQ,-0.011111366368780962,hw_equipment,2018-Q3
 MKSI,MKS Instruments,2019-03-31,COGS_GROWTH_QOQ,0.12834531037046193,hw_equipment,2019-Q1
@@ -54656,7 +55241,6 @@ MKSI,MKS Instruments,2022-06-30,CAPEX_GROWTH_QOQ,-0.40740740740740744,hw_equipme
 MKSI,MKS Instruments,2026-03-31,CAPEX_GROWTH_QOQ,-0.64,hw_equipment,2026-Q1
 MKSI,MKS Instruments,2017-06-30,REVENUE_GROWTH_YOY,0.5238614097521967,hw_equipment,2017-Q2
 MKSI,MKS Instruments,2017-09-30,REVENUE_GROWTH_YOY,0.7464191662919906,hw_equipment,2017-Q3
-MKSI,MKS Instruments,2018-03-31,REVENUE_GROWTH_YOY,2087.323810979688,hw_equipment,2018-Q1
 MKSI,MKS Instruments,2018-06-30,REVENUE_GROWTH_YOY,1.6173474665316498,hw_equipment,2018-Q2
 MKSI,MKS Instruments,2018-09-30,REVENUE_GROWTH_YOY,0.4922528317288659,hw_equipment,2018-Q3
 MKSI,MKS Instruments,2019-03-31,REVENUE_GROWTH_YOY,0.4560894236326378,hw_equipment,2019-Q1
@@ -54684,7 +55268,6 @@ MKSI,MKS Instruments,2025-12-31,REVENUE_GROWTH_YOY,0.10836909871244638,hw_equipm
 MKSI,MKS Instruments,2026-03-31,REVENUE_GROWTH_YOY,0.07834101382488479,hw_equipment,2026-Q1
 MKSI,MKS Instruments,2017-06-30,COGS_GROWTH_YOY,0.6263645937684621,hw_equipment,2017-Q2
 MKSI,MKS Instruments,2017-09-30,COGS_GROWTH_YOY,0.781308740601504,hw_equipment,2017-Q3
-MKSI,MKS Instruments,2018-03-31,COGS_GROWTH_YOY,3795.143045793767,hw_equipment,2018-Q1
 MKSI,MKS Instruments,2018-06-30,COGS_GROWTH_YOY,1.4693101883367365,hw_equipment,2018-Q2
 MKSI,MKS Instruments,2018-09-30,COGS_GROWTH_YOY,0.3596984437846149,hw_equipment,2018-Q3
 MKSI,MKS Instruments,2019-03-31,COGS_GROWTH_YOY,0.3728418325285592,hw_equipment,2019-Q1
@@ -54799,7 +55382,6 @@ MKSI,MKS Instruments,2016-09-30,AR_GROWTH_MINUS_REVENUE_GROWTH,0.039611682555995
 MKSI,MKS Instruments,2017-03-31,AR_GROWTH_MINUS_REVENUE_GROWTH,1.5641321751688575,hw_equipment,2017-Q1
 MKSI,MKS Instruments,2017-06-30,AR_GROWTH_MINUS_REVENUE_GROWTH,-0.7740593746767492,hw_equipment,2017-Q2
 MKSI,MKS Instruments,2017-09-30,AR_GROWTH_MINUS_REVENUE_GROWTH,-0.16816679504451293,hw_equipment,2017-Q3
-MKSI,MKS Instruments,2018-03-31,AR_GROWTH_MINUS_REVENUE_GROWTH,-1147.2007937923297,hw_equipment,2018-Q1
 MKSI,MKS Instruments,2018-06-30,AR_GROWTH_MINUS_REVENUE_GROWTH,0.9989002546019357,hw_equipment,2018-Q2
 MKSI,MKS Instruments,2018-09-30,AR_GROWTH_MINUS_REVENUE_GROWTH,-0.011461091570169613,hw_equipment,2018-Q3
 MKSI,MKS Instruments,2019-03-31,AR_GROWTH_MINUS_REVENUE_GROWTH,-0.15602072675391077,hw_equipment,2019-Q1
@@ -54830,7 +55412,6 @@ MKSI,MKS Instruments,2016-09-30,AP_GROWTH_MINUS_COGS_GROWTH,0.03411150644468319,
 MKSI,MKS Instruments,2017-03-31,AP_GROWTH_MINUS_COGS_GROWTH,2.0727309073363016,hw_equipment,2017-Q1
 MKSI,MKS Instruments,2017-06-30,AP_GROWTH_MINUS_COGS_GROWTH,-0.7958928976628088,hw_equipment,2017-Q2
 MKSI,MKS Instruments,2017-09-30,AP_GROWTH_MINUS_COGS_GROWTH,-0.11754269589571908,hw_equipment,2017-Q3
-MKSI,MKS Instruments,2018-03-31,AP_GROWTH_MINUS_COGS_GROWTH,-2057.2126930225772,hw_equipment,2018-Q1
 MKSI,MKS Instruments,2018-06-30,AP_GROWTH_MINUS_COGS_GROWTH,0.9994022759528478,hw_equipment,2018-Q2
 MKSI,MKS Instruments,2018-09-30,AP_GROWTH_MINUS_COGS_GROWTH,0.011111366368780962,hw_equipment,2018-Q3
 MKSI,MKS Instruments,2019-03-31,AP_GROWTH_MINUS_COGS_GROWTH,-0.11250634190297593,hw_equipment,2019-Q1
@@ -54861,7 +55442,6 @@ MKSI,MKS Instruments,2016-09-30,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,0.03961168
 MKSI,MKS Instruments,2017-03-31,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,0.9299618466516252,hw_equipment,2017-Q1
 MKSI,MKS Instruments,2017-06-30,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,-0.7740593746767492,hw_equipment,2017-Q2
 MKSI,MKS Instruments,2017-09-30,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,-0.16816679504451293,hw_equipment,2017-Q3
-MKSI,MKS Instruments,2018-03-31,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,-1147.1788904186997,hw_equipment,2018-Q1
 MKSI,MKS Instruments,2018-06-30,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,0.9989002546019357,hw_equipment,2018-Q2
 MKSI,MKS Instruments,2018-09-30,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,-0.011461091570169613,hw_equipment,2018-Q3
 MKSI,MKS Instruments,2019-03-31,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,-0.005352586326766495,hw_equipment,2019-Q1
@@ -58986,23 +59566,18 @@ NBIS,Nebius Group,2025-09-30,AR_GROWTH_QOQ,0.10074280408542235,neocloud,2025-Q3
 NBIS,Nebius Group,2025-12-31,AR_GROWTH_QOQ,2.6005904681568963,neocloud,2025-Q4
 NBIS,Nebius Group,2026-03-31,AR_GROWTH_QOQ,0.7876303150989807,neocloud,2026-Q1
 NBIS,Nebius Group,2025-06-30,AP_GROWTH_QOQ,-0.1384364820846905,neocloud,2025-Q2
-NBIS,Nebius Group,2025-09-30,AP_GROWTH_QOQ,11.311909262759924,neocloud,2025-Q3
 NBIS,Nebius Group,2025-12-31,AP_GROWTH_QOQ,0.6617534162444343,neocloud,2025-Q4
 NBIS,Nebius Group,2026-03-31,AP_GROWTH_QOQ,-0.425575164002587,neocloud,2026-Q1
 NBIS,Nebius Group,2025-06-30,CAPEX_GROWTH_QOQ,-0.061224489795918324,neocloud,2025-Q2
 NBIS,Nebius Group,2025-09-30,CAPEX_GROWTH_QOQ,0.8713278495887191,neocloud,2025-Q3
 NBIS,Nebius Group,2025-12-31,CAPEX_GROWTH_QOQ,1.151753008895866,neocloud,2025-Q4
 NBIS,Nebius Group,2026-03-31,CAPEX_GROWTH_QOQ,0.20277237354085598,neocloud,2026-Q1
-NBIS,Nebius Group,2026-03-31,REVENUE_GROWTH_YOY,6.838899803536346,neocloud,2026-Q1
 NBIS,Nebius Group,2026-03-31,COGS_GROWTH_YOY,3.202429149797571,neocloud,2026-Q1
-NBIS,Nebius Group,2026-03-31,AR_GROWTH_YOY,13.039558417663292,neocloud,2026-Q1
-NBIS,Nebius Group,2026-03-31,AP_GROWTH_YOY,9.125407166123779,neocloud,2026-Q1
 NBIS,Nebius Group,2025-06-30,AR_GROWTH_MINUS_REVENUE_GROWTH,0.0032117379351976894,neocloud,2025-Q2
 NBIS,Nebius Group,2025-09-30,AR_GROWTH_MINUS_REVENUE_GROWTH,-0.3501012872750542,neocloud,2025-Q3
 NBIS,Nebius Group,2025-12-31,AR_GROWTH_MINUS_REVENUE_GROWTH,2.042068907581948,neocloud,2025-Q4
 NBIS,Nebius Group,2026-03-31,AR_GROWTH_MINUS_REVENUE_GROWTH,0.035324649749836956,neocloud,2026-Q1
 NBIS,Nebius Group,2025-06-30,AP_GROWTH_MINUS_COGS_GROWTH,-0.162727980060399,neocloud,2025-Q2
-NBIS,Nebius Group,2025-09-30,AP_GROWTH_MINUS_COGS_GROWTH,10.616257088846881,neocloud,2025-Q3
 NBIS,Nebius Group,2025-12-31,AP_GROWTH_MINUS_COGS_GROWTH,0.06501681950783733,neocloud,2025-Q4
 NBIS,Nebius Group,2026-03-31,AP_GROWTH_MINUS_COGS_GROWTH,-0.9409036311558717,neocloud,2026-Q1
 NBIS,Nebius Group,2025-03-31,AR_TO_REVENUE,2.135559921414538,neocloud,2025-Q1
@@ -59371,6 +59946,26 @@ NEE,NextEra Energy,2025-03-31,CASH_CONVERSION_RATIO,1.3567019400352733,energy,20
 NEE,NextEra Energy,2025-12-31,CASH_CONVERSION_RATIO,1.628013029315961,energy,2025-Q4
 NEE,NextEra Energy,2026-03-31,CASH_CONVERSION_RATIO,3.324129651860744,energy,2026-Q1
 NEE,NextEra Energy,2025-12-31,FCF_TO_OPERATING_INCOME,0.1818778726198293,energy,2025-Q4
+NET,Cloudflare,2020-03-31,DIO,0.0,ai_platforms,2020-Q1
+NET,Cloudflare,2020-06-30,DIO,0.0,ai_platforms,2020-Q2
+NET,Cloudflare,2020-09-30,DIO,0.0,ai_platforms,2020-Q3
+NET,Cloudflare,2021-03-31,DIO,0.0,ai_platforms,2021-Q1
+NET,Cloudflare,2021-06-30,DIO,0.0,ai_platforms,2021-Q2
+NET,Cloudflare,2021-09-30,DIO,0.0,ai_platforms,2021-Q3
+NET,Cloudflare,2022-03-31,DIO,0.0,ai_platforms,2022-Q1
+NET,Cloudflare,2022-06-30,DIO,0.0,ai_platforms,2022-Q2
+NET,Cloudflare,2022-09-30,DIO,0.0,ai_platforms,2022-Q3
+NET,Cloudflare,2023-03-31,DIO,0.0,ai_platforms,2023-Q1
+NET,Cloudflare,2023-06-30,DIO,0.0,ai_platforms,2023-Q2
+NET,Cloudflare,2023-09-30,DIO,0.0,ai_platforms,2023-Q3
+NET,Cloudflare,2024-03-31,DIO,0.0,ai_platforms,2024-Q1
+NET,Cloudflare,2024-06-30,DIO,0.0,ai_platforms,2024-Q2
+NET,Cloudflare,2024-09-30,DIO,0.0,ai_platforms,2024-Q3
+NET,Cloudflare,2025-03-31,DIO,0.0,ai_platforms,2025-Q1
+NET,Cloudflare,2025-06-30,DIO,0.0,ai_platforms,2025-Q2
+NET,Cloudflare,2025-09-30,DIO,0.0,ai_platforms,2025-Q3
+NET,Cloudflare,2025-12-31,DIO,0.0,ai_platforms,2025-Q4
+NET,Cloudflare,2026-03-31,DIO,0.0,ai_platforms,2026-Q1
 NET,Cloudflare,2020-03-31,DSO,43.62562168905017,ai_platforms,2020-Q1
 NET,Cloudflare,2020-06-30,DSO,45.834773226150915,ai_platforms,2020-Q2
 NET,Cloudflare,2020-09-30,DSO,41.794995334117736,ai_platforms,2020-Q3
@@ -59391,6 +59986,46 @@ NET,Cloudflare,2025-06-30,DSO,72.07979942443316,ai_platforms,2025-Q2
 NET,Cloudflare,2025-09-30,DSO,67.20511727996056,ai_platforms,2025-Q3
 NET,Cloudflare,2025-12-31,DSO,53.66329838390775,ai_platforms,2025-Q4
 NET,Cloudflare,2026-03-31,DSO,75.09206443714817,ai_platforms,2026-Q1
+NET,Cloudflare,2020-03-31,DPO,81.80727715877437,ai_platforms,2020-Q1
+NET,Cloudflare,2020-06-30,DPO,70.52310881877018,ai_platforms,2020-Q2
+NET,Cloudflare,2020-09-30,DPO,65.24036362502338,ai_platforms,2020-Q3
+NET,Cloudflare,2021-03-31,DPO,56.859780990346295,ai_platforms,2021-Q1
+NET,Cloudflare,2021-06-30,DPO,54.69939786459195,ai_platforms,2021-Q2
+NET,Cloudflare,2021-09-30,DPO,48.944871320125884,ai_platforms,2021-Q3
+NET,Cloudflare,2022-03-31,DPO,57.69392454182769,ai_platforms,2022-Q1
+NET,Cloudflare,2022-06-30,DPO,67.95362413999828,ai_platforms,2022-Q2
+NET,Cloudflare,2022-09-30,DPO,63.4336442371752,ai_platforms,2022-Q3
+NET,Cloudflare,2023-03-31,DPO,59.823237019404495,ai_platforms,2023-Q1
+NET,Cloudflare,2023-06-30,DPO,58.22411923876424,ai_platforms,2023-Q2
+NET,Cloudflare,2023-09-30,DPO,52.43337179466489,ai_platforms,2023-Q3
+NET,Cloudflare,2024-03-31,DPO,57.86948759086778,ai_platforms,2024-Q1
+NET,Cloudflare,2024-06-30,DPO,65.1757986466545,ai_platforms,2024-Q2
+NET,Cloudflare,2024-09-30,DPO,62.79814971371477,ai_platforms,2024-Q3
+NET,Cloudflare,2025-03-31,DPO,85.59395505538704,ai_platforms,2025-Q1
+NET,Cloudflare,2025-06-30,DPO,108.4684898495692,ai_platforms,2025-Q2
+NET,Cloudflare,2025-09-30,DPO,100.60634124230205,ai_platforms,2025-Q3
+NET,Cloudflare,2025-12-31,DPO,53.503366655140915,ai_platforms,2025-Q4
+NET,Cloudflare,2026-03-31,DPO,66.4107924655638,ai_platforms,2026-Q1
+NET,Cloudflare,2020-03-31,CCC,-38.1816554697242,ai_platforms,2020-Q1
+NET,Cloudflare,2020-06-30,CCC,-24.688335592619268,ai_platforms,2020-Q2
+NET,Cloudflare,2020-09-30,CCC,-23.44536829090564,ai_platforms,2020-Q3
+NET,Cloudflare,2021-03-31,CCC,-8.176780990346295,ai_platforms,2021-Q1
+NET,Cloudflare,2021-06-30,CCC,3.405552446776767,ai_platforms,2021-Q2
+NET,Cloudflare,2021-09-30,CCC,1.8100536987070015,ai_platforms,2021-Q3
+NET,Cloudflare,2022-03-31,CCC,-5.133052063467623,ai_platforms,2022-Q1
+NET,Cloudflare,2022-06-30,CCC,-10.7574479125335,ai_platforms,2022-Q2
+NET,Cloudflare,2022-09-30,CCC,-12.84791457550427,ai_platforms,2022-Q3
+NET,Cloudflare,2023-03-31,CCC,-7.334068699166195,ai_platforms,2023-Q1
+NET,Cloudflare,2023-06-30,CCC,-0.4260065219889029,ai_platforms,2023-Q2
+NET,Cloudflare,2023-09-30,CCC,0.9614134584500462,ai_platforms,2023-Q3
+NET,Cloudflare,2024-03-31,CCC,4.5223363085032915,ai_platforms,2024-Q1
+NET,Cloudflare,2024-06-30,CCC,8.259843537634339,ai_platforms,2024-Q2
+NET,Cloudflare,2024-09-30,CCC,4.7055823744965934,ai_platforms,2024-Q3
+NET,Cloudflare,2025-03-31,CCC,-17.503762386040336,ai_platforms,2025-Q1
+NET,Cloudflare,2025-06-30,CCC,-36.38869042513603,ai_platforms,2025-Q2
+NET,Cloudflare,2025-09-30,CCC,-33.40122396234149,ai_platforms,2025-Q3
+NET,Cloudflare,2025-12-31,CCC,0.1599317287668356,ai_platforms,2025-Q4
+NET,Cloudflare,2026-03-31,CCC,8.681271971584366,ai_platforms,2026-Q1
 NET,Cloudflare,2020-03-31,REVENUE_GROWTH_QOQ,0.23281406031555818,ai_platforms,2020-Q1
 NET,Cloudflare,2020-06-30,REVENUE_GROWTH_QOQ,0.09229348583277996,ai_platforms,2020-Q2
 NET,Cloudflare,2020-09-30,REVENUE_GROWTH_QOQ,0.09665697674418605,ai_platforms,2020-Q3
@@ -59783,6 +60418,37 @@ NOK,Nokia,2025-06-30,FCF_TO_OPERATING_INCOME,1.1,server_networking,2025-Q2
 NOK,Nokia,2025-09-30,FCF_TO_OPERATING_INCOME,1.794979079497908,server_networking,2025-Q3
 NOK,Nokia,2025-12-31,FCF_TO_OPERATING_INCOME,0.5194508009153318,server_networking,2025-Q4
 NOK,Nokia,2026-03-31,FCF_TO_OPERATING_INCOME,9.984126984126984,server_networking,2026-Q1
+NOW,ServiceNow,2016-06-30,DIO,0.0,ai_platforms,2016-Q2
+NOW,ServiceNow,2016-09-30,DIO,0.0,ai_platforms,2016-Q3
+NOW,ServiceNow,2017-03-31,DIO,0.0,ai_platforms,2017-Q1
+NOW,ServiceNow,2017-06-30,DIO,0.0,ai_platforms,2017-Q2
+NOW,ServiceNow,2017-09-30,DIO,0.0,ai_platforms,2017-Q3
+NOW,ServiceNow,2018-03-31,DIO,0.0,ai_platforms,2018-Q1
+NOW,ServiceNow,2018-06-30,DIO,0.0,ai_platforms,2018-Q2
+NOW,ServiceNow,2018-09-30,DIO,0.0,ai_platforms,2018-Q3
+NOW,ServiceNow,2019-03-31,DIO,0.0,ai_platforms,2019-Q1
+NOW,ServiceNow,2019-06-30,DIO,0.0,ai_platforms,2019-Q2
+NOW,ServiceNow,2019-09-30,DIO,0.0,ai_platforms,2019-Q3
+NOW,ServiceNow,2020-03-31,DIO,0.0,ai_platforms,2020-Q1
+NOW,ServiceNow,2020-06-30,DIO,0.0,ai_platforms,2020-Q2
+NOW,ServiceNow,2020-09-30,DIO,0.0,ai_platforms,2020-Q3
+NOW,ServiceNow,2021-03-31,DIO,0.0,ai_platforms,2021-Q1
+NOW,ServiceNow,2021-06-30,DIO,0.0,ai_platforms,2021-Q2
+NOW,ServiceNow,2021-09-30,DIO,0.0,ai_platforms,2021-Q3
+NOW,ServiceNow,2022-03-31,DIO,0.0,ai_platforms,2022-Q1
+NOW,ServiceNow,2022-06-30,DIO,0.0,ai_platforms,2022-Q2
+NOW,ServiceNow,2022-09-30,DIO,0.0,ai_platforms,2022-Q3
+NOW,ServiceNow,2023-03-31,DIO,0.0,ai_platforms,2023-Q1
+NOW,ServiceNow,2023-06-30,DIO,0.0,ai_platforms,2023-Q2
+NOW,ServiceNow,2023-09-30,DIO,0.0,ai_platforms,2023-Q3
+NOW,ServiceNow,2024-03-31,DIO,0.0,ai_platforms,2024-Q1
+NOW,ServiceNow,2024-06-30,DIO,0.0,ai_platforms,2024-Q2
+NOW,ServiceNow,2024-09-30,DIO,0.0,ai_platforms,2024-Q3
+NOW,ServiceNow,2025-03-31,DIO,0.0,ai_platforms,2025-Q1
+NOW,ServiceNow,2025-06-30,DIO,0.0,ai_platforms,2025-Q2
+NOW,ServiceNow,2025-09-30,DIO,0.0,ai_platforms,2025-Q3
+NOW,ServiceNow,2025-12-31,DIO,0.0,ai_platforms,2025-Q4
+NOW,ServiceNow,2026-03-31,DIO,0.0,ai_platforms,2026-Q1
 NOW,ServiceNow,2016-06-30,DSO,75.20443039770424,ai_platforms,2016-Q2
 NOW,ServiceNow,2016-09-30,DSO,71.04781255983151,ai_platforms,2016-Q3
 NOW,ServiceNow,2017-03-31,DSO,78.47173637287948,ai_platforms,2017-Q1
@@ -59814,6 +60480,68 @@ NOW,ServiceNow,2025-06-30,DSO,77.80738484963837,ai_platforms,2025-Q2
 NOW,ServiceNow,2025-09-30,DSO,73.0782981766178,ai_platforms,2025-Q3
 NOW,ServiceNow,2025-12-31,DSO,62.235671244394624,ai_platforms,2025-Q4
 NOW,ServiceNow,2026-03-31,DSO,77.62750971502591,ai_platforms,2026-Q1
+NOW,ServiceNow,2016-06-30,DPO,42.775333366785,ai_platforms,2016-Q2
+NOW,ServiceNow,2016-09-30,DPO,41.64128138432983,ai_platforms,2016-Q3
+NOW,ServiceNow,2017-03-31,DPO,36.51984537449607,ai_platforms,2017-Q1
+NOW,ServiceNow,2017-06-30,DPO,35.95277757659158,ai_platforms,2017-Q2
+NOW,ServiceNow,2017-09-30,DPO,33.78939486760601,ai_platforms,2017-Q3
+NOW,ServiceNow,2018-03-31,DPO,27.586688303297606,ai_platforms,2018-Q1
+NOW,ServiceNow,2018-06-30,DPO,23.990782212105337,ai_platforms,2018-Q2
+NOW,ServiceNow,2018-09-30,DPO,22.982494156221076,ai_platforms,2018-Q3
+NOW,ServiceNow,2019-03-31,DPO,19.984012671373712,ai_platforms,2019-Q1
+NOW,ServiceNow,2019-06-30,DPO,18.309576273952924,ai_platforms,2019-Q2
+NOW,ServiceNow,2019-09-30,DPO,17.76524629730518,ai_platforms,2019-Q3
+NOW,ServiceNow,2020-03-31,DPO,20.50175635697871,ai_platforms,2020-Q1
+NOW,ServiceNow,2020-06-30,DPO,24.388963749135737,ai_platforms,2020-Q2
+NOW,ServiceNow,2020-09-30,DPO,24.067572076715823,ai_platforms,2020-Q3
+NOW,ServiceNow,2021-03-31,DPO,17.791704035874442,ai_platforms,2021-Q1
+NOW,ServiceNow,2021-06-30,DPO,13.315450643776824,ai_platforms,2021-Q2
+NOW,ServiceNow,2021-09-30,DPO,12.311507936507935,ai_platforms,2021-Q3
+NOW,ServiceNow,2022-03-31,DPO,18.7688127090301,ai_platforms,2022-Q1
+NOW,ServiceNow,2022-06-30,DPO,24.684650455927052,ai_platforms,2022-Q2
+NOW,ServiceNow,2022-09-30,DPO,23.20357142857143,ai_platforms,2022-Q3
+NOW,ServiceNow,2023-03-31,DPO,44.88313008130081,ai_platforms,2023-Q1
+NOW,ServiceNow,2023-06-30,DPO,64.27377892030847,ai_platforms,2023-Q2
+NOW,ServiceNow,2023-09-30,DPO,62.50625,ai_platforms,2023-Q3
+NOW,ServiceNow,2024-03-31,DPO,41.666666666666664,ai_platforms,2024-Q1
+NOW,ServiceNow,2024-06-30,DPO,24.410828025477706,ai_platforms,2024-Q2
+NOW,ServiceNow,2024-09-30,DPO,23.180443548387096,ai_platforms,2024-Q3
+NOW,ServiceNow,2025-03-31,DPO,17.021634615384617,ai_platforms,2025-Q1
+NOW,ServiceNow,2025-06-30,DPO,11.240942028985508,ai_platforms,2025-Q2
+NOW,ServiceNow,2025-09-30,DPO,10.625,ai_platforms,2025-Q3
+NOW,ServiceNow,2025-12-31,DPO,14.880095923261392,ai_platforms,2025-Q4
+NOW,ServiceNow,2026-03-31,DPO,28.594470046082947,ai_platforms,2026-Q1
+NOW,ServiceNow,2016-06-30,CCC,32.429097030919245,ai_platforms,2016-Q2
+NOW,ServiceNow,2016-09-30,CCC,29.406531175501684,ai_platforms,2016-Q3
+NOW,ServiceNow,2017-03-31,CCC,41.951890998383405,ai_platforms,2017-Q1
+NOW,ServiceNow,2017-06-30,CCC,50.33653030007259,ai_platforms,2017-Q2
+NOW,ServiceNow,2017-09-30,CCC,48.556703757888876,ai_platforms,2017-Q3
+NOW,ServiceNow,2018-03-31,CCC,53.26355576638062,ai_platforms,2018-Q1
+NOW,ServiceNow,2018-06-30,CCC,64.97785582670267,ai_platforms,2018-Q2
+NOW,ServiceNow,2018-09-30,CCC,58.01501128681792,ai_platforms,2018-Q3
+NOW,ServiceNow,2019-03-31,CCC,58.367030101978266,ai_platforms,2019-Q1
+NOW,ServiceNow,2019-06-30,CCC,64.80731430311154,ai_platforms,2019-Q2
+NOW,ServiceNow,2019-09-30,CCC,60.16024215383929,ai_platforms,2019-Q3
+NOW,ServiceNow,2020-03-31,CCC,61.046209643634775,ai_platforms,2020-Q1
+NOW,ServiceNow,2020-06-30,CCC,67.01149571622237,ai_platforms,2020-Q2
+NOW,ServiceNow,2020-09-30,CCC,61.97484082729656,ai_platforms,2020-Q3
+NOW,ServiceNow,2021-03-31,CCC,62.65306592110453,ai_platforms,2021-Q1
+NOW,ServiceNow,2021-06-30,CCC,72.65210304436509,ai_platforms,2021-Q2
+NOW,ServiceNow,2021-09-30,CCC,67.6114521329365,ai_platforms,2021-Q3
+NOW,ServiceNow,2022-03-31,CCC,61.71234537920519,ai_platforms,2022-Q1
+NOW,ServiceNow,2022-06-30,CCC,65.33486693229153,ai_platforms,2022-Q2
+NOW,ServiceNow,2022-09-30,CCC,60.68366402116401,ai_platforms,2022-Q3
+NOW,ServiceNow,2023-03-31,CCC,37.64989837398374,ai_platforms,2023-Q1
+NOW,ServiceNow,2023-06-30,CCC,25.569971079691527,ai_platforms,2023-Q2
+NOW,ServiceNow,2023-09-30,CCC,23.461117558711088,ai_platforms,2023-Q3
+NOW,ServiceNow,2024-03-31,CCC,40.201475031806616,ai_platforms,2024-Q1
+NOW,ServiceNow,2024-06-30,CCC,62.00079988149904,ai_platforms,2024-Q2
+NOW,ServiceNow,2024-09-30,CCC,58.019294213850664,ai_platforms,2024-Q3
+NOW,ServiceNow,2025-03-31,CCC,57.92746258015899,ai_platforms,2025-Q1
+NOW,ServiceNow,2025-06-30,CCC,66.56644282065287,ai_platforms,2025-Q2
+NOW,ServiceNow,2025-09-30,CCC,62.45329817661781,ai_platforms,2025-Q3
+NOW,ServiceNow,2025-12-31,CCC,47.35557532113323,ai_platforms,2025-Q4
+NOW,ServiceNow,2026-03-31,CCC,49.03303966894296,ai_platforms,2026-Q1
 NOW,ServiceNow,2016-06-30,REVENUE_GROWTH_QOQ,0.16395236927025358,ai_platforms,2016-Q2
 NOW,ServiceNow,2016-09-30,REVENUE_GROWTH_QOQ,0.05850451531315337,ai_platforms,2016-Q3
 NOW,ServiceNow,2017-03-31,REVENUE_GROWTH_QOQ,0.1712770438445339,ai_platforms,2017-Q1
@@ -60040,7 +60768,6 @@ NOW,ServiceNow,2021-09-30,AP_GROWTH_YOY,-0.35800604229607247,ai_platforms,2021-Q
 NOW,ServiceNow,2022-03-31,AP_GROWTH_YOY,0.6805135951661632,ai_platforms,2022-Q1
 NOW,ServiceNow,2022-06-30,AP_GROWTH_YOY,1.6176470588235294,ai_platforms,2022-Q2
 NOW,ServiceNow,2022-09-30,AP_GROWTH_YOY,1.6176470588235294,ai_platforms,2022-Q3
-NOW,ServiceNow,2023-03-31,AP_GROWTH_YOY,7.0588235294117645,ai_platforms,2023-Q1
 NOW,ServiceNow,2023-06-30,AP_GROWTH_YOY,2.0786516853932584,ai_platforms,2023-Q2
 NOW,ServiceNow,2023-09-30,AP_GROWTH_YOY,2.0786516853932584,ai_platforms,2023-Q3
 NOW,ServiceNow,2024-03-31,AP_GROWTH_YOY,0.4157303370786516,ai_platforms,2024-Q1
@@ -60360,7 +61087,6 @@ NVDA,NVIDIA,2025-06-30,DPO,60.88597033374537,ai_chip,2025-Q2
 NVDA,NVIDIA,2025-09-30,DPO,52.17876059322034,ai_chip,2025-Q3
 NVDA,NVIDIA,2025-12-31,DPO,17.418384807309753,ai_chip,2025-Q4
 NVDA,NVIDIA,2026-03-31,DPO,44.24038815547257,ai_chip,2026-Q1
-NVDA,NVIDIA,2026-06-30,DPO,-190.7094244231268,ai_chip,2026-Q2
 NVDA,NVIDIA,2026-09-30,DPO,64.50677795205019,ai_chip,2026-Q3
 NVDA,NVIDIA,2016-06-30,CCC,75.0347896046095,ai_chip,2016-Q2
 NVDA,NVIDIA,2016-09-30,CCC,66.88830898479611,ai_chip,2016-Q3
@@ -60391,7 +61117,6 @@ NVDA,NVIDIA,2025-06-30,CCC,125.81996644508735,ai_chip,2025-Q2
 NVDA,NVIDIA,2025-09-30,CCC,100.28985962229206,ai_chip,2025-Q3
 NVDA,NVIDIA,2025-12-31,CCC,92.7616690116027,ai_chip,2025-Q4
 NVDA,NVIDIA,2026-03-31,CCC,138.2003516572962,ai_chip,2026-Q1
-NVDA,NVIDIA,2026-06-30,CCC,476.55698361891115,ai_chip,2026-Q2
 NVDA,NVIDIA,2026-09-30,CCC,98.53369417960926,ai_chip,2026-Q3
 NVDA,NVIDIA,2016-06-30,REVENUE_GROWTH_QOQ,0.0,ai_chip,2016-Q2
 NVDA,NVIDIA,2016-09-30,REVENUE_GROWTH_QOQ,0.11060743427017217,ai_chip,2016-Q3
@@ -60573,8 +61298,6 @@ NVDA,NVIDIA,2024-09-30,REVENUE_GROWTH_YOY,-0.0885200553250346,ai_chip,2024-Q3
 NVDA,NVIDIA,2025-03-31,REVENUE_GROWTH_YOY,0.012529916936505625,ai_chip,2025-Q1
 NVDA,NVIDIA,2025-06-30,REVENUE_GROWTH_YOY,0.6297055984555984,ai_chip,2025-Q2
 NVDA,NVIDIA,2025-09-30,REVENUE_GROWTH_YOY,1.7028639618138426,ai_chip,2025-Q3
-NVDA,NVIDIA,2025-12-31,REVENUE_GROWTH_YOY,8.611532625189682,ai_chip,2025-Q4
-NVDA,NVIDIA,2026-03-31,REVENUE_GROWTH_YOY,5.126529477196885,ai_chip,2026-Q1
 NVDA,NVIDIA,2026-06-30,REVENUE_GROWTH_YOY,1.2240319834160065,ai_chip,2026-Q2
 NVDA,NVIDIA,2026-09-30,REVENUE_GROWTH_YOY,0.9360927152317882,ai_chip,2026-Q3
 NVDA,NVIDIA,2017-06-30,COGS_GROWTH_YOY,0.04008016032064132,ai_chip,2017-Q2
@@ -60602,7 +61325,6 @@ NVDA,NVIDIA,2025-03-31,COGS_GROWTH_YOY,0.029126213592232997,ai_chip,2025-Q1
 NVDA,NVIDIA,2025-06-30,COGS_GROWTH_YOY,0.41582079103955194,ai_chip,2025-Q2
 NVDA,NVIDIA,2025-09-30,COGS_GROWTH_YOY,0.2457112694642385,ai_chip,2025-Q3
 NVDA,NVIDIA,2025-12-31,COGS_GROWTH_YOY,4.503631082062455,ai_chip,2025-Q4
-NVDA,NVIDIA,2026-03-31,COGS_GROWTH_YOY,5.837264150943396,ai_chip,2026-Q1
 NVDA,NVIDIA,2026-06-30,COGS_GROWTH_YOY,0.8457354758961682,ai_chip,2026-Q2
 NVDA,NVIDIA,2026-09-30,COGS_GROWTH_YOY,0.8911016949152541,ai_chip,2026-Q3
 NVDA,NVIDIA,2017-06-30,AR_GROWTH_YOY,0.06540084388185652,ai_chip,2017-Q2
@@ -60629,7 +61351,6 @@ NVDA,NVIDIA,2024-09-30,AR_GROWTH_YOY,-0.17698924731182797,ai_chip,2024-Q3
 NVDA,NVIDIA,2025-03-31,AR_GROWTH_YOY,1.1503225806451614,ai_chip,2025-Q1
 NVDA,NVIDIA,2025-06-30,AR_GROWTH_YOY,1.6127515024823622,ai_chip,2025-Q2
 NVDA,NVIDIA,2025-09-30,AR_GROWTH_YOY,1.6127515024823622,ai_chip,2025-Q3
-NVDA,NVIDIA,2025-12-31,AR_GROWTH_YOY,7.725111053044159,ai_chip,2025-Q4
 NVDA,NVIDIA,2026-03-31,AR_GROWTH_YOY,2.846984698469847,ai_chip,2026-Q1
 NVDA,NVIDIA,2026-06-30,AR_GROWTH_YOY,1.3067306730673067,ai_chip,2026-Q2
 NVDA,NVIDIA,2026-09-30,AR_GROWTH_YOY,1.3067306730673067,ai_chip,2026-Q3
@@ -60657,7 +61378,6 @@ NVDA,NVIDIA,2024-09-30,AP_GROWTH_YOY,-0.33090297251822776,ai_chip,2024-Q3
 NVDA,NVIDIA,2025-03-31,AP_GROWTH_YOY,0.5137408861469432,ai_chip,2025-Q1
 NVDA,NVIDIA,2025-06-30,AP_GROWTH_YOY,1.262363788767812,ai_chip,2025-Q2
 NVDA,NVIDIA,2025-09-30,AP_GROWTH_YOY,1.262363788767812,ai_chip,2025-Q3
-NVDA,NVIDIA,2025-12-31,AP_GROWTH_YOY,6.22883487007544,ai_chip,2025-Q4
 NVDA,NVIDIA,2026-03-31,AP_GROWTH_YOY,2.6354205261207855,ai_chip,2026-Q1
 NVDA,NVIDIA,2026-06-30,AP_GROWTH_YOY,1.3379029270100036,ai_chip,2026-Q2
 NVDA,NVIDIA,2026-09-30,AP_GROWTH_YOY,1.3379029270100036,ai_chip,2026-Q3
@@ -60941,8 +61661,6 @@ ONTO,Onto Innovation,2019-03-31,DIO,150.55515424644932,hw_equipment,2019-Q1
 ONTO,Onto Innovation,2019-06-30,DIO,149.80891867525787,hw_equipment,2019-Q2
 ONTO,Onto Innovation,2019-09-30,DIO,171.43293330501274,hw_equipment,2019-Q3
 ONTO,Onto Innovation,2020-03-31,DIO,376.1640849582654,hw_equipment,2020-Q1
-ONTO,Onto Innovation,2020-06-30,DIO,542.9806587837837,hw_equipment,2020-Q2
-ONTO,Onto Innovation,2020-09-30,DIO,511.46345150203655,hw_equipment,2020-Q3
 ONTO,Onto Innovation,2021-03-31,DIO,216.83104615961813,hw_equipment,2021-Q1
 ONTO,Onto Innovation,2021-06-30,DIO,275.3744495999242,hw_equipment,2021-Q2
 ONTO,Onto Innovation,2021-09-30,DIO,302.90520189570174,hw_equipment,2021-Q3
@@ -61034,8 +61752,6 @@ ONTO,Onto Innovation,2019-03-31,CCC,181.72511644279066,hw_equipment,2019-Q1
 ONTO,Onto Innovation,2019-06-30,CCC,162.16156281573518,hw_equipment,2019-Q2
 ONTO,Onto Innovation,2019-09-30,CCC,186.2241681405385,hw_equipment,2019-Q3
 ONTO,Onto Innovation,2020-03-31,CCC,492.80240950203546,hw_equipment,2020-Q1
-ONTO,Onto Innovation,2020-06-30,CCC,640.9112998603414,hw_equipment,2020-Q2
-ONTO,Onto Innovation,2020-09-30,CCC,610.2068765672992,hw_equipment,2020-Q3
 ONTO,Onto Innovation,2021-03-31,CCC,272.27015914759204,hw_equipment,2021-Q1
 ONTO,Onto Innovation,2021-06-30,CCC,318.4278066670723,hw_equipment,2021-Q2
 ONTO,Onto Innovation,2021-09-30,CCC,346.91976138740915,hw_equipment,2021-Q3
@@ -61850,7 +62566,6 @@ ORCL,Oracle,2024-09-30,AP_GROWTH_YOY,-0.08580106302201973,hyperscalers,2024-Q3
 ORCL,Oracle,2025-03-31,AP_GROWTH_YOY,0.7896735003796507,hyperscalers,2025-Q1
 ORCL,Oracle,2025-06-30,AP_GROWTH_YOY,0.9576411960132891,hyperscalers,2025-Q2
 ORCL,Oracle,2025-09-30,AP_GROWTH_YOY,0.9576411960132891,hyperscalers,2025-Q3
-ORCL,Oracle,2025-12-31,AP_GROWTH_YOY,7.421926910299003,hyperscalers,2025-Q4
 ORCL,Oracle,2026-03-31,AP_GROWTH_YOY,1.169282986847688,hyperscalers,2026-Q1
 ORCL,Oracle,2026-06-30,AP_GROWTH_YOY,1.169282986847688,hyperscalers,2026-Q2
 ORCL,Oracle,2026-09-30,AP_GROWTH_YOY,1.169282986847688,hyperscalers,2026-Q3
@@ -62041,6 +62756,23 @@ ORCL,Oracle,2024-03-31,FCF_TO_OPERATING_INCOME,1.782310331681281,hyperscalers,20
 ORCL,Oracle,2025-03-31,FCF_TO_OPERATING_INCOME,1.7172330097087378,hyperscalers,2025-Q1
 ORCL,Oracle,2025-12-31,FCF_TO_OPERATING_INCOME,-1.9323381155486623,hyperscalers,2025-Q4
 ORCL,Oracle,2026-03-31,FCF_TO_OPERATING_INCOME,1.2838887496867952,hyperscalers,2026-Q1
+PLTR,Palantir,2021-03-31,DIO,0.0,ai_platforms,2021-Q1
+PLTR,Palantir,2021-06-30,DIO,0.0,ai_platforms,2021-Q2
+PLTR,Palantir,2021-09-30,DIO,0.0,ai_platforms,2021-Q3
+PLTR,Palantir,2022-03-31,DIO,0.0,ai_platforms,2022-Q1
+PLTR,Palantir,2022-06-30,DIO,0.0,ai_platforms,2022-Q2
+PLTR,Palantir,2022-09-30,DIO,0.0,ai_platforms,2022-Q3
+PLTR,Palantir,2023-03-31,DIO,0.0,ai_platforms,2023-Q1
+PLTR,Palantir,2023-06-30,DIO,0.0,ai_platforms,2023-Q2
+PLTR,Palantir,2023-09-30,DIO,0.0,ai_platforms,2023-Q3
+PLTR,Palantir,2024-03-31,DIO,0.0,ai_platforms,2024-Q1
+PLTR,Palantir,2024-06-30,DIO,0.0,ai_platforms,2024-Q2
+PLTR,Palantir,2024-09-30,DIO,0.0,ai_platforms,2024-Q3
+PLTR,Palantir,2025-03-31,DIO,0.0,ai_platforms,2025-Q1
+PLTR,Palantir,2025-06-30,DIO,0.0,ai_platforms,2025-Q2
+PLTR,Palantir,2025-09-30,DIO,0.0,ai_platforms,2025-Q3
+PLTR,Palantir,2025-12-31,DIO,0.0,ai_platforms,2025-Q4
+PLTR,Palantir,2026-03-31,DIO,0.0,ai_platforms,2026-Q1
 PLTR,Palantir,2021-03-31,DSO,41.232146127582006,ai_platforms,2021-Q1
 PLTR,Palantir,2021-06-30,DSO,56.85061673991321,ai_platforms,2021-Q2
 PLTR,Palantir,2021-09-30,DSO,49.48765577158339,ai_platforms,2021-Q3
@@ -62058,6 +62790,40 @@ PLTR,Palantir,2025-06-30,DSO,77.3787039139757,ai_platforms,2025-Q2
 PLTR,Palantir,2025-09-30,DSO,72.32525540442941,ai_platforms,2025-Q3
 PLTR,Palantir,2025-12-31,DSO,52.445746185319614,ai_platforms,2025-Q4
 PLTR,Palantir,2026-03-31,DSO,107.58374535415876,ai_platforms,2026-Q1
+PLTR,Palantir,2021-03-31,DPO,48.320887252309696,ai_platforms,2021-Q1
+PLTR,Palantir,2021-06-30,DPO,21.819434293231986,ai_platforms,2021-Q2
+PLTR,Palantir,2021-09-30,DPO,9.995095085040848,ai_platforms,2021-Q3
+PLTR,Palantir,2022-03-31,DPO,56.18552745206515,ai_platforms,2022-Q1
+PLTR,Palantir,2022-06-30,DPO,75.1739189010844,ai_platforms,2022-Q2
+PLTR,Palantir,2022-09-30,DPO,78.74364948619876,ai_platforms,2022-Q3
+PLTR,Palantir,2023-03-31,DPO,57.84863166424795,ai_platforms,2023-Q1
+PLTR,Palantir,2023-06-30,DPO,39.979897088746284,ai_platforms,2023-Q2
+PLTR,Palantir,2023-09-30,DPO,37.97850591482283,ai_platforms,2023-Q3
+PLTR,Palantir,2024-03-31,DPO,24.121127316642657,ai_platforms,2024-Q1
+PLTR,Palantir,2024-06-30,DPO,10.34745413895359,ai_platforms,2024-Q2
+PLTR,Palantir,2024-09-30,DPO,10.249369915309208,ai_platforms,2024-Q3
+PLTR,Palantir,2025-03-31,DPO,4.797736245871182,ai_platforms,2025-Q1
+PLTR,Palantir,2025-06-30,DPO,0.07310675005055925,ai_platforms,2025-Q2
+PLTR,Palantir,2025-09-30,DPO,0.06409447691269034,ai_platforms,2025-Q3
+PLTR,Palantir,2025-12-31,DPO,1.7253612837205865,ai_platforms,2025-Q4
+PLTR,Palantir,2026-03-31,DPO,4.2541481181707805,ai_platforms,2026-Q1
+PLTR,Palantir,2021-03-31,CCC,-7.08874112472769,ai_platforms,2021-Q1
+PLTR,Palantir,2021-06-30,CCC,35.03118244668122,ai_platforms,2021-Q2
+PLTR,Palantir,2021-09-30,CCC,39.49256068654255,ai_platforms,2021-Q3
+PLTR,Palantir,2022-03-31,CCC,-9.675260670325933,ai_platforms,2022-Q1
+PLTR,Palantir,2022-06-30,CCC,-28.795388944370295,ai_platforms,2022-Q2
+PLTR,Palantir,2022-09-30,CCC,-34.31702330615358,ai_platforms,2022-Q3
+PLTR,Palantir,2023-03-31,CCC,-11.925977544339446,ai_platforms,2023-Q1
+PLTR,Palantir,2023-06-30,CCC,9.858525988989918,ai_platforms,2023-Q2
+PLTR,Palantir,2023-09-30,CCC,11.352021623471302,ai_platforms,2023-Q3
+PLTR,Palantir,2024-03-31,CCC,30.012658142223344,ai_platforms,2024-Q1
+PLTR,Palantir,2024-06-30,CCC,52.066719795123134,ai_platforms,2024-Q2
+PLTR,Palantir,2024-09-30,CCC,49.386934435243234,ai_platforms,2024-Q3
+PLTR,Palantir,2025-03-31,CCC,62.80003497388864,ai_platforms,2025-Q1
+PLTR,Palantir,2025-06-30,CCC,77.30559716392514,ai_platforms,2025-Q2
+PLTR,Palantir,2025-09-30,CCC,72.26116092751673,ai_platforms,2025-Q3
+PLTR,Palantir,2025-12-31,CCC,50.720384901599026,ai_platforms,2025-Q4
+PLTR,Palantir,2026-03-31,CCC,103.32959723598799,ai_platforms,2026-Q1
 PLTR,Palantir,2021-03-31,REVENUE_GROWTH_QOQ,0.20355723964920935,ai_platforms,2021-Q1
 PLTR,Palantir,2021-06-30,REVENUE_GROWTH_QOQ,0.09838353094053476,ai_platforms,2021-Q2
 PLTR,Palantir,2021-09-30,REVENUE_GROWTH_QOQ,0.14878378968513895,ai_platforms,2021-Q3
@@ -62124,7 +62890,6 @@ PLTR,Palantir,2024-09-30,AP_GROWTH_QOQ,0.0,ai_platforms,2024-Q3
 PLTR,Palantir,2025-03-31,AP_GROWTH_QOQ,-0.9915030523016004,ai_platforms,2025-Q1
 PLTR,Palantir,2025-06-30,AP_GROWTH_QOQ,0.0,ai_platforms,2025-Q2
 PLTR,Palantir,2025-09-30,AP_GROWTH_QOQ,0.0,ai_platforms,2025-Q3
-PLTR,Palantir,2025-12-31,AP_GROWTH_QOQ,77.29126213592234,ai_platforms,2025-Q4
 PLTR,Palantir,2026-03-31,AP_GROWTH_QOQ,0.0,ai_platforms,2026-Q1
 PLTR,Palantir,2026-03-31,CAPEX_GROWTH_QOQ,-0.5340566606389392,ai_platforms,2026-Q1
 PLTR,Palantir,2022-03-31,REVENUE_GROWTH_YOY,0.790869156769409,ai_platforms,2022-Q1
@@ -62182,7 +62947,6 @@ PLTR,Palantir,2025-03-31,AP_GROWTH_YOY,-0.9977002768598732,ai_platforms,2025-Q1
 PLTR,Palantir,2025-06-30,AP_GROWTH_YOY,-0.9915030523016004,ai_platforms,2025-Q2
 PLTR,Palantir,2025-09-30,AP_GROWTH_YOY,-0.9915030523016004,ai_platforms,2025-Q3
 PLTR,Palantir,2025-12-31,AP_GROWTH_YOY,-0.33476324038937466,ai_platforms,2025-Q4
-PLTR,Palantir,2026-03-31,AP_GROWTH_YOY,77.29126213592234,ai_platforms,2026-Q1
 PLTR,Palantir,2021-03-31,AR_GROWTH_MINUS_REVENUE_GROWTH,1.9154331210782076,ai_platforms,2021-Q1
 PLTR,Palantir,2021-06-30,AR_GROWTH_MINUS_REVENUE_GROWTH,-0.09838353094053476,ai_platforms,2021-Q2
 PLTR,Palantir,2021-09-30,AR_GROWTH_MINUS_REVENUE_GROWTH,-0.14878378968513895,ai_platforms,2021-Q3
@@ -62215,7 +62979,6 @@ PLTR,Palantir,2024-09-30,AP_GROWTH_MINUS_COGS_GROWTH,-0.009569780821148566,ai_pl
 PLTR,Palantir,2025-03-31,AP_GROWTH_MINUS_COGS_GROWTH,-1.0687254907293537,ai_platforms,2025-Q1
 PLTR,Palantir,2025-06-30,AP_GROWTH_MINUS_COGS_GROWTH,-0.10585260115606965,ai_platforms,2025-Q2
 PLTR,Palantir,2025-09-30,AP_GROWTH_MINUS_COGS_GROWTH,-0.14060920023023904,ai_platforms,2025-Q3
-PLTR,Palantir,2025-12-31,AP_GROWTH_MINUS_COGS_GROWTH,76.81848886278217,ai_platforms,2025-Q4
 PLTR,Palantir,2026-03-31,AP_GROWTH_MINUS_COGS_GROWTH,0.19908689330727936,ai_platforms,2026-Q1
 PLTR,Palantir,2020-09-30,AR_TO_REVENUE,0.26406390225725695,ai_platforms,2020-Q3
 PLTR,Palantir,2021-03-31,AR_TO_REVENUE,0.6843154098732377,ai_platforms,2021-Q1
@@ -64068,7 +64831,6 @@ SMCI,Super Micro Computer,2025-03-31,DPO,22.052538591830658,server_oem,2025-Q1
 SMCI,Super Micro Computer,2025-06-30,DPO,43.33183241512455,server_oem,2025-Q2
 SMCI,Super Micro Computer,2025-09-30,DPO,41.30563804263415,server_oem,2025-Q3
 SMCI,Super Micro Computer,2025-12-31,DPO,38.281402070929666,server_oem,2025-Q4
-SMCI,Super Micro Computer,2026-03-31,DPO,-910.5163280448423,server_oem,2026-Q1
 SMCI,Super Micro Computer,2026-06-30,DPO,23.358986179946243,server_oem,2026-Q2
 SMCI,Super Micro Computer,2026-09-30,DPO,28.122350617052454,server_oem,2026-Q3
 SMCI,Super Micro Computer,2016-06-30,CCC,94.21274732050394,server_oem,2016-Q2
@@ -64098,7 +64860,6 @@ SMCI,Super Micro Computer,2025-03-31,CCC,210.87589589875057,server_oem,2025-Q1
 SMCI,Super Micro Computer,2025-06-30,CCC,152.34281594231433,server_oem,2025-Q2
 SMCI,Super Micro Computer,2025-09-30,CCC,145.1287601893893,server_oem,2025-Q3
 SMCI,Super Micro Computer,2025-12-31,CCC,68.46917460887016,server_oem,2025-Q4
-SMCI,Super Micro Computer,2026-03-31,CCC,1147.044698778286,server_oem,2026-Q1
 SMCI,Super Micro Computer,2026-06-30,CCC,97.3417778859965,server_oem,2026-Q2
 SMCI,Super Micro Computer,2026-09-30,CCC,118.26998119377114,server_oem,2026-Q3
 SMCI,Super Micro Computer,2016-06-30,REVENUE_GROWTH_QOQ,0.13464705112762276,server_oem,2016-Q2
@@ -64217,7 +64978,6 @@ SMCI,Super Micro Computer,2024-09-30,AP_GROWTH_QOQ,0.0,server_oem,2024-Q3
 SMCI,Super Micro Computer,2025-03-31,AP_GROWTH_QOQ,0.8953684907013237,server_oem,2025-Q1
 SMCI,Super Micro Computer,2025-06-30,AP_GROWTH_QOQ,0.0,server_oem,2025-Q2
 SMCI,Super Micro Computer,2025-09-30,AP_GROWTH_QOQ,0.0,server_oem,2025-Q3
-SMCI,Super Micro Computer,2025-12-31,AP_GROWTH_QOQ,8.340793585355964,server_oem,2025-Q4
 SMCI,Super Micro Computer,2026-03-31,AP_GROWTH_QOQ,-0.9067870497404714,server_oem,2026-Q1
 SMCI,Super Micro Computer,2026-06-30,AP_GROWTH_QOQ,0.0,server_oem,2026-Q2
 SMCI,Super Micro Computer,2026-09-30,AP_GROWTH_QOQ,0.0,server_oem,2026-Q3
@@ -64275,7 +65035,6 @@ SMCI,Super Micro Computer,2024-09-30,REVENUE_GROWTH_YOY,0.09457113881641277,serv
 SMCI,Super Micro Computer,2025-03-31,REVENUE_GROWTH_YOY,0.563768083866351,server_oem,2025-Q1
 SMCI,Super Micro Computer,2025-06-30,REVENUE_GROWTH_YOY,0.9787617499851522,server_oem,2025-Q2
 SMCI,Super Micro Computer,2025-09-30,REVENUE_GROWTH_YOY,1.1351356897063267,server_oem,2025-Q3
-SMCI,Super Micro Computer,2025-12-31,REVENUE_GROWTH_YOY,8.882748017604667,server_oem,2025-Q4
 SMCI,Super Micro Computer,2026-03-31,REVENUE_GROWTH_YOY,1.8010258190889914,server_oem,2026-Q1
 SMCI,Super Micro Computer,2026-06-30,REVENUE_GROWTH_YOY,0.5492714173609059,server_oem,2026-Q2
 SMCI,Super Micro Computer,2026-09-30,REVENUE_GROWTH_YOY,0.19476211576632707,server_oem,2026-Q3
@@ -64302,7 +65061,6 @@ SMCI,Super Micro Computer,2024-09-30,COGS_GROWTH_YOY,0.04784588906645926,server_
 SMCI,Super Micro Computer,2025-03-31,COGS_GROWTH_YOY,0.542725481888505,server_oem,2025-Q1
 SMCI,Super Micro Computer,2025-06-30,COGS_GROWTH_YOY,1.0607552198432133,server_oem,2025-Q2
 SMCI,Super Micro Computer,2025-09-30,COGS_GROWTH_YOY,1.219100774813017,server_oem,2025-Q3
-SMCI,Super Micro Computer,2025-12-31,COGS_GROWTH_YOY,10.243739220029195,server_oem,2025-Q4
 SMCI,Super Micro Computer,2026-03-31,COGS_GROWTH_YOY,1.9228377881755243,server_oem,2026-Q1
 SMCI,Super Micro Computer,2026-06-30,COGS_GROWTH_YOY,0.6151508642515231,server_oem,2026-Q2
 SMCI,Super Micro Computer,2026-09-30,COGS_GROWTH_YOY,0.2788445161524371,server_oem,2026-Q3
@@ -64329,7 +65087,6 @@ SMCI,Super Micro Computer,2024-09-30,AR_GROWTH_YOY,0.3759629867958918,server_oem
 SMCI,Super Micro Computer,2025-03-31,AR_GROWTH_YOY,2.2801538142605327,server_oem,2025-Q1
 SMCI,Super Micro Computer,2025-06-30,AR_GROWTH_YOY,1.3838968386052275,server_oem,2025-Q2
 SMCI,Super Micro Computer,2025-09-30,AR_GROWTH_YOY,1.3838968386052275,server_oem,2025-Q3
-SMCI,Super Micro Computer,2025-12-31,AR_GROWTH_YOY,8.58386043566826,server_oem,2025-Q4
 SMCI,Super Micro Computer,2026-03-31,AR_GROWTH_YOY,-0.19485732635183695,server_oem,2026-Q1
 SMCI,Super Micro Computer,2026-06-30,AR_GROWTH_YOY,-0.19485732635183695,server_oem,2026-Q2
 SMCI,Super Micro Computer,2026-09-30,AR_GROWTH_YOY,-0.19485732635183695,server_oem,2026-Q3
@@ -64356,7 +65113,6 @@ SMCI,Super Micro Computer,2024-09-30,AP_GROWTH_YOY,0.1852722675971883,server_oem
 SMCI,Super Micro Computer,2025-03-31,AP_GROWTH_YOY,1.2465277089058184,server_oem,2025-Q1
 SMCI,Super Micro Computer,2025-06-30,AP_GROWTH_YOY,0.8953684907013237,server_oem,2025-Q2
 SMCI,Super Micro Computer,2025-09-30,AP_GROWTH_YOY,0.8953684907013237,server_oem,2025-Q3
-SMCI,Super Micro Computer,2025-12-31,AP_GROWTH_YOY,16.70424583982874,server_oem,2025-Q4
 SMCI,Super Micro Computer,2026-03-31,AP_GROWTH_YOY,-0.12931707214369104,server_oem,2026-Q1
 SMCI,Super Micro Computer,2026-06-30,AP_GROWTH_YOY,-0.12931707214369104,server_oem,2026-Q2
 SMCI,Super Micro Computer,2026-09-30,AP_GROWTH_YOY,-0.12931707214369104,server_oem,2026-Q3
@@ -64383,7 +65139,6 @@ SMCI,Super Micro Computer,2024-09-30,INVENTORY_GROWTH_YOY,-0.0647267156054,serve
 SMCI,Super Micro Computer,2025-03-31,INVENTORY_GROWTH_YOY,1.8034499089677452,server_oem,2025-Q1
 SMCI,Super Micro Computer,2025-06-30,INVENTORY_GROWTH_YOY,1.9974660409362714,server_oem,2025-Q2
 SMCI,Super Micro Computer,2025-09-30,INVENTORY_GROWTH_YOY,1.9974660409362714,server_oem,2025-Q3
-SMCI,Super Micro Computer,2025-12-31,INVENTORY_GROWTH_YOY,6.329629127454751,server_oem,2025-Q4
 SMCI,Super Micro Computer,2026-03-31,INVENTORY_GROWTH_YOY,0.08016239909772116,server_oem,2026-Q1
 SMCI,Super Micro Computer,2026-06-30,INVENTORY_GROWTH_YOY,0.08016239909772116,server_oem,2026-Q2
 SMCI,Super Micro Computer,2026-09-30,INVENTORY_GROWTH_YOY,0.08016239909772116,server_oem,2026-Q3
@@ -64443,7 +65198,6 @@ SMCI,Super Micro Computer,2024-09-30,AP_GROWTH_MINUS_COGS_GROWTH,0.2789217702877
 SMCI,Super Micro Computer,2025-03-31,AP_GROWTH_MINUS_COGS_GROWTH,0.22452055936766824,server_oem,2025-Q1
 SMCI,Super Micro Computer,2025-06-30,AP_GROWTH_MINUS_COGS_GROWTH,-0.7557391614066062,server_oem,2025-Q2
 SMCI,Super Micro Computer,2025-09-30,AP_GROWTH_MINUS_COGS_GROWTH,-0.049053699894407554,server_oem,2025-Q3
-SMCI,Super Micro Computer,2025-12-31,AP_GROWTH_MINUS_COGS_GROWTH,5.687234601398647,server_oem,2025-Q4
 SMCI,Super Micro Computer,2026-03-31,AP_GROWTH_MINUS_COGS_GROWTH,-0.3411280973607692,server_oem,2026-Q1
 SMCI,Super Micro Computer,2026-06-30,AP_GROWTH_MINUS_COGS_GROWTH,0.02978412438130562,server_oem,2026-Q2
 SMCI,Super Micro Computer,2026-09-30,AP_GROWTH_MINUS_COGS_GROWTH,0.1693800245210607,server_oem,2026-Q3
@@ -65275,6 +66029,22 @@ SMTC,Semtech,2025-03-31,FCF_TO_OPERATING_INCOME,8.75117845117845,server_networki
 SMTC,Semtech,2025-12-31,FCF_TO_OPERATING_INCOME,1.3204664759689437,server_networking,2025-Q4
 SMTC,Semtech,2026-03-31,FCF_TO_OPERATING_INCOME,-0.45275214762965327,server_networking,2026-Q1
 SMTC,Semtech,2027-03-31,FCF_TO_OPERATING_INCOME,0.7277226346373065,server_networking,2027-Q1
+SNOW,Snowflake,2022-03-31,DIO,0.0,ai_platforms,2022-Q1
+SNOW,Snowflake,2022-06-30,DIO,0.0,ai_platforms,2022-Q2
+SNOW,Snowflake,2022-09-30,DIO,0.0,ai_platforms,2022-Q3
+SNOW,Snowflake,2023-06-30,DIO,0.0,ai_platforms,2023-Q2
+SNOW,Snowflake,2023-09-30,DIO,0.0,ai_platforms,2023-Q3
+SNOW,Snowflake,2024-03-31,DIO,0.0,ai_platforms,2024-Q1
+SNOW,Snowflake,2024-06-30,DIO,0.0,ai_platforms,2024-Q2
+SNOW,Snowflake,2024-09-30,DIO,0.0,ai_platforms,2024-Q3
+SNOW,Snowflake,2025-03-31,DIO,0.0,ai_platforms,2025-Q1
+SNOW,Snowflake,2025-06-30,DIO,0.0,ai_platforms,2025-Q2
+SNOW,Snowflake,2025-09-30,DIO,0.0,ai_platforms,2025-Q3
+SNOW,Snowflake,2025-12-31,DIO,0.0,ai_platforms,2025-Q4
+SNOW,Snowflake,2026-03-31,DIO,0.0,ai_platforms,2026-Q1
+SNOW,Snowflake,2026-06-30,DIO,0.0,ai_platforms,2026-Q2
+SNOW,Snowflake,2026-09-30,DIO,0.0,ai_platforms,2026-Q3
+SNOW,Snowflake,2027-03-31,DIO,0.0,ai_platforms,2027-Q1
 SNOW,Snowflake,2022-03-31,DSO,198.52357211781467,ai_platforms,2022-Q1
 SNOW,Snowflake,2022-06-30,DSO,201.50250666566524,ai_platforms,2022-Q2
 SNOW,Snowflake,2022-09-30,DSO,168.07655020548287,ai_platforms,2022-Q3
@@ -65291,6 +66061,38 @@ SNOW,Snowflake,2026-03-31,DSO,102.45555888737783,ai_platforms,2026-Q1
 SNOW,Snowflake,2026-06-30,DSO,96.91957539107506,ai_platforms,2026-Q2
 SNOW,Snowflake,2026-09-30,DSO,89.38169253811189,ai_platforms,2026-Q3
 SNOW,Snowflake,2027-03-31,DSO,97.48455064131721,ai_platforms,2027-Q1
+SNOW,Snowflake,2022-03-31,DPO,15.154014028244472,ai_platforms,2022-Q1
+SNOW,Snowflake,2022-06-30,DPO,10.214660230741782,ai_platforms,2022-Q2
+SNOW,Snowflake,2022-09-30,DPO,7.727669800992787,ai_platforms,2022-Q3
+SNOW,Snowflake,2023-06-30,DPO,8.206575512857965,ai_platforms,2023-Q2
+SNOW,Snowflake,2023-09-30,DPO,10.154250078651502,ai_platforms,2023-Q3
+SNOW,Snowflake,2024-03-31,DPO,11.446499188805515,ai_platforms,2024-Q1
+SNOW,Snowflake,2024-06-30,DPO,12.469232012561193,ai_platforms,2024-Q2
+SNOW,Snowflake,2024-09-30,DPO,11.325811001410438,ai_platforms,2024-Q3
+SNOW,Snowflake,2025-03-31,DPO,16.425862764667116,ai_platforms,2025-Q1
+SNOW,Snowflake,2025-06-30,DPO,21.61041269826733,ai_platforms,2025-Q2
+SNOW,Snowflake,2025-09-30,DPO,20.61403135209742,ai_platforms,2025-Q3
+SNOW,Snowflake,2025-12-31,DPO,28.645934868870444,ai_platforms,2025-Q4
+SNOW,Snowflake,2026-03-31,DPO,60.850410249635814,ai_platforms,2026-Q1
+SNOW,Snowflake,2026-06-30,DPO,53.774459521379626,ai_platforms,2026-Q2
+SNOW,Snowflake,2026-09-30,DPO,48.27525210817279,ai_platforms,2026-Q3
+SNOW,Snowflake,2027-03-31,DPO,41.24806829975974,ai_platforms,2027-Q1
+SNOW,Snowflake,2022-03-31,CCC,183.3695580895702,ai_platforms,2022-Q1
+SNOW,Snowflake,2022-06-30,CCC,191.28784643492347,ai_platforms,2022-Q2
+SNOW,Snowflake,2022-09-30,CCC,160.34888040449007,ai_platforms,2022-Q3
+SNOW,Snowflake,2023-06-30,CCC,132.53233054082355,ai_platforms,2023-Q2
+SNOW,Snowflake,2023-09-30,CCC,138.71698954208878,ai_platforms,2023-Q3
+SNOW,Snowflake,2024-03-31,CCC,124.81677705411838,ai_platforms,2024-Q1
+SNOW,Snowflake,2024-06-30,CCC,118.8911077977548,ai_platforms,2024-Q2
+SNOW,Snowflake,2024-09-30,CCC,105.93699490780776,ai_platforms,2024-Q3
+SNOW,Snowflake,2025-03-31,CCC,103.76233008843238,ai_platforms,2025-Q1
+SNOW,Snowflake,2025-06-30,CCC,103.87556467919144,ai_platforms,2025-Q2
+SNOW,Snowflake,2025-09-30,CCC,94.59016098404135,ai_platforms,2025-Q3
+SNOW,Snowflake,2025-12-31,CCC,41.51000376708659,ai_platforms,2025-Q4
+SNOW,Snowflake,2026-03-31,CCC,41.60514863774202,ai_platforms,2026-Q1
+SNOW,Snowflake,2026-06-30,CCC,43.14511586969543,ai_platforms,2026-Q2
+SNOW,Snowflake,2026-09-30,CCC,41.1064404299391,ai_platforms,2026-Q3
+SNOW,Snowflake,2027-03-31,CCC,56.236482341557476,ai_platforms,2027-Q1
 SNOW,Snowflake,2022-03-31,REVENUE_GROWTH_QOQ,0.49037144578973324,ai_platforms,2022-Q1
 SNOW,Snowflake,2022-06-30,REVENUE_GROWTH_QOQ,0.2235904976335985,ai_platforms,2022-Q2
 SNOW,Snowflake,2022-09-30,REVENUE_GROWTH_QOQ,0.1988734086897741,ai_platforms,2022-Q3
@@ -65403,7 +66205,6 @@ SNOW,Snowflake,2024-09-30,AP_GROWTH_YOY,0.761178483743769,ai_platforms,2024-Q3
 SNOW,Snowflake,2025-03-31,AP_GROWTH_YOY,2.8480023807752395,ai_platforms,2025-Q1
 SNOW,Snowflake,2025-06-30,AP_GROWTH_YOY,1.1849019939168635,ai_platforms,2025-Q2
 SNOW,Snowflake,2025-09-30,AP_GROWTH_YOY,1.1849019939168635,ai_platforms,2025-Q3
-SNOW,Snowflake,2025-12-31,AP_GROWTH_YOY,7.182282865833052,ai_platforms,2025-Q4
 SNOW,Snowflake,2026-03-31,AP_GROWTH_YOY,2.282361129908548,ai_platforms,2026-Q1
 SNOW,Snowflake,2026-06-30,AP_GROWTH_YOY,2.282361129908548,ai_platforms,2026-Q2
 SNOW,Snowflake,2026-09-30,AP_GROWTH_YOY,2.282361129908548,ai_platforms,2026-Q3
@@ -65522,6 +66323,15 @@ SNOW,Snowflake,2025-03-31,FCF_TO_OPERATING_INCOME,-1.070400163959625,ai_platform
 SNOW,Snowflake,2025-12-31,FCF_TO_OPERATING_INCOME,-0.3448355403932947,ai_platforms,2025-Q4
 SNOW,Snowflake,2026-03-31,FCF_TO_OPERATING_INCOME,-0.9723930780441343,ai_platforms,2026-Q1
 SNOW,Snowflake,2027-03-31,FCF_TO_OPERATING_INCOME,-0.41001929539392334,ai_platforms,2027-Q1
+SNPS,Synopsys,2016-06-30,DIO,0.0,sw_equipment,2016-Q2
+SNPS,Synopsys,2016-09-30,DIO,0.0,sw_equipment,2016-Q3
+SNPS,Synopsys,2017-03-31,DIO,0.0,sw_equipment,2017-Q1
+SNPS,Synopsys,2017-06-30,DIO,0.0,sw_equipment,2017-Q2
+SNPS,Synopsys,2017-09-30,DIO,0.0,sw_equipment,2017-Q3
+SNPS,Synopsys,2018-03-31,DIO,0.0,sw_equipment,2018-Q1
+SNPS,Synopsys,2018-06-30,DIO,0.0,sw_equipment,2018-Q2
+SNPS,Synopsys,2018-09-30,DIO,0.0,sw_equipment,2018-Q3
+SNPS,Synopsys,2019-03-31,DIO,30.828784997460744,sw_equipment,2019-Q1
 SNPS,Synopsys,2019-06-30,DIO,62.4773533244956,sw_equipment,2019-Q2
 SNPS,Synopsys,2019-09-30,DIO,60.25233842734689,sw_equipment,2019-Q3
 SNPS,Synopsys,2020-03-31,DIO,62.426529482819426,sw_equipment,2020-Q1
@@ -65577,6 +66387,15 @@ SNPS,Synopsys,2025-09-30,DSO,55.887559159468566,sw_equipment,2025-Q3
 SNPS,Synopsys,2025-12-31,DSO,49.36905201431574,sw_equipment,2025-Q4
 SNPS,Synopsys,2026-03-31,DSO,94.39208264190226,sw_equipment,2026-Q1
 SNPS,Synopsys,2026-06-30,DSO,85.62807773149838,sw_equipment,2026-Q2
+SNPS,Synopsys,2016-06-30,DPO,7.242492318279299,sw_equipment,2016-Q2
+SNPS,Synopsys,2016-09-30,DPO,6.990822269079566,sw_equipment,2016-Q3
+SNPS,Synopsys,2017-03-31,DPO,8.34082692129415,sw_equipment,2017-Q1
+SNPS,Synopsys,2017-06-30,DPO,9.52846045734255,sw_equipment,2017-Q2
+SNPS,Synopsys,2017-09-30,DPO,8.979511659041934,sw_equipment,2017-Q3
+SNPS,Synopsys,2018-03-31,DPO,9.871950965032815,sw_equipment,2018-Q1
+SNPS,Synopsys,2018-06-30,DPO,11.23757930728023,sw_equipment,2018-Q2
+SNPS,Synopsys,2018-09-30,DPO,10.739283144397394,sw_equipment,2018-Q3
+SNPS,Synopsys,2019-03-31,DPO,15.781320516663754,sw_equipment,2019-Q1
 SNPS,Synopsys,2019-06-30,DPO,43.40804848444169,sw_equipment,2019-Q2
 SNPS,Synopsys,2019-09-30,DPO,41.86215146104507,sw_equipment,2019-Q3
 SNPS,Synopsys,2020-03-31,DPO,22.567053886029925,sw_equipment,2020-Q1
@@ -65600,6 +66419,15 @@ SNPS,Synopsys,2025-09-30,DPO,65.08668156297735,sw_equipment,2025-Q3
 SNPS,Synopsys,2025-12-31,DPO,25.800780656348582,sw_equipment,2025-Q4
 SNPS,Synopsys,2026-03-31,DPO,55.68996203352159,sw_equipment,2026-Q1
 SNPS,Synopsys,2026-06-30,DPO,47.228016912362925,sw_equipment,2026-Q2
+SNPS,Synopsys,2016-06-30,CCC,55.920330453990836,sw_equipment,2016-Q2
+SNPS,Synopsys,2016-09-30,CCC,56.330985739124756,sw_equipment,2016-Q3
+SNPS,Synopsys,2017-03-31,CCC,57.82274100119672,sw_equipment,2017-Q1
+SNPS,Synopsys,2017-06-30,CCC,56.66464745085655,sw_equipment,2017-Q2
+SNPS,Synopsys,2017-09-30,CCC,56.11623097267048,sw_equipment,2017-Q3
+SNPS,Synopsys,2018-03-31,CCC,52.33377284797789,sw_equipment,2018-Q1
+SNPS,Synopsys,2018-06-30,CCC,49.29582245048259,sw_equipment,2018-Q2
+SNPS,Synopsys,2018-09-30,CCC,48.46119831828278,sw_equipment,2018-Q3
+SNPS,Synopsys,2019-03-31,CCC,74.66280841900547,sw_equipment,2019-Q1
 SNPS,Synopsys,2019-06-30,CCC,84.16966225139943,sw_equipment,2019-Q2
 SNPS,Synopsys,2019-09-30,CCC,83.25025264422987,sw_equipment,2019-Q3
 SNPS,Synopsys,2020-03-31,CCC,101.48496118249699,sw_equipment,2020-Q1
@@ -65867,7 +66695,6 @@ SNPS,Synopsys,2017-09-30,AP_GROWTH_YOY,0.38572436737574334,sw_equipment,2017-Q3
 SNPS,Synopsys,2018-03-31,AP_GROWTH_YOY,1.0116947272910575,sw_equipment,2018-Q1
 SNPS,Synopsys,2018-06-30,AP_GROWTH_YOY,0.4517279010549291,sw_equipment,2018-Q2
 SNPS,Synopsys,2018-09-30,AP_GROWTH_YOY,0.4517279010549291,sw_equipment,2018-Q3
-SNPS,Synopsys,2019-03-31,AP_GROWTH_YOY,5.187413604947254,sw_equipment,2019-Q1
 SNPS,Synopsys,2019-06-30,AP_GROWTH_YOY,3.2621028365240052,sw_equipment,2019-Q2
 SNPS,Synopsys,2019-09-30,AP_GROWTH_YOY,3.2621028365240052,sw_equipment,2019-Q3
 SNPS,Synopsys,2020-03-31,AP_GROWTH_YOY,-0.0069660218502555216,sw_equipment,2020-Q1
@@ -66164,6 +66991,8 @@ SNPS,Synopsys,2024-03-31,FCF_TO_OPERATING_INCOME,0.278398168263445,sw_equipment,
 SNPS,Synopsys,2025-03-31,FCF_TO_OPERATING_INCOME,-0.3635041091694884,sw_equipment,2025-Q1
 SNPS,Synopsys,2025-12-31,FCF_TO_OPERATING_INCOME,4.985394544990238,sw_equipment,2025-Q4
 SNPS,Synopsys,2026-03-31,FCF_TO_OPERATING_INCOME,-0.42952044758754604,sw_equipment,2026-Q1
+SO,Southern Company,2025-12-31,DIO,36.28444881889764,energy,2025-Q4
+SO,Southern Company,2025-12-31,DPO,44.93977604997342,energy,2025-Q4
 SO,Southern Company,2016-06-30,REVENUE_GROWTH_QOQ,0.036815682524503845,energy,2016-Q2
 SO,Southern Company,2016-09-30,REVENUE_GROWTH_QOQ,0.2453308738759512,energy,2016-Q3
 SO,Southern Company,2017-03-31,REVENUE_GROWTH_QOQ,-0.26087761525643405,energy,2017-Q1
@@ -66226,6 +67055,7 @@ SO,Southern Company,2025-06-30,AP_GROWTH_QOQ,0.0,energy,2025-Q2
 SO,Southern Company,2025-09-30,AP_GROWTH_QOQ,0.0,energy,2025-Q3
 SO,Southern Company,2025-12-31,AP_GROWTH_QOQ,0.0024317751958931044,energy,2025-Q4
 SO,Southern Company,2026-03-31,AP_GROWTH_QOQ,0.0,energy,2026-Q1
+SO,Southern Company,2026-03-31,INVENTORY_GROWTH_QOQ,-1.0,energy,2026-Q1
 SO,Southern Company,2026-03-31,CAPEX_GROWTH_QOQ,-0.4312718786464411,energy,2026-Q1
 SO,Southern Company,2017-06-30,REVENUE_GROWTH_YOY,0.06598135309586417,energy,2017-Q2
 SO,Southern Company,2017-09-30,REVENUE_GROWTH_YOY,0.44431634770578743,energy,2017-Q3
@@ -66283,6 +67113,7 @@ SO,Southern Company,2025-06-30,AP_GROWTH_YOY,0.277087646652864,energy,2025-Q2
 SO,Southern Company,2025-09-30,AP_GROWTH_YOY,0.277087646652864,energy,2025-Q3
 SO,Southern Company,2025-12-31,AP_GROWTH_YOY,0.28019323671497576,energy,2025-Q4
 SO,Southern Company,2026-03-31,AP_GROWTH_YOY,0.0024317751958931044,energy,2026-Q1
+SO,Southern Company,2026-03-31,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,-1.1137372869216444,energy,2026-Q1
 SO,Southern Company,2025-12-31,AR_TO_REVENUE,0.5828677839851024,energy,2025-Q4
 SO,Southern Company,2025-12-31,AP_TO_COGS,0.8852302553089955,energy,2025-Q4
 SO,Southern Company,2016-03-31,OCF_MARGIN,0.21826440353813054,energy,2016-Q1
@@ -68151,10 +68982,8 @@ VRT,Vertiv,2025-09-30,AR_GROWTH_QOQ,0.0,energy,2025-Q3
 VRT,Vertiv,2025-12-31,AR_GROWTH_QOQ,0.31586743979345666,energy,2025-Q4
 VRT,Vertiv,2026-03-31,AR_GROWTH_QOQ,0.0,energy,2026-Q1
 VRT,Vertiv,2018-09-30,AP_GROWTH_QOQ,0.0,energy,2018-Q3
-VRT,Vertiv,2019-03-31,AP_GROWTH_QOQ,503.8652037617555,energy,2019-Q1
 VRT,Vertiv,2019-06-30,AP_GROWTH_QOQ,0.0,energy,2019-Q2
 VRT,Vertiv,2019-09-30,AP_GROWTH_QOQ,0.0,energy,2019-Q3
-VRT,Vertiv,2020-03-31,AP_GROWTH_QOQ,987.5006084991182,energy,2020-Q1
 VRT,Vertiv,2020-06-30,AP_GROWTH_QOQ,0.0,energy,2020-Q2
 VRT,Vertiv,2020-09-30,AP_GROWTH_QOQ,0.0,energy,2020-Q3
 VRT,Vertiv,2021-03-31,AP_GROWTH_QOQ,0.14714195979899514,energy,2021-Q1
@@ -68229,11 +69058,6 @@ VRT,Vertiv,2025-06-30,AR_GROWTH_YOY,0.11548085548368814,energy,2025-Q2
 VRT,Vertiv,2025-09-30,AR_GROWTH_YOY,0.11548085548368814,energy,2025-Q3
 VRT,Vertiv,2025-12-31,AR_GROWTH_YOY,0.4678249374439356,energy,2025-Q4
 VRT,Vertiv,2026-03-31,AR_GROWTH_YOY,0.31586743979345666,energy,2026-Q1
-VRT,Vertiv,2019-09-30,AP_GROWTH_YOY,503.8652037617555,energy,2019-Q3
-VRT,Vertiv,2020-03-31,AP_GROWTH_YOY,499058.56112852664,energy,2020-Q1
-VRT,Vertiv,2020-06-30,AP_GROWTH_YOY,987.5006084991182,energy,2020-Q2
-VRT,Vertiv,2020-09-30,AP_GROWTH_YOY,987.5006084991182,energy,2020-Q3
-VRT,Vertiv,2021-03-31,AP_GROWTH_YOY,1132.9505252961776,energy,2021-Q1
 VRT,Vertiv,2021-06-30,AP_GROWTH_YOY,0.14714195979899514,energy,2021-Q2
 VRT,Vertiv,2021-09-30,AP_GROWTH_YOY,0.14714195979899514,energy,2021-Q3
 VRT,Vertiv,2022-03-31,AP_GROWTH_YOY,0.34814698492462326,energy,2022-Q1
@@ -68517,6 +69341,7 @@ VST,Vistra,2025-03-31,INVENTORY_GROWTH_QOQ,0.31081081081081074,energy,2025-Q1
 VST,Vistra,2025-06-30,INVENTORY_GROWTH_QOQ,0.0,energy,2025-Q2
 VST,Vistra,2025-09-30,INVENTORY_GROWTH_QOQ,0.0,energy,2025-Q3
 VST,Vistra,2025-12-31,INVENTORY_GROWTH_QOQ,0.04742268041237119,energy,2025-Q4
+VST,Vistra,2026-03-31,INVENTORY_GROWTH_QOQ,-1.0,energy,2026-Q1
 VST,Vistra,2019-03-31,CAPEX_GROWTH_QOQ,-0.1875,energy,2019-Q1
 VST,Vistra,2026-03-31,CAPEX_GROWTH_QOQ,-0.08133971291866027,energy,2026-Q1
 VST,Vistra,2019-03-31,REVENUE_GROWTH_YOY,0.0,energy,2019-Q1
@@ -68610,6 +69435,7 @@ VST,Vistra,2025-03-31,INVENTORY_GROWTH_YOY,0.7017543859649122,energy,2025-Q1
 VST,Vistra,2025-06-30,INVENTORY_GROWTH_YOY,0.31081081081081074,energy,2025-Q2
 VST,Vistra,2025-09-30,INVENTORY_GROWTH_YOY,0.31081081081081074,energy,2025-Q3
 VST,Vistra,2025-12-31,INVENTORY_GROWTH_YOY,0.37297297297297294,energy,2025-Q4
+VST,Vistra,2026-03-31,INVENTORY_GROWTH_YOY,-1.0,energy,2026-Q1
 VST,Vistra,2018-06-30,AR_GROWTH_MINUS_REVENUE_GROWTH,-1.2087458745874589,energy,2018-Q2
 VST,Vistra,2018-09-30,AR_GROWTH_MINUS_REVENUE_GROWTH,-0.3601045946955548,energy,2018-Q3
 VST,Vistra,2018-12-31,AR_GROWTH_MINUS_REVENUE_GROWTH,0.6728920626201593,energy,2018-Q4
@@ -68661,6 +69487,7 @@ VST,Vistra,2025-03-31,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,0.6511741434481045,e
 VST,Vistra,2025-06-30,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,-0.1392845837290282,energy,2025-Q2
 VST,Vistra,2025-09-30,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,-0.20616838010558491,energy,2025-Q3
 VST,Vistra,2025-12-31,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,-0.008555204867518151,energy,2025-Q4
+VST,Vistra,2026-03-31,INVENTORY_GROWTH_MINUS_REVENUE_GROWTH,-0.9271378708551483,energy,2026-Q1
 VST,Vistra,2018-03-31,AR_TO_REVENUE,0.4801980198019802,energy,2018-Q1
 VST,Vistra,2018-06-30,AR_TO_REVENUE,0.21740754576017932,energy,2018-Q2
 VST,Vistra,2018-09-30,AR_TO_REVENUE,0.15984619609997253,energy,2018-Q3
