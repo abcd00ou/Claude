@@ -25,7 +25,9 @@ Design choices (matter for correct lead-lag):
 Run:  python3 build_panel_long.py
 """
 from __future__ import annotations
+import shutil
 import sqlite3
+from datetime import date
 from pathlib import Path
 
 import numpy as np
@@ -33,6 +35,45 @@ import pandas as pd
 
 HERE = Path(__file__).parent
 DB = HERE / "financials.db"
+
+
+def _backup_db():
+    """빌드 전 날짜 스탬프 백업. 당일 백업이 이미 있으면 스킵."""
+    bak = HERE / f"financials_{date.today():%Y%m%d}.db.bak"
+    if not bak.exists() and DB.exists():
+        shutil.copy2(DB, bak)
+        print(f"  (백업: {bak.name})")
+
+
+def _apply_null_policy(con, df: pd.DataFrame) -> pd.DataFrame:
+    """null_policy 테이블의 structural_zero 항목을 quarterly_financials 값에 반영.
+
+    structural_zero: 소프트웨어·유틸리티 등 구조적으로 해당 항목이 0인 기업.
+    NULL → 0으로 채워 DIO/DSO/DPO 계산이 올바르게 동작하도록 한다.
+    data_gap: 데이터 미수집 (그대로 NULL 유지).
+    """
+    try:
+        policy = pd.read_sql_query(
+            "SELECT ticker, item, null_type FROM null_policy WHERE null_type='structural_zero'",
+            con)
+    except Exception:
+        return df   # null_policy 테이블 없으면 그냥 통과
+
+    # item은 panel_long item명 기준 (inventory, accounts_payable 등)
+    item_col_map = {v: k for k, v in {
+        "inventory_usd_m": "inventory",
+        "accounts_payable_usd_m": "accounts_payable",
+        "receivables_usd_m": "receivables",
+        "capex_usd_m": "capex",
+    }.items()}
+
+    for _, row in policy.iterrows():
+        tk, pl_item = row["ticker"], row["item"]
+        src_col = item_col_map.get(pl_item)
+        if src_col and src_col in df.columns:
+            mask = (df["ticker"] == tk) & df[src_col].isna()
+            df.loc[mask, src_col] = 0.0
+    return df
 
 # source column -> clean item name
 ITEM_MAP = {
@@ -94,6 +135,8 @@ def _append_features(con):
 
 
 def build():
+    _backup_db()
+
     con = sqlite3.connect(DB)
 
     companies = pd.read_sql_query(
@@ -102,6 +145,9 @@ def build():
         "SELECT ticker, calendar_quarter, period_end_date, " +
         ", ".join(ITEM_MAP) + " FROM quarterly_financials "
         "WHERE calendar_quarter IS NOT NULL", con)
+
+    # null_policy: structural_zero → 0 채우기 (data_gap은 NULL 유지)
+    qf = _apply_null_policy(con, qf)
 
     # A few (ticker, calendar_quarter) pairs have two source rows (fiscal/calendar
     # restatement quirk). Coalesce them: take the last non-null value per field

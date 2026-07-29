@@ -18,6 +18,11 @@ Feature groups (doc §3.1–3.4):
               CAPEX_TO_OCF CASH_CONVERSION_RATIO CASH_RUNWAY_QTR FCF_TO_OPERATING_INCOME
 
 Transforms (doc §2): level, growth_qoq, growth_yoy, change_qoq, change_yoy, zscore.
+
+Preprocessing guards (2026-07-29):
+  - DIO/DSO/DPO: 경제적으로 불가능한 값(음수 또는 >500일) → NaN (_clean_days)
+  - 성장률(QoQ/YoY): ±500% 초과 → NaN (_winsor_growth, 기준 분기 극소값 아티팩트 제거)
+  - ratio 계열: get_feature() 호출 시 winsor=(0.02, 0.98) 적용 (기존 유지)
 """
 from __future__ import annotations
 
@@ -27,6 +32,15 @@ import pandas as pd
 import panel as P
 
 DAYS = 91.25
+
+# ── 전처리 가드 상수 ──────────────────────────────────────────────────────────
+# DIO/DSO/DPO 허용 범위 (일수). 범위 밖 → NaN.
+#   하한 0: 음수 일수는 경제적으로 불가능 (음수 AP = SMCI 회계 이슈 등 아티팩트)
+#   상한 500: 반도체 스타트업 최대 재고적채 수준. 초과 시 분모(COGS/Revenue)가 근-0인 아티팩트
+DAYS_LO, DAYS_HI = 0.0, 500.0
+
+# 성장률(QoQ·YoY) 클립 상한. ±500% 초과 = 기준 분기 극소값 아티팩트로 판단, NaN 처리.
+GROWTH_CAP = 5.0
 
 # doc item name -> panel_long item (source amounts)
 SOURCE_ALIAS = {
@@ -102,6 +116,18 @@ def _gy(s):   # YoY growth
     return s / s.shift(4) - 1.0
 
 
+def _clean_days(s: pd.Series) -> pd.Series:
+    """DIO/DSO/DPO 전처리: 경제적으로 불가능한 값을 NaN으로 마스킹.
+    음수(회계 아티팩트) 및 500일 초과(분모 근-0 아티팩트)를 제거한다."""
+    return s.where((s >= DAYS_LO) & (s <= DAYS_HI))
+
+
+def _winsor_growth(s: pd.Series) -> pd.Series:
+    """성장률 전처리: ±GROWTH_CAP(±500%) 초과를 NaN으로 마스킹.
+    기준 분기 매출·재고 등이 근-0일 때 생기는 수천% 스파이크를 제거한다."""
+    return s.where(s.abs() <= GROWTH_CAP)
+
+
 def compute_features(long, ticker) -> pd.DataFrame:
     """
     Full per-company feature panel (index=quarter). Missing sources (e.g. AP before
@@ -122,18 +148,18 @@ def compute_features(long, ticker) -> pd.DataFrame:
     rev, cogs, inv, ar, ap = df.REVENUE, df.COGS, df.INVENTORY, df.AR, df.AP
     ocf, fcf, cash, ni, oi = df.OCF, df.FCF, df.CASH, df.NET_INCOME, df.OPERATING_INCOME
 
-    # 운전자본 사이클 (평균잔액)
-    df["DIO"] = _avg(inv) / cogs * DAYS
-    df["DSO"] = _avg(ar) / rev * DAYS
+    # 운전자본 사이클 (평균잔액) + 전처리 가드
+    df["DIO"] = _clean_days(_avg(inv) / cogs * DAYS)
+    df["DSO"] = _clean_days(_avg(ar) / rev * DAYS)
     purchases = cogs + (inv - inv.shift(1))            # purchases proxy (doc tbl5)
-    df["DPO"] = _avg(ap) / purchases * DAYS
-    df["CCC"] = df["DIO"] + df["DSO"] - df["DPO"]
+    df["DPO"] = _clean_days(_avg(ap) / purchases * DAYS)
+    df["CCC"] = df["DIO"] + df["DSO"] - df["DPO"]     # 정제된 컴포넌트로 재산출
 
-    # 성장률
+    # 성장률 + 전처리 가드 (±500% 초과 → NaN)
     for col in ["REVENUE", "COGS", "AR", "AP", "INVENTORY", "CAPEX"]:
-        df[f"{col}_GROWTH_QOQ"] = _gq(df[col])
+        df[f"{col}_GROWTH_QOQ"] = _winsor_growth(_gq(df[col]))
     for col in ["REVENUE", "COGS", "AR", "AP", "INVENTORY"]:
-        df[f"{col}_GROWTH_YOY"] = _gy(df[col])
+        df[f"{col}_GROWTH_YOY"] = _winsor_growth(_gy(df[col]))
 
     # mismatch spreads (QoQ 기준; YoY 필요시 transform으로)
     df["AR_GROWTH_MINUS_REVENUE_GROWTH"] = df.AR_GROWTH_QOQ - df.REVENUE_GROWTH_QOQ

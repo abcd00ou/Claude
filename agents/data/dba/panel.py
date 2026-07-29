@@ -6,12 +6,20 @@ Every analysis script reads from the canonical long table `panel_long`
 touches quarterly_financials / stock_prices directly anymore.
 
 Core preprocessing:
-    load_long(...)          -> filtered long DataFrame (the raw table)
-    get_series(ticker,item) -> quarterly pd.Series indexed by 'YYYY-QN'
-    to_wide(item, ...)      -> wide DataFrame [index=quarter, cols=ticker]
-    build_dataset(...)      -> convenience: dict of {item: wide frame} + metadata
+    load_long(...)               -> filtered long DataFrame (the raw table)
+    get_series(ticker,item,...)  -> quarterly pd.Series, optional transform
+    to_wide(item, ...)           -> wide DataFrame [index=quarter, cols=ticker]
+    to_wide_balanced(item, ...)  -> to_wide + min_quarters coverage filter
+    build_dataset(...)           -> convenience: dict of {item: wide frame} + metadata
 
 Derived items (computed here, not stored): `cogs` = revenue - gross_profit.
+
+Transforms available in get_series() via transform= parameter:
+    'level'      : raw value (default)
+    'log'        : natural log (for VECM — requires positive values)
+    'zscore'     : (x - mean) / std over the ticker's own history
+    'growth_qoq' : QoQ % change
+    'growth_yoy' : YoY % change
 """
 from __future__ import annotations
 from pathlib import Path
@@ -132,30 +140,83 @@ def _stored_series(long_or_db, ticker, item):
     return s
 
 
-def get_series(source, ticker, item) -> pd.Series:
+def get_series(source, ticker, item, transform: str = "level") -> pd.Series:
     """
     Quarterly series for (ticker, item), indexed by 'YYYY-QN'. `source` may be a DB
     path or a preloaded long DataFrame. Handles derived items (e.g. 'cogs').
+
+    transform options:
+      'level'      - raw value (default)
+      'log'        - natural log; non-positive values become NaN
+      'zscore'     - (x - mean) / std over the ticker's own history
+      'growth_qoq' - QoQ % change (x/x.shift(1) - 1)
+      'growth_yoy' - YoY % change (x/x.shift(4) - 1)
     """
     if item in DERIVED_ITEMS:
         a, b = DERIVED_ITEMS[item]
         sa, sb = _stored_series(source, ticker, a), _stored_series(source, ticker, b)
         s = (sa - sb).dropna()
         s.name = item
-        return s
-    if item not in STORED_ITEMS:
+    elif item not in STORED_ITEMS:
         raise ValueError(f"unknown item {item!r}. options: {AVAILABLE_ITEMS}")
-    return _stored_series(source, ticker, item)
+    else:
+        s = _stored_series(source, ticker, item)
+
+    if transform == "level":
+        return s
+    if transform == "log":
+        out = np.log(s.where(s > 0))
+        out.name = f"{item}_log"
+        return out.dropna()
+    if transform == "zscore":
+        sd = s.std(ddof=0)
+        out = (s - s.mean()) / sd if sd else s * 0.0
+        out.name = f"{item}_zscore"
+        return out.dropna()
+    if transform == "growth_qoq":
+        out = s / s.shift(1) - 1.0
+        out.name = f"{item}_growth_qoq"
+        return out.dropna()
+    if transform == "growth_yoy":
+        out = s / s.shift(4) - 1.0
+        out.name = f"{item}_growth_yoy"
+        return out.dropna()
+    raise ValueError(f"unknown transform {transform!r}. options: level, log, zscore, growth_qoq, growth_yoy")
 
 
-def to_wide(item, db=DB_DEFAULT, tickers=None, sections=None) -> pd.DataFrame:
-    """Wide frame for one item: index = quarter (sorted), columns = ticker."""
+def to_wide(item, db=DB_DEFAULT, tickers=None, sections=None,
+            transform: str = "level") -> pd.DataFrame:
+    """Wide frame for one item: index = quarter (sorted), columns = ticker.
+
+    transform: same options as get_series() — 'level', 'log', 'zscore',
+               'growth_qoq', 'growth_yoy'.
+    """
     need = list(DERIVED_ITEMS[item]) if item in DERIVED_ITEMS else [item]
     long = load_long(db, tickers=tickers, items=need, sections=sections)
     ticks = tickers or sorted(long.ticker.unique())
-    cols = {tk: get_series(long, tk, item) for tk in ticks}
+    cols = {tk: get_series(long, tk, item, transform=transform) for tk in ticks}
     wide = pd.DataFrame(cols)
     return wide.loc[sorted(wide.index, key=qkey)]
+
+
+def to_wide_balanced(item, min_quarters: int = 20, db=DB_DEFAULT,
+                     tickers=None, sections=None,
+                     transform: str = "level") -> pd.DataFrame:
+    """Wide frame filtered to tickers with >= min_quarters non-null observations.
+
+    VECM/ECM 추정에서 표본 수가 부족한 ticker(스타트업·신규 상장)를 자동 제외한다.
+    min_quarters 기본값 20 = 5년치 분기 (VECM 최소 추정 가능 수준).
+
+    Returns:
+        wide DataFrame, plus attribute .excluded listing dropped tickers.
+    """
+    wide = to_wide(item, db=db, tickers=tickers, sections=sections, transform=transform)
+    coverage = wide.notna().sum()
+    keep = coverage[coverage >= min_quarters].index
+    excluded = sorted(set(wide.columns) - set(keep))
+    result = wide[keep]
+    result.excluded = excluded          # caller may inspect
+    return result
 
 
 def companies(db=DB_DEFAULT) -> pd.DataFrame:
