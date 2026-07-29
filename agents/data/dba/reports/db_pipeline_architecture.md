@@ -45,7 +45,8 @@ refresh_financials.py  →   (+ companies)                ├─ null_policy 적
 
 ```sql
 CREATE TABLE companies (
-    ticker          TEXT,           -- 거래소 티커 (PK)
+    BL_ticker          TEXT,           -- 블룸버그 티커 (PK)
+    YH_ticker          TEXT,           -- 거래소 티커 (PK)
     slug            TEXT,           -- snake_case 슬러그
     name            TEXT,
     exchange        TEXT,
