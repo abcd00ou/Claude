@@ -11,6 +11,7 @@
 | [insights.md](insights.md) | 시기 구분, 주제별 변화, FDE 정리, 정책 제안, 개념 사전 |
 | [timeline.md](timeline.md) | 영상 19개 요약 (최신순) |
 | [index.html](index.html) | 위 내용을 보기 좋게 만든 웹페이지 |
+| [fde_curriculum.md](fde_curriculum.md) / [.html](fde_curriculum.html) | 분석 내용을 바탕으로 설계한 12주 FDE 양성 과정 |
 | `transcripts/` | 영상별 자막 전문 (`YYYY-MM-DD_<videoId>.md`). **로컬 전용, git 제외** |
 | `raw_vtt/` | yt-dlp 원본 자막(.vtt)과 메타데이터(.info.json). **로컬 전용, git 제외** |
 

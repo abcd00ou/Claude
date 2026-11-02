@@ -1,0 +1,236 @@
+<title>FDE 양성 과정</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: syllabus column; a 12-week strip as the course map, modules as expandable rows with source-video stamps, then capstone and rubric. */
+:root{
+  --paper:#eef1f6; --surface:#ffffff; --ink:#16213a; --ink-2:#4a5672; --rule:#cfd6e3;
+  --accent:#2f4fd8; --mark:#ffe14d;
+  --pa:#7b8cc4; --pb:#3f9b8f; --pc:#c77d2e; --pd:#2f4fd8;
+  --display:"Black Han Sans","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){color-scheme:dark;
+    --paper:#0f1524; --surface:#171f33; --ink:#e6eaf4; --ink-2:#9ea9c3; --rule:#2a3550;
+    --accent:#8ea4ff; --mark:#6b5a00; --pa:#97a6da; --pb:#5cc1b3; --pc:#e3a05a; --pd:#8ea4ff;}
+}
+:root[data-theme="dark"]{color-scheme:dark;
+  --paper:#0f1524; --surface:#171f33; --ink:#e6eaf4; --ink-2:#9ea9c3; --rule:#2a3550;
+  --accent:#8ea4ff; --mark:#6b5a00; --pa:#97a6da; --pb:#5cc1b3; --pc:#e3a05a; --pd:#8ea4ff;}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.7;margin:0;padding-inline:20px}
+.wrap{max-width:880px;margin:0 auto;padding-block:48px 80px;display:grid;gap:60px}
+h1,h2{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:clamp(40px,7vw,60px)} h2{font-size:28px}
+h3{font-size:17px;margin:0;font-weight:700}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.mark{background:linear-gradient(transparent 55%,var(--mark) 55%);padding-inline:2px}
+section{display:grid;gap:20px}
+.lede{font-size:19px;max-width:62ch}
+.note{font-size:13px;color:var(--ink-2);max-width:68ch}
+.tag{font-family:var(--mono);font-size:11px;border:1px solid var(--rule);border-radius:3px;padding:0 5px;color:var(--ink-2);white-space:nowrap}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+.goals{counter-reset:g;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:10px;padding:0;margin:0;list-style:none}
+.goals li{counter-increment:g;background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:12px 14px 12px 44px;position:relative;font-size:15px}
+.goals li::before{content:counter(g);position:absolute;left:14px;top:11px;font-family:var(--mono);font-weight:500;color:var(--accent)}
+
+/* week strip */
+.strip{overflow-x:auto}
+.weeks{display:grid;grid-template-columns:repeat(12,minmax(56px,1fr));gap:4px;min-width:680px}
+.wk{background:var(--surface);border:1px solid var(--rule);border-top:4px solid var(--c);border-radius:4px;padding:8px 6px;display:grid;gap:2px;text-decoration:none;color:var(--ink);min-height:84px;align-content:start}
+.wk:hover{border-color:var(--c)}
+.wk .n{font-family:var(--mono);font-size:11px;color:var(--ink-2)}
+.wk .m{font-size:12.5px;line-height:1.35;font-weight:500}
+.wk.cap{grid-column:span 4}
+.parts{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px;color:var(--ink-2)}
+.parts span{display:inline-flex;align-items:center;gap:6px}
+.parts i{width:10px;height:10px;border-radius:2px;display:inline-block}
+
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.facts div{background:var(--surface);padding:12px 14px;display:grid;gap:2px}
+.facts b{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--ink-2);letter-spacing:.05em}
+.facts span{font-size:14.5px}
+
+/* modules */
+.mods{display:grid;gap:10px}
+details.mod{background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--c);border-radius:6px;scroll-margin-top:16px}
+details.mod>summary{list-style:none;cursor:pointer;padding:14px 18px;display:grid;grid-template-columns:auto 1fr auto;gap:4px 14px;align-items:baseline}
+details.mod>summary::-webkit-details-marker{display:none}
+.mod .code{font-family:var(--mono);font-size:13px;color:var(--c);font-weight:500}
+.mod .wkno{font-family:var(--mono);font-size:12px;color:var(--ink-2)}
+.mod .why{grid-column:2/4;font-size:14px;color:var(--ink-2)}
+.mod .chev{grid-row:1;grid-column:3;font-family:var(--mono);color:var(--ink-2)}
+details.mod[open] .chev{transform:rotate(90deg)}
+.mod .body{padding:4px 18px 18px;display:grid;gap:16px;border-top:1px solid var(--rule)}
+.mod .src{display:flex;flex-wrap:wrap;gap:6px;padding-top:12px}
+.mod h4{margin:0;font-size:13px;font-family:var(--mono);font-weight:500;letter-spacing:.06em;color:var(--ink-2)}
+.mod ul{margin:6px 0 0;padding-left:18px;display:grid;gap:4px;font-size:14.5px}
+.mod .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.lab{background:var(--paper);border-radius:4px;padding:12px 14px}
+
+.tbl{overflow-x:auto;border:1px solid var(--rule);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:560px}
+th,td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--rule)}
+thead th{font-weight:500;color:var(--ink-2);font-size:13px}
+tbody tr:last-child td{border-bottom:0}
+td.k{font-family:var(--mono);white-space:nowrap;color:var(--ink-2)}
+.events{display:grid;gap:8px;padding:0;margin:0;list-style:none}
+.events li{display:grid;grid-template-columns:64px 1fr;gap:12px;font-size:15px}
+.events b{font-family:var(--mono);font-weight:500;color:var(--pc)}
+.weights{display:flex;height:34px;border-radius:4px;overflow:hidden;font-family:var(--mono);font-size:12.5px}
+.weights div{display:flex;align-items:center;padding-inline:10px;color:#fff;white-space:nowrap;overflow:hidden}
+.must{background:var(--surface);border:1px solid var(--accent);border-radius:6px;padding:14px 16px;font-size:15px}
+@media (max-width:480px){details.mod>summary{grid-template-columns:auto 1fr}.mod .why{grid-column:1/3}.mod .chev{display:none}}
+</style>
+
+<div class="wrap">
+
+<header style="display:grid;gap:18px">
+  <div class="eyebrow">교육과정 설계안 · 근거 자료: 까칠한 AI 본편 19개</div>
+  <h1>FDE 양성 과정</h1>
+  <p class="lede">12주 동안 모호한 엔터프라이즈 요청을 난제로 정의하고, 범용 에이전트로 풀고, <span class="mark">고객사에 메인테이너를 남긴 채 떠나는</span> FDE를 기릅니다.</p>
+  <p class="note">황현태(스페이스와이 대표)는 교육과정을 제안한 적이 없습니다. 영상에 나온 개념과 방법을 교육용으로 다시 짰습니다. 모듈마다 근거 영상 날짜를 달았고, 주차 배분·과제·평가 기준은 정리자가 설계했습니다. 화자가 말한 시장 수치는 검증하지 않았습니다.</p>
+</header>
+
+<section aria-labelledby="s-goal">
+  <h2 id="s-goal">수료하면 할 수 있는 일</h2>
+  <ol class="goals">
+    <li>모호한 요청을 난제 수준의 문제 정의로 바꿉니다</li>
+    <li>고객사의 사람, 니즈, 데이터 흐름을 토폴로지 맵으로 그립니다</li>
+    <li>업무별 에이전트를 짓지 않고 범용 에이전트를 세팅합니다</li>
+    <li>암묵지를 수집해 컨텍스트 그래프로 구조화합니다</li>
+    <li>실무부터 경영진까지 체감되는 버티컬 AX를 설계합니다</li>
+    <li>결과물을 평가 기준과 완성도로 검수합니다</li>
+    <li>메인테이너를 키우고 내재화 산출물을 남긴 뒤 프로젝트를 끝냅니다</li>
+  </ol>
+</section>
+
+<section aria-labelledby="s-map">
+  <h2 id="s-map">12주 과정 지도</h2>
+  <div class="strip"><div class="weeks" id="weeks"></div></div>
+  <div class="parts">
+    <span><i style="background:var(--pa)"></i>A. 기초</span>
+    <span><i style="background:var(--pb)"></i>B. 고객 현장</span>
+    <span><i style="background:var(--pc)"></i>C. 마무리와 지속</span>
+    <span><i style="background:var(--pd)"></i>D. 캡스톤</span>
+  </div>
+  <div class="facts">
+    <div><b>대상</b><span>실무 개발 경험이 있고 코딩 에이전트를 써본 엔지니어. 창업이나 극초기 스타트업 경험자 우대</span></div>
+    <div><b>학습 단위</b><span>3인 팟(작업반장, 메인 FDE, 서포터)으로 움직이며 모듈마다 역할을 바꿉니다</span></div>
+    <div><b>AX 타임</b><span>과정 내내 하루 2시간은 AI로만 일하고, 진행 상황을 스레드로 공유합니다</span></div>
+    <div><b>주당 시간</b><span>강의 3시간, 실습 6시간, 팟 리뷰 2시간</span></div>
+  </div>
+</section>
+
+<section aria-labelledby="s-mod">
+  <h2 id="s-mod">모듈</h2>
+  <p class="note">모듈을 누르면 학습 내용과 실습이 펼쳐집니다. 날짜 태그는 근거가 된 영상의 업로드일(2026년)입니다.</p>
+  <div class="mods" id="mods"></div>
+</section>
+
+<section aria-labelledby="s-cap">
+  <h2 id="s-cap">캡스톤: 4주 모의 고객 프로젝트</h2>
+  <p class="note">실제 FDE 프로젝트(3~6개월)를 4주로 줄였습니다. 강사진이 고객사 인물을 연기하고, 가능하면 협력 기업의 비민감 과제를 씁니다.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>주차</th><th>단계</th><th>해야 할 일</th><th>산출물</th></tr></thead>
+    <tbody>
+      <tr><td class="k">9</td><td>진입</td><td>킥오프, 인터뷰, 토폴로지 스캔, 요청을 문제로 정의</td><td>토폴로지 맵, 문제 정의서, 기간·중점 합의서</td></tr>
+      <tr><td class="k">10</td><td>수집과 설계</td><td>팀장급과 에이전틱 워크 시작, 암묵지 수집, 범용 에이전트 세팅</td><td>컨텍스트 그래프 v1, 에이전트 세팅 문서</td></tr>
+      <tr><td class="k">11</td><td>구현과 검수</td><td>버티컬 워크플로 구현, 강건성과 성능 측정</td><td>워크플로 데모, 평가 리포트</td></tr>
+      <tr><td class="k">12</td><td>내재화와 퇴장</td><td>메인테이너 교육, 핸드오프, 경영진 보고</td><td>핸드오프 패키지, 최종 보고, 회고</td></tr>
+    </tbody>
+  </table></div>
+  <h3>강사가 중간에 넣는 사건</h3>
+  <ul class="events">
+    <li><b>10주차</b><span>두 부서가 넣은 지식이 서로 충돌합니다</span></li>
+    <li><b>11주차</b><span>임원이 성공 기준을 바꿉니다</span></li>
+    <li><b>12주차</b><span>메인테이너로 정한 사람이 다른 부서로 옮겨, 후보를 다시 찾아야 합니다</span></li>
+  </ul>
+</section>
+
+<section aria-labelledby="s-ev">
+  <h2 id="s-ev">평가</h2>
+  <div class="weights" role="img" aria-label="평가 비중: 모듈 산출물 40%, 캡스톤 50%, AX 타임과 동료 평가 10%">
+    <div style="width:40%;background:var(--pb)">모듈 산출물 40%</div>
+    <div style="width:50%;background:var(--pd)">캡스톤 50%</div>
+    <div style="width:10%;background:var(--pc)">10%</div>
+  </div>
+  <p class="note">마지막 10%는 AX 타임 참여와 동료 평가입니다.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>기준</th><th>확인 질문</th><th>근거</th></tr></thead>
+    <tbody>
+      <tr><td>사람 파악</td><td>숨은 키맨과 데이터를 가진 사람을 찾았는가</td><td class="k">10-05</td></tr>
+      <tr><td>문제 수준</td><td>난제 판별 4문항을 통과하는 문제를 골랐는가</td><td class="k">10-09</td></tr>
+      <tr><td>아키텍처</td><td>업무별 에이전트를 짓지 않고 범용 에이전트를 세팅했는가</td><td class="k">07-06</td></tr>
+      <tr><td>지식 자산</td><td>컨텍스트 그래프에 태그와 충돌 해결 기록이 있는가</td><td class="k">04-09</td></tr>
+      <tr><td>체감</td><td>실무자부터 경영진까지 효과가 이어지는가</td><td class="k">06-11</td></tr>
+      <tr><td>품질</td><td>강건성과 성능을 측정했고, 제출물에 검토 안 한 AI 결과물이 없는가</td><td class="k">03-11 · 04-21</td></tr>
+      <tr><td>내재화</td><td>메인테이너가 FDE 없이 지식 PR 1건을 처리할 수 있는가</td><td class="k">08-12 · 09-30</td></tr>
+      <tr><td>팀 운영</td><td>부담을 나눴고 진행 과정을 공유했는가</td><td class="k">07-14</td></tr>
+    </tbody>
+  </table></div>
+  <div class="must"><b>수료 조건.</b> 캡스톤의 내재화 항목은 반드시 통과해야 합니다. 고객사 메인테이너가 FDE 도움 없이 실제로 지식 PR 1건을 처리해야 수료합니다.</div>
+</section>
+
+<section aria-labelledby="s-memo">
+  <h2 id="s-memo">강사용 메모</h2>
+  <ul class="events" style="grid-template-columns:1fr">
+    <li style="grid-template-columns:1fr"><span>영상 내용을 인용할 때는 화자의 주장이라고 밝히고, 시장 수치는 원출처를 확인한 뒤 씁니다.</span></li>
+    <li style="grid-template-columns:1fr"><span>화자 스스로 7월에 "3월과는 흐름이 달라졌다"고 말했습니다. 이 과정도 6개월마다 내용을 다시 점검합니다.</span></li>
+    <li style="grid-template-columns:1fr"><span>과정에도 같은 원칙을 적용합니다. 장기 목표는 수료생이 강사 없이 다음 기수를 운영하는 것입니다.</span></li>
+  </ul>
+</section>
+
+</div>
+
+<script>
+const M=[
+ {c:"M1",w:1,p:"a",t:"FDE란 무엇인가",why:"FDE의 정의, SI·SaaS·컨설팅과의 차이, 한국에서 수요가 생긴 배경",src:["08-12","09-30","10-09","08-20"],
+  learn:["FDE는 팔란티어가 만든 말로 '전방 파견 엔지니어'입니다. 고객 문제를 풀기 위해 교육, 컨설팅, 코딩, 조직문화 활동까지 모두 합니다.","SI는 유지보수 인력을 남기고, SaaS는 구독료를 받고, 컨설팅은 보고서를 남깁니다. FDE는 메인테이너를 남기고 떠납니다.","SI의 이름만 바꾼 것이냐는 비판에 화자는, AI 덕분에 한 명이 기획부터 개발까지 감당하게 되면서 더 뛰어난 인재가 들어오고 있다고 답합니다.","쉬운 문제는 AI가 가져갑니다. FDE는 고객이 못 푸는 난제를 대신 푸는 사람입니다."],
+  lab:"최근 SI 공고 3건을 FDE 방식으로 다시 씁니다. 기간, 팀 구성, 종료 조건, 산출물을 바꿉니다.",out:"FDE 방식 재작성안"},
+ {c:"M2",w:2,p:"a",t:"AI 빌더 되기",why:"본인 업무를 자동화해서 아예 없애고, 검수할 수 있는 범위 안에서 여러 일을 동시에 시킵니다",src:["02-27","03-17","03-26","04-30","07-14"],
+  learn:["비가역적 자동화: 한 번 해보고 끝내지 않고, 그 업무를 일정 기간 건드리지 않아도 되게 만듭니다.","동시에 여러 일을 시키되, 4개를 넘기면 생산성이 떨어진다는 HBR 인용을 기억합니다. 사무 업무에도 작업 규칙(하네스)이 필요합니다.","매일 10분 AI 소식을 훑고, 일주일에 하나는 실제 업무에 써봅니다. 써보지 않은 도구는 평가하지 않습니다.","장시간 돌리는 환경을 갖추되, 3~4시간짜리 자율 루프는 검수할 수 없으니 작업을 잘게 쪼갭니다."],
+  lab:"2주간 AX 타임을 실천하며 본인 업무 3개를 자동화합니다. 동시에 몇 개 세션을 돌렸는지, 어떻게 검수했는지 일지를 씁니다.",out:"자동화 3건 보고서 (업무가 정말 없어졌는지 판정)"},
+ {c:"M3",w:3,p:"a",t:"범용 에이전트와 워크 OS",why:"업무마다 에이전트를 새로 짓는 대신 범용 에이전트가 그 일을 하도록 세팅합니다",src:["07-06","08-20","03-11"],
+  learn:["업무별 에이전트를 지으면 SI 방식이 반복됩니다. 에이전트 4천 개는 곧 유지보수 4천 개입니다.","AI 에이전트는 앱이 아니라 컴퓨터입니다. 'OO 에이전트 구축'이 아니라 '범용 에이전트가 OO을 할 수 있게 세팅'으로 접근합니다.","회사가 직접 쥐어야 할 것은 에이전트가 아니라 데이터 접근 경로와 보안·정책 같은 거버넌스입니다.","리더와 임원에게는 AI를 얼마나 쓰는지(토큰 사용량)를 지표로 봅니다."],
+  lab:"가상 RFP '재무 건전성 예측 에이전트 구축'을 범용 에이전트 세팅, 데이터 연결, 거버넌스로 다시 설계합니다. 6개월 뒤 업무가 바뀌면 무엇을 고쳐야 하는지도 씁니다.",out:"RFP 재설계서, 유지보수 시나리오"},
+ {c:"M4",w:4,p:"b",t:"토폴로지 스캔",why:"고객사에 들어가 가장 먼저, 누가 무엇을 원하고 데이터가 어디로 흐르는지 지도로 그립니다",src:["10-05","08-12"],
+  learn:["토폴로지 맵은 조직도가 아닙니다. 프로젝트의 키맨, 각자의 니즈, 데이터 흐름을 그린 지도입니다.","실사용자, PM, 지시한 임원은 모두 하나의 고객이지만 원하는 것이 다릅니다.","현재 상태를 그려 보면 고객이 왜 외부에 맡겼는지 보입니다. 현업이 바쁘거나 해본 사람이 없는 경우가 많습니다.","체크 질문: 누구에게 칭찬받을 것인가, 실패하면 누가 곤란한가, 데이터는 누구에게 받는가, 우리가 떠난 뒤 누가 유지보수하는가, 지도에 빠진 사람은 없는가"],
+  lab:"강사들이 고객사 인물을 연기합니다. 45분 인터뷰 세 번으로 지도 v1을 그리고, 다음 날 v2로 고칩니다. 강사가 숨겨둔 키맨을 찾았는지 확인합니다.",out:"토폴로지 맵 v1·v2와 변경 이유"},
+ {c:"M5",w:5,p:"b",t:"문제 정의와 난제 판별",why:"모호한 요청을 측정할 수 있는 문제로 바꾸고, 맡을 만한 문제인지 가려냅니다",src:["10-09","08-12","06-11"],
+  learn:["고객은 처음부터 다듬어진 문제를 가져오지 않습니다. 모호한 요청을 구체적으로 깎는 것이 첫 역량입니다.","난제는 세 가지입니다. 문제 자체가 어렵거나, 조직 사정으로 막혔거나, 양이 너무 많은 경우입니다.","판별 4문항: '와, 이게 될까?' 소리가 나오는가, 내부에서 AI만 돌려도 풀리지 않는가, 패턴으로 남길 수 있는가, 고객이 정말 원하는 방식인가","요구가 바뀌는 건 자연스럽습니다. 권한이 없어도 프로젝트 주인처럼 먼저 바꾸자고 제안합니다. 기간은 3~6개월로 정합니다."],
+  lab:"모호한 요청 3건을 문제 정의서로 바꾸고 4문항으로 판정합니다. 한 건은 실습 중간에 강사가 요구를 바꿉니다.",out:"문제 정의서 3부, 판정표"},
+ {c:"M6",w:6,p:"b",t:"암묵지와 컨텍스트 그래프",why:"머릿속에만 있는 업무 노하우를 모아, 누가 언제 한 말인지까지 담아 구조화합니다",src:["03-05","04-09","04-02"],
+  learn:["암묵지는 문서에 없이 머릿속에만 있는 업무 노하우입니다. 화자는 업무의 절반 이상이 여기에 있다고 봅니다.","'적어내라'고 하면 모이지 않습니다. 업무를 에이전트에게 시키고, 입력한 프롬프트와 피드백을 기록하면 노하우가 드러납니다. 팀장급부터 시작합니다.","노하우를 내준 시니어에게는 높아진 생산성을 성과로 인정해 줍니다. 지식이 바뀌면 코드처럼 변경 요청(PR)으로 올리고 담당자가 검토합니다.","지식끼리 부딪히면 틀린 사실을 지우고, 누가 어떤 상황에서 한 말인지 구분하고, 그래도 안 되면 '이 회사는 원래 어떻게 하나'를 따릅니다."],
+  lab:"팀장 역할을 맡은 강사가 일주일간 에이전트에게 지시한 기록을 받습니다. 여기서 노하우 10개 이상을 뽑아 정리하고, 충돌 2건을 해결합니다.",out:"컨텍스트 그래프 v1, 충돌 해결 기록, 지식 변경 요청 템플릿"},
+ {c:"M7",w:7,p:"b",t:"버티컬 AX와 품질 검수",why:"한 업무를 실무부터 경영진까지 위로 관통시키고, 결과물을 기준에 맞춰 검수합니다",src:["06-11","03-11","04-21","07-14"],
+  learn:["업무를 옆으로 늘리지 말고 위로 잇습니다. 실무 처리, 보고, 중간 관리자 판단, 경영진 의사결정까지 한 줄로 연결해야 모두가 변화를 느낍니다.","평가는 두 가지를 봅니다. 같은 질문에 같은 답을 내는지(강건성), 틀렸다면 질문 이해·데이터 조회·잡음 중 어디서 틀렸는지(성능)입니다.","검토하지 않은 AI 결과물은 신뢰를 깎습니다. 마지막 5%의 완성도는 사람이 책임집니다.","사람이 검수할 수 있는 크기로 작업을 나눕니다."],
+  lab:"'비용 정리 → 팀장 보고 → 임원 결정' 흐름을 데모로 만들고, 테스트 질문 30개로 측정합니다. 고객용 1쪽 보고서는 동료가 검토합니다.",out:"워크플로 데모, 평가 리포트, 1쪽 보고서"},
+ {c:"M8",w:8,p:"c",t:"내재화, 퇴장, 팀 지속성",why:"고객사에 유지보수할 사람을 키워 두고 떠나며, 우리 팀이 지치지 않게 관리합니다",src:["08-12","09-30","10-05","04-02","07-14","03-17"],
+  learn:["FDE의 성공은 고객이 같은 문제로 우리를 다시 찾지 않는 것입니다. 화자는 이를 '버려져야 한다'고 표현합니다.","메인테이너 후보는 두 부류입니다. 유지보수를 하며 도메인을 배워 갈 주니어, 그리고 이제 AI로 직접 고칠 수 있게 된 도메인 시니어입니다.","시니어가 AI를 가르치고 AI가 주니어를 가르치는 구조를 만들면, 머릿속 노하우가 문서로 남습니다.","혼자 프로젝트를 맡지 말고 부담을 나눕니다. 노트북을 닫을 때 죄책감이 들거나 쉬면서도 에이전트를 확인한다면 번아웃 신호입니다."],
+  lab:"메인테이너에게 넘길 인수 패키지(운영 매뉴얼, 그래프 관리 가이드, 30일 동행 계획)와 계약서에 넣을 내재화 조항 초안을 만듭니다. 팟 회고도 합니다.",out:"인수 패키지, 내재화 조항 초안"},
+ {c:"M9",w:null,p:"c",t:"(선택) 공공·규제 산업 트랙",why:"외산 모델을 쓸 수 없는 폐쇄망 환경, OCR, 조달 관행 다루기",src:["02-23","03-11","04-30","08-20"],
+  learn:["해외로 내보낼 수 없는 정보가 많은 곳에서는 온프레미스, 오픈소스 모델, 문서 전산화(OCR)가 필요합니다.","공공 AX 원칙: 데이터 접근 경로, 상용 도구 훈련과 샌드박스, 암묵지 파이프라인, 평가 체계, 리더부터 바꾸기","구축과 유지보수를 따로 발주하는 관행은 AI가 빠르게 개선되는 속도와 맞지 않습니다.","관련 정책: 국산 모델, 모두의 AI, 국산 범용 에이전트, 공공 데이터 MCP 개방"],
+  lab:"M3의 RFP 재설계서를 폐쇄망 조건으로 다시 씁니다.",out:"폐쇄망판 재설계서"}
+];
+const col=p=>`var(--p${p})`;
+const W=document.getElementById("weeks");
+W.innerHTML=M.filter(m=>m.w).map(m=>`<a class="wk" href="#mod-${m.c}" style="--c:${col(m.p)}"><span class="n">${m.w}주</span><span class="m">${m.c} ${m.t}</span></a>`).join("")
+ +`<a class="wk cap" href="#s-cap" style="--c:var(--pd)"><span class="n">9–12주</span><span class="m">캡스톤: 모의 고객 프로젝트</span></a>`;
+document.getElementById("mods").innerHTML=M.map((m,i)=>`<details class="mod" id="mod-${m.c}" style="--c:${col(m.p)}"${i===0?" open":""}>
+ <summary><span class="code">${m.c}</span><h3>${m.t}</h3><span class="wkno">${m.w?m.w+"주차":"선택"}</span><span class="why">${m.why}</span></summary>
+ <div class="body">
+  <div class="src">${m.src.map(s=>`<span class="tag">${s}</span>`).join("")}</div>
+  <div><h4>핵심 내용</h4><ul>${m.learn.map(x=>`<li>${x}</li>`).join("")}</ul></div>
+  <div class="two">
+   <div class="lab"><h4>실습</h4><p style="font-size:14.5px;margin-top:6px">${m.lab}</p></div>
+   <div class="lab"><h4>산출물</h4><p style="font-size:14.5px;margin-top:6px">${m.out}</p></div>
+  </div>
+ </div></details>`).join("");
+W.addEventListener("click",e=>{const a=e.target.closest("a[href^='#mod-']");if(a){const d=document.querySelector(a.getAttribute("href"));if(d)d.open=true;}});
+</script>
