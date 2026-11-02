@@ -74,6 +74,9 @@ fde_lab/
 │       ├── expo_leads.csv          전시회 리드 16건
 │       ├── prompt_log_moon.md      팀장 지시 로그 (W6부터 공개)
 │       └── interview_han.md        시니어 인터뷰 (W6부터 공개)
+├── web/
+│   ├── student.html              수강생용 강의 페이지 (실습 자료만)
+│   └── instructor.html           강사용 강의 페이지 (전체)
 ├── weeks/
 │   └── week01.md ~ week12.md     주차별 [A. 실습 자료] + [B. 예상 산출물]
 └── instructor/                   ← 수강생 비공개
@@ -94,3 +97,14 @@ fde_lab/
 - 주차별 평가 포인트: 각 `weekNN.md` A 파트 끝
 - 캡스톤 채점 기준: [../fde_curriculum.md](../fde_curriculum.md) 4절
 - 수료 판정: `instructor/solo_fde_readiness.md`. 4번(숨은 키맨), 6번(난제와 범위 관리), 11번(내재화)은 3점이어야 "투입 가능"입니다.
+
+## 6. 강의용 웹페이지
+- **수강생용:** https://claude.ai/artifact/2hudkYYKEWJ3w72m9tfzeF (`web/student.html`)
+  - 케이스, 데이터 표, 주차별 A 파트만 담았습니다.
+  - 평가 포인트와 4주차 숨은 키맨 단서는 뺐습니다.
+  - 6주차 자료는 잠금 화면 뒤에 두었습니다.
+- **강사용:** https://claude.ai/artifact/QqBpHnT9cK141aV1ysMVuX (`web/instructor.html`)
+  - 주차별 A와 B 파트, 숨은 정보, 정답 키, 준비도 평가를 모두 담았습니다.
+  - 예상 산출물은 노란 상자로 구분합니다.
+- 두 페이지 모두 비공개 상태입니다. 수강생에게는 **수강생용 링크만** 공유하세요.
+- 이 폴더의 MD와 CSV를 고치면 페이지를 다시 생성해야 합니다. 생성 스크립트는 저장소의 코드 금지 규칙 때문에 저장소 밖에 있으므로, Claude에게 "웹페이지 재생성"을 요청하세요.
