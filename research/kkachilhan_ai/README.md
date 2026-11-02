@@ -12,6 +12,7 @@
 | [timeline.md](timeline.md) | 영상 19개 요약 (최신순) |
 | [index.html](index.html) | 위 내용을 보기 좋게 만든 웹페이지 |
 | [fde_curriculum.md](fde_curriculum.md) / [.html](fde_curriculum.html) | 분석 내용을 바탕으로 설계한 12주 FDE 양성 과정 |
+| [fde_lab/](fde_lab/README.md) | 12주 실습 자료와 예상 산출물 (가상 제조사 케이스, 1인 FDE 목표) |
 | `transcripts/` | 영상별 자막 전문 (`YYYY-MM-DD_<videoId>.md`). **로컬 전용, git 제외** |
 | `raw_vtt/` | yt-dlp 원본 자막(.vtt)과 메타데이터(.info.json). **로컬 전용, git 제외** |
 
