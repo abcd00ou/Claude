@@ -7,3 +7,12 @@ __pycache__/
 node_modules/
 .gstack/
 *.bak
+
+# keyword_analysis: 의뢰자 원자료·중간결과·가상환경은 커밋하지 않음
+keyword_analysis/.venv/
+keyword_analysis/cache/
+keyword_analysis/output/
+keyword_analysis/*.csv
+keyword_analysis/*.xlsx
+keyword_analysis/*.docx
+keyword_analysis/*.pdf
