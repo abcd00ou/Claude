@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>황현태 프로필 · 까칠한 AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Same visual system as index.html (까칠한 AI 연대기): one reading column, profile card, copy-ready intros, career log, sources. */
+:root{
+  --paper:#eef1f6; --surface:#ffffff; --ink:#16213a; --ink-2:#4a5672; --rule:#cfd6e3;
+  --accent:#2f4fd8; --mark:#ffe14d;
+  --display:"Black Han Sans","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --body:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{color-scheme:dark;--paper:#0f1524;--surface:#171f33;--ink:#e6eaf4;--ink-2:#9ea9c3;--rule:#2a3550;--accent:#8ea4ff;--mark:#6b5a00}
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.7;margin:0;padding-inline:20px}
+.wrap{max-width:860px;margin:0 auto;padding-block:48px 80px;display:grid;gap:56px}
+h1,h2{font-family:var(--display);font-weight:400;letter-spacing:.01em;text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:clamp(44px,8vw,72px)}
+h2{font-size:26px}
+h3{font-size:16px;margin:0;font-weight:700}
+p{margin:0}
+a{color:var(--accent)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.mark{background:linear-gradient(transparent 55%,var(--mark) 55%);padding-inline:2px}
+section{display:grid;gap:18px}
+.lede{font-size:19px;max-width:62ch}
+.note{font-size:13px;color:var(--ink-2);max-width:68ch}
+sup{font-family:var(--mono);font-size:11px;color:var(--accent)}
+
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.facts div{background:var(--surface);padding:14px 16px;display:grid;gap:2px;align-content:start}
+.facts dt{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--ink-2)}
+.facts dd{margin:0;font-size:15px}
+
+.intro{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:16px 18px;display:grid;gap:10px}
+.intro header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.intro p{font-size:15px}
+.copy{font:inherit;font-size:13px;border:1px solid var(--rule);background:var(--paper);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer}
+.copy[data-done]{background:var(--ink);color:var(--paper)}
+
+.log{display:grid;border-left:2px solid var(--rule);margin-left:6px}
+.log .row{display:grid;grid-template-columns:96px 1fr;gap:16px;padding:9px 0 9px 18px;position:relative}
+.log .row::before{content:"";position:absolute;left:-6px;top:17px;width:10px;height:10px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.log .d{font-family:var(--mono);font-size:13px;color:var(--ink-2);padding-top:2px;font-variant-numeric:tabular-nums}
+.log p{font-size:15px}
+
+.claims{counter-reset:c;display:grid;gap:10px;padding:0;margin:0;list-style:none}
+.claims li{counter-increment:c;display:grid;grid-template-columns:32px 1fr;gap:8px;font-size:15px}
+.claims li::before{content:counter(c,decimal-leading-zero);font-family:var(--mono);font-size:13px;color:var(--accent);padding-top:2px}
+
+blockquote{margin:0;padding:12px 16px;border-left:4px solid var(--accent);background:var(--surface);border-radius:0 6px 6px 0;font-size:16px}
+blockquote cite{display:block;font-style:normal;font-family:var(--mono);font-size:12px;color:var(--ink-2);margin-top:4px}
+.quotes{display:grid;gap:10px}
+
+.tbl{overflow-x:auto;border:1px solid var(--rule);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:480px}
+th,td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1px solid var(--rule)}
+tr:last-child td{border-bottom:0}
+th{font-weight:500;color:var(--ink-2)}
+td.v{font-family:var(--mono);font-size:13px;color:var(--ink-2);white-space:nowrap}
+
+.check{display:grid;gap:6px;padding-left:18px;margin:0;font-size:14px;color:var(--ink-2)}
+.src{display:grid;gap:6px;padding-left:22px;margin:0;font-size:13px;color:var(--ink-2)}
+.src a{word-break:break-all}
+@media (max-width:480px){.log .row{grid-template-columns:1fr;gap:0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header style="display:grid;gap:16px">
+  <div class="eyebrow">Speaker Profile · 2026-11-06</div>
+  <h1>황현태</h1>
+  <p class="lede">엔터프라이즈 AX 스타트업 <b>스페이스와이(SpaceY) 대표 겸 리드 FDE</b>. 한국에서 FDE 모델을 처음 실험한 회사 중 하나를 이끌며 대기업 현장의 AI 전환을 수행해 왔고, 유튜브 <b>'까칠한 AI'</b>에서 <span class="mark">SI식 구축-납품-유지보수는 AI 시대에 실패한다</span>는 문제의식을 이야기합니다.</p>
+  <p class="note">공개 기사·인터뷰(숫자 각주)와 유튜브 영상 속 본인 발언을 근거로 정리했습니다. 영상 발언은 따로 검증하지 않았습니다.</p>
+</header>
+
+<section aria-labelledby="s-facts">
+  <h2 id="s-facts">한눈에 보기</h2>
+  <dl class="facts">
+    <div><dt>현직</dt><dd>스페이스와이 대표 겸 리드 FDE<sup>1</sup></dd></div>
+    <div><dt>회사 근황</dt><dd>2026-08-14 데이원컴퍼니(패스트캠퍼스 운영사)에 인수<sup>2,3</sup></dd></div>
+    <div><dt>학력</dt><dd>경남과학고 · 연세대 기계공학부 · 연세대 기계공학 박사<sup>1</sup></dd></div>
+    <div><dt>이전 경력</dt><dd>세무 AI 스타트업 혜움(혜움랩스) 공동창업<sup>1,4</sup></dd></div>
+    <div><dt>채널</dt><dd>YouTube '까칠한 AI' · 2026-02 개설 · 본편 21개</dd></div>
+    <div><dt>전문 분야</dt><dd>엔터프라이즈 AX · FDE 운영 모델 · 암묵지와 컨텍스트 그래프 · 범용 에이전트</dd></div>
+  </dl>
+</section>
+
+<section aria-labelledby="s-intro">
+  <h2 id="s-intro">바로 쓰는 소개 문구</h2>
+  <div class="intro">
+    <header><h3>짧은 버전 · 사회자 멘트 약 30초</h3><button class="copy" type="button" data-t="t-short">복사</button></header>
+    <p id="t-short">황현태 대표는 엔터프라이즈 AX 기업 스페이스와이의 대표이자 리드 FDE입니다. 연세대에서 기계공학 박사 학위를 받았고, 세무 AI 스타트업 혜움 공동창업을 거쳐 2022년 스페이스와이를 세웠습니다. 국내 대기업 현장에 FDE 팀을 투입해 AI 전환 프로젝트를 이끌어 왔고, 2026년 8월 스페이스와이가 데이원컴퍼니에 인수된 뒤에도 AX 사업을 이어가고 있습니다. 유튜브 '까칠한 AI'에서 엔터프라이즈 AX와 FDE에 대한 현장 이야기를 전하고 있습니다.</p>
+  </div>
+  <div class="intro">
+    <header><h3>긴 버전 · 행사 페이지·보도자료용</h3><button class="copy" type="button" data-t="t-long">복사</button></header>
+    <div id="t-long" style="display:grid;gap:10px">
+      <p>황현태 대표는 경남과학고와 연세대학교 기계공학부를 졸업하고 같은 대학에서 기계공학 박사 학위를 받았습니다. 대학원 시절 지식 기반 설계 연구실에서 코딩을 이어 왔고, 알파고 이후 AI로 연구 방향을 바꿔 모델 평가와 안정성을 연구했습니다. 이후 세무 분야에 AI를 적용하는 혜움을 공동창업해 4~5년간 함께했습니다.</p>
+      <p>여러 차례의 창업 시도 끝에 2021년 말 파트타임 개발자 매칭 서비스 '디오(DIO)'를 시작했고, 2022년 스페이스와이를 설립했습니다. 디오는 2023년 말 누적 가입 기업 5,300곳, 누적 전문가 11,395명을 넘겼습니다. 2025년 하반기부터는 고객사 현장에 엔지니어를 보내 문제 발굴부터 구현, 배포, 내재화까지 맡는 FDE 모델로 사업을 전환해, LG전자·키움증권 등과 AX 프로젝트를 수행했습니다. 회사 측은 재계약률 100%를 밝히고 있습니다.</p>
+      <p>2026년 8월 스페이스와이는 성인 교육 기업 데이원컴퍼니에 인수되었습니다. 황 대표는 2026년 2월부터 유튜브 '까칠한 AI'를 운영하며 리더의 AI 빌더화, 암묵지 자산화, 범용 에이전트 활용, FDE의 일하는 방식에 대한 관점을 꾸준히 이야기하고 있습니다.</p>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="s-log">
+  <h2 id="s-log">경력 타임라인</h2>
+  <div class="log">
+    <div class="row"><span class="d">2026-11</span><p>유튜브에서 '리서처 모드', '사내 FDE는 스피릿' 영상 공개</p></div>
+    <div class="row"><span class="d">2026-09</span><p>패스트캠퍼스 FDE 인터뷰<sup>1</sup>, Bloom 팟캐스트 첫 게스트<sup>4</sup>. 당시 스페이스와이는 10명 중반 규모, 그중 약 6명이 FDE</p></div>
+    <div class="row"><span class="d">2026-08-14</span><p><b>데이원컴퍼니가 스페이스와이 인수.</b> "기업 현장에서 FDE 방식으로 문제를 해결하는 과정에서 AX에 대한 수요를 확인해왔다"<sup>3</sup></p></div>
+    <div class="row"><span class="d">2026-02-23</span><p>유튜브 '까칠한 AI' 첫 본편 공개</p></div>
+    <div class="row"><span class="d">2025 하반기</span><p>국내에서 거의 처음으로 FDE 모델 실험 시작 (본인 발언, 2026-08-12 영상)</p></div>
+    <div class="row"><span class="d">2023-12</span><p>디오 누적 가입 기업 5,300곳+, 전문가 11,395명, 2022년 대비 계약 2,000%+ 증가, TIPS 선정<sup>6</sup></p></div>
+    <div class="row"><span class="d">2022</span><p>스페이스와이 설립. 사명은 SpaceX와 Y Combinator에서 따옴. 공동창업자 남송학 CTO<sup>2,4</sup></p></div>
+    <div class="row"><span class="d">2021 말</span><p>파트타임 개발자 매칭 랜딩 페이지 오픈, 디오의 시작<sup>5</sup></p></div>
+    <div class="row"><span class="d">그 이전</span><p>혜움 공동창업(4~5년). 소셜 식사 플랫폼, AI CCTV, AI 심리 상담 등 6~7번의 창업 시도<sup>4,5</sup></p></div>
+    <div class="row"><span class="d">학위 과정</span><p>연세대 기계공학 박사. 지식 기반 설계 연구실, 이후 AI 모델 평가·안정성 연구<sup>1,4</sup></p></div>
+  </div>
+</section>
+
+<section aria-labelledby="s-claims">
+  <h2 id="s-claims">대표 주장</h2>
+  <ol class="claims">
+    <li><span><b>SI식 문법은 AI 시대에 실패한다.</b> 구축-납품-유지보수 대신 고객사 내재화를 목표로 해야 한다.</span></li>
+    <li><span><b>리더가 AI 빌더가 돼라.</b> 바텀업 교육·공모전보다 리더부터 바꾸는 꼭짓점 AX가 먼저다.</span></li>
+    <li><span><b>암묵지가 해자다.</b> 업무의 절반 이상은 ERP 밖에 있고, 컨텍스트 그래프로 자산화해야 한다.</span></li>
+    <li><span><b>업무별 에이전트 말고 범용 에이전트.</b> 에이전트 4천 개는 유지보수 4천 개다. 범용 에이전트를 회사의 '워크 OS'로 써라.</span></li>
+    <li><span><b>FDE는 난제를 풀고 버려져야 한다.</b> 사람부터 파악하고(토폴로지 스캔), 메인테이너를 키운 뒤 떠난다.</span></li>
+    <li><span><b>모두가 리서처가 돼라, 사내 FDE는 스피릿으로 뽑아라.</b> (2026-11)</span></li>
+  </ol>
+</section>
+
+<section aria-labelledby="s-q">
+  <h2 id="s-q">대표 어록</h2>
+  <div class="quotes">
+    <blockquote>"FDE는 뛰어난 컨설턴트 겸 PM 겸 개발자의 역할을 동시에 하는 직무라고 보시면 됩니다."<cite>패스트캠퍼스 인터뷰 · 2026-09</cite></blockquote>
+    <blockquote>"FDE라면, 우리는 결국 버려져야 합니다."<cite>까칠한 AI · 2026-09-30</cite></blockquote>
+    <blockquote>"AI 에이전트 4천 개 만들면 누가 유지보수할 겁니까?"<cite>까칠한 AI · 2026-07-06</cite></blockquote>
+    <blockquote>"프레임워크가 문제를 푸는 게 아니라 사람이 푸는 거다."<cite>까칠한 AI · 2026-11-05</cite></blockquote>
+  </div>
+</section>
+
+<section aria-labelledby="s-topics">
+  <h2 id="s-topics">섭외 추천 주제</h2>
+  <div class="tbl"><table>
+    <tr><th>주제</th><th>관련 영상</th></tr>
+    <tr><td>한국형 FDE: 정의, 팀 구성, 계약 방식, 내재화</td><td class="v">08-12 · 09-30 · 10-05 · 10-09</td></tr>
+    <tr><td>사내 FDE 조직 만들기와 인재 발굴</td><td class="v">11-05</td></tr>
+    <tr><td>엔터프라이즈 AX가 체감되지 않는 이유 (버티컬 AX, 워크 OS)</td><td class="v">06-11 · 07-06</td></tr>
+    <tr><td>암묵지 수집과 컨텍스트 그래프</td><td class="v">03-05 · 04-09</td></tr>
+    <tr><td>리더를 위한 AX: 번아웃, FOMO, 꼭짓점 AX</td><td class="v">02-27 · 03-17 · 03-26 · 07-14</td></tr>
+    <tr><td>국가 AI 정책 제언 (K-클로드코드, 멀티태스커 국가)</td><td class="v">03-11 · 04-30 · 08-20</td></tr>
+  </table></div>
+</section>
+
+<section aria-labelledby="s-check">
+  <h2 id="s-check">사용 전 확인할 점</h2>
+  <ul class="check">
+    <li>인수 이후 공식 직함(스페이스와이 대표 유지 여부, 데이원컴퍼니 내 역할)은 공개 자료에서 확인하지 못했습니다. 2026-09 인터뷰까지는 "스페이스와이 대표"로 소개됩니다. 섭외 시 본인에게 확인하세요.</li>
+    <li>설립 시점은 자료에 따라 2022년 1월과 2월로 다릅니다.</li>
+    <li>고객사 언급은 출처마다 다릅니다(영상: SKT·CJ·키움증권 / 인터뷰: LG전자·키움증권·보험사).</li>
+    <li>재계약률 100%는 회사 측 설명입니다.</li>
+  </ul>
+</section>
+
+<section aria-labelledby="s-src">
+  <h2 id="s-src">출처</h2>
+  <ol class="src">
+    <li>패스트캠퍼스, FDE 인터뷰(스페이스와이 황현태 대표), 2026-09 · <a href="https://fastcampus.co.kr/story_interview_fde">fastcampus.co.kr/story_interview_fde</a></li>
+    <li>이투데이, "데이원컴퍼니, 스페이스와이 인수…기업 AX 사업 확대", 2026-08-14 · <a href="https://www.etoday.co.kr/news/view/2614615">etoday.co.kr</a></li>
+    <li>매일일보, "데이원컴퍼니, 스페이스와이 인수…AI 교육 넘어 기업 AX 공략", 2026-08-14 · <a href="https://www.m-i.kr/news/articleView.html?idxno=1402390">m-i.kr</a></li>
+    <li>Bloom 팟캐스트, "한국 최초 FDE 회사 대표에게 듣는 AX의 현실", 브런치, 2026-09-17 · <a href="https://brunch.co.kr/@hiclemi/229">brunch.co.kr/@hiclemi/229</a></li>
+    <li>Josh 뉴스레터, 스페이스와이 황현태 대표 인터뷰, 2025-08-20 · <a href="https://maily.so/josh/posts/g1o4kplmrve">maily.so</a></li>
+    <li>파이낸셜뉴스, "억대 연봉 개발자, 한달 180만원에 구독형 채용하세요", 2023-12-03 · <a href="https://www.fnnews.com/news/202312031843409785">fnnews.com</a></li>
+    <li>YouTube '까칠한 AI' · <a href="https://www.youtube.com/@kkachilhan-ai">youtube.com/@kkachilhan-ai</a></li>
+  </ol>
+</section>
+
+</div>
+<script>
+document.querySelectorAll(".copy").forEach(b=>b.addEventListener("click",async()=>{
+  const el=document.getElementById(b.dataset.t);
+  const text=[...el.querySelectorAll("p")].length?[...el.querySelectorAll("p")].map(p=>p.textContent).join("\n\n"):el.textContent;
+  try{await navigator.clipboard.writeText(text);b.textContent="복사됨";b.dataset.done="";}
+  catch(e){const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent="선택됨 · ⌘C";}
+  setTimeout(()=>{b.textContent="복사";delete b.dataset.done},1800);
+}));
+</script>
+</body>
+</html>

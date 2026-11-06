@@ -3,7 +3,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: one reading column; a to-scale Feb–Oct timeline strip up top, then thesis shifts, FDE playbook, policy, glossary, filterable episode log. */
+/* Layout: one reading column; a to-scale Feb–Nov timeline strip up top, then thesis shifts, FDE playbook, policy, glossary, filterable episode log. */
 :root{
   --paper:#eef1f6;
   --surface:#ffffff;
@@ -113,16 +113,16 @@ th{font-weight:500;color:var(--ink-2);width:24%;white-space:nowrap}
 <div class="wrap">
 
 <header style="display:grid;gap:18px">
-  <div class="eyebrow">YouTube @kkachilhan-ai · 본편 19개 분석</div>
+  <div class="eyebrow">YouTube @kkachilhan-ai · 본편 21개 분석</div>
   <h1>까칠한 AI 연대기</h1>
-  <p class="lede">스페이스와이 대표 황현태가 2026년 2월부터 10월까지 이야기한 엔터프라이즈 AX와 한국 FDE를 시간순으로 정리했습니다. 처음 문제의식은 끝까지 같았습니다. <span class="mark">구축하고 납품하고 유지보수하는 SI식 문법은 AI 시대에 실패한다</span>는 것입니다.</p>
-  <div class="meta"><span>2026-02-23 → 2026-10-09</span><span>본편 19개 · 약 2.9시간</span><span>정리 2026-11-02</span></div>
+  <p class="lede">스페이스와이 대표 황현태가 2026년 2월부터 11월까지 이야기한 엔터프라이즈 AX와 한국 FDE를 시간순으로 정리했습니다. 처음 문제의식은 끝까지 같았습니다. <span class="mark">구축하고 납품하고 유지보수하는 SI식 문법은 AI 시대에 실패한다</span>는 것입니다.</p>
+  <div class="meta"><span>2026-02-23 → 2026-11-05</span><span>본편 21개 · 약 3.0시간</span><span>정리 2026-11-02 · 갱신 2026-11-06</span></div>
   <p class="note">수치와 기업 사례는 모두 화자 발언 기준이며 따로 검증하지 않았습니다. 자막 전문은 로컬 폴더 <code>transcripts/</code>에 있습니다.</p>
 </header>
 
 <section aria-labelledby="s-tl">
-  <h2 id="s-tl">8개월, 네 번의 초점 이동</h2>
-  <div class="tl"><svg id="tl" viewBox="0 0 1000 150" role="img" aria-label="2026년 2월부터 10월까지 영상 19개의 업로드 시점"></svg></div>
+  <h2 id="s-tl">9개월, 네 번의 초점 이동</h2>
+  <div class="tl"><svg id="tl" viewBox="0 0 1000 150" role="img" aria-label="2026년 2월부터 11월까지 영상 21개의 업로드 시점"></svg></div>
   <div class="legend" id="legend"></div>
   <div class="phases" id="phases"></div>
 </section>
@@ -140,10 +140,12 @@ th{font-weight:500;color:var(--ink-2);width:24%;white-space:nowrap}
 
 <section aria-labelledby="s-fde">
   <h2 id="s-fde">한국 FDE 플레이북</h2>
-  <p class="note">08-12, 09-30, 10-05, 10-09 네 영상과 07-14 영상의 팀 운영 언급을 합쳤습니다.</p>
+  <p class="note">08-12, 09-30, 10-05, 10-09, 11-02, 11-05 여섯 영상과 07-14 영상의 팀 운영 언급을 합쳤습니다.</p>
   <div class="tbl"><table>
     <tr><th>정의</th><td>팔란티어가 약 20년 전에 만든 말로 "전방 파견 엔지니어"라는 뜻입니다. 고객사 문제를 풀기 위해 교육, 컨설팅, 코딩, 조직문화 활동까지 모두 하는 컨설턴트이자 엔지니어입니다.</td></tr>
-    <tr><th>인재상</th><td>창업이나 극초기 스타트업 경험, 모호한 문제를 구체적으로 깎아내는 능력, 낙관성을 봅니다. 엔지니어링, 문제해결, 소프트 스킬이 모두 높은 수준이어야 합니다.</td></tr>
+    <tr><th>인재상</th><td>창업이나 극초기 스타트업 경험, 모호한 문제를 구체적으로 깎아내는 능력, 낙관성을 봅니다. 엔지니어링, 문제해결, 소프트 스킬이 모두 높은 수준이어야 합니다. 11월에는 엔지니어링, 문제 해결, <span class="mark">파운더 스피릿</span> 세 가지로 정리하며, 스피릿만은 AI가 못 채운다고 말합니다.</td></tr>
+    <tr><th>일하는 방식</th><td>요구사항을 Claude Code에 그대로 넣지 않습니다. 최신 연구를 먼저 확인하고 고객과 접근 방식을 논의한 뒤, 사내에서는 위험해서 못 하던 시도를 빨리 해 보고 실패하면 빨리 돌아옵니다(리서처 모드).</td></tr>
+    <tr><th>사내 FDE</th><td>기업 안에 FDE 조직을 두고 현업 부서로 파견하는 구조입니다. 하드 스킬은 시험으로 보고, 스피릿은 3~5년 관찰로 찾으라고 합니다.</td></tr>
     <tr><th>팀</th><td>2~3인 팟(작업반장, 메인 FDE, 서포터)으로 움직입니다. 슈퍼맨 한 명에게 맡기지 않고, 솔로 프로젝트도 피합니다.</td></tr>
     <tr><th>계약</th><td>3~6개월로 기간을 정해 둡니다. 확산, 실험, 완성도 가운데 무엇에 중점을 둘지 미리 합의합니다.</td></tr>
     <tr><th>첫 작업</th><td><b>토폴로지 스캔.</b> 키맨, 각자의 니즈, 데이터 흐름, 메인테이너 후보를 그린 관계도입니다. 조직도와는 다르고, 현장에서만 그릴 수 있어 AI가 대신할 수 없습니다.</td></tr>
@@ -175,7 +177,7 @@ th{font-weight:500;color:var(--ink-2);width:24%;white-space:nowrap}
 </section>
 
 <section aria-labelledby="s-ep">
-  <h2 id="s-ep">영상 19개 요약</h2>
+  <h2 id="s-ep">영상 21개 요약</h2>
   <div class="chips" id="chips" role="group" aria-label="주제로 거르기"></div>
   <div class="eps" id="eps"></div>
 </section>
@@ -187,7 +189,7 @@ const PH={
   1:{name:"문제 제기",range:"2–3월",q:"왜 엔터프라이즈 AX는 안 퍼지나?",d:"리더가 직접 AI 빌더가 되어야 한다는 탑다운 주장, 암묵지, AX는 조직문화의 문제라는 진단이 나옵니다.",c:"--p1"},
   2:{name:"사람과 지식",range:"4–5월",q:"누가 무엇을 AI에 넣고, 누가 남나?",d:"시니어가 AI를 가르치고 AI가 주니어를 가르치는 구조, 암묵지 수집법, 인간 몫인 완성도, 멀티태스커 국가를 다룹니다.",c:"--p2"},
   3:{name:"현장 반성",range:"6–7월",q:"반년 해보니 무엇이 안티패턴인가?",d:"버티컬 AX, 에이전트 4천 개의 유지보수 지옥, Mac mini 증후군을 다룹니다.",c:"--p3"},
-  4:{name:"FDE 시대",range:"8–10월",q:"FDE는 어떻게 일해야 하나?",d:"내재화한 뒤 떠나기, 토폴로지 스캔, 난제 풀기, 그리고 K-클로드코드 정책 제안이 나옵니다.",c:"--p4"}
+  4:{name:"FDE 시대",range:"8–11월",q:"FDE는 어떻게 일해야 하나?",d:"내재화한 뒤 떠나기, 토폴로지 스캔, 난제 풀기, K-클로드코드 정책 제안, 그리고 11월의 리서처 모드와 사내 FDE가 나옵니다.",c:"--p4"}
 };
 const V=[
  {d:"2026-02-23",id:"msje_z6_NEI",t:"'AI 딸깍쇼'에 잠 못 드는 분들을 위하여",m:"3:47",p:1,g:["FOMO"],b:["인플루언서의 딸깍쇼 대신 SKT, CJ, 키움증권 등 현장 AX 경험으로 진짜 이야기를 하겠다고 밝힌 채널 소개 영상입니다.","엔터프라이즈 AX는 툴 도입이 아니라 업무 체계를 바꾸는 일이라고 봅니다(MSA 전환에 비유). 보안, 공공기관의 온프레미스와 OCR을 앞으로 다룰 주제로 예고합니다.","당시에는 \"Claude Code는 요즘 잘 안 쓰고 Codex를 많이 쓴다\"고 말했습니다."]},
@@ -208,7 +210,9 @@ const V=[
  {d:"2026-08-20",id:"2HwHHU5qjMk",t:"모두의AI 정책 분석 | K-챗GPT 보다 K-클로드코드가 먼저",m:"7:24",p:4,g:["정책","범용 에이전트"],b:["정부 정책을 하드웨어, 모델, 배포, 공공 에이전트, 산업, 거버넌스의 6층 지도로 정리합니다.","업무별 공공 에이전트를 만들기보다 K-범용 에이전트를 만들고, 모델 출신 제한은 풀자고 합니다.","\"우리나라는 팔란티어 같은 나라가 돼야 한다\"고 말합니다."]},
  {d:"2026-09-30",id:"ocDFyfWlZ50",t:"FDE라면, 우리는 결국 버려져야 합니다",m:"2:56",p:4,g:["FDE"],b:["제품을 만들어야 하지 않느냐는 질문을 받고, 메인테이너를 남기고 떠나겠다고 다짐합니다.","Boris Cherny의 직군 분화 이야기와 Pivotal Labs 창업자의 말을 인용합니다."]},
  {d:"2026-10-05",id:"kc0zoz5wgTk",t:"토폴로지 스캔 | FDE는 사람부터 파악해야합니다",m:"7:34",p:4,g:["FDE"],b:["고객사에 들어가면 가장 먼저 키맨, 각자의 니즈, 데이터 흐름을 관계도로 그립니다. 조직도와는 다릅니다.","\"누구에게 어떻게 칭찬받을 건가\"를 묻고, 메인테이너도 이 지도를 보며 고객사와 함께 정합니다.","현장에서만 알 수 있는 일이라 AI가 못 하고, 이것이 FDE가 현장에 가야 하는 이유라고 말합니다."]},
- {d:"2026-10-09",id:"6pGr7F7QwUk",t:"AI도 하는 일에 당신을 왜 씁니까? FDE는 난제를 풀어야 합니다",m:"5:29",p:4,g:["FDE"],b:["쉬운 문제는 AI가 가져가니, 사람은 계속 더 어려운 문제를 맡아야 한다고 말합니다.","어려운 문제는 문제 자체가 어렵거나, 조직 사정으로 막혔거나, 양이 너무 많은 경우입니다. FDE의 일을 \"지능 임대업\"이라고 부릅니다.","제품을 만들기보다 문제를 푸는 방식을 패턴으로 쌓으라고 합니다."]}
+ {d:"2026-10-09",id:"6pGr7F7QwUk",t:"AI도 하는 일에 당신을 왜 씁니까? FDE는 난제를 풀어야 합니다",m:"5:29",p:4,g:["FDE"],b:["쉬운 문제는 AI가 가져가니, 사람은 계속 더 어려운 문제를 맡아야 한다고 말합니다.","어려운 문제는 문제 자체가 어렵거나, 조직 사정으로 막혔거나, 양이 너무 많은 경우입니다. FDE의 일을 \"지능 임대업\"이라고 부릅니다.","제품을 만들기보다 문제를 푸는 방식을 패턴으로 쌓으라고 합니다."]},
+ {d:"2026-11-02",id:"mTmIhPmFNbc",t:"Researcher Mode | 이제 우리는 모두 연구자가 되어야 합니다",m:"4:26",p:4,g:["FDE","리더·조직"],b:["만드는 건 디폴트가 됐고 이제는 고객사가 먼저 프로토타입을 만들어 온다고 말합니다. 구현만 하는 사람의 가치는 줄어든다고 봅니다.","요구사항을 Claude Code에 그대로 넣지 말고, 최신 연구부터 AI로 조사한 뒤 고객과 접근 방식을 함께 논의하라고 합니다. 실패해도 빨리 돌아오면 된다는 태도입니다.","엔지니어와 리서처를 나누던 시대는 끝났고, 모든 팀이 연구소처럼 굴러가야 한다고 말합니다."]},
+ {d:"2026-11-05",id:"j65Xy5i95Ug",t:"사내 FDE? 핵심은 스피릿입니다",m:"4:34",p:4,g:["FDE","사람·채용"],b:["기업들이 사내 FDE 조직을 만들어 현업 부서로 파견하는 구조를 고민한다고 전합니다.","FDE의 세 요소는 엔지니어링, 문제 해결, 파운더 스피릿입니다. 앞의 둘은 AI가 메워 주지만 야망, 집착, 끈기, 롱텀에서 지치지 않음은 AI가 못 채운다고 말합니다.","하드 스킬은 시험으로 보고 스피릿은 3~5년 관찰로 찾으라고 합니다. \"프레임워크가 아니라 사람이 문제를 푼다.\""]}
 ];
 const GL=[
  ["딸깍쇼","클릭 몇 번이면 다 된다는 식의 인플루언서 AI 시연","02-23"],
@@ -225,7 +229,10 @@ const GL=[
  ["워크 OS","범용 에이전트를 회사 업무의 운영체제로 쓰는 것","07-06"],
  ["Mac mini 증후군","AI를 멈추지 못하고 부담을 혼자 지는 상태","07-14"],
  ["토폴로지 스캔","고객사의 사람, 니즈, 데이터 흐름을 그린 관계도","10-05"],
- ["지능 임대업","화자가 FDE 사업의 본질을 부르는 말","10-09"]
+ ["지능 임대업","화자가 FDE 사업의 본질을 부르는 말","10-09"],
+ ["리서처 모드","엔지니어도 구현 전에 최신 연구를 확인하고 접근 방식을 고안하는 연구자로 일하는 것","11-02"],
+ ["인텐트 때려박기","요구사항을 조사 없이 Claude Code에 그대로 넣어 구현부터 하는 안티패턴","11-02"],
+ ["파운더 스피릿","야망, 문제 해결 집착, 끈기, 롱텀 게임에서 지치지 않음. AI가 못 채우는 FDE 요소","11-05"]
 ];
 const $=s=>document.querySelector(s);
 const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -237,12 +244,12 @@ $("#legend").innerHTML=Object.entries(PH).map(([k,p])=>`<span><i style="backgrou
 
 // timeline, drawn to scale
 (()=>{
-  const svg=$("#tl"),x0=40,x1=970,t0=Date.parse("2026-02-01"),t1=Date.parse("2026-11-01");
+  const svg=$("#tl"),x0=40,x1=970,t0=Date.parse("2026-02-01"),t1=Date.parse("2026-12-01");
   const X=d=>x0+(Date.parse(d)-t0)/(t1-t0)*(x1-x0), base=92;
   let h=`<line x1="${x0}" x2="${x1}" y1="${base}" y2="${base}" stroke="var(--rule)" stroke-width="2"/>`;
-  for(let m=2;m<=11;m++){const d=`2026-${String(m).padStart(2,"0")}-01`,x=X(d);
+  for(let m=2;m<=12;m++){const d=`2026-${String(m).padStart(2,"0")}-01`,x=X(d);
     h+=`<line x1="${x}" x2="${x}" y1="${base-4}" y2="${base+4}" stroke="var(--ink-2)" stroke-width="1"/>`;
-    if(m<11)h+=`<text x="${(x+X(`2026-${String(m+1).padStart(2,"0")}-01`))/2}" y="${base+26}" font-size="13" text-anchor="middle">${m}월</text>`;}
+    if(m<12)h+=`<text x="${(x+X(`2026-${String(m+1).padStart(2,"0")}-01`))/2}" y="${base+26}" font-size="13" text-anchor="middle">${m}월</text>`;}
   const used={};
   V.forEach(v=>{const x=X(v.d),key=Math.round(x/14);used[key]=(used[key]||0)+1;const y=base-18-(used[key]-1)*22;
     h+=`<g class="dot" tabindex="0" role="link" data-id="${v.id}" aria-label="${esc(v.d+' '+v.t)}"><line x1="${x}" x2="${x}" y1="${y+7}" y2="${base}" stroke="${col(v.p)}" stroke-width="1"/><circle cx="${x}" cy="${y}" r="7" fill="${col(v.p)}"/><title>${esc(v.d.slice(5)+' · '+v.t)}</title></g>`;});
