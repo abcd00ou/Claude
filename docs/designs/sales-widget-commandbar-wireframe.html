@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>상주형 커맨드바 와이어프레임</title>
+<style>
+  /* 의도적으로 거친 스케치: 시스템 글꼴, 회색 테두리, 색 없음 */
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 28px; font-family: system-ui, "Malgun Gothic", sans-serif; color: #222; background: #fff; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  .sub { color: #666; font-size: 13px; margin-bottom: 22px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+  .screen { border: 1.5px solid #999; border-radius: 6px; padding: 16px; background: #fafafa; min-height: 330px; position: relative; }
+  .label { font-size: 12px; font-weight: 700; color: #444; margin-bottom: 10px; }
+  .bar { border: 1.5px solid #333; border-radius: 8px; background: #fff; padding: 10px 12px; font-size: 15px; display: flex; justify-content: space-between; }
+  .bar .hint { color: #999; font-size: 12px; }
+  .card { border: 1.5px solid #777; border-radius: 6px; background: #fff; padding: 12px; margin-top: 10px; }
+  .card h3 { margin: 0 0 8px; font-size: 13px; color: #555; font-weight: 600; }
+  .big { font-size: 26px; font-weight: 700; }
+  .muted { color: #777; font-size: 12px; }
+  .row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-top: 1px dashed #bbb; font-size: 13px; }
+  .row:first-of-type { border-top: 0; }
+  .btn { border: 1.5px solid #333; border-radius: 4px; padding: 3px 10px; font-size: 12px; background: #fff; }
+  .btn.fill { background: #333; color: #fff; }
+  .progress { height: 8px; border: 1px solid #777; border-radius: 4px; margin: 8px 0 4px; }
+  .progress i { display: block; height: 100%; width: 72%; background: #999; }
+  .note { font-size: 11.5px; color: #555; border-left: 3px solid #bbb; padding-left: 8px; margin-top: 12px; line-height: 1.5; }
+  .desktop { background: repeating-linear-gradient(45deg, #f3f3f3, #f3f3f3 10px, #eee 10px, #eee 20px); height: 250px; border: 1px solid #bbb; position: relative; }
+  .pin { position: absolute; right: 10px; top: 10px; width: 170px; border: 1.5px solid #555; background: #fff; border-radius: 6px; padding: 8px; font-size: 12px; }
+  .pin + .pin { top: 92px; }
+  .tray { position: absolute; left: 0; right: 0; bottom: 0; height: 26px; background: #ddd; border-top: 1px solid #aaa; font-size: 11px; text-align: right; padding: 5px 10px; }
+  .toggle { border: 1.5px solid #333; border-radius: 10px; width: 34px; height: 18px; position: relative; display: inline-block; }
+  .toggle i { position: absolute; top: 2px; left: 2px; width: 11px; height: 11px; border-radius: 50%; background: #333; }
+  .toggle.on i { left: 17px; }
+  .toggle.off { border-color: #aaa; } .toggle.off i { background: #aaa; }
+  .err { border-style: dashed; color: #555; }
+</style>
+</head>
+<body>
+<h1>상주형 커맨드바 와이어프레임 (v1: 실적 조회 + 회의실 예약)</h1>
+<div class="sub">스케치입니다. 색, 글꼴, 간격은 확정이 아닙니다. 흐름과 정보 순서만 봐 주세요.</div>
+
+<div class="grid">
+
+  <!-- 화면 1: 단축키로 부른 입력창. 가장 먼저 보이는 것은 입력창, 그 다음이 답 카드 -->
+  <div class="screen">
+    <div class="label">① 단축키(Alt+Space)로 호출 → 실적 조회</div>
+    <div class="bar"><span>이번 달 실적▏</span><span class="hint">Enter 실행 · Esc 닫기</span></div>
+    <div class="card">
+      <h3>실적 · 11월 (본인) <span class="muted" style="float:right">09:12 기준</span></h3>
+      <div class="big">8.6억 <span class="muted">/ 목표 12억</span></div>
+      <div class="progress"><i></i></div>
+      <div class="muted">달성률 72% · 전월 동기 대비 +6%p</div>
+      <div class="row"><span>상위 고객사 3곳 보기</span><span class="btn">펼치기</span></div>
+      <div class="row"><span>이 카드를 바탕화면에 고정</span><span class="btn">고정</span></div>
+    </div>
+    <div class="note">결정: 답은 숫자 하나가 먼저. 세부는 펼쳐야 보인다.<br>조회 범위는 로그인한 본인 권한까지만.</div>
+  </div>
+
+  <!-- 화면 2: 실행형. 쓰기 작업은 항상 확인 한 번을 거친다 -->
+  <div class="screen">
+    <div class="label">② 회의실 예약 (실행형: 확인 후 예약)</div>
+    <div class="bar"><span>내일 2시 6인 회의실▏</span><span class="hint">Enter</span></div>
+    <div class="card">
+      <h3>11/11(수) 14:00~15:00 · 6인 이상 · 빈 방 3곳</h3>
+      <div class="row"><span>7층 A회의실 (8인, 화상장비)</span><span class="btn fill">예약</span></div>
+      <div class="row"><span>7층 C회의실 (6인)</span><span class="btn">예약</span></div>
+      <div class="row"><span>9층 대회의실 (12인)</span><span class="btn">예약</span></div>
+    </div>
+    <div class="card">
+      <h3>예약 완료</h3>
+      <div>7층 A회의실 · 11/11(수) 14:00~15:00</div>
+      <div class="row"><span class="muted">잘못 눌렀다면</span><span class="btn">예약 취소</span></div>
+    </div>
+    <div class="note">결정: 쓰기 작업은 사용자가 버튼을 눌러야 실행된다. 입력만으로 자동 예약하지 않는다. 완료 카드에 취소 버튼을 둔다.</div>
+  </div>
+
+  <!-- 화면 3: 평소 모습. 고정한 카드만 구석에 상주 -->
+  <div class="screen">
+    <div class="label">③ 평소 화면: 고정 카드 + 트레이 상주</div>
+    <div class="desktop">
+      <div class="pin"><b>실적 11월</b><br><span style="font-size:18px;font-weight:700">72%</span> <span class="muted">8.6 / 12억</span></div>
+      <div class="pin"><b>오늘 내 회의실</b><br>14:00 7층 A<br><span class="muted">16:30 9층 대회의실</span></div>
+      <div class="tray">▣ 위젯 · Alt+Space</div>
+    </div>
+    <div class="note">결정: 고정 카드는 사용자가 고른 것만. 기본은 아무것도 고정하지 않고 트레이에만 있는다.</div>
+  </div>
+
+  <!-- 화면 4: 카탈로그(서버 목록 파일)와 오류 상태 -->
+  <div class="screen">
+    <div class="label">④ 설정: 기능 목록(카탈로그) · 오류 상태</div>
+    <div class="card">
+      <h3>사용 중인 기능 <span class="muted" style="float:right">서버 목록에서 자동 갱신</span></h3>
+      <div class="row"><span>실적 조회 <span class="muted">v1.0 · 영업/마케팅</span></span><span class="toggle on"><i></i></span></div>
+      <div class="row"><span>회의실 예약 <span class="muted">v1.0 · 전사</span></span><span class="toggle on"><i></i></span></div>
+      <div class="row"><span style="color:#999">시장 가격 알림 <span class="muted">준비 중</span></span><span class="toggle off"><i></i></span></div>
+    </div>
+    <div class="card err">
+      <h3>오류 상태 예시</h3>
+      <div>실적 시스템이 응답하지 않습니다.</div>
+      <div class="muted">마지막 성공: 오늘 09:12 · 그때 값 8.6억 표시 중</div>
+      <div class="row"><span></span><span class="btn">다시 시도</span></div>
+    </div>
+    <div class="note">결정: v1은 가게 화면 대신 켜고 끄는 목록. 장애 때는 마지막 값과 시각을 함께 보여 준다.</div>
+  </div>
+
+</div>
+</body>
+</html>
