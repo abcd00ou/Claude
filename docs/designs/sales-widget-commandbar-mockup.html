@@ -221,5 +221,85 @@
   <div class="taskbar"><span>Alt + Space 로 호출</span><div class="tray"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z"/></svg></div><span>오후 4:40</span></div>
 </div>
 
+<!-- 장면 3: 라이트 테마. HTML 파일을 올려 내 위젯으로 추가 -->
+<style>
+  .up { position: absolute; left: 50%; top: 84px; width: 1040px; transform: translateX(-50%); border-radius: 28px; padding: 14px;
+    background: rgba(255,255,255,.72); backdrop-filter: blur(40px) saturate(1.6); border: 1px solid rgba(255,255,255,.9);
+    box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 40px 100px rgba(40,50,120,.28); display: grid; grid-template-columns: 400px 1fr; gap: 14px; }
+  .col { border-radius: 20px; background: #fff; padding: 24px; box-shadow: 0 1px 2px rgba(20,24,42,.05), 0 10px 30px rgba(40,50,120,.07); }
+  .col h2 { font-size: 20px; font-weight: 800; color: #0f1324; letter-spacing: -.02em; }
+  .col .desc { font-size: 13.5px; color: #7b839c; margin-top: 6px; line-height: 1.5; }
+  .drop { margin-top: 18px; border: 2px dashed #b9bff5; border-radius: 18px; background: linear-gradient(135deg, #f3f6ff, #f7f2ff); padding: 26px 18px; text-align: center; }
+  .drop .ic { width: 52px; height: 52px; margin: 0 auto; border-radius: 16px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); display: grid; place-items: center; box-shadow: 0 10px 24px rgba(91,92,246,.4); }
+  .drop .ic svg { width: 24px; height: 24px; }
+  .drop b { display: block; font-size: 15.5px; color: #14182a; margin-top: 14px; }
+  .drop span { display: block; font-size: 12.5px; color: #7b839c; margin-top: 6px; }
+  .file { display: flex; align-items: center; gap: 12px; margin-top: 14px; padding: 12px 14px; border-radius: 14px; background: #f6f7fb; }
+  .file .ext { font-size: 11px; font-weight: 800; color: #fff; background: #14182a; border-radius: 8px; padding: 7px 8px; }
+  .file .fn { font-size: 13.5px; font-weight: 700; color: #14182a; }
+  .file .fs { font-size: 12px; color: #9aa1b8; margin-top: 2px; }
+  .file .ok { margin-left: auto; font-size: 12px; font-weight: 700; color: #0e9f6e; }
+  .mine { margin-top: 20px; font-size: 12.5px; font-weight: 700; color: #6b7390; }
+  .mrow { display: flex; align-items: center; justify-content: space-between; padding: 11px 0; border-top: 1px solid #eef0f6; font-size: 13.5px; font-weight: 600; color: #2b3148; margin-top: 8px; }
+  .mrow + .mrow { margin-top: 0; }
+  .mrow em { font-style: normal; font-size: 11.5px; font-weight: 700; padding: 4px 9px; border-radius: 999px; }
+  .mrow .me { color: #4f46e5; background: #eef0ff; } .mrow .team { color: #0e9f6e; background: #e7f8f1; } .mrow .wait { color: #b45309; background: #fff4e0; }
+  .pv-head { display: flex; align-items: center; justify-content: space-between; }
+  .pv-head span { font-size: 12.5px; color: #9aa1b8; }
+  .frame { margin-top: 16px; border-radius: 18px; border: 1px solid #e6e8f2; background: #fbfbfe; padding: 20px 22px; }
+  .frame h5 { font-size: 13px; font-weight: 700; color: #6b7390; }
+  .bars { margin-top: 14px; display: grid; gap: 11px; }
+  .bar2 { display: grid; grid-template-columns: 76px 1fr 46px; align-items: center; gap: 10px; font-size: 13px; color: #2b3148; font-weight: 600; }
+  .bar2 i { display: block; height: 14px; border-radius: 7px; background: linear-gradient(90deg, #3b82f6, #8b5cf6); }
+  .bar2 u { text-decoration: none; text-align: right; font-weight: 800; color: #14182a; font-variant-numeric: tabular-nums; }
+  .perm { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .pm { font-size: 12.5px; font-weight: 700; padding: 8px 12px; border-radius: 999px; display: inline-flex; align-items: center; gap: 7px; }
+  .pm.y { color: #0e9f6e; background: #e7f8f1; } .pm.n { color: #5b647f; background: #eff1f6; }
+  .pm b { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .cta { display: flex; gap: 8px; margin-top: 18px; }
+  .cta div { flex: 1; text-align: center; font-size: 14px; font-weight: 700; padding: 14px; border-radius: 14px; background: #f1f3f8; color: #2b3148; }
+  .cta .p { background: #14182a; color: #fff; flex: 1.4; }
+</style>
+<div class="scene light">
+  <div class="caption">라이트 테마 · HTML 올려서 내 위젯 만들기</div>
+  <div class="up">
+    <div class="col">
+      <h2>내 위젯 추가</h2>
+      <div class="desc">직접 만든 HTML 파일 하나를 올리면 내 위젯이 됩니다. AI에게 만들어 달라고 한 화면도 그대로 올릴 수 있어요.</div>
+      <div class="drop">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V5M7.5 9.5L12 5l4.5 4.5M5 19h14"/></svg></div>
+        <b>HTML 파일을 여기에 끌어다 놓기</b>
+        <span>.html 파일 1개 · 최대 1MB · 또는 클릭해서 선택</span>
+      </div>
+      <div class="file"><span class="ext">HTML</span><div><div class="fn">고객사별-실적.html</div><div class="fs">84KB · 방금 올림</div></div><span class="ok">검사 통과</span></div>
+      <div class="mine">내 위젯</div>
+      <div class="mrow">주간 방문 계획표 <em class="me">나만 사용</em></div>
+      <div class="mrow">견적 마진 계산기 <em class="team">팀 공유 중</em></div>
+      <div class="mrow">분기 목표 달성판 <em class="wait">공유 검토 중</em></div>
+    </div>
+    <div class="col">
+      <div class="pv-head"><h2>미리보기</h2><span>격리된 틀 안에서 실행 중</span></div>
+      <div class="frame">
+        <h5>고객사별 실적 · 11월</h5>
+        <div class="bars">
+          <div class="bar2">가나전자<i style="width:92%"></i><u>3.1억</u></div>
+          <div class="bar2">다라테크<i style="width:66%"></i><u>2.2억</u></div>
+          <div class="bar2">마바시스템<i style="width:48%"></i><u>1.6억</u></div>
+          <div class="bar2">사아솔루션<i style="width:33%"></i><u>1.1억</u></div>
+          <div class="bar2">그 외<i style="width:18%"></i><u>0.6억</u></div>
+        </div>
+      </div>
+      <div class="perm">
+        <span class="pm y"><b></b>실적 조회 읽기 허용</span>
+        <span class="pm n"><b></b>외부 인터넷 차단됨</span>
+        <span class="pm n"><b></b>PC 파일 접근 불가</span>
+        <span class="pm n"><b></b>예약·수정 같은 쓰기 불가</span>
+      </div>
+      <div class="cta"><div>팀에 공유 요청</div><div class="p">내 위젯으로 추가</div></div>
+    </div>
+  </div>
+  <div class="taskbar"><span>Alt + Space 로 호출</span><div class="tray"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z"/></svg></div><span>오전 10:05</span></div>
+</div>
+
 </body>
 </html>
