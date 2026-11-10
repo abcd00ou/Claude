@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>상주형 커맨드바 비주얼 시안</title>
+<style>
+  /* 비주얼 방향: 반투명 유리 패널 + 큰 숫자 + 강조색 하나(블루→바이올렛 그라데이션). 라이트/다크 두 테마. */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", system-ui, sans-serif; background: #0b0d14; -webkit-font-smoothing: antialiased; }
+  .scene { width: 1440px; height: 860px; position: relative; overflow: hidden; }
+  .caption { position: absolute; left: 36px; top: 28px; font-size: 13px; font-weight: 600; letter-spacing: .02em; padding: 7px 14px; border-radius: 999px; backdrop-filter: blur(12px); z-index: 5; }
+
+  /* ---------- 라이트 장면 ---------- */
+  .light { background:
+      radial-gradient(900px 600px at 12% 8%, #c9d8ff 0%, transparent 60%),
+      radial-gradient(800px 600px at 88% 18%, #ffd9ec 0%, transparent 58%),
+      radial-gradient(900px 700px at 60% 100%, #c8f1e6 0%, transparent 60%),
+      #eef1f8; }
+  .light .caption { background: rgba(255,255,255,.6); color: #3b4257; }
+
+  /* 뒤에 깔린 업무 창(흐릿하게) */
+  .ghost { position: absolute; border-radius: 14px; background: rgba(255,255,255,.55); box-shadow: 0 20px 60px rgba(30,40,90,.10); filter: blur(1.2px); }
+  .ghost i { display: block; height: 10px; border-radius: 5px; background: rgba(60,70,110,.10); margin: 14px 20px 0; }
+  .ghost .head { height: 38px; border-bottom: 1px solid rgba(60,70,110,.08); margin: 0; background: none; border-radius: 0; }
+  .dark .ghost { background: rgba(255,255,255,.05); box-shadow: none; }
+  .dark .ghost i { background: rgba(255,255,255,.07); }
+  .dark .ghost .head { border-color: rgba(255,255,255,.06); }
+
+  /* 커맨드 패널 */
+  .panel { position: absolute; left: 50%; top: 96px; width: 680px; transform: translateX(-50%); border-radius: 26px; padding: 10px;
+    background: rgba(255,255,255,.72); backdrop-filter: blur(40px) saturate(1.6);
+    border: 1px solid rgba(255,255,255,.9);
+    box-shadow: 0 1px 0 rgba(255,255,255,.9) inset, 0 40px 100px rgba(40,50,120,.28), 0 8px 24px rgba(40,50,120,.12); }
+  .input { display: flex; align-items: center; gap: 14px; padding: 16px 18px; }
+  .spark { width: 30px; height: 30px; border-radius: 10px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); display: grid; place-items: center; box-shadow: 0 6px 16px rgba(91,92,246,.45); flex: none; }
+  .spark svg { width: 16px; height: 16px; }
+  .query { font-size: 22px; font-weight: 600; color: #14182a; letter-spacing: -.01em; flex: 1; }
+  .caret { display: inline-block; width: 2px; height: 24px; background: #5b5cf6; margin-left: 3px; vertical-align: -4px; border-radius: 2px; }
+  kbd { font: 600 11.5px/1 inherit; color: #6b7390; background: rgba(20,24,42,.06); padding: 6px 8px; border-radius: 7px; }
+  .divider { height: 1px; background: rgba(20,24,42,.07); margin: 0 10px; }
+
+  .result { margin: 10px; border-radius: 20px; padding: 26px 28px 22px; background: #fff; box-shadow: 0 1px 2px rgba(20,24,42,.05), 0 10px 30px rgba(40,50,120,.07); }
+  .chip { display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 600; color: #4f46e5; background: #eef0ff; padding: 6px 11px; border-radius: 999px; }
+  .chip b { width: 6px; height: 6px; border-radius: 50%; background: #4f46e5; }
+  .stamp { float: right; font-size: 12.5px; color: #9aa1b8; padding-top: 6px; }
+  .kpi { display: flex; align-items: flex-end; justify-content: space-between; margin-top: 18px; }
+  .num { font-size: 68px; font-weight: 800; letter-spacing: -.045em; line-height: 1; color: #0f1324; }
+  .num small { font-size: 30px; font-weight: 700; margin-left: 4px; letter-spacing: -.02em; }
+  .goal { font-size: 15px; color: #7b839c; margin-top: 10px; }
+  .goal em { font-style: normal; color: #0e9f6e; font-weight: 700; margin-left: 8px; }
+  .ring { width: 104px; height: 104px; position: relative; }
+  .ring span { position: absolute; inset: 0; display: grid; place-items: center; font-size: 22px; font-weight: 800; color: #14182a; letter-spacing: -.02em; }
+  .track { height: 10px; border-radius: 6px; background: #eef0f6; margin-top: 22px; overflow: hidden; }
+  .track i { display: block; height: 100%; width: 72%; border-radius: 6px; background: linear-gradient(90deg, #3b82f6, #8b5cf6); }
+  .trend { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; }
+  .trend .lbl { font-size: 13px; color: #7b839c; }
+  .actions { display: flex; gap: 8px; padding: 4px 10px 10px; }
+  .act { flex: 1; display: flex; align-items: center; justify-content: space-between; font-size: 14px; font-weight: 600; color: #2b3148; padding: 13px 16px; border-radius: 14px; background: rgba(255,255,255,.7); border: 1px solid rgba(20,24,42,.06); }
+  .act.sel { background: #14182a; color: #fff; border-color: #14182a; }
+  .act.sel kbd { background: rgba(255,255,255,.16); color: #fff; }
+
+  /* 바탕화면 고정 위젯 */
+  .pins { position: absolute; right: 36px; top: 96px; width: 232px; display: grid; gap: 14px; }
+  .pin { border-radius: 22px; padding: 18px 18px 16px; background: rgba(255,255,255,.62); backdrop-filter: blur(30px) saturate(1.5); border: 1px solid rgba(255,255,255,.85); box-shadow: 0 18px 44px rgba(40,50,120,.16); }
+  .pin h4 { font-size: 12.5px; font-weight: 600; color: #6b7390; display: flex; justify-content: space-between; }
+  .pin .v { font-size: 34px; font-weight: 800; letter-spacing: -.04em; color: #0f1324; margin-top: 8px; }
+  .pin .v small { font-size: 14px; font-weight: 600; color: #7b839c; letter-spacing: 0; margin-left: 6px; }
+  .mini { height: 6px; border-radius: 4px; background: rgba(20,24,42,.08); margin-top: 12px; overflow: hidden; }
+  .mini i { display: block; width: 72%; height: 100%; background: linear-gradient(90deg, #3b82f6, #8b5cf6); border-radius: 4px; }
+  .slot { display: flex; align-items: center; gap: 10px; margin-top: 12px; font-size: 13.5px; color: #2b3148; font-weight: 600; }
+  .slot time { font-variant-numeric: tabular-nums; color: #4f46e5; font-weight: 700; width: 44px; }
+  .slot.next { color: #9aa1b8; font-weight: 500; } .slot.next time { color: #9aa1b8; }
+
+  /* 작업 표시줄 */
+  .taskbar { position: absolute; left: 0; right: 0; bottom: 0; height: 52px; background: rgba(255,255,255,.5); backdrop-filter: blur(30px); border-top: 1px solid rgba(255,255,255,.7); display: flex; align-items: center; justify-content: flex-end; gap: 14px; padding: 0 26px; font-size: 12.5px; color: #4a5170; font-weight: 600; }
+  .tray { width: 28px; height: 28px; border-radius: 9px; background: linear-gradient(135deg, #3b82f6, #8b5cf6); display: grid; place-items: center; box-shadow: 0 0 0 4px rgba(91,92,246,.18); }
+  .tray svg { width: 14px; height: 14px; }
+  .dark .taskbar { background: rgba(14,16,26,.55); border-color: rgba(255,255,255,.06); color: #9aa3c0; }
+
+  /* ---------- 다크 장면 ---------- */
+  .dark { background:
+      radial-gradient(900px 600px at 15% 0%, #23306b 0%, transparent 60%),
+      radial-gradient(800px 600px at 90% 30%, #47235f 0%, transparent 58%),
+      radial-gradient(900px 700px at 50% 110%, #0f4a4a 0%, transparent 60%),
+      #0b0d14; }
+  .dark .caption { background: rgba(255,255,255,.08); color: #c5cbe3; }
+  .dark .panel { background: rgba(24,27,42,.72); border-color: rgba(255,255,255,.10); box-shadow: 0 1px 0 rgba(255,255,255,.08) inset, 0 40px 110px rgba(0,0,0,.6); left: 36%; width: 640px; }
+  .dark .query { color: #f3f5ff; }
+  .dark kbd { background: rgba(255,255,255,.08); color: #9aa3c0; }
+  .dark .divider { background: rgba(255,255,255,.07); }
+  .parsed { display: flex; gap: 8px; padding: 14px 18px 6px; }
+  .tok { font-size: 12.5px; font-weight: 600; color: #c7cdfc; background: rgba(120,130,255,.14); border: 1px solid rgba(140,150,255,.22); padding: 6px 11px; border-radius: 999px; }
+  .rooms { padding: 8px 10px 4px; display: grid; gap: 8px; }
+  .room { display: flex; align-items: center; gap: 16px; padding: 16px 18px; border-radius: 18px; background: rgba(255,255,255,.045); border: 1px solid rgba(255,255,255,.06); }
+  .room.sel { background: linear-gradient(135deg, rgba(59,130,246,.22), rgba(139,92,246,.22)); border-color: rgba(150,150,255,.45); box-shadow: 0 10px 30px rgba(80,80,240,.25); }
+  .floor { width: 46px; height: 46px; border-radius: 14px; background: rgba(255,255,255,.07); display: grid; place-items: center; font-size: 15px; font-weight: 800; color: #e6e9fb; flex: none; }
+  .room.sel .floor { background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: #fff; }
+  .room .name { font-size: 16px; font-weight: 700; color: #f3f5ff; }
+  .room .meta { font-size: 12.5px; color: #8f98b8; margin-top: 4px; }
+  .room .go { margin-left: auto; font-size: 13px; font-weight: 700; padding: 9px 16px; border-radius: 11px; color: #c5cbe3; background: rgba(255,255,255,.07); }
+  .room.sel .go { background: #fff; color: #14182a; }
+  .foot { display: flex; justify-content: space-between; padding: 12px 20px 12px; font-size: 12px; color: #7d86a6; }
+
+  /* 완료 토스트 카드 */
+  .done { position: absolute; right: 60px; top: 150px; width: 380px; border-radius: 26px; padding: 26px; background: rgba(24,27,42,.78); backdrop-filter: blur(40px); border: 1px solid rgba(255,255,255,.10); box-shadow: 0 40px 100px rgba(0,0,0,.55); }
+  .check { width: 54px; height: 54px; border-radius: 18px; background: linear-gradient(135deg, #10b981, #34d399); display: grid; place-items: center; box-shadow: 0 12px 30px rgba(16,185,129,.4); }
+  .check svg { width: 26px; height: 26px; }
+  .done h3 { font-size: 22px; font-weight: 800; color: #f3f5ff; letter-spacing: -.02em; margin-top: 18px; }
+  .done p { font-size: 14.5px; color: #a3abc8; margin-top: 8px; line-height: 1.55; }
+  .ticket { margin-top: 18px; border-radius: 16px; background: rgba(255,255,255,.05); border: 1px dashed rgba(255,255,255,.14); padding: 14px 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .ticket div span { display: block; font-size: 11.5px; color: #7d86a6; }
+  .ticket div b { display: block; font-size: 15px; color: #f3f5ff; margin-top: 4px; font-weight: 700; }
+  .done .btns { display: flex; gap: 8px; margin-top: 18px; }
+  .done .b { flex: 1; text-align: center; font-size: 13.5px; font-weight: 700; padding: 12px; border-radius: 13px; background: rgba(255,255,255,.07); color: #dfe3f7; }
+  .done .b.p { background: #fff; color: #14182a; }
+  .flowarrow { position: absolute; left: 892px; top: 300px; width: 120px; }
+</style>
+</head>
+<body>
+
+<!-- 장면 1: 라이트 테마. 단축키 호출 → 실적 조회 → 카드 고정 -->
+<div class="scene light">
+  <div class="caption">라이트 테마 · 실적 조회</div>
+  <div class="ghost" style="left:70px;top:150px;width:520px;height:560px"><i class="head"></i><i style="width:60%"></i><i style="width:80%"></i><i style="width:45%"></i><i style="width:72%"></i><i style="width:66%"></i><i style="width:30%"></i></div>
+  <div class="ghost" style="left:640px;top:330px;width:560px;height:420px"><i class="head"></i><i style="width:70%"></i><i style="width:50%"></i><i style="width:85%"></i><i style="width:40%"></i></div>
+
+  <div class="panel">
+    <div class="input">
+      <div class="spark"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z"/></svg></div>
+      <div class="query">이번 달 실적<span class="caret"></span></div>
+      <kbd>Alt</kbd><kbd>Space</kbd>
+    </div>
+    <div class="divider"></div>
+    <div class="result">
+      <span class="chip"><b></b>실적 · 11월 · 본인</span><span class="stamp">09:12 기준</span>
+      <div class="kpi">
+        <div>
+          <div class="num">8.6<small>억 원</small></div>
+          <div class="goal">목표 12억 원 <em>▲ 전월 동기 대비 +6%p</em></div>
+        </div>
+        <div class="ring">
+          <svg viewBox="0 0 104 104" width="104" height="104">
+            <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3b82f6"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient></defs>
+            <circle cx="52" cy="52" r="44" fill="none" stroke="#eef0f6" stroke-width="11"/>
+            <circle cx="52" cy="52" r="44" fill="none" stroke="url(#g1)" stroke-width="11" stroke-linecap="round" stroke-dasharray="199 277" transform="rotate(-90 52 52)"/>
+          </svg>
+          <span>72%</span>
+        </div>
+      </div>
+      <div class="track"><i></i></div>
+      <div class="trend">
+        <span class="lbl">이번 달 일별 누적</span>
+        <svg width="300" height="44" viewBox="0 0 300 44">
+          <defs><linearGradient id="g2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6366f1" stop-opacity=".28"/><stop offset="1" stop-color="#6366f1" stop-opacity="0"/></linearGradient></defs>
+          <path d="M0 40 L30 37 L60 35 L90 29 L120 27 L150 20 L180 18 L210 12 L240 10 L270 6 L270 44 L0 44Z" fill="url(#g2)"/>
+          <path d="M0 40 L30 37 L60 35 L90 29 L120 27 L150 20 L180 18 L210 12 L240 10 L270 6" fill="none" stroke="#6366f1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="270" cy="6" r="4.5" fill="#fff" stroke="#6366f1" stroke-width="2.5"/>
+        </svg>
+      </div>
+    </div>
+    <div class="actions">
+      <div class="act sel">바탕화면에 고정 <kbd>Enter</kbd></div>
+      <div class="act">상위 고객사 보기 <kbd>Tab</kbd></div>
+      <div class="act">전월과 비교 <kbd>⌃ M</kbd></div>
+    </div>
+  </div>
+
+  <div class="pins">
+    <div class="pin">
+      <h4><span>실적 · 11월</span><span>72%</span></h4>
+      <div class="v">8.6<small>/ 12억</small></div>
+      <div class="mini"><i></i></div>
+    </div>
+    <div class="pin">
+      <h4><span>오늘 내 회의실</span><span>2건</span></h4>
+      <div class="slot"><time>14:00</time>7층 A회의실</div>
+      <div class="slot next"><time>16:30</time>9층 대회의실</div>
+    </div>
+  </div>
+
+  <div class="taskbar"><span>Alt + Space 로 호출</span><div class="tray"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z"/></svg></div><span>오전 9:12</span></div>
+</div>
+
+<!-- 장면 2: 다크 테마. 회의실 예약: 문장 해석 → 후보 → 확인 후 예약 완료 -->
+<div class="scene dark">
+  <div class="caption">다크 테마 · 회의실 예약</div>
+  <div class="ghost" style="left:60px;top:420px;width:460px;height:340px"><i class="head"></i><i style="width:60%"></i><i style="width:80%"></i><i style="width:45%"></i></div>
+  <div class="ghost" style="left:900px;top:520px;width:480px;height:260px"><i class="head"></i><i style="width:70%"></i><i style="width:50%"></i></div>
+
+  <div class="panel">
+    <div class="input">
+      <div class="spark"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z"/></svg></div>
+      <div class="query">내일 2시 6인 회의실<span class="caret"></span></div>
+      <kbd>Esc</kbd>
+    </div>
+    <div class="divider"></div>
+    <div class="parsed"><span class="tok">11월 11일 (수)</span><span class="tok">14:00 – 15:00</span><span class="tok">6인 이상</span><span class="tok">빈 방 3곳</span></div>
+    <div class="rooms">
+      <div class="room sel"><div class="floor">7F</div><div><div class="name">A회의실</div><div class="meta">8인 · 화상회의 장비 · 내 자리에서 1분</div></div><div class="go">예약 ↵</div></div>
+      <div class="room"><div class="floor">7F</div><div><div class="name">C회의실</div><div class="meta">6인 · 모니터</div></div><div class="go">예약</div></div>
+      <div class="room"><div class="floor">9F</div><div><div class="name">대회의실</div><div class="meta">12인 · 화상회의 장비 · 화이트보드</div></div><div class="go">예약</div></div>
+    </div>
+    <div class="foot"><span>↑↓ 이동 · Enter 예약 · Tab 시간 변경</span><span>회의실 예약 v1.0</span></div>
+  </div>
+
+  <svg class="flowarrow" viewBox="0 0 120 40"><path d="M4 20 H104" stroke="rgba(255,255,255,.35)" stroke-width="2" stroke-dasharray="5 7" stroke-linecap="round"/><path d="M98 12 L110 20 L98 28" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+
+  <div class="done">
+    <div class="check"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+    <h3>예약했어요</h3>
+    <p>7층 A회의실을 잡아 두었습니다. 잘못 눌렀다면 바로 취소할 수 있어요.</p>
+    <div class="ticket">
+      <div><span>회의실</span><b>7층 A회의실</b></div>
+      <div><span>인원</span><b>최대 8인</b></div>
+      <div><span>날짜</span><b>11월 11일 (수)</b></div>
+      <div><span>시간</span><b>14:00 – 15:00</b></div>
+    </div>
+    <div class="btns"><div class="b">예약 취소</div><div class="b p">바탕화면에 고정</div></div>
+  </div>
+
+  <div class="taskbar"><span>Alt + Space 로 호출</span><div class="tray"><svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2l2.2 6.8L21 11l-6.8 2.2L12 20l-2.2-6.8L3 11l6.8-2.2z"/></svg></div><span>오후 4:40</span></div>
+</div>
+
+</body>
+</html>
